@@ -169,7 +169,7 @@
 
   <script>
     // Header
-    fetch('/header.html', { cache: 'no-store' })
+    fetch('./header.html', { cache: 'no-store' })
       .then(r => r.text())
       .then(h => {
         const host = document.getElementById('siteHeader');
@@ -190,7 +190,7 @@
       .catch(() => {});
 
     // Footer
-    fetch('/footer.html', { cache: 'no-store' })
+    fetch('footer.html', { cache: 'no-store' })
       .then(r => r.text())
       .then(f => {
         const host = document.getElementById('siteFooter');

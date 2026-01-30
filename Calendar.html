@@ -88,7 +88,7 @@ Because of that reason, the Holy Days rarely fall on the same western calendar d
     </form>
 
 <script>
-  fetch('/header.html', { cache: 'no-store' })
+  fetch('./header.html', { cache: 'no-store' })
     .then(r => r.text())
     .then(h => { document.getElementById('siteHeader').innerHTML = h; })
     .catch(() => {});

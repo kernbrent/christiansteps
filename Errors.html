@@ -38,7 +38,7 @@
     </form>
 
 <script>
-  fetch('/header.html', { cache: 'no-store' })
+  fetch('./header.html', { cache: 'no-store' })
     .then(r => r.text())
     .then(h => {
       const host = document.getElementById('siteHeader');
