@@ -1,3 +1,0 @@
-Music/** filter=lfs diff=lfs merge=lfs -text
-Casts/** filter=lfs diff=lfs merge=lfs -text
-Downloads/** filter=lfs diff=lfs merge=lfs -text
