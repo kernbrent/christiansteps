@@ -360,7 +360,7 @@
         });
       }
 
-      fetch('/data/music_library.json', { cache: 'no-store' })
+      fetch('./data/music_library.json', { cache: 'no-store' })
         .then(r => r.json())
         .then(render)
         .catch(() => {
