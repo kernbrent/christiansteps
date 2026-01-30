@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Devotion Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Helper styles (safe even if style.css already defines these) */
+    .rank-section { display: none; }
+    .wrap-image { max-width: 140px; height: auto; float: right; margin: 0 0 12px 16px; }
+    .clear { clear: both; }
+    .mf-grid { margin-top: 22px; }
+    .mf-grid ul { margin: 0; padding-left: 18px; }
+    .mf-grid li { margin: 6px 0; }
+  </style>
+</head>
+
+<body>
+  <div class="page-shell">
+    <div class="need-container">
+
+      <h1>Devotion <img src="images/DevotionIcon.png" alt="Devotion icon" class="wrap-image" /></h1>
+
+      <script>
+        const p = new URLSearchParams(window.location.search);
+        const score = p.get('score');
+        const rank = parseInt(p.get('rank'), 10);
+
+        function ordinal(n){
+          if(n===1) return 'st';
+          if(n===2) return 'nd';
+          if(n===3) return 'rd';
+          return 'th';
+        }
+
+        document.write(`<h2>Score: ${score ?? ''} | Rank: ${rank}${ordinal(rank)}</h2>`);
+      </script>
+
+      <!-- RANK 1: FULL TEXT -->
+      <div id="rank1" class="rank-section">
+        <h2>Understanding Devotion</h2>
+
+        <div class="text-with-image">
+          
+          <p><strong>Devotion</strong> is a profound spiritual longing to love, surrender to, and intimately connect with God through Jesus Christ, guided by the Holy Spirit. It goes beyond routine religious practices, representing a heartfelt commitment to God’s will, as exemplified in Scripture: “Love the Lord your God with all your heart and with all your soul and with all your mind” (Matthew 22:37).</p>
+
+          <p>If devotion is your highest core motivation, you crave transcendent meaning—especially during spiritual crises when earthly pursuits feel empty. You are driven toward deeper faith, inspiration, and union with the Lord, echoing Paul’s prayer to know Christ’s love that “surpasses knowledge” (Ephesians 3:19).</p>
+
+          <p>Your devotion often manifests as wholehearted worship, prayer, obedience, and service. It is the essence of a “living sacrifice” (Romans 12:1), where daily practices like Bible reading, journaling, prayer, and hymns foster intimacy with God. Without devotion, you may feel life is meaningless; with devotion, you often experience peace, guidance, and purpose.</p>
+
+          <p>With your strong drive for devotion, you may appear as a spiritual heartbeat of the congregation. You tend to:</p>
+          <ul>
+            <li><strong>Prioritize worship</strong> — arriving early for prayer, engaging deeply in singing praises, or lingering in contemplative silence.</li>
+            <li><strong>Seek deeper experiences</strong> — through prayer meetings, Bible studies, retreats, and personal quiet times.</li>
+            <li><strong>Exhibit surrender</strong> — yielding personal ambitions to God’s calling, even in uncertainty, with humility and faith amid trials.</li>
+            <li><strong>Radiate inspiration</strong> — sharing testimonies of God’s faithfulness, offering encouragement, and sensing Holy Spirit promptings during services.</li>
+          </ul>
+
+          <p>You may feel unfulfilled by superficial activities, craving authentic encounters with Christ. In group settings, you often foster reverence—gently drawing others toward deeper faith without judgment.</p>
+
+          <p>At times, highly devoted people can be misunderstood within the church. Your intense focus on spiritual depth, prayer, and surrender may be perceived as overly emotional, judgmental of more casual expressions of faith, or even escapist—withdrawing from practical responsibilities in favor of contemplative practices. Others might view your passion for worship or spiritual insights as excessive enthusiasm or spiritual elitism. This can lead to feelings of isolation if your gifts are not recognized or valued.</p>
+
+          <p>When your devotion is valued, you enrich the church immensely, strengthening the Body of Christ (1 Corinthians 12). God often uses your devotion to bring:</p>
+          <ul>
+            <li><strong>Spiritual vitality</strong> — through fervent prayer and intercession that supports pastoral needs, healing, and renewal.</li>
+            <li><strong>Inspiration and unity</strong> — your passion ignites worship, encourages weary believers, and models joyful obedience (Ephesians 4:16).</li>
+            <li><strong>Service and mentorship</strong> — you may lead or volunteer in worship, discipleship, outreach, or prayer ministries, guiding others toward maturity.</li>
+            <li><strong>Healing and grace</strong> — by embodying surrender, you offer compassionate presence during crises and foster hope.</li>
+          </ul>
+
+          <p>You help the church fulfill its mission: glorifying God and making disciples. Your life becomes a testimony that true fulfillment comes from devoting all to Christ, inspiring the community to “grow in the grace and knowledge of our Lord” (2 Peter 3:18).</p>
+
+          <p><em>Healthy devotion</em> remains both <strong>deep</strong> and <strong>grounded</strong>: intimacy with Jesus that overflows into love for people, faithfulness in responsibilities, and humble service. When prayer and worship lead you back into daily obedience, your devotion becomes not only a personal refuge, but a strengthening gift to the whole church.</p>
+
+          <div class="clear"></div>
+        </div>
+
+        <h3>Spiritual Reflection</h3>
+        <ul>
+          <li>Where is God inviting me to deeper surrender right now—heart, habits, or ambitions?</li>
+          <li>Am I seeking intimacy with Jesus in a way that also produces love, humility, and service?</li>
+          <li>How can I share spiritual depth without becoming critical or isolated?</li>
+          <li>What practical responsibilities might God be asking me to embrace as worship?</li>
+        </ul>
+      </div>
+
+      <!-- RANK 2–3: TWO-PARAGRAPH SUMMARY -->
+      <div id="rank2to3" class="rank-section">
+        <h2>Devotion (Summary)</h2>
+
+        <p>Devotion is a deep longing to love, surrender to, and intimately connect with God through Jesus Christ, led by the Holy Spirit. When it is your strongest motivation, you crave transcendent meaning and seek authentic encounters with Christ—often through worship, prayer, Scripture, journaling, and obedience—experiencing peace and purpose as you offer yourself as a “living sacrifice” (Romans 12:1).</p>
+
+        <p>Your devotion can strengthen the church by bringing spiritual vitality, inspiring worship, and mentoring others toward maturity. Yet devotion may be misunderstood if it appears overly intense or disconnected from everyday responsibilities, so God invites you to keep spiritual depth grounded in humility, discernment, and practical love—letting intimacy with Jesus overflow into faithful service and unity in the Body of Christ (1 Corinthians 12; Ephesians 4:16).</p>
+
+        <h3>Spiritual Reflection</h3>
+        <ul>
+          <li>What practices most consistently lead me into real intimacy with Jesus?</li>
+          <li>How can my devotion overflow into practical love for others this week?</li>
+          <li>Where do I need humility and discernment so my zeal builds up the church?</li>
+        </ul>
+      </div>
+
+      <!-- RANK 4–7: SHORT DESCRIPTION -->
+      <div id="rank4to7" class="rank-section">
+        <h2>Devotion (Overview)</h2>
+        <p>Devotion is a longing to love and surrender to God, seeking intimate connection with Jesus through the Holy Spirit. It fuels heartfelt worship and obedience that overflow into faithful service and daily discipleship.</p>
+      </div>
+
+      <!-- RANK Higher than 7: Error Message-->
+      <div id="rankerr" class="rank-section">
+        <h2>Unauthorized Access</h2>
+        <p><strong><font color="red">If you are seeing this text, you have come to this page without taking this assessment. Please navigate to the <a href="home.html">HOME PAGE</a> to log in and take the Motivating Factors Assessment.</font></strong></p>
+      </div>
+
+      <hr>
+
+      <!-- Motivating Factors (Always shown) -->
+      <div class="mf-grid">
+        <h2>The 7 Motivating Factors</h2>
+        <ul>
+          <li><strong>Significance:</strong> Identity and purpose in Christ</li>
+          <li><strong>Connection:</strong> Relationship with God and others</li>
+          <li><strong>Certainty:</strong> Trusting God as your foundation</li>
+          <li><strong>Adventure:</strong> Renewal and God’s creativity</li>
+          <li><strong>Growth:</strong> Becoming more like Christ</li>
+          <li><strong>Contribution:</strong> Serving others for God’s glory</li>
+          <li><strong>Devotion:</strong> Commitment to God, others, tasks, and/or things</li>
+        </ul>
+      </div>
+
+      <script>
+        // Show the right section by rank:
+        // 1 => full
+        // 2-3 => 2-paragraph summary
+        // 4-7 => short overview
+        (function () {
+          const p = new URLSearchParams(window.location.search);
+          const rank = parseInt(p.get('rank'), 10);
+
+          const r1 = document.getElementById('rank1');
+          const r23 = document.getElementById('rank2to3');
+          const r47 = document.getElementById('rank4to7');
+          const rerr = document.getElementById('rankerr');
+
+          function show(el) { if (el) el.style.display = 'block'; }
+
+          if (rank === 1) {
+            show(r1);
+          } else if (rank === 2 || rank === 3) {
+            show(r23);
+          } else if (rank >= 4 && rank <= 7) {
+            show(r47);
+          } else {
+            show(rerr); // sensible default if rank missing/invalid
+          }
+        })();
+      </script>
+
+    </div>
+  </div>
+</body>
+</html>
