@@ -98,6 +98,19 @@
           ]
         },
         {
+          "title": "30 Pieces of Silver",
+          "date_display": "Jan 1, 2023",
+          "date": "2022-12-18",
+          "duration": "40 min",
+          "description": "UPDATE THIS TEXT!!!!",
+          "links": [
+            {
+              "label": "MP3",
+              "url": "./Casts/30PiecesOfSilver.mp3"
+            }
+          ]
+        },
+        {
           "title": "The Mark - No Fear (Prosper Presbyterian Church)",
           "date_display": "Oct 1, 2023",
           "date": "2023-10-01",
