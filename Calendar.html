@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title></title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png">
+    
+</head>
+<body>
+    <form>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <a href="index.html"><img src="/Images/Logo400.jpg" alt="Christian Steps Ministries Default Logo" size=10%/></a>
+                </h1>
+            </div>
+
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
+        </div>
+        <div class="main">
+            <main id="pageContent">
+<p>
+Holy Days Page - Calendar of Holy Days
+</p>
+<p>
+Below is a table that shows when each Holy Day is for each year. Unlike the typicle calendars used today, God's Holy Day calendar is based on a lunar cycle. 
+Because of that reason, the Holy Days rarely fall on the same western calendar date each year. 
+<p><a href="HolyDayCalendar.docx">Click Here</a> for a printable version of this calendar.</p>
+</p>
+    <p>
+        <asp:TextBox ID="TextBox1" Text="Select A Year"></asp:TextBox>
+    </p>
+<!--    <p>
+        <asp:DropDownList ID="DropDownList1" 
+            DataSourceID="SqlDataSource2" DataTextField="YEAR_HD" 
+            DataValueField="YEAR_HD" AutoPostBack="True" OnSelectedIndexChanged="SelectedIndexChanged">
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource2" 
+            ConnectionString="<%$ ConnectionStrings:jordanspsalm_comConnectionString %>" 
+            SelectCommand="SELECT DISTINCT [YEAR_HD] FROM [T_HOLY_DAYS]">
+        </asp:SqlDataSource>
+    </p> -->
+
+<!--    <p>
+        <asp:GridView ID="GridView1" AutoGenerateColumns="False" 
+            DataKeyNames="XrefSakParent" DataSourceID="SqlDataSource1" Width="650px">
+            <Columns>
+                <asp:BoundField DataField="HDName" HeaderText="Holy Day" 
+                    SortExpression="HDName" ItemStyle-Width="20%" >
+<ItemStyle Width="20%"></ItemStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="HDScripture" HeaderText="Scripture" 
+                    SortExpression="HDScripture" ItemStyle-Width="15%" >
+<ItemStyle Width="15%"></ItemStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="HDDate" HeaderText="Date" 
+                    SortExpression="HDDate"  ItemStyle-Width="15%" >
+<ItemStyle Width="15%"></ItemStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="HDHebrewDate" HeaderText="Hebrew Date" 
+                    SortExpression="HDHebrewDate"  ItemStyle-Width="10%" >
+<ItemStyle Width="10%"></ItemStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="HDNotes" HeaderText="Notes" 
+                    SortExpression="HDNotes"  ItemStyle-Width="40%" >
+<ItemStyle Width="40%"></ItemStyle>
+                </asp:BoundField>
+            </Columns>
+        </asp:GridView>
+
+        <asp:SqlDataSource ID="SqlDataSource1" 
+            ConnectionString="<%$ ConnectionStrings:jordanspsalm_comConnectionString %>">
+            </asp:SqlDataSource>
+    </p> 
+    <p>  -->
+        &nbsp;</p>
+</main>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+
+<script>
+  fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => { document.getElementById('siteHeader').innerHTML = h; })
+    .catch(() => {});
+</script>
+
+</body>
+</html>

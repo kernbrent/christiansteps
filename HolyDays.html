@@ -6,6 +6,7 @@
   <title>God&apos;s Holy Days — Leviticus 23</title>
 
   <link href="/Styles/Site.css" rel="stylesheet" />
+  <link href="/Styles/Site_mobile.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
 </head>
 
@@ -30,78 +31,88 @@
     <div class="main">
       <main id="pageContent" role="main">
 
-        <!-- HERO (match index vibe) -->
-        <section class="home-hero" aria-labelledby="holydays-hero-title">
-          <div class="home-hero-inner">
-            <div class="home-hero-copy">
+        <section class="home-hero holydays-hero" aria-labelledby="holydays-hero-title">
+          <div class="home-hero-inner holydays-hero-inner">
+            <div class="home-hero-copy holydays-hero-copy">
               <h2 id="holydays-hero-title">God&apos;s Holy Days</h2>
-              <p>
-                Leviticus 23 outlines the Holy Days—God’s appointed times—built around His plan of redemption.
-                Use this page to explore dates by year, read brief descriptions, and print yearly or wallet calendars.
-              </p>
 
-              <div class="home-cta" role="group" aria-label="Primary actions">
-                <a class="btn btn-primary" href="#holyday-table">View dates</a>
-                <a class="btn btn-secondary" href="#wallet">Generate calendars</a>
+
+              <div class="holydays-intro">
+                <div class="card holydays-intro-card">
+                <div class="intro-preview" id="introPreview">
+                <p>In the beginning, God created... </p>
+                <p>
+                  It says it was without form and was void, but it was not without a plan. God has had a plan from the very beginning. He created His creation for His creation. He created in such a way that His creation would long after Him, would want to find Him, and would work to do so. It is clear that God wanted to create in such a way that His very nature would be revealed in everything that was created. </p>
+                <p>On the third day of creation, He created light. This light was established to separate time frames in order for life to be able to track and monitor the passing of time. In Genesis 1:14, God says that He create light be a sign for seasons [עונות - mo'ed]. This word, translated here as season, is translated in other portions of the bible as Holy Day, Holy Season, or High Season/Day. In Leviticus 23 this word is used as God's Holy Days or Sabbaths.
+                <button type="button" class="more-link inline" id="introMore" aria-expanded="false">more...</button>
               </div>
 
-              <p class="featured-note" style="margin-top:0.75rem;">
-                Tip: On desktop, the “Holy Day Information” column includes a <em>more/less</em> link for longer notes.
-              </p>
-            </div>
-
-            <div class="hero-image-wrap" aria-label="Calendar icon">
-              <div class="card" style="display:grid;place-items:center;padding:1.25rem;min-height:180px;">
-                <div style="font-size:2.25rem;line-height:1;">🗓️</div>
-                <div style="margin-top:0.5rem;font-weight:800;">Holy Days</div>
-                <div class="featured-note" style="text-align:center;margin-top:0.25rem;">
-                  Explore • Learn • Print
+                <div class="intro-rest" hidden>It is clear that God did not create the Holy Days as memorials of great events that happened in Israel's history, but the Holy Days were created from the beginning of time. The "Mo'ed"s were established at the beginning of time to be markers of days that God wanted His entire creation to remember. It just so happened that important days of Israel's history fell on these already set aside days. The day we remember as Passover was not created when the Israelites exited Egypt. God arranged for the Israelites to exit Egypt on the "Mo'ed" we now call Passover.  <button type="button" class="more-link" id="introMore" aria-expanded="false">more...</button></p>
                 </div>
+
+                <div class="intro-rest" id="introRest" hidden>
+                <p>
+
+                  All of God's Holy Days have many meanings. It is clear to see the Historical meaning in the days. But, these days also have meaning as they were fulfilled through the life and Jesus the Christ. As we walk toward a time when Christ will come again, these days have prophetic meaning to them as well. </p>
+                <p>
+
+                  This section will be centered around exploring the deeper meaning of God's Holy Days and what they mean historically, Christologically, and prophetically. </p>
+                <p><i>We here are Christian Steps believe that God's Holy Days are relevant to all Christians today. When we first look into them, they may seem distant, ancient, and "Non"Christian. We believe that as you look into them, you will discover they are as beautiful today as they have ever been and understanding them, helps you understand your Savior Jesus just a little bit more.</i></p>
+                <p>
+
+                  To God Be All the Glory
+                  <button type="button" class="more-link" id="introLess">...less</button></p>
+                </div>
+                </div>
+            
+            <div class="card holydays-info-card">
+              Find out more about God's Holy Days and how they are <strong>Historical</strong>, <strong>Christological</strong>, and <strong>Prophetic</strong>. 
+              <p></p>
+              <a href="/Articles/HolyDays_Article.html" class="btn btn-primary">God's Holy Days Article</a>  |  <a href="/Articles/JesusHolyWeek_Article.html" class="btn btn-primary">Jesus' Last Days</a>
+            </div>
+
+            <div class="card holydays-info-card">
+              <p class="holydays-instructions">
+                Select a year below to view the Holy Day calendar. You can also choose <strong>All Years</strong>.
+              </p>
+
+              <p class="holydays-wallet-note">
+                Use the button below to print the <strong>3‑year wallet calendar</strong> (front/back).
+                It uses the latest three years found in <code>holydaydates.json</code>.
+              </p>
+
+              <p class="featured-note">
+                If a pop‑up is blocked, allow pop‑ups to print.
+              </p>
+            </div>
+                
+                
+                
+                <p class="featured-note" style="margin-top:0.6rem;">
+
+             
+
+                
               </div>
             </div>
           </div>
         </section>
 
-        <!-- OVERVIEW CARDS -->
-        <section class="home-section" aria-labelledby="how-to-title">
-          <h3 id="how-to-title">How to use this page</h3>
-          <div class="card-grid">
-            <article class="card">
-              <h4>Browse by year</h4>
-              <p>Select a year (or “All Years”) to see the Holy Day dates in chronological order.</p>
-            </article>
-
-            <article class="card">
-              <h4>Read Holy Day notes</h4>
-              <p>Short summaries are shown by default. Click <em>more…</em> to expand and <em>less</em> to collapse.</p>
-            </article>
-
-            <article class="card">
-              <h4>Print calendars</h4>
-              <p>Jump to the bottom to print the 3‑year wallet calendar and other annual formats.</p>
-              <a href="#wallet">Go to calendar tools →</a>
-            </article>
-          </div>
-        </section>
-
-        <!-- TABLE + YEAR SELECT (in a large card) -->
-        <section class="home-section" id="holyday-table" aria-labelledby="table-title">
-          <h3 id="table-title">Holy Day dates</h3>
+        <section class="home-section" id="dates" aria-labelledby="dates-title">
+          <h3 id="dates-title">Holy Day dates</h3>
 
           <div class="card holydays-card">
-            <p class="featured-note" style="margin-top:0;">
-              Select a year below. Choose <strong>All Years</strong> to view everything together.
-            </p>
-
             <div class="holydays-controls">
               <div class="holydays-control">
-                <label for="yearSelect"><strong>Choose a year</strong></label>
+                <label for="yearSelect">Choose a year</label>
                 <select id="yearSelect">
                   <option value="" selected disabled>Select a year…</option>
                 </select>
               </div>
 
-              <a class="btn btn-secondary" href="#wallet" style="text-decoration:none;">Jump to calendars ↓</a>
+              
+              <button type="button" id="printWalletBtn" class="btn btn-primary">Print wallet calendar (3 years)
+              </button>
             </div>
 
             <div id="tableWrap" class="holydays-table-wrap" aria-live="polite">
@@ -125,60 +136,91 @@
           </div>
         </section>
 
-        <!-- CALENDAR TOOLS -->
-        <section class="home-section" id="wallet" aria-labelledby="wallet-title">
-          <h3 id="wallet-title">Calendar tools</h3>
-
-          <div class="card-grid two">
-            <article class="card">
-              <h4>3‑Year Wallet Calendar (Front/Back)</h4>
-              <p>
-                Prints the latest three years found in <code>holydaydates.json</code> in a wallet-sized layout.
-              </p>
-              <button type="button" id="printWalletBtn" class="btn btn-primary">Print wallet calendar</button>
-              <p class="featured-note" style="margin-top:0.5rem;">
-                If a pop‑up is blocked, allow pop‑ups to print.
-              </p>
-            </article>
-
-            <article class="card">
-              <h4>Annual calendars</h4>
-              <p>
-                Want a full-page annual calendar (one year per page) or a downloadable PDF?
-                Tell me what format you prefer and I&apos;ll add it here.
-              </p>
-              <a class="btn btn-secondary" href="about.html#contact">Request a format →</a>
-            </article>
-          </div>
-        </section>
-
         <div id="siteFooter"></div>
-
       </main>
     </div>
   </div>
 
   <script>
+    // Intro more/less toggle (both inline)
+    (function(){
+      const moreBtn = document.getElementById('introMore');
+      const lessBtn = document.getElementById('introLess');
+      const rest = document.getElementById('introRest');
+      if (!moreBtn || !lessBtn || !rest) return;
+
+      moreBtn.addEventListener('click', () => {
+        rest.hidden = false;
+        moreBtn.hidden = true;
+        moreBtn.setAttribute('aria-expanded', 'true');
+      });
+
+      lessBtn.addEventListener('click', () => {
+        rest.hidden = true;
+        moreBtn.hidden = false;
+        moreBtn.setAttribute('aria-expanded', 'false');
+        moreBtn.scrollIntoView({ block: 'nearest' });
+      });
+    })();
+  </script>
+
+  <script>
     // Header
     fetch('/header.html', { cache: 'no-store' })
-      .then(r => r.text())
-      .then(h => {
-        const host = document.getElementById('siteHeader');
-        host.innerHTML = h;
+    .then(r => r.text())
+    .then(h => {
+      const host = document.getElementById('siteHeader');
+      if (!host) return;
+      host.innerHTML = h;
 
-        const menu = host.querySelector('div.menu');
-        const nav = host.querySelector('div.menu ul.nav');
-        if (menu && nav && !menu.querySelector('.nav-toggle')) {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'nav-toggle';
-          btn.setAttribute('aria-label','Toggle Menu');
-          btn.textContent = '☰ Menu';
-          menu.insertBefore(btn, menu.firstChild);
-          btn.addEventListener('click', () => nav.classList.toggle('open'));
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (!menu || !nav) return;
+
+      // Use existing button if present (from header.html), otherwise create one
+      let btn = menu.querySelector('.nav-toggle');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle Menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+      }
+
+      // Avoid double-binding if header is reloaded
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
+      const toggleMenu = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
         }
-      })
-      .catch(() => {});
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+
+      // Desktop + mobile
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('touchstart', toggleMenu, { passive: false });
+
+      // Close when a link is tapped
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Close when tapping outside the menu area
+      document.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })
+    .catch(() => {});
 
     // Footer
     fetch('/footer.html', { cache: 'no-store' })
@@ -191,8 +233,8 @@
   </script>
 
   <script>
-const DATES_JSON_URL = 'holydaydates.json';
-    const DETAILS_JSON_URL = 'holydaydescription.json';
+    const DATES_JSON_URL = '/data/holydaydates.json';
+    const DETAILS_JSON_URL = '/data/holydaydescription.json';
 
     const yearSelect = document.getElementById('yearSelect');
     const rowsEl = document.getElementById('rows');
@@ -263,7 +305,6 @@ const DATES_JSON_URL = 'holydaydates.json';
 
       const years = Array.from(new Set(dates.map(d => d.year))).filter(Boolean).sort((a,b)=>a-b);
 
-      // Add All Years option
       const allOpt = document.createElement('option');
       allOpt.value = 'ALL';
       allOpt.textContent = 'All Years';
@@ -275,7 +316,7 @@ const DATES_JSON_URL = 'holydaydates.json';
         opt.textContent = String(y);
         yearSelect.appendChild(opt);
       }
-}
+    }
 
     function renderRows(selected){
       let filtered = dates.slice();
@@ -308,7 +349,8 @@ const DATES_JSON_URL = 'holydaydates.json';
           ? `<span class="info-text" data-preview="${escapeHtml(preview)}" data-full="${escapeHtml(full)}">${escapeHtml(preview)}</span><span class="info-ellipsis">…</span>
              <button type="button" class="more-link" aria-expanded="false">more...</button>`
           : `<span class="info-text">${escapeHtml(full)}</span>`;
-return `<tr>
+
+        return `<tr>
           <td class="col-name">${escapeHtml(name)}</td>
           <td class="col-year">${escapeHtml(String(d.year || ''))}</td>
           <td class="col-date">${escapeHtml(d.english_date || '')}</td>
@@ -322,7 +364,6 @@ return `<tr>
       tableWrap.style.display = 'block';
     }
 
-    // FIX: more/less toggle (expanded shows FULL text; collapsed shows preview only)
     rowsEl.addEventListener('click', (e) => {
       const btn = e.target.closest('button.more-link');
       if (!btn) return;
@@ -334,14 +375,12 @@ return `<tr>
 
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       if (expanded){
-        // collapse
         const preview = text.getAttribute('data-preview') || text.textContent;
         text.textContent = preview;
         if (ellipsis) ellipsis.hidden = false;
         btn.textContent = 'more...';
         btn.setAttribute('aria-expanded','false');
       } else {
-        // expand
         const full = text.getAttribute('data-full') || text.textContent;
         text.textContent = full;
         if (ellipsis) ellipsis.hidden = true;
@@ -526,12 +565,13 @@ ${cards}
       setTimeout(() => w.print(), 250);
     }
 
-    printWalletBtn.addEventListener('click', printWalletCalendar);
+    if (printWalletBtn) printWalletBtn.addEventListener('click', printWalletCalendar);
 
     loadData().catch(err => {
       loadError.style.display = 'block';
       loadError.textContent = 'There was a problem loading the Holy Day data files. Please try again later. (' + err.message + ')';
     });
   </script>
+
 </body>
 </html>
