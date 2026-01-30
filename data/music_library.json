@@ -1299,6 +1299,23 @@
       "search": "Angels We Have Heard On High Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
     },
     {
+      "title": "Ave Maria",
+      "duration": "4",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "https://music.christiansteps.net/AveMaria.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "https://music.christiansteps.net/AveMaria.mp3"
+        }
+      ],
+      "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
       "title": "Away in the Manger",
       "duration": "",
       "artist": "Brent D Kern",
