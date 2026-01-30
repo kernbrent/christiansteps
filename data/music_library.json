@@ -1305,12 +1305,12 @@
       "collection": "Prosper Presbyterian Service Music",
       "collection_key": "ppc",
       "group": "Service Collection",
-      "audio": "https://music.christiansteps.net/AveMaria.mp3",
+      "audio": "https://media.christiansteps.net/music/AveMaria.mp3",
       "primary_format": "mp3",
       "downloads": [
         {
           "label": "MP3 (Listen)",
-          "href": "https://music.christiansteps.net/AveMaria.mp3"
+          "href": "https://media.christiansteps.net/music/AveMaria.mp3"
         }
       ],
       "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music"
