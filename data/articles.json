@@ -7,7 +7,7 @@
   "articles": [
     {
       "title": "A Story Within a Story - Luke 8",
-      "url": "/Articles/Luke8.html",
+      "url": "./Articles/Luke8.html",
       "type": "Article",
       "category": "Gospel Study",
       "author": "Brent D Kern",
@@ -16,7 +16,7 @@
     },
     {
       "title": "Beauty in God's Holy Days",
-      "url": "/Articles/HolyDays_Article.html",
+      "url": "./Articles/HolyDays_Article.html",
       "type": "Article",
       "category": "Scripture Study",
       "author": "Brent D Kern",
@@ -25,7 +25,7 @@
     },
     {
       "title": "The Beautiful Plan of Jesus' Last Week",
-      "url": "/Articles/JesusHolyWeek_Article.html",
+      "url": "./Articles/JesusHolyWeek_Article.html",
       "type": "Article",
       "category": "Gospel Study",
       "author": "Brent D Kern",
@@ -34,7 +34,7 @@
     },
     {
       "title": "Mark 1 - The Prophetic Transition",
-      "url": "/Articles/Mark1_Transition.html",
+      "url": "./Articles/Mark1_Transition.html",
       "type": "Article",
       "category": "Gospel Study",
       "author": "Brent D Kern",
@@ -43,7 +43,7 @@
     },
     {
       "title": "Mark 1 - A Comparison with God's Kingdom",
-      "url": "/Articles/Mark1_KingdomComparison.html",
+      "url": "./Articles/Mark1_KingdomComparison.html",
       "type": "Article",
       "category": "Kingdom",
       "author": "Brent D Kern",
@@ -52,7 +52,7 @@
     },
     {
       "title": "Mark 1 - A Devotional",
-      "url": "/Articles/Mark1_Devotional.html",
+      "url": "./Articles/Mark1_Devotional.html",
       "type": "Devotional",
       "category": "Devotional",
       "author": "Brent D Kern",
@@ -61,7 +61,7 @@
     },
     {
       "title": "Great Is His Faithfulness",
-      "url": "/Articles/GreatFaithfulness.html",
+      "url": "./Articles/GreatFaithfulness.html",
       "type": "Article",
       "category": "Scripture Study",
       "author": "Brent D Kern",
@@ -70,7 +70,7 @@
     },
     {
       "title": "Have You Ever Fed Jesus?",
-      "url": "/Articles/HaveYouEverFedJesus.html",
+      "url": "./Articles/HaveYouEverFedJesus.html",
       "type": "Article",
       "category": "Discipleship",
       "author": "Brent D Kern",
@@ -79,7 +79,7 @@
     },
     {
       "title": "Have You Ever Fed Jesus? - Devotional",
-      "url": "/Articles/HaveYouEverFedJesus_Devotional.html",
+      "url": "./Articles/HaveYouEverFedJesus_Devotional.html",
       "type": "Devotional",
       "category": "Devotional",
       "author": "Brent D Kern",
@@ -88,7 +88,7 @@
     },
     {
       "title": "Conflict Management Philosophy",
-      "url": "/Articles/ConflictMgmt.html",
+      "url": "./Articles/ConflictMgmt.html",
       "type": "Article",
       "category": "Article",
       "author": "Brent D Kern",
@@ -97,7 +97,7 @@
     },
     {
       "title": "Conflict Management Philosophy - Devotional",
-      "url": "/Articles/ConflictMgmt_Devotional.html",
+      "url": "./Articles/ConflictMgmt_Devotional.html",
       "type": "Devotional",
       "category": "Devotional",
       "author": "Brent D Kern",
@@ -106,7 +106,7 @@
     },
     {
       "title": "Great is Thy Faithfulness - Devotional",
-      "url": "/Articles/GreatFaithfulness_Devotional.html",
+      "url": "./Articles/GreatFaithfulness_Devotional.html",
       "type": "Devotional",
       "category": "Devotional",
       "author": "Brent D Kern",
