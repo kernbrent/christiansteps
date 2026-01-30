@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Assessment</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --ok: #16a34a;
+      --warn: #f59e0b;
+      --danger: #dc2626;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    h1 { margin-bottom: 8px; }
+    .instructions { margin-bottom: 20px; color: var(--muted); }
+
+    .dev-controls { margin-bottom: 20px; }
+
+    .section-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .section-card.inactive {
+      opacity: 0.35;
+      transform: translateY(10px);
+    }
+
+    .section-card.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .question { margin-bottom: 18px; }
+    .question p { margin-bottom: 8px; }
+
+    .options { display: flex; gap: 10px; }
+
+    .option {
+      flex: 1;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .option.selected {
+      border-color: var(--primary);
+      background: #eff6ff;
+    }
+
+    .submit-wrapper {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    button.submit {
+      padding: 14px 32px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.5;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    button.submit.enabled { opacity: 1; }
+    button.submit.loading { transform: scale(0.97); }
+
+    #results {
+      margin-top: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+    }
+
+    #results.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-size: 12px;
+      color: var(--muted);
+      background: #fff;
+      margin-right: 8px;
+    }
+
+    .pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #9ca3af;
+    }
+
+    .pill.ok .dot { background: var(--ok); }
+    .pill.warn .dot { background: var(--warn); }
+    .pill.danger .dot { background: var(--danger); }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { color: var(--muted); font-weight: 650; }
+
+    .big {
+      font-size: 32px;
+      font-weight: 800;
+      margin: 4px 0 2px;
+      line-height: 1;
+    }
+
+    .muted { color: var(--muted); font-size: 13px; }
+
+    .result-summary {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .rank {
+      font-weight: 750;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div id="accessDenied" style="
+    display:none;
+    max-width:600px;
+    margin:80px auto;
+    padding:32px;
+    text-align:center;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    font-size:18px;
+  ">
+    <p style="margin-bottom:16px;">
+      Welcome. This assessment is available to those with an authorized access code.
+      Please return to the home page and enter your ID and Password to continue.
+    </p>
+
+    <p style="font-size:16px; color:#555; margin-bottom:24px;">
+      You will be redirected to the home page in
+      <strong><span id="redirectCountdown">30</span> seconds</strong>.
+    </p>
+
+    <button
+      onclick="window.location.href='home.html'"
+      style="
+        border:none;
+        background:#2563eb;
+        color:#fff;
+        padding:12px 20px;
+        font-size:16px;
+        border-radius:12px;
+        cursor:pointer;
+      "
+    >
+      Go to Home Now
+    </button>
+  </div>
+
+  <div id="assessmentContent" style="display:none;">
+  <div class="container">
+    <h1>Personal Assessment</h1>
+    <div class="instructions">
+      Answer each question honestly. There are no right or wrong answers.
+      Most people complete this assessment in 8–10 minutes.
+    </div>
+
+    <div class="dev-controls" id="devControls">
+      <button type="button" onclick="autoFill()">Auto-Fill (Test Mode)</button>
+    </div>
+
+    <div id="sections"></div>
+
+    <div class="submit-wrapper">
+      <button class="submit" id="submitBtn" disabled>Submit Assessment</button>
+    </div>
+      
+
+
+    <div id="results" aria-live="polite">
+      <h2>Your Results</h2>
+      <div class="muted">Scores are calculated from your answers. (Yes = 10, Partial = 5, No = 0)</div>
+
+      <div class="result-summary">
+        <div>
+          <div class="muted">Overall points</div>
+          <div class="big" id="overallScore">—</div>
+        </div>
+        <div>
+          <span class="pill" id="completionPill"><span class="dot"></span><span id="completionText">Not submitted</span></span>
+        </div>
+      </div>
+
+      <table aria-label="Category scores">
+        <thead>
+          <tr>
+            <th style="width: 40%">Category</th>
+            <th style="width: 20%">Rank</th>
+            <th style="width: 20%">Score</th>
+            <th style="width: 20%">Max</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody">
+          <tr><td colspan="4" class="muted">Submit the assessment to see results.</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+
+        <button type="button" class="submit enabled" id="pdfBtn" style="display:none">Save Answers as PDF</button>
+
+      </div>
+      <p></p>
+      <center>      
+      <div>
+        <img src="images/NeedsFullSize.png" alt="ChristianSteps.net — The 6 Human Needs Assessment" style="width: 50%; border-radius: 16px;"/>
+      </div>
+      </center>
+    </div>
+  </div>
+  </div>
+
+<script>
+  const TOTAL_QUESTIONS = 98;
+  const QUESTIONS_PER_SECTION = 12;
+  const ANSWERS = ['Yes', 'Partial', 'No'];
+  const responses = {}; // { [qNum]: 'Yes'|'Partial'|'No' }
+
+  let QUESTION_TEXTS = [];
+
+  // ===== Hidden scoring groups (not shown to user) =====
+  // Each group has 14 questions => max score 140.
+  const GROUPS = [
+    { name: 'Respect', questions: [1, 9, 15, 23, 26, 34, 40, 48, 52, 56, 61, 69, 75, 82] },
+    { name: 'Connection', questions: [2, 8, 17, 20, 25, 32, 38, 43, 49, 51, 60, 66, 71, 76] },
+    { name: 'Stability', questions: [3, 10, 13, 19, 24, 28, 33, 37, 45, 53, 63, 67, 73, 80] },
+    { name: 'Adventure', questions: [4, 5, 12, 16, 27, 31, 39, 47, 62, 68, 74, 78, 81, 83] },
+    { name: 'Expansion', questions: [6, 18, 21, 29, 35, 41, 46, 50, 54, 57, 59, 65, 70, 79] },
+    { name: 'Service', questions: [7, 11, 14, 22, 30, 36, 42, 44, 55, 58, 64, 72, 77, 84] },
+    { name: 'Devotion', questions: [85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98] },
+  ];
+
+
+  const POINTS = { Yes: 10, Partial: 5, No: 0 };
+
+  // URLs for deep-dives by category (shown in results)
+  const CATEGORY_URLS = {
+    'Stability': 'stability.html',
+    'Service': 'service.html',
+    'Expansion': 'expansion.html',
+    'Connection': 'connection.html',
+    'Respect': 'respect.html',
+    'Adventure': 'adventure.html',
+    'Devotion': 'devotion.html',
+  };
+
+  const sectionsEl = document.getElementById('sections');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Build sections/questions
+  let q = 1;
+  const totalSections = Math.ceil(TOTAL_QUESTIONS / QUESTIONS_PER_SECTION);
+
+  for (let s = 1; s <= totalSections; s++) {
+    const section = document.createElement('div');
+    section.className = 'section-card inactive';
+    section.dataset.section = s;
+
+    const title = document.createElement('div');
+    title.className = 'section-title';
+    title.textContent = `Section ${s}`;
+    section.appendChild(title);
+
+    for (let i = 0; i < QUESTIONS_PER_SECTION; i++) {
+      if (q > TOTAL_QUESTIONS) break;
+      const question = document.createElement('div');
+      question.className = 'question';
+      question.innerHTML = `
+        <p>${q}. <span class="q-text" data-q="${q}">Loading…</span></p>
+        <div class="options">
+          ${ANSWERS.map(a => `<div class="option" data-q="${q}" data-a="${a}">${a}</div>`).join('')}
+        </div>
+      `;
+      section.appendChild(question);
+      q++;
+    }
+
+    sectionsEl.appendChild(section);
+  }
+
+  // Load question text from questions.json (must contain exactly 84 items)
+async function loadQuestions() {
+  try {
+    const res = await fetch('questions.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Failed to load questions.json (HTTP ${res.status})`);
+    const data = await res.json();
+
+    if (!data || !Array.isArray(data.questions)) {
+      throw new Error('questions.json must be a JSON object with a "questions" array.');
+    }
+    if (data.questions.length !== TOTAL_QUESTIONS) {
+      throw new Error(`questions.json must contain exactly ${TOTAL_QUESTIONS} questions (found ${data.questions.length}).`);
+    }
+
+    // ✅ THIS was missing:
+    QUESTION_TEXTS = data.questions;
+
+    document.querySelectorAll('.q-text').forEach(span => {
+      const qNum = Number(span.dataset.q);
+      const text = QUESTION_TEXTS[qNum - 1];
+      span.textContent = (text && String(text).trim().length) ? text : '(Question text not set yet)';
+    });
+
+  } catch (err) {
+    console.error(err);
+    QUESTION_TEXTS = []; // keep it safe/empty if load fails
+
+    document.querySelectorAll('.q-text').forEach(span => {
+      span.textContent = 'Question text missing (check questions.json).';
+    });
+  }
+}
+
+
+  loadQuestions();
+
+  const sectionCards = document.querySelectorAll('.section-card');
+  // Activate the first section on load
+  if (sectionCards.length) {
+    sectionCards[0].classList.remove('inactive');
+    sectionCards[0].classList.add('active');
+  }
+
+  // Handle option clicks
+  document.addEventListener('click', e => {
+    if (!e.target.classList.contains('option')) return;
+
+    const qNum = e.target.dataset.q;
+    const parent = e.target.parentElement;
+
+    parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    e.target.classList.add('selected');
+
+    responses[qNum] = e.target.dataset.a;
+    updateSections();
+    checkCompletion();
+  });
+
+  function updateSections() {
+    sectionCards.forEach(card => {
+      card.classList.add('inactive');
+      card.classList.remove('active');
+    });
+
+    for (let i = 0; i < sectionCards.length; i++) {
+      const start = i * QUESTIONS_PER_SECTION + 1;
+      const end = Math.min(start + QUESTIONS_PER_SECTION - 1, TOTAL_QUESTIONS);
+      const sectionSize = end - start + 1;
+
+      let answered = 0;
+      for (let q = start; q <= end; q++) {
+        if (responses[q]) answered++;
+      }
+
+      if (answered < sectionSize) {
+        sectionCards[i].classList.remove('inactive');
+        sectionCards[i].classList.add('active');
+        break;
+      }
+    }
+  }
+
+  function checkCompletion() {
+    if (Object.keys(responses).length === TOTAL_QUESTIONS) {
+      submitBtn.disabled = false;
+      submitBtn.classList.add('enabled');
+    }
+  }
+
+  function ordinal(n) {
+    // 1->1st, 2->2nd, 3->3rd, 4->4th...
+    const mod100 = n % 100;
+    if (mod100 >= 11 && mod100 <= 13) return `${n}th`;
+    const mod10 = n % 10;
+    if (mod10 === 1) return `${n}st`;
+    if (mod10 === 2) return `${n}nd`;
+    if (mod10 === 3) return `${n}rd`;
+    return `${n}th`;
+  }
+
+  function computeResults() {
+    // Calculate each group score
+    const scored = GROUPS.map(g => {
+      let score = 0;
+      for (const qNum of g.questions) {
+        const ans = responses[String(qNum)];
+        score += POINTS[ans] ?? 0;
+      }
+      const max = g.questions.length * 10;
+      return { name: g.name, score, max };
+    });
+
+    // Rank (higher score = higher rank). Ties share the same rank.
+    // Competition ranking: 1, 2, 2, 4, 5, 6
+    const sorted = [...scored].sort((a, b) => b.score - a.score);
+    const rankByName = new Map();
+
+    let lastScore = null;
+    let currentRank = 0;
+
+    sorted.forEach((item, idx) => {
+      if (lastScore === null || item.score !== lastScore) {
+        currentRank = idx + 1;
+        lastScore = item.score;
+      }
+      rankByName.set(item.name, currentRank);
+    });
+
+    const overall = scored.reduce((sum, x) => sum + x.score, 0);
+    return { scored, sorted, rankByName, overall };
+  }
+
+  function renderResults() {
+    const { scored, rankByName, overall } = computeResults();
+
+    // Overall
+    document.getElementById('overallScore').textContent = String(overall);
+
+    // Completion pill
+    const pill = document.getElementById('completionPill');
+    const pillText = document.getElementById('completionText');
+    pillText.textContent = 'Submitted';
+    pill.classList.remove('ok', 'warn', 'danger');
+    pill.classList.add('ok');
+
+    // Rows (display categories with rank)
+    // Display in rank order (best to worst)
+    const rows = [...scored]
+      .sort((a, b) => (rankByName.get(a.name) - rankByName.get(b.name)) || (b.score - a.score) || a.name.localeCompare(b.name))
+      .map(g => {
+        const rank = rankByName.get(g.name);
+        const baseUrl = CATEGORY_URLS[g.name] || '#';
+        const params = new URLSearchParams({
+          score: String(g.score),
+          rank: String(rank),
+          max: String(g.max)
+        });
+        const url = `${baseUrl}?${params.toString()}`;
+        return `
+          <tr>
+            <td>
+              <a href="${escapeHTML(url)}" style="color: var(--primary); text-decoration: none; font-weight: 750;">${escapeHTML(g.name)}</a>
+            </td>
+            <td>${ordinal(rank)}</td>
+            <td>${g.score}</td>
+            <td>${g.max}</td>
+          </tr>
+        `;
+      })
+      .join('');
+
+    document.getElementById('resultsBody').innerHTML = rows;
+  }
+
+  // **************************Code to build PDF printout **********************************************
+  function buildAnswerReportHTML() {
+  const now = new Date();
+  const dateStr = now.toLocaleString();
+
+  // Create rows for all questions (1..84)
+  const rows = [];
+  for (let i = 1; i <= TOTAL_QUESTIONS; i++) {
+    const qText = (QUESTION_TEXTS[i - 1] || `Question ${i}`).toString();
+    const ans = responses[String(i)] || '(No answer)';
+    rows.push(`
+      <tr>
+        <td class="qnum">${i}</td>
+        <td class="qtext">${escapeHTML(qText)}</td>
+        <td class="ans">${escapeHTML(ans)}</td>
+      </tr>
+    `);
+  }
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Assessment Answers</title>
+<style>
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    margin: 14px;
+    color:#111827;
+  }
+
+  h1 { margin: 0 0 4px; font-size: 16px; }
+  .meta { color:#6b7280; margin-bottom: 8px; font-size: 11px; }
+
+  table {
+    width:100%;
+    border-collapse: collapse;
+    font-size: 10.5px;     /* smaller text */
+    line-height: 1.25;     /* tighter lines */
+  }
+
+  th, td {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 4px 6px;      /* MUCH tighter spacing */
+    vertical-align: top;
+  }
+
+  th {
+    text-align:left;
+    color:#374151;
+    background:#f9fafb;
+    font-size: 10.5px;
+  }
+
+  .qnum { width: 34px; color:#6b7280; white-space: nowrap; }
+  .ans  { width: 70px; font-weight: 700; white-space: nowrap; }
+
+  @media print {
+    body { margin: 8mm; }                 /* tighter page margins */
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+
+</head>
+<body>
+  <h1>Assessment Answers</h1>
+  <div class="meta">Generated: ${escapeHTML(dateStr)}</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rows.join('')}
+    </tbody>
+  </table>
+</body>
+</html>
+  `;
+}
+
+function openPrintWindow() {
+  // Safety: ensure questions loaded
+  if (!Array.isArray(QUESTION_TEXTS) || QUESTION_TEXTS.length !== TOTAL_QUESTIONS) {
+    alert('Questions are not loaded yet. Please wait a moment and try again.');
+    return;
+  }
+  // Safety: ensure all answered (optional — remove if you want partial PDF allowed)
+  if (Object.keys(responses).length !== TOTAL_QUESTIONS) {
+    alert('Please answer all questions before generating the PDF.');
+    return;
+  }
+
+  const html = buildAnswerReportHTML();
+  const w = window.open('', '_blank');
+  if (!w) {
+    alert('Popup blocked. Please allow popups for this site to generate the PDF.');
+    return;
+  }
+  w.document.open();
+  w.document.write(html);
+  w.document.close();
+
+  // Wait a tick so styles/layout are ready, then print
+  w.focus();
+  setTimeout(() => w.print(), 250);
+}
+
+// Wire up the button (after DOM exists)
+document.getElementById('pdfBtn')?.addEventListener('click', openPrintWindow);
+
+// ***********************ENd of the code to create the PDF Script ****************************************
+
+  function escapeHTML(str) {
+    return String(str)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  submitBtn.addEventListener('click', () => {
+    submitBtn.classList.add('loading');
+    setTimeout(() => {
+      renderResults();
+
+      const results = document.getElementById('results');
+      results.classList.add('visible');
+      results.scrollIntoView({ behavior: 'smooth' });
+
+      submitBtn.classList.remove('loading');
+    }, 400);
+  });
+
+  function autoFill() {
+    document.querySelectorAll('.options').forEach(group => {
+      const options = group.querySelectorAll('.option');
+      options[Math.floor(Math.random() * options.length)].click();
+    });
+  }
+
+  // PRODUCTION: hide dev controls
+  // document.getElementById('devControls').style.display = 'none';
+</script>
+
+
+<script>
+  //validates the code being passed from json on login
+  document.addEventListener('DOMContentLoaded', () => {
+    validateAccessCode();
+  });
+
+  async function validateAccessCode() {
+    const params = new URLSearchParams(window.location.search);
+    const codeFromUrl = params.get('code');
+
+    const assessment = document.getElementById('assessmentContent');
+    const denied = document.getElementById('accessDenied');
+    const countdownEl = document.getElementById('redirectCountdown');
+
+    function startRedirectCountdown() {
+      let remaining = 30;
+      if (countdownEl) countdownEl.textContent = remaining;
+
+      const timer = setInterval(() => {
+        remaining--;
+        if (countdownEl) countdownEl.textContent = remaining;
+
+        if (remaining <= 0) {
+          clearInterval(timer);
+          window.location.href = 'home.html';
+        }
+      }, 1000);
+    }
+
+    // 🚫 NO CODE → BLOCK IMMEDIATELY
+    if (!codeFromUrl) {
+      denied.style.display = 'block';
+      startRedirectCountdown();
+      return;
+    }
+
+    try {
+      const res = await fetch('password.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('password.json not found');
+
+      const data = await res.json();
+      if (!data.users || !Array.isArray(data.users)) throw new Error('Invalid password.json');
+
+      const user = data.users.find(
+        u => String(u.code).trim() === codeFromUrl
+      );
+
+      if (!user) {
+        denied.style.display = 'block';
+        startRedirectCountdown();
+        return;
+      }
+
+      // ✅ VALID CODE — UNLOCK PAGE
+      denied.style.display = 'none';
+      assessment.style.display = 'block';
+
+      // 🔓 Toggle PDF button based on password.json flag
+      const pdfBtn = document.getElementById('pdfBtn');
+      if (pdfBtn && String(user.display).toLowerCase() === 'on') {
+        pdfBtn.style.display = 'inline-block';
+      }
+
+
+    } catch (err) {
+      console.error(err);
+      denied.style.display = 'block';
+      startRedirectCountdown();
+    }
+  }
+</script>
+
+
+
+</body>
+</html>
