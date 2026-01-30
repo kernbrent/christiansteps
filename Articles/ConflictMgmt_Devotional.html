@@ -97,8 +97,8 @@ and grace to pursue peace without compromise. Amen.
 </div>
 
 <script>
-fetch('/header.html',{cache:'no-store'}).then(r=>r.text()).then(h=>{const el=document.getElementById('siteHeader');if(el)el.innerHTML=h;});
-fetch('/footer.html',{cache:'no-store'}).then(r=>r.text()).then(f=>{const el=document.getElementById('siteFooter');if(el)el.innerHTML=f;});
+fetch('./header.html',{cache:'no-store'}).then(r=>r.text()).then(h=>{const el=document.getElementById('siteHeader');if(el)el.innerHTML=h;});
+fetch('footer.html',{cache:'no-store'}).then(r=>r.text()).then(f=>{const el=document.getElementById('siteFooter');if(el)el.innerHTML=f;});
 </script>
 
 </body>
