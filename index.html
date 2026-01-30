@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Christian Steps Ministries - Philippians 2:12-13</title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png">
+    
+</head>
+<body>
+    <form>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <a href="index.html"><img src="/Images/Logo400.jpg" alt="Christian Steps Ministries Default Logo" width="400"/></a>
+                </h1>
+            </div>
+
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
+        </div>
+        <div class="main">
+            <main id="pageContent">
+<h2>
+        Welcome to Christian Steps Ministries
+    </h2>
+
+<p>Christian Steps Ministries is a ministry developed for the sole purpose of helping all people find their way in life and to eventually walk in the "Steps" that God our Father and Jesus Christ His Son have planned for each one of us. We believe that all of us are on a journey and every single person always has a next step. Even though some of us have more knowledge/experience/understanding than others, it is never an indicator that we are ahead of or behind other people. We are on our unique journey and our next step (our next Christian Step) is different for everyone. For some, the next step may be more knowledge. For others, the next step may be understanding Grace on a deeper level, and for others still, it may be to discover how God loves all of us the same and so to judge someone is truly to pass judgement on ourselves. </p>
+
+<p>We pray that God will lead you to a deeper relationship with Him and His Son no matter what your next step may be. Please do not hesitate to <a href="about.html">reach out to our team</a>. If you have questions, we will help you explore and seek the Wisdom of God. If you have requests, we will do our best to meet them and continue our work and ministry through the power of God's Holy Spirit. </p>
+
+<p>This web site is a work in progress. You will find sermons, pod casts, music (for worship services and for everyday listening all recorded by us), and other materials intended to help you grow in your walk and your faith. Please use the navigation buttons at the top of the section to find out more. </p>
+
+<p><b>Our favorite quote: "<i>Preach the Gospel at all times; when necessary, use words.</i>" (Saint Francis of Assisi)</b>
+    <p>This is why you will often see our emails with the salutation of <a href="images/witlool.png">WitLooL.</a></p>
+<br>
+<center><img src="images/steppingstones6.jpg" width=910></center>
+</main>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+
+<script>
+  fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => {
+      const host = document.getElementById('siteHeader');
+      host.innerHTML = h;
+      // Inject a mobile hamburger toggle button (if not already present)
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (menu && nav && !menu.querySelector('.nav-toggle')) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label','Toggle Menu');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+        btn.addEventListener('click', () => nav.classList.toggle('open'));
+      }
+    })
+    .catch(() => {});
+</script>
+<script>
+  // Mobile menu: add hamburger button + toggle nav panel
+  document.addEventListener('DOMContentLoaded', () => {
+    const host = document.getElementById('siteHeader');
+    if (!host) return;
+
+    function setupMobileMenu() {
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (!menu || !nav) return;
+
+      // Add hamburger button once
+      if (!menu.querySelector('.nav-toggle')) {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle Menu');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+
+        btn.addEventListener('click', () => {
+          nav.classList.toggle('open');   // <-- THIS creates ul.nav.open
+        });
+      }
+    }
+
+    // Run now + retry a few times in case header loads slightly later
+    setupMobileMenu();
+    let tries = 0;
+    const t = setInterval(() => {
+      setupMobileMenu();
+      tries++;
+      if (tries > 20) clearInterval(t);
+    }, 200);
+  });
+</script>
+
+</body>
+</html>

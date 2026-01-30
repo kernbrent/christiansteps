@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title></title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png">
+    
+</head>
+<body>
+    <form>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <a href="index.html"><img src="/Images/Logo400.jpg" alt="Christian Steps Ministries Default Logo" size=10%/></a>
+                </h1>
+            </div>
+
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
+        </div>
+        <div class="main">
+            <main id="pageContent">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background-color: #004080;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #0055aa;
+    }
+    nav a:link {
+      background-color: #ffffff;
+    }
+    nav a:visited {
+      background-color: #ffffff;
+    }
+    .section {
+      padding: 2rem;
+    }
+    .section h2 {
+      color: #004080;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><img src="images/CareerStepsLogo.png" alt="Your Image" style="width: 10%;"> Career Steps Consulting LLC</h1>
+    <p>Empowering Your Next Move in Life, Career, and Business</p>
+  </header>
+
+  <nav>
+  
+    <a href="#life-coaching">Life Coaching</a>
+    <a href="#career-coaching">Career Coaching</a>
+    <a href="#business-consulting">Business Consulting</a>
+    <a href="#it-consulting">IT Consulting</a>
+    <a href="#contact">Contact</a>
+
+  </nav>
+  <!--*************************************************************************************-->
+  <!--This is the metro relief img tag. This should be removed before go live.             -->
+      <img src="http://www.metrorelief.org/images/logo-hd.svg" alt="logo" style="width: 25%;">
+  <!--This is the metro relief img tag. This should be removed before go live.             -->
+  <!--*************************************************************************************-->
+  <section id="life-coaching" class="section">
+    <h2>Life Coaching</h2>
+    <p>Our life coaching services help you identify your goals, overcome obstacles, and create a path to personal fulfillment. We provide personalized coaching plans that align with your values and lifestyle.</p>
+  </section>
+
+  <section id="career-coaching" class="section">
+    <h2>Career Coaching</h2>
+    <p>Whether you're changing careers, seeking a promotion, or reentering the workforce, we offer targeted coaching to build confidence, sharpen your resume, and succeed in interviews.</p>
+  </section>
+
+  <section id="business-consulting" class="section">
+    <h2>Business Consulting</h2>
+    <p>We help small and mid-size businesses identify challenges, streamline operations, and implement strategies for sustainable growth. Let us help you take your business to the next level.</p>
+  </section>
+
+  <section id="it-consulting" class="section">
+    <h2>IT Consulting</h2>
+    <p>From technology assessments to digital transformation, our IT consulting services bridge business needs with innovative solutions. We specialize in project management, systems integration, and process improvement.</p>
+  </section>
+
+  <section id="contact" class="section">
+    <h2>Contact Us</h2>
+    <p>Email: brent.kern@careersteps.net</p>
+    <p>Phone: 972-505-0171</p>
+    <p>Schedule a free consultation and take the first step toward your goals today!</p>
+  </section>
+</main>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+
+<script>
+  fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => { document.getElementById('siteHeader').innerHTML = h; })
+    .catch(() => {});
+</script>
+
+</body>
+</html>

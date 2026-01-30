@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Assessment</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/URLIcon.png" />
+  
+</head>
+<body>
+  <div id="accessDenied" style="
+    display:none;
+    max-width:600px;
+    margin:80px auto;
+    padding:32px;
+    text-align:center;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    font-size:18px;
+  ">
+    <p style="margin-bottom:16px;">
+      Welcome. This assessment is available to those with an authorized access code.
+      Please return to the home page and enter your ID and Password to continue.
+    </p>
+
+    <p style="font-size:16px; color:#555; margin-bottom:24px;">
+      You will be redirected to the home page in
+      <strong><span id="redirectCountdown">30</span> seconds</strong>.
+    </p>
+
+    <button
+      onclick="window.location.href='home.html'"
+      style="
+        border:none;
+        background:#2563eb;
+        color:#fff;
+        padding:12px 20px;
+        font-size:16px;
+        border-radius:12px;
+        cursor:pointer;
+      "
+    >
+      Go to Home Now
+    </button>
+  </div>
+
+  <div id="assessmentContent" style="display:none;">
+  <div class="container">
+    <h1>Personal Assessment</h1>
+    <div class="instructions">
+      Answer each question honestly. There are no right or wrong answers.
+      Most people complete this assessment in 8–10 minutes.
+    </div>
+        <!--This button is used to test and autofill the answers. Display needs to be changed to none when done testing.-->
+    <div class="dev-controls" id="devControls">
+      <button type="button" onclick="autoFill()">Auto-Fill (Test Mode)</button>
+    </div>
+    <!--This button is so the user can navigate home-->
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="submit enabled" onclick="location.assign('home.html')">Home</button>
+    </div>
+
+
+    <div id="sections"></div>
+
+    <div class="submit-wrapper">
+      <button class="submit" id="submitBtn" disabled>Submit Assessment</button>
+    </div>
+      
+
+
+    <div id="results" aria-live="polite">
+      <h2>Your Results</h2>
+      <div class="muted">Scores are calculated from your answers. (Yes = 10, Partial = 5, No = 0)</div>
+
+      <div class="result-summary">
+        <div>
+          <div class="muted">Overall points</div>
+          <div class="big" id="overallScore">—</div>
+        </div>
+        <div>
+          <span class="pill" id="completionPill"><span class="dot"></span><span id="completionText">Not submitted</span></span>
+        </div>
+      </div>
+
+      <table aria-label="Category scores">
+        <thead>
+          <tr>
+            <th style="width: 40%">Category</th>
+            <th style="width: 20%">Rank</th>
+            <th style="width: 20%">Score</th>
+            <th style="width: 20%">Max</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody">
+          <tr><td colspan="4" class="muted">Submit the assessment to see results.</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+
+        <button type="button" class="submit enabled" id="pdfBtn" style="display:none">Print Results</button>
+
+      </div>
+      <p></p>
+      <center>      
+      <div>
+        <img src="images/NeedsFullSize7.png" alt="ChristianSteps.net — The 6 Human Needs Assessment" style="width: 50%; border-radius: 16px;"/>
+      </div>
+      </center>
+    </div>
+  </div>
+  </div>
+
+<script>
+// ===== Assessment (questions + scoring) =====
+
+  // Points per answer
+  const POINTS = { Yes: 10, Partial: 5, No: 0 };
+
+  // Page behavior
+  const QUESTIONS_PER_SECTION = 10; // keep the same UX as before
+  const ANSWERS = ['Yes', 'Partial', 'No'];
+
+  // Data (loaded from questions.json)
+  let TOTAL_QUESTIONS = 0;
+  let QUESTIONS = []; // [{number, text, category}, ...]
+
+  // Responses keyed by question number as string
+  const responses = {}; // { "1": "Yes" | "Partial" | "No" }
+
+  // Category -> detail page
+  const CATEGORY_URLS = {
+    'Stability': 'stability.html',
+    'Service': 'service.html',
+    'Expansion': 'expansion.html',
+    'Connection': 'connection.html',
+    'Respect': 'respect.html',
+    'Adventure': 'adventure.html',
+    'Devotion': 'Devotion.html',
+  };
+
+  const sectionsEl = document.getElementById('sections');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Track sections
+  let sectionCards = [];
+
+  // ===== Utilities =====
+  function escapeHTML(str) {
+    return String(str)
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;')
+      .replaceAll("'", '&#039;');
+  }
+
+  function ordinal(n) {
+    // Display-only; URLs use numeric rank.
+    const s = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  }
+
+  function getQuestionByNumber(qNum) {
+    // QUESTIONS is ordered, but still guard
+    return QUESTIONS[qNum - 1] || QUESTIONS.find(q => q.number === qNum) || null;
+  }
+
+  // ===== Build UI =====
+  function buildSections() {
+    sectionsEl.innerHTML = '';
+    sectionCards = [];
+
+    const totalSections = Math.ceil(TOTAL_QUESTIONS / QUESTIONS_PER_SECTION);
+    let qIndex = 0;
+
+    for (let s = 1; s <= totalSections; s++) {
+      const section = document.createElement('div');
+      section.className = 'section-card inactive';
+      section.dataset.section = String(s);
+
+      for (let i = 0; i < QUESTIONS_PER_SECTION && qIndex < TOTAL_QUESTIONS; i++) {
+        const qObj = QUESTIONS[qIndex];
+        const qNum = qObj.number;
+
+        const question = document.createElement('div');
+        question.className = 'question';
+        question.innerHTML = `
+          <p><span class="q-text" data-q="${qNum}">${escapeHTML(qObj.text || `Question ${qNum}: (missing text)`)}</span></p>
+          <div class="options" data-q="${qNum}">
+            ${ANSWERS.map(a => `<div class="option" data-q="${qNum}" data-a="${a}">${a}</div>`).join('')}
+          </div>
+        `;
+        section.appendChild(question);
+        qIndex++;
+      }
+
+      sectionsEl.appendChild(section);
+      sectionCards.push(section);
+    }
+
+    // Activate first section
+    if (sectionCards[0]) {
+      sectionCards[0].classList.remove('inactive');
+      sectionCards[0].classList.add('active');
+    }
+  }
+
+  // ===== Section focusing =====
+  function updateSections() {
+    // Default everything to inactive
+    sectionCards.forEach(card => {
+      card.classList.add('inactive');
+      card.classList.remove('active');
+    });
+
+    // Find first incomplete section
+    for (let i = 0; i < sectionCards.length; i++) {
+      const startQ = i * QUESTIONS_PER_SECTION + 1;
+      const endQ = Math.min(startQ + QUESTIONS_PER_SECTION - 1, TOTAL_QUESTIONS);
+
+      let answered = 0;
+      for (let q = startQ; q <= endQ; q++) {
+        if (responses[String(q)]) answered++;
+      }
+
+      const sectionSize = (endQ - startQ + 1);
+      if (answered < sectionSize) {
+        sectionCards[i].classList.remove('inactive');
+        sectionCards[i].classList.add('active');
+        break;
+      }
+    }
+  }
+
+  function checkCompletion() {
+    if (Object.keys(responses).length === TOTAL_QUESTIONS) {
+      submitBtn.disabled = false;
+      submitBtn.classList.add('enabled');
+    } else {
+      submitBtn.disabled = true;
+      submitBtn.classList.remove('enabled');
+    }
+  }
+
+  // ===== Results =====
+  function computeResults() {
+    // Aggregate scores by category based on QUESTIONS (source of truth)
+    const map = new Map(); // category -> {name, score, max, count}
+    for (const q of QUESTIONS) {
+      const name = q.category || 'Unknown';
+      if (!map.has(name)) map.set(name, { name, score: 0, count: 0, max: 0 });
+      const entry = map.get(name);
+
+      const ans = responses[String(q.number)];
+      entry.score += POINTS[ans] ?? 0;
+      entry.count += 1;
+      entry.max = entry.count * 10;
+    }
+
+    const scored = Array.from(map.values());
+
+    // Rank with ties (competition ranking 1,2,2,4...)
+    const sorted = [...scored].sort((a, b) => b.score - a.score);
+    const rankByName = new Map();
+    let rank = 1;
+    for (let i = 0; i < sorted.length; i++) {
+      if (i > 0 && sorted[i].score < sorted[i - 1].score) {
+        rank = i + 1;
+      }
+      rankByName.set(sorted[i].name, rank);
+    }
+
+    const overall = scored.reduce((sum, g) => sum + g.score, 0);
+    return { scored, rankByName, overall };
+  }
+
+  function renderResults() {
+    const { scored, rankByName, overall } = computeResults();
+
+    document.getElementById('overallScore').textContent = String(overall);
+
+    const pill = document.getElementById('completionPill');
+    const pillText = document.getElementById('completionText');
+    pillText.textContent = 'Submitted';
+    pill.classList.remove('ok', 'warn', 'danger');
+    pill.classList.add('ok');
+
+    const rows = [...scored]
+      .sort((a, b) => (rankByName.get(a.name) ?? 999) - (rankByName.get(b.name) ?? 999))
+      .map(g => {
+        const rankNum = rankByName.get(g.name) ?? 999;
+        const baseUrl = CATEGORY_URLS[g.name] || '#';
+        const params = new URLSearchParams();
+        params.set('score', String(g.score));
+        params.set('rank', String(rankNum)); // numeric only
+        params.set('max', String(g.max));
+        const url = `${baseUrl}?${params.toString()}`;
+
+        return `
+          <tr>
+            <td>
+              <a href="${escapeHTML(url)}" style="color: var(--primary); text-decoration: none; font-weight: 750;">${escapeHTML(g.name)}</a>
+            </td>
+            <td>${ordinal(rankNum)}</td>
+            <td>${g.score}</td>
+            <td>${g.max}</td>
+          </tr>
+        `;
+      })
+      .join('');
+
+    document.getElementById('resultsBody').innerHTML = rows;
+  }
+
+
+  // ===== Print Results (enabled by password.json display) =====
+  function buildPrintHTML() {
+    const now = new Date();
+    const dateStr = now.toLocaleString();
+
+    const rows = [];
+    for (const q of QUESTIONS) {
+      const qNum = q.number;
+      const qText = q.text || `Question ${qNum}`;
+      const ans = responses[String(qNum)] || '';
+      rows.push(`
+        <tr>
+          <td class="qnum">${qNum}</td>
+          <td class="qtext">${escapeHTML(qText)}</td>
+          <td class="ans">${escapeHTML(ans || '(No answer)')}</td>
+        </tr>
+      `);
+    }
+
+    return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Assessment Results</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin: 14px; color:#111827; }
+  h1 { margin: 0 0 6px; font-size: 18px; }
+  .meta { color:#6b7280; margin-bottom: 10px; font-size: 12px; }
+  table { width:100%; border-collapse: collapse; font-size: 12px; }
+  th, td { border-bottom: 1px solid #e5e7eb; padding: 6px 8px; vertical-align: top; }
+  th { text-align:left; background:#f9fafb; color:#374151; }
+  .qnum { width: 44px; color:#6b7280; white-space: nowrap; }
+  .ans  { width: 110px; font-weight: 700; white-space: nowrap; }
+  @media print {
+    body { margin: 8mm; }
+    thead { display: table-header-group; }
+    tr { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+  <h1>Assessment Results</h1>
+  <div class="meta">Generated: ${escapeHTML(dateStr)}</div>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${rows.join('')}
+    </tbody>
+  </table>
+</body>
+</html>`;
+  }
+
+  function openPrintWindow() {
+    if (!QUESTIONS || QUESTIONS.length === 0) {
+      alert('Questions are not loaded yet. Please wait a moment and try again.');
+      return;
+    }
+    const w = window.open('', '_blank');
+    if (!w) {
+      alert('Popup blocked. Please allow popups for this site to print.');
+      return;
+    }
+    w.document.open();
+    w.document.write(buildPrintHTML());
+    w.document.close();
+    w.focus();
+    setTimeout(() => w.print(), 250);
+  }
+
+  // Wire button click (button is only shown when enabled)
+  document.getElementById('pdfBtn')?.addEventListener('click', openPrintWindow);
+
+
+  // ===== Events =====
+  function wireEvents() {
+    // Handle option clicks (event delegation)
+    document.addEventListener('click', (e) => {
+      const opt = e.target.closest('.option');
+      if (!opt) return;
+
+      const qNum = opt.dataset.q;
+      const ans = opt.dataset.a;
+
+      const group = opt.closest('.options');
+      if (group) {
+        group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      }
+      opt.classList.add('selected');
+
+      responses[String(qNum)] = ans;
+      updateSections();
+      checkCompletion();
+    });
+
+    submitBtn.addEventListener('click', () => {
+      submitBtn.classList.add('loading');
+      setTimeout(() => {
+        renderResults();
+        const results = document.getElementById('results');
+        results.classList.add('visible');
+        results.scrollIntoView({ behavior: 'smooth' });
+        submitBtn.classList.remove('loading');
+      }, 400);
+    });
+
+    // Keep existing Auto-Fill if present
+    window.autoFill = function autoFill() {
+      document.querySelectorAll('.options').forEach(group => {
+        const options = group.querySelectorAll('.option');
+        options[Math.floor(Math.random() * options.length)].click();
+      });
+    };
+  }
+
+  // ===== Load questions =====
+  async function loadQuestions() {
+    const res = await fetch('questions.json', { cache: 'no-store' });
+    if (!res.ok) throw new Error(`Failed to load questions.json (HTTP ${res.status})`);
+
+    const data = await res.json();
+    if (!data || !Array.isArray(data.questions)) {
+      throw new Error('questions.json must be a JSON object with a "questions" array.');
+    }
+
+    // Support either:
+    // - ["Question 1: ...", ...]  (legacy)
+    // - [{ number: 1, text: "...", category: "..." }, ...] (preferred)
+    QUESTIONS = data.questions.map((q, idx) => {
+      if (typeof q === 'string') {
+        return { number: idx + 1, text: q, category: 'Unknown', abridged: 'no' };
+      }
+      const number = Number(q.number ?? (idx + 1));
+      const text = String(q.text ?? q.question ?? `Question ${number}: (missing text)`);
+      const category = String(q.category ?? 'Unknown');
+      const abridged = String(q.abridged ?? 'no');
+      return { number, text, category, abridged };
+    });
+
+    // Ensure sorted by question number
+    QUESTIONS.sort((a, b) => a.number - b.number);
+    
+    // Optionally remove Devotion questions based on password.json flag (indicator)
+    if (window.__devotionEnabled === false) {
+      QUESTIONS = QUESTIONS.filter(q => String(q.category).trim().toLowerCase() !== 'devotion');
+    }
+
+    // Optionally load abridged question set based on password.json flag (abridged)
+    // When abridged is enabled, OMIT questions where q.abridged == 'out'
+    // When abridged is disabled, ignore abridged flags entirely
+    if (window.__abridgedEnabled === true) {
+      QUESTIONS = QUESTIONS.filter(q => String(q.abridged || 'in').trim().toLowerCase() !== 'out');
+    }
+
+    TOTAL_QUESTIONS = QUESTIONS.length;
+
+  }
+
+  // ===== Public init (called after access validation) =====
+  window.initAssessment = async function initAssessment() {
+    try {
+      await loadQuestions();
+      buildSections();
+      wireEvents();
+      updateSections();
+      checkCompletion();
+    } catch (err) {
+      console.error(err);
+      // Show a visible error inline if the page shell exists
+      const results = document.getElementById('results');
+      if (results) {
+        results.classList.add('visible');
+        results.innerHTML = `
+          <h2>Unable to load assessment</h2>
+          <p>Please make sure <code>questions.json</code> is present and valid.</p>
+          <p style="opacity:0.75">${escapeHTML(err.message || err)}</p>
+        `;
+      }
+    }
+  };
+</script>
+
+
+<script>
+//validates the code being passed from json on login
+  document.addEventListener('DOMContentLoaded', () => {
+    validateAccessCode();
+  });
+
+  async function validateAccessCode() {
+    const params = new URLSearchParams(window.location.search);
+    const codeFromUrl = params.get('code');
+
+    const assessment = document.getElementById('assessmentContent');
+    const denied = document.getElementById('accessDenied');
+    const countdownEl = document.getElementById('redirectCountdown');
+
+    function startRedirectCountdown() {
+      let remaining = 30;
+      if (countdownEl) countdownEl.textContent = remaining;
+
+      const timer = setInterval(() => {
+        remaining--;
+        if (countdownEl) countdownEl.textContent = remaining;
+
+        if (remaining <= 0) {
+          clearInterval(timer);
+          window.location.href = 'home.html';
+        }
+      }, 1000);
+    }
+
+    // 🚫 NO CODE → BLOCK IMMEDIATELY
+    if (!codeFromUrl) {
+      denied.style.display = 'block';
+      startRedirectCountdown();
+      return;
+    }
+
+    try {
+      const res = await fetch('password.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('password.json not found');
+
+      const data = await res.json();
+      if (!data.users || !Array.isArray(data.users)) throw new Error('Invalid password.json');
+
+      const user = data.users.find(
+        u => String(u.code).trim() === codeFromUrl
+      );
+
+      if (!user) {
+        denied.style.display = 'block';
+        startRedirectCountdown();
+        return;
+      }
+
+      
+
+      // Read Devotion toggle (indicator: yes/no). Default is 'yes' to preserve full assessment.
+      window.__devotionEnabled = String(user.indicator || 'yes').trim().toLowerCase() === 'yes';
+
+      // Read Abridged toggle (abridged: yes/no). When 'yes', only include questions marked abridged='yes' in questions.json.
+      window.__abridgedEnabled = String(user.abridged || 'no').trim().toLowerCase() === 'yes';
+
+      // Read Print Results toggle (display: yes/no or on/off). Default is 'no'
+      window.__printEnabled = ['yes','on','true','1'].includes(String(user.display || 'no').trim().toLowerCase());
+// ✅ VALID CODE — UNLOCK PAGE
+      denied.style.display = 'none';
+      assessment.style.display = 'block';
+      // Initialize assessment after a valid login
+      if (window.initAssessment) window.initAssessment();
+
+      // Toggle Print Results button based on password.json flag (display)
+      const pdfBtn = document.getElementById('pdfBtn');
+      if (pdfBtn) {
+        pdfBtn.style.display = window.__printEnabled ? 'inline-block' : 'none';
+      }
+
+    } catch (err) {
+      console.error(err);
+      denied.style.display = 'block';
+      startRedirectCountdown();
+    }
+  }
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,592 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "text": "Question 1: Others tend to look up to me.",
+      "category": "Respect",
+      "abridged": "out"
+    },
+    {
+      "number": 2,
+      "text": "Question 2: Feeling accepted by others matters a great deal to me.",
+      "category": "Connection",
+      "abridged": "out"
+    },
+    {
+      "number": 3,
+      "text": "Question 3: I require a sense of inner stability.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 4,
+      "text": "Question 4: Taking chances doesn’t bother me.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 5,
+      "text": "Question 5: I welcome change without hesitation.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 6,
+      "text": "Question 6: As long as you persist, a setback isn’t truly a defeat.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 7,
+      "text": "Question 7: I value helping others in return for what I’ve received.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 8,
+      "text": "Question 8: I excel at looking after those around me.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 9,
+      "text": "Question 9: I often wonder what others think or say about me.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 10,
+      "text": "Question 10: I prefer as much consistency in my life as I can get.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 11,
+      "text": "Question 11: Making a positive impact on society means a lot to me.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 12,
+      "text": "Question 12: I enjoy creating fresh concepts and initiatives.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 13,
+      "text": "Question 13: I pay close attention to matters of safety.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 14,
+      "text": "Question 14: I strive to serve as a role model for people.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 15,
+      "text": "Question 15: I have a strong drive to win.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 16,
+      "text": "Question 16: I can’t tolerate feeling uninterested or idle.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 17,
+      "text": "Question 17: I’m skilled at building relationships with others.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 18,
+      "text": "Question 18: I’m always working toward becoming better.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 19,
+      "text": "Question 19: Excitement from danger never appeals to me.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 20,
+      "text": "Question 20: In my closest relationships, I’m typically the one who gives more.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 21,
+      "text": "Question 21: There’s endless knowledge waiting to be discovered.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 22,
+      "text": "Question 22: I must experience a sense of purpose and satisfaction.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 23,
+      "text": "Question 23: I regularly reflect on my own performance and worth.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 24,
+      "text": "Question 24: I prefer when life follows a foreseeable pattern.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 25,
+      "text": "Question 25: I show more affection than most people do.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 26,
+      "text": "Question 26: Being acknowledged by others means a lot to me.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 27,
+      "text": "Question 27: I enjoy the sensation of pushing myself physically or mentally.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 28,
+      "text": "Question 28: I’m cautious about not exceeding my budget.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 29,
+      "text": "Question 29: Ongoing learning holds great value for me.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 30,
+      "text": "Question 30: I naturally take charge in groups.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 31,
+      "text": "Question 31: I’m always seeking fresh adventures.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 32,
+      "text": "Question 32: At times, I stretch myself too thin helping others.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 33,
+      "text": "Question 33: My daily structures and routines matter deeply to me.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 34,
+      "text": "Question 34: I take great satisfaction in my personal identity.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 35,
+      "text": "Question 35: Discovering new things shifts how I view the world in ways I enjoy.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 36,
+      "text": "Question 36: Some of the most meaningful efforts aren’t compensated financially.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 37,
+      "text": "Question 37: I wouldn’t describe myself as someone who seeks thrills.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 38,
+      "text": "Question 38: No one would ever call me self-centered.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 39,
+      "text": "Question 39: I sometimes spend more than I can afford.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 40,
+      "text": "Question 40: Feeling significant to others is important to me.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 41,
+      "text": "Question 41: Every mistake offers a valuable lesson.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 42,
+      "text": "Question 42: I love acquiring knowledge so I can share it with others.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 43,
+      "text": "Question 43: Harmony and closeness are what I seek in relationships.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 44,
+      "text": "Question 44: I want my actions to create meaningful change.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 45,
+      "text": "Question 45: I hold back from decisions until I’m certain of the outcomes.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 46,
+      "text": "Question 46: Feeling stuck or restricted causes me real distress.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 47,
+      "text": "Question 47: I find pleasure in moments of uncertainty and tension.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 48,
+      "text": "Question 48: Having high status matters greatly to me.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 49,
+      "text": "Question 49: I have a deeply romantic nature.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 50,
+      "text": "Question 50: I’m continually expanding my knowledge and skills.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 51,
+      "text": "Question 51: Offering to others brings me more joy than receiving.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 52,
+      "text": "Question 52: I always aim to come out on top.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 53,
+      "text": "Question 53: I avoid any form of risk whenever possible.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 54,
+      "text": "Question 54: I enjoy ongoing personal development.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 55,
+      "text": "Question 55: I gladly devote my resources to worthwhile causes.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 56,
+      "text": "Question 56: I appreciate being looked up to by others.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 57,
+      "text": "Question 57: I take pride in how quickly I can master new subjects.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 58,
+      "text": "Question 58: Our purpose is to improve the world around us.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 59,
+      "text": "Question 59: I seek growth across various aspects of my life.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 60,
+      "text": "Question 60: Close personal connections are my highest priority.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 61,
+      "text": "Question 61: At times, others find me quite commanding.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 62,
+      "text": "Question 62: I regularly pursue new sources of enjoyment.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 63,
+      "text": "Question 63: I worry about anything that could involve danger.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 64,
+      "text": "Question 64: Finding meaning in your work outweighs external praise.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 65,
+      "text": "Question 65: I work hard to enhance my abilities.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 66,
+      "text": "Question 66: I build bonds by generously sharing my resources and effort.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 67,
+      "text": "Question 67: I prefer to think things through thoroughly before acting.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 68,
+      "text": "Question 68: Occasionally, I enjoy the rush that comes with fear.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 69,
+      "text": "Question 69: Feeling valued and honored by others is essential to me.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 70,
+      "text": "Question 70: Without continued development, life loses its vitality.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 71,
+      "text": "Question 71: A sense of connection with others is vital to me.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 72,
+      "text": "Question 72: Life gains meaning through leaving a lasting impact.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 73,
+      "text": "Question 73: Being at ease in every situation is a priority for me.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 74,
+      "text": "Question 74: I thrive when engaged in a wide variety of pursuits.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 75,
+      "text": "Question 75: I often measure my achievements against those of others.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 76,
+      "text": "Question 76: Deep emotional intensity is necessary in my relationships.",
+      "category": "Connection",
+      "abridged": "in"
+    },
+    {
+      "number": 77,
+      "text": "Question 77: Without helping others, my existence feels empty.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 78,
+      "text": "Question 78: When choosing, I often consider what will bring more pleasure.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 79,
+      "text": "Question 79: I can’t bear the sense of standing still in life.",
+      "category": "Expansion",
+      "abridged": "in"
+    },
+    {
+      "number": 80,
+      "text": "Question 80: My safety and security are top concerns at all times.",
+      "category": "Stability",
+      "abridged": "in"
+    },
+    {
+      "number": 81,
+      "text": "Question 81: Once I commit, I sometimes fear missing a better option.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 82,
+      "text": "Question 82: I never want others to view me as unsuccessful.",
+      "category": "Respect",
+      "abridged": "in"
+    },
+    {
+      "number": 83,
+      "text": "Question 83: Having a steady life isn’t a big concern for me.",
+      "category": "Adventure",
+      "abridged": "in"
+    },
+    {
+      "number": 84,
+      "text": "Question 84: I feel driven by a greater purpose.",
+      "category": "Service",
+      "abridged": "in"
+    },
+    {
+      "number": 85,
+      "text": "Question 85: I feel a deep longing to be closer to God.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 86,
+      "text": "Question 86: Surrendering my will to God&#39;s plan brings me true peace.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 87,
+      "text": "Question 87: Wholehearted devotion to the Lord is essential for my fulfillment.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 88,
+      "text": "Question 88: I often sense inspiration or guidance from the Holy Spirit.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 89,
+      "text": "Question 89: My faith in Jesus Christ is the foundation that guides my life.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 90,
+      "text": "Question 90: Moments of worship or prayerful connection with God are vital to me.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 91,
+      "text": "Question 91: I need to dedicate my life fully to God&#39;s calling and purpose.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 92,
+      "text": "Question 92: Without devotion to Christ, my life would feel empty and meaningless.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 93,
+      "text": "Question 93: I am drawn to spiritual practices that deepen my relationship with God.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 94,
+      "text": "Question 94: I frequently receive spiritual insights or promptings from the Lord.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 95,
+      "text": "Question 95: True healing comes when I yield completely to God&#39;s authority.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 96,
+      "text": "Question 96: I crave a more intimate, personal relationship with Jesus.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 97,
+      "text": "Question 97: My soul thrives when I commit myself fully to following Christ.",
+      "category": "Devotion",
+      "abridged": "in"
+    },
+    {
+      "number": 98,
+      "text": "Question 98: Devoting my life to God gives me the deepest sense of meaning and purpose.",
+      "category": "Devotion",
+      "abridged": "in"
+    }
+  ]
+}

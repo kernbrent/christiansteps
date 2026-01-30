@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sermons & Podcasts</title>
+
+  <link href="/Styles/Site.css" rel="stylesheet" />
+  <link href="/Styles/Site_mobile.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
+  <script>
+    // Primary JSON file name. We'll resolve relative to this page, with safe fallbacks.
+    const CAST_LIBRARY_JSON_NAME_NAME = '/data/cast_library.json';
+  </script>
+</head>
+
+<body>
+  <script>
+    window.DEBUG_MODE = false;  // change to true when debugging
+  </script>
+  <script>
+      (function(){
+        if (!window.DEBUG_MODE) return;
+
+        function show(msg){
+          var el = document.getElementById('jsDebugBanner');
+          if (!el){
+            el = document.createElement('div');
+            el.id = 'jsDebugBanner';
+            el.style.cssText =
+              'position:sticky;top:0;z-index:9999;padding:10px 12px;' +
+              'font:14px/1.3 system-ui,-apple-system,BlinkMacSystemFont,sans-serif;' +
+              'background:#fff3cd;border-bottom:1px solid #f1c40f;color:#4d3b00;';
+            document.body.insertBefore(el, document.body.firstChild);
+          }
+          el.textContent = msg;
+        }
+
+        show('JS is running. Loading audio library…');
+
+        window.addEventListener('error', function(e){
+          show('JavaScript error: ' + (e.message || 'unknown'));
+        });
+
+        window.addEventListener('unhandledrejection', function(e){
+          show('Promise rejection: ' + (e.reason?.message || e.reason || 'unknown'));
+        });
+      })();
+
+
+      window.addEventListener('unhandledrejection', function(e){
+        var reason = e && e.reason ? (e.reason.message || String(e.reason)) : 'unknown';
+        show('Promise rejection: ' + reason);
+      });
+
+  </script>
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="index.html">
+            <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries" width="400" />
+          </a>
+        </h1>
+      </div>
+
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+
+        <section class="home-hero casts-hero" aria-labelledby="casts-title">
+          <div class="home-hero-inner casts-hero-inner">
+            <div class="home-hero-copy">
+              <h2 id="casts-title">Sermons & Podcasts</h2>
+              <p class="home-hero-sub">
+                Browse sermons, podcasts, scripture readings, and book readings — powered by a single JSON file so it’s easy to expand.
+              </p>
+
+              <div class="home-cta">
+                <a class="btn btn-primary" href="#browse">Browse catalog</a>
+                <a class="btn btn-secondary" href="#featured">Newest releases</a>
+              </div>
+
+              <p class="featured-note" style="margin-top:0.75rem;">
+                Add new items by editing <code>cast_library.json</code>. For books, just add a new collection object and tracks.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-section" id="featured" aria-labelledby="featured-title">
+          <h3 id="featured-title">Featured: most recent sermon & podcast</h3>
+          <div class="cards-grid" id="featuredCards" aria-live="polite"></div>
+        </section>
+
+        <section class="home-section" id="browse" aria-labelledby="browse-title">
+          <h3 id="browse-title">Browse catalog</h3>
+
+          <div class="card">
+            <div class="casts-toolbar">
+              <div class="casts-search">
+                <label class="sr-only" for="searchInput">Search</label>
+                <input id="searchInput" class="casts-search-input" type="search" placeholder="Search titles, descriptions, collections…" />
+              </div>
+
+              <div class="casts-filter">
+                <label class="sr-only" for="typeSelect">Filter</label>
+                <select id="typeSelect" class="casts-filter-select">
+                  <option value="all">All types</option>
+                </select>
+              </div>
+            </div>
+              <div class="casts-filter casts-book-filter" id="bookFilterWrap" hidden>
+                <label class="sr-only" for="bookSelect">Book</label>
+                <select id="bookSelect" class="casts-filter-select">
+                  <option value="all">All books</option>
+                </select>
+              </div>
+
+
+            <div class="casts-catalog" id="catalog"></div>
+          </div>
+        </section>
+
+        <div id="siteFooter"></div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Header / Footer
+    fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => {
+      const host = document.getElementById('siteHeader');
+      if (!host) return;
+      host.innerHTML = h;
+
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (!menu || !nav) return;
+
+      // Use existing button if present (from header.html), otherwise create one
+      let btn = menu.querySelector('.nav-toggle');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle Menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+      }
+
+      // Avoid double-binding if header is reloaded
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
+      const toggleMenu = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+
+      // Desktop + mobile
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('touchstart', toggleMenu, { passive: false });
+
+      // Close when a link is tapped
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Close when tapping outside the menu area
+      document.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })
+    .catch(() => {});
+
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(f => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = f;
+      })
+      .catch(() => {});
+  </script>
+
+  <script>
+    const els = {
+      featuredCards: document.getElementById('featuredCards'),
+      catalog: document.getElementById('catalog'),
+      typeSelect: document.getElementById('typeSelect'),
+      searchInput: document.getElementById('searchInput')
+    ,
+      bookSelect: document.getElementById('bookSelect'),
+      bookFilterWrap: document.getElementById('bookFilterWrap')
+    };
+
+    function escapeHtml(str){
+      return String(str ?? '')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+    }
+
+    function toDateMs(iso){
+      if (!iso) return -1;
+      const d = new Date(iso);
+      const ms = d.getTime();
+      return Number.isNaN(ms) ? -1 : ms;
+    }
+
+    function pickMostRecent(items){
+      return (items || []).slice().sort((a,b) => toDateMs(b.date) - toDateMs(a.date))[0] || null;
+    }
+
+    
+
+    function getChapterNumber(title){
+      if (!title) return null;
+      const m = String(title).match(/chapter\s+(\d+)/i);
+      return m ? parseInt(m[1], 10) : null;
+    }
+function getChapterNumber(title){
+      if (!title) return null;
+      const m = String(title).match(/chapter\s+(\d+)/i);
+      return m ? parseInt(m[1], 10) : null;
+    }
+
+
+    function hashString(str){
+      let h = 0;
+      for (let i = 0; i < str.length; i++){
+        h = (h * 31 + str.charCodeAt(i)) >>> 0;
+      }
+      return h;
+    }
+
+    function colorFromKey(key){
+      const palette = [
+        '#1f6feb', '#2da44e', '#bf8700', '#a371f7',
+        '#d1242f', '#0ea5e9', '#f97316', '#14b8a6'
+      ];
+      const idx = hashString(String(key || '')) % palette.length;
+      return palette[idx];
+    }
+function buildTrackCard(label, track){
+      const links = (track.links || []).map(l => `<a class="pill" href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`).join(' ');
+      const mp3 = (track.links || []).find(l => /mp3/i.test(l.label) || /\.mp3(\?|$)/i.test(l.url));
+      const audio = mp3 ? `<audio controls preload="none" class="track-audio"><source src="${escapeHtml(mp3.url)}" type="audio/mpeg"></audio>` : '';
+      const date = track.date_display ? `<div class="meta">${escapeHtml(track.date_display)}${track.duration ? ' • ' + escapeHtml(track.duration) : ''}</div>` : '';
+      const desc = track.description ? `<p class="track-desc">${escapeHtml(track.description)}</p>` : '';
+      return `
+        <article class="card track-card">
+          <div class="kicker">${escapeHtml(label)}</div>
+          <h4 class="track-title">${escapeHtml(track.title)}</h4>
+          ${date}
+          ${desc}
+          <div class="track-actions">
+            ${audio}
+            <div class="track-links">${links}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildCompactTrackCard(track){
+            const collectionKey = track._collectionKey || '';
+      const accent = collectionKey ? colorFromKey(collectionKey) : '';
+const mp3 = (track.links || []).find(l => /mp3/i.test(l.label) || /\.mp3(\?|$)/i.test(l.url));
+      const audio = mp3 ? `<audio controls preload="none" class="track-audio compact"><source src="${escapeHtml(mp3.url)}" type="audio/mpeg"></audio>` : '';
+      const links = (track.links || []).map(l => `<a class="pill" href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`).join(' ');
+      const meta = track.date_display ? `<span>${escapeHtml(track.date_display)}</span>` : '';
+      return `
+        <article class="track-mini" data-collection-key="${escapeHtml(collectionKey)}" style="${accent ? ('--accent:' + accent + ';') : ''}">
+          <div class="track-mini-main">
+            <div class="track-mini-title">${escapeHtml(track.title)}</div>
+            <div class="track-mini-meta">${meta}${track.duration ? ' • ' + escapeHtml(track.duration) : ''}</div>
+          </div>
+          <div class="track-mini-actions">
+            ${audio}
+            <div class="track-mini-links">${links}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function flattenAll(lib){
+      const items = [];
+      for (const cat of lib.categories){
+        if (cat.items){
+          for (const it of cat.items) items.push({ ...it, _type: cat.key, _typeTitle: cat.title });
+        }
+        if (cat.collections){
+          for (const col of cat.collections){
+            for (const it of (col.items || [])) items.push({ ...it, _type: cat.key, _typeTitle: cat.title, _collection: col.title, _collectionKey: col.key });
+          }
+        }
+      }
+      return items;
+    }
+
+    function initFilters(lib){
+      const opts = [
+        { key: 'all', title: 'All types' },
+        ...lib.categories.map(c => ({ key: c.key, title: c.title }))
+      ];
+      els.typeSelect.innerHTML = opts
+        .map(o => `<option value="${escapeHtml(o.key)}">${escapeHtml(o.title)}</option>`)
+        .join('');
+    }
+
+    function initBookFilter(lib){
+      const cat = lib.categories.find(c => c.key === 'book_reading');
+      const collections = (cat && cat.collections) ? cat.collections : [];
+      if (!els.bookSelect) return;
+      els.bookSelect.innerHTML = ['<option value="all">All books</option>']
+        .concat(collections.map(c => `<option value="${escapeHtml(c.key)}">${escapeHtml(c.title)}</option>`))
+        .join('');
+    }
+
+    function updateSecondaryFilters(){
+      if (!els.bookFilterWrap) return;
+      const t = els.typeSelect.value;
+      if (t === 'book_reading'){
+        els.bookFilterWrap.hidden = false;
+      } else {
+        els.bookFilterWrap.hidden = true;
+        if (els.bookSelect) els.bookSelect.value = 'all';
+      }
+    }
+
+function renderFeatured(lib){
+      const sermons = lib.categories.find(c => c.key === 'sermons')?.items || [];
+      const podcasts = lib.categories.find(c => c.key === 'podcasts')?.items || [];
+      const featuredSermon = pickMostRecent(sermons);
+      const featuredPodcast = pickMostRecent(podcasts);
+
+      const cards = [];
+      if (featuredSermon) cards.push(buildTrackCard('Most recent sermon', featuredSermon));
+      if (featuredPodcast) cards.push(buildTrackCard('Most recent podcast', featuredPodcast));
+      els.featuredCards.innerHTML = cards.join('');
+    }
+
+    function renderCatalog(lib, filterType = 'all', search = '', bookKey = 'all'){
+      const q = search.trim().toLowerCase();
+      const all = flattenAll(lib);
+
+      const filtered = all.filter(it => {
+        if (filterType !== 'all' && it._type !== filterType) return false;
+        if (filterType === 'book_reading' && bookKey !== 'all'){
+          if (it._collectionKey !== bookKey) return false;
+        }
+        if (!q) return true;
+        const blob = `${it.title} ${it.description || ''} ${it._collection || ''}`.toLowerCase();
+        return blob.includes(q);
+      
+      });
+// Group sections
+      const groups = new Map();
+      for (const it of filtered){
+        const key = it._typeTitle + (it._collection ? ' • ' + it._collection : '');
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(it);
+      }
+
+      // Sort within group A-Z
+for (const [k, arr] of groups.entries()){
+  arr.sort((a, b) => {
+
+    // Book readings: sort by chapter number
+    if (a._type === 'book_reading'){
+      const ca = getChapterNumber(a.title);
+      const cb = getChapterNumber(b.title);
+
+      if (ca !== null && cb !== null) return ca - cb;
+      if (ca !== null) return -1;
+      if (cb !== null) return 1;
+    }
+
+    // Sermons & Podcasts: most recent first
+    if (a._type === 'sermons' || a._type === 'podcasts'){
+      return toDateMs(b.date) - toDateMs(a.date);
+    }
+
+    // Default fallback: alphabetical
+    return String(a.title).localeCompare(String(b.title));
+  });
+}
+
+      const out = [];
+      for (const [title, arr] of groups.entries()){
+        out.push(`
+          <section class="casts-group">
+            <div class="casts-group-header">
+              <h4>${escapeHtml(title)}</h4>
+              <div class="small-muted">${arr.length} item(s)</div>
+            </div>
+            <div class="tracks-grid">
+              ${arr.map(buildCompactTrackCard).join('')}
+            </div>
+          </section>
+        `);
+      }
+
+      els.catalog.innerHTML = out.join('') || `<p class="small-muted" style="margin:0.75rem 0;">No matches found.</p>`;
+    }
+
+    
+    async function fetchLibrary(){
+      // Try relative to current page (same folder), then site root.
+      const candidates = [
+        new URL(CAST_LIBRARY_JSON_NAME_NAME, window.location.href).toString(),
+        '/' + CAST_LIBRARY_JSON_NAME_NAME
+      ];
+
+      let lastErr = null;
+      for (const url of candidates){
+        try{
+          const res = await fetch(url, { cache: 'no-store' });
+          if (!res.ok) throw new Error('HTTP ' + res.status + ' for ' + url);
+          const lib = await res.json();
+          return { lib, url };
+        }catch(e){
+          lastErr = e;
+        }
+      }
+      throw lastErr || new Error('Unable to load library JSON');
+    }
+
+
+async function load(){
+      const { lib, url } = await fetchLibrary();
+      try{
+        var b = document.getElementById('jsDebugBanner');
+        if (b) b.textContent = 'Loaded audio library JSON from: ' + url;
+      }catch(e){}
+initFilters(lib);
+      initBookFilter(lib);
+      updateSecondaryFilters();
+      renderFeatured(lib);
+      renderCatalog(lib, els.typeSelect.value, els.searchInput.value, els.bookSelect ? els.bookSelect.value : 'all');
+
+      els.typeSelect.addEventListener('change', () => {
+        updateSecondaryFilters();
+        renderCatalog(lib, els.typeSelect.value, els.searchInput.value, els.bookSelect ? els.bookSelect.value : 'all');
+      });
+
+      els.searchInput.addEventListener('input', () => {
+        renderCatalog(lib, els.typeSelect.value, els.searchInput.value, els.bookSelect ? els.bookSelect.value : 'all');
+      });
+
+      if (els.bookSelect){
+        els.bookSelect.addEventListener('change', () => {
+          renderCatalog(lib, els.typeSelect.value, els.searchInput.value, els.bookSelect.value);
+        });
+      }
+    }
+
+
+    load().catch(err => {
+      const msg = escapeHtml(err && err.message ? err.message : String(err));
+      const help = `
+        <div class="card" style="margin:0.75rem 0;">
+          <p style="margin:0; font-weight:900;">Could not load the audio library.</p>
+          <p class="small-muted" style="margin:0.35rem 0 0;">${msg}</p>
+          <p class="small-muted" style="margin:0.35rem 0 0;">
+            Check that <code>${CAST_LIBRARY_JSON_NAME_NAME}</code> is in the same folder as this page (or in the site root),
+            and try opening it directly in your browser to confirm it loads.
+          </p>
+        </div>`;
+      els.featuredCards.innerHTML = help;
+      els.catalog.innerHTML = help;
+    });
+  </script>
+</body>
+</html>

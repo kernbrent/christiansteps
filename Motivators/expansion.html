@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Expansion Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/URLIcon.png" />
+  </head>
+
+<body>
+  <div class="page-shell">
+    <div class="need-container">
+
+      <h1>Expansion  <img src="images/ExpansionIcon.png" alt="Expansion icon" class="wrap-image" /></h1> 
+
+      
+
+      <script>
+        const p = new URLSearchParams(window.location.search);
+        const score = p.get('score');
+        const rank = parseInt(p.get('rank'), 10);
+
+        function ordinal(n){
+          if(n===1) return 'st';
+          if(n===2) return 'nd';
+          if(n===3) return 'rd';
+          return 'th';
+        }
+
+        document.write(`<h2>Score: ${score ?? ''} | Rank: ${rank}${ordinal(rank)}</h2>`);
+      </script>
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+         <button type="button" class="submit enabled" onclick="history.back()">Back</button>   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <button type="button" class="submit enabled" onclick="location.assign('home.html')">Home</button>
+      </div>
+      <!-- RANK 1 -->
+      <div id="rank1" class="rank-section">
+        <h2>Understanding Expansion</h2>
+
+        <div class="text-with-image">
+          
+
+          <p><em>"For now we see in a mirror, dimly, but then we will see face to face.
+          Now I know only in part; then I will know fully, even as I have been fully known."</em><br>
+          — 1 Corinthians 13:12</p>
+
+          <p><strong>Expansion</strong> is a drive to learn, refine, and mature for the joy of becoming more. People with a high need for expansion love solving puzzles, discovering new ideas, and steadily improving—physically, emotionally, intellectually, and spiritually.</p>
+          <p>If expansion is your highest need, you naturally take on fresh challenges and do not wait for others to catch up with your pace. Material possessions matter less to you than wisdom, skill, and uncommon capability. Because you value autonomy, you may drift toward isolation—so practice sharing what you are learning and staying curious about others, too.</p>
+          <p>In church life, expansion often shows up as deep Bible study, theology, and thoughtful devotion. You may excel in small-group discussions, ask insightful questions, cross-reference Scripture, and dig into commentaries—yet your independence can make solitary learning feel easier than community life or ministries that seem unstructured.</p>
+          <p>You can feel stressed when your privacy is disrupted or when you must depend on others. Restrictions on your experiments and learning frustrate you. Remember that God teaches through the Word and also through ordinary life—pay attention to the world around you and to what the Spirit is forming in you through relationships.</p>
+          <p>To thrive in the Body of Christ, let community be part of your expansion journey. Scripture calls us to “grow in the grace and knowledge of our Lord and Savior Jesus Christ” (2 Peter 3:18) and to learn together as “the word of Christ” dwells richly among us (Colossians 3:16). Consider teaching or facilitating a study so your depth can edify others, while you also receive from diverse perspectives (Acts 2:42).</p>
+          <p>Expansion is healthiest when paired with humility, rest, and love. Enjoy God’s presence without having to dissect every verse, and remember your understanding is partial for now (1 Corinthians 13:12). Walk in humility (Proverbs 11:2), and receive Christ’s invitation to rest (Matthew 11:28) so your learning becomes worship, not pressure.</p>
+
+          <div class="clear"></div>
+          </div>
+
+
+          <h3>Spiritual Reflection</h3>
+            <ul>
+              <li>Where is God inviting me to grow through relationship and community, not just personal study?</li>
+              <li>What boundary, rhythm, or practice of rest would help my learning remain joyful and worshipful?</li>
+              <li>How can I share what I am learning in a way that serves and encourages others?</li>
+              <li>Where might humility help me remain open to God’s work beyond my understanding or control?</li>
+            </ul>
+        </div>
+
+       
+
+
+      <!-- RANK 2–3 -->
+      <div id="rank2to3" class="rank-section">
+        <h2>Expansion (Summary)</h2>
+
+        <p>Expansion is the desire to learn, refine, and mature for the joy of becoming more. When it is your strongest motivation, you seek new challenges, pursue wisdom, and grow in capability—often through deep study, thoughtful reflection, and spiritual formation.</p>
+
+        <p>At its best, expansion strengthens the church as you share insight and build others up. Without balance, it can lead to isolation or impatience with slower processes, so God invites you to let love and community shape your learning, practice humility, and receive rest as part of discipleship.</p>
+
+        <h3>Spiritual Reflection</h3>
+        <ul>
+          <li>Where is God calling me to learn with others, not alone?</li>
+          <li>What boundary or rhythm of rest would help my expansion stay healthy?</li>
+          <li>How can I use my learning to encourage and serve someone this week?</li>
+        </ul>
+      </div>
+
+      <!-- RANK 4–7 -->
+      <div id="rank4to7" class="rank-section">
+        <h2>Expansion (Overview)</h2>
+        <p>Expansion is the motivation to learn, refine, and mature—growing in wisdom and capability. It is healthiest when grounded in humility, love, and rhythms of rest that keep learning connected to discipleship.</p>
+      </div>
+
+      <!-- ERROR -->
+      <div id="rankerr" class="rank-section">
+        <h2>Unauthorized Access</h2>
+        <p><strong><font color="red">If you are seeing this text, you have come to this page without taking this assessment. Please navigate to the <a href="home.html">HOME PAGE</a> to log in and take the Motivating Factors Assessment.</font></strong></p>
+      </div>
+
+
+
+      <!-- Motivating Factors -->
+      <div class="mf-grid">
+        <h2>The 7 Motivating Factors</h2>
+                <ul>
+          <li><strong>Respect:</strong> Identity and purpose in Christ</li>
+          <li><strong>Connection:</strong> Relationship with God and others</li>
+          <li><strong>Stability:</strong> Safety and trust in God</li>
+          <li><strong>Adventure:</strong> Renewal and God’s creativity</li>
+          <li><strong>Expansion:</strong> Becoming more like Christ</li>
+          <li><strong>Service:</strong> Serving others for God’s glory</li>
+          <li><strong>Devotion:</strong> Commitment to God, others, tasks, and/or things</li>
+        </ul>
+      </div>
+      <div class="scripture-ref">
+        <h2>Scripture References</h2>
+        <div class="verse-pills"><a class="verse-pill" data-tooltip="Read 1 Corinthians 13:12 (NIV)" href="https://www.biblegateway.com/passage/?search=1+Corinthians+13:12&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>1 Corinthians 13:12</a><a class="verse-pill" data-tooltip="“grow in the grace and knowledge of our Lord and Savior Jesus Christ” (NIV)" href="https://www.biblegateway.com/passage/?search=2+Peter+3:18&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>2 Peter 3:18</a><a class="verse-pill" data-tooltip="Read Colossians 3:16 (NIV)" href="https://www.biblegateway.com/passage/?search=Colossians+3:16&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Colossians 3:16</a><a class="verse-pill" data-tooltip="Read Acts 2:42 (NIV)" href="https://www.biblegateway.com/passage/?search=Acts+2:42&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Acts 2:42</a><a class="verse-pill" data-tooltip="Read Proverbs 11:2 (NIV)" href="https://www.biblegateway.com/passage/?search=Proverbs+11:2&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Proverbs 11:2</a><a class="verse-pill" data-tooltip="Read Matthew 11:28 (NIV)" href="https://www.biblegateway.com/passage/?search=Matthew+11:28&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Matthew 11:28</a></div>
+      </div>
+
+
+      
+
+      <script>
+        (function () {
+          const p = new URLSearchParams(window.location.search);
+          const rank = parseInt(p.get('rank'), 10);
+
+          const r1 = document.getElementById('rank1');
+          const r23 = document.getElementById('rank2to3');
+          const r47 = document.getElementById('rank4to7');
+          const rerr = document.getElementById('rankerr');
+
+          function show(el) { if (el) el.style.display = 'block'; }
+
+          if (rank === 1) {
+            show(r1);
+          } else if (rank === 2 || rank === 3) {
+            show(r23);
+          } else if (rank >= 4 && rank <= 7) {
+            show(r47);
+          } else {
+            show(rerr);
+          }
+        })();
+      </script>
+
+    </div>
+  </div>
+</body>
+</html>
+

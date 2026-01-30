@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Music — Christian Steps Ministries</title>
+
+  <link href="/Styles/Site.css" rel="stylesheet" />
+  <link href="/Styles/Site_mobile.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
+</head>
+
+<body>
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="index.html">
+            <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries" width="400" />
+          </a>
+        </h1>
+      </div>
+
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+
+        <!-- HERO -->
+        <section class="home-hero" aria-labelledby="music-hero-title">
+          <div class="home-hero-inner">
+            <div class="home-hero-copy">
+              <h2 id="music-hero-title">Music</h2>
+              <p>
+                We believe music is one of God’s gifts—woven into worship, prayer, celebration, and comfort.
+                Whether you’re looking for a familiar hymn, a choir learning track, or service music,
+                we hope these recordings help you take your next step with Jesus.
+              </p>
+
+              <div class="home-cta" role="group" aria-label="Primary actions">
+                <a class="btn btn-primary" href="#listen">Search &amp; listen</a>
+                <a class="btn btn-secondary" href="#collections">Browse catalog</a>
+              </div>
+
+              <p class="featured-note">
+                Have a suggestion, request, or comment? <a href="about.html#contact">Send us a note</a>.
+              </p>
+            </div>
+
+            <div class="hero-image-wrap" aria-label="No More Tears album cover">
+              <img src="images/NoMoreTearsFrontWhiteBG.jpg" alt="No More Tears album cover" />
+            </div>
+          </div>
+        </section>
+
+        <!-- COLLECTIONS -->
+        <section class="home-section" id="collections" aria-labelledby="collections-title">
+          <h3 id="collections-title">Browse catalog</h3>
+
+          <div class="card-grid browse-grid" id="collectionTiles" aria-label="Music collections">
+            <!-- populated by JS -->
+          </div>
+        </section>
+
+        <!-- LISTEN / SEARCH -->
+        <section class="home-section" id="listen" aria-labelledby="listen-title">
+          <h3 id="listen-title">Search, listen &amp; download</h3>
+
+          <div class="card">
+            <label for="trackFilter"><strong>Search tracks</strong></label>
+            <p class="featured-note music-filter-hint">
+              Search by title, collection, group, artist, or format (example: <em>Holy</em>, <em>Soprano</em>, <em>PPSX</em>).
+            </p>
+
+            <div class="music-filter-row">
+              <input
+                id="trackFilter"
+                class="music-filter-input"
+                type="text"
+                placeholder="Search by title, collection, group, artist, or format…"
+                aria-label="Search by title, collection, group, artist, or format"
+              />
+              <button id="clearFilter" class="btn btn-secondary" type="button">Clear</button>
+            </div>
+
+            <p class="featured-note" id="no-results" hidden>
+              No tracks match your search. Try a different word.
+            </p>
+          </div>
+        </section>
+
+        <!-- TRACK SECTIONS -->
+        <section class="home-section collection-section collection-nmt" id="no-more-tears" aria-labelledby="nmt-title">
+          <div class="collection-header">
+            <div class="collection-icon" data-icon="nmt"></div>
+            <div>
+              <h3 id="nmt-title" class="collection-title">No More Tears</h3>
+              <p class="featured-note" id="desc-nmt"></p>
+            </div>
+          </div>
+          <div class="music-cards" id="cards-nmt" aria-live="polite"></div>
+        </section>
+
+        <section class="home-section collection-section collection-general" id="general-collection" aria-labelledby="gc-title">
+          <div class="collection-header">
+            <div class="collection-icon" data-icon="general"></div>
+            <div>
+              <h3 id="gc-title" class="collection-title">General Collection</h3>
+              <p class="featured-note" id="desc-general"></p>
+            </div>
+          </div>
+          <div class="music-cards" id="cards-general" aria-live="polite"></div>
+        </section>
+
+        <section class="home-section collection-section collection-mcgmc" id="mcgmc-learning" aria-labelledby="mcgmc-title">
+          <div class="collection-header">
+            <div class="collection-icon" data-icon="mcgmc"></div>
+            <div>
+              <h3 id="mcgmc-title" class="collection-title">McGMC Learning Tracks</h3>
+              <p class="featured-note" id="desc-mcgmc"></p>
+            </div>
+          </div>
+          <div class="music-cards" id="cards-mcgmc" aria-live="polite"></div>
+        </section>
+
+        <section class="home-section collection-section collection-ppc" id="ppc-service" aria-labelledby="ppc-title">
+          <div class="collection-header">
+            <div class="collection-icon" data-icon="ppc"></div>
+            <div>
+              <h3 id="ppc-title" class="collection-title">Prosper Presbyterian Service Music</h3>
+              <p class="featured-note" id="desc-ppc"></p>
+            </div>
+          </div>
+          <div class="music-cards" id="cards-ppc" aria-live="polite"></div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+<div id="siteFooter"></div>
+
+  <script>
+    // Shared header fetch + mobile hamburger toggle
+    fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => {
+      const host = document.getElementById('siteHeader');
+      if (!host) return;
+      host.innerHTML = h;
+
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (!menu || !nav) return;
+
+      // Use existing button if present (from header.html), otherwise create one
+      let btn = menu.querySelector('.nav-toggle');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle Menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+      }
+
+      // Avoid double-binding if header is reloaded
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
+      const toggleMenu = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+
+      // Desktop + mobile
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('touchstart', toggleMenu, { passive: false });
+
+      // Close when a link is tapped
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Close when tapping outside the menu area
+      document.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })
+    .catch(() => {});
+
+    // Shared footer fetch
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(f => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = f;
+      })
+      .catch(() => {});
+
+
+    // Render collections + track cards from JSON
+    (function () {
+      const tilesHost = document.getElementById('collectionTiles');
+      const hosts = {
+        nmt: document.getElementById('cards-nmt'),
+        general: document.getElementById('cards-general'),
+        mcgmc: document.getElementById('cards-mcgmc'),
+        ppc: document.getElementById('cards-ppc')
+      };
+
+      const desc = {
+        nmt: document.getElementById('desc-nmt'),
+        general: document.getElementById('desc-general'),
+        mcgmc: document.getElementById('desc-mcgmc'),
+        ppc: document.getElementById('desc-ppc')
+      };
+
+      const input = document.getElementById('trackFilter');
+      const clearBtn = document.getElementById('clearFilter');
+      const noResults = document.getElementById('no-results');
+
+      function esc(s){ return (s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+      function tileTemplate(c){
+        const icon = c.icon_type === 'image'
+          ? `<img src="${esc(c.icon_src)}" alt="" class="collection-icon-img" />`
+          : `<span class="collection-icon-text">${esc(c.icon_text || '')}</span>`;
+        const anchor = ({
+          nmt:'#no-more-tears',
+          general:'#general-collection',
+          mcgmc:'#mcgmc-learning',
+          ppc:'#ppc-service'
+        })[c.key] || '#listen';
+
+        return `
+          <article class="card collection-tile collection-${esc(c.key)}">
+            <div class="collection-tile-head">
+              <div class="collection-tile-icon" aria-hidden="true">${icon}</div>
+              <div>
+                <h4 class="collection-tile-title">${esc(c.name)}</h4>
+                <p class="featured-note collection-tile-desc">${esc(c.description || '')}</p>
+              </div>
+            </div>
+            <a class="btn btn-secondary collection-tile-btn" href="${anchor}">Open tracks →</a>
+          </article>
+        `;
+      }
+
+      function cardTemplate(t){
+        const downloads = (t.downloads || []).map(d => `<a href="${esc(d.href)}">${esc(d.label)}</a>`).join(' · ');
+        const duration = t.duration ? `<span class="music-duration">${esc(t.duration)}</span>` : '';
+        const artist = t.artist ? `<div class="music-meta"><strong>Artist:</strong> ${esc(t.artist)}</div>` : '';
+        const group = t.group ? `<div class="music-meta"><strong>Group:</strong> ${esc(t.group)}</div>` : '';
+        const audio = t.audio ? `<audio controls preload="none" src="${esc(t.audio)}"></audio>` : '';
+        const collectionKey = esc(t.collection_key || 'other');
+
+        return `
+          <article class="music-card music-card-compact collection-card-${collectionKey}"
+                   data-search="${esc((t.search||'') + ' ' + (t.title||'') + ' ' + (t.artist||'') + ' ' + (t.collection||'') + ' ' + (t.group||'') + ' ' + (t.primary_format||''))}">
+            <div class="music-row">
+              <h4 class="music-title">${esc(t.title)} ${duration}</h4>
+              <div class="music-downloads">
+                ${downloads ? `<span class="featured-note">Download: ${downloads}</span>` : ''}
+              </div>
+            </div>
+            ${artist}
+            ${group}
+            <div class="music-player">${audio}</div>
+          </article>
+        `;
+      }
+
+      let allCards = [];
+
+      function applyFilter(){
+        const q = (input.value || '').trim().toLowerCase();
+        let visible = 0;
+
+        allCards.forEach(card => {
+          const hay = (card.getAttribute('data-search') || '').toLowerCase();
+          const show = q === '' || hay.indexOf(q) !== -1;
+          card.hidden = !show;
+          if (show) visible += 1;
+        });
+
+        if (noResults){
+          noResults.hidden = !(q && visible === 0);
+        }
+      }
+
+      function render(library){
+        const collections = (library && library.collections) ? library.collections : [];
+        const tracks = (library && library.tracks) ? library.tracks : [];
+
+        // tiles
+        if (tilesHost){
+          tilesHost.innerHTML = collections.map(tileTemplate).join('');
+        }
+
+        // descriptions + section icons
+        collections.forEach(c => {
+          if (desc[c.key]) desc[c.key].textContent = c.description || '';
+          document.querySelectorAll('.collection-icon[data-icon="'+c.key+'"]').forEach(node => {
+            node.innerHTML = (c.icon_type === 'image')
+              ? '<img src="'+esc(c.icon_src)+'" alt="" class="collection-icon-img" />'
+              : '<span class="collection-icon-text">'+esc(c.icon_text || '')+'</span>';
+          });
+        });
+
+        // cards
+        Object.values(hosts).forEach(h => { if (h) h.innerHTML = ''; });
+        allCards = [];
+
+        // Sort songs A→Z within each collection (by title)
+        const tracksSorted = (tracks || []).slice().sort((a,b) => {
+          const ak = (a.collection_key || '').toLowerCase();
+          const bk = (b.collection_key || '').toLowerCase();
+          if (ak !== bk) return ak.localeCompare(bk);
+          const at = (a.title || '').toLowerCase();
+          const bt = (b.title || '').toLowerCase();
+          return at.localeCompare(bt);
+        });
+
+        tracksSorted.forEach(t => {
+          const key = t.collection_key || 'other';
+          const host = hosts[key] || hosts.general;
+          if (!host) return;
+
+          const wrapper = document.createElement('div');
+          wrapper.innerHTML = cardTemplate(t).trim();
+          const card = wrapper.firstElementChild;
+          host.appendChild(card);
+          allCards.push(card);
+        });
+
+        applyFilter();
+      }
+
+      if (input) input.addEventListener('input', applyFilter);
+      if (clearBtn){
+        clearBtn.addEventListener('click', () => {
+          input.value = '';
+          input.focus();
+          applyFilter();
+        });
+      }
+
+      fetch('/data/music_library.json', { cache: 'no-store' })
+        .then(r => r.json())
+        .then(render)
+        .catch(() => {
+          Object.values(hosts).forEach(h => {
+            if (h) h.innerHTML = '<div class="card"><p>Track list failed to load. Please try again later.</p></div>';
+          });
+        });
+    })();
+  </script>
+</body>
+</html>

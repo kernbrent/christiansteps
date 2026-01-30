@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- =====================================================
+       ARTICLE TEMPLATE (place this file in /Articles/)
+       - This template matches the Christian Steps theme
+       - Uses root-relative paths so links work from /Articles/
+       ===================================================== -->
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- TODO: Update the title for this article -->
+  <title>Article Title | Christian Steps Ministries</title>
+
+  <!-- TODO: Update the description for this article -->
+  <meta name="description" content="Short summary of this article for search engines and previews." />
+
+  <!-- Global site CSS + favicon -->
+  <link href="/Styles/Site.css" rel="stylesheet" />
+  <link href="/Styles/Site_mobile.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
+
+  <!-- =====================================================
+       OPTIONAL: If you use the image modal popup for figures,
+       ensure your Site.css includes the modal styles.
+       (If you already added them once, you don't need them again.)
+       ===================================================== -->
+</head>
+
+<body>
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+    <!-- =====================================================
+         Header / Navigation (loaded dynamically)
+         ===================================================== -->
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="/index.html">
+            <img src="/Images/Logo400.jpg"
+                 class="site-logo"
+                 alt="Christian Steps Ministries"
+                 width="400" />
+          </a>
+        </h1>
+      </div>
+
+      <!-- Header menu will be injected here -->
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+
+        <!-- =====================================================
+             ARTICLE HERO
+             - Update title/subtitle/date
+             - Optional: add a featured note or category
+             ===================================================== -->
+        <section class="home-hero" aria-labelledby="article-title">
+          <div class="home-hero-inner">
+            <div class="home-hero-copy">
+              <!-- TODO: Article title -->
+              <h2 id="article-title">Article Title</h2>
+
+              <!-- TODO: Article subtitle / hook -->
+              <p class="home-hero-sub">
+                A short, inviting summary that tells readers what this article is about.
+              </p>
+
+              <!-- =================================================
+                   Buttons: keep these root-relative so they work from /Articles/
+                   ================================================= -->
+              <div class="home-cta" role="group" aria-label="Primary actions">
+                <!-- TODO: Update button destinations as desired -->
+                <a class="btn btn-primary" href="/HolyDays.html">Explore Holy Days</a>
+                <a class="btn btn-secondary" href="/articles.html">More Articles</a>
+              </div>
+
+              <!-- TODO: Update the published date -->
+              <p class="featured-note" style="margin-top:0.75rem;">
+                Published: Month Day, Year
+                <br>
+                Author: Brent D Kern
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+             ARTICLE BODY
+             - Put your article sections inside this card
+             - Keep headings structured (h3/h4) for readability
+             ===================================================== -->
+        <section class="home-section" aria-labelledby="article-body">
+          <h3 id="article-body">Article</h3>
+
+          <article class="card" style="max-width: 980px; margin-left:auto; margin-right:auto;">
+
+            <!-- TODO: Replace this introduction -->
+            <p>
+              This is the opening paragraph. Use it to warmly invite the reader in and clearly state the purpose of the article.
+            </p>
+
+            <!-- =================================================
+                 OPTIONAL: Featured Image / Timeline (click to enlarge modal)
+                 1) Put your image in /Images/your-image.png
+                 2) Update href/src to that path
+                 3) Ensure the modal markup + JS near the bottom are present
+                 =================================================
+            <figure class="timeline-figure">
+              <a href="/Images/your-image.png"
+                 class="timeline-thumb-link"
+                 aria-label="Open image in popup">
+                <img src="/Images/your-image.png"
+                     alt="Describe the image for accessibility."
+                     class="timeline-thumb"
+                     loading="lazy" />
+              </a>
+              <figcaption class="timeline-caption">
+                <strong>Figure Title</strong>
+                <span class="small-muted">Click the image to view full size.</span>
+              </figcaption>
+            </figure>
+            -->
+
+            <!-- TODO: Add your sections -->
+            <h4>Section Heading</h4>
+            <p>
+              Your content goes here. Keep paragraphs short and readable.
+            </p>
+
+            <h4>Another Section</h4>
+            <p>
+              Add Scripture references in-line or create a “Helpful Scriptures” section at the end.
+            </p>
+
+            <!-- =================================================
+                 OPTIONAL: Helpful Scriptures (pills)
+                 - Uses .verse-pills and .verse-pill styles in Site.css
+                 - Each pill can include a tooltip via data-tooltip
+                 ================================================= -->
+            <hr style="margin:1.25rem 0; opacity:0.35;" />
+
+            <div class="small-muted" style="margin-top:0.9rem;">
+              <strong>Helpful Scriptures:</strong>
+              <div class="verse-pills" aria-label="Helpful Scriptures list">
+                <!-- TODO: Replace these examples -->
+                <a class="verse-pill"
+                   href="https://www.biblegateway.com/passage/?search=Genesis%201%3A14&version=NIV"
+                   target="_blank" rel="noopener"
+                   data-tooltip="God appoints lights for signs and appointed times.">
+                  Genesis 1:14
+                </a>
+
+                <a class="verse-pill"
+                   href="https://www.biblegateway.com/passage/?search=Leviticus%2023%3A4-8&version=NIV"
+                   target="_blank" rel="noopener"
+                   data-tooltip="God’s appointed times include Passover and Unleavened Bread.">
+                  Leviticus 23:4–8
+                </a>
+              </div>
+            </div>
+
+            <!-- =================================================
+                 OPTIONAL: “Next Steps” buttons at the end of the article
+                 ================================================= -->
+            <div class="home-cta" role="group" aria-label="Next steps" style="margin-top:1.25rem;">
+              <a class="btn btn-primary" href="/HolyDays.html">Go to Holy Days</a>
+              <a class="btn btn-secondary" href="/Cast.html">Sermons &amp; Podcasts</a>
+            </div>
+
+          </article>
+        </section>
+
+        <!-- Footer inject target -->
+        <div id="siteFooter"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       Image modal markup (OPTIONAL)
+       - Only needed if you use the "click to enlarge" figure above
+       - If you don't need modals, you can delete this entire block
+       ===================================================== -->
+  <div class="img-modal" id="imgModal" aria-hidden="true">
+    <div class="img-modal__backdrop" data-close="true"></div>
+
+    <div class="img-modal__dialog" role="dialog" aria-modal="true" aria-label="Expanded image">
+      <button class="img-modal__close"
+              type="button"
+              aria-label="Close image popup"
+              data-close="true">
+        ✕ Close (click)
+      </button>
+
+      <img id="imgModalImg" class="img-modal__img" alt="" />
+      <p id="imgModalCaption" class="img-modal__caption"></p>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       Scripts
+       - Header/footer includes
+       - Optional: modal click-to-enlarge behavior
+       ===================================================== -->
+  <script>
+    // Load header
+    fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => {
+      const host = document.getElementById('siteHeader');
+      if (!host) return;
+      host.innerHTML = h;
+
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (!menu || !nav) return;
+
+      // Use existing button if present (from header.html), otherwise create one
+      let btn = menu.querySelector('.nav-toggle');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle Menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+      }
+
+      // Avoid double-binding if header is reloaded
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
+      const toggleMenu = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+
+      // Desktop + mobile
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('touchstart', toggleMenu, { passive: false });
+
+      // Close when a link is tapped
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Close when tapping outside the menu area
+      document.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })
+    .catch(() => {});
+
+    // Load footer
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(f => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = f;
+      })
+      .catch(() => {});
+
+    // =====================================================
+    // OPTIONAL: Image modal (progressive enhancement)
+    // - Clicking an <a.timeline-thumb-link> opens the popup modal
+    // - Without JS, the link will simply navigate to the image
+    // =====================================================
+    document.addEventListener('DOMContentLoaded', function () {
+      var modal = document.getElementById('imgModal');
+      var modalImg = document.getElementById('imgModalImg');
+      var modalCaption = document.getElementById('imgModalCaption');
+      if (!modal || !modalImg) return;
+
+      var openers = document.querySelectorAll('.timeline-thumb-link');
+
+      function openModal(a){
+        var fullSrc = a.getAttribute('href');
+        var img = a.querySelector('img');
+        if (!fullSrc && img) fullSrc = img.getAttribute('src');
+
+        modalImg.setAttribute('src', fullSrc);
+        modalImg.setAttribute('alt', (img && img.getAttribute('alt')) ? img.getAttribute('alt') : 'Expanded image');
+
+        // If you have a figure caption, show it in the modal
+        var capEl = a.closest('figure') ? a.closest('figure').querySelector('.timeline-caption') : null;
+        modalCaption.textContent = capEl ? capEl.innerText : 'Click “Close” to return to the article.';
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.classList.add('modal-open');
+
+        var closeBtn = modal.querySelector('.img-modal__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.classList.remove('modal-open');
+        modalImg.removeAttribute('src');
+      }
+
+      for (var i=0; i<openers.length; i++){
+        (function(a){
+          a.addEventListener('click', function(e){
+            e.preventDefault();
+            openModal(a);
+          });
+        })(openers[i]);
+      }
+
+      modal.addEventListener('click', function(e){
+        var t = e.target;
+        if (t && t.getAttribute && t.getAttribute('data-close') === 'true') closeModal();
+      });
+
+      document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title></title>
+    <link href="/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png">
+    
+</head>
+<body>
+    <form>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    <a href="index.html"><img src="/Images/Logo400.jpg" alt="Christian Steps Ministries Default Logo" size=10%/></a>
+                </h1>
+            </div>
+
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
+        </div>
+        <div class="main">
+            <main id="pageContent">
+<h2>
+        A study of the Book of Jonah - <i>All men have a choice to make - What will you choose?</i>
+    </h2>
+    <p>The study of the Book of Jonah is extremely exciting! This book, so often used as a children's story, is so much deeper...</p>
+</main>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+
+<script>
+  fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => { document.getElementById('siteHeader').innerHTML = h; })
+    .catch(() => {});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+  "holy_days": [
+    {
+      "key": "PASSOVER",
+      "name": "Passover",
+      "scripture": "Exodus 12; Luke 22:14–20; 1 Corinthians 5:7",
+      "theme": "Redemption",
+      "season": "Spring",
+      "notes": "Passover commemorates God's deliverance of Israel from Egypt and points to Jesus Christ as our Passover Lamb, whose sacrifice brings freedom from sin."
+    },
+    {
+      "key": "ULB_FIRST_DAY",
+      "name": "The First Day of Unleavened Bread",
+      "scripture": "Exodus 12:15–20; 1 Corinthians 5:8",
+      "theme": "Sanctification",
+      "season": "Spring",
+      "notes": "This day begins the Feast of Unleavened Bread, symbolizing the putting away of sin and the call to live a sincere and truthful life before God."
+    },
+    {
+      "key": "WAVESHEAF",
+      "name": "The Wavesheaf Offering",
+      "scripture": "Leviticus 23:9–14; John 20:17; 1 Corinthians 15:20",
+      "theme": "Resurrection",
+      "season": "Spring",
+      "notes": "The Wavesheaf Offering represents Christ’s resurrection and acceptance by the Father as the firstfruits of those who will be raised to eternal life."
+    },
+    {
+      "key": "ULB_LAST_DAY",
+      "name": "The Last Day of Unleavened Bread",
+      "scripture": "Exodus 13:3–10",
+      "theme": "Deliverance",
+      "season": "Spring",
+      "notes": "This day commemorates Israel’s final break from Egypt and reminds believers of the complete deliverance God provides from sin and bondage."
+    },
+    {
+      "key": "PENTECOST",
+      "name": "Pentecost",
+      "scripture": "Leviticus 23:15–22; Acts 2:1–4",
+      "theme": "Empowerment",
+      "season": "Spring",
+      "notes": "Pentecost marks the giving of the Holy Spirit and the founding of the New Testament Church, empowering believers to live God’s way of life."
+    },
+    {
+      "key": "TRUMPETS",
+      "name": "The Feast of Trumpets",
+      "scripture": "Leviticus 23:23–25; Matthew 24:30–31; 1 Thessalonians 4:16",
+      "theme": "Hope",
+      "season": "Fall",
+      "notes": "This day pictures the return of Jesus Christ, the resurrection of the saints, and the establishment of God’s Kingdom on earth."
+    },
+    {
+      "key": "ATONEMENT",
+      "name": "The Day of Atonement",
+      "scripture": "Leviticus 16; Leviticus 23:26–32; Hebrews 9:11–14",
+      "theme": "Reconciliation",
+      "season": "Fall",
+      "notes": "The Day of Atonement represents reconciliation between God and humanity, and the removal of Satan’s influence from the world."
+    },
+    {
+      "key": "TABERNACLES",
+      "name": "The First Day of the Feast of Tabernacles",
+      "scripture": "Leviticus 23:33–35; Zechariah 14:16–19; John 7:37",
+      "theme": "Restoration",
+      "season": "Fall",
+      "notes": "The Feast of Tabernacles pictures the Millennial reign of Christ, a time of peace, abundance, and restoration for all nations."
+    },
+    {
+      "key": "LASTGREAT",
+      "name": "The Last Great Day",
+      "scripture": "Leviticus 23:36; John 7:37–39; Revelation 20:11–13",
+      "theme": "Judgment and Renewal",
+      "season": "Fall",
+      "notes": "The Last Great Day points to God’s plan for final judgment and the opportunity for salvation for all who were never truly called."
+    }
+  ]
+}

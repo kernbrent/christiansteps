@@ -1,0 +1,1718 @@
+/* DEFAULTS
+----------------------------------------------------------*/
+body   
+{
+    background: #b6b7bc;
+    font-size: .80em;
+    font-family: "Helvetica Neue", "Lucida Grande", "Segoe UI", Arial, Helvetica, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: #696969;
+}
+
+a:link, a:visited
+{
+    color: #034af3;
+}
+
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: none;
+}
+
+a:active
+{
+    color: #034af3;
+}
+
+p
+{
+    margin-bottom: 10px;
+    line-height: 1.6em;
+}
+
+
+/* HEADINGS   
+----------------------------------------------------------*/
+
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #666666;
+    font-variant: small-caps;
+    text-transform: none;
+    font-weight: 200;
+    margin-bottom: 0px;
+}
+
+h1
+{
+    font-size: 1.6em;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+h2
+{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+h3
+{
+    font-size: 1.2em;
+}
+
+h4
+{
+    font-size: 1.1em;
+}
+
+h5, h6
+{
+    font-size: 1em;
+}
+
+/* this rule styles <h1> and <h2> tags that are the 
+first child of the left and right table columns */
+.rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2
+{
+    margin-top: 0px;
+}
+
+
+/* PRIMARY LAYOUT ELEMENTS   
+----------------------------------------------------------*/
+
+.page
+{
+    max-width: 960px;
+    width: 100%;
+background-color: #fff;
+    margin: 20px auto 0px auto;
+    border: 1px solid #496077;
+}
+
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: white;
+    width: 100%;
+}
+
+.header h1
+{
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px 0px 0px 20px;
+    color: #f9f9f9;
+    border: none;
+    line-height: 2em;
+    font-size: 2em;
+}
+
+.header-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main
+{
+    padding: 0px 12px;
+    margin: 12px 8px 8px 8px;
+    min-height: 420px;
+}
+
+.leftCol
+{
+    padding: 6px 0px;
+    margin: 12px 8px 8px 8px;
+    width: 200px;
+    min-height: 200px;
+}
+
+.footer
+{
+    color: #4e5766;
+    padding: 8px 0px 0px 0px;
+    margin: 0px auto;
+    text-align: center;
+    line-height: normal;
+}
+
+/* Footer layout */
+.footer{
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+/* Footer link row */
+.footer-links{
+  display: flex;
+  justify-content: center;     /* center horizontally */
+  align-items: center;
+  gap: 1.25rem;               /* space between links */
+  flex-wrap: wrap;            /* wrap nicely on small screens */
+  margin-bottom: 0.5rem;
+}
+
+/* Footer links */
+.footer-links a{
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-links a:hover{
+  text-decoration: underline;
+}
+/* Footer: hide current page link */
+.footer-links a.is-current-page{
+  display: none;
+}
+
+
+/* TAB MENU   
+----------------------------------------------------------*/
+
+div.hideSkiplink
+{
+    background-color:#3a4f63; /* --- This was 3a4f63 --- */
+    width:100%;
+}
+
+div.menu
+{
+    padding: 4px 0px 4px 8px;
+}
+
+div.menu ul
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    width: auto;
+}
+
+div.menu ul li a, div.menu ul li a:visited
+{
+    background-color: white; /* ---Use to be 465c71 ---*/
+    border: 1px #4e667d solid;
+    color: black; /*--- used to be dde4ec ---*/
+    display: block;
+    line-height: 1.35em;
+    padding: 4px 20px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+div.menu ul li a:hover
+{
+    background-color: #bfcbd6;
+    color: #465c71;
+    text-decoration: none;
+}
+
+div.menu ul li a:active
+{
+    background-color: #465c71;
+    color: #cfdbe6;
+    text-decoration: none;
+}
+
+/* FORM ELEMENTS   
+----------------------------------------------------------*/
+
+fieldset
+{
+    margin: 1em 0px;
+    padding: 1em;
+    border: 1px solid #ccc;
+}
+
+fieldset p 
+{
+    margin: 2px 12px 10px 10px;
+}
+
+fieldset.login label, fieldset.register label, fieldset.changePassword label
+{
+    display: block;
+}
+
+fieldset label.inline 
+{
+    display: inline;
+}
+
+legend 
+{
+    font-size: 1.1em;
+    font-weight: 600;
+    padding: 2px 4px 8px 4px;
+}
+
+input.textEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+input.passwordEntry 
+{
+    width: 320px;
+    border: 1px solid #ccc;
+}
+
+div.accountInfo
+{
+    width: 42%;
+}
+
+/* MISC  
+----------------------------------------------------------*/
+
+.clear
+{
+    clear: both;
+}
+
+.title
+{
+    display: block;
+    float: left;
+    text-align: left;
+    width: auto;
+}
+
+.loginDisplay
+{
+    font-size: 1.1em;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    color: White;
+}
+
+.loginDisplay a:link
+{
+    color: white;
+}
+
+.loginDisplay a:visited
+{
+    color: white;
+}
+
+.loginDisplay a:hover
+{
+    color: white;
+}
+
+.failureNotification
+{
+    font-size: 1.2em;
+    color: Red;
+}
+
+.bold
+{
+    font-weight: bold;
+}
+
+.submitButton
+{
+    text-align: right;
+    padding-right: 10px;
+}
+
+/*DIV BLOCK TAG
+------------------------------------------------------------------*/
+.redblock
+{
+    width: 450em;
+    color: red;
+    border: 2em;
+    border-color: black;
+}
+
+
+/*This is used for the book reading pages to have the image next to the list. */
+
+.content {
+  display: flex;          /* Places children side by side */
+  align-items: flex-start; /* Keeps top edges aligned */
+}
+
+.content ul {
+  flex: 1;                /* List takes available space on left */
+  margin: 0;
+  padding: 0 20px 0 10px;    /* Adds space between list and image */
+  list-style-type: disc;  /* Normal list bullets */
+}
+
+.content img {
+  max-width: 350px;       /* Adjust width of image */
+  height: auto;           /* Keeps proportions */
+  object-fit: cover;      /* Keeps image neat if you set a fixed height */
+}
+
+
+/* Static HTML menu overrides (ASPX -> HTML) */
+div.menu ul.nav{
+    list-style:none;
+    margin:0;
+    padding:4px 0px 4px 8px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    align-items:center;
+}
+div.menu ul.nav > li{
+    position:relative;
+    margin:0;
+    padding:0;
+}
+div.menu ul.nav > li > a{
+    display:block;
+    padding:6px 14px;
+    background-color:white;
+    border:1px #4e667d solid;
+    color:black;
+    text-decoration:none;
+    white-space:nowrap;
+}
+div.menu ul.nav > li > a:hover{
+    background-color:#bfcbd6;
+    color:#465c71;
+}
+
+/* Dropdown support */
+div.menu ul.subnav{
+    display:none;
+    position:absolute;
+    left:0;
+    top:100%;
+    z-index:9999;
+    list-style:none;
+    margin:6px 0 0;
+    padding:6px;
+    background:white;
+    border:1px #4e667d solid;
+    box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    min-width:220px;
+}
+div.menu ul.subnav li{ margin:0; padding:0; }
+div.menu ul.subnav li a{
+    display:block;
+    padding:6px 12px;
+    border:1px solid transparent;
+}
+div.menu ul.nav > li:hover > ul.subnav{ display:block; }
+
+/* Nested dropdown (if any) */
+div.menu ul.subnav li{ position:relative; }
+div.menu ul.subnav ul.subnav{
+    left:100%;
+    top:0;
+    margin-left:6px;
+}
+
+
+/* HolyDays page */
+.holydays { padding: 10px 0 20px; }
+.holydays h2 { margin-top: 0; }
+.holydays-instructions { max-width: 900px; }
+
+.holydays-controls{
+  margin: 14px 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+}
+.holydays-control label{ display:block; font-weight: bold; margin-bottom: 6px; }
+.holydays-control select{
+  padding: 8px 10px;
+  border: 1px solid #4e667d;
+  border-radius: 8px;
+  background: #fff;
+  min-width: 220px;
+}
+
+.holydays-print-btn{
+  padding: 9px 14px;
+  border: 1px solid #4e667d;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+}
+.holydays-print-btn:disabled{ opacity: 0.5; cursor: default; }
+.holydays-print-btn:active{ transform: translateY(2px); box-shadow: inset 0 2px 4px rgba(0,0,0,0.2); }
+
+.holydays-table-wrap{ display: none; }
+.holydays-table{
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin-top: 8px;
+}
+.holydays-table th, .holydays-table td{
+  border: 1px solid #cfd9e3;
+  padding: 6px 6px;
+  vertical-align: top;
+  font-size: 13px;
+  line-height: 1.35;
+}
+.holydays-table thead th{
+  background: #e8eef5;
+}
+.holydays-table .col-name{ width: 18%; }
+.holydays-table .col-year{ width: 7%; white-space: nowrap; text-align:center; }
+.holydays-table .col-date{ width: 12%; white-space: nowrap; }
+.holydays-table .col-heb{ width: 14%; white-space: nowrap; }
+.holydays-table .col-season{ width: 10%; }
+.holydays-table .col-scripture{ width: 15%; }
+.holydays-table .col-info{ width: 24%; }
+
+.more-link{ margin-left: 6px; color: #1d4ed8; text-decoration: underline; font-weight: bold; }
+.holydays-error{ color: #b91c1c; font-weight: bold; margin-top: 12px; }
+
+@media (max-width: 768px){
+  .holydays-controls{ align-items: stretch; }
+  .holydays-print-btn{ width: 100%; }
+}
+
+/* Mobile: show only Holy Day, Year, Date */
+@media (max-width: 720px){
+  .hide-mobile{ display:none !important; }
+  .holydays-table .col-year{ width: 70px; }
+  .holydays-table .col-date{ width: 140px; }
+}
+/* Holy Days: more / less link styling */
+.more-link{
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: 0.25em;
+  font: inherit;
+  color: #1a5fb4;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.holydays-actions{
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.more-link:hover{
+  text-decoration: none;
+}
+
+.more-link:focus-visible{
+  outline: 2px solid #1a5fb4;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Holy Days: wide intro text */
+.holydays-intro{
+  max-width: 1100px;     /* wider than hero text */
+  margin: 1.25rem auto 0;
+  padding: 0 1rem;
+}
+
+.holydays-intro p{
+  line-height: 1.6;
+}
+
+
+/* ===============================
+   MOBILE NAVIGATION (hamburger)
+   - Hides ALL menu items under the hamburger on mobile
+   - Dropdowns are hidden on mobile (clean + simple)
+   - Menu slides down over page content
+   =============================== */
+
+.nav-toggle{
+    display:none;
+    background:#ffffff;
+    border:1px solid #4e667d;
+    border-radius:10px;
+    padding:8px 14px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    user-select:none;
+}
+
+/* Press-in effect */
+.nav-toggle:active{
+    transform: translateY(2px);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.20);
+}
+
+@media (max-width: 768px){
+  div.menu ul.nav{
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height 0.28s ease, opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  div.menu ul.nav.open{
+    max-height: 80vh;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+
+@media (max-width: 768px){
+    .nav-toggle{
+        display:inline-block;
+        margin: 8px;
+    }
+
+    /* Anchor the dropdown panel to the menu bar */
+    div.menu{
+        position: relative;
+    }
+
+    /* Panel hidden by default */
+    div.menu ul.nav{
+        display:block;                 /* keep block so we can animate */
+        position:absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        z-index: 9999;
+        background: #ffffff;
+        border: 1px solid #4e667d;
+        border-radius: 12px;
+        margin: 0 8px 8px;
+        padding: 10px 10px 12px;
+        box-shadow: 0 18px 30px rgba(0,0,0,0.18);
+
+        /* slide-down animation */
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: max-height 0.28s ease, opacity 0.20s ease, transform 0.20s ease;
+        pointer-events: none;
+    }
+
+    /* Open state */
+    div.menu ul.nav.open{
+        max-height: 80vh;
+        overflow: auto;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Stack top-level items */
+    div.menu ul.nav > li{
+        display:block;
+        margin: 8px 0;
+        padding: 0;
+    }
+
+    /* Full-width button links */
+    div.menu ul.nav > li > a{
+        display:block;
+        width:100%;
+        box-sizing:border-box;
+        text-align:center;
+        border-radius:12px;
+    }
+
+    /* Hide dropdown submenus on mobile */
+    div.menu ul.subnav{
+        display:none !important;
+    }
+
+}
+
+
+/* =========================================================
+   Home Page (index.html)
+   Moved from inline <style> in index.html
+   ========================================================= */
+
+/* Layout helpers */
+    .home-hero { padding: .5rem .5rem .5rem; }
+    .home-hero-inner { display: grid; gap: 1rem; align-items: center; }
+    .home-hero-copy h2 { margin: 0.25rem 0 0.5rem; }
+    .home-hero-copy p { margin: 0.25rem 0 0.75rem; line-height: 1.6; }
+    .home-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1rem;
+      border-radius: 0.6rem;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid rgba(0,0,0,0.15);
+    }
+    .btn-primary { border-color: rgba(0,0,0,0.25); }
+    .btn-secondary { opacity: 0.95; }
+
+    /* Cards */
+    .home-section { padding: 1.25rem 1rem; }
+    .home-section h3 { margin: 0 0 0.75rem; }
+    .card-grid { display: grid; gap: 0.9rem; }
+    .card {
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.9);
+    }
+    .card h4 { margin: 0 0 0.4rem; }
+    .card p { margin: 0.25rem 0 0.75rem; line-height: 1.55; }
+    .card a { font-weight: 700; }
+
+    /* Featured row */
+    .featured-note { margin-top: 0.25rem; opacity: 0.9; }
+
+    /* Image */
+    .hero-image-wrap { border-radius: 1rem; overflow: hidden; }
+    .hero-image-wrap img { width: 100%; height: auto; display: block; }
+
+    /* Footer */
+    .home-footer { padding: 1.5rem 1rem; }
+    .footer-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* Responsive */
+    @media (min-width: 900px) {
+      .home-hero-inner { grid-template-columns: 1.15fr 0.85fr; gap: 1.5rem; }
+      .card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .card-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    /* Accessibility */
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 0;
+      background: #fff;
+      padding: 0.5rem 0.75rem;
+      border: 2px solid #000;
+      z-index: 9999;
+    }
+    .skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+/* Remove remaining inline styles by using classes */
+.site-logo{
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer inner wrapper used on home page only */
+.home-footer-inner{
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.home-footer-note{
+  margin-top: 0.75rem;
+  opacity: 0.9;
+}
+
+/* Button press / "pushed" interaction */
+.btn{
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.06s ease, box-shadow 0.06s ease, filter 0.06s ease;
+}
+.btn:active{
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.22);
+  filter: brightness(0.98);
+}
+/* Keyboard users: visible focus */
+.btn:focus-visible{
+  outline: 3px solid rgba(3,74,243,0.35);
+  outline-offset: 3px;
+}
+
+/* Optional: make menu links feel button-like when pressed, too */
+div.menu ul.nav > li > a{
+  transition: transform 0.06s ease, box-shadow 0.06s ease;
+}
+div.menu ul.nav > li > a:active{
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.18);
+}
+
+/* =========================================================
+   Music Page
+   ========================================================= */
+
+.music-filter-row{
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.music-filter-input{
+  width: 100%;
+  max-width: 560px;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.music-filter-hint{
+  margin-top: 0.25rem;
+}
+
+.music-cards{
+  display: grid;
+  gap: 0.9rem;
+  margin-top: 0.75rem;
+}
+
+.music-card{
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  background: rgba(255,255,255,0.9);
+}
+
+.music-title{
+  margin: 0 0 0.35rem;
+}
+
+.music-duration{
+  opacity: 0.85;
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+.music-meta{
+  margin: 0.15rem 0;
+  line-height: 1.45;
+}
+
+.music-player{
+  margin-top: 0.65rem;
+}
+
+.music-player audio{
+  width: 100%;
+  max-width: 520px;
+}
+
+.music-downloads{
+  margin-top: 0.4rem;
+}
+
+/* Responsive columns for cards */
+@media (min-width: 900px){
+  .music-cards{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================================================
+   Music Collections (tiles + per-collection accents)
+   ========================================================= */
+
+.browse-grid{
+  display: grid;
+  gap: 0.9rem;
+}
+@media (min-width: 900px){
+  .browse-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.collection-tile{
+  position: relative;
+}
+
+.collection-tile-head{
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.collection-tile-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.85);
+}
+
+.collection-icon-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-icon-text{
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.collection-tile-title{
+  margin: 0;
+}
+
+.collection-tile-desc{
+  margin: 0.25rem 0 0;
+}
+
+.collection-tile-btn{
+  margin-top: 0.75rem;
+}
+
+/* Section headers with icons */
+.collection-header{
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.collection-title{
+  margin: 0;
+}
+.collection-icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.85);
+}
+
+/* Color accents: tiles + track cards */
+.collection-nmt .collection-icon,
+.collection-tile.collection-nmt .collection-tile-icon{
+  background: rgba(240, 248, 255, 0.9);
+}
+.collection-card-nmt{
+  border-left: 6px solid rgba(40, 120, 200, 0.55);
+  background: rgba(240, 248, 255, 0.75);
+}
+
+.collection-general .collection-icon,
+.collection-tile.collection-general .collection-tile-icon{
+  background: rgba(245, 245, 245, 0.9);
+}
+.collection-card-general{
+  border-left: 6px solid rgba(120, 120, 120, 0.5);
+  background: rgba(245, 245, 245, 0.75);
+}
+
+.collection-mcgmc .collection-icon,
+.collection-tile.collection-mcgmc .collection-tile-icon{
+  background: rgba(240, 255, 240, 0.9);
+}
+.collection-card-mcgmc{
+  border-left: 6px solid rgba(60, 160, 90, 0.55);
+  background: rgba(240, 255, 240, 0.75);
+}
+
+.collection-ppc .collection-icon,
+.collection-tile.collection-ppc .collection-tile-icon{
+  background: rgba(255, 248, 235, 0.9);
+}
+.collection-card-ppc{
+  border-left: 6px solid rgba(210, 140, 40, 0.55);
+  background: rgba(255, 248, 235, 0.75);
+}
+
+/* Compact song cards */
+.music-card-compact{
+  padding: 0.75rem;
+  border-radius: 0.85rem;
+}
+
+.music-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.music-row .music-title{
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.music-row .music-downloads{
+  margin-top: 0.15rem;
+  text-align: right;
+}
+
+.music-row .music-downloads a{
+  white-space: nowrap;
+}
+
+/* On small screens stack downloads under title */
+@media (max-width: 640px){
+  .music-row{
+    grid-template-columns: 1fr;
+  }
+  .music-row .music-downloads{
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   HolyDays single-column hero overrides
+   ========================================================= */
+
+.holydays-hero-inner{
+  grid-template-columns: 1fr !important;   /* prevent 2-column layout */
+}
+
+.holydays-hero-copy{
+  max-width: none;
+}
+
+.holydays-intro{
+  max-width: none;          /* allow full width within .page */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.holydays-instructions{
+  max-width: none;
+  margin-top: 0.75rem;
+}
+
+/* Keep the intro toggle link tidy */
+.holydays-intro .more-link{
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+/* =========================================================
+   HolyDays: info card under intro
+   ========================================================= */
+.holydays-info-card{
+  margin-top: 1rem;
+}
+
+.holydays-info-card p{
+  margin: 0.5rem 0;
+}
+
+.holydays-wallet-note{
+  margin-top: 0.75rem;
+}
+/* =========================================================
+   Casts (Sermons & Podcasts) page — JSON driven
+   ========================================================= */
+.casts-hero-inner{ grid-template-columns: 1fr; }
+
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 900px){
+  .cards-grid{ grid-template-columns: 1fr; }
+}
+
+.casts-toolbar{
+  display:flex;
+  gap: 0.75rem;
+  align-items:center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.casts-search-input, .casts-filter-select{
+  padding: 0.65rem 0.8rem;
+  border: 1px solid rgba(0,0,0,0.18);
+  border-radius: 12px;
+  background: #fff;
+  font: inherit;
+}
+
+.casts-search-input{ width: min(520px, 92vw); }
+.casts-filter-select{ width: auto; min-width: 180px; }
+
+.casts-catalog{ margin-top: 0.25rem; }
+
+.casts-group{ margin-top: 1rem; }
+.casts-group:first-child{ margin-top: 0; }
+
+.casts-group-header{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.25rem 0 0.65rem;
+}
+
+.tracks-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (max-width: 900px){
+  .tracks-grid{ grid-template-columns: 1fr; }
+}
+
+.track-card .kicker{
+  font-size: 0.8rem;
+  font-weight: 800;
+  opacity: 0.75;
+  margin-bottom: 0.25rem;
+}
+
+.track-title{ margin: 0.1rem 0 0.2rem; }
+
+.track-desc{ margin: 0.6rem 0 0; }
+
+.track-actions{
+  margin-top: 0.8rem;
+  display:flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.track-audio{ width: 100%; }
+.track-audio.compact{ height: 34px; }
+
+.track-mini{
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 0.8rem;
+  background: rgba(255,255,255,0.65);
+}
+
+.track-mini-title{
+  font-weight: 900;
+  margin-bottom: 0.2rem;
+}
+
+.track-mini-meta{
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+.track-mini-actions{
+  display:flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+}
+
+.pill{
+  display:inline-block;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.15);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-right: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.pill:hover{ opacity: 0.85; }
+
+.small-muted{
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+
+/* =========================================================
+   Casts: per-book chapter color + secondary book filter
+   ========================================================= */
+.casts-book-filter{
+  min-width: 180px;
+}
+
+.track-mini{
+  border-left: 6px solid var(--accent, rgba(0,0,0,0.10));
+}
+
+.track-mini[data-collection-key]{
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent, #fff) 10%, transparent) 0%, rgba(255,255,255,0.65) 40%);
+}
+
+/* If color-mix isn't supported, the border still provides differentiation */
+
+
+/* =========================================================
+   Articles: verse pills + tooltips
+   ========================================================= */
+.verse-pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.verse-pill{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:0.9rem;
+  line-height:1;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.verse-pill:hover{
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.26);
+  transform: translateY(-1px);
+}
+.verse-pill:active{ transform: translateY(0px) scale(0.99); }
+
+/* Tooltip */
+.verse-pill::after{
+  content: attr(data-tooltip);
+  position:absolute;
+  left:50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  width: min(460px, 78vw);
+  padding:10px 12px;
+  border-radius:12px;
+  background: rgba(15, 18, 22, 0.95);
+  color: #fff;
+  font-size: 0.9rem;
+  line-height: 1.35;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+  opacity:0;
+  pointer-events:none;
+  transition: opacity .12s ease, transform .12s ease;
+  z-index: 50;
+}
+.verse-pill::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom: calc(100% + 3px);
+  transform: translateX(-50%);
+  border:7px solid transparent;
+  border-top-color: rgba(15, 18, 22, 0.95);
+  opacity:0;
+  transition: opacity .12s ease;
+}
+.verse-pill:hover::after{
+  opacity:1;
+  transform: translateX(-50%) translateY(-2px);
+}
+.verse-pill:hover::before{ opacity:1; }
+
+@media (prefers-reduced-motion: reduce){
+  .verse-pill, .verse-pill::after, .verse-pill::before{ transition:none; }
+}
+
+/* =========================================================
+   Articles: simple timeline list
+   ========================================================= */
+.timeline{
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.timeline li{
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255,255,255,0.10);
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.75rem;
+}
+.timeline li:first-child{ border-top: none; }
+.timeline .when{ font-weight: 900; opacity: 0.95; }
+@media (max-width: 720px){
+  .timeline li{ grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   Articles: timeline image thumbnail + modal popup
+   ========================================================= */
+.timeline-figure{
+  margin: 1rem auto 1.25rem;
+  max-width: 820px;
+  text-align: center;
+}
+.timeline-thumb-link{
+  display: inline-block;
+  text-decoration: none;
+}
+.timeline-thumb{
+  width: min(52vw, 760px);
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.timeline-thumb:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.28);
+}
+.timeline-thumb:active{
+  transform: translateY(0px) scale(0.995);
+}
+.timeline-caption{
+  margin-top: 0.5rem;
+  font-size: 0.98rem;
+}
+@media (max-width: 900px){
+  .timeline-thumb{ width: 100%; }
+}
+
+/* Modal */
+body.modal-open{ overflow: hidden; }
+
+.img-modal{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 9999;
+}
+.img-modal.is-open{ display: block; }
+
+.img-modal__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+}
+.img-modal__dialog{
+  position: relative;
+  max-width: min(1100px, 92vw);
+  margin: 4vh auto;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(15, 18, 22, 0.92);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+}
+.img-modal__close{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+.img-modal__close:hover{ background: rgba(255,255,255,0.25); }
+.img-modal__close:focus{ outline: 2px solid #fff; outline-offset: 2px; }
+
+.img-modal__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 14px;
+}
+.img-modal__caption{
+  margin: 10px 6px 2px;
+  color: rgba(255,255,255,0.90);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 520px){
+  .img-modal__dialog{ margin: 2vh auto; padding: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .timeline-thumb{ transition:none; }
+}
+/* =========================================================
+   Articles catalog (articles.html)
+   ========================================================= */
+
+.catalog-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  margin: 1rem 0 1.25rem;
+}
+
+.catalog-controls .control-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.catalog-controls label{
+  font-weight: 800;
+  margin-right: 6px;
+}
+
+.catalog-input, .catalog-select{
+  border-radius: 999px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  min-width: 220px;
+}
+
+.catalog-select{ min-width: 200px; }
+
+.catalog-input:focus, .catalog-select:focus{
+  outline: 2px solid rgba(255,255,255,0.55);
+  outline-offset: 2px;
+}
+
+.article-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+
+@media (max-width: 860px){
+  .article-grid{ grid-template-columns: 1fr; }
+  .catalog-input, .catalog-select{ min-width: 100%; }
+}
+
+.article-card{
+  padding: 16px;
+}
+
+.article-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  align-items:center;
+  opacity: 0.92;
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.article-desc{
+  margin-top: 10px;
+  opacity: 0.92;
+}
+
+.article-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.featured-row{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+
+@media (max-width: 860px){
+  .featured-row{ grid-template-columns: 1fr; }
+}
+
+.coming-soon-list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.small-note{
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.error-card{
+  border: 1px solid rgba(255,80,80,0.35);
+  background: rgba(255,80,80,0.08);
+}
+
+/* ============================
+   Article type color coding
+   (Articles vs Devotionals)
+   ============================ */
+
+.article-card.article-type-article{
+  background: linear-gradient(180deg, #f9fcff 0%, #eef5fb 100%);
+  border-left: 5px solid #2c6f9e;
+}
+
+.article-card.article-type-devotional{
+  background: linear-gradient(180deg, #fffdf6 0%, #f6f0dd 100%);
+  border-left: 5px solid #8a6d3b;
+}
+
+/* Keep text readable on both */
+.article-type-article,
+.article-type-devotional{
+  color: #2b2b2b;
+}
+
+/* Badge color harmony (scoped) */
+.article-type-article .badge{
+  background-color: #2c6f9e;
+  color: #fff;
+  border-color: rgba(0,0,0,0.10);
+}
+
+.article-type-devotional .badge{
+  background-color: #8a6d3b;
+  color: #fff;
+  border-color: rgba(0,0,0,0.10);
+}
+
+/* =========================================================
+   Coaching & Consulting page helpers
+   ========================================================= */
+
+.content-narrow{
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.section-top{
+  margin-top: 1rem;
+}
+
+.text-center{
+  text-align: center;
+}
+
+/* Tidy lists inside service cards (scoped) */
+.card-list{
+  margin: 0.25rem 0 0.75rem;
+  padding-left: 1.15rem;
+  line-height: 1.6em;
+}
+.card-list li{
+  margin: 0.25rem 0;
+}
+/* ================================
+   Coaching/Consulting page only
+   Service card color accents
+   ================================ */
+
+.coaching-consulting-page .service-card {
+  /* keep your existing card look */
+  border-left: 6px solid transparent;
+}
+
+/* Two main categories */
+.coaching-consulting-page .service-consulting {
+  border-left-color: #2f6f4e;      /* deep green */
+  background: rgba(47, 111, 78, 0.06);
+}
+
+.coaching-consulting-page .service-coaching {
+  border-left-color: #2f4f6f;      /* deep blue */
+  background: rgba(47, 79, 111, 0.06);
+}
+
+/* Optional: individual service accents */
+.coaching-consulting-page .service-strategy { border-left-color: #7a5a2a; background: rgba(122, 90, 42, 0.06); }
+.coaching-consulting-page .service-conflict { border-left-color: #7a2a2a; background: rgba(122, 42, 42, 0.06); }
+.coaching-consulting-page .service-change   { border-left-color: #6a2a7a; background: rgba(106, 42, 122, 0.06); }
+.coaching-consulting-page .service-pm       { border-left-color: #2a6a7a; background: rgba(42, 106, 122, 0.06); }
+.coaching-consulting-page .service-ux       { border-left-color: #5a5a5a; background: rgba(90, 90, 90, 0.06); }
+
+/* =========================================================
+   Card-as-link (whole card clickable) — site-safe
+   ========================================================= */
+.card-link{
+  display:block;
+  color: inherit;
+  text-decoration:none;
+}
+.card-link .card{
+  cursor: pointer;
+}
+/* "Pressed" look when clicking anywhere in the card */
+.card-link:active .card{
+  transform: translateY(1px);
+  filter: brightness(0.98);
+}
+/* Keyboard focus */
+.card-link:focus-visible .card{
+  outline: 3px solid rgba(3,74,243,0.35);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Coaching/Consulting page — extra service accents (optional)
+   ========================================================= */
+.coaching-consulting-page .service-execpresence{
+  border-left-color: #1f6f5b;
+  background: rgba(31, 111, 91, 0.06);
+}
+.coaching-consulting-page .service-chaplain{
+  border-left-color: #6f4f1f;
+  background: rgba(111, 79, 31, 0.06);
+}
+.coaching-consulting-page .service-christianleadership{
+  border-left-color: #3f5f9f;
+  background: rgba(63, 95, 159, 0.06);
+}
+.coaching-consulting-page .service-publicspeaking{
+  border-left-color: #5f2f6f;
+  background: rgba(95, 47, 111, 0.06);
+}
+/* =========================================
+   NOTE modal (About page)
+   ========================================= */
+
+.note-trigger {
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.note-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.note-overlay.open {
+  display: flex;
+}
+
+.note-modal {
+  background: #fff;
+  max-width: 460px;
+  width: 90%;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.note-icon {
+  width: 48px;
+  height: auto;
+  margin-bottom: 0.75rem;
+}
+
+.note-modal h4 {
+  margin-top: 0;
+}
+
+.note-modal p {
+  text-align: left;
+}
+
+.note-close {
+  margin-top: 1rem;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Active state */
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #fff;
+  width: 90%;
+  max-width: 900px;
+  height: 60vh;          /* 🔽 was 85vh */
+  max-height: 600px;    /* ✅ caps it on large screens */
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+/* Close Button */
+.modal-close {
+  align-self: flex-end;
+  margin: 10px;
+  padding: 6px 12px;
+  border: none;
+  background: #333;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.modal-close:hover {
+  background: #555;
+}
+
+/* Iframe */
+.modal-content iframe {
+  flex: 1;
+  border: none;
+  width: 100%;
+}
+
+/* Ensure card links never show default anchor styling (desktop + mobile) */
+a.card-link:link,
+a.card-link:visited,
+a.card-link:hover,
+a.card-link:active{
+  color: inherit;
+  text-decoration: none;
+}

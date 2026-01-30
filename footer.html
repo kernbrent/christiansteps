@@ -1,0 +1,51 @@
+<footer class="footer home-footer" role="contentinfo">
+  <div class="page home-footer-inner">
+    <div class="footer-links" aria-label="Footer links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="Music.html">Music</a>
+      <a href="Casts.html">Sermons &amp; Podcasts</a>
+      <a href="HolyDays.html">Holy Days</a>
+    </div>
+
+    <p class="home-footer-note">
+      © <span id="copyrightRange"></span> Christian Steps Ministries
+      <br>May God guide your next step.
+    </p>
+  </div>
+
+  <script>
+    (function () {
+      // --- Year range: 2016–current year ---
+      const startYear = 2016;
+      const thisYear = new Date().getFullYear();
+      const range = (thisYear > startYear) ? (startYear + "–" + thisYear) : String(startYear);
+
+      const rangeEl = document.getElementById("copyrightRange");
+      if (rangeEl) rangeEl.textContent = range;
+
+      // --- Hide the current page link in the footer ---
+      // Normalize current page filename (e.g., "Music.html")
+      const currentFile = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+
+      document.querySelectorAll(".footer-links a[href]").forEach(a => {
+        const hrefFile = (a.getAttribute("href") || "").split("/").pop().toLowerCase();
+
+        // Match exact filename (e.g., Music.html == music.html)
+        if (hrefFile && hrefFile === currentFile) {
+          a.classList.add("is-current-page");
+          a.setAttribute("aria-hidden", "true");
+          a.setAttribute("tabindex", "-1");
+        }
+      });
+    })();
+  </script>
+</footer>
+
+
+
+
+
+
+      
+

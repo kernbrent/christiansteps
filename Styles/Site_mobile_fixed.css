@@ -1,0 +1,248 @@
+/* =========================================================
+   Mobile responsiveness additions + hamburger menu fix
+   (safe: only applies <= 820px)
+   ========================================================= */
+
+@media (max-width: 820px){
+
+  /* --- Global layout --- */
+  .page, .main, main{ max-width: 100%; }
+  body{ overflow-x: hidden; }
+
+  img{ max-width: 100%; height: auto; }
+
+  .site-logo{
+    width: min(320px, 90vw);
+    height: auto;
+  }
+
+  /* --- Hero sections: stack nicely on mobile --- */
+  .home-hero-inner{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  .home-hero-copy{ width: 100%; }
+
+  .hero-image-wrap{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-image-wrap img{
+    width: min(420px, 92vw);
+    border-radius: 12px;
+  }
+
+  /* --- Buttons: keep them looking like buttons & touch-friendly --- */
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .7rem 1rem;
+    border-radius: 999px;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  a.btn:link, a.btn:visited{ text-decoration: none; }
+
+  .btn-primary{
+    background: var(--btn-primary-bg, #1f6feb);
+    color: var(--btn-primary-fg, #ffffff);
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+  .btn-secondary{
+    background: var(--btn-secondary-bg, #ffffff);
+    color: var(--btn-secondary-fg, inherit);
+    border: 1px solid rgba(0,0,0,0.18);
+  }
+
+  /* CTA groups: stack buttons */
+  .home-cta{
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    align-items: stretch;
+  }
+
+  /* --- Card grids: one column --- */
+  .card-grid,
+  .cards-grid,
+  .article-grid,
+  .browse-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  /* --- Articles page toolbar: stack controls --- */
+  .catalog-controls{
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+  }
+  .catalog-controls .control-group{ width: 100%; }
+  .catalog-controls .control-group > div{ width: 100%; }
+
+  /* --- Music / Casts: controls stack --- */
+  .music-filter-row{
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    align-items: stretch;
+  }
+  .music-filter-input{ width: 100%; }
+
+  audio{ width: 100%; }
+
+  .tracks-grid{ grid-template-columns: 1fr !important; }
+
+  .collection-header{
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    align-items: flex-start;
+  }
+
+  .collection-icon,
+  .collection-tile-icon{
+    width: 44px;
+    height: 44px;
+  }
+  .collection-icon-img{
+    max-width: 44px;
+    max-height: 44px;
+  }
+
+  .home-hero .hero-image-wrap img{
+    width: min(300px, 88vw);
+  }
+
+  /* --- HolyDays table: allow horizontal scroll if needed --- */
+  .holydays-table-wrap{
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .holydays-table{ min-width: 680px; }
+
+  /* =========================================================
+     HAMBURGER MENU FIX
+     Assumes your header has: <div class="menu"><ul class="nav">...</ul></div>
+     Your JS toggles the class 'open' on ul.nav.
+     ========================================================= */
+
+  .nav-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: .55rem .9rem;
+    border-radius: 999px;
+
+    /* Higher contrast so the hamburger is clearly visible on the dark header bar */
+    background: #ffffff;
+    color: #111111;
+    border: 1px solid rgba(0,0,0,0.25);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+
+    font-weight: 800;
+    cursor: pointer;
+    margin: 0.25rem 0 0.6rem;
+  }
+
+.menu ul.nav{ display: none; }
+  .menu ul.nav.open{
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  .menu ul.nav li a{
+    display: block;
+    padding: .55rem .25rem;
+  }
+}
+
+@media (min-width: 821px){
+  .nav-toggle{ display: none !important; }
+}
+
+@media (max-width: 420px){
+  .btn{ padding: .65rem .9rem; font-size: .98rem; }
+  .home-hero-copy h2{ font-size: 1.55rem; }
+  .nav-toggle{ width: 100%; }
+}
+
+
+
+/* =========================================================
+   HAMBURGER MENU OVERRIDES (v3)
+   Fixes:
+   - Menu button overflowing small screens
+   - Menu not opening due to conflicting rules between Site.css and Site_mobile.css
+   ========================================================= */
+
+@media (max-width: 820px){
+
+  /* Make sure the hamburger never exceeds the viewport */
+  .header .nav-toggle{
+    box-sizing: border-box;
+    max-width: calc(100% - 16px);
+    width: auto;                 /* prevent 100% + margins overflow */
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  /* Use the SAME open/close mechanism as the JS (toggle .open on ul.nav) */
+  .header div.menu ul.nav{
+    display: block !important;   /* avoid display:none conflicts */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: max-height 0.28s ease, opacity 0.20s ease, transform 0.20s ease;
+  }
+
+  .header div.menu ul.nav.open{
+    max-height: 80vh;
+    overflow: auto;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Keep items stacked & tappable */
+  .header div.menu ul.nav > li{
+    display: block;
+    margin: 8px 0;
+  }
+  .header div.menu ul.nav > li > a{
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  /* On mobile, keep dropdown submenus hidden to avoid hover-only UX */
+  .header div.menu ul.subnav{
+    display: none !important;
+  }
+}
+
+/* Extra-small phones: keep button full-width WITHOUT overflow */
+@media (max-width: 420px){
+  .header .nav-toggle{
+    width: calc(100% - 16px);
+    max-width: calc(100% - 16px);
+  }
+}
+
+@media (max-width: 820px){
+  .nav-toggle:focus-visible{
+    outline: 3px solid rgba(255,255,255,0.65);
+    outline-offset: 3px;
+  }
+}

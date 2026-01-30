@@ -1,0 +1,853 @@
+{
+  "version": 1,
+  "generated": "2026-01-08",
+  "categories": [
+    {
+      "key": "sermons",
+      "title": "Sermons",
+      "description": "Audio and video sermons.",
+      "items": [
+        {
+          "title": "Great is Thy Faitfulness",
+          "date_display": "December 20, 2025",
+          "date": "2025-12-20",
+          "duration": "46 min",
+          "description": "Tulsa, OK - God's faithfulness is enternal. God never changes and with this He always loves us, not matter what!",
+          "links": [
+            {
+              "label": "YouTube",
+              "url": "https://www.youtube.com/watch?v=BHXLKHDBx34"
+            },
+            {
+              "label": "Article",
+              "url": "/Articles/GreatFaithfulness.html"
+            },
+            {
+              "label": "Devotional",
+              "url": "/Articles/GreatFaithfulness_Devotional.html"
+            }
+          ]
+        },
+        {
+          "title": "The Least of These",
+          "date_display": "October 13, 2025",
+          "date": "2025-10-13",
+          "duration": "46 min",
+          "description": "Fairfield Bay, AR - Have you ever fed Jesus? Then you may be missing out on the greatest call of your life.",
+          "links": [
+            {
+              "label": "YouTube",
+              "url": "https://youtu.be/Hx0x19gCSz0?si=EFGLMfI8zSKah_Ys"
+            },
+            {
+              "label": null,
+              "url": null
+            }
+          ]
+        },
+        {
+          "title": "Love, Love, Love - Eros, Philia, Agape (Prosper Presby)",
+          "date_display": "Jan 1, 2023",
+          "date": "2022-12-18",
+          "duration": "21 min",
+          "description": "Prosper, TX - Invited to a locale church for the opportunity to speak on the four weeks of Advent. This is not a time traditional celebrating by CSM, but it was a great opportunity to share our faith.",
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/LoveLoveLoveErosPhiliaAgape.mp3"
+            }
+          ]
+        },
+        {
+          "title": "Joy to the World, The Lord is/will Come (Prosper Presby)",
+          "date_display": "Dec 11, 2022",
+          "date": "2022-12-11",
+          "duration": "26 min",
+          "description": "Prosper, TX - Invited to a locale church for the opportunity to speak on the four weeks of Advent. This is not a time traditional celebrating by CSM, but it was a great opportunity to share our faith.",
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/JoyToTheWorldTheLordIsWillCome.mp3"
+            }
+          ]
+        },
+        {
+          "title": "Finding Peace in Him (Prosper Presby)",
+          "date_display": "Dec 4, 2022",
+          "date": "2022-12-04",
+          "duration": "26 min",
+          "description": "Prosper, TX - Invited to a locale church for the opportunity to speak on the four weeks of Advent. This is not a time traditional celebrating by CSM, but it was a great opportunity to share our faith.",
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/FindingPeaceInHim.mp3"
+            }
+          ]
+        },
+        {
+          "title": "Hope For The Future As It Was In The Past (Prosper Presby)",
+          "date_display": "Nov 27, 2022",
+          "date": "2022-11-27",
+          "duration": "27 min",
+          "description": "Prosper, TX - Invited to a locale church for the opportunity to speak on the four weeks of Advent. This is not a time traditional celebrating by CSM, but it was a great opportunity to share our faith.",
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/HopeForTheFutureAsItWasInThePast.mp3"
+            }
+          ]
+        },
+        {
+          "title": "The Mark - No Fear",
+          "date_display": "Oct 1, 2023",
+          "date": "2023-10-01",
+          "duration": "50 min",
+          "description": "What is the 'Mark of the Beast'? Maybe it is something different than any of us ever imagined.",
+          "links": [
+            {
+              "label": "YouTube",
+              "url": "https://youtu.be/9n4Ij2T7phQ?si=kyxZ4DCmHVeN0VYz"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "podcasts",
+      "title": "Podcasts",
+      "description": "Shorter audio messages and teachings.",
+      "items": [
+        {
+          "title": "Four Steps to Prepare for His Return  |",
+          "date_display": "November 3, 2020",
+          "date": "2020-11-03",
+          "duration": "11 min",
+          "description": null,
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/4StepsToPrepareForTheEnd.mp3"
+            },
+            {
+              "label": "WAV",
+              "url": "/Casts/4StepsToPrepareForTheEnd.wav"
+            }
+          ]
+        },
+        {
+          "title": "Be the Fire of Pentecost  |",
+          "date_display": "May 31, 2020",
+          "date": "2020-05-31",
+          "duration": "11 min",
+          "description": null,
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/BeTheFireOfPentecost.mp3"
+            },
+            {
+              "label": "WAV",
+              "url": "/Casts/BeTheFireOfPentecost.wav"
+            }
+          ]
+        },
+        {
+          "title": "The Beast - The Thief - The End Times  |",
+          "date_display": "May 4, 2020",
+          "date": "2020-05-04",
+          "duration": "16 min",
+          "description": null,
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/TheMarkTheThiefTheEndTimes.mp3"
+            },
+            {
+              "label": "WAV",
+              "url": "/Casts/TheMarkTheThiefTheEndTimes.wav"
+            }
+          ]
+        },
+        {
+          "title": "Eating Bread after Unleavened Bread  |",
+          "date_display": "April 20, 2020",
+          "date": "2020-04-20",
+          "duration": "9 min",
+          "description": null,
+          "links": [
+            {
+              "label": "MP3",
+              "url": "/Casts/EatingBreadAfterUnleavenedBread.mp3"
+            },
+            {
+              "label": "WAV",
+              "url": "/Casts/EatingBreadAfterUnleavenedBread.wav"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "scripture_reading",
+      "title": "Scripture Reading",
+      "description": "Read-aloud scripture recordings.",
+      "collections": [
+        {
+          "key": "revelation",
+          "title": "The Book of Revelation",
+          "author": "Read aloud by Brent D. Kern",
+          "cover_image": "/Images/RevelationCover.png",
+          "items": [
+            {
+              "title": "Chapter 1 - Prologue",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:43 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter1.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 10 - The Angel and the Little Scroll",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "1:52 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter10.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 11 - The Two Witnesses and the Seventh Trumpet",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:08 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter11.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 12 - The Woman and the Dragon",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "2:50 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter12.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 13 - The Beasts of the Sea and the Earth",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:07 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter13.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 14 - The Lamb, 144,000, The Three Angels, and the Harvest of Earth",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:48 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter14.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 15 - The Seven Angels with Seven Plagues",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "1:34 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter15.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 16 - The Seven Bowls of God's Wrath",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:20 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter16.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 17 - The Babylon, the Prostitute on the Beast",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:14 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter17.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 18 - The Fall of Babylon",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "4:44 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter18.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 19 - The Threefold Hallelujah Over Babylon's Fall",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:47 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter19.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 2 - The Seven Churches",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "4:35 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter2.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 20 - The Thousand Years and The Judgement",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "2:50 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter20.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 21 - A New Heaven and a New Earth and The Bride",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "4:24 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter21.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 22 - The River of Life and the Epilogue",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:50 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter22.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 3 - The Seven Churches - continued",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:53 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter3.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 4 - The Throne Room",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "1:59 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter4.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 5 - The Scroll and the Lamb",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "2:30 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter5.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 6 - The First Six Seals",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "2:55 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter6.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 7 - 144,000 Sealed and a Great Multitude",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "2:58 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter7.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 8 - The Seventh Seal and the First Four Trumpets",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "2:15 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter8.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 9 - The Fifth and Sixth Trumpet",
+              "date_display": "November 3, 2022",
+              "date": "2022-11-03",
+              "duration": "3:09 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/RevelationChapter9.mp3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "book_reading",
+      "title": "Book Reading",
+      "description": "Readings of Christian books and studies.",
+      "collections": [
+        {
+          "key": "the_thread",
+          "title": "The Thread",
+          "author": "Ronald L. Dart (read by Brent D. Kern)",
+          "cover_image": "/Images/TheThreadCover.png",
+          "items": [
+            {
+              "title": "Chapter 1 - Picking Up the Thread",
+              "date_display": "December 19,2023",
+              "date": "2023-12-19",
+              "duration": "24 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/TheThreadChapter1.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 2 - The Seven Churches",
+              "date_display": "December 19, 2023",
+              "date": "2023-12-19",
+              "duration": "19 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/TheThreadChapter2.mp3"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "law_and_covenant",
+          "title": "Law & Covenant",
+          "author": "Ronald L. Dart (read by Brent D. Kern)",
+          "cover_image": "/Images/LawCovenantCover.png",
+          "items": [
+            {
+              "title": "Chapter 0 - Prologue",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "8 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapterPrologue.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 1 - Jigsaw Puzzle",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "31 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter1.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 10 - Immigration Law",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "26 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter10.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 11 - ***DISCLAIMER***",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": null,
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapterDisclaimer.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 11 - The Pagan Feminine",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "19 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter11.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 12 - The Problem with Sin",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "26 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter12.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 13 - The Meaning of Grace",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "30 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter13.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 14 - On Being Perfect",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "22 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter14.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 15 - Covenant, First Steps",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "25 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter15.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 16 - The Oldest Convenant",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "21 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter16.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 17 - The Social Contract",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "18 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter17.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 18 - Covenant and Government",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "13 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter18.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 19 - Israel and the Covenants",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "34 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter19.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 2 - The Purpose of Law",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "16 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter2.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 20 - The Newest Covenant",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "33 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter20.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 21 - Epilogue",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "6 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapterEpilogue.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 3 - Law and Meaning",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "26 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter3.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 4 - Understanding Law",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "36 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter4.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 5 - Jigsaw Puzzle",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "33 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter5.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 6 - The Purpose of Law",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "21 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter6.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 7 - Law and Meaning",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "20 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter7.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 8 - Divorce Law",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "22 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter8.mp3"
+                }
+              ]
+            },
+            {
+              "title": "Chapter 9 - The Avenger",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "23 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantChapter9.mp3"
+                }
+              ]
+            },
+            {
+              "title": "The Blurb (A.K.A. - The back cover)",
+              "date_display": "January 2024",
+              "date": "2024-01-01",
+              "duration": "2 min",
+              "description": null,
+              "links": [
+                {
+                  "label": "MP3",
+                  "url": "/Casts/ScriptureReading/LawAndCovenantTheBlurb.mp3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Change Identification & Management | Coaching &amp; Consulting</title>
+  <meta name="description" content="Change Identification & Management service details, outcomes, and how to get started." />
+
+  <link href="/Styles/site.css" rel="stylesheet" />
+  <link href="/Styles/Site_mobile.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
+</head>
+
+<body>
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="/index.html">
+            <img src="/Images/Logo400.jpg"
+                 class="site-logo"
+                 alt="Christian Steps Ministries"
+                 width="400" />
+          </a>
+        </h1>
+      </div>
+
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+        <section class="home-section">
+          <nav aria-label="Breadcrumb" class="breadcrumb content-narrow" style="max-width: 980px; margin: 0 auto 1rem;">
+            <a href="/index.html">Home</a>
+            <span aria-hidden="true">›</span>
+            <a href="/Coaching.html">Coaching &amp; Consulting</a>
+            <span aria-hidden="true">›</span>
+            <a href="/Services/index.html">Services</a>
+            <span aria-hidden="true">›</span>
+            <span aria-current="page">Change Identification & Management</span>
+          </nav>
+
+          <article class="card content-narrow" style="max-width: 980px; margin: 0 auto 1.5rem;">
+            <h3>Guiding Principle</h3>
+            <p style="margin-bottom: 0.5rem;">
+              <em>“Behold, I am doing a new thing; now it springs forth, do you not perceive it?”</em>
+            </p>
+            <p style="margin: 0; opacity: 0.85;">
+              <strong>Isaiah 43:19</strong>
+            </p>
+          </article>
+
+
+          <article class="card" style="max-width: 980px; margin: 0 auto;">
+            <h2>Change Identification & Management</h2>
+            <p>
+              <!-- TODO: Replace with a clear, concise description of the service. -->
+              This page describes what this service includes, who it’s for, what outcomes you can expect,
+              and how to get started.
+            </p>
+          </article>
+
+          <div class="card-grid" style="max-width: 980px; margin: 1.5rem auto 0;">
+            <article class="card">
+              <h3>What you can expect</h3>
+              <ul>
+                <li><!-- TODO: Outcome 1 --></li>
+                <li><!-- TODO: Outcome 2 --></li>
+                <li><!-- TODO: Outcome 3 --></li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <h3>Ideal for</h3>
+              <ul>
+                <li><!-- TODO: Audience 1 --></li>
+                <li><!-- TODO: Audience 2 --></li>
+                <li><!-- TODO: Audience 3 --></li>
+              </ul>
+            </article>
+          </div>
+
+          <article class="card" style="max-width: 980px; margin: 1.5rem auto; text-align: center;">
+            
+          <article class="card content-narrow" style="max-width: 980px; margin: 1.5rem auto 0;">
+            <h3>Related Services</h3>
+            <p style="margin-top:0.25rem;">
+              Explore a few options that often pair well with this work.
+            </p>
+          </article>
+
+          <div class="card-grid content-narrow" style="max-width: 980px; margin: 1rem auto 0;">
+
+            <a class="card-link" href="/Services/strategy.html">
+              <article class="card service-card">
+                <h3>Strategy</h3>
+                <p style="margin:0;">Learn more</p>
+              </article>
+            </a>
+
+            <a class="card-link" href="/Services/pm.html">
+              <article class="card service-card">
+                <h3>Project, Program & Portfolio Management</h3>
+                <p style="margin:0;">Learn more</p>
+              </article>
+            </a>
+
+            <a class="card-link" href="/Services/conflict.html">
+              <article class="card service-card">
+                <h3>Conflict Management</h3>
+                <p style="margin:0;">Learn more</p>
+              </article>
+            </a>
+
+            <a class="card-link" href="/Services/christianleadership.html">
+              <article class="card service-card">
+                <h3>Christian Leadership</h3>
+                <p style="margin:0;">Learn more</p>
+              </article>
+            </a>
+          </div>
+<h3>Ready to talk?</h3>
+            <p>
+              If you’re not sure this is the right fit, I’m happy to help you discern next steps.
+            </p>
+            <a class="btn btn-primary" href="/Contact.html">Request a Conversation</a>
+            <div style="margin-top: 0.75rem;">
+              <a class="btn" href="/Coaching.html">Back to Coaching & Consulting</a>
+            </div>
+          </article>
+
+        </section>
+
+        <div id="siteFooter"></div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Load header
+    fetch('/header.html', { cache: 'no-store' })
+    .then(r => r.text())
+    .then(h => {
+      const host = document.getElementById('siteHeader');
+      if (!host) return;
+      host.innerHTML = h;
+
+      const menu = host.querySelector('div.menu');
+      const nav = host.querySelector('div.menu ul.nav');
+      if (!menu || !nav) return;
+
+      let btn = menu.querySelector('.nav-toggle');
+      if (!btn) {
+        btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'nav-toggle';
+        btn.setAttribute('aria-label', 'Toggle Menu');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰ Menu';
+        menu.insertBefore(btn, menu.firstChild);
+      }
+
+      if (btn.dataset.bound === 'true') return;
+      btn.dataset.bound = 'true';
+
+      const toggleMenu = (e) => {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        const isOpen = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+
+      btn.addEventListener('click', toggleMenu);
+      btn.addEventListener('touchstart', toggleMenu, { passive: false });
+
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (!a) return;
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      document.addEventListener('click', () => {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    })
+    .catch(() => {});
+
+    // Load footer
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(f => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = f;
+      })
+      .catch(() => {});
+  </script>
+
+</body>
+</html>
