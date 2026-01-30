@@ -1,0 +1,2164 @@
+{
+  "collections": [
+    {
+      "key": "nmt",
+      "name": "No More Tears",
+      "icon_type": "image",
+      "icon_src": "http://christiansteps.org/images/NoMoreTearsFrontWhiteBG.jpg",
+      "description": "Recorded by Brent D. Kern, accompanied by Burr C. Phillips. Songs of hope, comfort, and faith."
+    },
+    {
+      "key": "general",
+      "name": "General Collection",
+      "icon_type": "text",
+      "icon_text": "GC",
+      "description": "An assortment of hymns\u2014solo, 4\u2011part, with and without accompaniment."
+    },
+    {
+      "key": "mcgmc",
+      "name": "McGMC Learning Tracks",
+      "icon_type": "image",
+      "icon_src": "http://christiansteps.org/images/McGMCLogo.png",
+      "description": "Learning recordings to help the McKinney GMC Choir prepare for rehearsal and worship."
+    },
+    {
+      "key": "ppc",
+      "name": "Prosper Presbyterian Service Music",
+      "icon_type": "text",
+      "icon_text": "PPC",
+      "description": "Service music and weekly worship resources for Prosper Presbyterian Church."
+    }
+  ],
+  "tracks": [
+    {
+      "title": "O Holy Night",
+      "duration": "6:50",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/OHolyNight.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/OHolyNight.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/OHolyNight.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/OHolyNight.wma"
+        }
+      ],
+      "search": "o holy night brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "Bless This House",
+      "duration": "3:08",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/BlessThisHouse.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/BlessThisHouse.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/BlessThisHouse.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/BlessThisHouse.wma"
+        }
+      ],
+      "search": "bless this house brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "The New Jerusalem",
+      "duration": "6:46",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/TheNewJerusalem.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/TheNewJerusalem.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/TheNewJerusalem.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/TheNewJerusalem.wma"
+        }
+      ],
+      "search": "the new jerusalem brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "I'll Walk With God",
+      "duration": "3:22",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/IllWalkWithGod.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/IllWalkWithGod.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/IllWalkWithGod.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/IllWalkWithGod.wma"
+        }
+      ],
+      "search": "ill walk with god brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "I Walked Today Where Jesus Walked",
+      "duration": "4:39",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/IWalkedTodayWhereJesusWalked.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/IWalkedTodayWhereJesusWalked.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/IWalkedTodayWhereJesusWalked.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/IWalkedTodayWhereJesusWalked.wma"
+        }
+      ],
+      "search": "i walked today where jesus walked brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "The Holy City",
+      "duration": "6:50",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/TheHolyCity.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/TheHolyCity.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/TheHolyCity.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/TheHolyCity.wma"
+        }
+      ],
+      "search": "the holy city brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "Were You There",
+      "duration": "2:51",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/WereYouThere.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/WereYouThere.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/WereYouThere.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/WereYouThere.wma"
+        }
+      ],
+      "search": "were you there brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "God Shall Wipe Away All Tears",
+      "duration": "5:01",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/GodShallWipeAwayAllTears.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/GodShallWipeAwayAllTears.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/GodShallWipeAwayAllTears.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/GodShallWipeAwayAllTears.wma"
+        }
+      ],
+      "search": "god shall wipe away all tears brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "The Lord's Prayer",
+      "duration": "3:15",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/TheLordsPrayer.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/TheLordsPrayer.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/TheLordsPrayer.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/TheLordsPrayer.wma"
+        }
+      ],
+      "search": "the lords prayer brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "Thank You",
+      "duration": "6:07",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/ThankYou.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/ThankYou.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/ThankYou.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/ThankYou.wma"
+        }
+      ],
+      "search": "thank you brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "To Where You Are",
+      "duration": "4:09",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/ToWhereYouAre.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/ToWhereYouAre.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/ToWhereYouAre.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/ToWhereYouAre.wma"
+        }
+      ],
+      "search": "to where you are brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "Watch The Lamb",
+      "duration": "7:24",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/WatchTheLamb.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/WatchTheLamb.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/WatchTheLamb.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/WatchTheLamb.wma"
+        }
+      ],
+      "search": "watch the lamb brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "I Will Be Here",
+      "duration": "4:14",
+      "artist": "Brent D. Kern",
+      "collection": "No More Tears",
+      "audio": "/Music/NoMoreTearsMP3/IWillBeHere.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/NoMoreTearsMP3/IWillBeHere.mp3"
+        },
+        {
+          "label": "WAV",
+          "href": "/Music/NoMoreTearsWAV/IWillBeHere.wav"
+        },
+        {
+          "label": "WMA",
+          "href": "/Music/NoMoreTearsWMA/IWillBeHere.wma"
+        }
+      ],
+      "search": "i will be here brent d kern no more tears mp3 wav wma",
+      "collection_key": "nmt",
+      "group": ""
+    },
+    {
+      "title": "Abide With Me",
+      "duration": "0:47",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/AbideWithMe.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/AbideWithMe.mp3"
+        }
+      ],
+      "search": "abide with me brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Amazing Grace",
+      "duration": "3:32",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/AmazingGrace.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/AmazingGrace.mp3"
+        }
+      ],
+      "search": "amazing grace brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Day By Day",
+      "duration": "2:54",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/DayByDay.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/DayByDay.mp3"
+        }
+      ],
+      "search": "day by day brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Fairest Lord Jesus",
+      "duration": "0:55",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/FairestLordJesus.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/FairestLordJesus.mp3"
+        }
+      ],
+      "search": "fairest lord jesus brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Give Me Jesus",
+      "duration": "4:40",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/GiveMeJesus.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/GiveMeJesus.mp3"
+        }
+      ],
+      "search": "give me jesus brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Goodness of God",
+      "duration": "4:19",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/GoodnessOfGod.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/GoodnessOfGod.mp3"
+        }
+      ],
+      "search": "goodness of god brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Gloria Patri",
+      "duration": "0:53",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/GloriaPatri.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/GloriaPatri.mp3"
+        }
+      ],
+      "search": "gloria patri brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "He Looked Beyond My Fault",
+      "duration": "2:49",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/HeLookedBeyondMyFault.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/HeLookedBeyondMyFault.mp3"
+        },
+        {
+          "label": "MP3 (4\u2011Part)",
+          "href": "/Music/GeneralMP3/HeLookedBeyondMyFault4Part.mp3"
+        }
+      ],
+      "search": "he looked beyond my fault brent d kern general collection mp3 4 part",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "How Great Thou Art",
+      "duration": "5:46",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/HowGreatThouArt.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/HowGreatThouArt.mp3"
+        }
+      ],
+      "search": "how great thou art brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "How Deep The Father's Love For Us",
+      "duration": "3:50",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/HowDeepTheFathersLoveForUs.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/HowDeepTheFathersLoveForUs.mp3"
+        }
+      ],
+      "search": "how deep the fathers love for us brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Hymn Medley I",
+      "duration": "4:21",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/MedleyArmstrong.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/MedleyArmstrong.mp3"
+        }
+      ],
+      "search": "hymn medley i brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "I Need Thee Every Hour",
+      "duration": "0:51",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/INeedTheeEveryHour.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/INeedTheeEveryHour.mp3"
+        }
+      ],
+      "search": "i need thee every hour brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Is He Worthy / Revelation Song Medley",
+      "duration": "7:10",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/IsHeWorthy.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/IsHeWorthy.mp3"
+        }
+      ],
+      "search": "is he worthy revelation song medley brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "It Is Well With My Soul",
+      "duration": "5:33",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/ItIsWellWithMySoul.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/ItIsWellWithMySoul.mp3"
+        }
+      ],
+      "search": "it is well with my soul brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Lord I Need You",
+      "duration": "4:44",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/LordINeedYou.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/LordINeedYou.mp3"
+        }
+      ],
+      "search": "lord i need you brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Mary Did You Know",
+      "duration": "",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/MaryDidYouKnow.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/MaryDidYouKnow.mp3"
+        }
+      ],
+      "search": "mary did you know brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Higher Ground",
+      "duration": "",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/HigherGround.m4a",
+      "primary_format": "m4a",
+      "downloads": [
+        {
+          "label": "M4A",
+          "href": "/Music/GeneralMP3/HigherGround.m4a"
+        }
+      ],
+      "search": "higher ground brent d kern general collection m4a",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Welcome To Our World",
+      "duration": "",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "/Music/GeneralMP3/WelcomeToOurWorld.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/GeneralMP3/WelcomeToOurWorld.mp3"
+        }
+      ],
+      "search": "welcome to our world brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
+      "title": "Thank You - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Thank You Tracks",
+      "audio": "/Music/McKinneyGlobal/ThankYouWithChoir.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/ThankYouWithChoir.mp3"
+        }
+      ],
+      "search": "Thank You - Even Mix Thank You Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "City On It's Knees - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "City On It's Knees Tracks",
+      "audio": "/Music/McKinneyGlobal/CityOnItsKnees.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/CityOnItsKnees.mp3"
+        }
+      ],
+      "search": "City On It's Knees - Even Mix City On It's Knees Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "City On It's Knees Lyrics",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "City On It's Knees Tracks",
+      "audio": "",
+      "primary_format": "",
+      "downloads": [
+        {
+          "label": "DOCX",
+          "href": "/Music/McKinneyGlobal/CityOnItsKneesLyrics.docx"
+        }
+      ],
+      "search": "City On It's Knees Lyrics City On It's Knees Tracks mcgmc learning tracks docx"
+    },
+    {
+      "title": "Shine Down - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Shine Down Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/ShineDown.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/ShineDown.mp3"
+        }
+      ],
+      "search": "Shine Down - Even Mix Shine Down Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Christ Hath a Garden - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Christ Hath a Garden Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/ChristHathAGardenEvenMix.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/ChristHathAGardenEvenMix.mp3"
+        }
+      ],
+      "search": "Christ Hath a Garden - Even Mix Christ Hath a Garden Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Christ Hath a Garden - Tenor Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Christ Hath a Garden Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/ChristHathAGardenTenor.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/ChristHathAGardenTenor.mp3"
+        }
+      ],
+      "search": "Christ Hath a Garden - Tenor Emphasized Christ Hath a Garden Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Lift Your Light - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Lift Your Light Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/LiftYouLight4Part.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/LiftYouLight4Part.mp3"
+        }
+      ],
+      "search": "Lift Your Light - Even Mix Lift Your Light Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Lift Your Light - Soprano Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Lift Your Light Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/LiftYouLight-Soprano.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/LiftYouLight-Soprano.mp3"
+        }
+      ],
+      "search": "Lift Your Light - Soprano Emphasized Lift Your Light Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Lift Your Light - Alto Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Lift Your Light Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/LiftYouLight-Alto.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/LiftYouLight-Alto.mp3"
+        }
+      ],
+      "search": "Lift Your Light - Alto Emphasized Lift Your Light Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Lift Your Light - Tenor Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Lift Your Light Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/LiftYouLight-Tenor.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/LiftYouLight-Tenor.mp3"
+        }
+      ],
+      "search": "Lift Your Light - Tenor Emphasized Lift Your Light Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Lift Your Light - Bass Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Lift Your Light Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/LiftYouLight-Bass.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/LiftYouLight-Bass.mp3"
+        }
+      ],
+      "search": "Lift Your Light - Bass Emphasized Lift Your Light Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "O Come Ye Faithful Medley - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "O Come Ye Faithful Medley",
+      "audio": "/Music/McKinneyGlobal/Medley.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/Medley.mp3"
+        }
+      ],
+      "search": "O Come Ye Faithful Medley - Even Mix O Come Ye Faithful Medley mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Welcome To Our World",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Welcome To Our World",
+      "audio": "/Music/McKinneyGlobal/WelcomeToOurWorld.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/WelcomeToOurWorld.mp3"
+        },
+        {
+          "label": "Sheet Music",
+          "href": "Music/McKinneyGlobal/WelcomeToOurWorld-Lead-C.pdf"
+        }
+      ],
+      "search": "Welcome To Our World Welcome To Our World mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Upon This Rock - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Upon This Rock Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/UponThisRock-EvenMix.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/UponThisRock-EvenMix.mp3"
+        }
+      ],
+      "search": "Upon This Rock - Even Mix Upon This Rock Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Upon This Rock - Soprano Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Upon This Rock Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/UponThisRockSoprano.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/UponThisRockSoprano.mp3"
+        }
+      ],
+      "search": "Upon This Rock - Soprano Emphasized Upon This Rock Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Upon This Rock - Alto Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Upon This Rock Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/UponThisRockAlto.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/UponThisRockAlto.mp3"
+        }
+      ],
+      "search": "Upon This Rock - Alto Emphasized Upon This Rock Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Upon This Rock - Tenor Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Upon This Rock Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/UponThisRockTenor.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/UponThisRockTenor.mp3"
+        }
+      ],
+      "search": "Upon This Rock - Tenor Emphasized Upon This Rock Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Upon This Rock - Bass Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Upon This Rock Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/UponThisRockBass.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/UponThisRockBass.mp3"
+        }
+      ],
+      "search": "Upon This Rock - Bass Emphasized Upon This Rock Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Still, Still, Still - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Still, Still, Still Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/StillStillStillEvenMix.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/StillStillStillEvenMix.mp3"
+        }
+      ],
+      "search": "Still, Still, Still - Even Mix Still, Still, Still Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Still, Still, Still - Soprano Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Still, Still, Still Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/StillStillStillSoprano.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/StillStillStillSoprano.mp3"
+        }
+      ],
+      "search": "Still, Still, Still - Soprano Emphasized Still, Still, Still Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Still, Still, Still - Alto Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Still, Still, Still Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/StillStillStillAlto.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/StillStillStillAlto.mp3"
+        }
+      ],
+      "search": "Still, Still, Still - Alto Emphasized Still, Still, Still Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Still, Still, Still - Tenor Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Still, Still, Still Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/StillStillStillTenor.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/StillStillStillTenor.mp3"
+        }
+      ],
+      "search": "Still, Still, Still - Tenor Emphasized Still, Still, Still Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Still, Still, Still - Bass Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Still, Still, Still Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/StillStillStillBass.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/StillStillStillBass.mp3"
+        }
+      ],
+      "search": "Still, Still, Still - Bass Emphasized Still, Still, Still Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "How Can I Keep From Singing - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "How Can I Keep From Singing Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/HowCanIKeepFromSinging.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/HowCanIKeepFromSinging.mp3"
+        }
+      ],
+      "search": "How Can I Keep From Singing - Even Mix How Can I Keep From Singing Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "How Can I Keep From Singing - Soprano Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "How Can I Keep From Singing Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Soprano.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Soprano.mp3"
+        }
+      ],
+      "search": "How Can I Keep From Singing - Soprano Emphasized How Can I Keep From Singing Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "How Can I Keep From Singing - Alto Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "How Can I Keep From Singing Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Alto.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Alto.mp3"
+        }
+      ],
+      "search": "How Can I Keep From Singing - Alto Emphasized How Can I Keep From Singing Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "How Can I Keep From Singing - Tenor Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "How Can I Keep From Singing Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Tenor.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Tenor.mp3"
+        }
+      ],
+      "search": "How Can I Keep From Singing - Tenor Emphasized How Can I Keep From Singing Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "How Can I Keep From Singing - Bass Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "How Can I Keep From Singing Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Bass.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/HowCanIKeepFromSinging-Bass.mp3"
+        }
+      ],
+      "search": "How Can I Keep From Singing - Bass Emphasized How Can I Keep From Singing Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Candlelight Carol - Even Mix",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Candlelight Carol Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/CandlelightCarolEvenMix.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/CandlelightCarolEvenMix.mp3"
+        }
+      ],
+      "search": "Candlelight Carol - Even Mix Candlelight Carol Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Candlelight Carol - Soprano Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Candlelight Carol Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/CandlelightCarolSoprano.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/CandlelightCarolSoprano.mp3"
+        }
+      ],
+      "search": "Candlelight Carol - Soprano Emphasized Candlelight Carol Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Candlelight Carol - Alto Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Candlelight Carol Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/CandlelightCarolAlto.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/CandlelightCarolAlto.mp3"
+        }
+      ],
+      "search": "Candlelight Carol - Alto Emphasized Candlelight Carol Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Candlelight Carol - Tenor Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Candlelight Carol Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/CandlelightCarolTenor.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/CandlelightCarolTenor.mp3"
+        }
+      ],
+      "search": "Candlelight Carol - Tenor Emphasized Candlelight Carol Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Candlelight Carol - Bass Emphasized",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Candlelight Carol Learning Tracks",
+      "audio": "/Music/McKinneyGlobal/CandlelightCarolBass.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/CandlelightCarolBass.mp3"
+        }
+      ],
+      "search": "Candlelight Carol - Bass Emphasized Candlelight Carol Learning Tracks mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Mary Did You Know",
+      "duration": "",
+      "artist": "",
+      "collection": "McGMC Learning Tracks",
+      "collection_key": "mcgmc",
+      "group": "Mary Did You Know",
+      "audio": "/Music/McKinneyGlobal/MaryDidYouKnow.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "/Music/McKinneyGlobal/MaryDidYouKnow.mp3"
+        }
+      ],
+      "search": "Mary Did You Know Mary Did You Know mcgmc learning tracks mp3"
+    },
+    {
+      "title": "Current Week's Worship Service",
+      "duration": "",
+      "artist": "",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Resources",
+      "audio": "",
+      "primary_format": "",
+      "downloads": [
+        {
+          "label": "PPSX",
+          "href": "/Music/PresbyServiceMusic/CurrentChurchService.ppsx"
+        }
+      ],
+      "search": "Current Week's Worship Service ppc prosper presbyterian service music ppsx"
+    },
+    {
+      "title": "Current Week's Worship Service (Oct 8, 2023)",
+      "duration": "",
+      "artist": "",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Resources",
+      "audio": "",
+      "primary_format": "",
+      "downloads": [
+        {
+          "label": "PPSX",
+          "href": "/Music/PresbyServiceMusic/CurrentChurchService-10082023.ppsx"
+        }
+      ],
+      "search": "Current Week's Worship Service (Oct 8, 2023) ppc prosper presbyterian service music ppsx"
+    },
+    {
+      "title": "Angels We Have Heard On High",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/AngelWeHaveHeardOnHigh.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/AngelWeHaveHeardOnHigh.mp3"
+        }
+      ],
+      "search": "Angels We Have Heard On High Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Away in the Manger",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 15, 2025",
+      "audio": "/Music/PresbyServiceMusic/AwayInTheManger.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/AwayInTheManger.mp3"
+        }
+      ],
+      "search": "Away in the Manger Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Come Thou Long Expected Jesus",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 15, 2025",
+      "audio": "/Music/PresbyServiceMusic/ComeThouLongExpectedJesus.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ComeThouLongExpectedJesus.mp3"
+        }
+      ],
+      "search": "Come Thou Long Expected Jesus Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "The First Noel",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 15, 2025",
+      "audio": "/Music/PresbyServiceMusic/TheFirstNoel.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/TheFirstNoel.mp3"
+        }
+      ],
+      "search": "The First Noel Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Go Tell It On The Mountain",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/GoTellItOnTheMountain.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/GoTellItOnTheMountain.mp3"
+        }
+      ],
+      "search": "Go Tell It On The Mountain Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Hark The Herald Angels Sing",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/HarkTheHeraldAngelsSing.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/HarkTheHeraldAngelsSing.mp3"
+        }
+      ],
+      "search": "Hark The Herald Angels Sing Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Joy To The World",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/JoyToTheWorld.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/JoyToTheWorld.mp3"
+        }
+      ],
+      "search": "Joy To The World Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Joy To The World - French Horn - Lily Kern",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/JoyToTheWorldHorn.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/JoyToTheWorldHorn.mp3"
+        }
+      ],
+      "search": "Joy To The World - French Horn - Lily Kern Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "O Come All Ye Faithful",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/OComeAllYeFaithful.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/OComeAllYeFaithful.mp3"
+        }
+      ],
+      "search": "O Come All Ye Faithful Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "O Holy Night",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/OHolyNight.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/OHolyNight.mp3"
+        }
+      ],
+      "search": "O Holy Night Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Silent Night",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Dec 24, 2021",
+      "audio": "/Music/PresbyServiceMusic/SilentNight.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/SilentNight.mp3"
+        }
+      ],
+      "search": "Silent Night Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+    },
+    {
+      "title": "We Three Kings *",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/WeThreeKings.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/WeThreeKings.mp3"
+        }
+      ],
+      "search": "We Three Kings * Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "A Christian Home ***",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/AChristianHome.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/AChristianHome.mp3"
+        }
+      ],
+      "search": "A Christian Home *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Amazing Grace",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/AmazingGrace.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/AmazingGrace.mp3"
+        }
+      ],
+      "search": "Amazing Grace Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Because He Lives ***",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/BecauseHeLives.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/BecauseHeLives.mp3"
+        }
+      ],
+      "search": "Because He Lives *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Blessed Assurance",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/BlessedAssurance.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/BlessedAssurance.mp3"
+        }
+      ],
+      "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Brethren We Have Met to Worship",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/BrethrenWeHaveMet.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/BrethrenWeHaveMet.mp3"
+        }
+      ],
+      "search": "Brethren We Have Met to Worship Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Christ The Lord is Risen Today",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ChristTheLordIsRisenToday.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ChristTheLordIsRisenToday.mp3"
+        }
+      ],
+      "search": "Christ The Lord is Risen Today Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Come Christians Join to Sing",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ComeChristianJoinToSing.m4a",
+      "primary_format": "m4a",
+      "downloads": [
+        {
+          "label": "M4A (Listen)",
+          "href": "/Music/PresbyServiceMusic/ComeChristianJoinToSing.m4a"
+        }
+      ],
+      "search": "Come Christians Join to Sing Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Come Thou Fount of Every Blessing",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ComeThouFountOfEveryBlessing.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ComeThouFountOfEveryBlessing.mp3"
+        },
+        {
+          "label": "MP3 (Listen) - With Ebenezer",
+          "href": "/Music/PresbyServiceMusic/ComeThouFountBlue356.mp3"
+        }
+      ],
+      "search": "Come Thou Fount of Every Blessing Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Come Ye Sinners, Poor and Needy",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ComeYeSinners.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ComeYeSinners.mp3"
+        }
+      ],
+      "search": "Come Ye Sinners, Poor and Needy Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Doxology",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/Doxology.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/Doxology.mp3"
+        },
+        {
+          "label": "4 Part - MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/Doxology-4Part.mp3"
+        }
+      ],
+      "search": "Doxology Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "For the Beauty of the Earth",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ForTheBeautyOfTheEarth.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ForTheBeautyOfTheEarth.mp3"
+        }
+      ],
+      "search": "For the Beauty of the Earth Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Gloria Patri",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/GloriaPatri.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/GloriaPatri.mp3"
+        },
+        {
+          "label": "4 Part - MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/GloriaPatri-4Part.mp3"
+        }
+      ],
+      "search": "Gloria Patri Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "God Bless America",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/GodBlessAmerica.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/GodBlessAmerica.mp3"
+        }
+      ],
+      "search": "God Bless America Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Have Thine Own Way",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/HaveThineOwnWay.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/HaveThineOwnWay.mp3"
+        }
+      ],
+      "search": "Have Thine Own Way Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "He Lives",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/HeLives.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/HeLives.mp3"
+        }
+      ],
+      "search": "He Lives Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Higher Ground ***",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/HigherGround.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/HigherGround.mp3"
+        }
+      ],
+      "search": "Higher Ground *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Holy, Holy, Holy",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/HolyHolyHoly.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/HolyHolyHoly.mp3"
+        }
+      ],
+      "search": "Holy, Holy, Holy Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "I Love To Tell The Story",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ILoveToTellTheStory.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ILoveToTellTheStory.mp3"
+        }
+      ],
+      "search": "I Love To Tell The Story Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "It Is Well",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ItIsWellWithMySoul.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ItIsWellWithMySoul.mp3"
+        }
+      ],
+      "search": "It Is Well Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Jesus Paid It All",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/JesusPaidItAll.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/JesusPaidItAll.mp3"
+        }
+      ],
+      "search": "Jesus Paid It All Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Jesus Saves *",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/Jesus Saves Piano and Voice.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/Jesus Saves Piano and Voice.mp3"
+        }
+      ],
+      "search": "Jesus Saves * Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Joyful Joyful We Adore Thee",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/JoyfulJoyfulWeAdoreThee.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/JoyfulJoyfulWeAdoreThee.mp3"
+        }
+      ],
+      "search": "Joyful Joyful We Adore Thee Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Leaning On The Everlasting Arms",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/LeaningOnTheEverlastingArms.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/LeaningOnTheEverlastingArms.mp3"
+        }
+      ],
+      "search": "Leaning On The Everlasting Arms Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Lead On O King Eternal",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/LeadOnOhKingEternal.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/LeadOnOhKingEternal.mp3"
+        }
+      ],
+      "search": "Lead On O King Eternal Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Love Lifted Me",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/LoveLiftedMe.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/LoveLiftedMe.mp3"
+        }
+      ],
+      "search": "Love Lifted Me Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Open My Eyes",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/OpenMyEyes.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/OpenMyEyes.mp3"
+        }
+      ],
+      "search": "Open My Eyes Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Pass It On",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/PassItOn.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/PassItOn.mp3"
+        }
+      ],
+      "search": "Pass It On Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Redeemed",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/Redeemed.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/Redeemed.mp3"
+        }
+      ],
+      "search": "Redeemed Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Resurrection Hallelujah *",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/ResurrectionHallelujah.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/ResurrectionHallelujah.mp3"
+        }
+      ],
+      "search": "Resurrection Hallelujah * Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Ride On, Ride On In Majesty",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/RideOnRideOnInMajesty.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/RideOnRideOnInMajesty.mp3"
+        }
+      ],
+      "search": "Ride On, Ride On In Majesty Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Rock of Ages ***",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/RockOfAges.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/RockOfAges.mp3"
+        }
+      ],
+      "search": "Rock of Ages *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Send The Light",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/SendTheLight.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/SendTheLight.mp3"
+        }
+      ],
+      "search": "Send The Light Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Standing On The Promises",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/Standing On The Promises Piano and Voice.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/Standing On The Promises Piano and Voice.mp3"
+        }
+      ],
+      "search": "Standing On The Promises Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "The Church's One Foundation",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/TheChurchsOneFoundation.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/TheChurchsOneFoundation.mp3"
+        }
+      ],
+      "search": "The Church's One Foundation Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Tis So Sweet to Trust in Jesus ***",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/TisSoSweet.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/TisSoSweet.mp3"
+        }
+      ],
+      "search": "Tis So Sweet to Trust in Jesus *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Trust and Obey",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/TrustAndObey.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/TrustAndObey.mp3"
+        }
+      ],
+      "search": "Trust and Obey Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Victory in Jesus",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/VictoryInJesus.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/VictoryInJesus.mp3"
+        }
+      ],
+      "search": "Victory in Jesus Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "What a Friend We Have in Jesus",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/WhatAFriendWeHaveInJesus.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/WhatAFriendWeHaveInJesus.mp3"
+        }
+      ],
+      "search": "What a Friend We Have in Jesus Brent D Kern Service Collection ppc prosper presbyterian service music"
+    },
+    {
+      "title": "Wonderful Words of Life",
+      "duration": "",
+      "artist": "Brent D Kern",
+      "collection": "Prosper Presbyterian Service Music",
+      "collection_key": "ppc",
+      "group": "Service Collection",
+      "audio": "/Music/PresbyServiceMusic/Wonderful Words of Life Piano and Voice.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3 (Listen)",
+          "href": "/Music/PresbyServiceMusic/Wonderful Words of Life Piano and Voice.mp3"
+        }
+      ],
+      "search": "Wonderful Words of Life Brent D Kern Service Collection ppc prosper presbyterian service music"
+    }
+  ]
+}

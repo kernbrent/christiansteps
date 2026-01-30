@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>God&apos;s Holy Days — Leviticus 23</title>
+
+  <link href="/Styles/Site.css" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
+</head>
+
+<body>
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="index.html">
+            <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries" width="400" />
+          </a>
+        </h1>
+      </div>
+
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+
+        <!-- HERO (match index vibe) -->
+        <section class="home-hero" aria-labelledby="holydays-hero-title">
+          <div class="home-hero-inner">
+            <div class="home-hero-copy">
+              <h2 id="holydays-hero-title">God&apos;s Holy Days</h2>
+              <p>
+                Leviticus 23 outlines the Holy Days—God’s appointed times—built around His plan of redemption.
+                Use this page to explore dates by year, read brief descriptions, and print yearly or wallet calendars.
+              </p>
+
+              <div class="home-cta" role="group" aria-label="Primary actions">
+                <a class="btn btn-primary" href="#holyday-table">View dates</a>
+                <a class="btn btn-secondary" href="#wallet">Generate calendars</a>
+              </div>
+
+              <p class="featured-note" style="margin-top:0.75rem;">
+                Tip: On desktop, the “Holy Day Information” column includes a <em>more/less</em> link for longer notes.
+              </p>
+            </div>
+
+            <div class="hero-image-wrap" aria-label="Calendar icon">
+              <div class="card" style="display:grid;place-items:center;padding:1.25rem;min-height:180px;">
+                <div style="font-size:2.25rem;line-height:1;">🗓️</div>
+                <div style="margin-top:0.5rem;font-weight:800;">Holy Days</div>
+                <div class="featured-note" style="text-align:center;margin-top:0.25rem;">
+                  Explore • Learn • Print
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- OVERVIEW CARDS -->
+        <section class="home-section" aria-labelledby="how-to-title">
+          <h3 id="how-to-title">How to use this page</h3>
+          <div class="card-grid">
+            <article class="card">
+              <h4>Browse by year</h4>
+              <p>Select a year (or “All Years”) to see the Holy Day dates in chronological order.</p>
+            </article>
+
+            <article class="card">
+              <h4>Read Holy Day notes</h4>
+              <p>Short summaries are shown by default. Click <em>more…</em> to expand and <em>less</em> to collapse.</p>
+            </article>
+
+            <article class="card">
+              <h4>Print calendars</h4>
+              <p>Jump to the bottom to print the 3‑year wallet calendar and other annual formats.</p>
+              <a href="#wallet">Go to calendar tools →</a>
+            </article>
+          </div>
+        </section>
+
+        <!-- TABLE + YEAR SELECT (in a large card) -->
+        <section class="home-section" id="holyday-table" aria-labelledby="table-title">
+          <h3 id="table-title">Holy Day dates</h3>
+
+          <div class="card holydays-card">
+            <p class="featured-note" style="margin-top:0;">
+              Select a year below. Choose <strong>All Years</strong> to view everything together.
+            </p>
+
+            <div class="holydays-controls">
+              <div class="holydays-control">
+                <label for="yearSelect"><strong>Choose a year</strong></label>
+                <select id="yearSelect">
+                  <option value="" selected disabled>Select a year…</option>
+                </select>
+              </div>
+
+              <a class="btn btn-secondary" href="#wallet" style="text-decoration:none;">Jump to calendars ↓</a>
+            </div>
+
+            <div id="tableWrap" class="holydays-table-wrap" aria-live="polite">
+              <table class="holydays-table">
+                <thead>
+                  <tr>
+                    <th class="col-name">Holy Day</th>
+                    <th class="col-year">Year</th>
+                    <th class="col-date">Date</th>
+                    <th class="col-heb hide-mobile">Hebrew Date</th>
+                    <th class="col-season hide-mobile">Season</th>
+                    <th class="col-scripture hide-mobile">Scripture</th>
+                    <th class="col-info hide-mobile">Holy Day Information</th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+
+            <p id="loadError" class="holydays-error" style="display:none;"></p>
+          </div>
+        </section>
+
+        <!-- CALENDAR TOOLS -->
+        <section class="home-section" id="wallet" aria-labelledby="wallet-title">
+          <h3 id="wallet-title">Calendar tools</h3>
+
+          <div class="card-grid two">
+            <article class="card">
+              <h4>3‑Year Wallet Calendar (Front/Back)</h4>
+              <p>
+                Prints the latest three years found in <code>holydaydates.json</code> in a wallet-sized layout.
+              </p>
+              <button type="button" id="printWalletBtn" class="btn btn-primary">Print wallet calendar</button>
+              <p class="featured-note" style="margin-top:0.5rem;">
+                If a pop‑up is blocked, allow pop‑ups to print.
+              </p>
+            </article>
+
+            <article class="card">
+              <h4>Annual calendars</h4>
+              <p>
+                Want a full-page annual calendar (one year per page) or a downloadable PDF?
+                Tell me what format you prefer and I&apos;ll add it here.
+              </p>
+              <a class="btn btn-secondary" href="about.html#contact">Request a format →</a>
+            </article>
+          </div>
+        </section>
+
+        <div id="siteFooter"></div>
+
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Header
+    fetch('/header.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(h => {
+        const host = document.getElementById('siteHeader');
+        host.innerHTML = h;
+
+        const menu = host.querySelector('div.menu');
+        const nav = host.querySelector('div.menu ul.nav');
+        if (menu && nav && !menu.querySelector('.nav-toggle')) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'nav-toggle';
+          btn.setAttribute('aria-label','Toggle Menu');
+          btn.textContent = '☰ Menu';
+          menu.insertBefore(btn, menu.firstChild);
+          btn.addEventListener('click', () => nav.classList.toggle('open'));
+        }
+      })
+      .catch(() => {});
+
+    // Footer
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(f => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = f;
+      })
+      .catch(() => {});
+  </script>
+
+  <script>
+const DATES_JSON_URL = 'holydaydates.json';
+    const DETAILS_JSON_URL = 'holydaydescription.json';
+
+    const yearSelect = document.getElementById('yearSelect');
+    const rowsEl = document.getElementById('rows');
+    const tableWrap = document.getElementById('tableWrap');
+    const loadError = document.getElementById('loadError');
+    const printWalletBtn = document.getElementById('printWalletBtn');
+
+    let dates = [];
+    let detailsByKey = new Map();
+
+    function escapeHtml(str){
+      return String(str ?? '')
+        .replaceAll('&','&amp;')
+        .replaceAll('<','&lt;')
+        .replaceAll('>','&gt;')
+        .replaceAll('"','&quot;')
+        .replaceAll("'","&#039;");
+    }
+
+    function titleFromKey(key){
+      const raw = String(key || '').trim();
+      const overrides = {
+        'ULB_FIRST_DAY': 'ULB First Day',
+        'ULB_LAST_DAY': 'ULB Last Day',
+        'LASTGREAT': 'Last Day'
+      };
+      if (overrides[raw]) return overrides[raw];
+      return raw
+        .toLowerCase()
+        .split('_')
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(' ');
+    }
+
+    function parseEnglishDate(s){
+      if (!s) return null;
+      const d = new Date(s);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function firstWords(text, n){
+      const words = String(text || '').trim().split(/\s+/).filter(Boolean);
+      if (words.length <= n) return { preview: text, full: text, hasMore: false };
+      return { preview: words.slice(0, n).join(' '), full: words.join(' '), hasMore: true };
+    }
+
+    async function loadData(){
+      const [datesRes, detailsRes] = await Promise.all([
+        fetch(DATES_JSON_URL, { cache: 'no-store' }),
+        fetch(DETAILS_JSON_URL, { cache: 'no-store' })
+      ]);
+
+      if (!datesRes.ok) throw new Error('Could not load ' + DATES_JSON_URL);
+      if (!detailsRes.ok) throw new Error('Could not load ' + DETAILS_JSON_URL);
+
+      const datesJson = await datesRes.json();
+      const detailsJson = await detailsRes.json();
+
+      dates = Array.isArray(datesJson?.holyday_dates) ? datesJson.holyday_dates
+            : Array.isArray(datesJson) ? datesJson
+            : [];
+
+      const detailsArr = Array.isArray(detailsJson?.holy_days) ? detailsJson.holy_days
+                      : Array.isArray(detailsJson) ? detailsJson
+                      : [];
+
+      detailsByKey = new Map(detailsArr.map(d => [String(d.key).trim(), d]));
+
+      const years = Array.from(new Set(dates.map(d => d.year))).filter(Boolean).sort((a,b)=>a-b);
+
+      // Add All Years option
+      const allOpt = document.createElement('option');
+      allOpt.value = 'ALL';
+      allOpt.textContent = 'All Years';
+      yearSelect.appendChild(allOpt);
+
+      for (const y of years){
+        const opt = document.createElement('option');
+        opt.value = String(y);
+        opt.textContent = String(y);
+        yearSelect.appendChild(opt);
+      }
+}
+
+    function renderRows(selected){
+      let filtered = dates.slice();
+      if (selected !== 'ALL'){
+        const y = Number(selected);
+        filtered = filtered.filter(d => Number(d.year) === y);
+      }
+
+      filtered.sort((a,b)=>{
+        const da = parseEnglishDate(a.english_date);
+        const db = parseEnglishDate(b.english_date);
+        if (da && db) return da - db;
+        if (da && !db) return -1;
+        if (!da && db) return 1;
+        return String(a.key).localeCompare(String(b.key));
+      });
+
+      rowsEl.innerHTML = filtered.map(d=>{
+        const detail = detailsByKey.get(String(d.key).trim()) || {};
+        const name = titleFromKey(d.key);
+
+        const info = detail.notes || '';
+        const { preview, full, hasMore } = firstWords(info, 15);
+
+        const scripture = detail.scripture || '';
+        const season = detail.season || '';
+        const heb = d.hebrew_date || '';
+
+        const infoHtml = hasMore
+          ? `<span class="info-text" data-preview="${escapeHtml(preview)}" data-full="${escapeHtml(full)}">${escapeHtml(preview)}</span><span class="info-ellipsis">…</span>
+             <button type="button" class="more-link" aria-expanded="false">more...</button>`
+          : `<span class="info-text">${escapeHtml(full)}</span>`;
+return `<tr>
+          <td class="col-name">${escapeHtml(name)}</td>
+          <td class="col-year">${escapeHtml(String(d.year || ''))}</td>
+          <td class="col-date">${escapeHtml(d.english_date || '')}</td>
+          <td class="col-heb hide-mobile">${escapeHtml(heb)}</td>
+          <td class="col-season hide-mobile">${escapeHtml(season)}</td>
+          <td class="col-scripture hide-mobile">${escapeHtml(scripture)}</td>
+          <td class="col-info hide-mobile">${infoHtml}</td>
+        </tr>`;
+      }).join('');
+
+      tableWrap.style.display = 'block';
+    }
+
+    // FIX: more/less toggle (expanded shows FULL text; collapsed shows preview only)
+    rowsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('button.more-link');
+      if (!btn) return;
+
+      const cell = btn.closest('td');
+      const text = cell.querySelector('.info-text');
+      const ellipsis = cell.querySelector('.info-ellipsis');
+      if (!text) return;
+
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      if (expanded){
+        // collapse
+        const preview = text.getAttribute('data-preview') || text.textContent;
+        text.textContent = preview;
+        if (ellipsis) ellipsis.hidden = false;
+        btn.textContent = 'more...';
+        btn.setAttribute('aria-expanded','false');
+      } else {
+        // expand
+        const full = text.getAttribute('data-full') || text.textContent;
+        text.textContent = full;
+        if (ellipsis) ellipsis.hidden = true;
+        btn.textContent = 'less';
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+
+    yearSelect.addEventListener('change', () => {
+      const val = yearSelect.value;
+      if (!val) return;
+      renderRows(val);
+    });
+
+    function getThreeYears(){
+      const years = Array.from(new Set(dates.map(d => d.year))).filter(Boolean).sort((a,b)=>a-b);
+      if (years.length <= 3) return years;
+      return years.slice(-3);
+    }
+
+    function buildWalletPrintHtml(years){
+      const ORDER = ['PASSOVER','ULB_FIRST_DAY','WAVESHEAF','ULB_LAST_DAY','PENTECOST','TRUMPETS','ATONEMENT','TABERNACLES','LASTGREAT'];
+
+      const byKeyYear = new Map();
+      for (const d of dates){
+        const k = String(d.key || '').trim();
+        if (!k || !years.includes(d.year)) continue;
+        if (!byKeyYear.has(k)) byKeyYear.set(k, new Map());
+        byKeyYear.get(k).set(d.year, d.english_date || '');
+      }
+
+      const rows = ORDER
+        .filter(k => byKeyYear.has(k))
+        .map(k => {
+          const ymap = byKeyYear.get(k);
+          return { name: titleFromKey(k), dates: years.map(y => ymap.get(y) || '') };
+        });
+
+      const frontRows = rows.slice(0, 5);
+      const backRows  = rows.slice(5);
+
+      function buildTableRows(rset){
+        return rset.map(r => {
+          const cols = r.dates.map(d => `<td class="d">${escapeHtml(String(d).replace(/,?\s*\d{4}$/,''))}</td>`).join('');
+          return `<tr><td class="n">${escapeHtml(r.name)}</td>${cols}</tr>`;
+        }).join('');
+      }
+
+      function cardHtml(sideLabel, rset){
+        return `<section class="card">
+          <div class="card-header">
+            <div class="title">Holy Days Wallet Calendar</div>
+            <div class="side">${escapeHtml(sideLabel)}</div>
+          </div>
+          <table class="mini">
+            <thead>
+              <tr>
+                <th class="n">Holy Day</th>
+                ${years.map(y => `<th class="d">${escapeHtml(String(y))}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>${buildTableRows(rset)}</tbody>
+          </table>
+          <div class="footer">Print at 100% scale • christiansteps.org</div>
+        </section>`;
+      }
+
+      const cards = [
+        cardHtml(backRows.length ? 'Front' : '', frontRows),
+        ...(backRows.length ? [cardHtml('Back', backRows)] : [])
+      ].join('');
+
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Holy Days Wallet Calendar</title>
+<style>
+  :root { --w: 85.6mm; --h: 54mm; }
+  @page { size: var(--w) var(--h); margin: 0; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
+
+  .card{
+    width: var(--w);
+    height: var(--h);
+    box-sizing: border-box;
+    padding: 4.2mm 3.6mm 3.2mm;
+  }
+  .card { page-break-after: always; }
+  .card:last-child { page-break-after: auto; }
+
+  .card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom: 1.8mm;
+  }
+  .title{
+    font-size: 9.0pt;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .side{
+    font-size: 8.0pt;
+    font-weight: 900;
+  }
+
+  table.mini{
+    width:100%;
+    border-collapse:collapse;
+    table-layout: fixed;
+    font-size: 5.8pt;
+    line-height: 1.12;
+  }
+  table.mini thead th{
+    text-align:left;
+    font-size: 5.6pt;
+    padding: 0.55mm 0.5mm 0.65mm;
+    border-bottom: 0.22mm solid #111;
+    white-space: nowrap;
+  }
+  table.mini tbody td{
+    padding: 0.55mm 0.5mm;
+    vertical-align: top;
+    border-bottom: 0.14mm solid #ddd;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  table.mini tbody tr:last-child td{ border-bottom:none; }
+
+  th.n, td.n{ width: 40%; font-weight: 800; }
+  th.d, td.d{ width: 20%; text-align:right; }
+
+  .footer{
+    margin-top: 1.7mm;
+    font-size: 5.6pt;
+    color:#444;
+    text-align:center;
+  }
+
+  @media screen {
+    body{
+      background:#f3f4f6;
+      padding: 18px;
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content:center;
+    }
+    .card{
+      background:#fff;
+      border-radius: 10px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+  }
+</style>
+</head>
+<body>
+${cards}
+</body>
+</html>`;
+    }
+
+    function printWalletCalendar(){
+      const years = getThreeYears();
+      if (!years.length){
+        alert('No years found in holydaydates.json');
+        return;
+      }
+      const w = window.open('', '_blank');
+      if (!w){
+        alert('Pop-up blocked. Please allow pop-ups to print the wallet calendar.');
+        return;
+      }
+      w.document.open();
+      w.document.write(buildWalletPrintHtml(years));
+      w.document.close();
+      w.focus();
+      setTimeout(() => w.print(), 250);
+    }
+
+    printWalletBtn.addEventListener('click', printWalletCalendar);
+
+    loadData().catch(err => {
+      loadError.style.display = 'block';
+      loadError.textContent = 'There was a problem loading the Holy Day data files. Please try again later. (' + err.message + ')';
+    });
+  </script>
+</body>
+</html>

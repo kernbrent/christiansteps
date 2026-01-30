@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Christian Life Motivators Assessment - Home | ChristianSteps.net</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/URLIcon.png" />
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <div class="card">
+        <h1>The Biblical Motivators for Christian Life</h1>
+        <p class="sub">A simple, guided self-assessment to help you discover what most motivates you.</p>
+
+        <!-- Scripture-based intro -->
+        <div class="section-title">Scripture Basis</div>
+        <blockquote class="quote">
+          “Search me, O God, and know my heart; test me and know my anxious thoughts.
+          Point out anything in me that offends you, and lead me along the path of everlasting life.”
+          <small>Psalm 139:23–24</small>
+        </blockquote>
+        <p class="muted" style="margin-top:10px;">
+          This assessment is a tool for reflection. As you answer, consider what truly motivates you—and invite God to guide you
+          toward healthy motives, wise choices, and deeper peace.
+        </p>
+
+        <!-- Video intro section -->
+        <div class="section-title">Video Introduction</div>
+        <p class="muted" style="margin-top:0;">
+          Watch a short intro before you begin.
+        </p>
+        <div class="video" aria-label="Video introduction">
+          <!-- Replace VIDEO_ID with your actual YouTube ID -->
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/dbAbF8PV4a0?si=IKqsN9DYvX2vU00S"
+            title="6 Human Needs Assessment Introduction"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="grid">
+          <div>
+            <div class="section-title">What you’ll experience</div>
+            <p class="muted">
+              You’ll answer 98 short statements using three options: <strong>Yes</strong>, <strong>Partial</strong>, or <strong>No</strong>.
+              At the end, you’ll see scores for each of the motivating factors and which ones rank highest for you.
+              This is designed to be quick, honest, and practical — no “right/wrong” answers.
+            </p>
+          </div>
+          <div>
+            <div class="section-title">What are Christian Motivators?</div>
+            <p class="muted">
+              The Christian Life Motivators are core factors that influence how we think, decide, and relate.
+              Most of us value them all, but in different orders. Knowing your top motivators can help you understand what energizes you,
+              what drains you, and where you may feel “stuck.”
+            </p>
+          </div>
+        </div>
+
+          <div>
+            <div class="section-title">Are You Ready to Go Deeper?</div>
+              <p class="muted">In order to start the assessment, you will need to have the <strong>ID</strong> and <strong>Password</strong> given to you by the assessment facilitators. It will have been given to you through
+                email or may be posted in the room if you are part of a large group. 
+              </p>
+          </div>
+
+
+        <div class="cta-row">
+          <a class="btn" id="startBtn" href="#">Start the Assessment</a>
+          <span class="small-note">Takes about 8–10 minutes.</span>
+        </div>
+      </div>
+      <div class="right-rail">
+
+        <div class="img-wrap" aria-label="Motivators Assessment image">
+          <img src="images/NeedsFullSizeNoWords.png" alt="ChristianSteps.net — The Biblical Motivators for Christian Life" />
+        </div>
+
+        <article class="card side-card" aria-label="Guided assessment and services">
+          <h2 class="side-card-title">Would you like to be guided through the assessment?</h2>
+          <p class="muted" style="margin-top:8px;">
+            If you’d like help taking the assessment or interpreting your results, we’d be glad to support you
+            through coaching and consulting options.
+          </p>
+
+          <div class="side-card-actions">
+            <a class="btn btn-secondary" href="../contact.html">Contact Us</a>
+            <a class="btn btn-outline" href="../Coaching.html">Coaching &amp; Consulting</a>
+          </div>
+
+          <p class="small-note" style="margin-top:12px;">
+            Services provided by <strong>Christian Steps Ministries</strong> and <strong>Career Steps Consulting</strong>.
+          </p>
+        </article>
+
+      </div>
+</div>
+  </div>
+
+  <!-- Login gate (client-side) -->
+  <div id="loginOverlay" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  ">
+    <div style="
+      width:min(420px, 100%);
+      background:#fff;
+      border-radius:16px;
+      box-shadow:0 30px 60px rgba(0,0,0,0.35);
+      overflow:hidden;
+    ">
+      <div style="padding:14px 16px; display:flex; justify-content:space-between; align-items:center;">
+        <strong>Enter Access ID</strong> <a class="btn btn-secondary" href="../contact.html">Request Access</a>
+        <button id="loginCloseBtn" type="button" style="
+          border:none; background:#eee; padding:8px 10px; border-radius:10px; cursor:pointer;
+        ">Close</button>
+      </div>
+
+      <div style="padding:16px; display:grid; gap:12px;">
+        <label style="display:grid; gap:6px;">
+          <span style="font-size:13px; color:#374151;">ID</span>
+          <input id="loginId" type="text" autocomplete="username" style="
+            padding:10px 12px; border:1px solid #d1d5db; border-radius:12px; font-size:16px;
+          ">
+        </label>
+
+        <label style="display:grid; gap:6px;">
+          <span style="font-size:13px; color:#374151;">Password</span>
+          <input id="loginPassword" type="password" autocomplete="current-password" style="
+            padding:10px 12px; border:1px solid #d1d5db; border-radius:12px; font-size:16px;
+          ">
+        </label>
+
+        <div id="loginError" style="display:none; color:#b91c1c; font-size:13px;"></div>
+
+        <button id="loginSubmitBtn" type="button" style="
+          border:none; background:#2563eb; color:#fff; padding:12px 14px; border-radius:12px;
+          cursor:pointer; font-weight:700; font-size:16px;
+        ">Continue</button>
+
+        <div style="font-size:12px; color:#6b7280;">
+          Your ID and password are provided by the assessment facilitator.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Login Gate for "Start the Assessment" ---
+    const startBtn = document.getElementById('startBtn');
+    const overlay = document.getElementById('loginOverlay');
+    const closeBtn = document.getElementById('loginCloseBtn');
+    const submitBtn = document.getElementById('loginSubmitBtn');
+    const idInput = document.getElementById('loginId');
+    const pwInput = document.getElementById('loginPassword');
+    const errEl = document.getElementById('loginError');
+
+    function openLogin() {
+      errEl.style.display = 'none';
+      errEl.textContent = '';
+      idInput.value = '';
+      pwInput.value = '';
+      overlay.style.display = 'flex';
+      setTimeout(() => idInput.focus(), 50);
+    }
+
+    function closeLogin() {
+      overlay.style.display = 'none';
+    }
+
+    async function validateLoginAndGo() {
+      errEl.style.display = 'none';
+      errEl.textContent = '';
+
+      const enteredId = (idInput.value || '').trim();
+      const enteredPw = (pwInput.value || '').trim();
+
+      if (!enteredId || !enteredPw) {
+        errEl.textContent = 'Please enter both an ID and Password.';
+        errEl.style.display = 'block';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.75';
+
+      try {
+        // IMPORTANT: adjust path if password.json is in a different folder than home.html
+        const res = await fetch('password.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('Could not load password.json (HTTP ' + res.status + ')');
+
+        const data = await res.json();
+        if (!data || !Array.isArray(data.users)) throw new Error('password.json must have a "users" array');
+
+        const match = data.users.find(u =>
+          String(u.id).trim() === enteredId &&
+          String(u.password).trim() === enteredPw
+        );
+
+        if (!match || !match.code) {
+          // 🚀 Always continue to assessment.html, even if invalid
+          window.location.href = 'assessment.html?code=INVALID';
+          return;
+        }     
+
+        const code = encodeURIComponent(String(match.code).trim());
+        window.location.href = 'assessment.html?code=' + code;
+
+      } catch (e) {
+        console.error(e);
+        //errEl.textContent = 'Login system error. Please try again or contact the facilitator.';
+        //errEl.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '1';
+      }
+    }
+
+    // Open modal instead of navigating immediately
+    startBtn?.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLogin();
+    });
+
+    closeBtn?.addEventListener('click', closeLogin);
+
+    // Click outside the card closes modal
+    overlay?.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLogin();
+    });
+
+    submitBtn?.addEventListener('click', validateLoginAndGo);
+
+    // Enter key submits
+    [idInput, pwInput].forEach(el => el?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') validateLoginAndGo();
+    }));
+  </script>
+
+</body>
+</html>

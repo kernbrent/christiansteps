@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Articles | Christian Steps Ministries</title>
+  <meta name="description" content="Browse Christian Steps articles and devotionals. Search, filter, and print articles directly from the catalog." />
+
+  <link href="/Styles/Site.css" rel="stylesheet" />
+  <!-- NOTE: paste Site_articles_additions.css into /Styles/Site.css (recommended)
+       or include it as a separate file by uncommenting the next line.
+  -->
+  <!-- <link href="/Styles/Site_articles_additions.css" rel="stylesheet" /> -->
+
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png" />
+</head>
+
+<body>
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="/index.html">
+            <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries" width="400" />
+          </a>
+        </h1>
+      </div>
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+
+        <section class="home-hero" aria-labelledby="articles-title">
+          <div class="home-hero-inner">
+            <div class="home-hero-copy">
+              <h2 id="articles-title">Articles</h2>
+              <p class="home-hero-sub">
+                Browse studies and devotionals. Use search and filters to find what you’re looking for, and print an article without leaving this page.
+              </p>
+              <div class="home-cta" role="group" aria-label="Primary actions">
+                <a class="btn btn-primary" href="/HolyDays.html">Explore Holy Days</a>
+                <a class="btn btn-secondary" href="/Casts.html">Sermons &amp; Podcasts</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="home-section" aria-labelledby="featured-title">
+          <h3 id="featured-title">Featured</h3>
+          <p class="small-note">
+            Latest Article and Latest Devotional are selected by date. If more than one item shares the most recent date, one is chosen randomly each page load.
+          </p>
+
+          <div class="featured-row" id="featuredRow" aria-live="polite"></div>
+        </section>
+
+        <section class="home-section" aria-labelledby="browse-title">
+          <h3 id="browse-title">Browse</h3>
+
+          <div class="card" style="max-width: 1100px; margin: 0 auto;">
+            <div class="catalog-controls">
+              <div class="control-group" role="group" aria-label="Search and filters">
+                <div>
+                  <label for="q">Search</label>
+                  <input id="q" class="catalog-input" type="search" placeholder="Search titles and descriptions…" />
+                </div>
+
+                <div>
+                  <label for="author">Author</label>
+                  <select id="author" class="catalog-select">
+                    <option value="">All</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="category">Category</label>
+                  <select id="category" class="catalog-select">
+                    <option value="">All</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="control-group" role="group" aria-label="Sort">
+                <div>
+                  <label for="sort">Sort</label>
+                  <select id="sort" class="catalog-select">
+                    <option value="newest">Newest first</option>
+                    <option value="oldest">Oldest first</option>
+                    <option value="title">Title (A–Z)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="article-grid" id="articlesGrid" aria-live="polite"></div>
+
+            <div id="comingSoonWrap" style="margin-top:14px;"></div>
+
+            <div id="errorWrap" style="margin-top:14px;"></div>
+          </div>
+        </section>
+
+        <div id="siteFooter"></div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Hidden iframe used for printing -->
+  <iframe id="printFrame" title="Print frame" style="position:absolute; left:-9999px; width:0; height:0; border:0;"></iframe>
+
+  <script>
+    // Header include
+    fetch('/header.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(h => {
+        const host = document.getElementById('siteHeader');
+        if (!host) return;
+        host.innerHTML = h;
+
+        const menu = host.querySelector('div.menu');
+        const nav = host.querySelector('div.menu ul.nav');
+        if (menu && nav && !menu.querySelector('.nav-toggle')) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'nav-toggle';
+          btn.setAttribute('aria-label','Toggle Menu');
+          btn.textContent = '☰ Menu';
+          menu.insertBefore(btn, menu.firstChild);
+          btn.addEventListener('click', () => nav.classList.toggle('open'));
+        }
+      })
+      .catch(() => {});
+
+    // Footer include
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(r => r.text())
+      .then(f => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = f;
+      })
+      .catch(() => {});
+
+    // Articles catalog
+    const DATA_URL = '/data/articles.json';
+
+    const els = {
+      q: document.getElementById('q'),
+      author: document.getElementById('author'),
+      category: document.getElementById('category'),
+      sort: document.getElementById('sort'),
+      grid: document.getElementById('articlesGrid'),
+      featured: document.getElementById('featuredRow'),
+      comingSoon: document.getElementById('comingSoonWrap'),
+      error: document.getElementById('errorWrap'),
+      printFrame: document.getElementById('printFrame'),
+    };
+
+    function escapeHtml(s){
+      return String(s).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[ch]);
+    }
+
+    function fmtDate(iso){
+      if (!iso) return '';
+      const d = new Date(iso + 'T00:00:00');
+      if (isNaN(d)) return iso;
+      return d.toLocaleDateString(undefined, { year:'numeric', month:'short', day:'numeric' });
+    }
+
+    function uniq(arr){
+      return Array.from(new Set(arr.filter(Boolean))).sort((a,b)=>a.localeCompare(b));
+    }
+
+    function byDateDesc(a,b){
+      const ad = a.datePublished || '';
+      const bd = b.datePublished || '';
+      return bd.localeCompare(ad);
+    }
+
+    function pickRandomMostRecent(items){
+      if (!items.length) return null;
+      const sorted = items.slice().sort(byDateDesc);
+      const bestDate = sorted[0].datePublished || '';
+      const top = sorted.filter(x => (x.datePublished || '') === bestDate);
+      return top[Math.floor(Math.random() * top.length)];
+    }
+
+    function buildCard(item){
+      const title = escapeHtml(item.title || 'Untitled');
+      const author = escapeHtml(item.author || '');
+      const cat = escapeHtml(item.category || '');
+      const type = escapeHtml(item.type || 'Article');
+      const desc = escapeHtml(item.description || '');
+      const url = item.url || '#';
+      const date = fmtDate(item.datePublished);
+
+      const typeClass = (item.type || 'article').toLowerCase() === 'devotional'
+      ? 'article-type-devotional'
+      : 'article-type-article';
+
+      return `
+        <article class="card article-card ${typeClass}">
+          <h4 style="margin:0 0 6px;">${title}</h4>
+          <div class="article-meta">
+            <span class="badge">${type}</span>
+            ${cat ? `<span class="badge">${cat}</span>` : ''}
+            ${date ? `<span><strong>Date:</strong> ${date}</span>` : ''}
+            ${author ? `<span><strong>Author:</strong> ${author}</span>` : ''}
+          </div>
+          ${desc ? `<p class="article-desc">${desc}</p>` : ''}
+          <div class="article-actions">
+            <a class="btn btn-primary" href="${url}">Open</a>
+            <button class="btn btn-secondary" type="button" data-print="${escapeHtml(url)}">Print</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function buildFeaturedCard(item, label){
+      if (!item) return '';
+      const title = escapeHtml(item.title || 'Untitled');
+      const desc = escapeHtml(item.description || '');
+      const url = item.url || '#';
+      const date = fmtDate(item.datePublished);
+
+      return `
+        <article class="card article-card">
+          <div class="badge" style="margin-bottom:8px;">${escapeHtml(label)}</div>
+          <h4 style="margin:0 0 6px;">${title}</h4>
+          <div class="article-meta">
+            ${date ? `<span><strong>Date:</strong> ${date}</span>` : ''}
+            <span><strong>Author:</strong> ${escapeHtml(item.author || 'Brent D Kern')}</span>
+          </div>
+          ${desc ? `<p class="article-desc">${desc}</p>` : ''}
+          <div class="article-actions">
+            <a class="btn btn-primary" href="${url}">Open</a>
+            <button class="btn btn-secondary" type="button" data-print="${escapeHtml(url)}">Print</button>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderComingSoon(titles){
+      if (!titles || !titles.length) {
+        els.comingSoon.innerHTML = '';
+        return;
+      }
+
+      const lis = titles.map(t => `<li>${escapeHtml(t.title || t)}</li>`).join('');
+      els.comingSoon.innerHTML = `
+        <article class="card article-card">
+          <h4 style="margin:0 0 6px;">Coming Soon</h4>
+          <p class="small-note" style="margin-top:0;">Titles only (this list stays separate from published articles).</p>
+          <ul class="coming-soon-list">${lis}</ul>
+        </article>
+      `;
+    }
+
+    function currentFilters(){
+      return {
+        q: (els.q.value || '').trim().toLowerCase(),
+        author: els.author.value || '',
+        category: els.category.value || '',
+        sort: els.sort.value || 'newest',
+      };
+    }
+
+    function applyFilters(items){
+      const f = currentFilters();
+      let out = items.slice();
+
+      if (f.author) out = out.filter(x => (x.author || '') === f.author);
+      if (f.category) out = out.filter(x => (x.category || '') === f.category);
+
+      if (f.q) {
+        out = out.filter(x => {
+          const hay = ((x.title||'') + ' ' + (x.description||'') + ' ' + (x.category||'') + ' ' + (x.type||'')).toLowerCase();
+          return hay.includes(f.q);
+        });
+      }
+
+      if (f.sort === 'newest') out.sort(byDateDesc);
+      else if (f.sort === 'oldest') out.sort((a,b) => (a.datePublished||'').localeCompare(b.datePublished||''));
+      else if (f.sort === 'title') out.sort((a,b) => (a.title||'').localeCompare(b.title||''));
+
+      return out;
+    }
+
+    function attachPrintHandlers(){
+      els.grid.querySelectorAll('[data-print]').forEach(btn => {
+        btn.addEventListener('click', () => printArticle(btn.getAttribute('data-print')));
+      });
+      els.featured.querySelectorAll('[data-print]').forEach(btn => {
+        btn.addEventListener('click', () => printArticle(btn.getAttribute('data-print')));
+      });
+    }
+
+    function printArticle(url){
+      if (!url || url === '#') return;
+      const frame = els.printFrame;
+      frame.onload = function(){
+        // Give includes a moment to render (header/footer fetch on the article page)
+        setTimeout(function(){
+          try {
+            frame.contentWindow.focus();
+            frame.contentWindow.print();
+          } catch (e) {}
+        }, 400);
+      };
+      frame.src = url;
+    }
+
+    function populateSelect(selectEl, values){
+      // Preserve first option (All)
+      while (selectEl.options.length > 1) selectEl.remove(1);
+      values.forEach(v => {
+        const opt = document.createElement('option');
+        opt.value = v;
+        opt.textContent = v;
+        selectEl.appendChild(opt);
+      });
+    }
+
+    function render(all){
+      // Featured: pick most recent article/devotional (random among ties)
+      const articlesOnly = all.filter(x => (x.type || 'Article').toLowerCase() === 'article');
+      const devotionalsOnly = all.filter(x => (x.type || '').toLowerCase() === 'devotional');
+
+      const featuredArticle = pickRandomMostRecent(articlesOnly);
+      const featuredDevotional = pickRandomMostRecent(devotionalsOnly);
+
+      els.featured.innerHTML =
+        buildFeaturedCard(featuredArticle, 'Latest Article') +
+        buildFeaturedCard(featuredDevotional, 'Latest Devotional');
+
+      // Filters
+      populateSelect(els.author, uniq(all.map(x => x.author || '')));
+      populateSelect(els.category, uniq(all.map(x => x.category || '')));
+
+      // Main grid
+      const filtered = applyFilters(all);
+      if (!filtered.length) {
+        els.grid.innerHTML = `<div class="error-card card"><strong>No results.</strong> Try clearing filters.</div>`;
+      } else {
+        els.grid.innerHTML = filtered.map(buildCard).join('');
+      }
+
+      attachPrintHandlers();
+    }
+
+    function showError(msg){
+      els.error.innerHTML = `<div class="card error-card"><strong>Could not load articles.</strong><div style="margin-top:6px;">${escapeHtml(msg || 'Please try again later.')}</div></div>`;
+    }
+
+    function wireControls(all){
+      const rerender = () => render(all);
+      ['input','change'].forEach(evt => {
+        els.q.addEventListener(evt, rerender);
+        els.author.addEventListener(evt, rerender);
+        els.category.addEventListener(evt, rerender);
+        els.sort.addEventListener(evt, rerender);
+      });
+    }
+
+    fetch(DATA_URL, { cache: 'no-store' })
+      .then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(data => {
+        const all = Array.isArray(data.articles) ? data.articles : [];
+        renderComingSoon(data.comingSoon || []);
+        wireControls(all);
+        render(all);
+      })
+      .catch(err => {
+        showError('Make sure /data/articles.json exists and is valid JSON. (' + err.message + ')');
+      });
+  </script>
+</body>
+</html>

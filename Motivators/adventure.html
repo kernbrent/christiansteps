@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Adventure Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="images/URLIcon.png" />
+  </head>
+
+<body>
+  <div class="page-shell">
+    <div class="need-container">
+
+      <h1>Adventure <img src="images/AdventureIcon.png" alt="Adventure icon" class="wrap-image" /></h1>
+
+      <script>
+        const p = new URLSearchParams(window.location.search);
+        const score = p.get('score');
+        const rank = parseInt(p.get('rank'), 10);
+
+        function ordinal(n){
+          if(n===1) return 'st';
+          if(n===2) return 'nd';
+          if(n===3) return 'rd';
+          return 'th';
+        }
+
+        document.write(`<h2>Score: ${score ?? ''} | Rank: ${rank}${ordinal(rank)}</h2>`);
+      </script>
+      <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+         <button type="button" class="submit enabled" onclick="history.back()">Back</button>   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <button type="button" class="submit enabled" onclick="location.assign('home.html')">Home</button>
+      </div>
+      <!-- RANK 1: FULL TEXT -->
+      <div id="rank1" class="rank-section">
+        <h2>Understanding Adventure</h2>
+
+        <div class="text-with-image">
+          
+          <p>People who crave high levels of variety enjoy change and thrive on new experiences that challenge them physically, emotionally, and intellectually. Suspense, surprise, and adventure keep them excited and fully engaged with life.</p>
+
+          <p>If you are a person who loves variety, you likely have many dynamic interests. You are rarely bored, always finding a new pursuit or lesson to explore. You see a stranger as a potential friend you haven’t met yet, which gives you an easy, open way of connecting with people. Trusting and upbeat, you tend to see the best in others. Your loving, carefree spirit embraces life to the fullest.</p> 
+
+          <p>God has wired you this way on purpose. Your delight in variety reflects something of His own boundless creativity (Psalm 139:13-14). Like Abraham answering the call to “go to a land I will show you” (Genesis 12:1) or Paul embarking on daring missionary journeys, your appetite for the new can mirror the adventurous nature of faith itself.</p>
+
+          <p>In a church setting, your energy is often a gift to the body of Christ. You warmly welcome visitors, striking up conversations with newcomers as if they’ve always belonged (Romans 12:13; Hebrews 13:2). You’re the one who suggests fresh ideas—a creative outreach event, a short-term mission trip, an outdoor worship night, or a new small group format. Your enthusiasm can ignite others, reminding the congregation that following Jesus is never dull but full of power, love, and expectation (2 Timothy 1:7). You often carry spiritual gifts like evangelism, hospitality, apostleship, or exhortation, bringing life and movement where things might otherwise grow stagnant.</p>
+
+          <p>Yet there are times when the mundane must be done. Others in the church need you to show responsibility and stability. Future fruitfulness often comes from focusing on routine tasks and honoring commitments. Some boundaries and procedures are more than suggestions—they protect the community and keep ministry healthy. Not every person deserves immediate access to your inner circle; discernment is needed because not everyone can be fully trusted.</p>
+
+          <p>Those around you can grow frustrated when promises go unfulfilled or small but essential tasks are overlooked. Jumping into too many ministries at once may mean some things are left unfinished, and this can strain relationships in the body. Your optimistic, trusting nature is beautiful, but it can leave you vulnerable to those who might take advantage. Overloading your schedule to chase the next thrill can also neglect your own health and the quiet needs of those closest to you.</p>
+
+          <p>You thrive on stimulation, suspense, and challenge. A new adventure always beckons. You stay active and ready for whatever God might bring. Yet routines feel confining, and you naturally change habits the moment they become predictable. Enthusiastic and fun, you ensure there’s never a dull moment. As an eternal optimist, you spot opportunities and are willing to take faith-filled risks. Sometimes, however, you can become so captivated by your latest passion that you forget to listen deeply to others or ask about their lives. You prefer doing something together over long, quiet conversations.</p>
+
+          <p>You feel stressed when trapped by rigid schedules, physical limitations, or repetitive tasks. Criticism of your adventurous spirit can make you defensive. You experience the full range of emotions—joy, excitement, empathy—but boredom feels foreign.</p>
+
+          <p>To grow as a disciple and a healthier member of Christ’s body, embrace the biblical call to self-control and perseverance (Galatians 5:22-23). Accept that God often uses ordinary, even boring seasons to shape character—just as Jesus spent years in quiet obedience before His public ministry began (Luke 2:51-52). View routine responsibilities—following through on setup, showing up for board meetings, or serving consistently in one ministry—as acts of worship offered to the Lord (Colossians 3:23).</p>
+
+          <p>Practice active discernment in relationships and opportunities. Pray for wisdom (James 1:5) and seek counsel from mature believers before launching into something new. Commit to finishing what you start, building trust within the church family (Proverbs 11:14). Channel your energy into listening and serving others rather than always leading the charge. Find ways to blend in rather than stand out. Set goals that focus on edifying the body—mentoring a younger believer over the long haul, or quietly supporting behind-the-scenes needs. This kind of others-centered love may be your greatest growth area, yet it yields the deepest joy (Philippians 2:3-4).</p>
+
+          <p>Celebrate the “new things” God does (Isaiah 43:19) through missions, creative expressions of worship, or spontaneous acts of kindness. At the same time, learn the secret of contentment in every circumstance (Philippians 4:11-13). Cherish stable relationships and the security of a church family that cheers you on from the sidelines. Stay present in the moment, caring for yourself and those God has placed around you, while quietly praying about the next step He may reveal.</p>
+
+          <p>When you complete a mundane task faithfully, praise God for the grace to persevere. When you choose stability for the sake of others, thank Him for the fruit it will bear in His kingdom. By submitting your God-given need for variety to Christ’s lordship, you become not only a source of excitement but also a reliable, maturing member of His body—helping the whole church grow together in unity and love (Ephesians 4:15-16).</p>
+
+          <div class="clear"></div>
+        </div>
+
+        <h3>Spiritual Reflection</h3>
+        <ul>
+          <li>Where might God be inviting me to trust Him beyond the familiar—without neglecting faithfulness?</li>
+          <li>What commitments do I need to honor so others can rely on me?</li>
+          <li>How can I use my energy to welcome others and build up the church?</li>
+          <li>Where do I need discernment before saying “yes” to something new?</li>
+        </ul>
+      </div>
+
+      <!-- RANK 2–3: TWO-PARAGRAPH SUMMARY -->
+      <div id="rank2to3" class="rank-section">
+        <h2>Adventure (Summary)</h2>
+
+        <p>People who crave Adventure thrive on variety, surprise, and new experiences that keep life engaging. God often uses this wiring as a gift—reflecting His creativity and calling you into faith that trusts Him beyond the familiar. In the church, this can show up as warm hospitality toward newcomers, fresh ideas for outreach, and contagious enthusiasm that reminds others that following Jesus is alive with expectation.</p>
+
+        <p>At the same time, spiritual maturity means learning faithfulness in ordinary seasons. Adventure can drift into restlessness, overcommitment, or shallow connections if it isn’t guided by discernment and perseverance. God invites you to channel your energy into finishing what you start, honoring commitments, listening deeply, and serving with humility—so your love becomes not only exciting, but also steady, trustworthy, and fruitful.</p>
+
+        <h3>Spiritual Reflection</h3>
+        <ul>
+          <li>Am I chasing excitement, or responding to God’s leading?</li>
+          <li>What would “steady faithfulness” look like in this season of my life?</li>
+          <li>How can I practice finishing what I start?</li>
+        </ul>
+      </div>
+
+      <!-- RANK 4–7: SHORT DESCRIPTION -->
+      <div id="rank4to7" class="rank-section">
+        <h2>Adventure (Overview)</h2>
+        <p>Adventure is the desire for renewal, variety, and God’s creativity—welcoming new experiences while staying anchored in faithfulness to Christ.</p>
+      </div>
+
+      <!-- RANK Higher than 7: Error Message-->
+      <div id="rankerr" class="rank-section">
+        <h2>Unauthorized Access</h2>
+        <p><strong><font color="red">If you are seeing this text, you have come to this page without taking this assessment. Please navigate to the <a href="home.html">HOME PAGE</a> to log in and take the Motivating Factors Assessment.</font></strong></p>
+      </div>
+
+      <hr>
+
+      <!-- Motivating Factors (Always shown) -->
+      <div class="mf-grid">
+        <h2>The 7 Motivating Factors</h2>
+                <ul>
+          <li><strong>Respect:</strong> Identity and purpose in Christ</li>
+          <li><strong>Connection:</strong> Relationship with God and others</li>
+          <li><strong>Stability:</strong> Safety and trust in God</li>
+          <li><strong>Adventure:</strong> Renewal and God’s creativity</li>
+          <li><strong>Expansion:</strong> Becoming more like Christ</li>
+          <li><strong>Service:</strong> Serving others for God’s glory</li>
+          <li><strong>Devotion:</strong> Commitment to God, others, tasks, and/or things</li>
+        </ul>
+      </div>
+      <div class="scripture-ref">
+        <h2>Scripture References</h2>
+        <div class="verse-pills"><a class="verse-pill" data-tooltip="Read Psalm 139:13–14 (NIV)" href="https://www.biblegateway.com/passage/?search=Psalm+139:13-14&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Psalm 139:13–14</a><a class="verse-pill" data-tooltip="“go to a land I will show you” (NIV)" href="https://www.biblegateway.com/passage/?search=Genesis+12:1&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Genesis 12:1</a><a class="verse-pill" data-tooltip="Read Romans 12:13 (NIV)" href="https://www.biblegateway.com/passage/?search=Romans+12:13&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Romans 12:13</a><a class="verse-pill" data-tooltip="Read Hebrews 13:2 (NIV)" href="https://www.biblegateway.com/passage/?search=Hebrews+13:2&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Hebrews 13:2</a><a class="verse-pill" data-tooltip="Read 2 Timothy 1:7 (NIV)" href="https://www.biblegateway.com/passage/?search=2+Timothy+1:7&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>2 Timothy 1:7</a><a class="verse-pill" data-tooltip="Read Galatians 5:22–23 (NIV)" href="https://www.biblegateway.com/passage/?search=Galatians+5:22-23&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Galatians 5:22–23</a><a class="verse-pill" data-tooltip="Read Luke 2:51–52 (NIV)" href="https://www.biblegateway.com/passage/?search=Luke+2:51-52&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Luke 2:51–52</a><a class="verse-pill" data-tooltip="Read Colossians 3:23 (NIV)" href="https://www.biblegateway.com/passage/?search=Colossians+3:23&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Colossians 3:23</a><a class="verse-pill" data-tooltip="Read James 1:5 (NIV)" href="https://www.biblegateway.com/passage/?search=James+1:5&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>James 1:5</a><a class="verse-pill" data-tooltip="Read Proverbs 11:14 (NIV)" href="https://www.biblegateway.com/passage/?search=Proverbs+11:14&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Proverbs 11:14</a><a class="verse-pill" data-tooltip="Read Philippians 2:3–4 (NIV)" href="https://www.biblegateway.com/passage/?search=Philippians+2:3-4&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Philippians 2:3–4</a><a class="verse-pill" data-tooltip="Read Isaiah 43:19 (NIV)" href="https://www.biblegateway.com/passage/?search=Isaiah+43:19&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Isaiah 43:19</a><a class="verse-pill" data-tooltip="Read Philippians 4:11–13 (NIV)" href="https://www.biblegateway.com/passage/?search=Philippians+4:11-13&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Philippians 4:11–13</a><a class="verse-pill" data-tooltip="Read Ephesians 4:15–16 (NIV)" href="https://www.biblegateway.com/passage/?search=Ephesians+4:15-16&version=NIV" rel="noopener" target="_blank"><span class="dot"></span>Ephesians 4:15–16</a></div>
+      </div>
+
+
+      <script>
+        // Show the right section by rank:
+        // 1 => full
+        // 2-3 => 2-paragraph summary
+        // 4-7 => short overview
+        (function () {
+          const p = new URLSearchParams(window.location.search);
+          const rank = parseInt(p.get('rank'), 10);
+
+          const r1 = document.getElementById('rank1');
+          const r23 = document.getElementById('rank2to3');
+          const r47 = document.getElementById('rank4to7');
+          const rerr = document.getElementById('rankerr');
+
+          function show(el) { if (el) el.style.display = 'block'; }
+
+          if (rank === 1) {
+            show(r1);
+          } else if (rank === 2 || rank === 3) {
+            show(r23);
+          } else if (rank >= 4 && rank <= 7) {
+            show(r47);
+          } else {
+            show(rerr); // sensible default if rank missing/invalid
+          }
+        })();
+      </script>
+
+    </div>
+  </div>
+</body>
+</html>

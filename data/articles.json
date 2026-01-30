@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "version": 1,
+    "generated": "2026-01-09",
+    "notes": "Edit datePublished (YYYY-MM-DD), descriptions, and categories as you add articles."
+  },
+  "articles": [
+    {
+      "title": "A Story Within a Story - Luke 8",
+      "url": "/Articles/Luke8.html",
+      "type": "Article",
+      "category": "Gospel Study",
+      "author": "Brent D Kern",
+      "datePublished": "2022-07-09",
+      "description": "A study of Luke 8 that highlights the layered story and the mercy of Jesus in the middle of interruption."
+    },
+    {
+      "title": "Beauty in God's Holy Days",
+      "url": "/Articles/HolyDays_Article.html",
+      "type": "Article",
+      "category": "Scripture Study",
+      "author": "Brent D Kern",
+      "datePublished": "2013-05-13",
+      "description": "God's Holy Days are from the beginning and we see them revealed again and again."
+    },
+    {
+      "title": "The Beautiful Plan of Jesus' Last Week",
+      "url": "/Articles/JesusHolyWeek_Article.html",
+      "type": "Article",
+      "category": "Gospel Study",
+      "author": "Brent D Kern",
+      "datePublished": "2025-04-09",
+      "description": "The last days of Jesus' life are revealed perfectly in the prophecy of 3 days and 3 nights."
+    },
+    {
+      "title": "Mark 1 - The Prophetic Transition",
+      "url": "/Articles/Mark1_Transition.html",
+      "type": "Article",
+      "category": "Gospel Study",
+      "author": "Brent D Kern",
+      "datePublished": "2026-01-09",
+      "description": "Jesus\u2019 baptism at the Jordan as a prophetic handoff\u2014Moses to Joshua, Elijah to Elisha, and John to Jesus\u2014revealing the true Son of God."
+    },
+    {
+      "title": "Mark 1 - A Comparison with God's Kingdom",
+      "url": "/Articles/Mark1_KingdomComparison.html",
+      "type": "Article",
+      "category": "Kingdom",
+      "author": "Brent D Kern",
+      "datePublished": "2026-01-09",
+      "description": "Mark 1 as a window into the Kingdom of God\u2014authority, healing, deliverance, and the call to repent and believe the good news."
+    },
+    {
+      "title": "Mark 1 - A Devotional",
+      "url": "/Articles/Mark1_Devotional.html",
+      "type": "Devotional",
+      "category": "Devotional",
+      "author": "Brent D Kern",
+      "datePublished": "2026-01-09",
+      "description": "A short devotional on Mark 1: the Jordan, the Father\u2019s voice, and a simple daily step of repentance and belief."
+    },
+    {
+      "title": "Great Is His Faithfulness",
+      "url": "/Articles/GreatFaithfulness.html",
+      "type": "Article",
+      "category": "Scripture Study",
+      "author": "Brent D Kern",
+      "datePublished": "2026-01-12",
+      "description": "A reflection on God’s unchanging love and mercy, reminding us that His faithfulness is new every morning and that nothing can separate us from His love in Christ."      
+    },
+    {
+      "title": "Have You Ever Fed Jesus?",
+      "url": "/Articles/HaveYouEverFedJesus.html",
+      "type": "Article",
+      "category": "Discipleship",
+      "author": "Brent D Kern",
+      "datePublished": "2025-10-13",
+      "description": "A gentle invitation to see Christ in \u201cthe least of these,\u201d keeping faces and dignity at the center of practical love."
+    },
+    {
+      "title": "Have You Ever Fed Jesus? - Devotional",
+      "url": "/Articles/HaveYouEverFedJesus_Devotional.html",
+      "type": "Devotional",
+      "category": "Devotional",
+      "author": "Brent D Kern",
+      "datePublished": "2025-10-13",
+      "description": "A brief devotional on humility, dignity, and meeting Jesus in everyday acts of compassion."
+    },
+    {
+      "title": "Conflict Management Philosophy",
+      "url": "/Articles/ConflictMgmt.html",
+      "type": "Article",
+      "category": "Article",
+      "author": "Brent D Kern",
+      "datePublished": "2026-01-27",
+      "description": "There are several approaches to handling and managing conflict. This article addresses many of them and recommends a philosophy based on Christian values."
+    },
+    {
+      "title": "Conflict Management Philosophy - Devotional",
+      "url": "/Articles/ConflictMgmt_Devotional.html",
+      "type": "Devotional",
+      "category": "Devotional",
+      "author": "Brent D Kern",
+      "datePublished": "2026-01-27",
+      "description": "A brief devotional on humility, dignity, and meeting Jesus in everyday acts of compassion."
+    },
+    {
+      "title": "Great is Thy Faithfulness - Devotional",
+      "url": "/Articles/GreatFaithfulness_Devotional.html",
+      "type": "Devotional",
+      "category": "Devotional",
+      "author": "Brent D Kern",
+      "datePublished": "2025-12-20",
+      "description": "God's faithfulness is enternal. God never changes and with this He always loves us, not matter what!"
+    }
+  ],
+  "comingSoon": [
+    {
+      "title": "More articles coming soon\u2026"
+    }
+  ]
+}
