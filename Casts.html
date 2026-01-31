@@ -269,7 +269,7 @@ function buildTrackCard(label, track){
       return `
         <article class="card track-card">
           <div class="kicker">${escapeHtml(label)}</div>
-          <h4 class="track-title">${escapeHtml(track.title)}</h4>
+          <h4 class="track-title"><strong><b>${escapeHtml(track.title)}</b></strong></h4>
           ${date}
           ${desc}
           <div class="track-actions">
@@ -409,7 +409,7 @@ for (const [k, arr] of groups.entries()){
         out.push(`
           <section class="casts-group">
             <div class="casts-group-header">
-              <h4>${escapeHtml(title)}</h4>
+              <h4><strong><b>${escapeHtml(title)}</b></stong></h4>
               <div class="small-muted">${arr.length} item(s)</div>
             </div>
             <div class="tracks-grid">
