@@ -140,10 +140,6 @@
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/4StepsToPrepareForTheEnd.mp3"
-            },
-            {
-              "label": "WAV",
-              "url": "https://media.christiansteps.net/casts/4StepsToPrepareForTheEnd.wav"
             }
           ]
         },
@@ -157,10 +153,6 @@
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/BeTheFireOfPentecost.mp3"
-            },
-            {
-              "label": "WAV",
-              "url": "https://media.christiansteps.net/casts/BeTheFireOfPentecost.wav"
             }
           ]
         },
@@ -174,10 +166,6 @@
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/TheMarkTheThiefTheEndTimes.mp3"
-            },
-            {
-              "label": "WAV",
-              "url": "https://media.christiansteps.net/casts/TheMarkTheThiefTheEndTimes.wav"
             }
           ]
         },
@@ -191,10 +179,6 @@
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/EatingBreadAfterUnleavenedBread.mp3"
-            },
-            {
-              "label": "WAV",
-              "url": "https://media.christiansteps.net/casts/EatingBreadAfterUnleavenedBread.wav"
             }
           ]
         }
