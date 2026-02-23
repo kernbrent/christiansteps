@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Noah's Mount Ararat Judo — traditional judo training in McKinney, TX for beginners and advanced students." />
+  <title>Noah’s Mount Ararat Judo — McKinney, TX</title>
+
+  <style>
+    :root{
+      --bg: #0b0f17;
+      --panel: rgba(255,255,255,.06);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.72);
+      --muted2: rgba(255,255,255,.58);
+      --line: rgba(255,255,255,.12);
+      --brand: #e11d48;
+      --brand2:#f97316;
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1120px;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(225,29,72,.25), transparent 55%),
+        radial-gradient(900px 500px at 75% 15%, rgba(249,115,22,.20), transparent 50%),
+        radial-gradient(900px 700px at 60% 70%, rgba(59,130,246,.15), transparent 55%),
+        linear-gradient(180deg, #070a11, var(--bg));
+      line-height:1.5;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:0 20px; }
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(7,10,17,.55);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:14px;
+    }
+    .brand{ display:flex; align-items:center; gap:12px; }
+    .logo{
+      width:40px; height:40px; border-radius:12px;
+      background:
+        radial-gradient(10px 10px at 30% 30%, rgba(255,255,255,.35), transparent 60%),
+        linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 12px 35px rgba(225,29,72,.28);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .brand h1{ font-size:15px; margin:0; letter-spacing:.3px; }
+    .brand p{ margin:0; font-size:12px; color:var(--muted2); }
+
+    nav ul{ display:flex; align-items:center; gap:18px; list-style:none; padding:0; margin:0; }
+    nav a{
+      font-size:13px; color:var(--muted);
+      padding:10px 10px; border-radius:12px;
+      transition: .15s ease;
+    }
+    nav a:hover{ background:rgba(255,255,255,.07); color:var(--text); }
+
+    .ctaRow{ display:flex; align-items:center; gap:10px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:10px 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-size:13px;
+      cursor:pointer;
+      transition:.15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); }
+    .btn.primary{
+      border-color: rgba(225,29,72,.55);
+      background: linear-gradient(135deg, rgba(225,29,72,.95), rgba(249,115,22,.70));
+      box-shadow: 0 14px 40px rgba(225,29,72,.22);
+    }
+    .menuBtn{
+      display:none;
+      width:42px; height:42px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+    }
+
+    .hero{ padding:56px 0 28px; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid rgba(255,255,255,.14);
+      background: var(--panel);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .heroMain{ padding:30px; position:relative; overflow:hidden; }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(225,29,72,.16);
+      border:1px solid rgba(225,29,72,.28);
+      color: rgba(255,255,255,.88);
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .badge .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(225,29,72,.18);
+    }
+    .heroMain h2{ margin:0 0 10px; font-size: 44px; line-height: 1.05; letter-spacing: -0.9px; }
+    .heroMain p{ margin: 0 0 18px; color: var(--muted); font-size: 16px; max-width: 58ch; }
+    .heroActions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:16px; }
+
+    .heroStats{ display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; margin-top: 18px; }
+    .stat{
+      padding:12px 14px;
+      border-radius:16px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .stat b{ display:block; font-size:16px; margin-bottom:4px; }
+    .stat span{ color:var(--muted2); font-size:12px; }
+
+    .heroSide{ padding:18px; display:flex; flex-direction:column; gap:12px; }
+    .sideTop{
+      padding:16px;
+      border-radius: 18px;
+      background:
+        radial-gradient(900px 300px at 40% 0%, rgba(225,29,72,.25), transparent 55%),
+        rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+      position:relative;
+      overflow:hidden;
+    }
+    .sideTop h3{ margin:0 0 6px; font-size:16px; }
+    .sideTop p{ margin:0; color:var(--muted); font-size:13px; }
+    .pillRow{ margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+    .pill{
+      font-size:12px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+    }
+    .mini{
+      padding:14px;
+      border-radius:18px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .mini h4{ margin:0 0 6px; font-size:13px; color: rgba(255,255,255,.86); }
+    .mini p{ margin:0; font-size:13px; color:var(--muted); }
+    .mini a{ text-decoration:underline; text-decoration-color: rgba(255,255,255,.25); }
+
+    section{ padding: 36px 0; }
+    .secHead{ display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:16px; }
+    .secHead h2{ margin:0; font-size:22px; letter-spacing:-.2px; }
+    .secHead p{ margin:0; color:var(--muted); font-size:13px; max-width: 64ch; }
+
+    .grid3{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .tile{
+      padding:16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+    .tile h3{ margin:0 0 8px; font-size:15px; }
+    .tile p{ margin:0; color:var(--muted); font-size:13px; }
+    .tile ul{ margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13px; }
+
+    .kicker{ display:inline-flex; align-items:center; gap:8px; font-size:12px; color:var(--muted2); margin-bottom:8px; }
+    .kicker .icon{
+      width:22px; height:22px; border-radius:8px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      display:grid; place-items:center;
+      font-size:12px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    th, td{
+      padding:12px 12px;
+      text-align:left;
+      font-size:13px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    th{ color: rgba(255,255,255,.85); font-weight:600; background: rgba(255,255,255,.05); }
+    td{ color: var(--muted); }
+    tr:last-child td{ border-bottom:none; }
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:5px 9px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .tag.ok{ border-color: rgba(34,197,94,.35); background: rgba(34,197,94,.10); color: rgba(255,255,255,.86); }
+    .tag.hot{ border-color: rgba(225,29,72,.35); background: rgba(225,29,72,.12); color: rgba(255,255,255,.88); }
+
+    .contactBox{
+      padding:18px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+    form{ display:grid; gap:10px; }
+    .row2{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      color: var(--text);
+      font-size: 14px;
+      outline:none;
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+    input::placeholder, textarea::placeholder{ color: rgba(255,255,255,.38); }
+
+    footer{
+      padding:26px 0 40px;
+      border-top: 1px solid var(--line);
+      color: var(--muted2);
+      font-size: 12px;
+    }
+    .foot{ display:flex; flex-wrap:wrap; gap:10px; justify-content:space-between; align-items:center; }
+
+    @media (max-width: 920px){ .heroGrid{ grid-template-columns: 1fr; } }
+    @media (max-width: 760px){
+      nav ul{ display:none; }
+      .menuBtn{ display:inline-grid; place-items:center; }
+      .heroMain h2{ font-size: 36px; }
+      .grid3{ grid-template-columns: 1fr; }
+      .grid2{ grid-template-columns: 1fr; }
+      .row2{ grid-template-columns: 1fr; }
+      .heroStats{ grid-template-columns: 1fr; }
+      .ctaRow .btn{ display:none; }
+    }
+
+    .mobileMenu{
+      display:none;
+      border-top: 1px solid var(--line);
+      padding: 10px 0 14px;
+    }
+    .mobileMenu a{
+      display:block;
+      padding:10px 12px;
+      border-radius:14px;
+      color: var(--muted);
+    }
+    .mobileMenu a:hover{ background: rgba(255,255,255,.07); color: var(--text); }
+    .mobileMenu .btn{ width:100%; margin-top:8px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand" aria-label="Noah’s Mount Ararat Judo home">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <h1>Noah’s Mount Ararat Judo</h1>
+            <p>McKinney, TX • Strong bodies • Calm minds</p>
+          </div>
+        </div>
+
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="ctaRow">
+          <a class="btn" href="#schedule">View Schedule</a>
+          <a class="btn primary" href="#contact">Free Trial</a>
+          <button class="menuBtn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+        </div>
+      </div>
+
+      <div class="mobileMenu" id="mobileMenu" aria-label="Mobile menu">
+        <a href="#about">About</a>
+        <a href="#classes">Classes</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Free Trial</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="home">
+        <div class="heroGrid">
+          <div class="card heroMain">
+            <div class="badge"><span class="dot" aria-hidden="true"></span> Beginners welcome • Advanced training available</div>
+            <h2>Train judo with purpose<br/>in McKinney, TX.</h2>
+            <p>
+              Noah’s Mount Ararat Judo offers structured classes for beginners and advanced students,
+              plus an open gym day for all levels. Build confidence, fitness, and real grappling skill in a safe environment.
+            </p>
+
+            <div class="heroActions">
+              <a class="btn primary" href="#contact">Book a Free Trial Class</a>
+              <a class="btn" href="#schedule">See Class Times</a>
+              <a class="btn" href="#pricing">Membership Options</a>
+            </div>
+
+            <div class="heroStats" role="list" aria-label="Quick highlights">
+              <div class="stat" role="listitem">
+                <b>Beginner Classes</b>
+                <span>Mon & Wed (1 hour)</span>
+              </div>
+              <div class="stat" role="listitem">
+                <b>Advanced Classes</b>
+                <span>Tue & Thu (2 hours)</span>
+              </div>
+              <div class="stat" role="listitem">
+                <b>Open Gym</b>
+                <span>Fri 9 AM–4 PM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card heroSide" aria-label="Dojo info">
+            <div class="sideTop">
+              <h3>What we teach</h3>
+              <p>Ukemi (breakfalls), throws, pins, and groundwork — with respect, discipline, and safety-first progressions.</p>
+              <div class="pillRow" aria-label="Focus areas">
+                <span class="pill">Breakfalls</span>
+                <span class="pill">Throws</span>
+                <span class="pill">Groundwork</span>
+                <span class="pill">Fitness</span>
+                <span class="pill">Confidence</span>
+              </div>
+            </div>
+
+            <div class="mini">
+              <h4>Location</h4>
+              <p>
+                <strong>McKinney, TX</strong><br/>
+                (Add street address here)<br/>
+                <a href="#contact">Contact us</a>
+              </p>
+            </div>
+
+            <div class="mini">
+              <h4>New students</h4>
+              <p>Wear comfortable workout clothes for your trial. We’ll help with uniform sizing after.</p>
+            </div>
+
+            <div class="mini">
+              <h4>Contact</h4>
+              <p>
+                Phone: <a href="tel:+10000000000">(000) 000-0000</a><br/>
+                Email: <a href="mailto:info@mountararatudojudo.com">info@mountararatudojudo.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="secHead">
+          <div>
+            <h2>About</h2>
+            <p>Traditional judo values with modern coaching: safe fundamentals for beginners and deeper technical work for advanced students.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">✓</span> Beginner pathway</div>
+            <h3>Start strong</h3>
+            <p>Learn breakfalls, movement, and core techniques in 1-hour beginner sessions.</p>
+          </div>
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">⟡</span> Advanced training</div>
+            <h3>Go deeper</h3>
+            <p>2-hour advanced classes for higher volume drilling, combinations, and randori.</p>
+          </div>
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">⚑</span> Open practice</div>
+            <h3>Open gym Fridays</h3>
+            <p>Train your way: drilling, conditioning, and supervised practice for all levels.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="classes">
+        <div class="secHead">
+          <div>
+            <h2>Classes</h2>
+            <p>Simple structure: beginner sessions (1 hour), advanced sessions (2 hours), plus open gym time.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">🌱</span> Beginner</div>
+            <h3>Beginner Judo (1 hour)</h3>
+            <p>Perfect for new students and returning students who want to rebuild fundamentals.</p>
+            <ul>
+              <li>Breakfalls & movement</li>
+              <li>Core throws & pins</li>
+              <li>Controlled practice</li>
+            </ul>
+          </div>
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">🔥</span> Advanced</div>
+            <h3>Advanced Judo (2 hours)</h3>
+            <p>For experienced students ready for higher intensity and deeper technical work.</p>
+            <ul>
+              <li>Combinations & transitions</li>
+              <li>Strategy & grip fighting</li>
+              <li>Randori (sparring)</li>
+            </ul>
+          </div>
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">🏋️</span> Open Gym</div>
+            <h3>Friday Open Gym (All levels)</h3>
+            <p>Come anytime during open hours to drill, condition, or get extra reps in.</p>
+            <ul>
+              <li>All levels welcome</li>
+              <li>Self-directed practice</li>
+              <li>Great for review</li>
+            </ul>
+          </div>
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">🧭</span> Not sure?</div>
+            <h3>We’ll place you</h3>
+            <p>Start with a free trial and we’ll recommend the best class level for you.</p>
+            <ul>
+              <li>Friendly onboarding</li>
+              <li>Clear next steps</li>
+              <li>Progress goals</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule">
+        <div class="secHead">
+          <div>
+            <h2>Schedule</h2>
+            <p>McKinney, TX — class times as provided.</p>
+          </div>
+        </div>
+
+        <div class="card" style="padding:14px;">
+          <table aria-label="Class schedule">
+            <thead>
+              <tr>
+                <th style="width:18%;">Day</th>
+                <th style="width:22%;">Time</th>
+                <th>Session</th>
+                <th style="width:20%;">Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Monday (Beginner 1 hour) -->
+              <tr>
+                <td>Monday</td>
+                <td>9:00–10:00 AM</td>
+                <td>Judo Class <span class="tag ok">1 hour</span></td>
+                <td><span class="tag ok">Beginner</span></td>
+              </tr>
+              <tr>
+                <td>Monday</td>
+                <td>12:00–1:00 PM</td>
+                <td>Judo Class <span class="tag ok">1 hour</span></td>
+                <td><span class="tag ok">Beginner</span></td>
+              </tr>
+              <tr>
+                <td>Monday</td>
+                <td>3:00–4:00 PM</td>
+                <td>Judo Class <span class="tag ok">1 hour</span></td>
+                <td><span class="tag ok">Beginner</span></td>
+              </tr>
+
+              <!-- Tuesday (Advanced 2 hours) -->
+              <tr>
+                <td>Tuesday</td>
+                <td>9:00–11:00 AM</td>
+                <td>Judo Class <span class="tag hot">2 hours</span></td>
+                <td><span class="tag hot">Advanced</span></td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td>12:00–2:00 PM</td>
+                <td>Judo Class <span class="tag hot">2 hours</span></td>
+                <td><span class="tag hot">Advanced</span></td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td>3:00–5:00 PM</td>
+                <td>Judo Class <span class="tag hot">2 hours</span></td>
+                <td><span class="tag hot">Advanced</span></td>
+              </tr>
+
+              <!-- Wednesday (Beginner 1 hour) -->
+              <tr>
+                <td>Wednesday</td>
+                <td>9:00–10:00 AM</td>
+                <td>Judo Class <span class="tag ok">1 hour</span></td>
+                <td><span class="tag ok">Beginner</span></td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td>12:00–1:00 PM</td>
+                <td>Judo Class <span class="tag ok">1 hour</span></td>
+                <td><span class="tag ok">Beginner</span></td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td>3:00–4:00 PM</td>
+                <td>Judo Class <span class="tag ok">1 hour</span></td>
+                <td><span class="tag ok">Beginner</span></td>
+              </tr>
+
+              <!-- Thursday (Advanced 2 hours) -->
+              <tr>
+                <td>Thursday</td>
+                <td>9:00–11:00 AM</td>
+                <td>Judo Class <span class="tag hot">2 hours</span></td>
+                <td><span class="tag hot">Advanced</span></td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td>12:00–2:00 PM</td>
+                <td>Judo Class <span class="tag hot">2 hours</span></td>
+                <td><span class="tag hot">Advanced</span></td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td>3:00–5:00 PM</td>
+                <td>Judo Class <span class="tag hot">2 hours</span></td>
+                <td><span class="tag hot">Advanced</span></td>
+              </tr>
+
+              <!-- Friday Open Gym -->
+              <tr>
+                <td>Friday</td>
+                <td>9:00 AM–4:00 PM</td>
+                <td>Open Gym <span class="tag">Drop-in</span></td>
+                <td><span class="tag">All levels</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p style="margin:10px 2px 0; color:var(--muted2); font-size:12px;">
+            Tip: If you want Saturday/Sunday events, add them here later.
+          </p>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="secHead">
+          <div>
+            <h2>Pricing</h2>
+            <p>Replace the placeholder prices with your real membership rates.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">🌱</span> Beginner</div>
+            <h3>$XX / month</h3>
+            <p>Access to beginner classes (Mon/Wed).</p>
+            <ul>
+              <li>Beginner pathway</li>
+              <li>Fundamentals focused</li>
+              <li>Progress tracking</li>
+            </ul>
+          </div>
+          <div class="tile" style="border-color: rgba(225,29,72,.35); background: rgba(225,29,72,.10);">
+            <div class="kicker"><span class="icon" aria-hidden="true">⭐</span> Most Popular</div>
+            <h3>$XX / month</h3>
+            <p>Beginner + Open Gym Fridays.</p>
+            <ul>
+              <li>Extra mat time</li>
+              <li>Faster improvement</li>
+              <li>Flexible practice</li>
+            </ul>
+          </div>
+          <div class="tile">
+            <div class="kicker"><span class="icon" aria-hidden="true">🏔️</span> Advanced</div>
+            <h3>$XX / month</h3>
+            <p>Access to advanced classes (Tue/Thu) + Open Gym.</p>
+            <ul>
+              <li>High-volume training</li>
+              <li>Randori included</li>
+              <li>Technical depth</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="secHead">
+          <div>
+            <h2>Contact & Free Trial</h2>
+            <p>Send a message to schedule your first class. This form opens your email app (mailto) by default.</p>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="tile">
+            <h3 style="margin-top:0;">Quick FAQ</h3>
+            <ul>
+              <li><strong>What should I wear?</strong> Workout clothes for your first class.</li>
+              <li><strong>Do I need experience?</strong> No—beginners start on Mondays/Wednesdays.</li>
+              <li><strong>Can I watch first?</strong> Yes—contact us to arrange.</li>
+              <li><strong>Is open gym supervised?</strong> It’s practice time; add supervision details here if applicable.</li>
+            </ul>
+          </div>
+
+          <div class="contactBox">
+            <h3 style="margin:0 0 10px;">Message us</h3>
+
+            <form id="contactForm">
+              <div class="row2">
+                <input id="name" name="name" placeholder="Your name" required />
+                <input id="phone" name="phone" placeholder="Phone (optional)" />
+              </div>
+              <input id="email" name="email" type="email" placeholder="Email" required />
+              <textarea id="message" name="message" placeholder="Tell us your experience level (beginner/advanced) and which time slot you want." required></textarea>
+              <button class="btn primary" type="submit">Send</button>
+
+              <p style="margin:0; color:var(--muted2); font-size:12px;">
+                Phone: <a href="tel:+10000000000" style="text-decoration:underline;">(000) 000-0000</a><br/>
+                Email: <a href="mailto:info@mountararatudojudo.com" style="text-decoration:underline;">info@mountararatudojudo.com</a><br/>
+                Location: <strong>McKinney, TX</strong> (add street address)
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap foot">
+          <div>© <span id="year"></span> Noah’s Mount Ararat Judo — McKinney, TX. All rights reserved.</div>
+          <div><a href="#home" style="text-decoration:underline; text-decoration-color: rgba(255,255,255,.25);">Back to top</a></div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = mobileMenu.style.display === 'block';
+      mobileMenu.style.display = isOpen ? 'none' : 'block';
+      menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      menuBtn.textContent = isOpen ? '☰' : '✕';
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.style.display = 'none';
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.textContent = '☰';
+      });
+    });
+
+    document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+
+      const subject = encodeURIComponent("Free Trial / Inquiry — Noah’s Mount Ararat Judo (McKinney, TX)");
+      const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "(not provided)"}\n\nMessage:\n${msg}\n`
+      );
+
+      const to = "info@mountararatudojudo.com"; // replace with your real inbox
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
