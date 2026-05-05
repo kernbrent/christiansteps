@@ -1716,10 +1716,10 @@ a.card-link:active{
   color: inherit;
   text-decoration: none;
 }
-
+/*Start of Missions.html section */
 .mission-ad {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px;
     margin: 10px;
 }
 
@@ -1730,7 +1730,7 @@ a.card-link:active{
 /* IMAGE CARD */
 .mission-ad-card {
     position: relative;
-    height: 390px;
+    height: 200px;
     overflow: hidden;
     border-radius: 14px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
@@ -1821,7 +1821,7 @@ a.card-link:active{
 
 .missions-image-row figure {
     flex: 1;
-    max-width: 400px;
+    max-width: 600px;
     text-align: center;
     margin: 0;
     padding: 12px;
