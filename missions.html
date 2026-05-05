@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Support CSM Mission Trip to Athens</title>
+<link href="Styles/Site.css" rel="stylesheet" />
+<link href="Styles/Site_mobile.css" rel="stylesheet" />
+
+<style>
+.hero-image { width:100%; border-radius:12px; margin-top:15px; }
+
+.donate-btn {
+ display:inline-block; margin-top:15px; padding:12px 20px;
+ background:#2c7a3f; color:#fff; text-decoration:none;
+ font-weight:bold; border-radius:6px;
+ box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+.donate-btn:hover { background:#256633; }
+
+.highlight-box {
+ background:#f5f5f5; padding:20px;
+ border-left:5px solid #2c7a3f;
+ margin:20px 0; border-radius:8px;
+}
+
+.sticky-donate {
+ position:fixed; bottom:15px; right:15px;
+ z-index:999;
+}
+
+.photo-grid {
+ display:grid;
+ grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+ gap:10px;
+ margin-top:15px;
+}
+
+.photo-grid img {
+ width:100%;
+ border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<a class="donate-btn sticky-donate"
+href="https://www.paypal.com/ncp/payment/L3PSNXE7QWWFW"
+target="_blank">Donate</a>
+
+<div class="page">
+<header class="header">
+<div class="title">
+<h1><a href="index.html">
+<img src="./Images/Logo400.jpg" width="400" />
+</a></h1>
+</div>
+<div id="siteHeader"></div>
+</header>
+
+<div class="main">
+<main id="pageContent">
+
+<section class="home-hero">
+<div class="home-hero-inner">
+<div class="home-hero-copy">
+
+<h2>Support CSM’s Mission Trip to Athens, Greece</h2>
+<p><strong>June 3–14, 2026</strong></p>
+
+<img src="Images/athens.jpg" class="hero-image" />
+
+<div class="highlight-box">
+<strong>Goal: Raise $4,000</strong><br/>
+Help cover travel, lodging, and ministry outreach.
+</div>
+
+<a class="donate-btn"
+href="https://www.paypal.com/ncp/payment/L3PSNXE7QWWFW"
+target="_blank">Donate Now</a>
+
+</div>
+</div>
+</section>
+
+<section class="home-section">
+<div class="card">
+<p><strong>Dear Friends,</strong></p>
+
+<p>I’m returning to Athens to serve the homeless, refugees,
+and vulnerable individuals.</p>
+
+<p>Last year changed me.</p>
+
+<p>I met a woman who asked for a red juice box. I only had blue.</p>
+
+<p>Someone later said, “She wanted a red one.”</p>
+
+<p>I realized I wasn’t seeing her as a person.</p>
+
+<p><strong>“Whatever you did for one of the least of these… you did for me.”</strong></p>
+
+</div>
+</section>
+
+<section class="home-section">
+<h3>What Your Support Does</h3>
+<div class="card">
+<ul>
+<li>Provides meals and supplies</li>
+<li>Supports outreach to refugees</li>
+<li>Helps vulnerable individuals feel seen and valued</li>
+<li>Equips ministry teams on the ground</li>
+</ul>
+</div>
+</section>
+
+<section class="home-section">
+<h3>From Last Year</h3>
+<div class="photo-grid">
+<img src="Images/mission1.jpg" />
+<img src="Images/mission2.jpg" />
+<img src="Images/mission3.jpg" />
+</div>
+</section>
+
+<section class="home-section">
+<h3>How You Can Help</h3>
+<div class="card-grid two">
+
+<div class="card">
+<h4>Give</h4>
+<a class="donate-btn"
+href="https://www.paypal.com/ncp/payment/L3PSNXE7QWWFW"
+target="_blank">Donate</a>
+</div>
+
+<div class="card">
+<h4>Pray</h4>
+<p>Pray we serve with humility and love.</p>
+</div>
+
+</div>
+</section>
+
+<section class="home-section">
+<div class="card">
+<p><strong>WitLooL,<br/>Brent D. Kern</strong></p>
+</div>
+</section>
+
+</main>
+</div>
+</div>
+
+<div id="siteFooter"></div>
+
+<script>
+fetch('header.html').then(r=>r.text()).then(h=>{
+document.getElementById('siteHeader').innerHTML=h});
+fetch('footer.html').then(r=>r.text()).then(f=>{
+document.getElementById('siteFooter').innerHTML=f});
+</script>
+
+</body>
+</html>
