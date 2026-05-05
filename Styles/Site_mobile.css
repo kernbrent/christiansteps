@@ -238,12 +238,18 @@
     max-width: calc(100% - 16px);
   }
 }
+/* MISSION MOBILE */
 @media (max-width: 768px) {
+
     .mission-top-row {
         flex-direction: column;
     }
 
     .mission-ad-card {
         height: 220px;
+    }
+
+    .mission-ad-text {
+        font-size: 24px;
     }
 }

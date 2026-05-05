@@ -1727,19 +1727,22 @@ a.card-link:active{
     flex: 1.2;
 }
 
+/* IMAGE CARD */
 .mission-ad-card {
     position: relative;
+    height: 260px;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    height: 230px;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
 }
+
 
 .mission-ad-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.35);
 }
 
+/* IMAGE */
 .mission-ad-card img {
     width: 100%;
     height: 100%;
@@ -1747,37 +1750,54 @@ a.card-link:active{
     display: block;
 }
 
+/* TEXT OVERLAY */
 .mission-ad-text {
     position: absolute;
-    bottom: 0;
     left: 0;
     right: 0;
-    padding: 12px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    bottom: 0;
+    padding: 22px;
+    color: white;
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 700;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.82),
+        rgba(0,0,0,0.15),
+        transparent
+    );
 }
+
+/* =========================
+   MISSIONS HERO ROW
+========================= */
 
 .mission-top-row {
     display: flex;
-    gap: 25px;
-    margin-top: 20px;
+    gap: 24px;
     width: 100%;
+    margin: 20px 0 30px 0;
     align-items: stretch;
 }
 
-/* LEFT IMAGE CARD */
+/* LEFT SIDE IMAGE */
 .mission-top-row .mission-ad {
-    flex: 1;
+    flex: 1.6;
+    max-width: none;
     margin: 0;
-    max-width: 420px;
+    width: auto;
 }
 
-/* RIGHT DONATION BOX */
+/* RIGHT SIDE BOX */
 .mission-top-row .highlight-box {
     flex: 1;
     margin: 0;
+    padding: 28px;
+    border-radius: 14px;
+    background: #f5f5f5;
+    border-left: 6px solid #3D95CE;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
