@@ -17,7 +17,9 @@
  box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 .donate-btn:hover { background:#256633; }
-
+.donate-btn::before {
+    content: "💙 ";
+}
 .highlight-box {
  background:#f5f5f5; padding:20px;
  border-left:5px solid #2c7a3f;
@@ -39,6 +41,24 @@
 .photo-grid img {
  width:100%;
  border-radius:10px;
+}
+
+.donate-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 22px;
+    background-color: #3D95CE; /* Venmo-style blue */
+    color: #ffffff; /* white text for contrast */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.donate-btn:hover {
+    background-color: #2F7FB4; /* darker blue on hover */
+    transform: translateY(-2px);
 }
 </style>
 </head>
