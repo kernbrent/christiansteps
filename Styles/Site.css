@@ -1719,7 +1719,7 @@ a.card-link:active{
 /*Start of Missions.html section */
 .mission-ad {
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
     margin: 10px;
 }
 
@@ -1821,7 +1821,7 @@ a.card-link:active{
 
 .missions-image-row figure {
     flex: 1;
-    max-width: 600px;
+    max-width: 1000px;
     text-align: center;
     margin: 0;
     padding: 12px;
