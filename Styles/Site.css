@@ -1758,3 +1758,51 @@ a.card-link:active{
     font-weight: bold;
     background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
 }
+
+
+.hero-image { width:100%; border-radius:12px; margin-top:15px; }
+
+.donate-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 22px;
+    background-color: #3D95CE;
+    color: #ffffff !important;   /* force white text */
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+}
+
+.donate-btn:hover {
+    background-color: #2F7FB4;
+    color: #ffffff !important;   /* keep white on hover */
+    transform: translateY(-2px);
+}
+.donate-btn::before {
+    content: "💙 ";
+}
+.highlight-box {
+ background:#f5f5f5; padding:20px;
+ border-left:5px solid #2c7a3f;
+ margin:20px 0; border-radius:8px;
+}
+
+.sticky-donate {
+ position:fixed; bottom:15px; right:15px;
+ z-index:999;
+}
+
+.photo-grid {
+ display:grid;
+ grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+ gap:10px;
+ margin-top:15px;
+}
+
+.photo-grid img {
+ width:100%;
+ border-radius:10px;
+}
+
