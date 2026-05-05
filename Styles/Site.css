@@ -1719,7 +1719,7 @@ a.card-link:active{
 
 .mission-ad {
     width: 100%;
-    max-width: 280px;
+    max-width: 400px;
     margin: 10px;
 }
 
@@ -1730,7 +1730,7 @@ a.card-link:active{
 /* IMAGE CARD */
 .mission-ad-card {
     position: relative;
-    height: 260px;
+    height: 390px;
     overflow: hidden;
     border-radius: 14px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
@@ -1758,7 +1758,7 @@ a.card-link:active{
     bottom: 0;
     padding: 22px;
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     line-height: 1.15;
     font-weight: 700;
     background: linear-gradient(
@@ -1821,7 +1821,7 @@ a.card-link:active{
 
 .missions-image-row figure {
     flex: 1;
-    max-width: 320px;
+    max-width: 400px;
     text-align: center;
     margin: 0;
     padding: 12px;
