@@ -1758,6 +1758,22 @@ a.card-link:active{
     font-weight: bold;
     background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
 }
+.mission-top-row {
+    display: flex;
+    align-items: stretch;
+    gap: 25px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.mission-top-row .mission-ad {
+    flex: 0 0 280px;
+}
+
+.mission-top-row .highlight-box {
+    flex: 1;
+    min-width: 280px;
+}
 
 
 .hero-image { width:100%; border-radius:12px; margin-top:15px; }
