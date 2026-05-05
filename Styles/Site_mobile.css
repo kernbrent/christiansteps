@@ -238,3 +238,12 @@
     max-width: calc(100% - 16px);
   }
 }
+@media (max-width: 768px) {
+    .mission-top-row {
+        flex-direction: column;
+    }
+
+    .mission-ad-card {
+        height: 220px;
+    }
+}
