@@ -239,6 +239,7 @@
   }
 }
 /* MISSION MOBILE */
+/* MOBILE */
 @media (max-width: 768px) {
 
     .mission-top-row {
@@ -250,6 +251,15 @@
     }
 
     .mission-ad-text {
-        font-size: 24px;
+        font-size: 22px;
+    }
+
+    .highlight-box {
+        padding: 24px;
+    }
+
+    .donate-btn {
+        width: 100%;
+        text-align: center;
     }
 }
