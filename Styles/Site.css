@@ -1763,7 +1763,7 @@ a.card-link:active{
     align-items: stretch;
     gap: 25px;
     margin-top: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;     
 }
 
 .mission-top-row .mission-ad {
@@ -1772,8 +1772,8 @@ a.card-link:active{
 
 .mission-top-row .highlight-box {
     flex: 1;
-    min-width: 260px;
-    max-width: 270px;
+    min-width: 0;         
+    max-width: none;        
 }
 
 
