@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mission Devotional</title>
 
 <link href="Styles/Site.css" rel="stylesheet" />
@@ -16,7 +15,7 @@
     margin:0 auto;
 }
 
-.devotional-hero img{
+.hero-image{
     width:100%;
     height:320px;
     object-fit:cover;
@@ -24,90 +23,82 @@
     margin-bottom:25px;
 }
 
-.devotional-card{
-    background:white;
-    border-radius:16px;
+.content-card{
+    background:#fff;
     padding:30px;
-    box-shadow:0 4px 14px rgba(0,0,0,.08);
+    border-radius:16px;
     margin-bottom:25px;
-}
-
-.devotional-title{
-    font-size:38px;
-    margin-bottom:10px;
-}
-
-.devotional-meta{
-    color:#666;
-    margin-bottom:25px;
-}
-
-.devotional-content{
-    line-height:1.8;
-    font-size:17px;
-}
-
-.devotional-content p{
-    margin-bottom:18px;
-}
-
-.day-image-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
-    margin-top:25px;
-}
-
-.day-image-card{
-    background:white;
-    border-radius:14px;
-    overflow:hidden;
     box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-.day-image-card img{
+.section-title{
+    color:#3D95CE;
+    margin-bottom:12px;
+}
+
+.scripture-box{
+    background:#f5f9fc;
+    border-left:5px solid #3D95CE;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+}
+
+.reflection-list li{
+    margin-bottom:12px;
+    line-height:1.6;
+}
+
+.prayer-box{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.notes-box{
+    width:100%;
+    min-height:180px;
+    margin-top:15px;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+.image-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+    margin-top:20px;
+}
+
+.image-grid img{
     width:100%;
     height:240px;
     object-fit:cover;
-}
-
-.day-image-caption{
-    padding:12px;
-    text-align:center;
-    color:#555;
+    border-radius:12px;
 }
 
 .button-row{
     display:flex;
-    gap:15px;
     flex-wrap:wrap;
-    margin-top:30px;
+    gap:15px;
+    margin-top:25px;
 }
 
 .nav-button{
-    display:inline-block;
     background:#3D95CE;
-    color:white !important;
+    color:#fff !important;
     text-decoration:none;
     padding:14px 22px;
     border-radius:10px;
     font-weight:bold;
 }
 
-.nav-button:hover{
-    background:#2F7FB4;
-}
-
 @media(max-width:768px){
-
-    .devotional-title{
-        font-size:30px;
-    }
-
-    .devotional-hero img{
+    .hero-image{
         height:220px;
     }
-
 }
 
 </style>
@@ -116,162 +107,132 @@
 <body>
 
 <div class="page">
-
-<header class="header" role="banner">
-
+<header class="header">
 <div class="title">
 <h1>
 <a href="index.html">
-<img src="./Images/Logo400.jpg"
-class="site-logo"
-alt="Christian Steps Ministries"
-width="400" />
+<img src="./Images/Logo400.jpg" class="site-logo" width="400">
 </a>
 </h1>
 </div>
-
-<div class="clear hideSkiplink">
 <div id="siteHeader"></div>
-</div>
-
 </header>
 
 <div class="main">
-
 <main id="pageContent">
 
 <div class="devotional-container">
 
-<div class="devotional-hero">
-    <img id="generalImage" src="" alt="Mission Image">
+<img id="generalImage" class="hero-image" src="">
+
+<div class="content-card">
+
+<h1 id="title"></h1>
+
+<div class="scripture-box">
+<strong>Scripture:</strong>
+<a id="scriptureLink" target="_blank"></a>
 </div>
 
-<div class="devotional-card">
+<h2 class="section-title">Overview</h2>
+<div id="overview"></div>
 
-    <h1 class="devotional-title" id="devotionalTitle"></h1>
+<h2 class="section-title">Reflection Questions</h2>
+<ul class="reflection-list" id="questions"></ul>
 
-    <div class="devotional-meta">
+<h2 class="section-title">Group Prayer</h2>
+<div class="prayer-box" id="prayer"></div>
 
-        <div id="devotionalDate"></div>
+<h2 class="section-title">Prayer Notes</h2>
+<textarea class="notes-box" placeholder="Write your reflections and prayer notes here..."></textarea>
 
-        <div id="devotionalLocation"></div>
-
-        <div id="devotionalScripture"></div>
-
-    </div>
-
-    <div class="devotional-content" id="devotionalContent"></div>
-
-    <div class="button-row">
-
-        <a class="nav-button" id="previousDay">← Previous Day</a>
-
-        <a class="nav-button" href="missionitinerary.html">
-            Return to Calendar
-        </a>
-
-        <a class="nav-button" href="missions.html">
-            Return to Mission Home
-        </a>
-
-        <a class="nav-button" id="nextDay">Next Day →</a>
-
-    </div>
+<div class="button-row">
+<a class="nav-button" id="prevBtn">← Previous Day</a>
+<a class="nav-button" href="missionitinerary.html">Return to Calendar</a>
+<a class="nav-button" href="missions.html">Mission Home</a>
+<a class="nav-button" id="nextBtn">Next Day →</a>
+</div>
 
 </div>
 
-<div class="day-image-grid" id="dayImageGrid"></div>
+<div class="image-grid" id="imageGrid"></div>
 
 </div>
 
 </main>
-
 </div>
-
 </div>
 
 <div id="siteFooter"></div>
 
 <script>
 
-function getQueryParam(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
-const day = parseInt(getQueryParam('day')) || 1;
+const params = new URLSearchParams(window.location.search);
+const day = parseInt(params.get('day')) || 3;
 
 fetch('./data/missions.json')
 .then(r => r.json())
 .then(data => {
 
-    const devotional = data.find(d => d.Date == day);
+    const item = data.find(x => x.Date == day);
 
-    if(!devotional) return;
+    document.getElementById('title').innerText =
+        item.Devotional.Title;
 
-    document.getElementById('devotionalTitle').innerText =
-        devotional.Devotional.Title;
+    document.getElementById('overview').innerHTML =
+        '<p>' + item.Devotional.Overview.replace(/\n/g,'</p><p>') + '</p>';
 
-    document.getElementById('devotionalDate').innerHTML =
-        `<strong>Day:</strong> June ${devotional.Date}`;
+    document.getElementById('scriptureLink').innerText =
+        item["Daily Scripture"];
 
-    document.getElementById('devotionalLocation').innerHTML =
-        `<strong>Location:</strong> ${devotional.Location}`;
+    document.getElementById('scriptureLink').href =
+        item["Scripture URL"];
 
-    document.getElementById('devotionalScripture').innerHTML =
-        `<strong>Scripture:</strong>
-         <a href="${devotional.ScriptureURL || devotional["Scripture URL"]}"
-            target="_blank">
-            ${devotional["Daily Scripture"]}
-         </a>`;
+    const q = document.getElementById('questions');
 
-    document.getElementById('devotionalContent').innerHTML =
-        devotional.Devotional.Content;
+    item.Devotional.ReflectionQuestions.forEach(question => {
+
+        const li = document.createElement('li');
+        li.innerText = question;
+        q.appendChild(li);
+
+    });
+
+    document.getElementById('prayer').innerHTML =
+        '<p>' + item.Devotional.GroupPrayer.replace(/\n/g,'</p><p>') + '</p>';
 
     document.getElementById('generalImage').src =
-        devotional.GeneralImage;
+        item.GeneralImage;
 
-    const grid = document.getElementById('dayImageGrid');
+    const grid = document.getElementById('imageGrid');
 
-    devotional.DayImages.forEach(img => {
+    item.DayImages.forEach(img => {
 
         if(img.Enabled){
 
-            const card = document.createElement('div');
+            const div = document.createElement('div');
 
-            card.className = 'day-image-card';
+            div.innerHTML =
+                `<img src="${img.Image}" alt="">`;
 
-            card.innerHTML = `
-                <img src="${img.Image}" alt="">
-                <div class="day-image-caption">
-                    ${img.Caption || ""}
-                </div>
-            `;
-
-            grid.appendChild(card);
+            grid.appendChild(div);
 
         }
 
     });
 
-    // Previous Day
-    const prev = day - 1;
-
-    if(prev >= 1){
-        document.getElementById('previousDay').href =
-            `devotional.html?day=${prev}`;
+    if(day > 1){
+        document.getElementById('prevBtn').href =
+            `devotional.html?day=${day-1}`;
     } else {
-        document.getElementById('previousDay').style.display = 'none';
+        document.getElementById('prevBtn').style.display = 'none';
     }
 
-    // Next Day
-    const next = day + 1;
-
-    if(next <= data.length){
-        document.getElementById('nextDay').href =
-            `devotional.html?day=${next}`;
+    if(day < 20){
+        document.getElementById('nextBtn').href =
+            `devotional.html?day=${day+1}`;
     } else {
-        document.getElementById('nextDay').style.display = 'none';
+        document.getElementById('nextBtn').style.display = 'none';
     }
 
 });
