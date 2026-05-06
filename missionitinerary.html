@@ -38,7 +38,6 @@
     padding:12px;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
     transition:all 0.2s ease;
-    cursor:pointer;
 }
 
 .calendar-day:hover{
@@ -78,70 +77,6 @@
     color:#444;
 }
 
-/* MODAL */
-
-.scripture-modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.72);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    padding:20px;
-}
-
-.scripture-modal-content{
-    background:white;
-    width:100%;
-    max-width:900px;
-    height:85vh;
-    border-radius:16px;
-    overflow:hidden;
-    position:relative;
-    box-shadow:0 12px 30px rgba(0,0,0,0.35);
-    display:flex;
-    flex-direction:column;
-}
-
-.modal-header{
-    padding:18px 24px;
-    background:#3D95CE;
-    color:white;
-    font-size:22px;
-    font-weight:bold;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.modal-close{
-    font-size:30px;
-    cursor:pointer;
-}
-
-.scripture-frame{
-    flex:1;
-    width:100%;
-    border:none;
-}
-
-.modal-footer{
-    padding:14px 20px;
-    border-top:1px solid #ddd;
-    background:#f8f8f8;
-}
-
-.scripture-link{
-    display:inline-block;
-    background:#3D95CE;
-    color:white !important;
-    text-decoration:none;
-    padding:10px 16px;
-    border-radius:10px;
-    font-weight:bold;
-}
-
 .blank-day{
     background:transparent;
     border:none;
@@ -157,10 +92,6 @@
     .calendar-header{
         display:none;
     }
-
-    .scripture-modal-content{
-        height:90vh;
-    }
 }
 
 @media (max-width:600px){
@@ -171,25 +102,53 @@
 }
 
 </style>
+
 </head>
 
 <body>
 
+<a class="skip-link" href="#pageContent">Skip to content</a>
+
 <div class="page">
+
+<header class="header" role="banner">
+
+<div class="title">
+<h1>
+<a href="index.html">
+<img src="./Images/Logo400.jpg"
+class="site-logo"
+alt="Christian Steps Ministries"
+width="400" />
+</a>
+</h1>
+</div>
+
+<div class="clear hideSkiplink">
+<div id="siteHeader"></div>
+</div>
+
+</header>
 
 <div class="main">
 
-<main id="pageContent">
+<main id="pageContent" role="main">
 
-<section class="home-section">
+<section class="home-hero">
 
 <h2>Mission Trip Itinerary</h2>
 
+<p><strong>June 1–20, 2026</strong></p>
+
 <div class="card">
 <p>
-Hover over a calendar day to view the full scripture passage.
+Daily itinerary, scripture references, and scripture summaries for the mission trip.
 </p>
 </div>
+
+</section>
+
+<section class="home-section">
 
 <div class="itinerary-wrapper">
 
@@ -215,39 +174,7 @@ Hover over a calendar day to view the full scripture passage.
 
 </div>
 
-<!-- SCRIPTURE MODAL -->
-
-<div class="scripture-modal" id="scriptureModal">
-
-<div class="scripture-modal-content">
-
-<div class="modal-header">
-
-    <span id="modalTitle"></span>
-
-    <span class="modal-close" id="modalClose">&times;</span>
-
-</div>
-
-<iframe
-    id="scriptureFrame"
-    class="scripture-frame"
-    loading="lazy">
-</iframe>
-
-<div class="modal-footer">
-
-    <a id="scriptureLink"
-       class="scripture-link"
-       target="_blank">
-       Open in BibleGateway
-    </a>
-
-</div>
-
-</div>
-
-</div>
+<div id="siteFooter"></div>
 
 <script>
 
@@ -288,43 +215,22 @@ fetch('./data/missions.json')
             </div>
         `;
 
-        box.addEventListener('mouseenter', () => {
-
-            document.getElementById('scriptureModal').style.display = 'flex';
-
-            document.getElementById('modalTitle').innerText =
-                day["Daily Scripture"];
-
-            document.getElementById('scriptureLink').href =
-                day["Scripture URL"] || "#";
-
-            document.getElementById('scriptureFrame').src =
-                day["Scripture URL"] || "";
-
-        });
-
         grid.appendChild(box);
 
     });
 
 });
 
-document.getElementById('modalClose')
-.addEventListener('click', () => {
-
-    document.getElementById('scriptureModal').style.display = 'none';
-
-    document.getElementById('scriptureFrame').src = '';
-
+fetch('header.html')
+.then(r => r.text())
+.then(h => {
+    document.getElementById('siteHeader').innerHTML = h;
 });
 
-document.getElementById('scriptureModal')
-.addEventListener('mouseleave', () => {
-
-    document.getElementById('scriptureModal').style.display = 'none';
-
-    document.getElementById('scriptureFrame').src = '';
-
+fetch('footer.html')
+.then(r => r.text())
+.then(f => {
+    document.getElementById('siteFooter').innerHTML = f;
 });
 
 </script>
