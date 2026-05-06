@@ -112,6 +112,21 @@
     background:#2F7FB4;
 }
 
+
+.notes-actions{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:15px;
+}
+
+.saved-message{
+    margin-top:10px;
+    color:#2F7FB4;
+    font-weight:bold;
+    display:none;
+}
+
 @media(max-width:768px){
 
     .hero-image{
@@ -196,7 +211,27 @@ Mission Home
 <div class="prayer-box" id="prayer"></div>
 
 <h2 class="section-title">Prayer Notes</h2>
-<textarea class="notes-box" placeholder="Write your reflections and prayer notes here..."></textarea>
+
+<textarea class="notes-box"
+          id="notesBox"
+          placeholder="Write your reflections and prayer notes here..."></textarea>
+
+<div class="notes-actions">
+
+<button class="nav-button" id="emailNotesBtn">
+Email My Notes
+</button>
+
+<button class="nav-button" id="clearNotesBtn">
+Clear Notes
+</button>
+
+</div>
+
+<div class="saved-message" id="savedMessage">
+Notes saved automatically.
+</div>
+
 
 <!-- BOTTOM NAVIGATION BUTTONS -->
 <div class="button-row">
@@ -233,6 +268,73 @@ Mission Home
 
 const params = new URLSearchParams(window.location.search);
 const day = parseInt(params.get('day')) || 3;
+
+
+const notesBox =
+    document.getElementById('notesBox');
+
+const savedMessage =
+    document.getElementById('savedMessage');
+
+const storageKey =
+    `missionNotes_day_${day}`;
+
+// LOAD SAVED NOTES
+notesBox.value =
+    localStorage.getItem(storageKey) || '';
+
+// AUTO SAVE NOTES
+notesBox.addEventListener('input', () => {
+
+    localStorage.setItem(
+        storageKey,
+        notesBox.value
+    );
+
+    savedMessage.style.display = 'block';
+
+    clearTimeout(window.saveMessageTimeout);
+
+    window.saveMessageTimeout =
+        setTimeout(() => {
+
+            savedMessage.style.display = 'none';
+
+        }, 2000);
+
+});
+
+// EMAIL NOTES
+document.getElementById('emailNotesBtn')
+.addEventListener('click', () => {
+
+    const subject =
+        encodeURIComponent(
+            `Mission Prayer Notes - Day ${day}`
+        );
+
+    const body =
+        encodeURIComponent(notesBox.value);
+
+    window.location.href =
+        `mailto:?subject=${subject}&body=${body}`;
+
+});
+
+// CLEAR NOTES
+document.getElementById('clearNotesBtn')
+.addEventListener('click', () => {
+
+    if(confirm('Clear your saved notes for this day?')){
+
+        localStorage.removeItem(storageKey);
+
+        notesBox.value = '';
+
+    }
+
+});
+
 
 fetch('./data/missions.json')
 .then(r => r.json())
