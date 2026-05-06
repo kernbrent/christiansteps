@@ -1806,6 +1806,8 @@ a.card-link:active{
     display: inline-block;
     align-self: flex-start;
 
+    white-space: nowrap;
+
     margin-top: 20px;
     padding: 14px 24px;
 
