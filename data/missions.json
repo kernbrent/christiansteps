@@ -1,162 +1,602 @@
 [
   {
-    "Date": "1",
-    "Location": "Athens",
+    "Date": 1,
+    "Location": "Nafplio, Greece",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Genesis 1:1",
-    "Daily Scripture Text": "God created the heavens and the earth in the beginning.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Genesis%201%3A1&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 1 Devotional",
+      "Content": "<p>This is the devotional content for day 1.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day1_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day1_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day1_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "2",
-    "Location": "Athens",
+    "Date": 2,
+    "Location": "Nafplio, Greece",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Proverbs 17:17",
-    "Daily Scripture Text": "A true friend loves faithfully through every season.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Proverbs%2017%3A17&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 2 Devotional",
+      "Content": "<p>This is the devotional content for day 2.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day2_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day2_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day2_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "3",
-    "Location": "Athens",
+    "Date": 3,
+    "Location": "Nafplio, Greece",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Matthew 28:19\u201320",
-    "Daily Scripture Text": "Jesus commands believers to go, disciple, and teach all nations.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew%2028%3A19%E2%80%9320&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 3 Devotional",
+      "Content": "<p>This is the devotional content for day 3.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day3_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day3_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day3_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "4",
+    "Date": 4,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Acts 17:16\u201323",
-    "Daily Scripture Text": "Paul shares truth with the people of Athens.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Acts%2017%3A16%E2%80%9323&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 4 Devotional",
+      "Content": "<p>This is the devotional content for day 4.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day4_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day4_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day4_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "5",
+    "Date": 5,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Matthew 9:35\u201338",
-    "Daily Scripture Text": "Jesus had compassion on the crowds and called for workers.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew%209%3A35%E2%80%9338&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 5 Devotional",
+      "Content": "<p>This is the devotional content for day 5.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day5_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day5_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day5_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "6",
+    "Date": 6,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Luke 5:12\u201316",
-    "Daily Scripture Text": "Jesus healed the man with leprosy and withdrew to pray.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Luke%205%3A12%E2%80%9316&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 6 Devotional",
+      "Content": "<p>This is the devotional content for day 6.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day6_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "7",
+    "Date": 7,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "John 13:1\u201317",
-    "Daily Scripture Text": "Jesus washed the disciples\u2019 feet and modeled servant leadership.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=John%2013%3A1%E2%80%9317&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 7 Devotional",
+      "Content": "<p>This is the devotional content for day 7.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day7_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day7_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day7_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "8",
+    "Date": 8,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "John 5:17",
-    "Daily Scripture Text": "Jesus said His Father is always at work, and so is He.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=John%205%3A17&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 8 Devotional",
+      "Content": "<p>This is the devotional content for day 8.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day8_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day8_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day8_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "9",
+    "Date": 9,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Romans 1:16",
-    "Daily Scripture Text": "The Gospel is the power of God for salvation.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Romans%201%3A16&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 9 Devotional",
+      "Content": "<p>This is the devotional content for day 9.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day9_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day9_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day9_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "10",
+    "Date": 10,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Matthew 25:35\u201340",
-    "Daily Scripture Text": "Serving others is serving Christ Himself.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew%2025%3A35%E2%80%9340&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 10 Devotional",
+      "Content": "<p>This is the devotional content for day 10.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day10_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day10_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day10_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "11",
+    "Date": 11,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Philippians 2:1\u20135",
-    "Daily Scripture Text": "Believers are called to humility and unity.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Philippians%202%3A1%E2%80%935&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 11 Devotional",
+      "Content": "<p>This is the devotional content for day 11.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day11_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day11_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day11_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "12",
+    "Date": 12,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "2 Corinthians 12:9\u201310",
-    "Daily Scripture Text": "God\u2019s power is made perfect in weakness.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=2%20Corinthians%2012%3A9%E2%80%9310&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 12 Devotional",
+      "Content": "<p>This is the devotional content for day 12.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day12_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day12_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day12_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "13",
+    "Date": 13,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "2 Timothy 4:7",
-    "Daily Scripture Text": "Paul finished the race and kept the faith.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=2%20Timothy%204%3A7&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 13 Devotional",
+      "Content": "<p>This is the devotional content for day 13.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day13_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day13_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day13_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "14",
+    "Date": 14,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "Acts 1:8",
-    "Daily Scripture Text": "Believers receive power to witness to the world.",
-    "Scripture URL": "https://www.biblegateway.com/passage/?search=Acts%201%3A8&version=NIV"
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 14 Devotional",
+      "Content": "<p>This is the devotional content for day 14.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day14_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day14_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day14_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "15",
+    "Date": 15,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "",
-    "Daily Scripture Text": "",
-    "Scripture URL": ""
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 15 Devotional",
+      "Content": "<p>This is the devotional content for day 15.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day15_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day15_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day15_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "16",
+    "Date": 16,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "",
-    "Daily Scripture Text": "",
-    "Scripture URL": ""
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 16 Devotional",
+      "Content": "<p>This is the devotional content for day 16.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day16_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day16_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day16_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "17",
+    "Date": 17,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "",
-    "Daily Scripture Text": "",
-    "Scripture URL": ""
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 17 Devotional",
+      "Content": "<p>This is the devotional content for day 17.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day17_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day17_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day17_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "18",
+    "Date": 18,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "",
-    "Daily Scripture Text": "",
-    "Scripture URL": ""
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 18 Devotional",
+      "Content": "<p>This is the devotional content for day 18.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day18_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day18_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day18_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "19",
+    "Date": 19,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "",
-    "Daily Scripture Text": "",
-    "Scripture URL": ""
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 19 Devotional",
+      "Content": "<p>This is the devotional content for day 19.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day19_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day19_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day19_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   },
   {
-    "Date": "20",
+    "Date": 20,
     "Location": "Athens",
     "Days Activities": "Serve People",
-    "Daily Scripture": "",
-    "Daily Scripture Text": "",
-    "Scripture URL": ""
+    "Daily Scripture": "Matthew 25:40",
+    "Daily Scripture Summary": "Serving others is serving Christ Himself.",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=Matthew+25%3A40&version=NIV",
+    "Devotional": {
+      "Title": "Day 20 Devotional",
+      "Content": "<p>This is the devotional content for day 20.</p>\n\n<p>\nYou can include full HTML formatting here including:\n</p>\n\n<ul>\n<li>Paragraphs</li>\n<li>Lists</li>\n<li><a href=\"https://christiansteps.net\" target=\"_blank\">Hyperlinks</a></li>\n<li>Bold text</li>\n</ul>\n\n<p>\nReflect on how God is working during this mission trip.\n</p>"
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": true,
+        "Image": "Images/day20_1.jpg",
+        "Caption": "Mission image 1"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day20_2.jpg",
+        "Caption": "Mission image 2"
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day20_3.jpg",
+        "Caption": "Mission image 3"
+      }
+    ]
   }
 ]
