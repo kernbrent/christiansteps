@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
 <title>Mission Trip Itinerary - Christian Steps Ministries</title>
 
 <link href="Styles/Site.css" rel="stylesheet" />
@@ -38,6 +39,7 @@
     padding:12px;
     box-shadow:0 4px 12px rgba(0,0,0,0.08);
     transition:all 0.2s ease;
+    cursor:pointer;
 }
 
 .calendar-day:hover{
@@ -81,6 +83,7 @@
     background:transparent;
     border:none;
     box-shadow:none;
+    cursor:default;
 }
 
 @media (max-width:900px){
@@ -142,7 +145,7 @@ width="400" />
 
 <div class="card">
 <p>
-Daily itinerary, scripture references, and scripture summaries for the mission trip.
+Click on a day to view the full devotional, scripture, and mission details.
 </p>
 </div>
 
@@ -199,21 +202,29 @@ fetch('./data/missions.json')
             <div class="day-number">${day.Date}</div>
 
             <div class="day-location">
-                ${day.Location}
+                ${day.Location || ""}
             </div>
 
             <div class="day-activities">
-                ${day["Days Activities"]}
+                ${day["Days Activities"] || ""}
             </div>
 
             <div class="day-scripture">
-                ${day["Daily Scripture"]}
+                ${day["Daily Scripture"] || ""}
             </div>
 
             <div class="day-scripture-summary">
-                ${day["Daily Scripture Text"] || ""}
+                ${day["Daily Scripture Summary"] || day["Daily Scripture Text"] || ""}
             </div>
         `;
+
+        // CLICK TO OPEN DEVOTIONAL PAGE
+        box.addEventListener('click', () => {
+
+            window.location.href =
+                `devotional.html?day=${day.Date}`;
+
+        });
 
         grid.appendChild(box);
 
