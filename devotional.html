@@ -229,18 +229,46 @@ fetch('./data/missions.json')
 
     });
 
-    if(day > 1){
+    // ONLY MISSION DAYS
+    const missionDays =
+        data.filter(d => d.IsMissionDay);
+
+    // FIND CURRENT POSITION
+    const currentIndex =
+        missionDays.findIndex(d => d.Date == day);
+
+    // PREVIOUS BUTTON
+    if(currentIndex > 0){
+
+        const prevDay =
+            missionDays[currentIndex - 1];
+
         document.getElementById('prevBtn').href =
-            `devotional.html?day=${day-1}`;
-    } else {
-        document.getElementById('prevBtn').style.display = 'none';
+            `devotional.html?day=${prevDay.Date}`;
+
+    }
+    else{
+
+        document.getElementById('prevBtn').style.display =
+            'none';
+
     }
 
-    if(day < 20){
+    // NEXT BUTTON
+    if(currentIndex < missionDays.length - 1){
+
+        const nextDay =
+            missionDays[currentIndex + 1];
+
         document.getElementById('nextBtn').href =
-            `devotional.html?day=${day+1}`;
-    } else {
-        document.getElementById('nextBtn').style.display = 'none';
+            `devotional.html?day=${nextDay.Date}`;
+
+    }
+    else{
+
+        document.getElementById('nextBtn').style.display =
+            'none';
+
     }
 
 });
