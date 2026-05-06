@@ -47,7 +47,6 @@
     box-shadow:0 10px 24px rgba(0,0,0,0.18);
 }
 
-/* NON-MISSION DAYS */
 .non-mission-day{
     background:#f0f0f0;
     border:1px solid #d0d0d0;
@@ -216,17 +215,14 @@ fetch('./data/missions.json')
     blank.className = 'calendar-day blank-day';
     grid.appendChild(blank);
 
-    // Non-clickable days
-    const nonMissionDays = [1,2,15,16,17,18,19,20];
-
     data.forEach(day => {
 
         const box = document.createElement('div');
 
         box.className = 'calendar-day';
 
-        // Grey out non-mission days
-        if(nonMissionDays.includes(day.Date)){
+        // Grey out non-mission days from JSON
+        if(!day.IsMissionDay){
             box.classList.add('non-mission-day');
         }
 
@@ -251,7 +247,7 @@ fetch('./data/missions.json')
         `;
 
         // Only mission days clickable
-        if(!nonMissionDays.includes(day.Date)){
+        if(day.IsMissionDay){
 
             box.addEventListener('click', () => {
 
