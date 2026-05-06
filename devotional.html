@@ -15,17 +15,25 @@
     margin:0 auto;
 }
 
+/* SMALLER HERO IMAGE */
 .hero-image{
     width:100%;
-    height:min(38vw,340px);
-
+    max-height:220px;
     object-fit:cover;
     object-position:center center;
 
     border-radius:16px;
-    margin-bottom:25px;
+    margin-bottom:20px;
 
     display:block;
+}
+
+/* TOP BUTTON ROW */
+.top-button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:25px;
 }
 
 .content-card{
@@ -100,38 +108,74 @@
     font-weight:bold;
 }
 
+.nav-button:hover{
+    background:#2F7FB4;
+}
+
 @media(max-width:768px){
+
     .hero-image{
-        height:220px;
+        max-height:160px;
     }
+
+    .content-card{
+        padding:20px;
+    }
+
 }
 
 </style>
 </head>
 <body>
-  <a class="skip-link" href="#pageContent">Skip to content</a>
-  <div class="page">
-    <header class="header" role="banner">
-      <div class="title">
-        <h1>
-          <a href="index.html">
-            <img src="./Images/Logo400.jpg"
-                 class="site-logo" alt="Christian Steps Ministries"
-                 width="400"
-                  />
-          </a>
-        </h1>
-      </div>
-      <div class="clear hideSkiplink">
-        <div id="siteHeader"></div>
-      </div>
-    </header>
-    <div class="main">
-      <main id="pageContent" role="main">
+
+<a class="skip-link" href="#pageContent">Skip to content</a>
+
+<div class="page">
+
+<header class="header" role="banner">
+
+<div class="title">
+<h1>
+<a href="index.html">
+<img src="./Images/Logo400.jpg"
+class="site-logo"
+alt="Christian Steps Ministries"
+width="400" />
+</a>
+</h1>
+</div>
+
+<div class="clear hideSkiplink">
+<div id="siteHeader"></div>
+</div>
+
+</header>
+
+<div class="main">
+
+<main id="pageContent" role="main">
 
 <div class="devotional-container">
 
 <img id="generalImage" class="hero-image" src="">
+
+<!-- TOP NAVIGATION BUTTONS -->
+<div class="top-button-row">
+
+<a class="nav-button" id="topPrevBtn">← Previous Day</a>
+
+<a class="nav-button" href="missionitinerary.html">
+Return to Calendar
+</a>
+
+<a class="nav-button" href="missions.html">
+Mission Home
+</a>
+
+<a class="nav-button" id="topNextBtn">Next Day →
+</a>
+
+</div>
 
 <div class="content-card">
 
@@ -154,11 +198,21 @@
 <h2 class="section-title">Prayer Notes</h2>
 <textarea class="notes-box" placeholder="Write your reflections and prayer notes here..."></textarea>
 
+<!-- BOTTOM NAVIGATION BUTTONS -->
 <div class="button-row">
+
 <a class="nav-button" id="prevBtn">← Previous Day</a>
-<a class="nav-button" href="missionitinerary.html">Return to Calendar</a>
-<a class="nav-button" href="missions.html">Mission Home</a>
+
+<a class="nav-button" href="missionitinerary.html">
+Return to Calendar
+</a>
+
+<a class="nav-button" href="missions.html">
+Mission Home
+</a>
+
 <a class="nav-button" id="nextBtn">Next Day →</a>
+
 </div>
 
 </div>
@@ -168,7 +222,9 @@
 </div>
 
 </main>
+
 </div>
+
 </div>
 
 <div id="siteFooter"></div>
@@ -237,7 +293,7 @@ fetch('./data/missions.json')
     const currentIndex =
         missionDays.findIndex(d => d.Date == day);
 
-    // PREVIOUS BUTTON
+    // PREVIOUS BUTTONS
     if(currentIndex > 0){
 
         const prevDay =
@@ -246,15 +302,18 @@ fetch('./data/missions.json')
         document.getElementById('prevBtn').href =
             `devotional.html?day=${prevDay.Date}`;
 
+        document.getElementById('topPrevBtn').href =
+            `devotional.html?day=${prevDay.Date}`;
+
     }
     else{
 
-        document.getElementById('prevBtn').style.display =
-            'none';
+        document.getElementById('prevBtn').style.display = 'none';
+        document.getElementById('topPrevBtn').style.display = 'none';
 
     }
 
-    // NEXT BUTTON
+    // NEXT BUTTONS
     if(currentIndex < missionDays.length - 1){
 
         const nextDay =
@@ -263,11 +322,14 @@ fetch('./data/missions.json')
         document.getElementById('nextBtn').href =
             `devotional.html?day=${nextDay.Date}`;
 
+        document.getElementById('topNextBtn').href =
+            `devotional.html?day=${nextDay.Date}`;
+
     }
     else{
 
-        document.getElementById('nextBtn').style.display =
-            'none';
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('topNextBtn').style.display = 'none';
 
     }
 
