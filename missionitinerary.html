@@ -1,287 +1,333 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mission Trip Itinerary - Christian Steps Ministries</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Mission Trip Itinerary - Christian Steps Ministries</title>
 
-    <link href="Styles/Site.css" rel="stylesheet" />
-    <link href="Styles/Site_mobile.css" rel="stylesheet" />
+<link href="Styles/Site.css" rel="stylesheet" />
+<link href="Styles/Site_mobile.css" rel="stylesheet" />
 
-    <style>
-        .itinerary-wrapper {
-            margin-top: 25px;
-        }
+<style>
 
-        .itinerary-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 12px;
-        }
+.itinerary-wrapper{
+    margin-top:25px;
+}
 
-        .calendar-header {
-            background: #3a4f63;
-            color: white;
-            padding: 14px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
+.itinerary-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:12px;
+}
 
-        .calendar-day {
-            position: relative;
-            min-height: 220px;
-            background: #ffffff;
-            border: 1px solid #d8d8d8;
-            border-radius: 14px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all 0.2s ease;
-        }
+.calendar-header{
+    background:#3a4f63;
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    text-align:center;
+    font-weight:bold;
+}
 
-        .calendar-day:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-        }
+.calendar-day{
+    position:relative;
+    min-height:240px;
+    background:#ffffff;
+    border:1px solid #d8d8d8;
+    border-radius:14px;
+    padding:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:all 0.2s ease;
+    cursor:pointer;
+}
 
-        .day-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #3D95CE;
-            margin-bottom: 10px;
-        }
+.calendar-day:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 24px rgba(0,0,0,0.18);
+}
 
-        .day-location {
-            font-weight: bold;
-            color: #3D95CE;
-            margin-bottom: 8px;
-        }
+.day-number{
+    font-size:24px;
+    font-weight:bold;
+    color:#3D95CE;
+    margin-bottom:10px;
+}
 
-        .day-activities {
-            font-size: 14px;
-            line-height: 1.45;
-            margin-bottom: 10px;
-        }
+.day-location{
+    font-weight:bold;
+    color:#3D95CE;
+    margin-bottom:8px;
+}
 
-        .day-scripture {
-            font-size: 13px;
-            font-style: italic;
-            color: #666;
-        }
+.day-activities{
+    font-size:14px;
+    line-height:1.45;
+    margin-bottom:12px;
+}
 
-        /* HOVER SCRIPTURE OVERLAY */
-        .scripture-overlay {
-            position: absolute;
-            inset: 0;
+.day-scripture{
+    font-size:13px;
+    font-style:italic;
+    color:#666;
+    margin-bottom:10px;
+}
 
-            background: rgba(0, 0, 0, 0.88);
-            color: #ffffff;
+.day-scripture-summary{
+    font-size:13px;
+    line-height:1.45;
+    color:#444;
+}
 
-            padding: 18px;
+/* MODAL */
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+.scripture-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.72);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
 
-            opacity: 0;
-            transition: opacity 0.25s ease;
+.scripture-modal-content{
+    background:white;
+    width:100%;
+    max-width:900px;
+    height:85vh;
+    border-radius:16px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    display:flex;
+    flex-direction:column;
+}
 
-            font-size: 14px;
-            line-height: 1.5;
-        }
+.modal-header{
+    padding:18px 24px;
+    background:#3D95CE;
+    color:white;
+    font-size:22px;
+    font-weight:bold;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-        .calendar-day:hover .scripture-overlay {
-            opacity: 1;
-        }
+.modal-close{
+    font-size:30px;
+    cursor:pointer;
+}
 
-        .scripture-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #7ec8ff;
-        }
+.scripture-frame{
+    flex:1;
+    width:100%;
+    border:none;
+}
 
-        .blank-day {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-        }
+.modal-footer{
+    padding:14px 20px;
+    border-top:1px solid #ddd;
+    background:#f8f8f8;
+}
 
-        @media (max-width:900px) {
+.scripture-link{
+    display:inline-block;
+    background:#3D95CE;
+    color:white !important;
+    text-decoration:none;
+    padding:10px 16px;
+    border-radius:10px;
+    font-weight:bold;
+}
 
-            .itinerary-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+.blank-day{
+    background:transparent;
+    border:none;
+    box-shadow:none;
+}
 
-            .calendar-header {
-                display: none;
-            }
-        }
+@media (max-width:900px){
 
-        @media (max-width:600px) {
+    .itinerary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-            .itinerary-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .calendar-header{
+        display:none;
+    }
 
+    .scripture-modal-content{
+        height:90vh;
+    }
+}
+
+@media (max-width:600px){
+
+    .itinerary-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <a class="skip-link" href="#pageContent">Skip to content</a>
+<div class="page">
 
-    <div class="page">
+<div class="main">
 
-        <header class="header" role="banner">
+<main id="pageContent">
 
-            <div class="title">
-                <h1>
-                    <a href="index.html">
-                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
-                            width="400" />
-                    </a>
-                </h1>
+<section class="home-section">
+
+<h2>Mission Trip Itinerary</h2>
+
+<div class="card">
+<p>
+Hover over a calendar day to view the full scripture passage.
+</p>
+</div>
+
+<div class="itinerary-wrapper">
+
+<div class="itinerary-grid" id="calendarGrid">
+
+<div class="calendar-header">Sunday</div>
+<div class="calendar-header">Monday</div>
+<div class="calendar-header">Tuesday</div>
+<div class="calendar-header">Wednesday</div>
+<div class="calendar-header">Thursday</div>
+<div class="calendar-header">Friday</div>
+<div class="calendar-header">Saturday</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+</div>
+
+<!-- SCRIPTURE MODAL -->
+
+<div class="scripture-modal" id="scriptureModal">
+
+<div class="scripture-modal-content">
+
+<div class="modal-header">
+
+    <span id="modalTitle"></span>
+
+    <span class="modal-close" id="modalClose">&times;</span>
+
+</div>
+
+<iframe
+    id="scriptureFrame"
+    class="scripture-frame"
+    loading="lazy">
+</iframe>
+
+<div class="modal-footer">
+
+    <a id="scriptureLink"
+       class="scripture-link"
+       target="_blank">
+       Open in BibleGateway
+    </a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+fetch('./data/missions.json')
+.then(response => response.json())
+.then(data => {
+
+    const grid = document.getElementById('calendarGrid');
+
+    // Blank calendar box before June 1
+    const blank = document.createElement('div');
+    blank.className = 'calendar-day blank-day';
+    grid.appendChild(blank);
+
+    data.forEach(day => {
+
+        const box = document.createElement('div');
+
+        box.className = 'calendar-day';
+
+        box.innerHTML = `
+            <div class="day-number">${day.Date}</div>
+
+            <div class="day-location">
+                ${day.Location}
             </div>
 
-            <div class="clear hideSkiplink">
-                <div id="siteHeader"></div>
+            <div class="day-activities">
+                ${day["Days Activities"]}
             </div>
 
-        </header>
+            <div class="day-scripture">
+                ${day["Daily Scripture"]}
+            </div>
 
-        <div class="main">
+            <div class="day-scripture-summary">
+                ${day["Daily Scripture Text"] || ""}
+            </div>
+        `;
 
-            <main id="pageContent" role="main">
+        box.addEventListener('mouseenter', () => {
 
-                <section class="home-hero">
+            document.getElementById('scriptureModal').style.display = 'flex';
 
-                    <h2>Mission Trip Itinerary</h2>
+            document.getElementById('modalTitle').innerText =
+                day["Daily Scripture"];
 
-                    <p><strong>June 3–140, 2026</strong></p>
-                    <div class="mission-top-row">
+            document.getElementById('scriptureLink').href =
+                day["Scripture URL"] || "#";
 
-                        <div class="mission-ad">
-                            <a href="missionitinerary.html">
-                                <div class="mission-ad-card">
-                                    <img src="Images/athens.jpg" alt="Athens Greece Mission Trip">
+            document.getElementById('scriptureFrame').src =
+                day["Scripture URL"] || "";
 
-                                    <div class="mission-ad-text">
-                                        Support CSM's Mission Trip to Athens, Greece
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <p> Mission Trip to Athens, Greece to serve the homeless, refugees, and victims of trafficing
-                        </p>
-                        <p>
-                            Hover over a calendar day to view the full scripture text for that day.
-                        </p>
-                    </div>
+        });
 
-                </section>
+        grid.appendChild(box);
 
-                <section class="home-section">
+    });
 
-                    <div class="itinerary-wrapper">
+});
 
-                        <div class="itinerary-grid" id="calendarGrid">
+document.getElementById('modalClose')
+.addEventListener('click', () => {
 
-                            <div class="calendar-header">Sunday</div>
-                            <div class="calendar-header">Monday</div>
-                            <div class="calendar-header">Tuesday</div>
-                            <div class="calendar-header">Wednesday</div>
-                            <div class="calendar-header">Thursday</div>
-                            <div class="calendar-header">Friday</div>
-                            <div class="calendar-header">Saturday</div>
+    document.getElementById('scriptureModal').style.display = 'none';
 
-                        </div>
+    document.getElementById('scriptureFrame').src = '';
 
-                    </div>
+});
 
-                </section>
+document.getElementById('scriptureModal')
+.addEventListener('mouseleave', () => {
 
-            </main>
+    document.getElementById('scriptureModal').style.display = 'none';
 
-        </div>
+    document.getElementById('scriptureFrame').src = '';
 
-    </div>
+});
 
-    <div id="siteFooter"></div>
-
-    <script>
-
-        fetch('./data/missions.json')
-            .then(response => response.json())
-            .then(data => {
-
-                const calendarGrid = document.getElementById('calendarGrid');
-
-                // Blank cell before June 1
-                const blank = document.createElement('div');
-                blank.className = 'calendar-day blank-day';
-                calendarGrid.appendChild(blank);
-
-                // Create each day
-                data.forEach(day => {
-
-                    const dayBox = document.createElement('div');
-
-                    dayBox.className = 'calendar-day';
-
-                    dayBox.innerHTML = `
-                <div class="day-number">${day.Date}</div>
-
-                <div class="day-location">
-                    ${day.Location}
-                </div>
-
-                <div class="day-activities">
-                    ${day["Days Activities"]}
-                </div>
-
-                <div class="day-scripture">
-                    ${day["Daily Scripture"]}
-                </div>
-
-                <div class="scripture-overlay">
-
-                    <div class="scripture-title">
-                        ${day["Daily Scripture"]}
-                    </div>
-
-                    <div>
-                        ${day["Daily Scripture Text"] || ""}
-                    </div>
-
-                </div>
-            `;
-
-                    calendarGrid.appendChild(dayBox);
-
-                });
-
-            });
-
-        fetch('header.html')
-            .then(r => r.text())
-            .then(h => {
-                document.getElementById('siteHeader').innerHTML = h;
-            });
-
-        fetch('footer.html')
-            .then(r => r.text())
-            .then(f => {
-                document.getElementById('siteFooter').innerHTML = f;
-            });
-
-    </script>
+</script>
 
 </body>
-
 </html>
