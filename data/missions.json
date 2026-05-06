@@ -1,6 +1,7 @@
 [
   {
     "Date": 1,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -34,6 +35,7 @@
   },
   {
     "Date": 2,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -67,6 +69,7 @@
   },
   {
     "Date": 3,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Matthew 28:19-20",
@@ -111,6 +114,7 @@
   },
   {
     "Date": 4,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Acts 17 & Matthew 25:40",
@@ -155,6 +159,7 @@
   },
   {
     "Date": 5,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Matthew 9:35-38",
@@ -199,6 +204,7 @@
   },
   {
     "Date": 6,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Luke 5:12-16",
@@ -243,6 +249,7 @@
   },
   {
     "Date": 7,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "John 13:1-17",
@@ -287,6 +294,7 @@
   },
   {
     "Date": 8,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "John 5:17",
@@ -331,6 +339,7 @@
   },
   {
     "Date": 9,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Romans 1:16",
@@ -375,6 +384,7 @@
   },
   {
     "Date": 10,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Isaiah 58:6-7",
@@ -419,6 +429,7 @@
   },
   {
     "Date": 11,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "John 8:1-11",
@@ -463,6 +474,7 @@
   },
   {
     "Date": 12,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "2 Corinthians 12:9-10",
@@ -507,6 +519,7 @@
   },
   {
     "Date": 13,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "2 Timothy 4:7",
@@ -551,6 +564,7 @@
   },
   {
     "Date": 14,
+    "IsMissionDay": true,
     "Location": "Athens",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "Acts 1:8",
@@ -595,6 +609,7 @@
   },
   {
     "Date": 15,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -628,6 +643,7 @@
   },
   {
     "Date": 16,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -661,6 +677,7 @@
   },
   {
     "Date": 17,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -694,6 +711,7 @@
   },
   {
     "Date": 18,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -727,6 +745,7 @@
   },
   {
     "Date": 19,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
@@ -760,6 +779,7 @@
   },
   {
     "Date": 20,
+    "IsMissionDay": false,
     "Location": "Greece",
     "Days Activities": "Mission outreach and ministry activities.",
     "Daily Scripture": "",
