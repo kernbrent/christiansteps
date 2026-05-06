@@ -17,10 +17,15 @@
 
 .hero-image{
     width:100%;
-    height:320px;
+    height:min(38vw,340px);
+
     object-fit:cover;
+    object-position:center center;
+
     border-radius:16px;
     margin-bottom:25px;
+
+    display:block;
 }
 
 .content-card{
@@ -103,23 +108,26 @@
 
 </style>
 </head>
-
 <body>
-
-<div class="page">
-<header class="header">
-<div class="title">
-<h1>
-<a href="index.html">
-<img src="./Images/Logo400.jpg" class="site-logo" width="400">
-</a>
-</h1>
-</div>
-<div id="siteHeader"></div>
-</header>
-
-<div class="main">
-<main id="pageContent">
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+  <div class="page">
+    <header class="header" role="banner">
+      <div class="title">
+        <h1>
+          <a href="index.html">
+            <img src="./Images/Logo400.jpg"
+                 class="site-logo" alt="Christian Steps Ministries"
+                 width="400"
+                  />
+          </a>
+        </h1>
+      </div>
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+    <div class="main">
+      <main id="pageContent" role="main">
 
 <div class="devotional-container">
 
