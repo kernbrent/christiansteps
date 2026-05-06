@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mission Itinerary - Christian Steps Ministries</title>
+
+    <link href="Styles/Site.css" rel="stylesheet" />
+    <link href="Styles/Site_mobile.css" rel="stylesheet" />
+
+    <style>
+        .itinerary-wrapper {
+            margin-top: 25px;
+        }
+
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+        }
+
+        .calendar-header {
+            background: #3a4f63;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .calendar-day {
+            min-height: 180px;
+            background: #ffffff;
+            border: 1px solid #d8d8d8;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .day-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3D95CE;
+            margin-bottom: 10px;
+        }
+
+        .day-location {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .day-activities {
+            font-size: 14px;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .day-scripture {
+            font-size: 13px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .blank-day {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        @media (max-width:900px) {
+            .itinerary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .calendar-header {
+                display: none;
+            }
+        }
+
+        @media (max-width:600px) {
+            .itinerary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <a class="skip-link" href="#pageContent">Skip to content</a>
+
+    <div class="page">
+
+        <header class="header" role="banner">
+            <div class="title">
+                <h1>
+                    <a href="index.html">
+                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                            width="400" />
+                    </a>
+                </h1>
+            </div>
+
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
+        </header>
+
+        <div class="main">
+            <main id="pageContent" role="main">
+
+                <section class="home-hero">
+
+                    <h2>Mission Trip Itinerary</h2>
+
+                    <p><strong>June 1–20, 2026</strong></p>
+
+                    <div class="card">
+                        <p>
+                            Daily locations, activities, and scripture focus for the mission trip.
+                        </p>
+                    </div>
+
+                </section>
+
+                <section class="home-section">
+
+                    <div class="itinerary-wrapper">
+
+                        <div class="itinerary-grid">
+
+                            <div class="calendar-header">Sunday</div>
+                            <div class="calendar-header">Monday</div>
+                            <div class="calendar-header">Tuesday</div>
+                            <div class="calendar-header">Wednesday</div>
+                            <div class="calendar-header">Thursday</div>
+                            <div class="calendar-header">Friday</div>
+                            <div class="calendar-header">Saturday</div>
+
+                            <div class="calendar-day blank-day"></div>
+
+
+                            <div class="calendar-day">
+                                <div class="day-number">1</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">2</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">3</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">4</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">5</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">6</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">7</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">8</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">9</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">10</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">11</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">12</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">13</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">14</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">15</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">16</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">17</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">18</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">19</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                            <div class="calendar-day">
+                                <div class="day-number">20</div>
+                                <div class="day-location"></div>
+                                <div class="day-activities"></div>
+                                <div class="day-scripture"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <div id="siteFooter"></div>
+
+    <script>
+        fetch('header.html').then(r => r.text()).then(h => {
+            document.getElementById('siteHeader').innerHTML = h
+        });
+
+        fetch('footer.html').then(r => r.text()).then(f => {
+            document.getElementById('siteFooter').innerHTML = f
+        });
+    </script>
+
+</body>
+
+</html>
