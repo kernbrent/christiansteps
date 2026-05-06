@@ -47,6 +47,30 @@
     box-shadow:0 10px 24px rgba(0,0,0,0.18);
 }
 
+/* NON-MISSION DAYS */
+.non-mission-day{
+    background:#f0f0f0;
+    border:1px solid #d0d0d0;
+    opacity:.7;
+    cursor:default;
+}
+
+.non-mission-day:hover{
+    transform:none;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.non-mission-day .day-number{
+    color:#888;
+}
+
+.non-mission-day .day-location,
+.non-mission-day .day-scripture,
+.non-mission-day .day-scripture-summary,
+.non-mission-day .day-activities{
+    color:#888;
+}
+
 .day-number{
     font-size:24px;
     font-weight:bold;
@@ -145,7 +169,7 @@ width="400" />
 
 <div class="card">
 <p>
-Click on a day to view the full devotional, scripture, and mission details.
+Click on a mission day to view the full devotional, scripture, and mission details.
 </p>
 </div>
 
@@ -192,11 +216,19 @@ fetch('./data/missions.json')
     blank.className = 'calendar-day blank-day';
     grid.appendChild(blank);
 
+    // Non-clickable days
+    const nonMissionDays = [1,2,15,16,17,18,19,20];
+
     data.forEach(day => {
 
         const box = document.createElement('div');
 
         box.className = 'calendar-day';
+
+        // Grey out non-mission days
+        if(nonMissionDays.includes(day.Date)){
+            box.classList.add('non-mission-day');
+        }
 
         box.innerHTML = `
             <div class="day-number">${day.Date}</div>
@@ -214,17 +246,21 @@ fetch('./data/missions.json')
             </div>
 
             <div class="day-scripture-summary">
-                ${day["Daily Scripture Summary"] || day["Daily Scripture Text"] || ""}
+                ${day["Daily Scripture Summary"] || ""}
             </div>
         `;
 
-        // CLICK TO OPEN DEVOTIONAL PAGE
-        box.addEventListener('click', () => {
+        // Only mission days clickable
+        if(!nonMissionDays.includes(day.Date)){
 
-            window.location.href =
-                `devotional.html?day=${day.Date}`;
+            box.addEventListener('click', () => {
 
-        });
+                window.location.href =
+                    `devotional.html?day=${day.Date}`;
+
+            });
+
+        }
 
         grid.appendChild(box);
 
