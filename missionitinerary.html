@@ -1,189 +1,200 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mission Itinerary - Christian Steps Ministries</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mission Itinerary - Christian Steps Ministries</title>
 
-<link href="Styles/Site.css" rel="stylesheet" />
-<link href="Styles/Site_mobile.css" rel="stylesheet" />
+    <link href="Styles/Site.css" rel="stylesheet" />
+    <link href="Styles/Site_mobile.css" rel="stylesheet" />
 
-<style>
+    <style>
+        .itinerary-wrapper {
+            margin-top: 25px;
+        }
 
-.itinerary-wrapper{
-    margin-top:25px;
-}
+        .itinerary-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 12px;
+        }
 
-.itinerary-grid{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:12px;
-}
+        .calendar-header {
+            background: #3a4f63;
+            color: white;
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
 
-.calendar-header{
-    background:#3a4f63;
-    color:white;
-    padding:14px;
-    border-radius:10px;
-    text-align:center;
-    font-weight:bold;
-}
+        .calendar-day {
+            min-height: 220px;
+            background: #ffffff;
+            border: 1px solid #d8d8d8;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
 
-.calendar-day{
-    min-height:220px;
-    background:#ffffff;
-    border:1px solid #d8d8d8;
-    border-radius:14px;
-    padding:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
+        .day-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3D95CE;
+            margin-bottom: 10px;
+        }
 
-.day-number{
-    font-size:24px;
-    font-weight:bold;
-    color:#3D95CE;
-    margin-bottom:10px;
-}
+        .day-location {
+            font-weight: bold;
+            color: #3D95CE;
+            margin-bottom: 8px;
+        }
 
-.day-location{
-    font-weight:bold;
-    color:#3D95CE;
-    margin-bottom:8px;
-}
+        .day-activities {
+            font-size: 14px;
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
 
-.day-activities{
-    font-size:14px;
-    line-height:1.45;
-    margin-bottom:10px;
-}
+        .day-scripture {
+            font-size: 13px;
+            font-style: italic;
+            color: #666;
+        }
 
-.day-scripture{
-    font-size:13px;
-    font-style:italic;
-    color:#666;
-}
+        .blank-day {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
 
-.blank-day{
-    background:transparent;
-    border:none;
-    box-shadow:none;
-}
+        @media (max-width:900px) {
 
-@media (max-width:900px){
+            .itinerary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
 
-    .itinerary-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+            .calendar-header {
+                display: none;
+            }
+        }
 
-    .calendar-header{
-        display:none;
-    }
-}
+        @media (max-width:600px) {
 
-@media (max-width:600px){
-
-    .itinerary-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-</style>
+            .itinerary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
-<a class="skip-link" href="#pageContent">Skip to content</a>
+    <a class="skip-link" href="#pageContent">Skip to content</a>
 
-<div class="page">
+    <div class="page">
 
-<header class="header" role="banner">
+        <header class="header" role="banner">
 
-<div class="title">
-<h1>
-<a href="index.html">
-<img src="./Images/Logo400.jpg"
-class="site-logo"
-alt="Christian Steps Ministries"
-width="400" />
-</a>
-</h1>
-</div>
+            <div class="title">
+                <h1>
+                    <a href="index.html">
+                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                            width="400" />
+                    </a>
+                </h1>
+            </div>
 
-<div class="clear hideSkiplink">
-<div id="siteHeader"></div>
-</div>
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
 
-</header>
+        </header>
 
-<div class="main">
+        <div class="main">
 
-<main id="pageContent" role="main">
+            <main id="pageContent" role="main">
 
-<section class="home-hero">
+                <section class="home-hero">
 
-<h2>Mission Trip Itinerary</h2>
+                    <h2>Mission Trip Itinerary</h2>
 
-<p><strong>June 1–20, 2026</strong></p>
+                    <p><strong>June 3 - 14, 2026</strong></p>
+                    <p>Trip to Athens, Greece to serve the homeless, refugees, and victims of trafficing.
+                    <div class="mission-top-row">
 
-<div class="card">
-<p>
-This itinerary provides a daily overview of locations,
-activities, and scripture focus during the mission trip.
-</p>
-</div>
+                        <div class="mission-ad">
+                            <a href="missions.html">
+                                <div class="mission-ad-card">
+                                    <img src="Images/athens.jpg" alt="Athens Greece Mission Trip">
 
-</section>
+                                    <div class="mission-ad-text">
+                                        Support CSM's Mission Trip to Athens, Greece
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <p>
+                            This itinerary provides a daily overview of locations,
+                            activities, and scripture focus during the mission trip.
+                        </p>
+                    </div>
 
-<section class="home-section">
+                </section>
 
-<div class="itinerary-wrapper">
+                <section class="home-section">
 
-<div class="itinerary-grid" id="calendarGrid">
+                    <div class="itinerary-wrapper">
 
-    <div class="calendar-header">Sunday</div>
-    <div class="calendar-header">Monday</div>
-    <div class="calendar-header">Tuesday</div>
-    <div class="calendar-header">Wednesday</div>
-    <div class="calendar-header">Thursday</div>
-    <div class="calendar-header">Friday</div>
-    <div class="calendar-header">Saturday</div>
+                        <div class="itinerary-grid" id="calendarGrid">
 
-</div>
+                            <div class="calendar-header">Sunday</div>
+                            <div class="calendar-header">Monday</div>
+                            <div class="calendar-header">Tuesday</div>
+                            <div class="calendar-header">Wednesday</div>
+                            <div class="calendar-header">Thursday</div>
+                            <div class="calendar-header">Friday</div>
+                            <div class="calendar-header">Saturday</div>
 
-</div>
+                        </div>
 
-</section>
+                    </div>
 
-</main>
+                </section>
 
-</div>
+            </main>
 
-</div>
+        </div>
 
-<div id="siteFooter"></div>
+    </div>
 
-<script>
+    <div id="siteFooter"></div>
 
-fetch('./data/missions.json')
-    .then(response => response.json())
-    .then(data => {
+    <script>
 
-        const calendarGrid = document.getElementById('calendarGrid');
+        fetch('./data/missions.json')
+            .then(response => response.json())
+            .then(data => {
 
-        // Blank cell before June 1
-        const blank = document.createElement('div');
-        blank.className = 'calendar-day blank-day';
-        calendarGrid.appendChild(blank);
+                const calendarGrid = document.getElementById('calendarGrid');
 
-        // Add all mission days
-        data.forEach(day => {
+                // Blank cell before June 1
+                const blank = document.createElement('div');
+                blank.className = 'calendar-day blank-day';
+                calendarGrid.appendChild(blank);
 
-            const dayBox = document.createElement('div');
+                // Add all mission days
+                data.forEach(day => {
 
-            dayBox.className = 'calendar-day';
+                    const dayBox = document.createElement('div');
 
-            dayBox.innerHTML = `
+                    dayBox.className = 'calendar-day';
+
+                    dayBox.innerHTML = `
                 <div class="day-number">${day.Date}</div>
 
                 <div class="day-location">
@@ -199,25 +210,26 @@ fetch('./data/missions.json')
                 </div>
             `;
 
-            calendarGrid.appendChild(dayBox);
+                    calendarGrid.appendChild(dayBox);
 
-        });
+                });
 
-    });
+            });
 
-fetch('header.html')
-    .then(r => r.text())
-    .then(h => {
-        document.getElementById('siteHeader').innerHTML = h;
-    });
+        fetch('header.html')
+            .then(r => r.text())
+            .then(h => {
+                document.getElementById('siteHeader').innerHTML = h;
+            });
 
-fetch('footer.html')
-    .then(r => r.text())
-    .then(f => {
-        document.getElementById('siteFooter').innerHTML = f;
-    });
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(f => {
+                document.getElementById('siteFooter').innerHTML = f;
+            });
 
-</script>
+    </script>
 
 </body>
+
 </html>
