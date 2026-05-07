@@ -810,5 +810,45 @@
         "Caption": ""
       }
     ]
+  },
+    {
+    "Date": 99,
+    "IsMissionDay": false,
+    "Location": "Mars Hill",
+    "Days Activities": "Trip to Mars Hill",
+    "Daily Scripture": "Acts 17:22-31",
+    "Daily Scripture Summary": "Paul speaks to the Athenians from Mars Hill",
+    "Scripture URL": "https://www.biblegateway.com/passage/?search=acts%2017%3A22-31&version=NIV",
+    "Devotional": {
+      "Title": "Paul speaks to the Athenians and addresses this unknown God.",
+      "Overview": "As we read about Paul speaking to The People of Athens, we can look around this city and relate to what he was saying. We see markings of Greek mythology everywhere. If you knew nothing of this place and its current culture, you would have to assume it is a pagan culture and not Christian at all, but Greece is approximately 90% christian. That is fascinating to think about while still be surrounded by all of these temples, statues, and monuments to pagan Greek gods. When we were here last year, the weather was very hot. Several days it was well above 100 degrees. I remember over hearing someone say something about Momus (the Greek God of Trickery) sure gave them a hot day today. You might also hear someone say Zeus of Notus is responsible. When I heard this, I immediately became judgemental of them. Pause for a minute and think about this...\n Can you think of anything like this in our culture? \nWhat about when we talk about Mother Nature. To someone who has never heard of Mother Nature and us giving her credit for beauty or a nice spring day, it would sound very strange. ",
+      "ReflectionQuestions": [
+        "How can you take the attitude of Paul and see the Athenians the way he did?",
+        "What will your approach be to people who are not believers and followers of Jesus?",
+        "Are you called to love all people, even if they reject Jesus?",
+        "Are you called to love people who may be practising things that you know are contrary to God's will [i.e. Prostitution, Witch Craft, etc]?",
+        "What can you learn about yourself and about your culture from seeing how others live in this culture?"
+      ],
+      "GroupPrayer": "Lord, we ask that you give us hearts to love all the people of Athens and seek for opportunities to serve them. Help us learn from these people to become closer followers of your son. If we do have to make a judgement of right vs wrong, help guide our judgements to be based on your righteousness and not on our own bias, fear, or self-righteousness. We ask this in the name of Jesus. \nAmen.",
+      "PrayerNotesPrompt": "Use this space to write personal reflections, prayer requests, and notes from today."
+    },
+    "GeneralImage": "Images/missiongeneral.jpg",
+    "DayImages": [
+      {
+        "Enabled": false,
+        "Image": "Images/day6_1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_3.jpg",
+        "Caption": ""
+      }
+    ]
   }
 ]
