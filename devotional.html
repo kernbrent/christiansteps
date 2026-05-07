@@ -139,9 +139,9 @@
                     <div class="image-grid" id="imageGrid"></div>
 
                 </div>
-    <button id="installPWA" class="pwa-install-btn" style="display:none;">
-        Install App
-    </button>
+                <button id="installPWA" class="pwa-install-btn" style="display:none;">
+                    Install App
+                </button>
             </main>
 
         </div>
@@ -225,6 +225,8 @@
         fetch('./data/missions.json')
             .then(r => r.json())
             .then(data => {
+
+                data.sort((a, b) => a.Date - b.Date);
 
                 const item = data.find(x => x.Date == day);
 
@@ -337,7 +339,7 @@
         let deferredPrompt;
 
         const installBtn =
-            document.getElementById('installPWA'); 
+            document.getElementById('installPWA');
 
         window.addEventListener(
             'beforeinstallprompt',

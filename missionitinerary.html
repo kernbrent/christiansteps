@@ -111,8 +111,10 @@
         <script>
 
             fetch('./data/missions.json')
-                .then(response => response.json())
+                .then(r => r.json())
                 .then(data => {
+
+                    data.sort((a, b) => a.Date - b.Date);
 
                     const grid = document.getElementById('calendarGrid');
 
