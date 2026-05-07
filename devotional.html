@@ -1,340 +1,373 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mission Devotional</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mission Devotional</title>
 
-<link href="Styles/Site.css" rel="stylesheet" />
-<link href="Styles/Site_mobile.css" rel="stylesheet" />
+    <link href="Styles/Site.css" rel="stylesheet" />
+    <link href="Styles/Site_mobile.css" rel="stylesheet" />
 
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#3D95CE">
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3D95CE">
 
-<script>
-if ('serviceWorker' in navigator) {
+    <script>
+        if ('serviceWorker' in navigator) {
 
-    window.addEventListener('load', () => {
+            window.addEventListener('load', () => {
 
-        navigator.serviceWorker.register('./sw.js');
+                navigator.serviceWorker.register('./sw.js');
 
-    });
-
-}
-</script>
-
-</head>
-<body>
-
-<a class="skip-link" href="#pageContent">Skip to content</a>
-
-<div class="page">
-
-<header class="header" role="banner">
-
-<div class="title">
-<h1>
-<a href="index.html">
-<img src="./Images/Logo400.jpg"
-class="site-logo"
-alt="Christian Steps Ministries"
-width="400" />
-</a>
-</h1>
-</div>
-
-<div class="clear hideSkiplink">
-<div id="siteHeader"></div>
-</div>
-
-</header>
-
-<div class="main">
-
-<main id="pageContent" role="main">
-
-<div class="devotional-container">
-
-<img id="generalImage" class="hero-image" src="">
-
-<!-- TOP NAVIGATION BUTTONS -->
-<div class="top-button-row">
-
-<a class="nav-button" id="topPrevBtn">← Previous Day</a>
-
-<a class="nav-button" href="missionitinerary.html">
-Return to Calendar
-</a>
-
-<a class="nav-button" href="missions.html">
-Mission Home
-</a>
-
-<a class="nav-button" id="topNextBtn">Next Day →
-</a>
-
-</div>
-
-<div class="content-card">
-
-<h1 id="title"></h1>
-
-<div class="scripture-box">
-<strong>Scripture:</strong>
-<a id="scriptureLink" target="_blank"></a>
-</div>
-
-<h2 class="section-title">Overview</h2>
-<div id="overview"></div>
-
-<h2 class="section-title">Reflection Questions</h2>
-<ul class="reflection-list" id="questions"></ul>
-
-<h2 class="section-title">Group Prayer</h2>
-<div class="prayer-box" id="prayer"></div>
-
-<h2 class="section-title">Prayer Notes</h2>
-
-<textarea class="notes-box"
-          id="notesBox"
-          placeholder="Write your reflections and prayer notes here..."></textarea>
-
-<div class="notes-actions">
-
-<button class="nav-button" id="emailNotesBtn">
-Email My Notes
-</button>
-
-<button class="nav-button" id="clearNotesBtn">
-Clear Notes
-</button>
-
-</div>
-
-<div class="saved-message" id="savedMessage">
-Notes saved automatically.
-</div>
-
-
-<!-- BOTTOM NAVIGATION BUTTONS -->
-<div class="button-row">
-
-<a class="nav-button" id="prevBtn">← Previous Day</a>
-
-<a class="nav-button" href="missionitinerary.html">
-Return to Calendar
-</a>
-
-<a class="nav-button" href="missions.html">
-Mission Home
-</a>
-
-<a class="nav-button" id="nextBtn">Next Day →</a>
-
-</div>
-
-</div>
-
-<div class="image-grid" id="imageGrid"></div>
-
-</div>
-
-</main>
-
-</div>
-
-</div>
-
-<div id="siteFooter"></div>
-
-<script>
-
-const params = new URLSearchParams(window.location.search);
-const day = parseInt(params.get('day')) || 3;
-
-
-const notesBox =
-    document.getElementById('notesBox');
-
-const savedMessage =
-    document.getElementById('savedMessage');
-
-const storageKey =
-    `missionNotes_day_${day}`;
-
-// LOAD SAVED NOTES
-notesBox.value =
-    localStorage.getItem(storageKey) || '';
-
-// AUTO SAVE NOTES
-notesBox.addEventListener('input', () => {
-
-    localStorage.setItem(
-        storageKey,
-        notesBox.value
-    );
-
-    savedMessage.style.display = 'block';
-
-    clearTimeout(window.saveMessageTimeout);
-
-    window.saveMessageTimeout =
-        setTimeout(() => {
-
-            savedMessage.style.display = 'none';
-
-        }, 2000);
-
-});
-
-// EMAIL NOTES
-document.getElementById('emailNotesBtn')
-.addEventListener('click', () => {
-
-    const subject =
-        encodeURIComponent(
-            `Mission Prayer Notes - Day ${day}`
-        );
-
-    const body =
-        encodeURIComponent(notesBox.value);
-
-    window.location.href =
-        `mailto:?subject=${subject}&body=${body}`;
-
-});
-
-// CLEAR NOTES
-document.getElementById('clearNotesBtn')
-.addEventListener('click', () => {
-
-    if(confirm('Clear your saved notes for this day?')){
-
-        localStorage.removeItem(storageKey);
-
-        notesBox.value = '';
-
-    }
-
-});
-
-
-fetch('./data/missions.json')
-.then(r => r.json())
-.then(data => {
-
-    const item = data.find(x => x.Date == day);
-
-    document.getElementById('title').innerText =
-        item.Devotional.Title;
-
-    document.getElementById('overview').innerHTML =
-        '<p>' + item.Devotional.Overview.replace(/\n/g,'</p><p>') + '</p>';
-
-    document.getElementById('scriptureLink').innerText =
-        item["Daily Scripture"];
-
-    document.getElementById('scriptureLink').href =
-        item["Scripture URL"];
-
-    const q = document.getElementById('questions');
-
-    item.Devotional.ReflectionQuestions.forEach(question => {
-
-        const li = document.createElement('li');
-        li.innerText = question;
-        q.appendChild(li);
-
-    });
-
-    document.getElementById('prayer').innerHTML =
-        '<p>' + item.Devotional.GroupPrayer.replace(/\n/g,'</p><p>') + '</p>';
-
-    document.getElementById('generalImage').src =
-        item.GeneralImage;
-
-    const grid = document.getElementById('imageGrid');
-
-    item.DayImages.forEach(img => {
-
-        if(img.Enabled){
-
-            const div = document.createElement('div');
-
-            div.innerHTML =
-                `<img src="${img.Image}" alt="">`;
-
-            grid.appendChild(div);
+            });
 
         }
+    </script>
 
-    });
+</head>
 
-    // ONLY MISSION DAYS
-    const missionDays =
-        data.filter(d => d.IsMissionDay);
+<body>
 
-    // FIND CURRENT POSITION
-    const currentIndex =
-        missionDays.findIndex(d => d.Date == day);
+    <a class="skip-link" href="#pageContent">Skip to content</a>
 
-    // PREVIOUS BUTTONS
-    if(currentIndex > 0){
+    <div class="page">
 
-        const prevDay =
-            missionDays[currentIndex - 1];
+        <header class="header" role="banner">
 
-        document.getElementById('prevBtn').href =
-            `devotional.html?day=${prevDay.Date}`;
+            <div class="title">
+                <h1>
+                    <a href="index.html">
+                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                            width="400" />
+                    </a>
+                </h1>
+            </div>
 
-        document.getElementById('topPrevBtn').href =
-            `devotional.html?day=${prevDay.Date}`;
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
 
-    }
-    else{
+        </header>
 
-        document.getElementById('prevBtn').style.display = 'none';
-        document.getElementById('topPrevBtn').style.display = 'none';
+        <div class="main">
 
-    }
+            <main id="pageContent" role="main">
 
-    // NEXT BUTTONS
-    if(currentIndex < missionDays.length - 1){
+                <div class="devotional-container">
 
-        const nextDay =
-            missionDays[currentIndex + 1];
+                    <img id="generalImage" class="hero-image" src="">
 
-        document.getElementById('nextBtn').href =
-            `devotional.html?day=${nextDay.Date}`;
+                    <!-- TOP NAVIGATION BUTTONS -->
+                    <div class="top-button-row">
 
-        document.getElementById('topNextBtn').href =
-            `devotional.html?day=${nextDay.Date}`;
+                        <a class="nav-button" id="topPrevBtn">← Previous Day</a>
 
-    }
-    else{
+                        <a class="nav-button" href="missionitinerary.html">
+                            Return to Calendar
+                        </a>
 
-        document.getElementById('nextBtn').style.display = 'none';
-        document.getElementById('topNextBtn').style.display = 'none';
+                        <a class="nav-button" href="missions.html">
+                            Mission Home
+                        </a>
 
-    }
+                        <a class="nav-button" id="topNextBtn">Next Day →
+                        </a>
 
-});
+                    </div>
 
-fetch('header.html')
-.then(r => r.text())
-.then(h => {
-    document.getElementById('siteHeader').innerHTML = h;
-});
+                    <div class="content-card">
 
-fetch('footer.html')
-.then(r => r.text())
-.then(f => {
-    document.getElementById('siteFooter').innerHTML = f;
-});
+                        <h1 id="title"></h1>
 
-</script>
+                        <div class="scripture-box">
+                            <strong>Scripture:</strong>
+                            <a id="scriptureLink" target="_blank"></a>
+                        </div>
 
+                        <h2 class="section-title">Overview</h2>
+                        <div id="overview"></div>
+
+                        <h2 class="section-title">Reflection Questions</h2>
+                        <ul class="reflection-list" id="questions"></ul>
+
+                        <h2 class="section-title">Group Prayer</h2>
+                        <div class="prayer-box" id="prayer"></div>
+
+                        <h2 class="section-title">Prayer Notes</h2>
+
+                        <textarea class="notes-box" id="notesBox"
+                            placeholder="Write your reflections and prayer notes here..."></textarea>
+
+                        <div class="notes-actions">
+
+                            <button class="nav-button" id="emailNotesBtn">
+                                Email My Notes
+                            </button>
+
+                            <button class="nav-button" id="clearNotesBtn">
+                                Clear Notes
+                            </button>
+
+                        </div>
+
+                        <div class="saved-message" id="savedMessage">
+                            Notes saved automatically.
+                        </div>
+
+
+                        <!-- BOTTOM NAVIGATION BUTTONS -->
+                        <div class="button-row">
+
+                            <a class="nav-button" id="prevBtn">← Previous Day</a>
+
+                            <a class="nav-button" href="missionitinerary.html">
+                                Return to Calendar
+                            </a>
+
+                            <a class="nav-button" href="missions.html">
+                                Mission Home
+                            </a>
+
+                            <a class="nav-button" id="nextBtn">Next Day →</a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="image-grid" id="imageGrid"></div>
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <div id="siteFooter"></div>
+
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+        const day = parseInt(params.get('day')) || 3;
+
+
+        const notesBox =
+            document.getElementById('notesBox');
+
+        const savedMessage =
+            document.getElementById('savedMessage');
+
+        const storageKey =
+            `missionNotes_day_${day}`;
+
+        // LOAD SAVED NOTES
+        notesBox.value =
+            localStorage.getItem(storageKey) || '';
+
+        // AUTO SAVE NOTES
+        notesBox.addEventListener('input', () => {
+
+            localStorage.setItem(
+                storageKey,
+                notesBox.value
+            );
+
+            savedMessage.style.display = 'block';
+
+            clearTimeout(window.saveMessageTimeout);
+
+            window.saveMessageTimeout =
+                setTimeout(() => {
+
+                    savedMessage.style.display = 'none';
+
+                }, 2000);
+
+        });
+
+        // EMAIL NOTES
+        document.getElementById('emailNotesBtn')
+            .addEventListener('click', () => {
+
+                const subject =
+                    encodeURIComponent(
+                        `Mission Prayer Notes - Day ${day}`
+                    );
+
+                const body =
+                    encodeURIComponent(notesBox.value);
+
+                window.location.href =
+                    `mailto:?subject=${subject}&body=${body}`;
+
+            });
+
+        // CLEAR NOTES
+        document.getElementById('clearNotesBtn')
+            .addEventListener('click', () => {
+
+                if (confirm('Clear your saved notes for this day?')) {
+
+                    localStorage.removeItem(storageKey);
+
+                    notesBox.value = '';
+
+                }
+
+            });
+
+
+        fetch('./data/missions.json')
+            .then(r => r.json())
+            .then(data => {
+
+                const item = data.find(x => x.Date == day);
+
+                document.getElementById('title').innerText =
+                    item.Devotional.Title;
+
+                document.getElementById('overview').innerHTML =
+                    '<p>' + item.Devotional.Overview.replace(/\n/g, '</p><p>') + '</p>';
+
+                document.getElementById('scriptureLink').innerText =
+                    item["Daily Scripture"];
+
+                document.getElementById('scriptureLink').href =
+                    item["Scripture URL"];
+
+                const q = document.getElementById('questions');
+
+                item.Devotional.ReflectionQuestions.forEach(question => {
+
+                    const li = document.createElement('li');
+                    li.innerText = question;
+                    q.appendChild(li);
+
+                });
+
+                document.getElementById('prayer').innerHTML =
+                    '<p>' + item.Devotional.GroupPrayer.replace(/\n/g, '</p><p>') + '</p>';
+
+                document.getElementById('generalImage').src =
+                    item.GeneralImage;
+
+                const grid = document.getElementById('imageGrid');
+
+                item.DayImages.forEach(img => {
+
+                    if (img.Enabled) {
+
+                        const div = document.createElement('div');
+
+                        div.innerHTML =
+                            `<img src="${img.Image}" alt="">`;
+
+                        grid.appendChild(div);
+
+                    }
+
+                });
+
+                // ONLY MISSION DAYS
+                const missionDays =
+                    data.filter(d => d.IsMissionDay);
+
+                // FIND CURRENT POSITION
+                const currentIndex =
+                    missionDays.findIndex(d => d.Date == day);
+
+                // PREVIOUS BUTTONS
+                if (currentIndex > 0) {
+
+                    const prevDay =
+                        missionDays[currentIndex - 1];
+
+                    document.getElementById('prevBtn').href =
+                        `devotional.html?day=${prevDay.Date}`;
+
+                    document.getElementById('topPrevBtn').href =
+                        `devotional.html?day=${prevDay.Date}`;
+
+                }
+                else {
+
+                    document.getElementById('prevBtn').style.display = 'none';
+                    document.getElementById('topPrevBtn').style.display = 'none';
+
+                }
+
+                // NEXT BUTTONS
+                if (currentIndex < missionDays.length - 1) {
+
+                    const nextDay =
+                        missionDays[currentIndex + 1];
+
+                    document.getElementById('nextBtn').href =
+                        `devotional.html?day=${nextDay.Date}`;
+
+                    document.getElementById('topNextBtn').href =
+                        `devotional.html?day=${nextDay.Date}`;
+
+                }
+                else {
+
+                    document.getElementById('nextBtn').style.display = 'none';
+                    document.getElementById('topNextBtn').style.display = 'none';
+
+                }
+
+            });
+
+        fetch('header.html')
+            .then(r => r.text())
+            .then(h => {
+                document.getElementById('siteHeader').innerHTML = h;
+            });
+
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(f => {
+                document.getElementById('siteFooter').innerHTML = f;
+            });
+        let deferredPrompt;
+
+        const installBtn =
+            document.getElementById('installPWA');
+
+        window.addEventListener(
+            'beforeinstallprompt',
+            (e) => {
+
+                e.preventDefault();
+
+                deferredPrompt = e;
+
+                installBtn.style.display = 'block';
+
+            }
+        );
+
+        installBtn.addEventListener('click', async () => {
+
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+
+            const result =
+                await deferredPrompt.userChoice;
+
+            deferredPrompt = null;
+
+            installBtn.style.display = 'none';
+
+        });
+    </script>
+    <button id="installPWA" class="pwa-install-btn" style="display:none;">
+        Install App
+    </button>
 </body>
+
 </html>

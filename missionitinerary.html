@@ -10,23 +10,23 @@
     <link href="Styles/Site.css" rel="stylesheet" />
     <link href="Styles/Site_mobile.css" rel="stylesheet" />
 
-    
 
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#3D95CE">
 
-<script>
-if ('serviceWorker' in navigator) {
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3D95CE">
 
-    window.addEventListener('load', () => {
+    <script>
+        if ('serviceWorker' in navigator) {
 
-        navigator.serviceWorker.register('./sw.js');
+            window.addEventListener('load', () => {
 
-    });
+                navigator.serviceWorker.register('./sw.js');
 
-}
-</script>
+            });
+
+        }
+    </script>
 
 </head>
 
@@ -185,9 +185,42 @@ if ('serviceWorker' in navigator) {
                 .then(f => {
                     document.getElementById('siteFooter').innerHTML = f;
                 });
+            let deferredPrompt;
 
+            const installBtn =
+                document.getElementById('installPWA');
+
+            window.addEventListener(
+                'beforeinstallprompt',
+                (e) => {
+
+                    e.preventDefault();
+
+                    deferredPrompt = e;
+
+                    installBtn.style.display = 'block';
+
+                }
+            );
+
+            installBtn.addEventListener('click', async () => {
+
+                if (!deferredPrompt) return;
+
+                deferredPrompt.prompt();
+
+                const result =
+                    await deferredPrompt.userChoice;
+
+                deferredPrompt = null;
+
+                installBtn.style.display = 'none';
+
+            });
         </script>
-
+        <button id="installPWA" class="pwa-install-btn" style="display:none;">
+            Install App
+        </button>
 </body>
 
 </html>
