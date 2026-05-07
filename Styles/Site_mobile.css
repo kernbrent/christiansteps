@@ -335,4 +335,15 @@
     }
 
   }
+  @media (max-width: 600px){
+
+    .blank-day{
+        display:none !important;
+    }
+
+    .calendar-day{
+        min-height:auto;
+    }
+
+}
 }
