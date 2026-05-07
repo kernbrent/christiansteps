@@ -1,0 +1,22 @@
+{
+  "name": "Christian Steps Missions",
+  "short_name": "CSM Missions",
+  "description": "Christian Steps Ministries Mission Trip Devotionals and Itinerary",
+  "start_url": "/missionitinerary.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3D95CE",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "Images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

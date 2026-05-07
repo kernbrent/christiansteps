@@ -10,123 +10,23 @@
     <link href="Styles/Site.css" rel="stylesheet" />
     <link href="Styles/Site_mobile.css" rel="stylesheet" />
 
-    <style>
-        .itinerary-wrapper {
-            margin-top: 25px;
-        }
+    
 
-        .itinerary-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 12px;
-        }
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3D95CE">
 
-        .calendar-header {
-            background: #3a4f63;
-            color: white;
-            padding: 14px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
+<script>
+if ('serviceWorker' in navigator) {
 
-        .calendar-day {
-            position: relative;
-            min-height: 240px;
-            background: #ffffff;
-            border: 1px solid #d8d8d8;
-            border-radius: 14px;
-            padding: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
+    window.addEventListener('load', () => {
 
-        .calendar-day:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
-        }
+        navigator.serviceWorker.register('./sw.js');
 
-        .non-mission-day {
-            background: #f0f0f0;
-            border: 1px solid #d0d0d0;
-            opacity: .7;
-            cursor: default;
-        }
+    });
 
-        .non-mission-day:hover {
-            transform: none;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .non-mission-day .day-number {
-            color: #888;
-        }
-
-        .non-mission-day .day-location,
-        .non-mission-day .day-scripture,
-        .non-mission-day .day-scripture-summary,
-        .non-mission-day .day-activities {
-            color: #888;
-        }
-
-        .day-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #3D95CE;
-            margin-bottom: 10px;
-        }
-
-        .day-location {
-            font-weight: bold;
-            color: #3D95CE;
-            margin-bottom: 8px;
-        }
-
-        .day-activities {
-            font-size: 14px;
-            line-height: 1.45;
-            margin-bottom: 12px;
-        }
-
-        .day-scripture {
-            font-size: 13px;
-            font-style: italic;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .day-scripture-summary {
-            font-size: 13px;
-            line-height: 1.45;
-            color: #444;
-        }
-
-        .blank-day {
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            cursor: default;
-        }
-
-        @media (max-width:900px) {
-
-            .itinerary-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .calendar-header {
-                display: none;
-            }
-        }
-
-        @media (max-width:600px) {
-
-            .itinerary-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+}
+</script>
 
 </head>
 
