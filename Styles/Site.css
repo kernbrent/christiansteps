@@ -2146,8 +2146,15 @@ a.card-link:active{
     }
 
 }
-
 @media (max-width:768px){
+
+    .mission-top-row{
+        flex-direction: column;
+    }
+
+    .mission-ad{
+        width:100%;
+    }
 
     .hero-image{
         width:100%;
