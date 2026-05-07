@@ -66,79 +66,79 @@
                 </a>
             </div>
 
-            <div class="main">
+        </div>
 
-                <main id="pageContent" role="main">
+        <div class="main">
 
-                    <section class="home-hero">
+            <main id="pageContent" role="main">
 
-                        <h2>Mission Trip Itinerary</h2>
+                <section class="home-hero">
 
-                        <p><strong>June 1–20, 2026</strong></p>
+                    <h2>Mission Trip Itinerary</h2>
 
-                        <div class="card">
-                            <p>
-                                Click on a mission day to view the full devotional, scripture, and mission details.
-                            </p>
+                    <p><strong>June 1–20, 2026</strong></p>
+
+                    <div class="card">
+                        <p>
+                            Click on a mission day to view the full devotional, scripture, and mission details.
+                        </p>
+                    </div>
+
+                </section>
+
+                <section class="home-section">
+
+                    <div class="itinerary-wrapper">
+
+                        <div class="itinerary-grid" id="calendarGrid">
+
+                            <div class="calendar-header">Sunday</div>
+                            <div class="calendar-header">Monday</div>
+                            <div class="calendar-header">Tuesday</div>
+                            <div class="calendar-header">Wednesday</div>
+                            <div class="calendar-header">Thursday</div>
+                            <div class="calendar-header">Friday</div>
+                            <div class="calendar-header">Saturday</div>
+
                         </div>
 
-                    </section>
+                    </div>
 
-                    <section class="home-section">
-
-                        <div class="itinerary-wrapper">
-
-                            <div class="itinerary-grid" id="calendarGrid">
-
-                                <div class="calendar-header">Sunday</div>
-                                <div class="calendar-header">Monday</div>
-                                <div class="calendar-header">Tuesday</div>
-                                <div class="calendar-header">Wednesday</div>
-                                <div class="calendar-header">Thursday</div>
-                                <div class="calendar-header">Friday</div>
-                                <div class="calendar-header">Saturday</div>
-
-                            </div>
-
-                        </div>
-
-                    </section>
-        <button id="installPWA" class="pwa-install-btn" style="display:none;">
-            Install App
-        </button>
-                </main>
-
-            </div>
+                </section>
+                <button id="installPWA" class="pwa-install-btn" style="display:none;">
+                    Install App
+                </button>
+            </main>
 
         </div>
 
-        <div id="siteFooter"></div>
+    <div id="siteFooter"></div>
 
-        <script>
+    <script>
 
-            fetch('./data/missions.json')
-                .then(response => response.json())
-                .then(data => {
+        fetch('./data/missions.json')
+            .then(response => response.json())
+            .then(data => {
 
-                    const grid = document.getElementById('calendarGrid');
+                const grid = document.getElementById('calendarGrid');
 
-                    // Blank calendar box before June 1
-                    const blank = document.createElement('div');
-                    blank.className = 'calendar-day blank-day';
-                    grid.appendChild(blank);
+                // Blank calendar box before June 1
+                const blank = document.createElement('div');
+                blank.className = 'calendar-day blank-day';
+                grid.appendChild(blank);
 
-                    data.forEach(day => {
+                data.forEach(day => {
 
-                        const box = document.createElement('div');
+                    const box = document.createElement('div');
 
-                        box.className = 'calendar-day';
+                    box.className = 'calendar-day';
 
-                        // Grey out non-mission days from JSON
-                        if (!day.IsMissionDay) {
-                            box.classList.add('non-mission-day');
-                        }
+                    // Grey out non-mission days from JSON
+                    if (!day.IsMissionDay) {
+                        box.classList.add('non-mission-day');
+                    }
 
-                        box.innerHTML = `
+                    box.innerHTML = `
             <div class="day-number">${day.Date}</div>
 
             <div class="day-location">
@@ -158,68 +158,68 @@
             </div>
         `;
 
-                        // Only mission days clickable
-                        if (day.IsMissionDay) {
+                    // Only mission days clickable
+                    if (day.IsMissionDay) {
 
-                            box.addEventListener('click', () => {
+                        box.addEventListener('click', () => {
 
-                                window.location.href =
-                                    `devotional.html?day=${day.Date}`;
+                            window.location.href =
+                                `devotional.html?day=${day.Date}`;
 
-                            });
+                        });
 
-                        }
+                    }
 
-                        grid.appendChild(box);
-
-                    });
+                    grid.appendChild(box);
 
                 });
-
-            fetch('header.html')
-                .then(r => r.text())
-                .then(h => {
-                    document.getElementById('siteHeader').innerHTML = h;
-                });
-
-            fetch('footer.html')
-                .then(r => r.text())
-                .then(f => {
-                    document.getElementById('siteFooter').innerHTML = f;
-                });
-            let deferredPrompt;
-
-            const installBtn =
-                document.getElementById('installPWA'); 
-
-            window.addEventListener(
-                'beforeinstallprompt',
-                (e) => {
-
-                    e.preventDefault();
-
-                    deferredPrompt = e;
-
-                    installBtn.style.display = 'block';
-
-                }
-            );
-
-            installBtn.addEventListener('click', async () => {
-
-                if (!deferredPrompt) return;
-
-                deferredPrompt.prompt();
-
-                const result =
-                    await deferredPrompt.userChoice;
-
-                deferredPrompt = null;
-
-                installBtn.style.display = 'none';
 
             });
-        </script>
+
+        fetch('header.html')
+            .then(r => r.text())
+            .then(h => {
+                document.getElementById('siteHeader').innerHTML = h;
+            });
+
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(f => {
+                document.getElementById('siteFooter').innerHTML = f;
+            });
+        let deferredPrompt;
+
+        const installBtn =
+            document.getElementById('installPWA');
+
+        window.addEventListener(
+            'beforeinstallprompt',
+            (e) => {
+
+                e.preventDefault();
+
+                deferredPrompt = e;
+
+                installBtn.style.display = 'block';
+
+            }
+        );
+
+        installBtn.addEventListener('click', async () => {
+
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+
+            const result =
+                await deferredPrompt.userChoice;
+
+            deferredPrompt = null;
+
+            installBtn.style.display = 'none';
+
+        });
+    </script>
 
 </body>
 
