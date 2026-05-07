@@ -814,6 +814,7 @@
     {
     "Date": 99,
     "IsMissionDay": false,
+    "ShowOnCalendar": false,
     "Location": "Mars Hill",
     "Days Activities": "Trip to Mars Hill",
     "Daily Scripture": "Acts 17:22-31",
