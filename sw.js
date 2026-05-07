@@ -1,4 +1,4 @@
-const CACHE_NAME = 'csm-missions-v2';
+const CACHE_NAME = 'csm-missions-v3';
 
 const urlsToCache = [
   '/',
