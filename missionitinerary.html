@@ -123,18 +123,20 @@
                     blank.className = 'calendar-day blank-day';
                     grid.appendChild(blank);
 
-                    data.forEach(day => {
+                    data
+                        .filter(day => day.ShowOnCalendar !== false)
+                        .forEach(day => {
 
-                        const box = document.createElement('div');
+                            const box = document.createElement('div');
 
-                        box.className = 'calendar-day';
+                            box.className = 'calendar-day';
 
-                        // Grey out non-mission days from JSON
-                        if (!day.IsMissionDay) {
-                            box.classList.add('non-mission-day');
-                        }
+                            // Grey out non-mission days from JSON
+                            if (!day.IsMissionDay) {
+                                box.classList.add('non-mission-day');
+                            }
 
-                        box.innerHTML = `
+                            box.innerHTML = `
             <div class="day-number">${day.Date}</div>
 
             <div class="day-location">
@@ -154,21 +156,21 @@
             </div>
         `;
 
-                        // Only mission days clickable
-                        if (day.IsMissionDay) {
+                            // Only mission days clickable
+                            if (day.IsMissionDay) {
 
-                            box.addEventListener('click', () => {
+                                box.addEventListener('click', () => {
 
-                                window.location.href =
-                                    `devotional.html?day=${day.Date}`;
+                                    window.location.href =
+                                        `devotional.html?day=${day.Date}`;
 
-                            });
+                                });
 
-                        }
+                            }
 
-                        grid.appendChild(box);
+                            grid.appendChild(box);
 
-                    });
+                        });
 
                 });
 
