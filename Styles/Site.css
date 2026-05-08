@@ -1990,6 +1990,48 @@ a.card-link:active{
     box-shadow:none;
     cursor:default;
 }
+/* =========================================================
+   MISSION ITINERARY INTRO TEXT
+   ========================================================= */
+
+.mission-message{
+    max-width:1100px;
+    margin:20px auto 10px auto;
+    padding:24px;
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    text-align:center;
+}
+
+.mission-message h2{
+    color:#3D95CE;
+    margin-bottom:12px;
+    line-height:1.4;
+}
+
+.mission-message p{
+    font-size:17px;
+    line-height:1.7;
+    color:#555;
+}
+
+@media(max-width:768px){
+
+    .mission-message{
+        margin:15px;
+        padding:20px;
+    }
+
+    .mission-message h2{
+        font-size:22px;
+    }
+
+}
 
 /* =========================================================
    DEVOTIONAL PAGE
