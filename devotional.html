@@ -283,47 +283,64 @@
                 const missionDays =
                     data.filter(d => d.IsMissionDay);
 
-                // FIND CURRENT POSITION
+                // FIND CURRENT POSITION IN MISSION DAYS
                 const currentIndex =
                     missionDays.findIndex(d => d.Date == day);
 
-                // PREVIOUS BUTTONS
-                if (currentIndex > 0) {
 
-                    const prevDay =
-                        missionDays[currentIndex - 1];
-
-                    document.getElementById('prevBtn').href =
-                        `devotional.html?day=${prevDay.Date}`;
-
-                    document.getElementById('topPrevBtn').href =
-                        `devotional.html?day=${prevDay.Date}`;
-
-                }
-                else {
+                // IF CURRENT PAGE IS NOT A MISSION DAY
+                // HIDE PREV/NEXT BUTTONS
+                if(currentIndex === -1){
 
                     document.getElementById('prevBtn').style.display = 'none';
                     document.getElementById('topPrevBtn').style.display = 'none';
 
-                }
-
-                // NEXT BUTTONS
-                if (currentIndex < missionDays.length - 1) {
-
-                    const nextDay =
-                        missionDays[currentIndex + 1];
-
-                    document.getElementById('nextBtn').href =
-                        `devotional.html?day=${nextDay.Date}`;
-
-                    document.getElementById('topNextBtn').href =
-                        `devotional.html?day=${nextDay.Date}`;
-
-                }
-                else {
-
                     document.getElementById('nextBtn').style.display = 'none';
                     document.getElementById('topNextBtn').style.display = 'none';
+
+                }
+                else{
+
+                    // PREVIOUS BUTTONS
+                    if(currentIndex > 0){
+
+                        const prevDay =
+                            missionDays[currentIndex - 1];
+
+                        document.getElementById('prevBtn').href =
+                            `devotional.html?day=${prevDay.Date}`;
+
+                        document.getElementById('topPrevBtn').href =
+                            `devotional.html?day=${prevDay.Date}`;
+
+                    }
+                    else{
+
+                        document.getElementById('prevBtn').style.display = 'none';
+                        document.getElementById('topPrevBtn').style.display = 'none';
+
+                    }
+
+
+                    // NEXT BUTTONS
+                    if(currentIndex < missionDays.length - 1){
+
+                        const nextDay =
+                            missionDays[currentIndex + 1];
+
+                        document.getElementById('nextBtn').href =
+                            `devotional.html?day=${nextDay.Date}`;
+
+                        document.getElementById('topNextBtn').href =
+                            `devotional.html?day=${nextDay.Date}`;
+
+                    }
+                    else{
+
+                        document.getElementById('nextBtn').style.display = 'none';
+                        document.getElementById('topNextBtn').style.display = 'none';
+
+                    }
 
                 }
 
