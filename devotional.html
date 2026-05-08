@@ -100,7 +100,10 @@
                         <div class="prayer-box" id="prayer"></div>
 
                         <h2 class="section-title">Prayer Notes</h2>
+                        <div class="mission-message">
 
+                            <i>All prayers and notes are stored locally and can only be viewed by you. It is completely private.</i>
+                        </div>
                         <textarea class="notes-box" id="notesBox"
                             placeholder="Write your reflections and prayer notes here..."></textarea>
 
@@ -290,7 +293,7 @@
 
                 // IF CURRENT PAGE IS NOT A MISSION DAY
                 // HIDE PREV/NEXT BUTTONS
-                if(currentIndex === -1){
+                if (currentIndex === -1) {
 
                     document.getElementById('prevBtn').style.display = 'none';
                     document.getElementById('topPrevBtn').style.display = 'none';
@@ -299,10 +302,10 @@
                     document.getElementById('topNextBtn').style.display = 'none';
 
                 }
-                else{
+                else {
 
                     // PREVIOUS BUTTONS
-                    if(currentIndex > 0){
+                    if (currentIndex > 0) {
 
                         const prevDay =
                             missionDays[currentIndex - 1];
@@ -314,7 +317,7 @@
                             `devotional.html?day=${prevDay.Date}`;
 
                     }
-                    else{
+                    else {
 
                         document.getElementById('prevBtn').style.display = 'none';
                         document.getElementById('topPrevBtn').style.display = 'none';
@@ -323,7 +326,7 @@
 
 
                     // NEXT BUTTONS
-                    if(currentIndex < missionDays.length - 1){
+                    if (currentIndex < missionDays.length - 1) {
 
                         const nextDay =
                             missionDays[currentIndex + 1];
@@ -335,7 +338,7 @@
                             `devotional.html?day=${nextDay.Date}`;
 
                     }
-                    else{
+                    else {
 
                         document.getElementById('nextBtn').style.display = 'none';
                         document.getElementById('topNextBtn').style.display = 'none';
