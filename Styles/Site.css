@@ -2216,3 +2216,137 @@ a.card-link:active{
     }
 
 }
+
+/* =========================================================
+   DAY ACTIVITIES PAGE
+   ========================================================= */
+
+.mission-general-image{
+    width:100%;
+    max-height:280px;
+    object-fit:cover;
+    object-position:center center;
+    border-radius:16px;
+    margin-bottom:20px;
+    display:block;
+}
+
+.activities-container{
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.activities-card{
+    background:#fff;
+    padding:30px;
+    border-radius:16px;
+    margin-bottom:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.activities-section-title{
+    color:#3D95CE;
+    margin-top:28px;
+    margin-bottom:12px;
+}
+
+.activities-box{
+    background:#f5f9fc;
+    border-left:5px solid #3D95CE;
+    padding:18px;
+    border-radius:10px;
+    margin:20px 0;
+    line-height:1.8;
+}
+
+.activities-prayer-box{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.activities-image-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:18px;
+    margin-top:20px;
+}
+
+.activities-image-grid figure{
+    margin:0;
+}
+
+.activities-image-grid img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    border-radius:12px;
+    box-shadow:0 4px 12px rgba(0,0,0,.12);
+}
+
+.activities-image-grid figcaption{
+    margin-top:8px;
+    font-size:14px;
+    color:#555;
+    text-align:center;
+}
+
+.activities-button-row,
+.activities-top-button-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.activities-top-button-row{
+    margin-bottom:25px;
+}
+
+.activities-button-row{
+    margin-top:30px;
+}
+
+/* =========================================================
+   PRINT SUPPORT
+   ========================================================= */
+
+@media print{
+
+    .activities-top-button-row,
+    .activities-button-row,
+    .pwa-install-btn,
+    #installPWA,
+    #iosInstallHelp,
+    header,
+    #siteHeader,
+    #siteFooter{
+        display:none !important;
+    }
+
+    body{
+        background:white;
+    }
+
+    .activities-card{
+        box-shadow:none;
+        border:none;
+    }
+
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media(max-width:768px){
+
+    .mission-general-image{
+        max-height:180px;
+    }
+
+    .activities-card{
+        padding:20px;
+    }
+
+}
