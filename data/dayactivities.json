@@ -1,0 +1,779 @@
+[
+  {
+    "Date": 1,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day1_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day1_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day1_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day1_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day1_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 2,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day2_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day2_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day2_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day2_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day2_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 3,
+    "Published": true,
+    "Location": "USA - Greece",
+    "PlannedActivities": "Travel to Athens Greece.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day3_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day3_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day3_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day3_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day3_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 4,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Arrive in Athens/Mars Hill",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day4_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day4_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day4_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day4_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day4_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 6,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Acropolis and Food and Prayer Walk",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day6_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day6_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 5,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Work at the Refugee Center",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day5_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day5_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day5_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day5_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day5_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 7,
+    "Published": true,
+    "Location": "Corinth",
+    "PlannedActivities": "Attend a local church service",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day7_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day7_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day7_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day7_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day7_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 8,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Travel to Ancient Corinth",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day8_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day8_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day8_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day8_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day8_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 9,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Work at the Refugee Center",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day9_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day9_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day9_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day9_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day9_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 10,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Work at the Refugee Center",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day10_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day10_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day10_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day10_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day10_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 11,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Work at the Refugee Center",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day11_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day11_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day11_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day11_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day11_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 12,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Travel to Island of Agina",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day12_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day12_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day12_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day12_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day12_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 13,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Start Journey Home",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day13_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day13_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day13_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day13_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day13_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 14,
+    "Published": true,
+    "Location": "Athens",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day14_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day14_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day14_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day14_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day14_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 15,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day15_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day15_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day15_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day15_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day15_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 16,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day16_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day16_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day16_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day16_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day16_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 17,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day17_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day17_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day17_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day17_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day17_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 18,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day18_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day18_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day18_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day18_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day18_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 19,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day19_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day19_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day19_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day19_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day19_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 20,
+    "Published": false,
+    "Location": "Greece",
+    "PlannedActivities": "Mission outreach and ministry activities.",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day20_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day20_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day20_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day20_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day20_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  },
+  {
+    "Date": 99,
+    "Published": false,
+    "Location": "Mars Hill",
+    "PlannedActivities": "Trip to Mars Hill",
+    "AccomplishedActivities": "",
+    "GodMoments": "",
+    "Challenges": "",
+    "SharedPrayerRequests": "",
+    "Pictures": [
+      {
+        "Enabled": false,
+        "Image": "Images/day99_activity1.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day99_activity2.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day99_activity3.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day99_activity4.jpg",
+        "Caption": ""
+      },
+      {
+        "Enabled": false,
+        "Image": "Images/day99_activity5.jpg",
+        "Caption": ""
+      }
+    ]
+  }
+]

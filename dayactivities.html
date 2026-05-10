@@ -1,0 +1,416 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission Day Activities</title>
+
+<link href="Styles/Site.css" rel="stylesheet" />
+<link href="Styles/Site_mobile.css" rel="stylesheet" />
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3D95CE">
+
+<script>
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+    });
+}
+</script>
+
+</head>
+
+<body>
+
+<a class="skip-link" href="#pageContent">Skip to content</a>
+
+<div class="page">
+
+<header class="header" role="banner">
+
+<div class="title">
+<h1>
+<a href="index.html">
+<img src="./Images/Logo400.jpg"
+     class="site-logo"
+     alt="Christian Steps Ministries"
+     width="400" />
+</a>
+</h1>
+</div>
+
+<div class="clear hideSkiplink">
+<div id="siteHeader"></div>
+</div>
+
+</header>
+
+<div class="main">
+
+<main id="pageContent" role="main">
+
+<div class="devotional-container">
+
+<img id="generalImage"
+     class="hero-image mission-general-image"
+     src="Images/missiongeneral.jpg">
+
+<div class="top-button-row">
+
+<a class="nav-button" id="topPrevBtn">
+← Previous Day
+</a>
+
+<a class="nav-button"
+   href="missionitinerary.html">
+Return to Calendar
+</a>
+
+<a class="nav-button"
+   href="missions.html">
+Mission Home
+</a>
+
+<button class="nav-button"
+        onclick="window.print()">
+Print to PDF
+</button>
+
+<a class="nav-button" id="topNextBtn">
+Next Day →
+</a>
+
+</div>
+
+<div class="content-card">
+
+<h1 id="pageTitle"></h1>
+
+<div class="scripture-box">
+<strong>Location:</strong>
+<span id="location"></span>
+</div>
+
+<h2 class="section-title">Planned Activities</h2>
+<div id="plannedActivities"></div>
+
+<h2 class="section-title">Accomplished Activities</h2>
+<div id="accomplishedActivities"></div>
+
+<div id="godMomentsWrapper" style="display:none;">
+
+<h2 class="section-title">God Moments</h2>
+
+<div class="prayer-box" id="godMoments"></div>
+
+</div>
+
+<div id="challengesWrapper" style="display:none;">
+
+<h2 class="section-title">Challenges</h2>
+
+<div class="prayer-box" id="challenges"></div>
+
+</div>
+
+<h2 class="section-title">Shared Prayer Requests</h2>
+
+<div class="prayer-box" id="prayerRequests"></div>
+
+<h2 class="section-title">Mission Photos</h2>
+
+<div class="image-grid" id="imageGrid"></div>
+
+<div class="button-row">
+
+<a class="nav-button" id="prevBtn">
+← Previous Day
+</a>
+
+<a class="nav-button"
+   href="missionitinerary.html">
+Return to Calendar
+</a>
+
+<a class="nav-button"
+   href="missions.html">
+Mission Home
+</a>
+
+<button class="nav-button"
+        onclick="window.print()">
+Print to PDF
+</button>
+
+<a class="nav-button" id="nextBtn">
+Next Day →
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<button id="installPWA"
+        class="pwa-install-btn"
+        style="display:none;">
+Install App
+</button>
+
+<div id="iosInstallHelp"
+     class="pwa-install-btn"
+     style="display:none;">
+Tap Share → Add to Home Screen
+</div>
+
+</main>
+
+</div>
+
+</div>
+
+<div id="siteFooter"></div>
+
+<script>
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const day =
+    parseInt(params.get('day')) || 3;
+
+fetch('./data/dayactivities.json')
+.then(r => r.json())
+.then(data => {
+
+    data.sort((a,b) => a.Date - b.Date);
+
+    const item =
+        data.find(x => x.Date == day);
+
+    if(!item){
+
+        document.getElementById('pageTitle')
+            .innerText = 'Day Not Found';
+
+        return;
+
+    }
+
+    document.getElementById('pageTitle')
+        .innerText =
+        `June ${item.Date} — Mission Activities`;
+
+    document.getElementById('location')
+        .innerText =
+        item.Location || '';
+
+    document.getElementById('plannedActivities')
+        .innerHTML =
+        '<p>' +
+        (item.PlannedActivities || '')
+            .replace(/\n/g,'</p><p>')
+        + '</p>';
+
+    document.getElementById('accomplishedActivities')
+        .innerHTML =
+        '<p>' +
+        (item.AccomplishedActivities || '')
+            .replace(/\n/g,'</p><p>')
+        + '</p>';
+
+    document.getElementById('prayerRequests')
+        .innerHTML =
+        '<p>' +
+        (item.SharedPrayerRequests || '')
+            .replace(/\n/g,'</p><p>')
+        + '</p>';
+
+    if(item.GodMoments){
+
+        document.getElementById(
+            'godMomentsWrapper'
+        ).style.display = 'block';
+
+        document.getElementById(
+            'godMoments'
+        ).innerHTML =
+            '<p>' +
+            item.GodMoments.replace(/\n/g,'</p><p>')
+            + '</p>';
+
+    }
+
+    if(item.Challenges){
+
+        document.getElementById(
+            'challengesWrapper'
+        ).style.display = 'block';
+
+        document.getElementById(
+            'challenges'
+        ).innerHTML =
+            '<p>' +
+            item.Challenges.replace(/\n/g,'</p><p>')
+            + '</p>';
+
+    }
+
+    const grid =
+        document.getElementById('imageGrid');
+
+    item.Pictures.forEach(img => {
+
+        if(img.Enabled){
+
+            const div =
+                document.createElement('div');
+
+            div.innerHTML =
+                `
+                <figure>
+                    <img src="${img.Image}" alt="">
+                    <figcaption>
+                        ${img.Caption || ''}
+                    </figcaption>
+                </figure>
+                `;
+
+            grid.appendChild(div);
+
+        }
+
+    });
+
+    const publishedDays =
+        data.filter(d =>
+            d.Published !== false
+        );
+
+    const currentIndex =
+        publishedDays.findIndex(
+            d => d.Date == day
+        );
+
+    if(currentIndex === -1){
+
+        document.getElementById('prevBtn').style.display = 'none';
+        document.getElementById('topPrevBtn').style.display = 'none';
+
+        document.getElementById('nextBtn').style.display = 'none';
+        document.getElementById('topNextBtn').style.display = 'none';
+
+    }
+    else{
+
+        if(currentIndex > 0){
+
+            const prevDay =
+                publishedDays[currentIndex - 1];
+
+            document.getElementById('prevBtn').href =
+                `dayactivities.html?day=${prevDay.Date}`;
+
+            document.getElementById('topPrevBtn').href =
+                `dayactivities.html?day=${prevDay.Date}`;
+
+        }
+        else{
+
+            document.getElementById('prevBtn').style.display = 'none';
+            document.getElementById('topPrevBtn').style.display = 'none';
+
+        }
+
+        if(currentIndex < publishedDays.length - 1){
+
+            const nextDay =
+                publishedDays[currentIndex + 1];
+
+            document.getElementById('nextBtn').href =
+                `dayactivities.html?day=${nextDay.Date}`;
+
+            document.getElementById('topNextBtn').href =
+                `dayactivities.html?day=${nextDay.Date}`;
+
+        }
+        else{
+
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('topNextBtn').style.display = 'none';
+
+        }
+
+    }
+
+});
+
+fetch('header.html')
+.then(r => r.text())
+.then(h => {
+    document.getElementById('siteHeader').innerHTML = h;
+});
+
+fetch('footer.html')
+.then(r => r.text())
+.then(f => {
+    document.getElementById('siteFooter').innerHTML = f;
+});
+
+let deferredPrompt;
+
+const installBtn =
+    document.getElementById('installPWA');
+
+window.addEventListener(
+    'beforeinstallprompt',
+    (e) => {
+
+        e.preventDefault();
+
+        deferredPrompt = e;
+
+        installBtn.style.display = 'block';
+
+    }
+);
+
+installBtn.addEventListener('click', async () => {
+
+    if(!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    const result =
+        await deferredPrompt.userChoice;
+
+    deferredPrompt = null;
+
+    installBtn.style.display = 'none';
+
+});
+
+const isIOS =
+    /iphone|ipad|ipod/i.test(
+        window.navigator.userAgent
+    );
+
+const isInStandaloneMode =
+    ('standalone' in window.navigator) &&
+    window.navigator.standalone;
+
+if(isIOS && !isInStandaloneMode){
+
+    document.getElementById(
+        'iosInstallHelp'
+    ).style.display = 'block';
+
+}
+
+</script>
+
+</body>
+</html>
