@@ -83,28 +83,55 @@
     }
 }
 
+
 .calendar-button-row{
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
-    margin-top:14px;
+    gap:5px;
+    margin-top:10px;
 }
 
 .calendar-mini-btn{
     background:#3D95CE;
     color:#fff !important;
     text-decoration:none;
-    padding:8px 12px;
-    border-radius:8px;
-    font-size:13px;
-    font-weight:bold;
+    padding:4px 8px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:600;
     display:inline-block;
+    line-height:1.1;
 }
 
 .calendar-mini-btn:hover{
     background:#2F7FB4;
 }
 
+.calendar-location{
+    font-weight:bold;
+    color:#3D95CE;
+    margin-bottom:8px;
+}
+
+.calendar-activities{
+    font-size:14px;
+    line-height:1.45;
+    margin-bottom:12px;
+    color:#555;
+}
+
+.calendar-scripture-ref{
+    font-size:13px;
+    font-style:italic;
+    color:#555;
+    margin-bottom:6px;
+}
+
+.calendar-scripture-summary{
+    font-size:13px;
+    line-height:1.45;
+    color:#333;
+}
 </style>
 </head>
 
@@ -324,6 +351,7 @@ fetch('footer.html').then(r=>r.text()).then(f=>{
 document.getElementById('siteFooter').innerHTML=f});
 </script>
 
+
 <script>
 
 fetch('./data/missions.json')
@@ -336,7 +364,8 @@ fetch('./data/missions.json')
     .filter(day => day.ShowOnCalendar !== false)
     .forEach(day => {
 
-        const dayCards = document.querySelectorAll('.calendar-day');
+        const dayCards =
+            document.querySelectorAll('.calendar-day');
 
         dayCards.forEach(card => {
 
@@ -356,14 +385,36 @@ fetch('./data/missions.json')
                 const scripture =
                     card.querySelector('.day-scripture');
 
-                if(location)
-                    location.innerText = day.Location || '';
+                if(location){
 
-                if(activities)
-                    activities.innerText = day.Activities || '';
+                    location.innerHTML = `
+                        <div class="calendar-location">
+                            ${day.Location || ''}
+                        </div>
+                    `;
+                }
 
-                if(scripture)
-                    scripture.innerText = day.Scripture || '';
+                if(activities){
+
+                    activities.innerHTML = `
+                        <div class="calendar-activities">
+                            ${day["Days Activities"] || ''}
+                        </div>
+                    `;
+                }
+
+                if(scripture){
+
+                    scripture.innerHTML = `
+                        <div class="calendar-scripture-ref">
+                            ${day["Daily Scripture"] || ''}
+                        </div>
+
+                        <div class="calendar-scripture-summary">
+                            ${day["Daily Scripture Summary"] || ''}
+                        </div>
+                    `;
+                }
 
                 const buttonRow =
                     document.createElement('div');
@@ -372,6 +423,7 @@ fetch('./data/missions.json')
                     'calendar-button-row';
 
                 buttonRow.innerHTML = `
+
                     <a class="calendar-mini-btn"
                        href="devotional.html?day=${day.Date}">
                        Devotional
@@ -381,6 +433,7 @@ fetch('./data/missions.json')
                        href="dayactivities.html?day=${day.Date}">
                        Updates
                     </a>
+
                 `;
 
                 card.appendChild(buttonRow);
@@ -396,6 +449,7 @@ fetch('./data/missions.json')
 });
 
 </script>
+
 
 </body>
 </html>
