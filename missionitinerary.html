@@ -111,8 +111,17 @@ Promise.all([
     const firstDate =
         visibleDays.length > 0 ? visibleDays[0].Date : 1;
 
+    /*
+        June 1, 2026 starts on a Monday.
+        Calendar columns:
+        Sunday = 0
+        Monday = 1
+    */
+
+    const startDayOfWeek = 1;
+
     const blankDays =
-        (firstDate - 1) % 7;
+        startDayOfWeek + (firstDate - 1);
 
     for(let i = 0; i < blankDays; i++){
 
