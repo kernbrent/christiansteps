@@ -1,0 +1,1 @@
+console.log('NTX Earthquakes site loaded');
