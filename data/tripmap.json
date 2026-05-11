@@ -1,7 +1,7 @@
 [
   {
     "Date": "2026-05-16",
-    "Title": "Travel to Zurich",
+    "Title": "Fly from DFW to Zurich",
     "City": "Zurich",
     "Country": "Switzerland",
     "Latitude": 47.3769,
@@ -17,13 +17,13 @@
     "Transportation": {
       "Type": "Flight",
       "Icon": "\u2708\ufe0f",
-      "Description": "DFW \u2192 Zurich"
+      "Description": "DFW \u2192 Philadelphia \u2192 Zurich"
     },
     "Photos": []
   },
   {
     "Date": "2026-05-17",
-    "Title": "Lucerne",
+    "Title": "Drive from Zurich to Lucerne",
     "City": "Lucerne",
     "Country": "Switzerland",
     "Latitude": 47.0502,
@@ -44,8 +44,52 @@
     "Photos": []
   },
   {
+    "Date": "2026-05-18",
+    "Title": "Lucerne Excursion to Jungfrau",
+    "City": "Lucerne",
+    "Country": "Switzerland",
+    "Latitude": 47.0502,
+    "Longitude": 8.3093,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Lily",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Excursion",
+      "Icon": "\ud83c\udfd4\ufe0f",
+      "Description": "Jungfrau Excursion"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-19",
+    "Title": "Lucerne Excursion to Grindelwald",
+    "City": "Lucerne",
+    "Country": "Switzerland",
+    "Latitude": 47.0502,
+    "Longitude": 8.3093,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Lily",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Excursion",
+      "Icon": "\ud83c\udfd4\ufe0f",
+      "Description": "Grindelwald Excursion"
+    },
+    "Photos": []
+  },
+  {
     "Date": "2026-05-20",
-    "Title": "Dolomites",
+    "Title": "Zurich \u2192 Innsbruck \u2192 Ortisei",
     "City": "Ortisei",
     "Country": "Italy",
     "Latitude": 46.5753,
@@ -61,13 +105,292 @@
     "Transportation": {
       "Type": "Train",
       "Icon": "\ud83d\ude86",
-      "Description": "Zurich \u2192 Innsbruck"
+      "Description": "Drive to Zurich, Train to Innsbruck, Drive to Ortisei"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-21",
+    "Title": "Ortisei Hiking and Chair Lifts",
+    "City": "Ortisei",
+    "Country": "Italy",
+    "Latitude": 46.5753,
+    "Longitude": 11.6713,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Lily",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Local",
+      "Icon": "\ud83c\udfd4\ufe0f",
+      "Description": "Dolomites exploration"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-22",
+    "Title": "Ortisei Hiking and Chair Lifts",
+    "City": "Ortisei",
+    "Country": "Italy",
+    "Latitude": 46.5753,
+    "Longitude": 11.6713,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Lily",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Local",
+      "Icon": "\ud83c\udfd4\ufe0f",
+      "Description": "Dolomites exploration"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-23",
+    "Title": "Drive back to Innsbruck",
+    "City": "Innsbruck",
+    "Country": "Austria",
+    "Latitude": 47.2692,
+    "Longitude": 11.4041,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Lily",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Car",
+      "Icon": "\ud83d\ude97",
+      "Description": "Drive back to Innsbruck"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-24",
+    "Title": "Travel Split: Lily Home / Group to Florence",
+    "City": "Florence",
+    "Country": "Italy",
+    "Latitude": 43.7696,
+    "Longitude": 11.2558,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Train",
+      "Icon": "\ud83d\ude86",
+      "Description": "Train to Verona then Florence"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-25",
+    "Title": "Florence Wine Tour",
+    "City": "Florence",
+    "Country": "Italy",
+    "Latitude": 43.7696,
+    "Longitude": 11.2558,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Tour",
+      "Icon": "\ud83c\udf77",
+      "Description": "Wine Tour"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-26",
+    "Title": "Train to Rome",
+    "City": "Rome",
+    "Country": "Italy",
+    "Latitude": 41.9028,
+    "Longitude": 12.4964,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Train",
+      "Icon": "\ud83d\ude86",
+      "Description": "Florence \u2192 Rome"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-27",
+    "Title": "Rome City Tour",
+    "City": "Rome",
+    "Country": "Italy",
+    "Latitude": 41.9028,
+    "Longitude": 12.4964,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Tour",
+      "Icon": "\ud83c\udfdb\ufe0f",
+      "Description": "Explore Rome"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-28",
+    "Title": "Rome Optional Pompeii Day Trip",
+    "City": "Rome",
+    "Country": "Italy",
+    "Latitude": 41.9028,
+    "Longitude": 12.4964,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent",
+      "Corrie",
+      "Ethan",
+      "Bill"
+    ],
+    "Transportation": {
+      "Type": "Optional",
+      "Icon": "\ud83c\udf0b",
+      "Description": "Optional Pompeii excursion"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-29",
+    "Title": "Travel Split: Group Home / Brent to Greece",
+    "City": "Bari",
+    "Country": "Italy",
+    "Latitude": 41.1171,
+    "Longitude": 16.8719,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Train/Ferry",
+      "Icon": "\u26f4\ufe0f",
+      "Description": "Train to Bari then overnight ferry to Patras"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-30",
+    "Title": "Bus to Nafplio",
+    "City": "Nafplio",
+    "Country": "Greece",
+    "Latitude": 37.5673,
+    "Longitude": 22.8016,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Bus",
+      "Icon": "\ud83d\ude8c",
+      "Description": "Patras \u2192 Nafplio"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-05-31",
+    "Title": "Explore Nafplio",
+    "City": "Nafplio",
+    "Country": "Greece",
+    "Latitude": 37.5673,
+    "Longitude": 22.8016,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Local",
+      "Icon": "\ud83c\udfd6\ufe0f",
+      "Description": "Beach and relaxation"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-06-01",
+    "Title": "Explore Nafplio",
+    "City": "Nafplio",
+    "Country": "Greece",
+    "Latitude": 37.5673,
+    "Longitude": 22.8016,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Local",
+      "Icon": "\ud83c\udfd6\ufe0f",
+      "Description": "Beach and relaxation"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-06-02",
+    "Title": "Explore Nafplio",
+    "City": "Nafplio",
+    "Country": "Greece",
+    "Latitude": 37.5673,
+    "Longitude": 22.8016,
+    "MissionDay": false,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Local",
+      "Icon": "\ud83c\udfd6\ufe0f",
+      "Description": "Beach and relaxation"
     },
     "Photos": []
   },
   {
     "Date": "2026-06-03",
-    "Title": "Athens Mission Begins",
+    "Title": "Nafplio \u2192 Athens",
+    "City": "Athens",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Bus",
+      "Icon": "\ud83d\ude8c",
+      "Description": "Travel from Nafplio to Athens"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-06-04",
+    "Title": "Athens Mission Trip",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -79,7 +402,25 @@
     "Transportation": {
       "Type": "Mission",
       "Icon": "\u26ea",
-      "Description": "Mission begins"
+      "Description": "Mission activities in Athens"
+    },
+    "Photos": []
+  },
+  {
+    "Date": "2026-06-14",
+    "Title": "Fly Home to DFW",
+    "City": "Athens",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Flight",
+      "Icon": "\u2708\ufe0f",
+      "Description": "Athens \u2192 Chicago \u2192 DFW"
     },
     "Photos": []
   }
