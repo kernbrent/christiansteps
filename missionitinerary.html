@@ -324,5 +324,78 @@ fetch('footer.html').then(r=>r.text()).then(f=>{
 document.getElementById('siteFooter').innerHTML=f});
 </script>
 
+<script>
+
+fetch('./data/missions.json')
+.then(response => response.json())
+.then(data => {
+
+    data.sort((a, b) => a.Date - b.Date);
+
+    data
+    .filter(day => day.ShowOnCalendar !== false)
+    .forEach(day => {
+
+        const dayCards = document.querySelectorAll('.calendar-day');
+
+        dayCards.forEach(card => {
+
+            const num =
+                card.querySelector('.day-number');
+
+            if(!num) return;
+
+            if(parseInt(num.innerText) === day.Date){
+
+                const location =
+                    card.querySelector('.day-location');
+
+                const activities =
+                    card.querySelector('.day-activities');
+
+                const scripture =
+                    card.querySelector('.day-scripture');
+
+                if(location)
+                    location.innerText = day.Location || '';
+
+                if(activities)
+                    activities.innerText = day.Activities || '';
+
+                if(scripture)
+                    scripture.innerText = day.Scripture || '';
+
+                const buttonRow =
+                    document.createElement('div');
+
+                buttonRow.className =
+                    'calendar-button-row';
+
+                buttonRow.innerHTML = `
+                    <a class="calendar-mini-btn"
+                       href="devotional.html?day=${day.Date}">
+                       Devotional
+                    </a>
+
+                    <a class="calendar-mini-btn"
+                       href="dayactivities.html?day=${day.Date}">
+                       Updates
+                    </a>
+                `;
+
+                card.appendChild(buttonRow);
+            }
+
+        });
+
+    });
+
+})
+.catch(err => {
+    console.error('Mission JSON load error:', err);
+});
+
+</script>
+
 </body>
 </html>
