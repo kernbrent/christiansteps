@@ -7,21 +7,64 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header>
-<div class="logo-area">
-<img src="images/logo.png">
-<h1>NTX Earthquakes</h1>
-</div>
-</header>
+
+<div id="header-placeholder"></div>
+
 
 <section class="section">
 <div class="container">
-<h2>Join The Earthquakes</h2><p>Contact us to attend a training session.</p>
+
+<h2>Request Team Registration</h2>
+
+<form action="https://formspree.io/f/mrejrnbj" method="POST" class="registration-form">
+
+<input type="text" name="_gotcha" style="display:none">
+<input type="hidden" name="_next" value="thankyou.html">
+
+<input type="text" name="playerName" placeholder="Player Name" required>
+<input type="date" name="birthdate" required>
+
+<select name="gender">
+<option value="">Select Gender</option>
+<option>Female</option>
+<option>Male</option>
+</select>
+
+<input type="text" name="height" placeholder="Height">
+<input type="text" name="schoolName" placeholder="School Name">
+<input type="text" name="yearsExperience" placeholder="Years Experience">
+<input type="text" name="formerClub" placeholder="Former Club">
+
+<select name="preferredPosition">
+<option value="">Preferred Position</option>
+<option>Goalkeeper</option>
+<option>Defender</option>
+<option>Midfielder</option>
+<option>Forward</option>
+</select>
+
+<input type="text" name="parentName" placeholder="Parent Name" required>
+<input type="email" name="parentEmail" placeholder="Parent Email" required>
+<input type="tel" name="phone" placeholder="Phone Number" required>
+
+<input type="text" name="streetAddress" placeholder="Street Address">
+<input type="text" name="city" placeholder="City">
+<input type="text" name="state" placeholder="State">
+<input type="text" name="zip" placeholder="Zip Code">
+
+<textarea name="additionalNotes" placeholder="Additional Notes" rows="6"></textarea>
+
+<button type="submit">Submit Registration Request</button>
+
+</form>
 </div>
 </section>
 
+
 <footer>
-<p>© 2026 NTX Earthquakes</p>
+<p>© 2026 NTX Earthquakes Soccer Club</p>
 </footer>
+
+<script src="js/loadHeader.js"></script>
 </body>
 </html>
