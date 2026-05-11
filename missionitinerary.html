@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"> 
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,132 +7,8 @@
 
 <link href="Styles/Site.css" rel="stylesheet" />
 <link href="Styles/Site_mobile.css" rel="stylesheet" />
+<link href="Styles/mission_itinerary_calendar_styles.css" rel="stylesheet" />
 
-<style>
-.itinerary-wrapper{
-    margin-top:25px;
-}
-
-.itinerary-grid{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:12px;
-}
-
-.calendar-header{
-    background:#3a4f63;
-    color:white;
-    padding:14px;
-    border-radius:10px;
-    text-align:center;
-    font-weight:bold;
-}
-
-.calendar-day{
-    min-height:180px;
-    background:#ffffff;
-    border:1px solid #d8d8d8;
-    border-radius:14px;
-    padding:12px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
-.day-number{
-    font-size:24px;
-    font-weight:bold;
-    color:#3D95CE;
-    margin-bottom:10px;
-}
-
-.day-location{
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.day-activities{
-    font-size:14px;
-    line-height:1.45;
-    margin-bottom:10px;
-}
-
-.day-scripture{
-    font-size:13px;
-    font-style:italic;
-    color:#666;
-}
-
-.blank-day{
-    background:transparent;
-    border:none;
-    box-shadow:none;
-}
-
-@media (max-width:900px){
-    .itinerary-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .calendar-header{
-        display:none;
-    }
-}
-
-@media (max-width:600px){
-    .itinerary-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-
-.calendar-button-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:5px;
-    margin-top:10px;
-}
-
-.calendar-mini-btn{
-    background:#3D95CE;
-    color:#fff !important;
-    text-decoration:none;
-    padding:4px 8px;
-    border-radius:6px;
-    font-size:11px;
-    font-weight:600;
-    display:inline-block;
-    line-height:1.1;
-}
-
-.calendar-mini-btn:hover{
-    background:#2F7FB4;
-}
-
-.calendar-location{
-    font-weight:bold;
-    color:#3D95CE;
-    margin-bottom:8px;
-}
-
-.calendar-activities{
-    font-size:14px;
-    line-height:1.45;
-    margin-bottom:12px;
-    color:#555;
-}
-
-.calendar-scripture-ref{
-    font-size:13px;
-    font-style:italic;
-    color:#555;
-    margin-bottom:6px;
-}
-
-.calendar-scripture-summary{
-    font-size:13px;
-    line-height:1.45;
-    color:#333;
-}
-</style>
 </head>
 
 <body>
@@ -142,6 +18,7 @@
 <div class="page">
 
 <header class="header" role="banner">
+
 <div class="title">
 <h1>
 <a href="index.html">
@@ -156,9 +33,11 @@ width="400" />
 <div class="clear hideSkiplink">
 <div id="siteHeader"></div>
 </div>
+
 </header>
 
 <div class="main">
+
 <main id="pageContent" role="main">
 
 <section class="home-hero">
@@ -179,7 +58,7 @@ Daily locations, activities, and scripture focus for the mission trip.
 
 <div class="itinerary-wrapper">
 
-<div class="itinerary-grid">
+<div class="itinerary-grid" id="calendarGrid">
 
 <div class="calendar-header">Sunday</div>
 <div class="calendar-header">Monday</div>
@@ -189,150 +68,8 @@ Daily locations, activities, and scripture focus for the mission trip.
 <div class="calendar-header">Friday</div>
 <div class="calendar-header">Saturday</div>
 
-<div class="calendar-day blank-day"></div>
-
-
-<div class="calendar-day">
-<div class="day-number">1</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
 </div>
 
-<div class="calendar-day">
-<div class="day-number">2</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">3</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">4</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">5</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">6</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">7</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">8</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">9</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">10</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">11</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">12</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">13</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">14</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">15</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">16</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">17</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">18</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">19</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-<div class="calendar-day">
-<div class="day-number">20</div>
-<div class="day-location"></div>
-<div class="day-activities"></div>
-<div class="day-scripture"></div>
-</div>
-
-</div>
 </div>
 
 </section>
@@ -344,112 +81,135 @@ Daily locations, activities, and scripture focus for the mission trip.
 <div id="siteFooter"></div>
 
 <script>
-fetch('header.html').then(r=>r.text()).then(h=>{
-document.getElementById('siteHeader').innerHTML=h});
 
-fetch('footer.html').then(r=>r.text()).then(f=>{
-document.getElementById('siteFooter').innerHTML=f});
-</script>
+fetch('header.html')
+.then(r => r.text())
+.then(h => {
+    document.getElementById('siteHeader').innerHTML = h;
+});
 
+fetch('footer.html')
+.then(r => r.text())
+.then(f => {
+    document.getElementById('siteFooter').innerHTML = f;
+});
 
-<script>
+Promise.all([
+    fetch('./data/missions.json').then(r => r.json()),
+    fetch('./data/dayactivities.json').then(r => r.json())
+])
+.then(([missions, activities]) => {
 
-fetch('./data/missions.json')
-.then(response => response.json())
-.then(data => {
+    missions.sort((a, b) => a.Date - b.Date);
 
-    data.sort((a, b) => a.Date - b.Date);
+    const calendarGrid =
+        document.getElementById('calendarGrid');
 
-    data
-    .filter(day => day.ShowOnCalendar !== false)
-    .forEach(day => {
+    const visibleDays =
+        missions.filter(d => d.ShowOnCalendar !== false);
 
-        const dayCards =
-            document.querySelectorAll('.calendar-day');
+    const firstDate =
+        visibleDays.length > 0 ? visibleDays[0].Date : 1;
 
-        dayCards.forEach(card => {
+    const blankDays =
+        (firstDate - 1) % 7;
 
-            const num =
-                card.querySelector('.day-number');
+    for(let i = 0; i < blankDays; i++){
 
-            if(!num) return;
+        const blank =
+            document.createElement('div');
 
-            if(parseInt(num.innerText) === day.Date){
+        blank.className =
+            'calendar-day blank-day';
 
-                const location =
-                    card.querySelector('.day-location');
+        calendarGrid.appendChild(blank);
+    }
 
-                const activities =
-                    card.querySelector('.day-activities');
+    visibleDays.forEach(day => {
 
-                const scripture =
-                    card.querySelector('.day-scripture');
+        const dayCard =
+            document.createElement('div');
 
-                if(location){
+        dayCard.className =
+            'calendar-day';
 
-                    location.innerHTML = `
-                        <div class="calendar-location">
-                            ${day.Location || ''}
-                        </div>
-                    `;
-                }
+        if(day.IsMissionDay === false){
 
-                if(activities){
+            dayCard.classList.add(
+                'non-mission-day'
+            );
+        }
 
-                    activities.innerHTML = `
-                        <div class="calendar-activities">
-                            ${day["Days Activities"] || ''}
-                        </div>
-                    `;
-                }
+        const activityDay =
+            activities.find(a =>
+                a.Date === day.Date &&
+                a.Published !== false
+            );
 
-                if(scripture){
+        const updateButton =
+            activityDay
+            ? `<a class="calendar-mini-btn"
+                   href="dayactivities.html?day=${day.Date}">
+                   Updates
+               </a>`
+            : `<span class="calendar-mini-btn disabled">
+                   Updates
+               </span>`;
 
-                    scripture.innerHTML = `
-                        <div class="calendar-scripture-ref">
-                            ${day["Daily Scripture"] || ''}
-                        </div>
+        const devotionalButton =
+            day.IsMissionDay === false
+            ? `<span class="calendar-mini-btn disabled">
+                   Devotional
+               </span>`
+            : `<a class="calendar-mini-btn"
+                   href="devotional.html?day=${day.Date}">
+                   Devotional
+               </a>`;
 
-                        <div class="calendar-scripture-summary">
-                            ${day["Daily Scripture Summary"] || ''}
-                        </div>
-                    `;
-                }
+        dayCard.innerHTML = `
 
-                const buttonRow =
-                    document.createElement('div');
+            <div class="day-number">
+                ${day.Date}
+            </div>
 
-                buttonRow.className =
-                    'calendar-button-row';
+            <div class="calendar-location">
+                ${day.Location || ''}
+            </div>
 
-                buttonRow.innerHTML = `
+            <div class="calendar-activities">
+                ${day["Days Activities"] || ''}
+            </div>
 
-                    <a class="calendar-mini-btn"
-                       href="devotional.html?day=${day.Date}">
-                       Devotional
-                    </a>
+            <div class="calendar-scripture-ref">
+                ${day["Daily Scripture"] || ''}
+            </div>
 
-                    <a class="calendar-mini-btn"
-                       href="dayactivities.html?day=${day.Date}">
-                       Updates
-                    </a>
+            <div class="calendar-scripture-summary">
+                ${day["Daily Scripture Summary"] || ''}
+            </div>
 
-                `;
+            <div class="calendar-button-row">
+                ${devotionalButton}
+                ${updateButton}
+            </div>
 
-                card.appendChild(buttonRow);
-            }
+        `;
 
-        });
+        calendarGrid.appendChild(dayCard);
 
     });
 
 })
 .catch(err => {
-    console.error('Mission JSON load error:', err);
+
+    console.error(
+        'Calendar load error:',
+        err
+    );
+
 });
 
 </script>
-
 
 </body>
 </html>
