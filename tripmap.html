@@ -158,6 +158,66 @@ body{
     font-size:14px;
 }
 
+
+
+.lightbox-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:5000;
+    flex-direction:column;
+    padding:20px;
+}
+
+.lightbox-overlay.active{
+    display:flex;
+}
+
+.lightbox-image{
+    max-width:90vw;
+    max-height:78vh;
+    border-radius:12px;
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+}
+
+.lightbox-controls{
+    margin-top:18px;
+    display:flex;
+    gap:12px;
+}
+
+.lightbox-btn{
+    background:#3D95CE;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.lightbox-close{
+    position:absolute;
+    top:18px;
+    right:24px;
+    color:white;
+    font-size:34px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.photo-grid img{
+    cursor:pointer;
+    transition:transform .2s ease;
+}
+
+.photo-grid img:hover{
+    transform:scale(1.03);
+}
+
 @keyframes pulse{
     0%{transform:scale(1);}
     50%{transform:scale(1.15);}
@@ -247,7 +307,32 @@ photos, and traveler journey experience.
 
 </div>
 
+
+
+<div id="lightboxOverlay" class="lightbox-overlay">
+
+<div class="lightbox-close" onclick="closeLightbox()">
+×
+</div>
+
+<img id="lightboxImage" class="lightbox-image" src="" alt="">
+
+<div class="lightbox-controls">
+
+<button class="lightbox-btn" onclick="prevImage()">
+◀ Previous
+</button>
+
+<button class="lightbox-btn" onclick="nextImage()">
+Next ▶
+</button>
+
+</div>
+
+</div>
+
 <div id="siteFooter"></div>
+
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
 
@@ -332,10 +417,13 @@ function renderPanel(day){
 
         html += '<div class="photo-grid">';
 
-        day.Photos.forEach(photo => {
+        day.Photos.forEach((photo, index) => {
 
             html += `
-            <img src="${photo.Image}" alt="Trip Photo">
+            <img
+                src="${photo.Image}"
+                alt="Trip Photo"
+                onclick="openLightbox(${index}, day.Photos)">
             `;
 
         });
@@ -360,6 +448,90 @@ function renderPanel(day){
     panel.innerHTML = html;
 
 }
+
+
+
+let currentLightboxIndex = 0;
+let currentLightboxPhotos = [];
+
+function openLightbox(index, photos){
+
+    currentLightboxIndex = index;
+    currentLightboxPhotos = photos;
+
+    document
+    .getElementById('lightboxOverlay')
+    .classList.add('active');
+
+    updateLightboxImage();
+
+}
+
+function closeLightbox(){
+
+    document
+    .getElementById('lightboxOverlay')
+    .classList.remove('active');
+
+}
+
+function updateLightboxImage(){
+
+    const image =
+        document.getElementById('lightboxImage');
+
+    image.src =
+        currentLightboxPhotos[currentLightboxIndex].Image;
+
+}
+
+function prevImage(){
+
+    currentLightboxIndex--;
+
+    if(currentLightboxIndex < 0){
+        currentLightboxIndex =
+            currentLightboxPhotos.length - 1;
+    }
+
+    updateLightboxImage();
+
+}
+
+function nextImage(){
+
+    currentLightboxIndex++;
+
+    if(currentLightboxIndex >= currentLightboxPhotos.length){
+        currentLightboxIndex = 0;
+    }
+
+    updateLightboxImage();
+
+}
+
+document.addEventListener('keydown', e => {
+
+    const overlay =
+        document.getElementById('lightboxOverlay');
+
+    if(!overlay.classList.contains('active')){
+        return;
+    }
+
+    if(e.key === 'Escape'){
+        closeLightbox();
+    }
+
+    if(e.key === 'ArrowLeft'){
+        prevImage();
+    }
+
+    if(e.key === 'ArrowRight'){
+        nextImage();
+    }
+
+});
 
 </script>
 
@@ -633,10 +805,13 @@ function renderPanel(day){
 
         html += '<div class="photo-grid">';
 
-        day.Photos.forEach(photo => {
+        day.Photos.forEach((photo, index) => {
 
             html += `
-            <img src="${photo.Image}" alt="Trip Photo">
+            <img
+                src="${photo.Image}"
+                alt="Trip Photo"
+                onclick="openLightbox(${index}, day.Photos)">
             `;
 
         });
@@ -661,6 +836,90 @@ function renderPanel(day){
     panel.innerHTML = html;
 
 }
+
+
+
+let currentLightboxIndex = 0;
+let currentLightboxPhotos = [];
+
+function openLightbox(index, photos){
+
+    currentLightboxIndex = index;
+    currentLightboxPhotos = photos;
+
+    document
+    .getElementById('lightboxOverlay')
+    .classList.add('active');
+
+    updateLightboxImage();
+
+}
+
+function closeLightbox(){
+
+    document
+    .getElementById('lightboxOverlay')
+    .classList.remove('active');
+
+}
+
+function updateLightboxImage(){
+
+    const image =
+        document.getElementById('lightboxImage');
+
+    image.src =
+        currentLightboxPhotos[currentLightboxIndex].Image;
+
+}
+
+function prevImage(){
+
+    currentLightboxIndex--;
+
+    if(currentLightboxIndex < 0){
+        currentLightboxIndex =
+            currentLightboxPhotos.length - 1;
+    }
+
+    updateLightboxImage();
+
+}
+
+function nextImage(){
+
+    currentLightboxIndex++;
+
+    if(currentLightboxIndex >= currentLightboxPhotos.length){
+        currentLightboxIndex = 0;
+    }
+
+    updateLightboxImage();
+
+}
+
+document.addEventListener('keydown', e => {
+
+    const overlay =
+        document.getElementById('lightboxOverlay');
+
+    if(!overlay.classList.contains('active')){
+        return;
+    }
+
+    if(e.key === 'Escape'){
+        closeLightbox();
+    }
+
+    if(e.key === 'ArrowLeft'){
+        prevImage();
+    }
+
+    if(e.key === 'ArrowRight'){
+        nextImage();
+    }
+
+});
 
 </script>
 
