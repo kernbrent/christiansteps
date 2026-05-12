@@ -121,7 +121,6 @@ body{
     height:18px;
     border-radius:50%;
     border:3px solid white;
-    box-shadow:0 0 12px rgba(40,167,69,.7);
 }
 
 .dashboard-marker{
@@ -132,48 +131,10 @@ body{
     border:2px solid white;
 }
 
-.photo-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
-    margin-top:12px;
-}
-
-.photo-grid img{
-    width:100%;
-    border-radius:10px;
-}
-
-.stats{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:10px;
-}
-
-.stat-card{
-    background:#f2f2f2;
-    padding:10px;
-    border-radius:10px;
-    font-size:14px;
-}
-
 @keyframes pulse{
     0%{transform:scale(1);}
     50%{transform:scale(1.15);}
     100%{transform:scale(1);}
-}
-
-@media (max-width:900px){
-
-    .side-panel{
-        position:relative;
-        width:auto;
-        right:auto;
-        top:auto;
-        margin-top:15px;
-    }
-
 }
 
 </style>
@@ -181,8 +142,6 @@ body{
 </head>
 
 <body>
-
-<a class="skip-link" href="#pageContent">Skip to content</a>
 
 <div class="page">
 
@@ -278,6 +237,174 @@ fetch('footer.html')
 .then(f => {
     document.getElementById('siteFooter').innerHTML = f;
 });
+
+const map = L.map('map').setView([45,12],5);
+
+L.tileLayer(
+'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+{
+    attribution:'© OpenStreetMap'
+}
+).addTo(map);
+
+let currentMode = 'minimal';
+let selectedDate = null;
+let routeLayer = null;
+let markerLayer = null;
+
+fetch('./data/tripmap.json')
+.then(r => r.json())
+.then(data => {
+
+    window.tripData = data;
+
+    selectedDate = data[0].Date;
+
+    buildTimeline(data);
+
+    renderMap();
+
+    document.querySelectorAll('input[type=checkbox]')
+    .forEach(cb => {
+        cb.addEventListener('change', renderMap);
+    });
+
+    document.querySelectorAll('.mode-btn')
+    .forEach(btn => {
+
+        btn.addEventListener('click', () => {
+
+            document.querySelectorAll('.mode-btn')
+            .forEach(b => b.classList.remove('active'));
+
+            btn.classList.add('active');
+
+            currentMode = btn.dataset.mode;
+
+            renderMap();
+
+        });
+
+    });
+
+});
+
+function buildTimeline(data){
+
+    const timeline =
+        document.getElementById('timeline');
+
+    timeline.innerHTML = '';
+
+    data.forEach(day => {
+
+        const div =
+            document.createElement('div');
+
+        div.className = 'timeline-item';
+
+        if(day.Date === selectedDate){
+            div.classList.add('active');
+        }
+
+        div.innerText =
+            day.Date + ' - ' + day.City;
+
+        div.onclick = () => {
+
+            selectedDate = day.Date;
+
+            buildTimeline(data);
+
+            renderMap();
+
+        };
+
+        timeline.appendChild(div);
+
+    });
+
+}
+
+function renderMap(){
+
+    if(routeLayer){
+        map.removeLayer(routeLayer);
+    }
+
+    if(markerLayer){
+        map.removeLayer(markerLayer);
+    }
+
+    markerLayer = L.layerGroup().addTo(map);
+
+    const selectedTravelers =
+        Array.from(
+            document.querySelectorAll('input[type=checkbox]:checked')
+        ).map(cb => cb.value);
+
+    const filtered =
+        tripData.filter(day =>
+            day.Travelers.some(t =>
+                selectedTravelers.includes(t)
+            )
+        );
+
+    const coords = [];
+
+    filtered.forEach(day => {
+
+        coords.push([
+            day.Latitude,
+            day.Longitude
+        ]);
+
+        const isCurrent =
+            day.Date === selectedDate;
+
+        let markerClass = 'standard-marker';
+
+        if(isCurrent){
+            markerClass = 'current-marker';
+        }
+        else if(currentMode === 'journey'){
+            markerClass = 'journey-marker';
+        }
+        else if(currentMode === 'dashboard'){
+            markerClass = 'dashboard-marker';
+        }
+
+        const icon = L.divIcon({
+            className:'',
+            html:`<div class="${markerClass}"></div>`,
+            iconSize:[22,22]
+        });
+
+        const marker = L.marker(
+            [day.Latitude, day.Longitude],
+            { icon }
+        );
+
+        marker.bindPopup(`
+            <strong>${day.Title}</strong><br>
+            ${day.City}, ${day.Country}
+        `);
+
+        marker.addTo(markerLayer);
+
+    });
+
+    routeLayer = L.polyline(coords, {
+        color:'#3D95CE',
+        weight:4,
+        opacity:.85
+    }).addTo(map);
+
+    map.fitBounds(routeLayer.getBounds(), {
+        padding:[40,40]
+    });
+
+}
 
 </script>
 
