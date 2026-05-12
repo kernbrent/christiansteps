@@ -1,70 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Join NTX Earthquakes</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-<div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
 
+    <!-- HERO -->
+    <section class="join-hero">
 
-<section class="section">
-<div class="container">
+        <div class="join-overlay"></div>
 
-<h2>Request Team Registration</h2>
+        <div class="container join-hero-content">
 
-<form action="https://formspree.io/f/mrejrnbj" method="POST" class="registration-form">
+            <span class="join-eyebrow">
+                NTX EARTHQUAKES
+            </span>
 
-<input type="text" name="_gotcha" style="display:none">
-<input type="hidden" name="_next" value="thankyou.html">
+            <h1>
+                Player Registration
+            </h1>
 
-<input type="text" name="playerName" placeholder="Player Name" required>
-<input type="date" name="birthdate" required>
+            <p>
+                Join a competitive environment focused on technical growth,
+                confidence, teamwork, and long-term player development.
+            </p>
 
-<select name="gender">
-<option value="">Select Gender</option>
-<option>Female</option>
-<option>Male</option>
-</select>
+        </div>
 
-<input type="text" name="height" placeholder="Height">
-<input type="text" name="schoolName" placeholder="School Name">
-<input type="text" name="yearsExperience" placeholder="Years Experience">
-<input type="text" name="formerClub" placeholder="Former Club">
+    </section>
 
-<select name="preferredPosition">
-<option value="">Preferred Position</option>
-<option>Goalkeeper</option>
-<option>Defender</option>
-<option>Midfielder</option>
-<option>Forward</option>
-</select>
+    <!-- FORM SECTION -->
+    <section class="join-modern-section">
 
-<input type="text" name="parentName" placeholder="Parent Name" required>
-<input type="email" name="parentEmail" placeholder="Parent Email" required>
-<input type="tel" name="phone" placeholder="Phone Number" required>
+        <div class="container">
 
-<input type="text" name="streetAddress" placeholder="Street Address">
-<input type="text" name="city" placeholder="City">
-<input type="text" name="state" placeholder="State">
-<input type="text" name="zip" placeholder="Zip Code">
+            <div class="join-layout">
 
-<textarea name="additionalNotes" placeholder="Additional Notes" rows="6"></textarea>
+                <!-- LEFT SIDE -->
+                <div class="join-content">
 
-<button type="submit">Submit Registration Request</button>
+                    <span class="coach-tag">
+                        TEAM REGISTRATION
+                    </span>
 
-</form>
-</div>
-</section>
+                    <h2>
+                        Become Part of the Club
+                    </h2>
 
+                    <p>
+                        NTX Earthquakes provides a positive, challenging,
+                        and development-focused environment for athletes
+                        looking to improve technically and competitively.
+                    </p>
 
-<footer>
-<p>© 2026 NTX Earthquakes Soccer Club</p>
-</footer>
+                    <div class="join-feature-grid">
 
-<script src="js/loadHeader.js"></script>
+                        <div class="coach-card">
+                            <h3>Technical Training</h3>
+                            <p>
+                                Ball control, passing, dribbling,
+                                finishing, and tactical development.
+                            </p>
+                        </div>
+
+                        <div class="coach-card">
+                            <h3>Competitive Environment</h3>
+                            <p>
+                                Structured practices, games,
+                                and growth opportunities.
+                            </p>
+                        </div>
+
+                        <div class="coach-card">
+                            <h3>Player Confidence</h3>
+                            <p>
+                                Leadership, resilience,
+                                accountability, and teamwork.
+                            </p>
+                        </div>
+
+                        <div class="coach-card">
+                            <h3>Club Culture</h3>
+                            <p>
+                                Positive coaching, communication,
+                                and long-term player development.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE -->
+                <div class="join-form-wrapper">
+
+                    <form action="https://formspree.io/f/mrejrnbj" method="POST"
+                        class="registration-form modern-registration-form">
+
+                        <input type="text" name="_gotcha" style="display:none">
+                        <input type="hidden" name="_next" value="thankyou.html">
+
+                        <h3>
+                            Registration Form
+                        </h3>
+
+                        <div class="modern-form-grid">
+
+                            <input type="text" name="playerName" placeholder="Player Name" required>
+
+                            <input type="date" name="birthdate" required>
+
+                            <select name="gender">
+                                <option value="">Select Gender</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+
+                            <input type="text" name="height" placeholder="Height">
+
+                            <input type="text" name="schoolName" placeholder="School Name">
+
+                            <input type="text" name="yearsExperience" placeholder="Years Experience">
+
+                            <input type="text" name="formerClub" placeholder="Former Club">
+
+                            <select name="preferredPosition">
+                                <option value="">Preferred Position</option>
+                                <option>Goalkeeper</option>
+                                <option>Defender</option>
+                                <option>Midfielder</option>
+                                <option>Forward</option>
+                            </select>
+
+                            <input type="text" name="parentName" placeholder="Parent Name" required>
+
+                            <input type="email" name="parentEmail" placeholder="Parent Email" required>
+
+                            <input type="tel" name="phone" placeholder="Phone Number" required>
+
+                            <input type="text" name="streetAddress" placeholder="Street Address"
+                                class="full-width-input">
+
+                            <input type="text" name="city" placeholder="City">
+
+                            <input type="text" name="state" placeholder="State">
+
+                            <input type="text" name="zip" placeholder="Zip Code">
+
+                            <textarea name="additionalNotes" placeholder="Additional Notes" rows="6"
+                                class="full-width-input"></textarea>
+
+                        </div>
+
+                        <button type="submit" class="modern-submit-btn">
+                            Submit Registration Request
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 NTX Earthquakes Soccer Club</p>
+    </footer>
+
+    <script src="js/loadHeader.js"></script>
+
 </body>
+
 </html>

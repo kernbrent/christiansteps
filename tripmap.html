@@ -423,7 +423,7 @@ function renderPanel(day){
             <img
                 src="${photo.Image}"
                 alt="Trip Photo"
-                onclick="openLightbox(${index}, day.Photos)">
+                onclick='openLightbox(${index}, ${JSON.stringify(day.Photos)})'>
             `;
 
         });
@@ -457,7 +457,13 @@ let currentLightboxPhotos = [];
 function openLightbox(index, photos){
 
     currentLightboxIndex = index;
-    currentLightboxPhotos = photos;
+
+    if(typeof photos === 'string'){
+        currentLightboxPhotos = JSON.parse(photos);
+    }
+    else{
+        currentLightboxPhotos = photos;
+    }
 
     document
     .getElementById('lightboxOverlay')
@@ -811,7 +817,7 @@ function renderPanel(day){
             <img
                 src="${photo.Image}"
                 alt="Trip Photo"
-                onclick="openLightbox(${index}, day.Photos)">
+                onclick='openLightbox(${index}, ${JSON.stringify(day.Photos)})'>
             `;
 
         });
@@ -845,7 +851,13 @@ let currentLightboxPhotos = [];
 function openLightbox(index, photos){
 
     currentLightboxIndex = index;
-    currentLightboxPhotos = photos;
+
+    if(typeof photos === 'string'){
+        currentLightboxPhotos = JSON.parse(photos);
+    }
+    else{
+        currentLightboxPhotos = photos;
+    }
 
     document
     .getElementById('lightboxOverlay')

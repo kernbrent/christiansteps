@@ -2405,3 +2405,57 @@ a.card-link:active{
     line-height:1.45;
     color:#333;
 }
+/* =========================================================
+   Hero Trip Map Button
+   ========================================================= */
+
+.mission-hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    margin-bottom:18px;
+}
+
+.mission-hero-right{
+    text-align:right;
+    min-width:240px;
+}
+
+.tripmap-button{
+    display:inline-block;
+    background:#3D95CE;
+    color:white !important;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:all .2s ease;
+    box-shadow:0 3px 10px rgba(0,0,0,.12);
+}
+
+.tripmap-button:hover{
+    background:#2F7FB4;
+    transform:translateY(-1px);
+}
+
+.tripmap-note{
+    margin-top:8px;
+    font-size:12px;
+    font-style:italic;
+    color:#666;
+}
+
+@media (max-width:700px){
+
+    .mission-hero-top{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .mission-hero-right{
+        text-align:left;
+        min-width:auto;
+    }
+
+}
