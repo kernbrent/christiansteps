@@ -131,6 +131,33 @@ body{
     border:2px solid white;
 }
 
+
+.photo-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.photo-grid img{
+    width:100%;
+    border-radius:10px;
+}
+
+.stats{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.stat-card{
+    background:#f2f2f2;
+    padding:10px;
+    border-radius:10px;
+    font-size:14px;
+}
+
 @keyframes pulse{
     0%{transform:scale(1);}
     50%{transform:scale(1.15);}
@@ -222,7 +249,119 @@ photos, and traveler journey experience.
 
 <div id="siteFooter"></div>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+
+function renderPanel(day){
+
+    const panel =
+        document.getElementById('sidePanel');
+
+    panel.classList.add('active');
+
+    let html = `
+
+    <h2>${day.Title}</h2>
+
+    <p>
+    <strong>${day.City}, ${day.Country}</strong>
+    </p>
+
+    <p>
+    ${day.Transportation.Icon}
+    ${day.Transportation.Description}
+    </p>
+
+    <div class="stats">
+
+        <div class="stat-card">
+        Mission Day:
+        ${day.MissionDay ? 'Yes' : 'No'}
+        </div>
+
+        <div class="stat-card">
+        Travelers:
+        ${day.Travelers.length}
+        </div>
+
+    </div>
+
+    `;
+
+    if(currentMode === 'journey'){
+
+        html += `
+        <hr>
+
+        <h3>Journey Mode</h3>
+
+        <p>
+        Interactive storytelling mode with route progression,
+        travel visualization, and optional photos.
+        </p>
+        `;
+
+    }
+
+    if(currentMode === 'dashboard'){
+
+        html += `
+        <hr>
+
+        <h3>Mission Dashboard</h3>
+
+        ${day.MissionDay
+        ? `
+        <p>
+        <a href="devotional.html?day=${day.Date}">
+            View Devotional
+        </a>
+        </p>
+        `
+        : ''}
+
+        <p>
+        <a href="dayactivities.html?day=${day.Date}">
+            View Updates
+        </a>
+        </p>
+        `;
+
+    }
+
+    if(day.Photos && day.Photos.length > 0){
+
+        html += '<div class="photo-grid">';
+
+        day.Photos.forEach(photo => {
+
+            html += `
+            <img src="${photo.Image}" alt="Trip Photo">
+            `;
+
+        });
+
+        html += '</div>';
+
+    }
+    else{
+
+        html += `
+        <hr>
+
+        <h3>Optional Photos</h3>
+
+        <p>
+        No photos uploaded for this day yet.
+        </p>
+        `;
+
+    }
+
+    panel.innerHTML = html;
+
+}
+
+</script>
 
 <script>
 
@@ -392,6 +531,11 @@ function renderMap(){
 
         marker.addTo(markerLayer);
 
+        if(isCurrent){
+            marker.openPopup();
+            renderPanel(day);
+        }
+
     });
 
     routeLayer = L.polyline(coords, {
@@ -403,6 +547,118 @@ function renderMap(){
     map.fitBounds(routeLayer.getBounds(), {
         padding:[40,40]
     });
+
+}
+
+
+
+function renderPanel(day){
+
+    const panel =
+        document.getElementById('sidePanel');
+
+    panel.classList.add('active');
+
+    let html = `
+
+    <h2>${day.Title}</h2>
+
+    <p>
+    <strong>${day.City}, ${day.Country}</strong>
+    </p>
+
+    <p>
+    ${day.Transportation.Icon}
+    ${day.Transportation.Description}
+    </p>
+
+    <div class="stats">
+
+        <div class="stat-card">
+        Mission Day:
+        ${day.MissionDay ? 'Yes' : 'No'}
+        </div>
+
+        <div class="stat-card">
+        Travelers:
+        ${day.Travelers.length}
+        </div>
+
+    </div>
+
+    `;
+
+    if(currentMode === 'journey'){
+
+        html += `
+        <hr>
+
+        <h3>Journey Mode</h3>
+
+        <p>
+        Interactive storytelling mode with route progression,
+        travel visualization, and optional photos.
+        </p>
+        `;
+
+    }
+
+    if(currentMode === 'dashboard'){
+
+        html += `
+        <hr>
+
+        <h3>Mission Dashboard</h3>
+
+        ${day.MissionDay
+        ? `
+        <p>
+        <a href="devotional.html?day=${day.Date}">
+            View Devotional
+        </a>
+        </p>
+        `
+        : ''}
+
+        <p>
+        <a href="dayactivities.html?day=${day.Date}">
+            View Updates
+        </a>
+        </p>
+        `;
+
+    }
+
+    if(day.Photos && day.Photos.length > 0){
+
+        html += '<div class="photo-grid">';
+
+        day.Photos.forEach(photo => {
+
+            html += `
+            <img src="${photo.Image}" alt="Trip Photo">
+            `;
+
+        });
+
+        html += '</div>';
+
+    }
+    else{
+
+        html += `
+        <hr>
+
+        <h3>Optional Photos</h3>
+
+        <p>
+        No photos uploaded for this day yet.
+        </p>
+        `;
+
+    }
+
+    panel.innerHTML = html;
 
 }
 
