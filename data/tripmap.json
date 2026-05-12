@@ -41,7 +41,18 @@
       "Icon": "\ud83d\ude97",
       "Description": "Drive to Lucerne"
     },
-    "Photos": []
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-18",
@@ -63,7 +74,18 @@
       "Icon": "\ud83c\udfd4\ufe0f",
       "Description": "Jungfrau Excursion"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-19",
@@ -85,7 +107,18 @@
       "Icon": "\ud83c\udfd4\ufe0f",
       "Description": "Grindelwald Excursion"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-20",
@@ -107,7 +140,18 @@
       "Icon": "\ud83d\ude86",
       "Description": "Drive to Zurich, Train to Innsbruck, Drive to Ortisei"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-21",
@@ -129,7 +173,18 @@
       "Icon": "\ud83c\udfd4\ufe0f",
       "Description": "Dolomites exploration"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-22",
@@ -151,7 +206,18 @@
       "Icon": "\ud83c\udfd4\ufe0f",
       "Description": "Dolomites exploration"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-23",
@@ -173,7 +239,18 @@
       "Icon": "\ud83d\ude97",
       "Description": "Drive back to Innsbruck"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-24",
@@ -194,7 +271,18 @@
       "Icon": "\ud83d\ude86",
       "Description": "Train to Verona then Florence"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-25",
@@ -215,7 +303,18 @@
       "Icon": "\ud83c\udf77",
       "Description": "Wine Tour"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-26",
@@ -236,7 +335,18 @@
       "Icon": "\ud83d\ude86",
       "Description": "Florence \u2192 Rome"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-27",
@@ -257,7 +367,18 @@
       "Icon": "\ud83c\udfdb\ufe0f",
       "Description": "Explore Rome"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-28",
@@ -278,7 +399,18 @@
       "Icon": "\ud83c\udf0b",
       "Description": "Optional Pompeii excursion"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-29",
@@ -296,7 +428,18 @@
       "Icon": "\u26f4\ufe0f",
       "Description": "Train to Bari then overnight ferry to Patras"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-30",
@@ -314,7 +457,18 @@
       "Icon": "\ud83d\ude8c",
       "Description": "Patras \u2192 Nafplio"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-05-31",
@@ -332,7 +486,18 @@
       "Icon": "\ud83c\udfd6\ufe0f",
       "Description": "Beach and relaxation"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-06-01",
@@ -350,7 +515,18 @@
       "Icon": "\ud83c\udfd6\ufe0f",
       "Description": "Beach and relaxation"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-06-02",
@@ -368,7 +544,18 @@
       "Icon": "\ud83c\udfd6\ufe0f",
       "Description": "Beach and relaxation"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-06-03",
@@ -386,7 +573,18 @@
       "Icon": "\ud83d\ude8c",
       "Description": "Travel from Nafplio to Athens"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-06-04",
@@ -404,7 +602,18 @@
       "Icon": "\u26ea",
       "Description": "Mission activities in Athens"
     },
-    "Photos": []
+        "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
+        "Caption": "Lake Lucerne views"
+      }
+    ]
   },
   {
     "Date": "2026-06-14",
