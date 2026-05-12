@@ -1,1 +1,880 @@
-body{font-family:Arial,sans-serif;margin:0;background:#f4f4f4;}header{background:#000;color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center;border-bottom:4px solid gold;}nav{display:flex;gap:20px;}nav a{color:#fff;text-decoration:none;font-weight:bold;}nav a:hover{color:gold;}.logo-area{display:flex;align-items:center;gap:15px;}.logo-area img{width:80px;}.logo-link{text-decoration:none;color:white;}.hero{background:url('../images/coach-team-2.jpg') center/cover no-repeat;min-height:70vh;display:flex;align-items:center;}.overlay{background:rgba(0,0,0,.65);color:white;width:100%;padding:80px 50px;} .btn{display:inline-block;background:gold;color:black;padding:14px 24px;border-radius:8px;text-decoration:none;font-weight:bold;} .section{padding:80px 30px;} .container{max-width:1100px;margin:auto;} .registration-form{display:flex;flex-direction:column;gap:15px;max-width:800px;} .registration-form input,.registration-form select,.registration-form textarea{padding:14px;border-radius:8px;border:1px solid #ccc;} footer{background:#000;color:white;text-align:center;padding:20px;} @media(max-width:900px){header{flex-direction:column;}nav{flex-wrap:wrap;margin-top:15px;}}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+}
+
+header {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid gold;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: gold;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-area img {
+    width: 80px;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: white;
+}
+
+.hero {
+    background: url('../images/coach-team-2.jpg') center/cover no-repeat;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, .65);
+    color: white;
+    width: 100%;
+    padding: 80px 50px;
+}
+
+.btn {
+    display: inline-block;
+    background: gold;
+    color: black;
+    padding: 14px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 80px 30px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+}
+
+.registration-form input,
+.registration-form select,
+.registration-form textarea {
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+footer {
+    background: #000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+@media(max-width:900px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+}
+html{
+    scroll-behavior:smooth;
+}
+
+/* ================= HERO ================= */
+
+.coach-hero{
+    position:relative;
+
+    min-height:65vh;
+
+    background:
+        linear-gradient(to right,
+        rgba(0,0,0,.88),
+        rgba(0,0,0,.45)),
+        url('../images/EarthquakeTeam3.png');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+}
+
+.coach-hero-overlay{
+    position:absolute;
+    inset:0;
+}
+
+.coach-hero-content{
+    position:relative;
+    z-index:2;
+    color:white;
+}
+
+.coach-eyebrow{
+    color:#f2c230;
+    letter-spacing:3px;
+    font-weight:bold;
+    font-size:.85rem;
+}
+
+.coach-hero h1{
+    font-size:5rem;
+    margin:20px 0;
+}
+
+.coach-hero p{
+    max-width:700px;
+    font-size:1.1rem;
+    color:#d0d0d0;
+}
+
+/* ================= NAV ================= */
+
+.coach-nav-section{
+    background:#101010;
+    padding:25px 0;
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.coach-nav{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+}
+
+.coach-nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:14px 22px;
+    border-radius:12px;
+    background:#1c1c1c;
+    transition:.3s;
+}
+
+.coach-nav a:hover{
+    background:#f2c230;
+    color:black;
+}
+
+/* ================= MAIN COACH ================= */
+
+.coach-section-modern{
+    background:#0f0f0f;
+    padding:120px 30px;
+}
+
+.coach-layout-modern{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.coach-image-modern img{
+    width:100%;
+    border-radius:30px;
+    box-shadow:0 25px 70px rgba(0,0,0,.5);
+}
+
+.coach-content-modern{
+    color:white;
+}
+
+.coach-tag{
+    color:#f2c230;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:.8rem;
+    font-weight:bold;
+}
+
+.coach-content-modern h2,
+.assistant-content h2{
+    font-size:3.5rem;
+    margin:18px 0 24px;
+    color:white;
+}
+
+.coach-description{
+    color:#d0d0d0;
+    margin-bottom:35px;
+}
+
+.coach-info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px;
+}
+
+.coach-card{
+    background:#1a1a1a;
+    padding:28px;
+    border-radius:22px;
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.coach-card h3{
+    color:#f2c230;
+    margin-bottom:14px;
+}
+
+.coach-card p{
+    color:#d0d0d0;
+}
+
+/* ================= ASSISTANTS ================= */
+
+.assistant-coach-section{
+    background:#141414;
+    padding:90px 30px;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.assistant-layout{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:50px;
+    align-items:center;
+}
+
+.assistant-placeholder{
+    width:100%;
+    min-height:320px;
+
+    background:#1d1d1d;
+
+    border-radius:26px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#777;
+    font-size:1.2rem;
+
+    border:2px dashed rgba(255,255,255,.08);
+}
+
+.assistant-content{
+    color:white;
+}
+
+.assistant-content p{
+    color:#d0d0d0;
+}
+
+.assistant-contact{
+    margin-top:30px;
+
+    background:#1a1a1a;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.05);
+}
+
+.assistant-contact p{
+    margin-bottom:10px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:950px){
+
+    .coach-layout-modern,
+    .assistant-layout{
+        grid-template-columns:1fr;
+    }
+
+    .coach-hero h1{
+        font-size:3rem;
+    }
+
+    .coach-content-modern h2,
+    .assistant-content h2{
+        font-size:2.5rem;
+    }
+
+}
+/* ================= CALENDAR HERO ================= */
+
+.calendar-hero{
+    position:relative;
+
+    min-height:55vh;
+
+    background:
+        linear-gradient(to right,
+        rgba(0,0,0,.88),
+        rgba(0,0,0,.45)),
+        url('../images/EarthquakeTeam4.jpg');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+}
+
+.calendar-overlay{
+    position:absolute;
+    inset:0;
+}
+
+.calendar-hero-content{
+    position:relative;
+    z-index:2;
+    color:white;
+}
+
+.calendar-eyebrow{
+    color:#f2c230;
+    letter-spacing:3px;
+    font-weight:bold;
+    font-size:.85rem;
+}
+
+.calendar-hero h1{
+    font-size:5rem;
+    margin:20px 0;
+}
+
+.calendar-hero p{
+    max-width:700px;
+    font-size:1.1rem;
+    color:#d0d0d0;
+}
+
+/* ================= MONTH NAV ================= */
+
+.month-nav-section{
+    background:#111;
+    padding:25px 0;
+    border-top:1px solid rgba(255,255,255,.05);
+    border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.month-nav{
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    padding-bottom:5px;
+}
+
+.month-nav a{
+    white-space:nowrap;
+
+    text-decoration:none;
+
+    color:white;
+
+    background:#1d1d1d;
+
+    padding:14px 22px;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+    font-weight:bold;
+}
+
+.month-nav a:hover{
+    background:#f2c230;
+    color:black;
+}
+
+/* ================= CALENDAR ================= */
+
+.calendar-section{
+    background:#0f0f0f;
+    padding:90px 0;
+}
+
+.month-calendar-section{
+    margin-bottom:100px;
+}
+
+.month-calendar-section h2{
+    color:white;
+    margin-bottom:35px;
+}
+
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:14px;
+}
+
+.calendar-day-header{
+    background:#161616;
+
+    color:#f2c230;
+
+    padding:18px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    font-weight:bold;
+}
+
+.calendar-day{
+    min-height:180px;
+
+    background:#181818;
+
+    border-radius:20px;
+
+    padding:14px;
+
+    border:1px solid rgba(255,255,255,.04);
+}
+
+.calendar-day.empty{
+    background:transparent;
+    border:none;
+}
+
+.day-number{
+    font-size:1.1rem;
+    font-weight:bold;
+    margin-bottom:10px;
+    color:white;
+}
+
+/* ================= EVENT CARDS ================= */
+
+.event-card{
+    margin-top:10px;
+
+    padding:12px;
+
+    border-radius:14px;
+
+    font-size:.82rem;
+
+    color:white;
+}
+
+.event-card.practice{
+    background:#204060;
+}
+
+.event-card.game{
+    background:#5b1f1f;
+}
+
+.event-card.tryout{
+    background:#635100;
+}
+
+.event-card.meeting{
+    background:#3c2d5c;
+}
+
+.event-card.party{
+    background:#7a2b58;
+}
+
+.event-card.other{
+    background:#444;
+}
+
+.event-type{
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.event-opponent{
+    margin-top:8px;
+    color:#f2c230;
+    font-weight:bold;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1000px){
+
+    .calendar-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:700px){
+
+    .calendar-hero h1{
+        font-size:3rem;
+    }
+
+    .calendar-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+/* ================= JOIN PAGE ================= */
+
+.join-hero{
+    position:relative;
+
+    min-height:55vh;
+
+    background:
+        linear-gradient(to right,
+        rgba(0,0,0,.88),
+        rgba(0,0,0,.45)),
+        url('../images/EarthquakeTeam4.jpg');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:center;
+}
+
+.join-overlay{
+    position:absolute;
+    inset:0;
+}
+
+.join-hero-content{
+    position:relative;
+    z-index:2;
+    color:white;
+}
+
+.join-eyebrow{
+    color:#f2c230;
+    letter-spacing:3px;
+    font-weight:bold;
+    font-size:.85rem;
+}
+
+.join-hero h1{
+    font-size:5rem;
+    margin:20px 0;
+}
+
+.join-hero p{
+    max-width:700px;
+    color:#d0d0d0;
+    font-size:1.1rem;
+}
+
+.join-modern-section{
+    background:#0f0f0f;
+    padding:100px 30px;
+}
+
+.join-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:start;
+}
+
+.join-content{
+    color:white;
+}
+
+.join-content h2{
+    font-size:3rem;
+    margin:20px 0;
+}
+
+.join-content p{
+    color:#d0d0d0;
+    line-height:1.8;
+}
+
+.join-feature-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+    margin-top:40px;
+}
+
+.join-form-wrapper{
+    background:#171717;
+
+    border-radius:30px;
+
+    padding:40px;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.modern-registration-form h3{
+    color:white;
+    font-size:2rem;
+    margin-bottom:30px;
+}
+
+.modern-form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.modern-registration-form input,
+.modern-registration-form select,
+.modern-registration-form textarea{
+
+    background:#1f1f1f;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    font-size:1rem;
+}
+
+.modern-registration-form input:focus,
+.modern-registration-form select:focus,
+.modern-registration-form textarea:focus{
+
+    outline:none;
+
+    border-color:#f2c230;
+}
+
+.full-width-input{
+    grid-column:1 / -1;
+}
+
+.modern-submit-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    background:#f2c230;
+
+    color:black;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.modern-submit-btn:hover{
+    background:white;
+}
+
+@media(max-width:950px){
+
+    .join-layout{
+        grid-template-columns:1fr;
+    }
+
+    .join-feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .modern-form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .join-hero h1{
+        font-size:3rem;
+    }
+
+    .join-content h2{
+        font-size:2.3rem;
+    }
+
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE UPGRADES
+========================================================= */
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+@media(max-width:950px){
+
+    header{
+        flex-direction:column;
+        gap:20px;
+        padding:18px 20px;
+    }
+
+    .logo-area{
+        justify-content:center;
+        text-align:center;
+    }
+
+    nav{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px;
+    }
+
+    nav a{
+        padding:10px 14px;
+        background:#1a1a1a;
+        border-radius:10px;
+        font-size:.9rem;
+    }
+
+    .hero-content,
+    .coach-layout,
+    .coach-layout-modern,
+    .assistant-layout,
+    .join-layout,
+    .location-layout,
+    .practice-grid,
+    .two-column,
+    .coach-grid{
+        grid-template-columns:1fr !important;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .hero,
+    .coach-hero,
+    .calendar-hero,
+    .join-hero{
+        min-height:auto;
+        padding:140px 0 80px;
+    }
+
+    .hero-left h1,
+    .coach-hero h1,
+    .calendar-hero h1,
+    .join-hero h1{
+        font-size:2.8rem !important;
+        line-height:1;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .section,
+    .coach-section-modern,
+    .assistant-coach-section,
+    .calendar-section,
+    .join-modern-section{
+        padding:70px 20px !important;
+    }
+
+    h2{
+        font-size:2.1rem !important;
+    }
+
+    .coach-card,
+    .skill-card,
+    .feature-item,
+    .stat-card,
+    .join-card,
+    .info-box,
+    .assistant-contact,
+    .location-card,
+    .join-form-wrapper,
+    .hero-card,
+    .floating-card{
+        padding:22px !important;
+        border-radius:18px;
+    }
+
+    .calendar-grid{
+        display:flex;
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .calendar-day-header{
+        display:none;
+    }
+
+    .calendar-day.empty{
+        display:none;
+    }
+
+    .modern-form-grid,
+    .form-grid,
+    .join-feature-grid,
+    .coach-info-grid,
+    .feature-grid,
+    .skill-grid,
+    .stats-row{
+        grid-template-columns:1fr !important;
+    }
+
+    input,
+    select,
+    textarea,
+    button{
+        font-size:16px !important;
+    }
+
+}

@@ -1,0 +1,59 @@
+[
+    {
+        "Date": "2026-01-05",
+        "Time": "6:00 PM - 7:00 PM",
+        "Location": "The Grove - Frisco",
+        "FieldNumber": "Field 1",
+        "EventType": "Practice"
+    },
+
+    {
+        "Date": "2026-01-08",
+        "Time": "6:00 PM - 7:00 PM",
+        "Location": "The Grove - Frisco",
+        "FieldNumber": "Field 1",
+        "EventType": "Practice"
+    },
+
+    {
+        "Date": "2026-01-17",
+        "Time": "2:00 PM",
+        "Location": "Toyota Soccer Center",
+        "FieldNumber": "Field 5",
+        "EventType": "Game",
+        "Opponent": "FC Dallas Youth"
+    },
+
+    {
+        "Date": "2026-02-02",
+        "Time": "6:00 PM - 7:00 PM",
+        "Location": "The Grove - Frisco",
+        "FieldNumber": "Field 1",
+        "EventType": "Practice"
+    },
+
+    {
+        "Date": "2026-02-14",
+        "Time": "5:30 PM",
+        "Location": "Legacy Fields",
+        "FieldNumber": "Field 3",
+        "EventType": "Game",
+        "Opponent": "Solar SC"
+    },
+
+    {
+        "Date": "2026-03-01",
+        "Time": "7:00 PM",
+        "Location": "Team Clubhouse",
+        "FieldNumber": "",
+        "EventType": "Meeting"
+    },
+
+    {
+        "Date": "2026-03-12",
+        "Time": "6:00 PM",
+        "Location": "The Grove - Frisco",
+        "FieldNumber": "Field 1",
+        "EventType": "TryOut"
+    }
+]
