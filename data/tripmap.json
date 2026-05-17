@@ -19,7 +19,13 @@
       "Icon": "\u2708\ufe0f",
       "Description": "DFW \u2192 Philadelphia \u2192 Zurich"
     },
-    "Photos": []
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/airplane_05162026.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+    ]
   },
   {
     "Date": "2026-05-17",
@@ -49,48 +55,18 @@
       },
       {
         "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-17_lucerne_1.jpg",
-        "Caption": "Exploring Lucerne"
-      },
-      {
-        "Enabled": true,
         "Image": "Images/tripmap/2026-05-17_lucerne_2.jpg",
-        "Caption": "Lake Lucerne views"
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_3.jpg",
+        "Caption": "Exploring Lucerne"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-17_lucerne_4.jpg",
+        "Caption": "Exploring Lucerne"
       }
     ]
   },
