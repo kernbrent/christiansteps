@@ -93,12 +93,32 @@
     "Photos": [
       {
         "Enabled": true,
-        "Image": "Images/tripmap/2026-05-18_jungfrau_1.jpg",
+        "Image": "Images/tripmap/2026-05-18_lucerne_1.jpg",
         "Caption": "Jungfrau mountains"
       },
       {
         "Enabled": true,
-        "Image": "Images/tripmap/2026-05-18_jungfrau_2.jpg",
+        "Image": "Images/tripmap/2026-05-18_lucerne_2.jpg",
+        "Caption": "Jungfrau mountains"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-18_lucerne_3.jpg",
+        "Caption": "Jungfrau mountains"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-18_lucerne_4.jpg",
+        "Caption": "Jungfrau mountains"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-18_lucerne_5.jpg",
+        "Caption": "Jungfrau mountains"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-18_lucerne_6.jpg",
         "Caption": "Swiss Alps"
       }
     ]
