@@ -3,616 +3,655 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Europe + Mission Journey | ChristianSteps</title>
+    <title>Europe + Mission Journey | ChristianSteps</title>
 
-<link href="Styles/Site.css" rel="stylesheet">
-<link href="Styles/Site_mobile.css" rel="stylesheet">
+    <link href="Styles/Site.css" rel="stylesheet">
+    <link href="Styles/Site_mobile.css" rel="stylesheet">
 
-<link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-<style>
+    <style>
+        body {
+            margin: 0;
+            background: #f5f5f5;
+        }
 
-body{
-    margin:0;
-    background:#f5f5f5;
-}
+        .main-content-wrapper {
+            padding: 20px;
+        }
 
-.main-content-wrapper{
-    padding:20px;
-}
+        .controls {
+            background: white;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-radius: 14px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
 
-.controls{
-    background:white;
-    padding:15px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    border-radius:14px;
-    margin-bottom:15px;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
+        .mode-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            background: #ddd;
+        }
 
-.mode-btn{
-    padding:8px 12px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-    background:#ddd;
-}
+        .mode-btn.active {
+            background: #3D95CE;
+            color: white;
+        }
 
-.mode-btn.active{
-    background:#3D95CE;
-    color:white;
-}
+        #map {
+            height: 72vh;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .15);
+        }
 
-#map{
-    height:72vh;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 4px 18px rgba(0,0,0,.15);
-}
+        .timeline {
+            background: white;
+            padding: 15px;
+            border-radius: 14px;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            overflow-x: auto;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+        }
 
-.timeline{
-    background:white;
-    padding:15px;
-    border-radius:14px;
-    margin-top:15px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    overflow-x:auto;
-    box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
+        .timeline-item {
+            padding: 8px 10px;
+            border-radius: 8px;
+            background: #eee;
+            cursor: pointer;
+            white-space: nowrap;
+        }
 
-.timeline-item{
-    padding:8px 10px;
-    border-radius:8px;
-    background:#eee;
-    cursor:pointer;
-    white-space:nowrap;
-}
+        .timeline-item.active {
+            background: #3D95CE;
+            color: white;
+        }
 
-.timeline-item.active{
-    background:#3D95CE;
-    color:white;
-}
+        .side-panel {
+            position: absolute;
+            top: 240px;
+            right: 30px;
+            z-index: 999;
+            width: 320px;
+            max-height: 65vh;
+            overflow: auto;
+            background: white;
+            padding: 15px;
+            border-radius: 14px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .25);
+            display: none;
+        }
 
-.side-panel{
-    position:absolute;
-    top:240px;
-    right:30px;
-    z-index:999;
-    width:320px;
-    max-height:65vh;
-    overflow:auto;
-    background:white;
-    padding:15px;
-    border-radius:14px;
-    box-shadow:0 4px 18px rgba(0,0,0,.25);
-    display:none;
-}
+        .side-panel.active {
+            display: block;
+        }
 
-.side-panel.active{
-    display:block;
-}
+        .current-marker {
+            background: #ff5722;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 18px rgba(255, 87, 34, .8);
+            animation: pulse 1.5s infinite;
+        }
 
-.current-marker{
-    background:#ff5722;
-    width:24px;
-    height:24px;
-    border-radius:50%;
-    border:4px solid white;
-    box-shadow:0 0 18px rgba(255,87,34,.8);
-    animation:pulse 1.5s infinite;
-}
+        .standard-marker {
+            background: #3D95CE;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
 
-.standard-marker{
-    background:#3D95CE;
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    border:2px solid white;
-}
+        .journey-marker {
+            background: #28a745;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
 
-.journey-marker{
-    background:#28a745;
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    border:3px solid white;
-}
+        .dashboard-marker {
+            background: #6f42c1;
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid white;
+        }
 
-.dashboard-marker{
-    background:#6f42c1;
-    width:18px;
-    height:18px;
-    border-radius:4px;
-    border:2px solid white;
-}
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
 
-.photo-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
-    margin-top:12px;
-}
+        .photo-grid img {
+            width: 100%;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform .2s ease;
+        }
 
-.photo-grid img{
-    width:100%;
-    border-radius:10px;
-    cursor:pointer;
-    transition:transform .2s ease;
-}
+        .photo-grid img:hover {
+            transform: scale(1.03);
+        }
 
-.photo-grid img:hover{
-    transform:scale(1.03);
-}
+        .stats {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
 
-.stats{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:10px;
-}
+        .stat-card {
+            background: #f2f2f2;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
 
-.stat-card{
-    background:#f2f2f2;
-    padding:10px;
-    border-radius:10px;
-    font-size:14px;
-}
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .92);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 5000;
+            flex-direction: column;
+            padding: 20px;
+        }
 
-.lightbox-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.92);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:5000;
-    flex-direction:column;
-    padding:20px;
-}
+        .lightbox-overlay.active {
+            display: flex;
+        }
 
-.lightbox-overlay.active{
-    display:flex;
-}
+        .lightbox-image {
+            max-width: 90vw;
+            max-height: 78vh;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+        }
 
-.lightbox-image{
-    max-width:90vw;
-    max-height:78vh;
-    border-radius:12px;
-    box-shadow:0 0 30px rgba(0,0,0,.5);
-}
+        .lightbox-controls {
+            margin-top: 18px;
+            display: flex;
+            gap: 12px;
+        }
 
-.lightbox-controls{
-    margin-top:18px;
-    display:flex;
-    gap:12px;
-}
+        .lightbox-btn {
+            background: #3D95CE;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.lightbox-btn{
-    background:#3D95CE;
-    color:white;
-    border:none;
-    padding:10px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:bold;
-}
+        .lightbox-close {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            color: white;
+            font-size: 34px;
+            cursor: pointer;
+            font-weight: bold;
+        }
 
-.lightbox-close{
-    position:absolute;
-    top:18px;
-    right:24px;
-    color:white;
-    font-size:34px;
-    cursor:pointer;
-    font-weight:bold;
-}
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
 
-@keyframes pulse{
-    0%{transform:scale(1);}
-    50%{transform:scale(1.15);}
-    100%{transform:scale(1);}
-}
+            50% {
+                transform: scale(1.15);
+            }
 
-</style>
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div class="page">
+    <div class="page">
 
-<header class="header" role="banner">
+        <header class="header" role="banner">
 
-<div class="title">
-<h1>
-<a href="index.html">
-<img
-    src="./Images/Logo400.jpg"
-    class="site-logo"
-    alt="Christian Steps Ministries"
-    width="400"
-/>
-</a>
-</h1>
-</div>
+            <div class="title">
+                <h1>
+                    <a href="index.html">
+                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                            width="400" />
+                    </a>
+                </h1>
+            </div>
 
-<div class="clear hideSkiplink">
-<div id="siteHeader"></div>
-</div>
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
 
-</header>
+        </header>
 
-<div class="main">
+        <div class="main">
 
-<main id="pageContent" role="main">
+            <main id="pageContent" role="main">
 
-<div class="main-content-wrapper">
+                <div class="main-content-wrapper">
 
-<section class="home-hero">
+                    <section class="home-hero">
 
-<h2>Europe + Mission Journey</h2>
+                        <h2>Europe + Mission Journey</h2>
 
-<p>
-Interactive travel map, mission dashboard,
-timeline, photos, and traveler journey experience.
-</p>
+                        <p>
+                            Interactive travel map, mission dashboard,
+                            timeline, photos, and traveler journey experience.
+                        </p>
 
-</section>
+                    </section>
 
-<div class="controls">
+                    <div class="controls">
 
-<div>
-<strong>Travelers:</strong><br>
+                        <div>
+                            <strong>Travelers:</strong><br>
 
-<label><input type="checkbox" value="Brent" checked> Brent</label>
-<label><input type="checkbox" value="Corrie" checked> Corrie</label>
-<label><input type="checkbox" value="Lily" checked> Lily</label>
-<label><input type="checkbox" value="Ethan" checked> Ethan</label>
-<label><input type="checkbox" value="Bill" checked> Bill</label>
+                            <label><input type="checkbox" value="Brent" checked> Brent</label>
+                            <label><input type="checkbox" value="Corrie" checked> Corrie</label>
+                            <label><input type="checkbox" value="Lily" checked> Lily</label>
+                            <label><input type="checkbox" value="Ethan" checked> Ethan</label>
+                            <label><input type="checkbox" value="Bill" checked> Bill</label>
 
-</div>
+                        </div>
 
-<div>
+                        <div>
 
-<strong>Modes:</strong><br>
+                            <strong>Modes:</strong><br>
 
-<button class="mode-btn active" data-mode="minimal">
-Minimal
-</button>
+                            <button class="mode-btn active" data-mode="minimal">
+                                Minimal
+                            </button>
 
-<button class="mode-btn" data-mode="journey">
-Journey
-</button>
+                            <button class="mode-btn" data-mode="journey">
+                                Journey
+                            </button>
 
-<button class="mode-btn" data-mode="dashboard">
-Mission Dashboard
-</button>
+                            <button class="mode-btn" data-mode="dashboard">
+                                Mission Dashboard
+                            </button>
 
-</div>
+                        </div>
 
-<div>
+                        <div>
 
-<strong>Replay:</strong><br>
+                            <strong>Replay:</strong><br>
 
-<button id="playBtn">
-▶ Replay Journey
-</button>
+                            <button id="playBtn">
+                                ▶ Replay Journey
+                            </button>
 
-</div>
+                        </div>
 
-</div>
+                    </div>
 
-<div id="sidePanel" class="side-panel"></div>
+                    <div id="sidePanel" class="side-panel"></div>
 
-<div id="timeline" class="timeline"></div>
+                    <div id="timeline" class="timeline"></div>
 
-<div id="map"></div>
+                    <div id="map"></div>
 
 
 
-</div>
+                </div>
 
-</main>
+            </main>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<!-- LIGHTBOX -->
+    <!-- LIGHTBOX -->
 
-<div id="lightboxOverlay" class="lightbox-overlay">
+    <div id="lightboxOverlay" class="lightbox-overlay">
 
-<div class="lightbox-close" onclick="closeLightbox()">
-×
-</div>
+        <div class="lightbox-close" onclick="closeLightbox()">
+            ×
+        </div>
 
-<img
-    id="lightboxImage"
-    class="lightbox-image"
-    src=""
-    alt=""
->
+        <img id="lightboxImage" class="lightbox-image" src="" alt="">
 
-<div class="lightbox-controls">
+        <div class="lightbox-controls">
 
-<button class="lightbox-btn" onclick="prevImage()">
-◀ Previous
-</button>
+            <button class="lightbox-btn" onclick="prevImage()">
+                ◀ Previous
+            </button>
 
-<button class="lightbox-btn" onclick="nextImage()">
-Next ▶
-</button>
+            <button class="lightbox-btn" onclick="nextImage()">
+                Next ▶
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<div id="siteFooter"></div>
+    <div id="siteFooter"></div>
 
-<!-- LEAFLET -->
+    <!-- LEAFLET -->
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<!-- MAIN SCRIPT -->
+    <!-- MAIN SCRIPT -->
 
-<script>
+    <script>
 
-fetch('header.html')
-.then(r => r.text())
-.then(h => {
-    document.getElementById('siteHeader').innerHTML = h;
-});
+        fetch('header.html')
+            .then(r => r.text())
+            .then(h => {
+                document.getElementById('siteHeader').innerHTML = h;
+            });
 
-fetch('footer.html')
-.then(r => r.text())
-.then(f => {
-    document.getElementById('siteFooter').innerHTML = f;
-});
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(f => {
+                document.getElementById('siteFooter').innerHTML = f;
+            });
 
-const map = L.map('map').setView([45,12],5);
+        const map = L.map('map').setView([45, 12], 5);
 
-L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        attribution:'© OpenStreetMap'
-    }
-).addTo(map);
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: '© OpenStreetMap'
+            }
+        ).addTo(map);
 
-let currentMode = 'minimal';
-let selectedDate = null;
-let routeLayer = null;
-let markerLayer = null;
+        let currentMode = 'minimal';
+        let selectedDate = null;
+        let routeLayer = null;
+        let markerLayer = null;
 
-let currentLightboxIndex = 0;
-let currentLightboxPhotos = [];
+        let currentLightboxIndex = 0;
+        let currentLightboxPhotos = [];
 
-fetch('./data/tripmap.json')
-.then(r => r.json())
-.then(data => {
+        fetch('./data/tripmap.json')
+            .then(r => r.json())
+            .then(data => {
 
-    window.tripData = data;
+                window.tripData = data;
 
-    selectedDate = data[0].Date;
+                // DEFAULT TO JOURNEY MODE
+                currentMode = 'journey';
 
-    buildTimeline(data);
+                // activate Journey button visually
+                document.querySelectorAll('.mode-btn')
+                    .forEach(b => b.classList.remove('active'));
 
-    renderMap();
+                document.querySelector('[data-mode="journey"]')
+                    .classList.add('active');
 
-    document.querySelectorAll('input[type=checkbox]')
-    .forEach(cb => {
-        cb.addEventListener('change', renderMap);
-    });
+                // DETERMINE DEFAULT DATE
+                const today = new Date();
 
-    document.querySelectorAll('.mode-btn')
-    .forEach(btn => {
+                // subtract one day
+                today.setDate(today.getDate() - 1);
 
-        btn.addEventListener('click', () => {
+                // convert to yyyy-mm-dd
+                const systemDate =
+                    today.toISOString().split('T')[0];
 
-            document.querySelectorAll('.mode-btn')
-            .forEach(b => b.classList.remove('active'));
+                // get all trip dates
+                const tripDates =
+                    data.map(d => d.Date).sort();
 
-            btn.classList.add('active');
+                // default to last trip day
+                selectedDate = tripDates[tripDates.length - 1];
 
-            currentMode = btn.dataset.mode;
+                // if system date exists in trip range,
+                // use that instead
+                const matchingDate =
+                    tripDates.find(d => d === systemDate);
 
-            renderMap();
+                if (matchingDate) {
+                    selectedDate = matchingDate;
+                }
+                else {
 
-        });
+                    // if system date BEFORE trip starts
+                    // use first trip day
+                    if (systemDate < tripDates[0]) {
+                        selectedDate = tripDates[0];
+                    }
 
-    });
+                    // if AFTER trip ends,
+                    // keep last trip day
+                }
 
-    document
-    .getElementById('playBtn')
-    .addEventListener('click', replayJourney);
+                buildTimeline(data);
 
-})
-.catch(error => {
-    console.error('JSON LOAD ERROR:', error);
-});
+                renderMap();
 
-function buildTimeline(data){
+                document.querySelectorAll('input[type=checkbox]')
+                    .forEach(cb => {
+                        cb.addEventListener('change', renderMap);
+                    });
 
-    const timeline =
-        document.getElementById('timeline');
+                document.querySelectorAll('.mode-btn')
+                    .forEach(btn => {
 
-    timeline.innerHTML = '';
+                        btn.addEventListener('click', () => {
 
-    data.forEach(day => {
+                            document.querySelectorAll('.mode-btn')
+                                .forEach(b => b.classList.remove('active'));
 
-        const div =
-            document.createElement('div');
+                            btn.classList.add('active');
 
-        div.className = 'timeline-item';
+                            currentMode = btn.dataset.mode;
 
-        if(day.Date === selectedDate){
-            div.classList.add('active');
+                            renderMap();
+
+                        });
+
+                    });
+
+                document
+                    .getElementById('playBtn')
+                    .addEventListener('click', replayJourney);
+
+            })
+            .catch(error => {
+                console.error('JSON LOAD ERROR:', error);
+            });
+
+        function buildTimeline(data) {
+
+            const timeline =
+                document.getElementById('timeline');
+
+            timeline.innerHTML = '';
+
+            data.forEach(day => {
+
+                const div =
+                    document.createElement('div');
+
+                div.className = 'timeline-item';
+
+                if (day.Date === selectedDate) {
+                    div.classList.add('active');
+                }
+
+                div.innerText =
+                    day.Date + ' - ' + day.City;
+
+                div.onclick = () => {
+
+                    selectedDate = day.Date;
+
+                    buildTimeline(data);
+
+                    renderMap();
+
+                };
+
+                timeline.appendChild(div);
+
+            });
+
         }
 
-        div.innerText =
-            day.Date + ' - ' + day.City;
+        function replayJourney() {
 
-        div.onclick = () => {
+            let i = 0;
 
-            selectedDate = day.Date;
+            const interval = setInterval(() => {
 
-            buildTimeline(data);
+                if (i >= tripData.length) {
 
-            renderMap();
+                    clearInterval(interval);
+                    return;
 
-        };
+                }
 
-        timeline.appendChild(div);
+                selectedDate = tripData[i].Date;
 
-    });
+                buildTimeline(tripData);
 
-}
+                renderMap();
 
-function replayJourney(){
+                i++;
 
-    let i = 0;
-
-    const interval = setInterval(() => {
-
-        if(i >= tripData.length){
-
-            clearInterval(interval);
-            return;
+            }, 1800);
 
         }
 
-        selectedDate = tripData[i].Date;
+        function renderMap() {
 
-        buildTimeline(tripData);
+            if (routeLayer) {
+                map.removeLayer(routeLayer);
+            }
 
-        renderMap();
+            if (markerLayer) {
+                map.removeLayer(markerLayer);
+            }
 
-        i++;
+            markerLayer = L.layerGroup().addTo(map);
 
-    }, 1800);
+            const selectedTravelers =
+                Array.from(
+                    document.querySelectorAll(
+                        'input[type=checkbox]:checked'
+                    )
+                ).map(cb => cb.value);
 
-}
+            const filtered =
+                tripData.filter(day =>
+                    day.Travelers.some(t =>
+                        selectedTravelers.includes(t)
+                    )
+                );
 
-function renderMap(){
+            const coords = [];
 
-    if(routeLayer){
-        map.removeLayer(routeLayer);
-    }
+            filtered.forEach(day => {
 
-    if(markerLayer){
-        map.removeLayer(markerLayer);
-    }
+                coords.push([
+                    day.Latitude,
+                    day.Longitude
+                ]);
 
-    markerLayer = L.layerGroup().addTo(map);
+                const isCurrent =
+                    day.Date === selectedDate;
 
-    const selectedTravelers =
-        Array.from(
-            document.querySelectorAll(
-                'input[type=checkbox]:checked'
-            )
-        ).map(cb => cb.value);
+                let markerClass = 'standard-marker';
 
-    const filtered =
-        tripData.filter(day =>
-            day.Travelers.some(t =>
-                selectedTravelers.includes(t)
-            )
-        );
+                if (isCurrent) {
+                    markerClass = 'current-marker';
+                }
+                else if (currentMode === 'journey') {
+                    markerClass = 'journey-marker';
+                }
+                else if (currentMode === 'dashboard') {
+                    markerClass = 'dashboard-marker';
+                }
 
-    const coords = [];
+                const icon = L.divIcon({
+                    className: '',
+                    html: `<div class="${markerClass}"></div>`,
+                    iconSize: [22, 22]
+                });
 
-    filtered.forEach(day => {
+                const marker = L.marker(
+                    [day.Latitude, day.Longitude],
+                    { icon }
+                );
 
-        coords.push([
-            day.Latitude,
-            day.Longitude
-        ]);
-
-        const isCurrent =
-            day.Date === selectedDate;
-
-        let markerClass = 'standard-marker';
-
-        if(isCurrent){
-            markerClass = 'current-marker';
-        }
-        else if(currentMode === 'journey'){
-            markerClass = 'journey-marker';
-        }
-        else if(currentMode === 'dashboard'){
-            markerClass = 'dashboard-marker';
-        }
-
-        const icon = L.divIcon({
-            className:'',
-            html:`<div class="${markerClass}"></div>`,
-            iconSize:[22,22]
-        });
-
-        const marker = L.marker(
-            [day.Latitude, day.Longitude],
-            { icon }
-        );
-
-        marker.bindPopup(`
+                marker.bindPopup(`
             <strong>${day.Title}</strong><br>
             ${day.City}, ${day.Country}
         `);
 
-        marker.addTo(markerLayer);
+                marker.addTo(markerLayer);
 
-        if(isCurrent){
-            marker.openPopup();
-            renderPanel(day);
+                if (isCurrent) {
+                    marker.openPopup();
+                    renderPanel(day);
+                }
+
+            });
+
+            routeLayer = L.polyline(coords, {
+
+                color:
+                    currentMode === 'journey'
+                        ? '#28a745'
+                        : currentMode === 'dashboard'
+                            ? '#6f42c1'
+                            : '#3D95CE',
+
+                weight:
+                    currentMode === 'journey'
+                        ? 6
+                        : 4,
+
+                opacity: .85
+
+            }).addTo(map);
+
+            map.fitBounds(
+                routeLayer.getBounds(),
+                {
+                    padding: [40, 40]
+                }
+            );
+
         }
 
-    });
+        function renderPanel(day) {
 
-    routeLayer = L.polyline(coords, {
+            const panel =
+                document.getElementById('sidePanel');
 
-        color:
-            currentMode === 'journey'
-            ? '#28a745'
-            : currentMode === 'dashboard'
-            ? '#6f42c1'
-            : '#3D95CE',
+            panel.classList.add('active');
 
-        weight:
-            currentMode === 'journey'
-            ? 6
-            : 4,
-
-        opacity:.85
-
-    }).addTo(map);
-
-    map.fitBounds(
-        routeLayer.getBounds(),
-        {
-            padding:[40,40]
-        }
-    );
-
-}
-
-function renderPanel(day){
-
-    const panel =
-        document.getElementById('sidePanel');
-
-    panel.classList.add('active');
-
-    let html = `
+            let html = `
 
     <h2>${day.Title}</h2>
 
@@ -641,9 +680,9 @@ function renderPanel(day){
 
     `;
 
-    if(currentMode === 'journey'){
+            if (currentMode === 'journey') {
 
-        html += `
+                html += `
         <hr>
 
         <h3>Journey Mode</h3>
@@ -654,25 +693,25 @@ function renderPanel(day){
         </p>
         `;
 
-    }
+            }
 
-    if(currentMode === 'dashboard'){
+            if (currentMode === 'dashboard') {
 
-        html += `
+                html += `
 
         <hr>
 
         <h3>Mission Dashboard</h3>
 
         ${day.MissionDay
-        ? `
+                        ? `
         <p>
         <a href="devotional.html?day=${day.Date}">
             View Devotional
         </a>
         </p>
         `
-        : ''}
+                        : ''}
 
         <p>
         <a href="dayactivities.html?day=${day.Date}">
@@ -682,15 +721,15 @@ function renderPanel(day){
 
         `;
 
-    }
+            }
 
-    if(day.Photos && day.Photos.length > 0){
+            if (day.Photos && day.Photos.length > 0) {
 
-        html += '<div class="photo-grid">';
+                html += '<div class="photo-grid">';
 
-        day.Photos.forEach((photo, index) => {
+                day.Photos.forEach((photo, index) => {
 
-            html += `
+                    html += `
             <img
                 src="${photo.Image}"
                 alt="Trip Photo"
@@ -698,16 +737,16 @@ function renderPanel(day){
             >
             `;
 
-        });
+                });
 
-        html += '</div>';
+                html += '</div>';
 
-        currentLightboxPhotos = day.Photos;
+                currentLightboxPhotos = day.Photos;
 
-    }
-    else{
+            }
+            else {
 
-        html += `
+                html += `
 
         <hr>
 
@@ -719,93 +758,93 @@ function renderPanel(day){
 
         `;
 
-    }
+            }
 
-    panel.innerHTML = html;
+            panel.innerHTML = html;
 
-}
+        }
 
-function openLightbox(index){
+        function openLightbox(index) {
 
-    currentLightboxIndex = index;
+            currentLightboxIndex = index;
 
-    document
-    .getElementById('lightboxOverlay')
-    .classList.add('active');
+            document
+                .getElementById('lightboxOverlay')
+                .classList.add('active');
 
-    updateLightboxImage();
+            updateLightboxImage();
 
-}
+        }
 
-function closeLightbox(){
+        function closeLightbox() {
 
-    document
-    .getElementById('lightboxOverlay')
-    .classList.remove('active');
+            document
+                .getElementById('lightboxOverlay')
+                .classList.remove('active');
 
-}
+        }
 
-function updateLightboxImage(){
+        function updateLightboxImage() {
 
-    const image =
-        document.getElementById('lightboxImage');
+            const image =
+                document.getElementById('lightboxImage');
 
-    image.src =
-        currentLightboxPhotos[
-            currentLightboxIndex
-        ].Image;
+            image.src =
+                currentLightboxPhotos[
+                    currentLightboxIndex
+                ].Image;
 
-}
+        }
 
-function prevImage(){
+        function prevImage() {
 
-    currentLightboxIndex--;
+            currentLightboxIndex--;
 
-    if(currentLightboxIndex < 0){
-        currentLightboxIndex =
-            currentLightboxPhotos.length - 1;
-    }
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex =
+                    currentLightboxPhotos.length - 1;
+            }
 
-    updateLightboxImage();
+            updateLightboxImage();
 
-}
+        }
 
-function nextImage(){
+        function nextImage() {
 
-    currentLightboxIndex++;
+            currentLightboxIndex++;
 
-    if(currentLightboxIndex >= currentLightboxPhotos.length){
-        currentLightboxIndex = 0;
-    }
+            if (currentLightboxIndex >= currentLightboxPhotos.length) {
+                currentLightboxIndex = 0;
+            }
 
-    updateLightboxImage();
+            updateLightboxImage();
 
-}
+        }
 
-document.addEventListener('keydown', e => {
+        document.addEventListener('keydown', e => {
 
-    const overlay =
-        document.getElementById('lightboxOverlay');
+            const overlay =
+                document.getElementById('lightboxOverlay');
 
-    if(!overlay.classList.contains('active')){
-        return;
-    }
+            if (!overlay.classList.contains('active')) {
+                return;
+            }
 
-    if(e.key === 'Escape'){
-        closeLightbox();
-    }
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
 
-    if(e.key === 'ArrowLeft'){
-        prevImage();
-    }
+            if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
 
-    if(e.key === 'ArrowRight'){
-        nextImage();
-    }
+            if (e.key === 'ArrowRight') {
+                nextImage();
+            }
 
-});
+        });
 
-</script>
+    </script>
 
 </body>
 
