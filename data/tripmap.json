@@ -141,7 +141,7 @@
     "Transportation": {
       "Type": "Excursion",
       "Icon": "🏔️",
-      "Description": "Grindelwald Excursion"
+      "Description": "Today we drove to my most favorite place in the world. Grindelwald Switzerland!!! I love this place and could definitely live here. We drove from Lucerne to Grindelwald, then to Lauterbrunnen, then to Trümmelbach Falls, then to Interlocken, and then back to Lucerne. We hiked and journeyed all day and are exhausted. We even got some fresh milk, for Lily, from a farm we pasted in Zuchtfamilie Flora Milk Farm in Wilderswil."
     },
     "Photos": [
       {
@@ -152,6 +152,16 @@
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-19_grindelwald_2.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-19_grindelwald_3.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-19_grindelwald_4.jpg",
         "Caption": "Mountain trails"
       }
     ]
