@@ -2459,3 +2459,16 @@ a.card-link:active{
     }
 
 }
+.gallery-btn{
+    background:#3D95CE;
+    color:white;
+    text-decoration:none;
+    padding:8px 14px;
+    border-radius:8px;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.gallery-btn:hover{
+    background:#2c7cb3;
+}

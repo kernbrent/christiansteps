@@ -162,7 +162,7 @@
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-19_grindelwald_4.jpg",
-        "Caption": "Mountain trails"
+        "Caption": "Trümmelbach Falls"
       }
     ]
   },
@@ -187,16 +187,7 @@
       "Description": "Drive to Zurich, Train to Innsbruck, Drive to Ortisei"
     },
     "Photos": [
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-20_ortisei_1.jpg",
-        "Caption": "Arrival in Ortisei"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-20_ortisei_2.jpg",
-        "Caption": "Dolomites"
-      }
+
     ]
   },
   {
@@ -220,16 +211,7 @@
       "Description": "Dolomites exploration"
     },
     "Photos": [
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-21_dolomites_1.jpg",
-        "Caption": "Chair lifts"
-      },
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-21_dolomites_2.jpg",
-        "Caption": "Mountain views"
-      }
+
     ]
   },
   {
@@ -253,11 +235,7 @@
       "Description": "Dolomites exploration"
     },
     "Photos": [
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-22_dolomites_1.jpg",
-        "Caption": "Hiking trails"
-      }
+
     ]
   },
   {
@@ -302,11 +280,7 @@
       "Description": "Train to Verona then Florence"
     },
     "Photos": [
-      {
-        "Enabled": true,
-        "Image": "Images/tripmap/2026-05-24_florence_1.jpg",
-        "Caption": "Florence arrival"
-      }
+
     ]
   },
   {
