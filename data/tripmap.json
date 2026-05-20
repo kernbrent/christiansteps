@@ -187,7 +187,26 @@
       "Description": "Drive to Zurich, Train to Innsbruck, Drive to Ortisei"
     },
     "Photos": [
-
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-20_travelday_1.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-20_travelday_2.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-20_travelday_3.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-20_travelday_4.jpg",
+        "Caption": "Trümmelbach Falls"
+      }
     ]
   },
   {
