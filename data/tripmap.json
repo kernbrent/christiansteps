@@ -141,7 +141,7 @@
     "Transportation": {
       "Type": "Excursion",
       "Icon": "🏔️",
-      "Description": "Today we drove to my most favorite place in the world. Grindelwald Switzerland!!! I love this place and could definitely live here. We drove from Lucerne to Grindelwald, then to Lauterbrunnen, then to Trümmelbach Falls, then to Interlocken, and then back to Lucerne. We hiked and journeyed all day and are exhausted. We even got some fresh milk, for Lily, from a farm we pasted in Zuchtfamilie Flora Milk Farm in Wilderswil."
+      "Description": "Today we drove to my most favorite place in the world. Grindelwald Switzerland!!! I love this place and could definitely live here. We drove from Lucerne to Grindelwald, then to Lauterbrunnen, then to Trümmelbach Falls, then to Interlocken, and then back to Lucerne. We hiked and journeyed all day and are exhausted. We even got some fresh milk, for Lily, from a farm we pasted in Wilderswil at the Zuchtfamilie Flora Milk Farm."
     },
     "Photos": [
       {
@@ -227,10 +227,44 @@
     "Transportation": {
       "Type": "Local",
       "Icon": "🏔️",
-      "Description": "Dolomites exploration"
+      "Description": "Today we took the Alpe di Suisi Gondola to the amazing plateau meadow. I can truly say, I have never seen anything like it in my life. Breath-taking doesn't even come close to describing it. The picture try to capture it, but it is so much awe inspiring."
     },
     "Photos": [
-
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_1.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_2.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_3.jpg",
+        "Caption": "Grindelwald"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_4.jpg",
+        "Caption": "Trümmelbach Falls"
+      },
+            {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_5.jpg",
+        "Caption": "Grindelwald"
+      },
+            {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_6.jpg",
+        "Caption": "Grindelwald"
+      },
+            {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-21_ortisei_7.jpg",
+        "Caption": "Grindelwald"
+      }
     ]
   },
   {
