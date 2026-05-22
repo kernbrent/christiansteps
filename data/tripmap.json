@@ -211,7 +211,7 @@
   },
   {
     "Date": "2026-05-21",
-    "Title": "Ortisei Hiking and Chair Lifts",
+    "Title": "Ortisei Hiking and Chair Lifts - Alpe di Suisi",
     "City": "Ortisei",
     "Country": "Italy",
     "Latitude": 46.5753,
@@ -233,43 +233,43 @@
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_1.jpg",
-        "Caption": "Grindelwald"
+        "Caption": "Ortisei, Italy - Aple di Suisi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_2.jpg",
-        "Caption": "Grindelwald"
+        "Caption": "Ortisei, Italy - Aple di Suisi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_3.jpg",
-        "Caption": "Grindelwald"
+        "Caption": "Ortisei, Italy - Aple di Suisi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_4.jpg",
-        "Caption": "Trümmelbach Falls"
+        "Caption": "Ortisei, Italy - Aple di Suisi"
       },
             {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_5.jpg",
-        "Caption": "Grindelwald"
+        "Caption": "Ortisei, Italy - Aple di Suisi"
       },
             {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_6.jpg",
-        "Caption": "Grindelwald"
+        "Caption": "Ortisei, Italy"
       },
             {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_7.jpg",
-        "Caption": "Grindelwald"
+        "Caption": "Ortisei, Italy - Aple di Suisi"
       }
     ]
   },
   {
     "Date": "2026-05-22",
-    "Title": "Ortisei Hiking and Chair Lifts",
+    "Title": "Ortisei Hiking and Chair Lifts - Seceda",
     "City": "Ortisei",
     "Country": "Italy",
     "Latitude": 46.5753,
@@ -285,10 +285,39 @@
     "Transportation": {
       "Type": "Local",
       "Icon": "🏔️",
-      "Description": "Dolomites exploration"
+      "Description": "Today was another take your breathe away day. The mountains are simply unexplainable. The pictures are a pale representation. Today's scripture was from Romans 12:18 - If it is possible on your part, live at peace with others. I needed that lesson today."
     },
-    "Photos": [
-
+   "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-22_ortisei_1.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-22_ortisei_2.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-22_ortisei_4.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-22_ortisei_5.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-22_ortisei_6.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-22_ortisei_7.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      }
     ]
   },
   {

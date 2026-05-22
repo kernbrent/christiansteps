@@ -319,3 +319,13 @@ body {
         flex: 1;
     }
 }
+.trip-media {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+.trip-media video {
+    display: block;
+}
