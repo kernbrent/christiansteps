@@ -48,7 +48,7 @@
                         <h2>Europe Family Trip + Mission Journey</h2>
 
                         <p>
-                            Interactive travel map, 
+                            Interactive travel map,
                             timeline, photos, and traveler journey experience.
                         </p>
 
@@ -145,6 +145,32 @@
         </div>
 
     </div>
+
+
+    <!-- VIDEO POPUP -->
+
+    <div id="videoOverlay" class="lightbox-overlay">
+
+        <div class="lightbox-close"
+             onclick="closeVideoPopup()">
+            ×
+        </div>
+
+        <video
+            id="popupVideo"
+            controls
+            autoplay
+            class="lightbox-image"
+            style="max-width:90%; max-height:90%;">
+
+            <source id="popupVideoSource"
+                    src=""
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
 
     <div id="siteFooter"></div>
 
@@ -460,8 +486,6 @@
 
     <h2>${day.Title}</h2>
 
-    <h2>${day.Title}</h2>
-
     <p>
     <strong>${day.City}, ${day.Country}</strong>
     </p>
@@ -529,6 +553,7 @@
         `;
 
             }
+            
 
             if (day.Photos && day.Photos.length > 0) {
 
@@ -594,6 +619,39 @@
             document
                 .getElementById('lightboxOverlay')
                 .classList.remove('active');
+
+        }
+
+        function openVideoPopup(videoPath) {
+
+            const overlay =
+                document.getElementById('videoOverlay');
+
+            const video =
+                document.getElementById('popupVideo');
+
+            const source =
+                document.getElementById('popupVideoSource');
+
+            source.src = videoPath;
+
+            video.load();
+
+            overlay.classList.add('active');
+
+        }
+
+        function closeVideoPopup() {
+
+            const overlay =
+                document.getElementById('videoOverlay');
+
+            const video =
+                document.getElementById('popupVideo');
+
+            video.pause();
+
+            overlay.classList.remove('active');
 
         }
 
