@@ -339,6 +339,25 @@
 
             });
 
+            setTimeout(() => {
+                scrollTimelineToActive();
+            }, 50);
+
+        }
+
+        function scrollTimelineToActive() {
+
+            const active =
+                document.querySelector('.timeline-item.active');
+
+            if (!active) return;
+
+            active.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest'
+            });
+
         }
 
         function replayJourney() {
@@ -438,6 +457,16 @@
                     marker.openPopup();
                     renderPanel(day);
                 }
+
+                marker.on('click', () => {
+
+                    selectedDate = day.Date;
+
+                    buildTimeline(tripData);
+
+                    renderMap();
+
+                });
 
             });
 
