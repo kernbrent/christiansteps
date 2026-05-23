@@ -250,17 +250,17 @@
         "Image": "Images/tripmap/2026-05-21_ortisei_4.jpg",
         "Caption": "Ortisei, Italy - Aple di Suisi"
       },
-            {
+      {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_5.jpg",
         "Caption": "Ortisei, Italy - Aple di Suisi"
       },
-            {
+      {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_6.jpg",
         "Caption": "Ortisei, Italy"
       },
-            {
+      {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_7.jpg",
         "Caption": "Ortisei, Italy - Aple di Suisi"
@@ -286,6 +286,11 @@
       "Type": "Local",
       "Icon": "🏔️",
       "Description": "Today was another take your breathe away day. The mountains are simply unexplainable. The pictures are a pale representation. Today's scripture was from Romans 12:18 - If it is possible on your part, live at peace with others. I needed that lesson today."
+    },
+    "Video": {
+      "Enabled": true,
+      "Title": "Watch Seceda Video",
+      "File": "Images/tripmap/2026-05-22_ortisei_3.mp4"
     },
    "Photos": [
       {
@@ -340,7 +345,38 @@
       "Icon": "🚗",
       "Description": "Drive back to Innsbruck"
     },
-    "Photos": []
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-23_innsbruck_1.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-23_innsbruck_2.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-23_innsbruck_3.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-23_innsbruck_4.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-23_innsbruck_5.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-23_innsbruck_6.jpg",
+        "Caption": "Ortisei, Italy - Seceda"
+      }
+    ]
   },
   {
     "Date": "2026-05-24",
@@ -361,9 +397,7 @@
       "Icon": "🚆",
       "Description": "Train to Verona then Florence"
     },
-    "Photos": [
-
-    ]
+    "Photos": []
   },
   {
     "Date": "2026-05-25",
