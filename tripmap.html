@@ -555,7 +555,28 @@
             }
             
 
-            if (day.Photos && day.Photos.length > 0) {
+            
+            if (day.Video && day.Video.Enabled) {
+
+                html += `
+
+        <hr>
+
+        <h3>Trip Video</h3>
+
+        <button
+            class="lightbox-btn"
+            onclick="openVideoPopup('${day.Video.File}')">
+
+            ▶ ${day.Video.Title}
+
+        </button>
+
+        `;
+
+            }
+
+if (day.Photos && day.Photos.length > 0) {
 
                 html += '<div class="photo-grid">';
 
