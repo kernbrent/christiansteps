@@ -343,7 +343,7 @@
     "Transportation": {
       "Type": "Car",
       "Icon": "🚗",
-      "Description": "Drive back to Innsbruck"
+      "Description": "Drive back to Innsbruck - Today we saw Stas and his Dad (Tato - Vitali). What a nice day together again."
     },
     "Photos": [
       {
@@ -395,9 +395,36 @@
     "Transportation": {
       "Type": "Train",
       "Icon": "🚆",
-      "Description": "Train to Verona then Florence"
+      "Description": "Train to Verona then Florence - We had to sayd goodbye first to Lily who is heading to Los Angelas and then to Stas and Vitali."
     },
-    "Photos": []
+    
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-24_verona_1.jpg",
+        "Caption": "Our Family Picture"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-24_verona_2.jpg",
+        "Caption": "My New Brother (brat)"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-24_verona_3.jpg",
+        "Caption": "First Meal Without Lily"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-24_verona_4.jpg",
+        "Caption": "Ethan and I at the Opera House"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-24_verona_5.jpg",
+        "Caption": "Verona's Colosseum - Opera House"
+      }
+    ]
   },
   {
     "Date": "2026-05-25",
@@ -416,9 +443,45 @@
     "Transportation": {
       "Type": "Tour",
       "Icon": "🍷",
-      "Description": "Wine Tour"
+      "Description": "Today we actually slept in a bit and then headed on a tour for Pisa. Wow, this place is beautiful and full of history. The Tower, Cathedral, and Baptista are all sinking in the loss soil and sand. Funny story, the local university has majors in every science, except... Architecture. Well, I think we can see why. LOL"
     },
-    "Photos": []
+    "Video": {
+      "Enabled": true,
+      "Title": "Watch Pisa Cathedral Video",
+      "File": "Images/tripmap/2026-05-25_pisa_7.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-25_pisa_1.jpg",
+        "Caption": "The One and Only"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-25_pisa_2.jpg",
+        "Caption": "One of 7 Bells at the Top"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-25_pisa_3.jpg",
+        "Caption": "View South of the City of Pisa"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-25_pisa_4.jpg",
+        "Caption": "View of the Cathedral and Baptista"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-25_pisa_5.jpg",
+        "Caption": "Inside the Cathedral"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-25_pisa_6.jpg",
+        "Caption": "Cathedral ground level"
+      }
+    ]
   },
   {
     "Date": "2026-05-26",
