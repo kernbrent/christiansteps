@@ -238,7 +238,21 @@ Dynamic gallery of the entire journey across Europe and Greece.
     class="lightbox-image"
     src=""
     alt=""
+    style="display:none;"
 >
+
+<video
+    id="lightboxVideo"
+    class="lightbox-image"
+    controls
+    style="display:none;">
+
+    <source
+        id="lightboxVideoSource"
+        src=""
+        type="video/mp4">
+
+</video>
 
 <div
     id="lightboxCaption"
@@ -324,6 +338,7 @@ fetch('./data/tripmap.json')
                     allPhotos.length;
 
                 allPhotos.push({
+                    type: 'image',
                     image: photo.Image,
                     caption: photo.Caption,
                     day: day.Date,
@@ -352,6 +367,52 @@ fetch('./data/tripmap.json')
                 `;
 
             });
+
+            if(
+                day.Video &&
+                day.Video.Enabled
+            ){
+
+                const globalIndex =
+                    allPhotos.length;
+
+                allPhotos.push({
+                    type: 'video',
+                    image: day.Video.File,
+                    caption: day.Video.Title,
+                    day: day.Date,
+                    title: day.Title
+                });
+
+                html += `
+
+                <div
+                    class="gallery-card"
+                    onclick="openLightbox(${globalIndex})"
+                >
+
+                    <video
+                        muted
+                        playsinline
+                        preload="metadata"
+                        style="width:100%;height:220px;object-fit:cover;display:block;">
+
+                        <source
+                            src="${day.Video.File}"
+                            type="video/mp4">
+
+                    </video>
+
+                    <div class="gallery-caption">
+                        <strong>${day.Video.Title}</strong><br>
+                        <small>${day.Date}</small>
+                    </div>
+
+                </div>
+
+                `;
+
+            }
 
             html += '</div>';
 
@@ -402,6 +463,10 @@ function closeLightbox(){
     .getElementById('lightboxOverlay')
     .classList.remove('active');
 
+    document
+        .getElementById('lightboxVideo')
+        .pause();
+
 }
 
 function updateLightbox(){
@@ -409,9 +474,36 @@ function updateLightbox(){
     const photo =
         allPhotos[currentLightboxIndex];
 
-    document
-    .getElementById('lightboxImage')
-    .src = photo.image;
+    const image =
+        document.getElementById('lightboxImage');
+
+    const video =
+        document.getElementById('lightboxVideo');
+
+    const videoSource =
+        document.getElementById('lightboxVideoSource');
+
+    if(photo.type === 'video'){
+
+        image.style.display = 'none';
+
+        video.style.display = 'block';
+
+        videoSource.src = photo.image;
+
+        video.load();
+
+    } else {
+
+        video.pause();
+
+        video.style.display = 'none';
+
+        image.style.display = 'block';
+
+        image.src = photo.image;
+
+    }
 
     document
     .getElementById('lightboxCaption')
