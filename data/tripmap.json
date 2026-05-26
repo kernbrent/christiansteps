@@ -72,7 +72,7 @@
   },
   {
     "Date": "2026-05-18",
-    "Title": "Lucerne Excursion to Jungfrau",
+    "Title": "Lake Lucerne tour and Mt Rigi",
     "City": "Lucerne",
     "Country": "Switzerland",
     "Latitude": 47.0502,
@@ -126,10 +126,10 @@
   {
     "Date": "2026-05-19",
     "Title": "Lucerne Excursion to Grindelwald",
-    "City": "Lucerne",
+    "City": "Grindelwald",
     "Country": "Switzerland",
-    "Latitude": 47.0502,
-    "Longitude": 8.3093,
+    "Latitude": 46.6242,
+    "Longitude": 8.0414,
     "MissionDay": false,
     "Travelers": [
       "Brent",
@@ -381,7 +381,7 @@
   {
     "Date": "2026-05-24",
     "Title": "Travel Split: Lily Home / Group to Florence",
-    "City": "Florence",
+    "City": "Verona",
     "Country": "Italy",
     "Latitude": 43.7696,
     "Longitude": 11.2558,
@@ -428,11 +428,11 @@
   },
   {
     "Date": "2026-05-25",
-    "Title": "Florence Wine Tour",
-    "City": "Florence",
+    "Title": "The Leaning Tour",
+    "City": "Pisa",
     "Country": "Italy",
-    "Latitude": 43.7696,
-    "Longitude": 11.2558,
+    "Latitude": 43.7228,
+    "Longitude": 10.4017,
     "MissionDay": false,
     "Travelers": [
       "Brent",
@@ -443,7 +443,7 @@
     "Transportation": {
       "Type": "Tour",
       "Icon": "🍷",
-      "Description": "Today we actually slept in a bit and then headed on a tour for Pisa. Wow, this place is beautiful and full of history. The Tower, Cathedral, and Baptista are all sinking in the loss soil and sand. Funny story, the local university has majors in every science, except... Architecture. Well, I think we can see why. LOL"
+      "Description": "Today we actually slept in a bit and then headed on a tour for Pisa. Wow, this place is beautiful and full of history. The Tower, Cathedral, and Baptistry are all sinking in the loss soil and sand. Funny story, the local university has majors in every science, except... Architecture. Well, I think we can see why. LOL! And then the best dinner of our trip so far. Beef Stew to die for. "
     },
     "Video": {
       "Enabled": true,
@@ -469,7 +469,7 @@
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-25_pisa_4.jpg",
-        "Caption": "View of the Cathedral and Baptista"
+        "Caption": "View of the Cathedral and Baptistry"
       },
       {
         "Enabled": true,
@@ -486,7 +486,7 @@
   {
     "Date": "2026-05-26",
     "Title": "Train to Rome",
-    "City": "Rome",
+    "City": "Florence",
     "Country": "Italy",
     "Latitude": 41.9028,
     "Longitude": 12.4964,
@@ -500,9 +500,45 @@
     "Transportation": {
       "Type": "Train",
       "Icon": "🚆",
-      "Description": "Florence → Rome"
+      "Description": "We had hoped to do a wine tour of Tuscany, but we could never find the right tour. Instead, we went to Piazzale Michelangelo (overlook of entire city), we viewed the Cathedral of Santa Maria del Fiore, and we went to the Accademia Gallery of Firenze (original David Sculpture). Then we hoped a late train to Rome."
     },
-    "Photos": []
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_1.jpg",
+        "Caption": "Saying goodbye to another nice apartment AirBNB"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_2.jpg",
+        "Caption": "Cathedral of Santa Maria Bell Tower"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_3.jpg",
+        "Caption": "Cathedral of Santa Marie facade (hint, zoom in)"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_4.jpg",
+        "Caption": "View of the City of Florence"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_5.jpg",
+        "Caption": "Streets of Florence (Santa Maria in the background)"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_6.jpg",
+        "Caption": "Statue of David - Mind your eyes"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-26_florence_7.jpg",
+        "Caption": "Italian Flag - Heading to Rome"
+      }
+    ]
   },
   {
     "Date": "2026-05-27",
