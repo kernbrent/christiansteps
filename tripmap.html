@@ -151,21 +151,13 @@
 
     <div id="videoOverlay" class="lightbox-overlay">
 
-        <div class="lightbox-close"
-             onclick="closeVideoPopup()">
+        <div class="lightbox-close" onclick="closeVideoPopup()">
             ×
         </div>
 
-        <video
-            id="popupVideo"
-            controls
-            autoplay
-            class="lightbox-image"
-            style="max-width:90%; max-height:90%;">
+        <video id="popupVideo" controls autoplay class="lightbox-image" style="max-width:90%; max-height:90%;">
 
-            <source id="popupVideoSource"
-                    src=""
-                    type="video/mp4">
+            <source id="popupVideoSource" src="" type="video/mp4">
 
         </video>
 
@@ -411,14 +403,81 @@
                     )
                 );
 
-            const coords = [];
+            // CUSTOM JOURNEY ORDER
+            const journeyRoute = [
+
+                {
+                    city: 'Zurich',
+                    lat: 47.3769,
+                    lng: 8.5417
+                },
+
+                {
+                    city: 'Lucerne',
+                    lat: 47.0502,
+                    lng: 8.3093
+                },
+
+                {
+                    city: 'Grindelwald',
+                    lat: 46.6242,
+                    lng: 8.0414
+                },
+
+                {
+                    city: 'Ortisei',
+                    lat: 46.5753,
+                    lng: 11.6713
+                },
+
+                {
+                    city: 'Innsbruck',
+                    lat: 47.2692,
+                    lng: 11.4041
+                },
+
+                {
+                    city: 'Verona',
+                    lat: 45.4384,
+                    lng: 10.9916
+                },
+
+                {
+                    city: 'Pisa',
+                    lat: 43.7228,
+                    lng: 10.4017
+                },
+
+                {
+                    city: 'Florence',
+                    lat: 43.7696,
+                    lng: 11.2558
+                },
+
+                {
+                    city: 'Rome',
+                    lat: 41.9028,
+                    lng: 12.4964
+                },
+
+                {
+                    city: 'Nafplio',
+                    lat: 37.5673,
+                    lng: 22.8016
+                },
+
+                {
+                    city: 'Athens',
+                    lat: 37.9838,
+                    lng: 23.7275
+                }
+
+            ];
+
+            const coords =
+                journeyRoute.map(p => [p.lat, p.lng]);
 
             filtered.forEach(day => {
-
-                coords.push([
-                    day.Latitude,
-                    day.Longitude
-                ]);
 
                 const isCurrent =
                     day.Date === selectedDate;
@@ -454,8 +513,11 @@
                 marker.addTo(markerLayer);
 
                 if (isCurrent) {
+
                     marker.openPopup();
+
                     renderPanel(day);
+
                 }
 
                 marker.on('click', () => {
@@ -496,6 +558,116 @@
             );
 
         }
+
+        if (routeLayer) {
+            map.removeLayer(routeLayer);
+        }
+
+        if (markerLayer) {
+            map.removeLayer(markerLayer);
+        }
+
+        markerLayer = L.layerGroup().addTo(map);
+
+        const selectedTravelers =
+            Array.from(
+                document.querySelectorAll(
+                    'input[type=checkbox]:checked'
+                )
+            ).map(cb => cb.value);
+
+        const filtered =
+            tripData.filter(day =>
+                day.Travelers.some(t =>
+                    selectedTravelers.includes(t)
+                )
+            );
+
+        const coords = [];
+
+        filtered.forEach(day => {
+
+            coords.push([
+                day.Latitude,
+                day.Longitude
+            ]);
+
+            const isCurrent =
+                day.Date === selectedDate;
+
+            let markerClass = 'standard-marker';
+
+            if (isCurrent) {
+                markerClass = 'current-marker';
+            }
+            else if (currentMode === 'journey') {
+                markerClass = 'journey-marker';
+            }
+            else if (currentMode === 'dashboard') {
+                markerClass = 'dashboard-marker';
+            }
+
+            const icon = L.divIcon({
+                className: '',
+                html: `<div class="${markerClass}"></div>`,
+                iconSize: [22, 22]
+            });
+
+            const marker = L.marker(
+                [day.Latitude, day.Longitude],
+                { icon }
+            );
+
+            marker.bindPopup(`
+            <strong>${day.Title}</strong><br>
+            ${day.City}, ${day.Country}
+        `);
+
+            marker.addTo(markerLayer);
+
+            if (isCurrent) {
+                marker.openPopup();
+                renderPanel(day);
+            }
+
+            marker.on('click', () => {
+
+                selectedDate = day.Date;
+
+                buildTimeline(tripData);
+
+                renderMap();
+
+            });
+
+        });
+
+        routeLayer = L.polyline(coords, {
+
+            color:
+                currentMode === 'journey'
+                    ? '#28a745'
+                    : currentMode === 'dashboard'
+                        ? '#6f42c1'
+                        : '#3D95CE',
+
+            weight:
+                currentMode === 'journey'
+                    ? 6
+                    : 4,
+
+            opacity: .85
+
+        }).addTo(map);
+
+        map.fitBounds(
+            routeLayer.getBounds(),
+            {
+                padding: [40, 40]
+            }
+        );
+
+        
 
         function renderPanel(day) {
 
@@ -582,9 +754,9 @@
         `;
 
             }
-            
 
-            
+
+
             if (day.Video && day.Video.Enabled) {
 
                 html += `
@@ -605,7 +777,7 @@
 
             }
 
-if (day.Photos && day.Photos.length > 0) {
+            if (day.Photos && day.Photos.length > 0) {
 
                 html += '<div class="photo-grid">';
 
