@@ -557,9 +557,50 @@
     "Transportation": {
       "Type": "Tour",
       "Icon": "🏛️",
-      "Description": "Explore Rome"
+      "Description": "Our first day in Rome was supposed to be light and restful. We walked 15,000 steps and came home 6 hours later tired, but saw some beautiful things and explored the Metro (subway)."
     },
-    "Photos": []
+    "Video": {
+      "Enabled": true,
+      "Title": "Watch Video of ruins from the Victor Emmanuel II National Monument",
+      "File": "Images/tripmap/2026-05-27_rome_8.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_1.jpg",
+        "Caption": "The Spanish Steps"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_2.jpg",
+        "Caption": "The Spanish Steps Looking Down"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_3.jpg",
+        "Caption": "City Streets of Rome"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_4.jpg",
+        "Caption": "Ceiling of Church of St Ignatius of Loyola"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_5.jpg",
+        "Caption": "Pantheon in Rome"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_6.jpg",
+        "Caption": "Victor Emmanuel II National Monument"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-27_rome_7.jpg",
+        "Caption": "Statue inside National Memorial"
+      }
+    ]
   },
   {
     "Date": "2026-05-28",
