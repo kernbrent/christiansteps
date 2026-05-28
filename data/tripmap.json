@@ -25,7 +25,8 @@
         "Image": "Images/tripmap/2026-05-16_airplane_1.jpg",
         "Caption": "Flying to Zurich"
       }
-    ]
+    ],
+    "Steps": 11523
   },
   {
     "Date": "2026-05-17",
@@ -68,7 +69,8 @@
         "Image": "Images/tripmap/2026-05-17_lucerne_4.jpg",
         "Caption": "Swiss scenery"
       }
-    ]
+    ],
+    "Steps": 12520
   },
   {
     "Date": "2026-05-18",
@@ -121,7 +123,8 @@
         "Image": "Images/tripmap/2026-05-18_lucerne_6.jpg",
         "Caption": "Musegg Wall Lucerne"
       }
-    ]
+    ],
+    "Steps": 17463
   },
   {
     "Date": "2026-05-19",
@@ -164,7 +167,8 @@
         "Image": "Images/tripmap/2026-05-19_grindelwald_4.jpg",
         "Caption": "Trümmelbach Falls"
       }
-    ]
+    ],
+    "Steps": 17842
   },
   {
     "Date": "2026-05-20",
@@ -207,7 +211,8 @@
         "Image": "Images/tripmap/2026-05-20_travelday_4.jpg",
         "Caption": "Trümmelbach Falls"
       }
-    ]
+    ],
+    "Steps": 7543
   },
   {
     "Date": "2026-05-21",
@@ -265,7 +270,8 @@
         "Image": "Images/tripmap/2026-05-21_ortisei_7.jpg",
         "Caption": "Ortisei, Italy - Aple di Suisi"
       }
-    ]
+    ],
+    "Steps": 20570
   },
   {
     "Date": "2026-05-22",
@@ -292,7 +298,7 @@
       "Title": "Watch Seceda Video",
       "File": "Images/tripmap/2026-05-22_ortisei_3.mp4"
     },
-   "Photos": [
+    "Photos": [
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-22_ortisei_1.jpg",
@@ -323,7 +329,8 @@
         "Image": "Images/tripmap/2026-05-22_ortisei_7.jpg",
         "Caption": "Ortisei, Italy - Seceda"
       }
-    ]
+    ],
+    "Steps": 22625
   },
   {
     "Date": "2026-05-23",
@@ -376,7 +383,8 @@
         "Image": "Images/tripmap/2026-05-23_innsbruck_6.jpg",
         "Caption": "Innsbruck, Austria"
       }
-    ]
+    ],
+    "Steps": 14526
   },
   {
     "Date": "2026-05-24",
@@ -397,7 +405,6 @@
       "Icon": "🚆",
       "Description": "Train to Verona then Florence - We had to sayd goodbye first to Lily who is heading to Los Angelas and then to Stas and Vitali."
     },
-    
     "Photos": [
       {
         "Enabled": true,
@@ -424,7 +431,8 @@
         "Image": "Images/tripmap/2026-05-24_verona_5.jpg",
         "Caption": "Verona's Colosseum - Opera House"
       }
-    ]
+    ],
+    "Steps": 11105
   },
   {
     "Date": "2026-05-25",
@@ -481,11 +489,12 @@
         "Image": "Images/tripmap/2026-05-25_pisa_6.jpg",
         "Caption": "Cathedral ground level"
       }
-    ]
+    ],
+    "Steps": 11844
   },
   {
     "Date": "2026-05-26",
-    "Title": "Train to Rome",
+    "Title": "David Statue and Touring Florence",
     "City": "Florence",
     "Country": "Italy",
     "Latitude": 41.9028,
@@ -538,11 +547,12 @@
         "Image": "Images/tripmap/2026-05-26_florence_7.jpg",
         "Caption": "Italian Flag - Heading to Rome"
       }
-    ]
+    ],
+    "Steps": 12327
   },
   {
     "Date": "2026-05-27",
-    "Title": "Rome City Tour",
+    "Title": "Rome - Spanish Steps, Trivi Fountain, and others",
     "City": "Rome",
     "Country": "Italy",
     "Latitude": 41.9028,
@@ -600,11 +610,12 @@
         "Image": "Images/tripmap/2026-05-27_rome_7.jpg",
         "Caption": "Statue inside National Memorial"
       }
-    ]
+    ],
+    "Steps": 15349
   },
   {
     "Date": "2026-05-28",
-    "Title": "Rome Optional Pompeii Day Trip",
+    "Title": "Rome - Vatican City & Colosseum",
     "City": "Rome",
     "Country": "Italy",
     "Latitude": 41.9028,
@@ -619,9 +630,46 @@
     "Transportation": {
       "Type": "Optional",
       "Icon": "🌋",
-      "Description": "Optional Pompeii excursion"
+      "Description": "Big busy last day in Rome. We toured Vatican City and saw the Sistine Chapel and St. Peter's Basilica. We then went and toured the Colosseum and the Forums. We didn't get to see much of the forum, and then one final Italian dinner in Italy."
     },
-    "Photos": []
+  "Video": {
+      "Enabled": true,
+      "Title": "Inside St. Peter's Basilica",
+      "File": "Images/tripmap/2026-05-28_rome_7.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-28_rome_1.jpg",
+        "Caption": "The Vatican City"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-28_rome_2.jpg",
+        "Caption": "St. Peter's Basilica"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-28_rome_3.jpg",
+        "Caption": "The Roman Colosseum"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-28_rome_4.jpg",
+        "Caption": "The Roman Colosseum"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-28_rome_5.jpg",
+        "Caption": "The Roman Colosseum"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-28_rome_6.jpg",
+        "Caption": "Last dinner together"
+      }
+    ],
+    "Steps": 23799
   },
   {
     "Date": "2026-05-29",
@@ -639,7 +687,8 @@
       "Icon": "⛴️",
       "Description": "Train to Bari then overnight ferry to Patras"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-05-30",
@@ -657,7 +706,8 @@
       "Icon": "🚌",
       "Description": "Patras → Nafplio"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-05-31",
@@ -675,7 +725,8 @@
       "Icon": "🏖️",
       "Description": "Beach and relaxation"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-06-01",
@@ -693,7 +744,8 @@
       "Icon": "🏖️",
       "Description": "Beach and relaxation"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-06-02",
@@ -711,7 +763,8 @@
       "Icon": "🏖️",
       "Description": "Beach and relaxation"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-06-03",
@@ -729,7 +782,8 @@
       "Icon": "🚌",
       "Description": "Travel from Nafplio to Athens"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-06-04",
@@ -747,7 +801,8 @@
       "Icon": "⛪",
       "Description": "Mission activities in Athens"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   },
   {
     "Date": "2026-06-14",
@@ -765,6 +820,7 @@
       "Icon": "✈️",
       "Description": "Athens → Chicago → DFW"
     },
-    "Photos": []
+    "Photos": [],
+    "Steps": 10000
   }
 ]
