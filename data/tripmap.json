@@ -673,7 +673,7 @@
   },
   {
     "Date": "2026-05-29",
-    "Title": "Travel Split: Group Home / Brent to Greece",
+    "Title": "Travel Split: Taxi, Train, Ferry, Bus - Rome to Bari to Patras",
     "City": "Bari",
     "Country": "Italy",
     "Latitude": 41.1171,
@@ -687,12 +687,43 @@
       "Icon": "⛴️",
       "Description": "Train to Bari then overnight ferry to Patras"
     },
-    "Photos": [],
-    "Steps": 10000
+    "Video": {
+      "Enabled": true,
+      "Title": "View from my table at dinner in Bari.",
+      "File": "Images/tripmap/2026-05-29_bari_6.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-29_bari_1.jpg",
+        "Caption": "Saying goodbye to Rome (and family) - There was a public transportation strike, so Taxi's were hard to get."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-29_bari_2.jpg",
+        "Caption": "Streets of Bari, Italy."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-29_bari_3.jpg",
+        "Caption": "I visited a church (Chiesa) and stumbled across a wedding."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-29_bari_4.jpg",
+        "Caption": "Sunset aboard my 16 hour ferry ride to Greece"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-29_bari_5.jpg",
+        "Caption": "The moon over the Mediterranean"
+      }
+    ],
+    "Steps": 12540
   },
   {
     "Date": "2026-05-30",
-    "Title": "Bus to Nafplio",
+    "Title": "Bus to Nafplio, Greece",
     "City": "Nafplio",
     "Country": "Greece",
     "Latitude": 37.5673,
@@ -704,10 +735,41 @@
     "Transportation": {
       "Type": "Bus",
       "Icon": "🚌",
-      "Description": "Patras → Nafplio"
+      "Description": "Docked in Patras, Greece. Bus to Corinth. Another bus to Nafplio. Beautiful and charming city."
     },
-    "Photos": [],
-    "Steps": 10000
+        "Video": {
+      "Enabled": true,
+      "Title": "The view from my AirBNB",
+      "File": "Images/tripmap/2026-05-30_nafplio_4.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-30_nafplio_1.jpg",
+        "Caption": "The Aetolia-Acarnania Mountains across the Bay of Patras from the ferry."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-30_nafplio_2.jpg",
+        "Caption": "The Corinth Canal - Bus Transfer"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-30_nafplio_3.jpg",
+        "Caption": "My AirBNB in Nafplio for 4 nights."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-30_nafplio_5.jpg",
+        "Caption": "The city streets of Old Town Nafplio at night."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-30_nafplio_6.jpg",
+        "Caption": "The stairs I have to climb each time I go back to my AirBNB. Porto Bella sign at the top."
+      }
+    ],
+    "Steps": 10213
   },
   {
     "Date": "2026-05-31",
