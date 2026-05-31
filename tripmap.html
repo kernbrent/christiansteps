@@ -106,11 +106,40 @@
 
                     </div>
 
-                    <div id="sidePanel" class="side-panel"></div>
+                    
+
+
+<div id="sidePanel" class="side-panel"></div>
 
                     <div id="timeline" class="timeline"></div>
 
-                    <div id="map"></div>
+                    
+
+<div id="map"></div>
+
+<div id="mobileVersion" class="mobile-version">V3.3</div>
+<div id="mobileDayCard" class="mobile-day-card">Loading...</div>
+
+
+
+
+<div id="mobileSheet" class="mobile-sheet">
+ <div class="mobile-sheet-handle"></div>
+ <div class="mobile-tabs">
+   <button class="mobile-tab active" data-tab="overview">Overview</button>
+   <button class="mobile-tab" data-tab="photos">Photos</button>
+   <button class="mobile-tab" data-tab="video">Video</button>
+   <button class="mobile-tab" data-tab="mission">Mission</button>
+ </div>
+ <div id="mobileSheetContent"></div>
+</div>
+
+
+
+
+
+
+
 
 
 
@@ -168,7 +197,18 @@
 
     <!-- LEAFLET -->
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+/* MOBILE APP UX */
+if(window.innerWidth <= 640){
+ document.addEventListener('click', function(e){
+   if(e.target.id === 'mobileControlsBtn'){
+      const controls=document.querySelector('.controls');
+      controls.classList.toggle('mobile-controls-open');
+   }
+ });
+}
+
+</script>
 
     <!-- MAIN SCRIPT -->
 
@@ -829,6 +869,27 @@
 
             panel.innerHTML = html;
 
+            if (window.innerWidth <= 640) {
+                const card = document.getElementById('mobileDayCard');
+                const sheet = document.getElementById('mobileSheetContent');
+
+                if (card) {
+                    const photos = (day.Photos || []).length;
+                    const video = (day.Video && day.Video.Enabled) ? 1 : 0;
+                    card.innerHTML = `<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString() || 0} &nbsp; 📷 ${photos} &nbsp; 🎥 ${video}`;
+                }
+
+                if (sheet) {
+                    sheet.innerHTML = `
+                        <h3>${day.Title}</h3>
+                        <p><strong>${day.City}, ${day.Country}</strong></p>
+                        <p>${day.Transportation.Description}</p>
+                        <p>📷 ${(day.Photos||[]).length} Photos</p>
+                        <p>🎥 ${((day.Video && day.Video.Enabled)?1:0)} Videos</p>
+                    `;
+                }
+            }
+
         }
 
         function openLightbox(index) {
@@ -950,8 +1011,188 @@
 
         });
 
-    </script>
+    
+/* MOBILE APP UX */
+if(window.innerWidth <= 640){
+ document.addEventListener('click', function(e){
+   if(e.target.id === 'mobileControlsBtn'){
+      const controls=document.querySelector('.controls');
+      controls.classList.toggle('mobile-controls-open');
+   }
+ });
+}
 
+</script>
+
+
+<script>
+/* V2 Mobile Branch Scaffold */
+const isMobileTripApp = window.innerWidth <= 640;
+
+if(isMobileTripApp){
+  document.addEventListener('DOMContentLoaded',()=>{
+    const card=document.getElementById('mobileDayCard');
+    if(card){
+      card.innerHTML='<strong>Travel App V2</strong><br>Mobile architecture enabled';
+    }
+  });
+}
+</script>
+
+<script>
+/* STEP 3 MOBILE APP ENGINE */
+
+let mobileSheetState='peek';
+
+function renderMobileCard(day){
+ const card=document.getElementById('mobileDayCard');
+ if(!card || !day) return;
+
+ card.innerHTML=`
+ <div><strong>${day.City}</strong></div>
+ <div>👣 ${day.Steps?.toLocaleString()||0} &nbsp; 📷 ${(day.Photos||[]).length}</div>`;
+}
+
+function renderMobileSheet(day){
+ const target=document.getElementById('mobileSheetContent');
+ if(!target || !day) return;
+
+ target.innerHTML=`
+ <h3>${day.Title}</h3>
+ <p><strong>${day.City}, ${day.Country}</strong></p>
+ <p>${day.Transportation?.Description||''}</p>
+ ${day.MissionDay ? '<p><a href="devotional.html?day='+day.Date+'">View Devotional</a></p>' : ''}
+ <p><a href="dayactivities.html?day='+day.Date+'">View Updates</a></p>
+ `;
+}
+
+document.addEventListener('click',e=>{
+ const card=e.target.closest('#mobileDayCard');
+ if(card){
+   document.getElementById('mobileSheet')?.classList.toggle('open');
+ }
+});
+
+let touchStartX=0;
+document.addEventListener('touchstart',e=>{
+ touchStartX=e.changedTouches[0].clientX;
+},{passive:true});
+
+document.addEventListener('touchend',e=>{
+ const dx=e.changedTouches[0].clientX-touchStartX;
+ if(Math.abs(dx)<60) return;
+ // placeholder swipe navigation hook
+});
+</script>
+
+
+<script>
+/* STEP 7 DATA BINDING */
+
+function getCurrentDayData(){
+ if(!window.tripData || !window.selectedDate) return null;
+ return tripData.find(d=>d.Date===selectedDate);
+}
+
+function updateMobileUI(){
+ if(window.innerWidth > 640) return;
+ const day=getCurrentDayData();
+ if(!day) return;
+
+ const card=document.getElementById('mobileDayCard');
+ if(card){
+   const photos=(day.Photos||[]).length;
+   const video=(day.Video&&day.Video.Enabled)?1:0;
+   card.innerHTML=`<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString()||0} &nbsp; 📷 ${photos} &nbsp; 🎥 ${video}`;
+ }
+
+ const content=document.getElementById('mobileSheetContent');
+ if(content){
+   content.innerHTML=`
+     <h3>${day.Title}</h3>
+     <p><strong>${day.City}, ${day.Country}</strong></p>
+     <p>${day.Transportation?.Description||''}</p>
+     <div class="photo-grid">
+       ${(day.Photos||[]).slice(0,4).map((p,i)=>`<img src="${p.Image}" onclick="openLightbox(${i})">`).join('')}
+     </div>
+   `;
+ }
+}
+
+document.addEventListener('click',function(e){
+ const c=e.target.closest('#mobileDayCard');
+ if(c){
+   const sheet=document.getElementById('mobileSheet');
+   if(sheet) sheet.classList.toggle('sheet-full');
+ }
+});
+
+
+setInterval(function(){
+  const activeTab=document.querySelector('.mobile-tab.active');
+  if(activeTab && activeTab.dataset.tab!=='overview'){
+    return;
+  }
+  updateMobileUI();
+},1000);
+
+</script>
+
+
+<script>
+function renderMobileTab(day,tab){
+ const c=document.getElementById('mobileSheetContent');
+ if(!c||!day) return;
+ if(tab==='photos'){
+   c.innerHTML='<div class="photo-grid">'+(day.Photos||[]).map((p,i)=>'<img src="'+p.Image+'" onclick="openLightbox('+i+')">').join('')+'</div>';
+   return;
+ }
+ if(tab==='video'){
+   c.innerHTML=(day.Video&&day.Video.Enabled)?'<button class="lightbox-btn" onclick="openVideoPopup(\''+day.Video.File+'\')">▶ '+day.Video.Title+'</button>':'<p>No video available.</p>';
+   return;
+ }
+ if(tab==='mission'){
+   c.innerHTML=(day.MissionDay?'<p><a href="devotional.html?day='+day.Date+'">View Devotional</a></p>':'')+'<p><a href="dayactivities.html?day='+day.Date+'">View Updates</a></p>';
+   return;
+ }
+}
+document.addEventListener('click',function(e){
+ const tab=e.target.closest('.mobile-tab');
+ if(!tab) return;
+ document.querySelectorAll('.mobile-tab').forEach(t=>t.classList.remove('active'));
+ tab.classList.add('active');
+ if(window.tripData && window.selectedDate){
+   const day=tripData.find(d=>d.Date===selectedDate);
+   if(day) renderMobileTab(day,tab.dataset.tab);
+ }
+});
+</script>
+
+<script>
+/* V3.3 Tab Fixes */
+function renderOverviewTab(day){
+ const c=document.getElementById('mobileSheetContent');
+ if(!c||!day) return;
+ c.innerHTML=`
+   <h3>${day.Title}</h3>
+   <p><strong>${day.City}, ${day.Country}</strong></p>
+   <p>${day.Description || ''}</p>
+   <p>📷 ${(day.Photos||[]).length} Photos</p>
+   <p>🎥 ${((day.Video&&day.Video.Enabled)?1:0)} Videos</p>`;
+}
+
+document.addEventListener('click',function(e){
+ const tab=e.target.closest('.mobile-tab');
+ if(!tab || !window.tripData || !window.selectedDate) return;
+ const day=tripData.find(d=>d.Date===selectedDate);
+ if(!day) return;
+
+ if(tab.dataset.tab==='overview'){
+   renderOverviewTab(day);
+ }
+});
+</script>
 </body>
+
 
 </html>
