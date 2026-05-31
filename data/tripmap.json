@@ -632,7 +632,7 @@
       "Icon": "🌋",
       "Description": "Big busy last day in Rome. We toured Vatican City and saw the Sistine Chapel and St. Peter's Basilica. We then went and toured the Colosseum and the Forums. We didn't get to see much of the forum, and then one final Italian dinner in Italy."
     },
-  "Video": {
+    "Video": {
       "Enabled": true,
       "Title": "Inside St. Peter's Basilica",
       "File": "Images/tripmap/2026-05-28_rome_7.mp4"
@@ -737,7 +737,7 @@
       "Icon": "🚌",
       "Description": "Docked in Patras, Greece. Bus to Corinth. Another bus to Nafplio. Beautiful and charming city."
     },
-        "Video": {
+    "Video": {
       "Enabled": true,
       "Title": "The view from my AirBNB",
       "File": "Images/tripmap/2026-05-30_nafplio_4.mp4"
@@ -773,7 +773,7 @@
   },
   {
     "Date": "2026-05-31",
-    "Title": "Explore Nafplio",
+    "Title": "Relaxation in Nafplio",
     "City": "Nafplio",
     "Country": "Greece",
     "Latitude": 37.5673,
@@ -785,10 +785,36 @@
     "Transportation": {
       "Type": "Local",
       "Icon": "🏖️",
-      "Description": "Beach and relaxation"
+      "Description": "A very slow day of coffee, reading, people watching and relaxation."
     },
-    "Photos": [],
-    "Steps": 10000
+    "Video": {
+      "Enabled": true,
+      "Title": "View from Lunch on Harbor",
+      "File": "Images/tripmap/2026-05-31_nafplio_5.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-31_nafplio_1.jpg",
+        "Caption": "Syntagma Square in Nafplio, Greece."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-31_nafplio_2.jpg",
+        "Caption": "Bourtzi Fortress - Executioner's Home"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-31_nafplio_3.jpg",
+        "Caption": "Street Musicians are Everywhere in Nafplio"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-05-31_nafplio_4.jpg",
+        "Caption": "The Moon Rises Over Palamidi Fortress"
+      }
+    ],
+    "Steps": 6500
   },
   {
     "Date": "2026-06-01",
