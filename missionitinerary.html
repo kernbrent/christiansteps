@@ -1,216 +1,213 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Mission Itinerary - Christian Steps Ministries</title>
 
-<link href="Styles/Site.css" rel="stylesheet" />
-<link href="Styles/Site_mobile.css" rel="stylesheet" />
-<link href="Styles/mission_itinerary_calendar_styles.css" rel="stylesheet" />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mission Itinerary - Christian Steps Ministries</title>
+
+    <link href="Styles/Site.css" rel="stylesheet" />
+    <link href="Styles/Site_mobile.css" rel="stylesheet" />
+    <link href="Styles/mission_itinerary_calendar_styles.css" rel="stylesheet" />
 
 </head>
 
 <body>
 
-<a class="skip-link" href="#pageContent">Skip to content</a>
+    <a class="skip-link" href="#pageContent">Skip to content</a>
 
-<div class="page">
+    <div class="page">
 
-<header class="header" role="banner">
+        <header class="header" role="banner">
 
-<div class="title">
-<h1>
-<a href="index.html">
-<img src="./Images/Logo400.jpg"
-class="site-logo"
-alt="Christian Steps Ministries"
-width="400" />
-</a>
-</h1>
-</div>
+            <div class="title">
+                <h1>
+                    <a href="index.html">
+                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                            width="400" />
+                    </a>
+                </h1>
+            </div>
 
-<div class="clear hideSkiplink">
-<div id="siteHeader"></div>
-</div>
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
 
-</header>
+        </header>
 
-<div class="main">
+        <div class="main">
 
-<main id="pageContent" role="main">
+            <main id="pageContent" role="main">
 
-<section class="home-hero">
+                <section class="home-hero">
 
-<div class="mission-hero-top">
+                    <div class="mission-ad">
+                        <a href="missionitinerary.html">
+                            <div class="mission-ad-card">
+                                <img src="Images/athens.jpg" alt="Athens Greece Mission Trip">
 
-    <div class="mission-hero-left">
+                                <div class="mission-ad-text">
+                                    Support CSM's Mission Trip to Athens, Greece
+                                    <br>Click for Itinerary
+                                </div>
+                            </div>
+                        </a>
+                    </div>
 
-        <h2>Mission Trip Itinerary</h2>
+                    <div class="mission-hero-top">
 
-        <p>
-            <strong>June 1–20, 2026</strong>
-        </p>
+                        <div class="mission-hero-left">
 
-    </div>
+                            <h2>Mission Trip Itinerary</h2>
 
-    <div class="mission-hero-right">
+                            <p>
+                                <strong>June 1–20, 2026</strong>
+                            </p>
 
-        <a href="tripmap.html"
-           class="tripmap-button">
+                        </div>
+                        
+                    </div>
 
-           View Interactive Trip Map
+                    <div class="card">
+                        <p>
+                            Daily locations, activities, and scripture focus for the mission trip.
+                        </p>
+                    </div>
 
-        </a>
+                </section>
 
-        <div class="tripmap-note">
-            click button to view interactive map of entire trip
+                <section class="home-section">
+
+                    <div class="mission-nav-buttons">
+                        <a href="tripmap.html" class="tripmap-button">
+                            Track the Trip
+                        </a>
+
+                        <a href="missions.html" class="tripmap-button">
+                            Mission Home
+                        </a>
+                    </div>
+
+                    <div class="itinerary-wrapper">
+
+                        <div class="itinerary-grid" id="calendarGrid">
+
+                            <div class="calendar-header">Sunday</div>
+                            <div class="calendar-header">Monday</div>
+                            <div class="calendar-header">Tuesday</div>
+                            <div class="calendar-header">Wednesday</div>
+                            <div class="calendar-header">Thursday</div>
+                            <div class="calendar-header">Friday</div>
+                            <div class="calendar-header">Saturday</div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </main>
         </div>
-
     </div>
 
-</div>
+    <div id="siteFooter"></div>
 
-<div class="card">
-<p>
-Daily locations, activities, and scripture focus for the mission trip.
-</p>
-</div>
+    <script>
 
-</section>
+        fetch('header.html')
+            .then(r => r.text())
+            .then(h => {
+                document.getElementById('siteHeader').innerHTML = h;
+            });
 
-<section class="home-section">
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(f => {
+                document.getElementById('siteFooter').innerHTML = f;
+            });
 
-<div class="mission-nav-buttons">
-    <a href="tripmap.html" class="tripmap-button">
-        Track the Trip
-    </a>
+        Promise.all([
+            fetch('./data/missions.json').then(r => r.json()),
+            fetch('./data/dayactivities.json').then(r => r.json())
+        ])
+            .then(([missions, activities]) => {
 
-    <a href="missions.html" class="tripmap-button">
-        Mission Home
-    </a>
-</div>
+                missions.sort((a, b) => a.Date - b.Date);
 
-<div class="itinerary-wrapper">
+                const calendarGrid =
+                    document.getElementById('calendarGrid');
 
-<div class="itinerary-grid" id="calendarGrid">
+                const visibleDays =
+                    missions.filter(d => d.ShowOnCalendar !== false);
 
-<div class="calendar-header">Sunday</div>
-<div class="calendar-header">Monday</div>
-<div class="calendar-header">Tuesday</div>
-<div class="calendar-header">Wednesday</div>
-<div class="calendar-header">Thursday</div>
-<div class="calendar-header">Friday</div>
-<div class="calendar-header">Saturday</div>
+                const firstDate =
+                    visibleDays.length > 0 ? visibleDays[0].Date : 1;
 
-</div>
+                /*
+                    June 1, 2026 starts on a Monday.
+                    Calendar columns:
+                    Sunday = 0
+                    Monday = 1
+                */
 
-</div>
+                const startDayOfWeek = 1;
 
-</section>
+                const blankDays =
+                    startDayOfWeek + (firstDate - 1);
 
-</main>
-</div>
-</div>
+                for (let i = 0; i < blankDays; i++) {
 
-<div id="siteFooter"></div>
+                    const blank =
+                        document.createElement('div');
 
-<script>
+                    blank.className =
+                        'calendar-day blank-day';
 
-fetch('header.html')
-.then(r => r.text())
-.then(h => {
-    document.getElementById('siteHeader').innerHTML = h;
-});
+                    calendarGrid.appendChild(blank);
+                }
 
-fetch('footer.html')
-.then(r => r.text())
-.then(f => {
-    document.getElementById('siteFooter').innerHTML = f;
-});
+                visibleDays.forEach(day => {
 
-Promise.all([
-    fetch('./data/missions.json').then(r => r.json()),
-    fetch('./data/dayactivities.json').then(r => r.json())
-])
-.then(([missions, activities]) => {
+                    const dayCard =
+                        document.createElement('div');
 
-    missions.sort((a, b) => a.Date - b.Date);
+                    dayCard.className =
+                        'calendar-day';
 
-    const calendarGrid =
-        document.getElementById('calendarGrid');
+                    if (day.IsMissionDay === false) {
 
-    const visibleDays =
-        missions.filter(d => d.ShowOnCalendar !== false);
+                        dayCard.classList.add(
+                            'non-mission-day'
+                        );
+                    }
 
-    const firstDate =
-        visibleDays.length > 0 ? visibleDays[0].Date : 1;
+                    const activityDay =
+                        activities.find(a =>
+                            a.Date === day.Date &&
+                            a.Published !== false
+                        );
 
-    /*
-        June 1, 2026 starts on a Monday.
-        Calendar columns:
-        Sunday = 0
-        Monday = 1
-    */
-
-    const startDayOfWeek = 1;
-
-    const blankDays =
-        startDayOfWeek + (firstDate - 1);
-
-    for(let i = 0; i < blankDays; i++){
-
-        const blank =
-            document.createElement('div');
-
-        blank.className =
-            'calendar-day blank-day';
-
-        calendarGrid.appendChild(blank);
-    }
-
-    visibleDays.forEach(day => {
-
-        const dayCard =
-            document.createElement('div');
-
-        dayCard.className =
-            'calendar-day';
-
-        if(day.IsMissionDay === false){
-
-            dayCard.classList.add(
-                'non-mission-day'
-            );
-        }
-
-        const activityDay =
-            activities.find(a =>
-                a.Date === day.Date &&
-                a.Published !== false
-            );
-
-        const updateButton =
-            activityDay
-            ? `<a class="calendar-mini-btn"
+                    const updateButton =
+                        activityDay
+                            ? `<a class="calendar-mini-btn"
                    href="dayactivities.html?day=${day.Date}">
                    Updates
                </a>`
-            : `<span class="calendar-mini-btn disabled">
+                            : `<span class="calendar-mini-btn disabled">
                    Updates
                </span>`;
 
-        const devotionalButton =
-            day.IsMissionDay === false
-            ? `<span class="calendar-mini-btn disabled">
+                    const devotionalButton =
+                        day.IsMissionDay === false
+                            ? `<span class="calendar-mini-btn disabled">
                    Devotional
                </span>`
-            : `<a class="calendar-mini-btn"
+                            : `<a class="calendar-mini-btn"
                    href="devotional.html?day=${day.Date}">
                    Devotional
                </a>`;
 
-        dayCard.innerHTML = `
+                    dayCard.innerHTML = `
 
             <div class="day-number">
                 ${day.Date}
@@ -239,21 +236,22 @@ Promise.all([
 
         `;
 
-        calendarGrid.appendChild(dayCard);
+                    calendarGrid.appendChild(dayCard);
 
-    });
+                });
 
-})
-.catch(err => {
+            })
+            .catch(err => {
 
-    console.error(
-        'Calendar load error:',
-        err
-    );
+                console.error(
+                    'Calendar load error:',
+                    err
+                );
 
-});
+            });
 
-</script>
+    </script>
 
 </body>
+
 </html>

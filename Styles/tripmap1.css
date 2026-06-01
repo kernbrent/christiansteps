@@ -633,19 +633,3 @@ body {
     z-index:9999 !important;
   }
 }
-
-
-/* V8.9 PHOTO GRID NORMALIZATION */
-.photo-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:8px;
-}
-
-.photo-grid img{
-    width:100%;
-    aspect-ratio:1/1;
-    object-fit:cover;
-    display:block;
-    border-radius:10px;
-}
