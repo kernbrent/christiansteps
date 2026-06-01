@@ -15,147 +15,156 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 
-<style id="v61-mobile-fix">
-@media (max-width:640px){
-  #sidePanel{display:none !important;}
-  .controls{display:none !important;}
+    <style id="v61-mobile-fix">
+        @media (max-width:640px) {
+            #sidePanel {
+                display: none !important;
+            }
 
-  #mobileSheet{
-    position:fixed !important;
-    left:0;
-    right:0;
-    bottom:70px;
-    height:58vh;
-    overflow-y:auto;
-    z-index:9998;
-    background:#fff;
-    border-radius:24px 24px 0 0;
-  }
+            .controls {
+                display: none !important;
+            }
 
-  #mobileSheetContent{
-    padding:16px;
-    min-height:250px;
-  }
+            #mobileSheet {
+                position: fixed !important;
+                left: 0;
+                right: 0;
+                bottom: 70px;
+                height: 58vh;
+                overflow-y: auto;
+                z-index: 9998;
+                background: #fff;
+                border-radius: 24px 24px 0 0;
+            }
 
-  .photo-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
-  }
-  .photo-grid img{
-    width:100%;
-    border-radius:8px;
-  }
-}
-</style>
+            #mobileSheetContent {
+                padding: 16px;
+                min-height: 250px;
+            }
 
+            .photo-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
 
-<style id="v62-mobile-polish">
-@media (max-width:640px){
-  #timeline{
-    position:fixed !important;
-    bottom:80px !important;
-    left:0 !important;
-    right:0 !important;
-    z-index:9997 !important;
-  }
-
-  #mobileDayCard{
-    z-index:9999 !important;
-  }
-
-  #mobileSheet.sheet-full{
-    height:75vh !important;
-  }
-
-  #mobileSheet:not(.sheet-full){
-    height:58vh !important;
-  }
-}
-</style>
+            .photo-grid img {
+                width: 100%;
+                border-radius: 8px;
+            }
+        }
+    </style>
 
 
+    <style id="v62-mobile-polish">
+        @media (max-width:640px) {
+            #timeline {
+                position: fixed !important;
+                bottom: 80px !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 9997 !important;
+            }
+
+            #mobileDayCard {
+                z-index: 9999 !important;
+            }
+
+            #mobileSheet.sheet-full {
+                height: 75vh !important;
+            }
+
+            #mobileSheet:not(.sheet-full) {
+                height: 58vh !important;
+            }
+        }
+    </style>
 
 
 
-<style id="v64-mobile-fix">
-@media (max-width:640px){
-  #timeline{
-    position:fixed !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:70px !important;
-    z-index:9997 !important;
-    white-space:nowrap !important;
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
-    height:auto !important;
-    max-height:60px !important;
-  }
-
-  #mobileSheet{
-    height:58vh !important;
-    overflow:hidden !important;
-    transition:height .25s ease !important;
-  }
-
-  #mobileSheet.sheet-full{
-    height:58vh !important;
-  }
-
-  #mobileSheet.sheet-collapsed{
-    height:110px !important;
-  }
-
-  #mobileDayCard{
-    z-index:9999 !important;
-  }
-}
-</style>
 
 
-<style id="v83-timeline-fix">
-@media (max-width:640px){
-  #timeline{
-    display:flex !important;
-    position:fixed !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:72px !important;
-    z-index:9998 !important;
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
-    white-space:nowrap !important;
-    padding:0 8px !important;
-  }
-  .timeline-item{
-    flex:0 0 auto !important;
-  }
-}
-</style>
+    <style id="v64-mobile-fix">
+        @media (max-width:640px) {
+            #timeline {
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 70px !important;
+                z-index: 9997 !important;
+                white-space: nowrap !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                height: auto !important;
+                max-height: 60px !important;
+            }
+
+            #mobileSheet {
+                height: 58vh !important;
+                overflow: hidden !important;
+                transition: height .25s ease !important;
+            }
+
+            #mobileSheet.sheet-full {
+                height: 58vh !important;
+            }
+
+            #mobileSheet.sheet-collapsed {
+                height: 110px !important;
+            }
+
+            #mobileDayCard {
+                z-index: 9999 !important;
+            }
+        }
+    </style>
 
 
-<style id="v84-timeline-visible">
-@media (max-width:640px){
-  #timeline{
-    position:fixed !important;
-    left:0 !important;
-    right:0 !important;
-    bottom:20px !important; /* above day card */
-    z-index:10001 !important;
-    display:flex !important;
-    flex-direction:row !important;
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
-    white-space:nowrap !important;
-    background:rgba(255,255,255,.96) !important;
-    padding:8px !important;
-  }
-  .timeline-item{
-    flex:0 0 auto !important;
-  }
-}
-</style>
+    <style id="v83-timeline-fix">
+        @media (max-width:640px) {
+            #timeline {
+                display: flex !important;
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 72px !important;
+                z-index: 9998 !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                white-space: nowrap !important;
+                padding: 0 8px !important;
+            }
+
+            .timeline-item {
+                flex: 0 0 auto !important;
+            }
+        }
+    </style>
+
+
+    <style id="v84-timeline-visible">
+        @media (max-width:640px) {
+            #timeline {
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 20px !important;
+                /* above day card */
+                z-index: 10001 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                white-space: nowrap !important;
+                background: rgba(255, 255, 255, .96) !important;
+                padding: 8px !important;
+            }
+
+            .timeline-item {
+                flex: 0 0 auto !important;
+            }
+        }
+    </style>
 
 </head>
 
@@ -249,33 +258,33 @@
 
                     </div>
 
-                    
 
 
-<div id="sidePanel" class="side-panel"></div>
+
+                    <div id="sidePanel" class="side-panel"></div>
 
                     <div id="timeline" class="timeline"></div>
 
-                    
-
-<div id="map"></div>
-
-<div id="mobileVersion" class="mobile-version">V8.8</div>
-<div id="mobileDayCard" class="mobile-day-card">Loading...</div>
 
 
+                    <div id="map"></div>
+
+                    <div id="mobileVersion" class="mobile-version">V8.8</div>
+                    <div id="mobileDayCard" class="mobile-day-card">Loading...</div>
 
 
-<div id="mobileSheet" class="mobile-sheet sheet-collapsed">
- <div class="mobile-sheet-handle"></div>
- <div class="mobile-tabs">
-   <button class="mobile-tab active" data-tab="overview">Overview</button>
-   <button class="mobile-tab" data-tab="photos">Photos</button>
-   <button class="mobile-tab" data-tab="video">Video</button>
-   <button class="mobile-tab" data-tab="mission">Mission</button>
- </div>
- <div id="mobileSheetContent"></div>
-</div>
+
+
+                    <div id="mobileSheet" class="mobile-sheet sheet-collapsed">
+                        <div class="mobile-sheet-handle"></div>
+                        <div class="mobile-tabs">
+                            <button class="mobile-tab active" data-tab="overview">Overview</button>
+                            <button class="mobile-tab" data-tab="photos">Photos</button>
+                            <button class="mobile-tab" data-tab="video">Video</button>
+                            <button class="mobile-tab" data-tab="mission">Mission</button>
+                        </div>
+                        <div id="mobileSheetContent"></div>
+                    </div>
 
 
 
@@ -341,17 +350,17 @@
     <!-- LEAFLET -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-/* MOBILE APP UX */
-if(window.innerWidth <= 640){
- document.addEventListener('click', function(e){
-   if(e.target.id === 'mobileControlsBtn'){
-      const controls=document.querySelector('.controls');
-      controls.classList.toggle('mobile-controls-open');
-   }
- });
-}
+        /* MOBILE APP UX */
+        if (window.innerWidth <= 640) {
+            document.addEventListener('click', function (e) {
+                if (e.target.id === 'mobileControlsBtn') {
+                    const controls = document.querySelector('.controls');
+                    controls.classList.toggle('mobile-controls-open');
+                }
+            });
+        }
 
-</script>
+    </script>
 
     <!-- MAIN SCRIPT -->
 
@@ -856,20 +865,20 @@ if(window.innerWidth <= 640){
             }
         );
 
-        
+
 
         function renderPanel(day) {
-    if(window.innerWidth <= 640){
-        const card=document.getElementById('mobileDayCard');
-        const sheet=document.getElementById('mobileSheetContent');
-        if(card){
-          card.innerHTML=`<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(day.Photos||[]).length} &nbsp; 🎥 ${((day.Video&&day.Video.Enabled)?1:0)}`;
-        }
-        if(sheet){
-          sheet.innerHTML=`<h3>${day.Title}</h3><p><strong>${day.City}, ${day.Country}</strong></p><p>${day.Transportation?.Description || ''}</p>`;
-        }
-        return;
-    }
+            if (window.innerWidth <= 640) {
+                const card = document.getElementById('mobileDayCard');
+                const sheet = document.getElementById('mobileSheetContent');
+                if (card) {
+                    card.innerHTML = `<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(day.Photos || []).length} &nbsp; 🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)}`;
+                }
+                if (sheet) {
+                    sheet.innerHTML = `<h3>${day.Title}</h3><p><strong>${day.City}, ${day.Country}</strong></p><p>${day.Transportation?.Description || ''}</p>`;
+                }
+                return;
+            }
 
             const panel =
                 document.getElementById('sidePanel');
@@ -945,7 +954,7 @@ if(window.innerWidth <= 640){
         ${day.MissionDay
                         ? `
         <p>
-        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2],10)}">
+        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Devotional
         </a>
         </p>
@@ -1038,8 +1047,8 @@ if(window.innerWidth <= 640){
                         <h3>${day.Title}</h3>
                         <p><strong>${day.City}, ${day.Country}</strong></p>
                         <p>${day.Transportation.Description}</p>
-                        <p>📷 ${(day.Photos||[]).length} Photos</p>
-                        <p>🎥 ${((day.Video && day.Video.Enabled)?1:0)} Videos</p>
+                        <p>📷 ${(day.Photos || []).length} Photos</p>
+                        <p>🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)} Videos</p>
                     `;
                 }
             }
@@ -1165,71 +1174,74 @@ if(window.innerWidth <= 640){
 
         });
 
-    
-/* MOBILE APP UX */
-if(window.innerWidth <= 640){
- document.addEventListener('click', function(e){
-   if(e.target.id === 'mobileControlsBtn'){
-      const controls=document.querySelector('.controls');
-      controls.classList.toggle('mobile-controls-open');
-   }
- });
-}
 
-</script>
+        /* MOBILE APP UX */
+        if (window.innerWidth <= 640) {
+            document.addEventListener('click', function (e) {
+                if (e.target.id === 'mobileControlsBtn') {
+                    const controls = document.querySelector('.controls');
+                    controls.classList.toggle('mobile-controls-open');
+                }
+            });
+        }
 
-
-<
+    </script>
 
 
+    <script id="v80-mobile-controller">
+        document.addEventListener('click', function(e){
 
-<script id="v80-mobile-controller">
-document.addEventListener('click', function(e){
+        const tab=e.target.closest('.mobile-tab');
+        if(tab){
+        document.querySelectorAll('.mobile-tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
 
- const tab=e.target.closest('.mobile-tab');
- if(tab){
-   document.querySelectorAll('.mobile-tab').forEach(t=>t.classList.remove('active'));
-   tab.classList.add('active');
+        const day = (window.tripData || []).find(d => d.Date === selectedDate);
+        const sheet = document.getElementById('mobileSheetContent');
+        if(!day || !sheet) return;
 
-   const day = (window.tripData || []).find(d => d.Date === selectedDate);
-   const sheet = document.getElementById('mobileSheetContent');
-   if(!day || !sheet) return;
-
-   if(tab.dataset.tab==='overview'){
-      sheet.innerHTML=`
+        if(tab.dataset.tab==='overview'){
+        sheet.innerHTML=`
         <h3>${day.Title}</h3>
         <p><strong>${day.City}, ${day.Country}</strong></p>
         <p>${day.Transportation?.Description || ''}</p>
         <p>📷 ${(day.Photos||[]).length} Photos</p>
         <p>🎥 ${((day.Video && day.Video.Enabled)?1:0)} Videos</p>`;
-   }
+        }
 
-   if(tab.dataset.tab==='photos'){
-      sheet.innerHTML='<div class="photo-grid">'+
-      (day.Photos||[]).map((p,i)=>'<img src="'+p.Image+'" onclick="openLightbox('+i+')">').join('')+
-      '</div>';
-   }
+        if(tab.dataset.tab==='photos'){
 
-   if(tab.dataset.tab==='video'){
-      sheet.innerHTML=(day.Video&&day.Video.Enabled)
-      ? '<button class="lightbox-btn" onclick="openVideoPopup(\''+day.Video.File+'\')">▶ '+day.Video.Title+'</button>'
-      : '<p>No video available.</p>';
-   }
+        currentLightboxPhotos = day.Photos || [];
 
-   if(tab.dataset.tab==='mission'){
-      sheet.innerHTML='<p>Mission Day: '+(day.MissionDay?'Yes':'No')+'</p>';
-   }
- }
+        sheet.innerHTML =
+        '<div class="photo-grid">' +
+            currentLightboxPhotos.map((p,i)=>
+            '<img src="' + p.Image +
+         '" onclick="openLightbox(' + i + ')">'
+            ).join('') +
+            '</div>';
+        }
 
- const handle=e.target.closest('.mobile-sheet-handle');
- const card=e.target.closest('#mobileDayCard');
- if(handle || card){
-   const s=document.getElementById('mobileSheet');
-   s.classList.toggle('sheet-full');
-   s.classList.toggle('sheet-collapsed');
- }
-});
-</script>
+        if(tab.dataset.tab==='video'){
+        sheet.innerHTML=(day.Video&&day.Video.Enabled)
+        ? '<button class="lightbox-btn" onclick="openVideoPopup(\''+day.Video.File+'\')">▶ '+day.Video.Title+'</button>'
+        : '<p>No video available.</p>';
+        }
+
+        if(tab.dataset.tab==='mission'){
+        sheet.innerHTML='<p>Mission Day: '+(day.MissionDay?'Yes':'No')+'</p>';
+        }
+        }
+
+        const handle=e.target.closest('.mobile-sheet-handle');
+        const card=e.target.closest('#mobileDayCard');
+        if(handle || card){
+        const s=document.getElementById('mobileSheet');
+        s.classList.toggle('sheet-full');
+        s.classList.toggle('sheet-collapsed');
+        }
+        });
+        </script>
 </body>
 
 
