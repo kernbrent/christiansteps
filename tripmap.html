@@ -1059,12 +1059,13 @@
 
             currentLightboxIndex = index;
 
+            document.body.classList.add('lightbox-open');
+
             document
                 .getElementById('lightboxOverlay')
                 .classList.add('active');
 
             updateLightboxImage();
-
         }
         function closePanel() {
 
@@ -1075,10 +1076,11 @@
         }
         function closeLightbox() {
 
+            document.body.classList.remove('lightbox-open');
+
             document
                 .getElementById('lightboxOverlay')
                 .classList.remove('active');
-
         }
 
         function openVideoPopup(videoPath) {
@@ -1189,59 +1191,59 @@
 
 
     <script id="v80-mobile-controller">
-        document.addEventListener('click', function(e){
+        document.addEventListener('click', function (e) {
 
-        const tab=e.target.closest('.mobile-tab');
-        if(tab){
-        document.querySelectorAll('.mobile-tab').forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active');
+            const tab = e.target.closest('.mobile-tab');
+            if (tab) {
+                document.querySelectorAll('.mobile-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
 
-        const day = (window.tripData || []).find(d => d.Date === selectedDate);
-        const sheet = document.getElementById('mobileSheetContent');
-        if(!day || !sheet) return;
+                const day = (window.tripData || []).find(d => d.Date === selectedDate);
+                const sheet = document.getElementById('mobileSheetContent');
+                if (!day || !sheet) return;
 
-        if(tab.dataset.tab==='overview'){
-        sheet.innerHTML=`
+                if (tab.dataset.tab === 'overview') {
+                    sheet.innerHTML = `
         <h3>${day.Title}</h3>
         <p><strong>${day.City}, ${day.Country}</strong></p>
         <p>${day.Transportation?.Description || ''}</p>
-        <p>📷 ${(day.Photos||[]).length} Photos</p>
-        <p>🎥 ${((day.Video && day.Video.Enabled)?1:0)} Videos</p>`;
-        }
+        <p>📷 ${(day.Photos || []).length} Photos</p>
+        <p>🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)} Videos</p>`;
+                }
 
-        if(tab.dataset.tab==='photos'){
+                if (tab.dataset.tab === 'photos') {
 
-        currentLightboxPhotos = day.Photos || [];
+                    currentLightboxPhotos = day.Photos || [];
 
-        sheet.innerHTML =
-        '<div class="photo-grid">' +
-            currentLightboxPhotos.map((p,i)=>
-            '<img src="' + p.Image +
-         '" onclick="openLightbox(' + i + ')">'
-            ).join('') +
-            '</div>';
-        }
+                    sheet.innerHTML =
+                        '<div class="photo-grid">' +
+                        currentLightboxPhotos.map((p, i) =>
+                            '<img src="' + p.Image +
+                            '" onclick="openLightbox(' + i + ')">'
+                        ).join('') +
+                        '</div>';
+                }
 
-        if(tab.dataset.tab==='video'){
-        sheet.innerHTML=(day.Video&&day.Video.Enabled)
-        ? '<button class="lightbox-btn" onclick="openVideoPopup(\''+day.Video.File+'\')">▶ '+day.Video.Title+'</button>'
-        : '<p>No video available.</p>';
-        }
+                if (tab.dataset.tab === 'video') {
+                    sheet.innerHTML = (day.Video && day.Video.Enabled)
+                        ? '<button class="lightbox-btn" onclick="openVideoPopup(\'' + day.Video.File + '\')">▶ ' + day.Video.Title + '</button>'
+                        : '<p>No video available.</p>';
+                }
 
-        if(tab.dataset.tab==='mission'){
-        sheet.innerHTML='<p>Mission Day: '+(day.MissionDay?'Yes':'No')+'</p>';
-        }
-        }
+                if (tab.dataset.tab === 'mission') {
+                    sheet.innerHTML = '<p>Mission Day: ' + (day.MissionDay ? 'Yes' : 'No') + '</p>';
+                }
+            }
 
-        const handle=e.target.closest('.mobile-sheet-handle');
-        const card=e.target.closest('#mobileDayCard');
-        if(handle || card){
-        const s=document.getElementById('mobileSheet');
-        s.classList.toggle('sheet-full');
-        s.classList.toggle('sheet-collapsed');
-        }
+            const handle = e.target.closest('.mobile-sheet-handle');
+            const card = e.target.closest('#mobileDayCard');
+            if (handle || card) {
+                const s = document.getElementById('mobileSheet');
+                s.classList.toggle('sheet-full');
+                s.classList.toggle('sheet-collapsed');
+            }
         });
-        </script>
+    </script>
 </body>
 
 
