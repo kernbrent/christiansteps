@@ -166,6 +166,11 @@
         }
     </style>
 
+
+<style id="v100-enhancements">
+.timeline-item.mission-day{background:#e8f5e9;border-radius:8px;padding:4px 8px;}
+.today-badge{display:block;font-size:10px;font-weight:bold;color:#c00;}
+</style>
 </head>
 
 <body>
@@ -205,6 +210,13 @@
                         </p>
 
                     </section>
+<div id="quickLinks" style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0 10px 0;flex-wrap:wrap;font-size:14px;">
+<a href="missions.html">🏠 Mission Home</a>
+<span>|</span>
+<a href="tripgallery.html">📸 Gallery</a>
+<span>|</span>
+<a href="#" id="todayBtn">📍 Today</a>
+</div>
 
                     <div class="controls">
 
@@ -219,7 +231,7 @@
 
                         </div>
 
-                        <div>
+                        <!--<div>
 
                             <strong>Modes:</strong><br>
 
@@ -235,7 +247,7 @@
                                 Mission Dashboard
                             </button>
 
-                        </div>
+                        </div>-->
 
                         <div>
 
@@ -267,9 +279,9 @@
 
 
 
-                    <div id="map"></div>
+                    <div id="loadingMessage" style="text-align:center;padding:10px;font-weight:bold;">Loading Trip Data...</div><div id="map"></div>
 
-                    <div id="mobileVersion" class="mobile-version">V8.8</div>
+                    <div id="mobileVersion" class="mobile-version">V10.3</div>
                     <div id="mobileDayCard" class="mobile-day-card">Loading...</div>
 
 
@@ -391,7 +403,7 @@
             }
         ).addTo(map);
 
-        let currentMode = 'minimal';
+        let currentMode = 'journey';
         let selectedDate = null;
         let routeLayer = null;
         let markerLayer = null;
@@ -407,15 +419,7 @@
 
                 // DEFAULT TO JOURNEY MODE
                 currentMode = 'journey';
-
-                // activate Journey button visually
-                document.querySelectorAll('.mode-btn')
-                    .forEach(b => b.classList.remove('active'));
-
-                document.querySelector('[data-mode="journey"]')
-                    .classList.add('active');
-
-                // DETERMINE DEFAULT DATE
+// DETERMINE DEFAULT DATE
                 const today = new Date();
 
                 // subtract one day
@@ -454,32 +458,13 @@
 
                 buildTimeline(data);
 
-                renderMap();
+                renderMap(); document.getElementById('loadingMessage')?.remove();
 
                 document.querySelectorAll('input[type=checkbox]')
                     .forEach(cb => {
                         cb.addEventListener('change', renderMap);
                     });
-
-                document.querySelectorAll('.mode-btn')
-                    .forEach(btn => {
-
-                        btn.addEventListener('click', () => {
-
-                            document.querySelectorAll('.mode-btn')
-                                .forEach(b => b.classList.remove('active'));
-
-                            btn.classList.add('active');
-
-                            currentMode = btn.dataset.mode;
-
-                            renderMap();
-
-                        });
-
-                    });
-
-                document
+document
                     .getElementById('playBtn')
                     .addEventListener('click', replayJourney);
 
@@ -506,8 +491,9 @@
                     div.classList.add('active');
                 }
 
-                div.innerText =
-                    day.Date + ' - ' + day.City;
+                if(day.MissionDay){div.classList.add('mission-day');}
+                const todayStr=(new Date()).toISOString().split('T')[0];
+                div.innerHTML=(day.Date===todayStr?'<span class="today-badge">TODAY</span>':'') + day.Date + ' - ' + day.City;
 
                 div.onclick = () => {
 
@@ -748,12 +734,23 @@
 
             }).addTo(map);
 
-            map.fitBounds(
-                routeLayer.getBounds(),
-                {
-                    padding: [40, 40]
-                }
-            );
+            if (window.innerWidth <= 640) {
+
+                map.setView(
+                    [42.5, 15.5],
+                    5
+                );
+
+            } else {
+
+                map.fitBounds(
+                    routeLayer.getBounds(),
+                    {
+                        padding: [40, 40]
+                    }
+                );
+
+            }
 
         }
 
@@ -923,21 +920,30 @@
         Steps:
         ${day.Steps?.toLocaleString() || 0}
         </div>
+        <div class="stat-card">Photos: ${(day.Photos||[]).length}</div>
+        <div class="stat-card">Videos: ${((day.Video&&day.Video.Enabled)?1:0)}</div>
 
     </div>
 
     `;
 
-            if (currentMode === 'journey') {
+            if (currentMode === 'journey' && day.MissionDay) {
 
                 html += `
         <hr>
 
-        <h3>Journey Mode</h3>
+        <h3>Mission Resources</h3>
 
         <p>
-        Interactive storytelling mode with
-        route progression and travel visualization.
+        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+            View Devotional
+        </a>
+        </p>
+
+        <p>
+        <a href="dayactivities.html?day=${day.Date}">
+            View Updates
+        </a>
         </p>
         `;
 
@@ -1187,7 +1193,17 @@
             });
         }
 
-    </script>
+    
+document.addEventListener('click',e=>{
+ const b=e.target.closest('#todayBtn');
+ if(!b) return;
+ e.preventDefault();
+ const today=(new Date()).toISOString().split('T')[0];
+ if(window.tripData?.find(d=>d.Date===today)){
+   selectedDate=today; buildTimeline(tripData); renderMap();
+ }
+});
+</script>
 
 
     <script id="v80-mobile-controller">
@@ -1231,7 +1247,38 @@
                 }
 
                 if (tab.dataset.tab === 'mission') {
-                    sheet.innerHTML = '<p>Mission Day: ' + (day.MissionDay ? 'Yes' : 'No') + '</p>';
+
+                    if (day.MissionDay) {
+
+                        sheet.innerHTML = `
+                        <h3>Mission Resources</h3>
+
+                        <p>
+                        Follow the links to view the daily devotional and the daily updates.
+                        </p>
+
+                        <p>
+                        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+                            View Devotional
+                        </a>
+                        </p>
+
+                        <p>
+                        <a href="dayactivities.html?day=${day.Date}">
+                            View Updates
+                        </a>
+                        </p>`;
+
+                    } else {
+
+                        sheet.innerHTML = `
+                        <h3>Mission Resources</h3>
+
+                        <p>
+                        A Daily Devotional and a Daily Update are available on the dates June 3 - June 14.
+                        </p>`;
+
+                    }
                 }
             }
 
@@ -1244,6 +1291,17 @@
             }
         });
     </script>
+
+<script>
+// Mobile menu button should open the ChristianSteps site menu
+document.addEventListener('click',function(e){
+ const btn=e.target.closest('#siteHeader .menu-button, #siteHeader .mobile-menu-btn, #siteHeader .menu-toggle');
+ if(btn){
+   const nav=document.querySelector('#siteHeader nav, #siteHeader .nav-menu, #siteHeader .menu-panel');
+   if(nav){ nav.classList.toggle('open'); }
+ }
+});
+</script>
 </body>
 
 
