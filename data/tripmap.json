@@ -830,10 +830,31 @@
     "Transportation": {
       "Type": "Local",
       "Icon": "🏖️",
-      "Description": "Beach and relaxation"
+      "Description": "Walk around town and ruins and chill"
     },
-    "Photos": [],
-    "Steps": 10000
+      "Video": {
+      "Enabled": true,
+      "Title": "Greek Flag - Looks like the Sea",
+      "File": "Images/tripmap/2026-06-1_nafplio_4.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-1_nafplio_1.jpg",
+        "Caption": "The longer I stay, the more Greek I become."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-1_nafplio_2.jpg",
+        "Caption": "My Favorite Restaurant was Closed Today"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-1_nafplio_3.jpg",
+        "Caption": "Tomorrow I climb this Bugger"
+      }
+    ],
+    "Steps": 10250
   },
   {
     "Date": "2026-06-02",
@@ -849,10 +870,41 @@
     "Transportation": {
       "Type": "Local",
       "Icon": "🏖️",
-      "Description": "Beach and relaxation"
+      "Description": "Chill and Read and Eat"
     },
-    "Photos": [],
-    "Steps": 10000
+          "Video": {
+      "Enabled": true,
+      "Title": "The Beautiful Nafplio Harbor (Bourtzi)",
+      "File": "Images/tripmap/2026-06-2_nafplio_6.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-2_nafplio_1.jpg",
+        "Caption": "Today I ate at his restaurant. He over charged me and the food was not good. My only poor experience here."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-2_nafplio_2.jpg",
+        "Caption": "Church of Agios Georgis (St George). It is the Cathedral for Nafplio region."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-2_nafplio_3.jpg",
+        "Caption": "Inside work is being done of Agios Georgios"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-2_nafplio_4.jpg",
+        "Caption": "The beautiful ceiling of Agios Georgis"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-2_nafplio_5.jpg",
+        "Caption": "Ruins just above my apartment"
+      }
+    ],
+    "Steps": 11236
   },
   {
     "Date": "2026-06-03",
