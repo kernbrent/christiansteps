@@ -167,10 +167,30 @@
     </style>
 
 
-<style id="v100-enhancements">
-.timeline-item.mission-day{background:#e8f5e9;border-radius:8px;padding:4px 8px;}
-.today-badge{display:block;font-size:10px;font-weight:bold;color:#c00;}
-</style>
+    <style id="v100-enhancements">
+        .timeline-item.mission-day {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 4px 8px;
+        }
+
+        .today-badge {
+            display: block;
+            font-size: 10px;
+            font-weight: bold;
+            color: #c00;
+        }
+    </style>
+    <style id="v124-mobile-scroll-fix">
+        @media (max-width:640px) {
+
+            #mobileSheetContent {
+                padding-bottom: 220px !important;
+                box-sizing: border-box;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
@@ -210,13 +230,14 @@
                         </p>
 
                     </section>
-<div id="quickLinks" style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0 10px 0;flex-wrap:wrap;font-size:14px;">
-<a href="missions.html">🏠 Mission Home</a>
-<span>|</span>
-<a href="tripgallery.html">📸 Gallery</a>
-<span>|</span>
-<a href="#" id="todayBtn">📍 Today</a>
-</div>
+                    <div id="quickLinks"
+                        style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0 10px 0;flex-wrap:wrap;font-size:14px;">
+                        <a href="missions.html">🏠 Mission Home</a>
+                        <span>|</span>
+                        <a href="tripgallery.html">📸 Gallery</a>
+                        <span>|</span>
+                        <a href="#" id="todayBtn">📍 Today</a>
+                    </div>
 
                     <div class="controls">
 
@@ -279,7 +300,9 @@
 
 
 
-                    <div id="loadingMessage" style="text-align:center;padding:10px;font-weight:bold;">Loading Trip Data...</div><div id="map"></div>
+                    <div id="loadingMessage" style="text-align:center;padding:10px;font-weight:bold;">Loading Trip
+                        Data...</div>
+                    <div id="map"></div>
 
                     <div id="mobileVersion" class="mobile-version" style="z-index:10050;position:fixed;">V12.1</div>
                     <div id="mobileDayCard" class="mobile-day-card">Loading...</div>
@@ -420,7 +443,7 @@
 
                 // DEFAULT TO JOURNEY MODE
                 currentMode = 'journey';
-// DETERMINE DEFAULT DATE
+                // DETERMINE DEFAULT DATE
                 const today = new Date();
 
                 // subtract one day
@@ -464,7 +487,7 @@
 
                 renderMap(); document.getElementById('loadingMessage')?.remove();
 
-                
+
 
                 // Initialize mobile card/sheet on first load
                 const initialDay = data.find(d => d.Date === selectedDate);
@@ -473,7 +496,7 @@
 
                     // Force mobile card initialization
                     const card = document.getElementById('mobileDayCard');
-                    if(card){
+                    if (card) {
                         card.innerHTML = `<strong>${initialDay.City}</strong><br>👣 ${initialDay.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(initialDay.Photos || []).length} &nbsp; 🎥 ${((initialDay.Video && initialDay.Video.Enabled) ? 1 : 0)}`;
                     }
 
@@ -489,7 +512,7 @@
 
                         setTimeout(() => {
                             document.querySelector('.mobile-tab[data-tab="overview"]')?.click();
-                            
+
                         }, 300);
 
                         setTimeout(() => {
@@ -504,7 +527,7 @@
                     .forEach(cb => {
                         cb.addEventListener('change', renderMap);
                     });
-document
+                document
                     .getElementById('playBtn')
                     .addEventListener('click', replayJourney);
 
@@ -531,9 +554,9 @@ document
                     div.classList.add('active');
                 }
 
-                if(day.MissionDay){div.classList.add('mission-day');}
-                const todayStr=(new Date()).toISOString().split('T')[0];
-                div.innerHTML=(day.Date===todayStr?'<span class="today-badge">TODAY</span>':'') + day.Date + ' - ' + day.City;
+                if (day.MissionDay) { div.classList.add('mission-day'); }
+                const todayStr = (new Date()).toISOString().split('T')[0];
+                div.innerHTML = (day.Date === todayStr ? '<span class="today-badge">TODAY</span>' : '') + day.Date + ' - ' + day.City;
 
                 div.onclick = () => {
 
@@ -553,7 +576,7 @@ document
 
         }
 
-        
+
         function centerTimeline() {
 
             const timeline = document.getElementById('timeline');
@@ -779,12 +802,26 @@ document
 
             if (window.innerWidth <= 640) {
 
-                map.setView(
-                    [42.5, 15.5],
-                    5
-                );
+                const currentDay =
+                    tripData.find(d => d.Date === selectedDate);
+
+                if (currentDay) {
+
+                    map.setView(
+                        [currentDay.Latitude, currentDay.Longitude],
+                        5
+                    );
 
                 } else {
+
+                    map.setView(
+                        [42.5, 15.5],
+                        5
+                    );
+
+                }
+
+            } else {
 
                 map.fitBounds(
                     routeLayer.getBounds(),
@@ -798,31 +835,35 @@ document
         }
 
 
-        
-function buildMobileTimeline(){
-    if(window.innerWidth > 640 || !window.tripData) return '';
 
-    let html = '<div class="mobile-timeline-list">';
-    window.tripData.forEach(d=>{
-        const active = d.Date===selectedDate ? ' active' : '';
-        html += `<div class="mobile-timeline-item${active}" onclick="selectedDate='${d.Date}';buildTimeline(tripData);renderMap();document.querySelector('.mobile-tab.active')?.click();">${d.Date} - ${d.City}</div>`;
-    });
-    html += '</div>';
+        function buildMobileTimeline() {
+            if (window.innerWidth > 640 || !window.tripData) return '';
 
-    html += `<div id="debugPanel">
+            let html = '<div class="mobile-timeline-list">';
+            window.tripData.forEach(d => {
+                const active = d.Date === selectedDate ? ' active' : '';
+                html += `<div class="mobile-timeline-item${active}" onclick="selectedDate='${d.Date}';buildTimeline(tripData);renderMap();document.querySelector('.mobile-tab.active')?.click();">${d.Date} - ${d.City}</div>`;
+            });
+            html += '</div>';
+
+            html += `<div id="debugPanel">
         selectedDate=${selectedDate}<br>
         timelineItems=${window.tripData.length}
     </div>`;
 
-    return html;
-}
+            return html;
+        }
 
-function renderPanel(day) {
+        function renderPanel(day) {
             if (window.innerWidth <= 640) {
                 const card = document.getElementById('mobileDayCard');
                 const sheet = document.getElementById('mobileSheetContent');
                 if (card) {
-                    card.innerHTML = `<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(day.Photos || []).length} &nbsp; 🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)}`;
+                    card.innerHTML = `<strong>${day.City}</strong><br>
+👣 ${day.Steps?.toLocaleString() || 0}
+&nbsp; 📷 ${(day.Photos || []).length}
+&nbsp; 🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)}
+&nbsp; <span style="font-size:12px;font-weight:700;color:#2c3e50;">▲ Tap for Details</span>`;
                 }
                 if (sheet) {
                     sheet.innerHTML = `<h3>${day.Title}</h3><p><strong>${day.City}, ${day.Country}</strong></p><p>${day.Transportation?.Description || ''}</p>`;
@@ -873,8 +914,8 @@ function renderPanel(day) {
         Steps:
         ${day.Steps?.toLocaleString() || 0}
         </div>
-        <div class="stat-card">Photos: ${(day.Photos||[]).length}</div>
-        <div class="stat-card">Videos: ${((day.Video&&day.Video.Enabled)?1:0)}</div>
+        <div class="stat-card">Photos: ${(day.Photos || []).length}</div>
+        <div class="stat-card">Videos: ${((day.Video && day.Video.Enabled) ? 1 : 0)}</div>
 
     </div>
 
@@ -1146,17 +1187,17 @@ function renderPanel(day) {
             });
         }
 
-    
-document.addEventListener('click',e=>{
- const b=e.target.closest('#todayBtn');
- if(!b) return;
- e.preventDefault();
- const today=(new Date()).toISOString().split('T')[0];
- if(window.tripData?.find(d=>d.Date===today)){
-   selectedDate=today; buildTimeline(tripData); renderMap();
- }
-});
-</script>
+
+        document.addEventListener('click', e => {
+            const b = e.target.closest('#todayBtn');
+            if (!b) return;
+            e.preventDefault();
+            const today = (new Date()).toISOString().split('T')[0];
+            if (window.tripData?.find(d => d.Date === today)) {
+                selectedDate = today; buildTimeline(tripData); renderMap();
+            }
+        });
+    </script>
 
 
     <script id="v80-mobile-controller">
@@ -1243,31 +1284,31 @@ document.addEventListener('click',e=>{
                 const hint = document.getElementById('sheetHint');
                 s.classList.toggle('sheet-full');
                 s.classList.toggle('sheet-collapsed');
-                if(hint){
+                if (hint) {
                     hint.innerHTML = s.classList.contains('sheet-collapsed')
-                    ? '▲ Tap for Photos, Videos & Details'
-                    : '▼ Tap to Collapse';
+                        ? '▲ Tap for Photos, Videos & Details'
+                        : '▼ Tap to Collapse';
                 }
 
-                if(s.classList.contains('sheet-full')){
+                if (s.classList.contains('sheet-full')) {
                     const activeTab = document.querySelector('.mobile-tab.active') ||
-                                      document.querySelector('.mobile-tab[data-tab="overview"]');
+                        document.querySelector('.mobile-tab[data-tab="overview"]');
                     activeTab?.click();
                 }
             }
         });
     </script>
 
-<script>
-// Mobile menu button should open the ChristianSteps site menu
-document.addEventListener('click',function(e){
- const btn=e.target.closest('#siteHeader .menu-button, #siteHeader .mobile-menu-btn, #siteHeader .menu-toggle');
- if(btn){
-   const nav=document.querySelector('#siteHeader nav, #siteHeader .nav-menu, #siteHeader .menu-panel');
-   if(nav){ nav.classList.toggle('open'); }
- }
-});
-</script>
+    <script>
+        // Mobile menu button should open the ChristianSteps site menu
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#siteHeader .menu-button, #siteHeader .mobile-menu-btn, #siteHeader .menu-toggle');
+            if (btn) {
+                const nav = document.querySelector('#siteHeader nav, #siteHeader .nav-menu, #siteHeader .menu-panel');
+                if (nav) { nav.classList.toggle('open'); }
+            }
+        });
+    </script>
 </body>
 
 
