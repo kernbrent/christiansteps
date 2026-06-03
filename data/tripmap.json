@@ -922,7 +922,73 @@
       "Icon": "🚌",
       "Description": "Travel from Nafplio to Athens"
     },
-    "Photos": [],
+              "Video": {
+      "Enabled": true,
+      "Title": "A View From the Top",
+      "File": "Images/tripmap/2026-06-3_nafplio_13.mp4"
+    },
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_1.jpg",
+        "Caption": "Starting the Climb: Stair 1 of 999 to Palamidi Fortress."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_2.jpg",
+        "Caption": "2/3 of the way there. I can do it."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_3.jpg",
+        "Caption": "My Rocky Moment. All 999 stairs."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_4.jpg",
+        "Caption": "I found this hole in the ground. Let's explore"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_5.jpg",
+        "Caption": "It is a dungeon. It is actually the dungeon that held Theodoros Kolokotronis for 10 months."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_6.jpg",
+        "Caption": "That is the only light in the Dungeon, and it is believe it was mostly blocked while Kolokotronis was there."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_7.jpg",
+        "Caption": "There are over 800 arrow/musket holes in this Bastion (Actually it is 5 Bastions in 1)"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_8.jpg",
+        "Caption": "Panoramic View from the Top"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_9.jpg",
+        "Caption": "Archway dug into the Limestone of the path around the peninsula of Nafplio."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_10.jpg",
+        "Caption": "A chapel in the ruins of the peninsula, unfortuntely, it was close. :-("
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_11.jpg",
+        "Caption": "The view of the fortress through the arch on the path. "
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-3_nafplio_12.jpg",
+        "Caption": "Part way up the 999 stairs. A view of the peninsula and cactus. Cactus is not native to Greece. The Ottoman's planted it as part of the invasion to cause trouble. The Greek's in true fashion use it as a source of food."
+      }
+    ],
     "Steps": 10000
   },
   {
