@@ -281,7 +281,7 @@
 
                     <div id="loadingMessage" style="text-align:center;padding:10px;font-weight:bold;">Loading Trip Data...</div><div id="map"></div>
 
-                    <div id="mobileVersion" class="mobile-version">V10.5</div>
+                    <div id="mobileVersion" class="mobile-version">V10.3</div>
                     <div id="mobileDayCard" class="mobile-day-card">Loading...</div>
 
 
@@ -702,15 +702,6 @@ document
 
                     renderPanel(day);
 
-                    if (window.innerWidth <= 640) {
-                        setTimeout(() => {
-                            map.setView(
-                                [day.Latitude + 2.0, day.Longitude],
-                                6
-                            );
-                        }, 100);
-                    }
-
                 }
 
                 marker.on('click', () => {
@@ -864,23 +855,12 @@ document
 
         }).addTo(map);
 
-        if (window.innerWidth <= 640) {
-
-            map.setView(
-                [41.9028, 12.4964],
-                4
-            );
-
-        } else {
-
-            map.fitBounds(
-                routeLayer.getBounds(),
-                {
-                    padding: [40, 40]
-                }
-            );
-
-        }
+        map.fitBounds(
+            routeLayer.getBounds(),
+            {
+                padding: [40, 40]
+            }
+        );
 
 
 
