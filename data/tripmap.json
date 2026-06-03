@@ -293,11 +293,13 @@
       "Icon": "🏔️",
       "Description": "Today was another take your breathe away day. The mountains are simply unexplainable. The pictures are a pale representation. Today's scripture was from Romans 12:18 - If it is possible on your part, live at peace with others. I needed that lesson today."
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "Watch Seceda Video",
-      "File": "Images/tripmap/2026-05-22_ortisei_3.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Watch Seceda Video",
+        "File": "Images/tripmap/2026-05-22_ortisei_3.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -453,11 +455,13 @@
       "Icon": "🍷",
       "Description": "Today we actually slept in a bit and then headed on a tour for Pisa. Wow, this place is beautiful and full of history. The Tower, Cathedral, and Baptistry are all sinking in the loss soil and sand. Funny story, the local university has majors in every science, except... Architecture. Well, I think we can see why. LOL! And then the best dinner of our trip so far. Beef Stew to die for. "
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "Watch Pisa Cathedral Video",
-      "File": "Images/tripmap/2026-05-25_pisa_7.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Watch Pisa Cathedral Video",
+        "File": "Images/tripmap/2026-05-25_pisa_7.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -569,11 +573,13 @@
       "Icon": "🏛️",
       "Description": "Our first day in Rome was supposed to be light and restful. We walked 15,000 steps and came home 6 hours later tired, but saw some beautiful things and explored the Metro (subway)."
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "Watch Video of ruins from the Victor Emmanuel II National Monument",
-      "File": "Images/tripmap/2026-05-27_rome_8.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Watch Video of ruins from the Victor Emmanuel II National Monument",
+        "File": "Images/tripmap/2026-05-27_rome_8.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -632,11 +638,13 @@
       "Icon": "🌋",
       "Description": "Big busy last day in Rome. We toured Vatican City and saw the Sistine Chapel and St. Peter's Basilica. We then went and toured the Colosseum and the Forums. We didn't get to see much of the forum, and then one final Italian dinner in Italy."
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "Inside St. Peter's Basilica",
-      "File": "Images/tripmap/2026-05-28_rome_7.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Inside St. Peter's Basilica",
+        "File": "Images/tripmap/2026-05-28_rome_7.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -687,11 +695,13 @@
       "Icon": "⛴️",
       "Description": "Train to Bari then overnight ferry to Patras"
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "View from my table at dinner in Bari.",
-      "File": "Images/tripmap/2026-05-29_bari_6.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "View from my table at dinner in Bari.",
+        "File": "Images/tripmap/2026-05-29_bari_6.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -737,11 +747,13 @@
       "Icon": "🚌",
       "Description": "Docked in Patras, Greece. Bus to Corinth. Another bus to Nafplio. Beautiful and charming city."
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "The view from my AirBNB",
-      "File": "Images/tripmap/2026-05-30_nafplio_4.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "The view from my AirBNB",
+        "File": "Images/tripmap/2026-05-30_nafplio_4.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -787,11 +799,13 @@
       "Icon": "🏖️",
       "Description": "A very slow day of coffee, reading, people watching and relaxation."
     },
-    "Video": {
-      "Enabled": true,
-      "Title": "View from Lunch on Harbor",
-      "File": "Images/tripmap/2026-05-31_nafplio_5.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "View from Lunch on Harbor",
+        "File": "Images/tripmap/2026-05-31_nafplio_5.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -832,11 +846,13 @@
       "Icon": "🏖️",
       "Description": "Walk around town and ruins and chill"
     },
-      "Video": {
-      "Enabled": true,
-      "Title": "Greek Flag - Looks like the Sea",
-      "File": "Images/tripmap/2026-06-1_nafplio_4.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Greek Flag - Looks like the Sea",
+        "File": "Images/tripmap/2026-06-1_nafplio_4.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -872,11 +888,13 @@
       "Icon": "🏖️",
       "Description": "Chill and Read and Eat"
     },
-          "Video": {
-      "Enabled": true,
-      "Title": "The Beautiful Nafplio Harbor (Bourtzi)",
-      "File": "Images/tripmap/2026-06-2_nafplio_6.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "The Beautiful Nafplio Harbor (Bourtzi)",
+        "File": "Images/tripmap/2026-06-2_nafplio_6.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
@@ -922,11 +940,18 @@
       "Icon": "🚌",
       "Description": "Travel from Nafplio to Athens"
     },
-              "Video": {
-      "Enabled": true,
-      "Title": "A View From the Top",
-      "File": "Images/tripmap/2026-06-3_nafplio_13.mp4"
-    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "A View From the Top",
+        "File": "Images/tripmap/2026-06-3_nafplio_13.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Prison Cell in Fortress",
+        "File": "Images/tripmap/2026-06-3_nafplio_14.mp4"
+      }
+    ],
     "Photos": [
       {
         "Enabled": true,
