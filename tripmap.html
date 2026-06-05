@@ -304,7 +304,7 @@
                         Data...</div>
                     <div id="map"></div>
 
-                    <div id="mobileVersion" class="mobile-version" style="z-index:10050;position:fixed;">V12.1</div>
+                    <div id="mobileVersion" class="mobile-version" style="z-index:10050;position:fixed;">V12.4</div>
                     <div id="mobileDayCard" class="mobile-day-card">Loading...</div>
 
 
@@ -497,7 +497,7 @@
                     // Force mobile card initialization
                     const card = document.getElementById('mobileDayCard');
                     if (card) {
-                        card.innerHTML = `<strong>${initialDay.City}</strong><br>👣 ${initialDay.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(initialDay.Photos || []).length} &nbsp; 🎥 ${((initialDay.Video && initialDay.Video.Enabled) ? 1 : 0)}`;
+                        card.innerHTML = `<strong>${initialDay.City}</strong><br>👣 ${initialDay.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(initialDay.Photos || []).length} &nbsp; 🎥 ${getVideoCount(initialDay)}`;
                     }
 
                     const sheet = document.getElementById('mobileSheetContent');
@@ -507,7 +507,7 @@
                             <p><strong>${initialDay.City}, ${initialDay.Country}</strong></p>
                             <p>${initialDay.Transportation?.Description || ''}</p>
                             <p>📷 ${(initialDay.Photos || []).length} Photos</p>
-                            <p>🎥 ${((initialDay.Video && initialDay.Video.Enabled) ? 1 : 0)} Videos</p>
+                            <p>🎥 ${getVideoCount(initialDay)} Videos</p>
                         `;
 
                         setTimeout(() => {
@@ -854,7 +854,18 @@
             return html;
         }
 
-        function renderPanel(day) {
+        
+        function getVideos(day) {
+            if (Array.isArray(day.Videos)) return day.Videos.filter(v => v.Enabled !== false);
+            if (day.Video && day.Video.Enabled) return [day.Video];
+            return [];
+        }
+
+        function getVideoCount(day) {
+            return getVideos(day).length;
+        }
+
+function renderPanel(day) {
             if (window.innerWidth <= 640) {
                 const card = document.getElementById('mobileDayCard');
                 const sheet = document.getElementById('mobileSheetContent');
@@ -862,7 +873,7 @@
                     card.innerHTML = `<strong>${day.City}</strong><br>
 👣 ${day.Steps?.toLocaleString() || 0}
 &nbsp; 📷 ${(day.Photos || []).length}
-&nbsp; 🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)}
+&nbsp; 🎥 ${getVideoCount(day)}
 &nbsp; <span style="font-size:12px;font-weight:700;color:#2c3e50;">▲ Tap for Details</span>`;
                 }
                 if (sheet) {
@@ -915,7 +926,7 @@
         ${day.Steps?.toLocaleString() || 0}
         </div>
         <div class="stat-card">Photos: ${(day.Photos || []).length}</div>
-        <div class="stat-card">Videos: ${((day.Video && day.Video.Enabled) ? 1 : 0)}</div>
+        <div class="stat-card">Videos: ${getVideoCount(day)}</div>
 
     </div>
 
@@ -973,23 +984,19 @@
 
 
 
-            if (day.Video && day.Video.Enabled) {
+            const videos = getVideos(day);
+            if (videos.length > 0) {
 
                 html += `
 
         <hr>
 
-        <h3>Trip Video</h3>
-
-        <button
-            class="lightbox-btn"
-            onclick="openVideoPopup('${day.Video.File}')">
-
-            ▶ ${day.Video.Title}
-
-        </button>
-
+        <h3>Trip Video${videos.length > 1 ? 's' : ''}</h3>
         `;
+
+                videos.forEach(v => {
+                    html += `<button class="lightbox-btn" onclick="openVideoPopup('${v.File}')" style="display:block;margin-bottom:8px;">▶ ${v.Title}</button>`;
+                });
 
             }
 
@@ -1038,7 +1045,7 @@
 
                 if (card) {
                     const photos = (day.Photos || []).length;
-                    const video = (day.Video && day.Video.Enabled) ? 1 : 0;
+                    const video = getVideoCount(day);
                     card.innerHTML = `<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString() || 0} &nbsp; 📷 ${photos} &nbsp; 🎥 ${video}`;
                 }
 
@@ -1048,7 +1055,7 @@
                         <p><strong>${day.City}, ${day.Country}</strong></p>
                         <p>${day.Transportation.Description}</p>
                         <p>📷 ${(day.Photos || []).length} Photos</p>
-                        <p>🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)} Videos</p>
+                        <p>🎥 ${getVideoCount(day)} Videos</p>
                     `;
                 }
             }
@@ -1218,8 +1225,8 @@
         <p><strong>${day.City}, ${day.Country}</strong></p>
         <p>${day.Transportation?.Description || ''}</p>
         <p>📷 ${(day.Photos || []).length} Photos</p>
-        <p>🎥 ${((day.Video && day.Video.Enabled) ? 1 : 0)} Videos</p>
-        ${buildMobileTimeline()}`;
+        <p>🎥 ${getVideoCount(day)} Videos</p>
+        `;
                 }
 
                 if (tab.dataset.tab === 'photos') {
@@ -1236,8 +1243,9 @@
                 }
 
                 if (tab.dataset.tab === 'video') {
-                    sheet.innerHTML = (day.Video && day.Video.Enabled)
-                        ? '<button class="lightbox-btn" onclick="openVideoPopup(\'' + day.Video.File + '\')">▶ ' + day.Video.Title + '</button>'
+                    const videos = getVideos(day);
+                    sheet.innerHTML = videos.length
+                        ? videos.map(v => '<button class="lightbox-btn" style="display:block;margin-bottom:8px;" onclick="openVideoPopup(\'' + v.File + '\')">▶ ' + v.Title + '</button>').join('')
                         : '<p>No video available.</p>';
                 }
 
