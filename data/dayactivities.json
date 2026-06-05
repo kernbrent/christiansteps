@@ -75,7 +75,7 @@
   },
   {
     "Date": 3,
-    "Published": true,
+    "Published": false,
     "Location": "USA - Greece",
     "PlannedActivities": "Travel to Athens Greece.",
     "AccomplishedActivities": "",
@@ -115,35 +115,72 @@
     "Published": true,
     "Location": "Athens",
     "PlannedActivities": "Arrive in Athens/Mars Hill",
-    "AccomplishedActivities": "",
-    "GodMoments": "",
-    "Challenges": "",
-    "SharedPrayerRequests": "",
+    "AccomplishedActivities": "Today we all arrived in Athens. There are 5 from Texas, 5 from Wisconsin, and 2 from Colorado. It is a nice group. We gathered in our AirBNBs and then walked (and trained) to Mars Hill. There we took in the site and then gathered for devotional and communion. It was my pleasure to lead the conversation and communinion tonight.",
+    "GodMoments": "We witnessed an incredible sunset on the hill. We also had open discussion about how so many of us have different faith traditionas, but we share so much in common with one another.",
+    "Challenges": "A diverse of of people in age, occupation, geography, church demonination and backgrounds.",
+    "SharedPrayerRequests": "That the team will come together and meld. We have some great opportunities ahead of us that will be even greater if we manage to bond quickly.",
     "Pictures": [
       {
-        "Enabled": false,
-        "Image": "Images/day4_activity1.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_1.jpg",
+        "Caption": "Goodbye to my Little Piece of Heaven (Nafplio)"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day4_activity2.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_2.jpg",
+        "Caption": "Still 45 minutes from Athens and the changes are evident. We are heading to big city."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day4_activity3.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_3.jpg",
+        "Caption": "The team is completely together. We journeyed to Mars Hill and I got to teach tonight as well as lead the team in communion. What a blessing."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day4_activity4.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_5.jpg",
+        "Caption": "The view of the Acroplis from Mars Hill. This was most likely the view that Paul had during his sermon."
+      }
+    ]
+  },
+  {
+    "Date": 5,
+    "Published": true,
+    "Location": "Malakasa near Sfendali, Greece",
+    "PlannedActivities": "Play soccer with Sudanese refugees in our socks. Share food and the gospel with them. Climb the Acropolis in Athens.",
+    "AccomplishedActivities": "Today we traveled, by train, to the Sudanese Refugee encampment called Malakasa near Sfendali, Greece. It was about a 1 hour trip. This encampment is primarily male refugees looking for temporary or permenate EU passports (their papers). They live in shipping containers and have very little. We played Soccer (futbol) with them for 5 hours. They all have different financial means, which means some have shoes and some do not. So, everyone who played, had to play in only socks to level the playing field. It was a great day. In the morning we climbed the hill and stairs of the Acropolis to see the Parthenon and other Greek ruins.",
+    "GodMoments": "Seeing the men play soccer together. It truly is beyond the language barrier. I am not sure there is anything on Earth more universal than Soccer/Football. Many say that love the international language (I don't disagree that we all experience love and can understand one another at the level), but Soccer is just as universal. All you need are 2 or more people, a bag, stuffing (sockes, cotton, weeds, trash, or a real ball), and two sticks and you can play soccer with someone and not be able to speak a single shared word. (Except everyone seems to know how to call for the ball to be passed to them. LOL)",
+    "Challenges": "It was warm on the pitch. Several of the guys got blisters. Always wanting to help people more.",
+    "SharedPrayerRequests": "That God opens the heart of the men we met today to know His son, our Lord and Savior Jesus.",
+    "Pictures": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_1.jpg",
+        "Caption": "Our team from Wisconsin, Colorado, and Texas. Back Row (left to right): Ellen, Brent, Brent, Josh, Hannah, Zoey, Matt and Bryan. Front Row: Michael, Amelia, and Emma"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day4_activity5.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_2.jpg",
+        "Caption": "View of Athens walking up to the Acropolis"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_3.jpg",
+        "Caption": "The ancient Roman theater built in 161 AD named Odeon of Herodes Atticus. This theater is still used today. If you look close, you can see people working to set up a concernt for tonight."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_4.jpg",
+        "Caption": "A view of the back side of the theater with the Parthenon looming over head."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_5.jpg",
+        "Caption": "Some kind of fruit that was picked from a tree near where we played soccer today. One of the locals picked it and put it in his hat and handed it out to us. It was delicious. If you know what it was, please let me know."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_6.jpg",
+        "Caption": "Some of the Sudanese Refugees listening to instructions on how we are going to play today, along with Josh and Matt from the team."
       }
     ]
   },
@@ -151,44 +188,7 @@
     "Date": 6,
     "Published": true,
     "Location": "Athens",
-    "PlannedActivities": "Acropolis and Food and Prayer Walk",
-    "AccomplishedActivities": "",
-    "GodMoments": "",
-    "Challenges": "",
-    "SharedPrayerRequests": "",
-    "Pictures": [
-      {
-        "Enabled": false,
-        "Image": "Images/day6_activity1.jpg",
-        "Caption": ""
-      },
-      {
-        "Enabled": false,
-        "Image": "Images/day6_activity2.jpg",
-        "Caption": ""
-      },
-      {
-        "Enabled": false,
-        "Image": "Images/day6_activity3.jpg",
-        "Caption": ""
-      },
-      {
-        "Enabled": false,
-        "Image": "Images/day6_activity4.jpg",
-        "Caption": ""
-      },
-      {
-        "Enabled": false,
-        "Image": "Images/day6_activity5.jpg",
-        "Caption": ""
-      }
-    ]
-  },
-  {
-    "Date": 5,
-    "Published": true,
-    "Location": "Athens",
-    "PlannedActivities": "Work at the Refugee Center",
+    "PlannedActivities": "We will meet with children (homeless and refugee) and just play games with them. Show them the love of Christ through games. We will feed them at the end. In the evening we are going on a Homeless walk. The is where Arturo leads us to visit many homeless in our area. We hand out sandwiches, juice boxes, and other items. I will say that this activity literallly and obsolutely changed my life last year. Look for my sermon entitled The Least of These where I talk about the lady and the Red Juice Box.",
     "AccomplishedActivities": "",
     "GodMoments": "",
     "Challenges": "",

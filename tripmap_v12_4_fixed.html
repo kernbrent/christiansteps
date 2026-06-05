@@ -1,0 +1,1325 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Europe + Mission Journey | ChristianSteps</title>
+
+    <link href="Styles/Site.css" rel="stylesheet">
+    <link href="Styles/Site_mobile.css" rel="stylesheet">
+    <link href="Styles/tripmap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+
+    <style id="v61-mobile-fix">
+        @media (max-width:640px) {
+            #sidePanel {
+                display: none !important;
+            }
+
+            .controls {
+                display: none !important;
+            }
+
+            #mobileSheet {
+                position: fixed !important;
+                left: 0;
+                right: 0;
+                bottom: 70px;
+                height: 58vh;
+                overflow-y: auto;
+                z-index: 9998;
+                background: #fff;
+                border-radius: 24px 24px 0 0;
+            }
+
+            #mobileSheetContent {
+                padding: 16px;
+                min-height: 250px;
+            }
+
+            .photo-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .photo-grid img {
+                width: 100%;
+                border-radius: 8px;
+            }
+        }
+    </style>
+
+
+    <style id="v62-mobile-polish">
+        @media (max-width:640px) {
+            #timeline {
+                position: fixed !important;
+                bottom: 80px !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 9997 !important;
+            }
+
+            #mobileDayCard {
+                z-index: 9999 !important;
+            }
+
+            #mobileSheet.sheet-full {
+                height: 75vh !important;
+            }
+
+            #mobileSheet:not(.sheet-full) {
+                height: 58vh !important;
+            }
+        }
+    </style>
+
+
+
+
+
+    <style id="v64-mobile-fix">
+        @media (max-width:640px) {
+            #timeline {
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 70px !important;
+                z-index: 9997 !important;
+                white-space: nowrap !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                height: auto !important;
+                max-height: 60px !important;
+            }
+
+            #mobileSheet {
+                height: 58vh !important;
+                overflow: hidden !important;
+                transition: height .25s ease !important;
+            }
+
+            #mobileSheet.sheet-full {
+                height: 58vh !important;
+            }
+
+            #mobileSheet.sheet-collapsed {
+                height: 110px !important;
+            }
+
+            #mobileDayCard {
+                z-index: 9999 !important;
+            }
+        }
+    </style>
+
+
+    <style id="v83-timeline-fix">
+        @media (max-width:640px) {
+            #timeline {
+                display: flex !important;
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 72px !important;
+                z-index: 9998 !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                white-space: nowrap !important;
+                padding: 0 8px !important;
+            }
+
+            .timeline-item {
+                flex: 0 0 auto !important;
+            }
+        }
+    </style>
+
+
+    <style id="v84-timeline-visible">
+        @media (max-width:640px) {
+            #timeline {
+                position: fixed !important;
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 20px !important;
+                /* above day card */
+                z-index: 10001 !important;
+                display: flex !important;
+                flex-direction: row !important;
+                overflow-x: auto !important;
+                overflow-y: hidden !important;
+                white-space: nowrap !important;
+                background: rgba(255, 255, 255, .96) !important;
+                padding: 8px !important;
+            }
+
+            .timeline-item {
+                flex: 0 0 auto !important;
+            }
+        }
+    </style>
+
+
+    <style id="v100-enhancements">
+        .timeline-item.mission-day {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 4px 8px;
+        }
+
+        .today-badge {
+            display: block;
+            font-size: 10px;
+            font-weight: bold;
+            color: #c00;
+        }
+    </style>
+    <style id="v124-mobile-scroll-fix">
+        @media (max-width:640px) {
+
+            #mobileSheetContent {
+                padding-bottom: 220px !important;
+                box-sizing: border-box;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <header class="header" role="banner">
+
+            <div class="title">
+                <h1>
+                    <a href="index.html">
+                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                            width="400" />
+                    </a>
+                </h1>
+            </div>
+
+            <div class="clear hideSkiplink">
+                <div id="siteHeader"></div>
+            </div>
+
+        </header>
+
+        <div class="main">
+
+            <main id="pageContent" role="main">
+
+                <div class="main-content-wrapper">
+
+                    <section class="home-hero">
+
+                        <h2>Europe Family Trip + Mission Journey</h2>
+
+                        <p>
+                            Interactive travel map,
+                            timeline, photos, and traveler journey experience.
+                        </p>
+
+                    </section>
+                    <div id="quickLinks"
+                        style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0 10px 0;flex-wrap:wrap;font-size:14px;">
+                        <a href="missions.html">🏠 Mission Home</a>
+                        <span>|</span>
+                        <a href="tripgallery.html">📸 Gallery</a>
+                        <span>|</span>
+                        <a href="#" id="todayBtn">📍 Today</a>
+                    </div>
+
+                    <div class="controls">
+
+                        <div>
+                            <strong>Travelers:</strong><br>
+
+                            <label><input type="checkbox" value="Brent" checked> Brent</label>
+                            <label><input type="checkbox" value="Corrie" checked> Corrie</label>
+                            <label><input type="checkbox" value="Lily" checked> Lily</label>
+                            <label><input type="checkbox" value="Ethan" checked> Ethan</label>
+                            <label><input type="checkbox" value="Bill" checked> Bill</label>
+
+                        </div>
+
+                        <!--<div>
+
+                            <strong>Modes:</strong><br>
+
+                            <button class="mode-btn active" data-mode="minimal">
+                                Minimal
+                            </button>
+
+                            <button class="mode-btn" data-mode="journey">
+                                Journey
+                            </button>
+
+                            <button class="mode-btn" data-mode="dashboard">
+                                Mission Dashboard
+                            </button>
+
+                        </div>-->
+
+                        <div>
+
+                            <strong>Replay:</strong><br>
+
+                            <button id="playBtn">
+                                ▶ Replay Journey
+                            </button>
+
+                        </div>
+                        <div>
+
+                            <strong>Gallery:</strong><br>
+
+                            <a href="tripgallery.html" class="gallery-btn">
+                                📸 Photo Gallery
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div id="sidePanel" class="side-panel"></div>
+
+                    <div id="timeline" class="timeline"></div>
+
+
+
+                    <div id="loadingMessage" style="text-align:center;padding:10px;font-weight:bold;">Loading Trip
+                        Data...</div>
+                    <div id="map"></div>
+
+                    <div id="mobileVersion" class="mobile-version" style="z-index:10050;position:fixed;">V12.4</div>
+                    <div id="mobileDayCard" class="mobile-day-card">Loading...</div>
+
+
+
+
+                    <div id="mobileSheet" class="mobile-sheet sheet-collapsed">
+                        <div class="mobile-sheet-handle"></div>
+                        <div class="mobile-tabs">
+                            <button class="mobile-tab active" data-tab="overview">Overview</button>
+                            <button class="mobile-tab" data-tab="photos">Photos</button>
+                            <button class="mobile-tab" data-tab="video">Video</button>
+                            <button class="mobile-tab" data-tab="mission">Mission</button>
+                        </div>
+                        <div id="sheetHint" class="sheet-hint">▲ Tap for Photos, Videos & Details</div>
+                        <div id="mobileSheetContent"></div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+    <!-- LIGHTBOX -->
+
+    <div id="lightboxOverlay" class="lightbox-overlay">
+
+        <div class="lightbox-close" onclick="closeLightbox()">
+            ×
+        </div>
+
+        <img id="lightboxImage" class="lightbox-image" src="" alt="">
+
+        <div class="lightbox-controls">
+
+            <button class="lightbox-btn" onclick="prevImage()">
+                ◀ Previous
+            </button>
+
+            <button class="lightbox-btn" onclick="nextImage()">
+                Next ▶
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- VIDEO POPUP -->
+
+    <div id="videoOverlay" class="lightbox-overlay">
+
+        <div class="lightbox-close" onclick="closeVideoPopup()">
+            ×
+        </div>
+
+        <video id="popupVideo" controls autoplay class="lightbox-image" style="max-width:90%; max-height:90%;">
+
+            <source id="popupVideoSource" src="" type="video/mp4">
+
+        </video>
+
+    </div>
+
+
+    <div id="siteFooter"></div>
+
+    <!-- LEAFLET -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+        /* MOBILE APP UX */
+        if (window.innerWidth <= 640) {
+            document.addEventListener('click', function (e) {
+                if (e.target.id === 'mobileControlsBtn') {
+                    const controls = document.querySelector('.controls');
+                    controls.classList.toggle('mobile-controls-open');
+                }
+            });
+        }
+
+    </script>
+
+    <!-- MAIN SCRIPT -->
+
+    <script>
+
+        fetch('header.html')
+            .then(r => r.text())
+            .then(h => {
+                document.getElementById('siteHeader').innerHTML = h;
+            });
+
+        fetch('footer.html')
+            .then(r => r.text())
+            .then(f => {
+                document.getElementById('siteFooter').innerHTML = f;
+            });
+
+        const map = L.map('map').setView([45, 12], 5);
+
+        window.addEventListener('resize', () => {
+            map.invalidateSize();
+        });
+
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            {
+                attribution: '© OpenStreetMap'
+            }
+        ).addTo(map);
+
+        let currentMode = 'journey';
+        let selectedDate = null;
+        let routeLayer = null;
+        let markerLayer = null;
+
+        let currentLightboxIndex = 0;
+        let currentLightboxPhotos = [];
+
+        fetch('./data/tripmap.json')
+            .then(r => r.json())
+            .then(data => {
+
+                window.tripData = data;
+
+                // DEFAULT TO JOURNEY MODE
+                currentMode = 'journey';
+                // DETERMINE DEFAULT DATE
+                const today = new Date();
+
+                // subtract one day
+                today.setDate(today.getDate() - 1);
+
+                // convert to yyyy-mm-dd
+                const systemDate =
+                    today.toISOString().split('T')[0];
+
+                // get all trip dates
+                const tripDates =
+                    data.map(d => d.Date).sort();
+
+                // default to last trip day
+                selectedDate = tripDates[tripDates.length - 1];
+
+                // if system date exists in trip range,
+                // use that instead
+                const matchingDate =
+                    tripDates.find(d => d === systemDate);
+
+                if (matchingDate) {
+                    selectedDate = matchingDate;
+                }
+                else {
+
+                    // if system date BEFORE trip starts
+                    // use first trip day
+                    if (systemDate < tripDates[0]) {
+                        selectedDate = tripDates[0];
+                    }
+
+                    // if AFTER trip ends,
+                    // keep last trip day
+                }
+
+                buildTimeline(data);
+
+                // Rebuild timeline AFTER selectedDate is finalized and before first render
+                buildTimeline(data);
+
+                renderMap(); document.getElementById('loadingMessage')?.remove();
+
+
+
+                // Initialize mobile card/sheet on first load
+                const initialDay = data.find(d => d.Date === selectedDate);
+                if (initialDay) {
+                    renderPanel(initialDay);
+
+                    // Force mobile card initialization
+                    const card = document.getElementById('mobileDayCard');
+                    if (card) {
+                        card.innerHTML = `<strong>${initialDay.City}</strong><br>👣 ${initialDay.Steps?.toLocaleString() || 0} &nbsp; 📷 ${(initialDay.Photos || []).length} &nbsp; 🎥 ${getVideoCount(initialDay)}`;
+                    }
+
+                    const sheet = document.getElementById('mobileSheetContent');
+                    if (sheet && window.innerWidth <= 640) {
+                        sheet.innerHTML = `
+                            <h3>${initialDay.Title}</h3>
+                            <p><strong>${initialDay.City}, ${initialDay.Country}</strong></p>
+                            <p>${initialDay.Transportation?.Description || ''}</p>
+                            <p>📷 ${(initialDay.Photos || []).length} Photos</p>
+                            <p>🎥 ${getVideoCount(initialDay)} Videos</p>
+                        `;
+
+                        setTimeout(() => {
+                            document.querySelector('.mobile-tab[data-tab="overview"]')?.click();
+
+                        }, 300);
+
+                        setTimeout(() => {
+                            buildTimeline(data);
+                            renderMap();
+                            centerTimeline();
+                        }, 1200);
+                    }
+                }
+
+                document.querySelectorAll('input[type=checkbox]')
+                    .forEach(cb => {
+                        cb.addEventListener('change', renderMap);
+                    });
+                document
+                    .getElementById('playBtn')
+                    .addEventListener('click', replayJourney);
+
+            })
+            .catch(error => {
+                console.error('JSON LOAD ERROR:', error);
+            });
+
+        function buildTimeline(data) {
+
+            const timeline =
+                document.getElementById('timeline');
+
+            timeline.innerHTML = '';
+
+            data.forEach(day => {
+
+                const div =
+                    document.createElement('div');
+
+                div.className = 'timeline-item';
+
+                if (day.Date === selectedDate) {
+                    div.classList.add('active');
+                }
+
+                if (day.MissionDay) { div.classList.add('mission-day'); }
+                const todayStr = (new Date()).toISOString().split('T')[0];
+                div.innerHTML = (day.Date === todayStr ? '<span class="today-badge">TODAY</span>' : '') + day.Date + ' - ' + day.City;
+
+                div.onclick = () => {
+
+                    selectedDate = day.Date;
+
+                    buildTimeline(data);
+
+                    renderMap();
+
+                };
+
+                timeline.appendChild(div);
+
+            });
+
+            setTimeout(centerTimeline, 500);
+
+        }
+
+
+        function centerTimeline() {
+
+            const timeline = document.getElementById('timeline');
+            if (!timeline || !selectedDate) return;
+
+            const items = Array.from(timeline.querySelectorAll('.timeline-item'));
+            const target = items.find(el => el.textContent.includes(selectedDate));
+
+            if (!target) return;
+
+            const left =
+                target.offsetLeft -
+                (timeline.clientWidth / 2) +
+                (target.offsetWidth / 2);
+
+            timeline.scrollLeft = Math.max(0, left);
+        }
+
+
+        function replayJourney() {
+
+            let i = 0;
+
+            const interval = setInterval(() => {
+
+                if (i >= tripData.length) {
+
+                    clearInterval(interval);
+                    return;
+
+                }
+
+                selectedDate = tripData[i].Date;
+
+                buildTimeline(tripData);
+
+                renderMap();
+
+                i++;
+
+            }, 1800);
+
+        }
+
+        function renderMap() {
+
+            if (routeLayer) {
+                map.removeLayer(routeLayer);
+            }
+
+            if (markerLayer) {
+                map.removeLayer(markerLayer);
+            }
+
+            markerLayer = L.layerGroup().addTo(map);
+
+            const selectedTravelers =
+                Array.from(
+                    document.querySelectorAll(
+                        'input[type=checkbox]:checked'
+                    )
+                ).map(cb => cb.value);
+
+            const filtered =
+                tripData.filter(day =>
+                    day.Travelers.some(t =>
+                        selectedTravelers.includes(t)
+                    )
+                );
+
+            // CUSTOM JOURNEY ORDER
+            const journeyRoute = [
+
+                {
+                    city: 'Zurich',
+                    lat: 47.3769,
+                    lng: 8.5417
+                },
+
+                {
+                    city: 'Lucerne',
+                    lat: 47.0502,
+                    lng: 8.3093
+                },
+
+                {
+                    city: 'Grindelwald',
+                    lat: 46.6242,
+                    lng: 8.0414
+                },
+
+                {
+                    city: 'Ortisei',
+                    lat: 46.5753,
+                    lng: 11.6713
+                },
+
+                {
+                    city: 'Innsbruck',
+                    lat: 47.2692,
+                    lng: 11.4041
+                },
+
+                {
+                    city: 'Verona',
+                    lat: 45.4384,
+                    lng: 10.9916
+                },
+
+                {
+                    city: 'Pisa',
+                    lat: 43.7228,
+                    lng: 10.4017
+                },
+
+                {
+                    city: 'Florence',
+                    lat: 43.7696,
+                    lng: 11.2558
+                },
+
+                {
+                    city: 'Rome',
+                    lat: 41.9028,
+                    lng: 12.4964
+                },
+
+                {
+                    city: 'Bari',
+                    lat: 41.1171,
+                    lng: 16.8719
+                },
+
+                {
+                    city: 'Nafplio',
+                    lat: 37.5673,
+                    lng: 22.8016
+                },
+
+                {
+                    city: 'Athens',
+                    lat: 37.9838,
+                    lng: 23.7275
+                }
+
+            ];
+
+            const coords =
+                journeyRoute.map(p => [p.lat, p.lng]);
+
+            filtered.forEach(day => {
+
+                const isCurrent =
+                    day.Date === selectedDate;
+
+                let markerClass = 'standard-marker';
+
+                if (isCurrent) {
+                    markerClass = 'current-marker';
+                }
+                else if (currentMode === 'journey') {
+                    markerClass = 'journey-marker';
+                }
+                else if (currentMode === 'dashboard') {
+                    markerClass = 'dashboard-marker';
+                }
+
+                const icon = L.divIcon({
+                    className: '',
+                    html: `<div class="${markerClass}"></div>`,
+                    iconSize: [22, 22]
+                });
+
+                const marker = L.marker(
+                    [day.Latitude, day.Longitude],
+                    { icon }
+                );
+
+                marker.bindPopup(`
+            <strong>${day.Title}</strong><br>
+            ${day.City}, ${day.Country}
+        `);
+
+                marker.addTo(markerLayer);
+
+                if (isCurrent) {
+
+                    marker.openPopup();
+
+                    renderPanel(day);
+
+                }
+
+                marker.on('click', () => {
+
+                    selectedDate = day.Date;
+
+                    buildTimeline(tripData);
+
+                    renderMap();
+
+                });
+
+            });
+
+            routeLayer = L.polyline(coords, {
+
+                color:
+                    currentMode === 'journey'
+                        ? '#28a745'
+                        : currentMode === 'dashboard'
+                            ? '#6f42c1'
+                            : '#3D95CE',
+
+                weight:
+                    currentMode === 'journey'
+                        ? 6
+                        : 4,
+
+                opacity: .85
+
+            }).addTo(map);
+
+            if (window.innerWidth <= 640) {
+
+                const currentDay =
+                    tripData.find(d => d.Date === selectedDate);
+
+                if (currentDay) {
+
+                    map.setView(
+                        [currentDay.Latitude, currentDay.Longitude],
+                        5
+                    );
+
+                } else {
+
+                    map.setView(
+                        [42.5, 15.5],
+                        5
+                    );
+
+                }
+
+            } else {
+
+                map.fitBounds(
+                    routeLayer.getBounds(),
+                    {
+                        padding: [40, 40]
+                    }
+                );
+
+            }
+
+        }
+
+
+
+        function buildMobileTimeline() {
+            if (window.innerWidth > 640 || !window.tripData) return '';
+
+            let html = '<div class="mobile-timeline-list">';
+            window.tripData.forEach(d => {
+                const active = d.Date === selectedDate ? ' active' : '';
+                html += `<div class="mobile-timeline-item${active}" onclick="selectedDate='${d.Date}';buildTimeline(tripData);renderMap();document.querySelector('.mobile-tab.active')?.click();">${d.Date} - ${d.City}</div>`;
+            });
+            html += '</div>';
+
+            html += `<div id="debugPanel">
+        selectedDate=${selectedDate}<br>
+        timelineItems=${window.tripData.length}
+    </div>`;
+
+            return html;
+        }
+
+        
+        function getVideos(day) {
+            if (Array.isArray(day.Videos)) return day.Videos.filter(v => v.Enabled !== false);
+            if (day.Video && day.Video.Enabled) return [day.Video];
+            return [];
+        }
+
+        function getVideoCount(day) {
+            return getVideos(day).length;
+        }
+
+function renderPanel(day) {
+            if (window.innerWidth <= 640) {
+                const card = document.getElementById('mobileDayCard');
+                const sheet = document.getElementById('mobileSheetContent');
+                if (card) {
+                    card.innerHTML = `<strong>${day.City}</strong><br>
+👣 ${day.Steps?.toLocaleString() || 0}
+&nbsp; 📷 ${(day.Photos || []).length}
+&nbsp; 🎥 ${getVideoCount(day)}
+&nbsp; <span style="font-size:12px;font-weight:700;color:#2c3e50;">▲ Tap for Details</span>`;
+                }
+                if (sheet) {
+                    sheet.innerHTML = `<h3>${day.Title}</h3><p><strong>${day.City}, ${day.Country}</strong></p><p>${day.Transportation?.Description || ''}</p>`;
+                }
+                return;
+            }
+
+            const panel =
+                document.getElementById('sidePanel');
+
+            panel.classList.add('active');
+
+            let html = `
+
+    <button
+        onclick="closePanel()"
+        class="lightbox-btn mobile-close-btn"
+        style="width:100%; margin-bottom:12px;">
+        Close
+    </button>
+
+    <h2>${day.Title}</h2>
+
+    <p>
+    <strong>${day.City}, ${day.Country}</strong>
+    </p>
+
+    <p>
+    ${day.Transportation.Icon}
+    ${day.Transportation.Description}
+    </p>
+
+    <div class="stats">
+
+        <div class="stat-card">
+        Mission Day:
+        ${day.MissionDay ? 'Yes' : 'No'}
+        </div>
+
+        <div class="stat-card">
+        Travelers:
+        ${day.Travelers.length}
+        </div>
+
+        <div
+            class="stat-card"
+            title="The number of steps walked on this day.">
+        Steps:
+        ${day.Steps?.toLocaleString() || 0}
+        </div>
+        <div class="stat-card">Photos: ${(day.Photos || []).length}</div>
+        <div class="stat-card">Videos: ${getVideoCount(day)}</div>
+
+    </div>
+
+    `;
+
+            if (currentMode === 'journey' && day.MissionDay) {
+
+                html += `
+        <hr>
+
+        <h3>Mission Resources</h3>
+
+        <p>
+        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+            View Devotional
+        </a>
+        </p>
+
+        <p>
+        <a href="dayactivities.html?day=${day.Date}">
+            View Updates
+        </a>
+        </p>
+        `;
+
+            }
+
+            if (currentMode === 'dashboard') {
+
+                html += `
+
+        <hr>
+
+        <h3>Mission Dashboard</h3>
+
+        ${day.MissionDay
+                        ? `
+        <p>
+        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+            View Devotional
+        </a>
+        </p>
+        `
+                        : ''}
+
+        <p>
+        <a href="dayactivities.html?day=${day.Date}">
+            View Updates
+        </a>
+        </p>
+
+        `;
+
+            }
+
+
+
+            const videos = getVideos(day);
+            if (videos.length > 0) {
+
+                html += `
+
+        <hr>
+
+        <h3>Trip Video${videos.length > 1 ? 's' : ''}</h3>
+        `;
+
+                videos.forEach(v => {
+                    html += `<button class="lightbox-btn" onclick="openVideoPopup('${v.File}')" style="display:block;margin-bottom:8px;">▶ ${v.Title}</button>`;
+                });
+
+            }
+
+            if (day.Photos && day.Photos.length > 0) {
+
+                html += '<div class="photo-grid">';
+
+                day.Photos.forEach((photo, index) => {
+
+                    html += `
+            <img
+                src="${photo.Image}"
+                alt="Trip Photo"
+                onclick="openLightbox(${index})"
+            >
+            `;
+
+                });
+
+                html += '</div>';
+
+                currentLightboxPhotos = day.Photos;
+
+            }
+            else {
+
+                html += `
+
+        <hr>
+
+        <h3>Optional Photos</h3>
+
+        <p>
+        No photos uploaded for this day yet.
+        </p>
+
+        `;
+
+            }
+
+            panel.innerHTML = html;
+
+            if (window.innerWidth <= 640) {
+                const card = document.getElementById('mobileDayCard');
+                const sheet = document.getElementById('mobileSheetContent');
+
+                if (card) {
+                    const photos = (day.Photos || []).length;
+                    const video = getVideoCount(day);
+                    card.innerHTML = `<strong>${day.City}</strong><br>👣 ${day.Steps?.toLocaleString() || 0} &nbsp; 📷 ${photos} &nbsp; 🎥 ${video}`;
+                }
+
+                if (sheet) {
+                    sheet.innerHTML = `
+                        <h3>${day.Title}</h3>
+                        <p><strong>${day.City}, ${day.Country}</strong></p>
+                        <p>${day.Transportation.Description}</p>
+                        <p>📷 ${(day.Photos || []).length} Photos</p>
+                        <p>🎥 ${getVideoCount(day)} Videos</p>
+                    `;
+                }
+            }
+
+        }
+
+        function openLightbox(index) {
+
+            currentLightboxIndex = index;
+
+            document.body.classList.add('lightbox-open');
+
+            document
+                .getElementById('lightboxOverlay')
+                .classList.add('active');
+
+            updateLightboxImage();
+        }
+        function closePanel() {
+
+            document
+                .getElementById('sidePanel')
+                .classList.remove('active');
+
+        }
+        function closeLightbox() {
+
+            document.body.classList.remove('lightbox-open');
+
+            document
+                .getElementById('lightboxOverlay')
+                .classList.remove('active');
+        }
+
+        function openVideoPopup(videoPath) {
+
+            const overlay =
+                document.getElementById('videoOverlay');
+
+            const video =
+                document.getElementById('popupVideo');
+
+            const source =
+                document.getElementById('popupVideoSource');
+
+            source.src = videoPath;
+
+            video.load();
+
+            overlay.classList.add('active');
+
+        }
+
+        function closeVideoPopup() {
+
+            const overlay =
+                document.getElementById('videoOverlay');
+
+            const video =
+                document.getElementById('popupVideo');
+
+            video.pause();
+
+            overlay.classList.remove('active');
+
+        }
+
+        function updateLightboxImage() {
+
+            const image =
+                document.getElementById('lightboxImage');
+
+            image.src =
+                currentLightboxPhotos[
+                    currentLightboxIndex
+                ].Image;
+
+        }
+
+        function prevImage() {
+
+            currentLightboxIndex--;
+
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex =
+                    currentLightboxPhotos.length - 1;
+            }
+
+            updateLightboxImage();
+
+        }
+
+        function nextImage() {
+
+            currentLightboxIndex++;
+
+            if (currentLightboxIndex >= currentLightboxPhotos.length) {
+                currentLightboxIndex = 0;
+            }
+
+            updateLightboxImage();
+
+        }
+
+        document.addEventListener('keydown', e => {
+
+            const overlay =
+                document.getElementById('lightboxOverlay');
+
+            if (!overlay.classList.contains('active')) {
+                return;
+            }
+
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+
+            if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
+
+            if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+
+        });
+
+
+        /* MOBILE APP UX */
+        if (window.innerWidth <= 640) {
+            document.addEventListener('click', function (e) {
+                if (e.target.id === 'mobileControlsBtn') {
+                    const controls = document.querySelector('.controls');
+                    controls.classList.toggle('mobile-controls-open');
+                }
+            });
+        }
+
+
+        document.addEventListener('click', e => {
+            const b = e.target.closest('#todayBtn');
+            if (!b) return;
+            e.preventDefault();
+            const today = (new Date()).toISOString().split('T')[0];
+            if (window.tripData?.find(d => d.Date === today)) {
+                selectedDate = today; buildTimeline(tripData); renderMap();
+            }
+        });
+    </script>
+
+
+    <script id="v80-mobile-controller">
+        document.addEventListener('click', function (e) {
+
+            const tab = e.target.closest('.mobile-tab');
+            if (tab) {
+                document.querySelectorAll('.mobile-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                const day = (window.tripData || []).find(d => d.Date === selectedDate);
+                const sheet = document.getElementById('mobileSheetContent');
+                if (!day || !sheet) return;
+
+                if (tab.dataset.tab === 'overview') {
+                    sheet.innerHTML = `
+        <h3>${day.Title}</h3>
+        <p><strong>${day.City}, ${day.Country}</strong></p>
+        <p>${day.Transportation?.Description || ''}</p>
+        <p>📷 ${(day.Photos || []).length} Photos</p>
+        <p>🎥 ${getVideoCount(day)} Videos</p>
+        `;
+                }
+
+                if (tab.dataset.tab === 'photos') {
+
+                    currentLightboxPhotos = day.Photos || [];
+
+                    sheet.innerHTML =
+                        '<div class="photo-grid">' +
+                        currentLightboxPhotos.map((p, i) =>
+                            '<img src="' + p.Image +
+                            '" onclick="openLightbox(' + i + ')">'
+                        ).join('') +
+                        '</div>';
+                }
+
+                if (tab.dataset.tab === 'video') {
+                    const videos = getVideos(day);
+                    sheet.innerHTML = videos.length
+                        ? videos.map(v => '<button class="lightbox-btn" style="display:block;margin-bottom:8px;" onclick="openVideoPopup(\'' + v.File + '\')">▶ ' + v.Title + '</button>').join('')
+                        : '<p>No video available.</p>';
+                }
+
+                if (tab.dataset.tab === 'mission') {
+
+                    if (day.MissionDay) {
+
+                        sheet.innerHTML = `
+                        <h3>Mission Resources</h3>
+
+                        <p>
+                        Follow the links to view the daily devotional and the daily updates.
+                        </p>
+
+                        <p>
+                        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+                            View Devotional
+                        </a>
+                        </p>
+
+                        <p>
+                        <a href="dayactivities.html?day=${day.Date}">
+                            View Updates
+                        </a>
+                        </p>`;
+
+                    } else {
+
+                        sheet.innerHTML = `
+                        <h3>Mission Resources</h3>
+
+                        <p>
+                        A Daily Devotional and a Daily Update are available on the dates June 3 - June 14.
+                        </p>`;
+
+                    }
+                }
+            }
+
+            const handle = e.target.closest('.mobile-sheet-handle');
+            const card = e.target.closest('#mobileDayCard');
+            if (handle || card) {
+                const s = document.getElementById('mobileSheet');
+                const hint = document.getElementById('sheetHint');
+                s.classList.toggle('sheet-full');
+                s.classList.toggle('sheet-collapsed');
+                if (hint) {
+                    hint.innerHTML = s.classList.contains('sheet-collapsed')
+                        ? '▲ Tap for Photos, Videos & Details'
+                        : '▼ Tap to Collapse';
+                }
+
+                if (s.classList.contains('sheet-full')) {
+                    const activeTab = document.querySelector('.mobile-tab.active') ||
+                        document.querySelector('.mobile-tab[data-tab="overview"]');
+                    activeTab?.click();
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // Mobile menu button should open the ChristianSteps site menu
+        document.addEventListener('click', function (e) {
+            const btn = e.target.closest('#siteHeader .menu-button, #siteHeader .mobile-menu-btn, #siteHeader .menu-toggle');
+            if (btn) {
+                const nav = document.querySelector('#siteHeader nav, #siteHeader .nav-menu, #siteHeader .menu-panel');
+                if (nav) { nav.classList.toggle('open'); }
+            }
+        });
+    </script>
+</body>
+
+
+
+
+</html>
