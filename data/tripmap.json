@@ -1030,13 +1030,41 @@
     "Transportation": {
       "Type": "Mission",
       "Icon": "⛪",
-      "Description": "Mission activities in Athens"
+      "Description": "Today we all arrived in Athens. There are 5 from Texas, 5 from Wisconsin, and 2 from Colorado. It is a nice group. We gathered in our AirBNBs and then walked (and trained) to Mars Hill. There we took in the site and then gathered for devotional and communion. It was my pleasure to lead the conversation and communinion tonight."
     },
-    "Photos": [],
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "The View from Mars Hill",
+        "File": "Images/tripmap/2026-06-4_athens_4.mp4"
+      }
+    ],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_1.jpg",
+        "Caption": "Goodbye to my Little Piece of Heaven (Nafplio)"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_2.jpg",
+        "Caption": "Still 45 minutes from Athens and the changes are evident. We are heading to big city."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_3.jpg",
+        "Caption": "The team is completely together. We journeyed to Mars Hill and I got to teach tonight as well as lead the team in communion. What a blessing."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-4_athens_5.jpg",
+        "Caption": "The view of the Acroplis from Mars Hill. This was most likely the view that Paul had during his sermon."
+      }
+    ],
     "Steps": 10000
   },
   {
-    "Date": "2026-06-14",
+    "Date": "2026-06-05",
     "Title": "Fly Home to DFW",
     "City": "Athens",
     "Country": "Greece",
@@ -1047,11 +1075,54 @@
       "Brent"
     ],
     "Transportation": {
-      "Type": "Flight",
-      "Icon": "✈️",
-      "Description": "Athens → Chicago → DFW"
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": "Today we traveled, by train, to the Sudanese Refugee encampment called Malakasa near Sfendali, Greece. It was about a 1 hour trip. This encampment is primarily male refugees looking for temporary or permenate EU passports (their papers). They live in shipping containers and have very little. We played Soccer (futbol) with them for 5 hours. They all have different financial means, which means some have shoes and some do not. So, everyone who played, had to play in only socks to level the playing field. It was a great day. In the morning we climbed the hill and stairs of the Acropolis to see the Parthenon and other Greek ruins."
     },
-    "Photos": [],
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Sudanese Refugees - Soccer Intros",
+        "File": "Images/tripmap/2026-06-5_athens_8.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "The Team and The Refugees - Drills",
+        "File": "Images/tripmap/2026-06-5_athens_9.mp4"
+      }
+    ],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_1.jpg",
+        "Caption": "Our team from Wisconsin, Colorado, and Texas. Back Row (left to right): Ellen, Brent, Brent, Josh, Hannah, Zoey, Matt and Bryan. Front Row: Michael, Amelia, and Emma"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_2.jpg",
+        "Caption": "View of Athens walking up to the Acropolis"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_3.jpg",
+        "Caption": "The ancient Roman theater built in 161 AD named Odeon of Herodes Atticus. This theater is still used today. If you look close, you can see people working to set up a concernt for tonight."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_4.jpg",
+        "Caption": "A view of the back side of the theater with the Parthenon looming over head."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_5.jpg",
+        "Caption": "Some kind of fruit that was picked from a tree near where we played soccer today. One of the locals picked it and put it in his hat and handed it out to us. It was delicious. If you know what it was, please let me know."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-5_athens_6.jpg",
+        "Caption": "Some of the Sudanese Refugees listening to instructions on how we are going to play today, along with Josh and Matt from the team."
+      }
+    ],
     "Steps": 10000
   }
 ]
