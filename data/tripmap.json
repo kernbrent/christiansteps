@@ -1124,5 +1124,87 @@
       }
     ],
     "Steps": 21000
+  },
+    {
+    "Date": "2026-06-06",
+    "Title": "Fly Home to DFW",
+    "City": "Athens",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": "Today we traveled, by train, to the Sudanese Refugee encampment called Malakasa near Sfendali, Greece. It was about a 1 hour trip. This encampment is primarily male refugees looking for temporary or permenate EU passports (their papers). They live in shipping containers and have very little. We played Soccer (futbol) with them for 5 hours. They all have different financial means, which means some have shoes and some do not. So, everyone who played, had to play in only socks to level the playing field. It was a great day. In the morning we climbed the hill and stairs of the Acropolis to see the Parthenon and other Greek ruins."
+    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Sudanese Refugees - Soccer Intros",
+        "File": "Images/tripmap/2026-06-6_athens_12.mp4"
+      }
+    ],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_1.jpg",
+        "Caption": "Michael and Brent - Our blister boys. They got significant blisters from playing soccer in socks."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_2.jpg",
+        "Caption": "Our team and some of the Albanian Church members."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_3.jpg",
+        "Caption": "Homeless man from Afghanistan."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_4.jpg",
+        "Caption": "This man had just taken fentanyl and was completely passed out. We thought he might be dead. Our nurse said he had a breathing rate of 5 breaths per minute."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_5.jpg",
+        "Caption": "This man is recently on the streets."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_6.jpg",
+        "Caption": "This is an Iranian family of 10 living in this little corner."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_7.jpg",
+        "Caption": "Someone sleeps on this cardboard and there are 100s of needles in the grass from drug use."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_8.jpg",
+        "Caption": "The group I walked with on the first night with a beautiful sunset in Athens."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_9.jpg",
+        "Caption": "After our walk, we had dinner in the beautiful restaurant. Everyone of us felt very odd to be eating like this when we were just on the streets giving out sandwiches to people and we are not in this space."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_10.jpg",
+        "Caption": "This is an image of a man (father) with his 4 year old and 6 year old children. We all wept at the sight, but I was able to find the beauty in a father protecting his children."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-6_athens_11.jpg",
+        "Caption": "Our team with the Albanian kids."
+      }
+    ],
+    "Steps": 30200
   }
 ]
