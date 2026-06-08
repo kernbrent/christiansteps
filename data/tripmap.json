@@ -1018,7 +1018,7 @@
   },
   {
     "Date": "2026-06-04",
-    "Title": "Athens Mission Trip",
+    "Title": "The Team Meetings and Shares Communion on Mars Hill",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1065,7 +1065,7 @@
   },
   {
     "Date": "2026-06-05",
-    "Title": "Fly Home to DFW",
+    "Title": "Soccer with Sudanese Refugees - Only Socks!!!",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1127,7 +1127,7 @@
   },
     {
     "Date": "2026-06-06",
-    "Title": "Fly Home to DFW",
+    "Title": "Playing at Park with Albanian Church Kids and Homeless Walk",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1139,12 +1139,12 @@
     "Transportation": {
       "Type": "Mission",
       "Icon": "⛪",
-      "Description": "Today we traveled, by train, to the Sudanese Refugee encampment called Malakasa near Sfendali, Greece. It was about a 1 hour trip. This encampment is primarily male refugees looking for temporary or permenate EU passports (their papers). They live in shipping containers and have very little. We played Soccer (futbol) with them for 5 hours. They all have different financial means, which means some have shoes and some do not. So, everyone who played, had to play in only socks to level the playing field. It was a great day. In the morning we climbed the hill and stairs of the Acropolis to see the Parthenon and other Greek ruins."
+      "Description": "We had a fantastic day, but it of course came with its challenges. First, we needed to be at Stavros Niarchos Park at 10 AM. The plan was to the Metro train at 9 AM, which we did. As I started investigating, it came to my attention that the 911 bus we needed to take at the end of the train ride does not run on Saturday mornings. So, the options were to take Taxi's, to take multiple buses, or to walk. We collectively decided to walk the 2.7 KM to the park. It was a nice walk and it was early in the morning, so we were still fresh. We met the kids, teens, young adults, and parents of the Porta Albanian Church of Athens. We played kickball, soccer, tag, frisbee, and many other games for the next 4 hours. We ate pizza together and then decided to walk and tour the park and nearby Library. At this point we already had 14,000 steps and getting tired. We walked to the library and then a local who was with us said no problem we will go to the tram to get back to the train station. BTW, it was hot. We walked to the Tram and waited 12 minutes for the tram. It came and was completely packed with people. The locals on the tram had no interest in letting us on and I am not sure we could have put the 10 of us on it. So, we decided to walk the 2 miles back to the train station. Did I mention it was hot. We walked for the next hour and finally got on the train. We made it back to the apartment and Arturo, from the homeless ministry, met us there to guide us on the homeless evening walk. (That is where we take sandwiches to homeless people sleeping on the streets.) So, we walked for another 2 hours. Needless to say, we walked 30,000+ steps."
     },
     "Videos": [
       {
         "Enabled": true,
-        "Title": "Sudanese Refugees - Soccer Intros",
+        "Title": "Zoey - Shopping for Produce",
         "File": "Images/tripmap/2026-06-6_athens_12.mp4"
       }
     ],
@@ -1206,5 +1206,96 @@
       }
     ],
     "Steps": 30200
+  },  {
+    "Date": "2026-06-07",
+    "Title": "Worship with Albanian Church and Homeless Walk",
+    "City": "Athens",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": "Today we went to church and worshipped with the Albanians members of La Porta Church in Athens, Greece. We sang and learned and took communion and sang some more and fellowshipped and ate a great meal. We love the Albanian Church and its lovely members. After church we came back to our apartment and had a really nice debrief time with the entire team. A lot of us opened up, some of us cried, we laughed, and got to know each other better. We did our devotional after the debrief time and we realized that our open debrief discussion actually covered the topics of the devo. God is truely GOOD!!! After devo we made more sandwiches and went on another Homeless Walk. We saw some of the same people and some new ones. Last night, I had the pleasure to meet John from England. He and I talked for about 15 minutes. He shared a lot about himself and I was able to pray with him. I was not supposed to go on the homeless walk again tonight, but I wanted to see John again. I wanted him to know that someone wanted to come see him again. I actually got seperated from the team, but I found John on my own. I sat and talked with him for over 45 minutes. He shared so many things about himself and about his journey. He shared some very personal and intimate details. I was so blessed by our time. When I finally had to leave, he asked me to come back if I can, but he understood if I could not. I told him to take care of himself. He said, taking care of himself is easy, the loneliness is not!!! What an image into the lives of the homeless and lost refugees in Athens Greece."
+    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Worship with Albanians",
+        "File": "Images/tripmap/2026-06-7_athens_8.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Woman feeding pigeons in Downtown Athens Square",
+        "File": "Images/tripmap/2026-06-7_athens_9.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Drug syringe in grass of park",
+        "File": "Images/tripmap/2026-06-7_athens_10.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Syringes, other drug items, and blood in public square.",
+        "File": "Images/tripmap/2026-06-7_athens_11.mp4"
+      }
+    ],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_1.jpg",
+        "Caption": "Michael Hansen with Abanian interpreter during his sermon at the Albanian Church"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_2.jpg",
+        "Caption": "Members of the Albanian Church in Sanctuary"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_3.jpg",
+        "Caption": "Deaconess of the Albanian Church"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_4.jpg",
+        "Caption": "Girls from our team with Albanians Teenage girls and lunch"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_5.jpg",
+        "Caption": "Homeless woman with her beautiful baby"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_6.jpg",
+        "Caption": "Homeless man that Arturo feeds every chance he can get."
+      }
+    ],
+    "Steps": 14052
+  },
+    {
+    "Date": "2026-06-08",
+    "Title": "Travel to and Tour Corinth",
+    "City": "Corinth",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": ""
+    },
+    "Videos": [],
+    "Photos": [],
+    "Steps": 10000
   }
 ]
