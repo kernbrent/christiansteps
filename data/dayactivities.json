@@ -255,36 +255,41 @@
     "Date": 7,
     "Published": true,
     "Location": "Corinth",
-    "PlannedActivities": "Attend a local church service",
-    "AccomplishedActivities": "",
-    "GodMoments": "",
-    "Challenges": "",
-    "SharedPrayerRequests": "",
+    "PlannedActivities": "Attend a local church service and Homeless Walk",
+    "AccomplishedActivities": "Today we went to church and worshipped with the Albanians members of La Porta Church in Athens, Greece. We sang and learned and took communion and sang some more and fellowshipped and ate a great meal. We love the Albanian Church and its lovely members. After church we came back to our apartment and had a really nice debrief time with the entire team. A lot of us opened up, some of us cried, we laughed, and got to know each other better. We did our devotional after the debrief time and we realized that our open debrief discussion actually covered the topics of the devo. God is truely GOOD!!! After devo we made more sandwiches and went on another Homeless Walk. We saw some of the same people and some new ones. Last night, I had the pleasure to meet John from England. He and I talked for about 15 minutes. He shared a lot about himself and I was able to pray with him. I was not supposed to go on the homeless walk again tonight, but I wanted to see John again. I wanted him to know that someone wanted to come see him again. I actually got seperated from the team, but I found John on my own. I sat and talked with him for over 45 minutes. He shared so many things about himself and about his journey. He shared some very personal and intimate details. I was so blessed by our time. When I finally had to leave, he asked me to come back if I can, but he understood if I could not. I told him to take care of himself. He said, taking care of himself is easy, the loneliness is not!!! What an image into the lives of the homeless and lost refugees in Athens Greece.",
+    "GodMoments": "The worship this morning, the love of that church. And the time I spent with John. Also coming together as a team in our debrief and devotional time today.",
+    "Challenges": "Energy and not being able to help as much as we wish we could and as much as the people of Athens need us. ",
+    "SharedPrayerRequests": "Please pray for our trip to Corinth tomorrow and for my new friend, John in the Park.",
     "Pictures": [
       {
-        "Enabled": false,
-        "Image": "Images/day7_activity1.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_1.jpg",
+        "Caption": "Michael Hansen with Abanian interpreter during his sermon at the Albanian Church"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day7_activity2.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_2.jpg",
+        "Caption": "Members of the Albanian Church in Sanctuary"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day7_activity3.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_3.jpg",
+        "Caption": "Deaconess of the Albanian Church"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day7_activity4.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_4.jpg",
+        "Caption": "Girls from our team with Albanians Teenage girls and lunch"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day7_activity5.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_5.jpg",
+        "Caption": "Homeless woman with her beautiful baby"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-7_athens_6.jpg",
+        "Caption": "Homeless man that Arturo feeds every chance he can get."
       }
     ]
   },
