@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Trip Photo Gallery | ChristianSteps</title>
+
+<link href="Styles/Site.css" rel="stylesheet">
+<link href="Styles/Site_mobile.css" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    background:#f5f5f5;
+}
+
+.main-content-wrapper{
+    padding:20px;
+}
+
+.gallery-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.gallery-btn{
+    background:#3D95CE;
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:10px;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.gallery-btn:hover{
+    background:#2c7cb3;
+}
+
+.day-section{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:24px;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.day-section h2{
+    margin-top:0;
+}
+
+.day-meta{
+    margin-bottom:16px;
+    color:#666;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+    gap:16px;
+}
+
+.gallery-card{
+    background:#fafafa;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:transform .2s ease;
+    cursor:pointer;
+}
+
+.gallery-card:hover{
+    transform:translateY(-4px);
+}
+
+.gallery-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    display:block;
+}
+
+.gallery-caption{
+    padding:12px;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.lightbox-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:5000;
+    padding:20px;
+}
+
+.lightbox-overlay.active{
+    display:flex;
+}
+
+.lightbox-image{
+    max-width:92vw;
+    max-height:78vh;
+    border-radius:14px;
+}
+
+.lightbox-caption{
+    color:white;
+    margin-top:18px;
+    max-width:900px;
+    text-align:center;
+    line-height:1.5;
+}
+
+.lightbox-controls{
+    margin-top:18px;
+    display:flex;
+    gap:12px;
+}
+
+.lightbox-btn{
+    background:#3D95CE;
+    color:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.lightbox-close{
+    position:absolute;
+    top:18px;
+    right:28px;
+    color:white;
+    font-size:36px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.empty-message{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="header" role="banner">
+
+<div class="title">
+<h1>
+<a href="index.html">
+<img
+    src="./Images/Logo400.jpg"
+    class="site-logo"
+    alt="Christian Steps Ministries"
+    width="400"
+/>
+</a>
+</h1>
+</div>
+
+<div class="clear hideSkiplink">
+<div id="siteHeader"></div>
+</div>
+
+</header>
+
+<div class="main">
+
+<main id="pageContent" role="main">
+
+<div class="main-content-wrapper">
+
+<div class="gallery-header">
+
+<div>
+
+<h2>Europe + Mission Photo Gallery</h2>
+
+<p>
+Dynamic gallery of the entire journey across Europe and Greece.
+</p>
+
+</div>
+
+<div>
+
+<a href="tripmap.html" class="gallery-btn">
+← Back to Interactive Trip Map
+</a>
+
+</div>
+
+</div>
+
+<div id="galleryContainer"></div>
+
+</div>
+
+</main>
+
+</div>
+
+</div>
+
+<!-- LIGHTBOX -->
+
+<div id="lightboxOverlay" class="lightbox-overlay">
+
+<div class="lightbox-close" onclick="closeLightbox()">
+×
+</div>
+
+<img
+    id="lightboxImage"
+    class="lightbox-image"
+    src=""
+    alt=""
+    style="display:none;"
+>
+
+<video
+    id="lightboxVideo"
+    class="lightbox-image"
+    controls
+    style="display:none;">
+
+    <source
+        id="lightboxVideoSource"
+        src=""
+        type="video/mp4">
+
+</video>
+
+<div
+    id="lightboxCaption"
+    class="lightbox-caption">
+</div>
+
+<div class="lightbox-controls">
+
+<button class="lightbox-btn" onclick="prevImage()">
+◀ Previous
+</button>
+
+<button class="lightbox-btn" onclick="nextImage()">
+Next ▶
+</button>
+
+</div>
+
+</div>
+
+<div id="siteFooter"></div>
+
+<script>
+
+fetch('header.html')
+.then(r => r.text())
+.then(h => {
+    document.getElementById('siteHeader').innerHTML = h;
+});
+
+fetch('footer.html')
+.then(r => r.text())
+.then(f => {
+    document.getElementById('siteFooter').innerHTML = f;
+});
+
+let allPhotos = [];
+let currentLightboxIndex = 0;
+
+fetch('./data/tripmap.json')
+.then(r => r.json())
+.then(data => {
+
+    const container =
+        document.getElementById('galleryContainer');
+
+    let hasPhotos = false;
+
+    data.forEach(day => {
+
+        if(
+            day.Photos &&
+            day.Photos.length > 0
+        ){
+
+            hasPhotos = true;
+
+            const section =
+                document.createElement('section');
+
+            section.className = 'day-section';
+
+            let html = `
+
+            <h2>${day.Date}</h2>
+
+            <div class="day-meta">
+                <strong>${day.Title}</strong><br>
+                ${day.City}, ${day.Country}
+            </div>
+
+            <div class="gallery-grid">
+
+            `;
+
+            day.Photos.forEach(photo => {
+
+                if(photo.Enabled === false){
+                    return;
+                }
+
+                const globalIndex =
+                    allPhotos.length;
+
+                allPhotos.push({
+                    type: 'image',
+                    image: photo.Image,
+                    caption: photo.Caption,
+                    day: day.Date,
+                    title: day.Title
+                });
+
+                html += `
+
+                <div
+                    class="gallery-card"
+                    onclick="openLightbox(${globalIndex})"
+                >
+
+                    <img
+                        src="${photo.Image}"
+                        alt="${photo.Caption}"
+                    >
+
+                    <div class="gallery-caption">
+                        <strong>${photo.Caption}</strong><br>
+                        <small>${day.Date}</small>
+                    </div>
+
+                </div>
+
+                `;
+
+            });
+
+            
+            const videos =
+                Array.isArray(day.Videos)
+                ? day.Videos.filter(v => v.Enabled !== false)
+                : (day.Video && day.Video.Enabled ? [day.Video] : []);
+
+            videos.forEach(videoItem => {
+
+                const globalIndex = allPhotos.length;
+
+                allPhotos.push({
+                    type: 'video',
+                    image: videoItem.File,
+                    caption: videoItem.Title,
+                    day: day.Date,
+                    title: day.Title
+                });
+
+                html += `
+                <div class="gallery-card" onclick="openLightbox(${globalIndex})">
+                    <video muted playsinline preload="metadata"
+                        style="width:100%;height:220px;object-fit:cover;display:block;">
+                        <source src="${videoItem.File}" type="video/mp4">
+                    </video>
+                    <div class="gallery-caption">
+                        <strong>${videoItem.Title}</strong><br>
+                        <small>${day.Date}</small>
+                    </div>
+                </div>
+                `;
+
+            });
+html += '</div>';
+
+            section.innerHTML = html;
+
+            container.appendChild(section);
+
+        }
+
+    });
+
+    if(!hasPhotos){
+
+        container.innerHTML = `
+
+        <div class="empty-message">
+
+            <h2>No Photos Yet</h2>
+
+            <p>
+            Photos added to tripmap.json
+            will automatically appear here.
+            </p>
+
+        </div>
+
+        `;
+
+    }
+
+});
+
+function openLightbox(index){
+
+    currentLightboxIndex = index;
+
+    document
+    .getElementById('lightboxOverlay')
+    .classList.add('active');
+
+    updateLightbox();
+
+}
+
+function closeLightbox(){
+
+    document
+    .getElementById('lightboxOverlay')
+    .classList.remove('active');
+
+    document
+        .getElementById('lightboxVideo')
+        .pause();
+
+}
+
+function updateLightbox(){
+
+    const photo =
+        allPhotos[currentLightboxIndex];
+
+    const image =
+        document.getElementById('lightboxImage');
+
+    const video =
+        document.getElementById('lightboxVideo');
+
+    const videoSource =
+        document.getElementById('lightboxVideoSource');
+
+    if(photo.type === 'video'){
+
+        image.style.display = 'none';
+
+        video.style.display = 'block';
+
+        videoSource.src = photo.image;
+
+        video.load();
+
+    } else {
+
+        video.pause();
+
+        video.style.display = 'none';
+
+        image.style.display = 'block';
+
+        image.src = photo.image;
+
+    }
+
+    document
+    .getElementById('lightboxCaption')
+    .innerHTML = `
+        <strong>${photo.caption}</strong><br>
+        ${photo.day} — ${photo.title}
+    `;
+
+}
+
+function prevImage(){
+
+    currentLightboxIndex--;
+
+    if(currentLightboxIndex < 0){
+        currentLightboxIndex =
+            allPhotos.length - 1;
+    }
+
+    updateLightbox();
+
+}
+
+function nextImage(){
+
+    currentLightboxIndex++;
+
+    if(currentLightboxIndex >= allPhotos.length){
+        currentLightboxIndex = 0;
+    }
+
+    updateLightbox();
+
+}
+
+document.addEventListener('keydown', e => {
+
+    const overlay =
+        document.getElementById('lightboxOverlay');
+
+    if(!overlay.classList.contains('active')){
+        return;
+    }
+
+    if(e.key === 'Escape'){
+        closeLightbox();
+    }
+
+    if(e.key === 'ArrowLeft'){
+        prevImage();
+    }
+
+    if(e.key === 'ArrowRight'){
+        nextImage();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
