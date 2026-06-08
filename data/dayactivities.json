@@ -296,37 +296,47 @@
   {
     "Date": 8,
     "Published": true,
-    "Location": "Athens",
+    "Location": "Corinth Greece",
     "PlannedActivities": "Travel to Ancient Corinth",
     "AccomplishedActivities": "​Here is a narrative that strings your notes together into a cohesive story of your day.<p>​Shadows of Empire and the Crossroads of the World ​Standing among the ruins of Corinth today, you can almost feel the heavy, ambitious hand of Rome. The guide reminded us of just how interconnected this ancient world truly was. Take the Roman Colosseum, for instance—an iconic monument funded entirely by the spoils and gold stripped from the Fall of the Jerusalem Temple.<p>The geopolitical currents of the day ran deep, and Corinth was right at the center of them.<p>​Because of its unique geography, it became a bustling bottleneck of humanity; nearly all ships and trade routes had to pass through Corinth. It was too valuable a strategic point to leave empty. Recognizing this, Julius Caesar ordered Corinth to be reestablished as a Roman city in 44 BC (Mummius destroying the old Greek city in 146 BC, leaving it a ghost town) remarkably, this was just a few days before his infamous assassination.  <p>Later down the line, Caesar’s influence would stretch into the medical world too—passing a law that if a woman had fatal complications during childbirth, physicians had to cut her open to try and save the child. We still call it a Caesarean section to this day.<p>​The Stones Cry Out: Echoes of the New Testament<p>​As we walked the ancient pavement, the pages of the Bible suddenly felt incredibly tangible. The guide stopped us to look at a specific, weathered piece of stone. Inscribed on it was the name Erastus.<p>In the New Testament, Erastus is mentioned three times—notably by Paul as the city’s treasurer. His name comes from Eros, hinting at a meaning like the one who is loved in that manner, a common naming convention that strongly suggests he was a former slave who rose to high office. Right there on the plaza, the Latin inscription boldly states that Erastus paved this very area using his own money to give back to the city. Seeing it brings new weight to the words of Jesus: If you deny me, even the stones will cry out. The stones in Corinth are indeed crying out, confirming history.<p>​It hits hard when you contrast Erastus's wealth with the grim economy of his past. In biblical times, the average price of a human being bought into slavery was just thirty pieces of silver. The exact price Judas accepted to betray Christ.<p>​A Different Kind of God<p>​The most beautiful part of the day was how the guide contrasted pagan Roman culture with the revolutionary message of the Gospel.<p>​In the ancient pagan world, statues often depicted a shepherd carrying a sheep on his shoulders. But that sheep was being carried to an altar for sacrifice—to appease a distant, demanding deity. When Jesus uses that same imagery, He flips it entirely. He carries the sheep not to slaughter it, but to save it.<p>​That shift changes everything. It’s exactly why we love Him. In ancient times, pagans feared, bargained with, or admired Zeus—but they never said they loved him. Love requires relationship, and relationship requires sacrifice from the top down.<p>​The guide left us with a question that perfectly sums up the wonder of the day, standing at the crossroads of ancient history:<p>​How many people will die for their Gods? But, how many Gods will die for you?",
-    "GodMoments": "",
-    "Challenges": "",
-    "SharedPrayerRequests": "",
+    "GodMoments": "The lessons of Paul shared through our guide James. Hidden moments of contention and resolution.",
+    "Challenges": "Fatigue and group dynamics. Sometimes the overwhelming feeling of guilt when you realize how much we have and how little others have.",
+    "SharedPrayerRequests": "Pray for the people of Athens. Pray for our family back home. Pray that God will continue the work in us that he has started throughout all of his creation.",
     "Pictures": [
       {
-        "Enabled": false,
-        "Image": "Images/day8_activity1.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_1.jpg",
+        "Caption": "Our tour guide in Corinth - James. He is an amazing Pauline Scholar. What a joy to see Corinth with him again this year."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day8_activity2.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_12.jpg",
+        "Caption": "Name plate with Erastus mentioned in the June 8th update. This shows and proves that the Christian religion is and was not for the poor alone, it is for us all."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day8_activity3.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_2.jpg",
+        "Caption": "Temple of Apollo"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day8_activity4.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_3.jpg",
+        "Caption": "The Bema seat where Gaius (governor of Corinth) over saw Paul's trial. There is so much proof of this event happening. Paul stood right here, and would have been tied to this beating post if he had been guilty. Paul was beatened several times through his life. Every time he was not guilty but he rarely used his Roman citizenship to avoid a beating. Some believe he didn't use his Roman citizenship beacause of the guilt he felt for executing so many Christians."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day8_activity5.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_4.jpg",
+        "Caption": "Josh was asking if he got the sunscreen rubbed in completely - He hadn't."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_5.jpg",
+        "Caption": "View of the Gulf of Corinth from where we ate lunch today."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_6.jpg",
+        "Caption": "Back in Athens, this is the actual basketball court where Giannis Antetokounmpo grew up and learned to play basketball. He is now an NBA champion and multi-time MVP."
       }
     ]
   },

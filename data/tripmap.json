@@ -1294,8 +1294,55 @@
       "Icon": "⛪",
       "Description": ""
     },
-    "Videos": [],
-    "Photos": [],
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "Video of Market and Bema Seat in Corinth",
+        "File": "Images/tripmap/2026-06-7_athens_8.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "View from our Lunch Spot",
+        "File": "Images/tripmap/2026-06-7_athens_7.mp4"
+      }
+    ],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_1.jpg",
+        "Caption": "Our tour guide in Corinth - James. He is an amazing Pauline Scholar. What a joy to see Corinth with him again this year."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_12.jpg",
+        "Caption": "Name plate with Erastus mentioned in the June 8th update. This shows and proves that the Christian religion is and was not for the poor alone, it is for us all."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_2.jpg",
+        "Caption": "Temple of Apollo"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_3.jpg",
+        "Caption": "The Bema seat where Gaius (governor of Corinth) over saw Paul's trial. There is so much proof of this event happening. Paul stood right here, and would have been tied to this beating post if he had been guilty. Paul was beatened several times through his life. Every time he was not guilty but he rarely used his Roman citizenship to avoid a beating. Some believe he didn't use his Roman citizenship beacause of the guilt he felt for executing so many Christians."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_4.jpg",
+        "Caption": "Josh was asking if he got the sunscreen rubbed in completely - He hadn't."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_5.jpg",
+        "Caption": "View of the Gulf of Corinth from where we ate lunch today."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-8_athens_6.jpg",
+        "Caption": "Back in Athens, this is the actual basketball court where Giannis Antetokounmpo grew up and learned to play basketball. He is now an NBA champion and multi-time MVP."
+      }
+    ],
     "Steps": 10000
   }
 ]
