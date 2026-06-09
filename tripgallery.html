@@ -368,53 +368,39 @@ fetch('./data/tripmap.json')
 
             });
 
-            if(
-                day.Video &&
-                day.Video.Enabled
-            ){
+            
+            const videos =
+                Array.isArray(day.Videos)
+                ? day.Videos.filter(v => v.Enabled !== false)
+                : (day.Video && day.Video.Enabled ? [day.Video] : []);
 
-                const globalIndex =
-                    allPhotos.length;
+            videos.forEach(videoItem => {
+
+                const globalIndex = allPhotos.length;
 
                 allPhotos.push({
                     type: 'video',
-                    image: day.Video.File,
-                    caption: day.Video.Title,
+                    image: videoItem.File,
+                    caption: videoItem.Title,
                     day: day.Date,
                     title: day.Title
                 });
 
                 html += `
-
-                <div
-                    class="gallery-card"
-                    onclick="openLightbox(${globalIndex})"
-                >
-
-                    <video
-                        muted
-                        playsinline
-                        preload="metadata"
+                <div class="gallery-card" onclick="openLightbox(${globalIndex})">
+                    <video muted playsinline preload="metadata"
                         style="width:100%;height:220px;object-fit:cover;display:block;">
-
-                        <source
-                            src="${day.Video.File}"
-                            type="video/mp4">
-
+                        <source src="${videoItem.File}" type="video/mp4">
                     </video>
-
                     <div class="gallery-caption">
-                        <strong>${day.Video.Title}</strong><br>
+                        <strong>${videoItem.Title}</strong><br>
                         <small>${day.Date}</small>
                     </div>
-
                 </div>
-
                 `;
 
-            }
-
-            html += '</div>';
+            });
+html += '</div>';
 
             section.innerHTML = html;
 
