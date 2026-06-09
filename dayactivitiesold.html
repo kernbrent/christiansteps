@@ -20,18 +20,6 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 
-
-<style>
-.image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.media-card{cursor:pointer;transition:transform .2s ease}
-.media-card:hover{transform:translateY(-4px) scale(1.02)}
-.media-card img,.media-card video{width:100%;border-radius:12px;display:block}
-.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:5000;padding:20px}
-.lightbox-overlay.active{display:flex}
-.lightbox-image{max-width:92vw;max-height:78vh}
-.lightbox-close{position:absolute;top:18px;right:28px;color:#fff;font-size:36px;cursor:pointer}
-.lightbox-caption{color:#fff;margin-top:12px;text-align:center;max-width:900px}
-</style>
 </head>
 
 <body>
@@ -189,16 +177,7 @@ Tap Share → Add to Home Screen
 
 </div>
 
-
 <div id="siteFooter"></div>
-
-<div id="lightboxOverlay" class="lightbox-overlay">
-<div class="lightbox-close" onclick="closeLightbox()">×</div>
-<img id="lightboxImage" class="lightbox-image" style="display:none">
-<video id="lightboxVideo" class="lightbox-image" controls style="display:none"><source id="lightboxVideoSource"></video>
-<div id="lightboxCaption" class="lightbox-caption"></div>
-</div>
-
 
 <script>
 
@@ -288,31 +267,28 @@ fetch('./data/dayactivities.json')
     const grid =
         document.getElementById('imageGrid');
 
+    item.Pictures.forEach(img => {
 
-window.mediaItems = [];
+        if(img.Enabled){
 
-(item.Pictures || []).forEach(img => {
- if(img.Enabled){
-   const idx = window.mediaItems.length;
-   window.mediaItems.push({type:'image',src:img.Image,caption:img.Caption||''});
-   const div=document.createElement('div');
-   div.className='media-card';
-   div.innerHTML=`<figure onclick="openMedia(${idx})"><img src="${img.Image}" alt=""><figcaption>${img.Caption||''}</figcaption></figure>`;
-   grid.appendChild(div);
- }
-});
+            const div =
+                document.createElement('div');
 
-(item.Videos || []).forEach(v => {
- if(v.Enabled!==false){
-   const idx = window.mediaItems.length;
-   window.mediaItems.push({type:'video',src:v.File,caption:v.Title||''});
-   const div=document.createElement('div');
-   div.className='media-card';
-   div.innerHTML=`<figure onclick="openMedia(${idx})"><video muted playsinline preload="metadata"><source src="${v.File}" type="video/mp4"></video><figcaption>${v.Title||''}</figcaption></figure>`;
-   grid.appendChild(div);
- }
-});
+            div.innerHTML =
+                `
+                <figure>
+                    <img src="${img.Image}" alt="">
+                    <figcaption>
+                        ${img.Caption || ''}
+                    </figcaption>
+                </figure>
+                `;
 
+            grid.appendChild(div);
+
+        }
+
+    });
 
     const publishedDays =
         data.filter(d =>
@@ -439,28 +415,6 @@ if(isIOS && !isInStandaloneMode){
 
 }
 
-
-function openMedia(index){
- const item=window.mediaItems[index];
- const o=document.getElementById('lightboxOverlay');
- const img=document.getElementById('lightboxImage');
- const vid=document.getElementById('lightboxVideo');
- const src=document.getElementById('lightboxVideoSource');
- document.getElementById('lightboxCaption').innerHTML=item.caption||'';
- if(item.type==='video'){
-   img.style.display='none';
-   vid.style.display='block';
-   src.src=item.src; vid.load();
- } else {
-   vid.pause(); vid.style.display='none';
-   img.style.display='block'; img.src=item.src;
- }
- o.classList.add('active');
-}
-function closeLightbox(){
- document.getElementById('lightboxOverlay').classList.remove('active');
- document.getElementById('lightboxVideo').pause();
-}
 </script>
 
 </body>

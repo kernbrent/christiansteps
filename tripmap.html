@@ -946,7 +946,7 @@ function renderPanel(day) {
         </p>
 
         <p>
-        <a href="dayactivities.html?day=${day.Date}">
+        <a href="dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Updates
         </a>
         </p>
@@ -973,7 +973,7 @@ function renderPanel(day) {
                         : ''}
 
         <p>
-        <a href="dayactivities.html?day=${day.Date}">
+        <a href="dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Updates
         </a>
         </p>
@@ -1267,7 +1267,7 @@ function renderPanel(day) {
                         </p>
 
                         <p>
-                        <a href="dayactivities.html?day=${day.Date}">
+                        <a href="dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
                             View Updates
                         </a>
                         </p>`;

@@ -926,8 +926,8 @@
   },
   {
     "Date": "2026-06-03",
-    "Title": "Nafplio → Athens",
-    "City": "Athens",
+    "Title": "Nafplio One more Day",
+    "City": "Nafplio",
     "Country": "Greece",
     "Latitude": 37.9838,
     "Longitude": 23.7275,
@@ -936,9 +936,9 @@
       "Brent"
     ],
     "Transportation": {
-      "Type": "Bus",
-      "Icon": "🚌",
-      "Description": "Travel from Nafplio to Athens"
+      "Type": "Local",
+      "Icon": "🏖️",
+      "Description": "Chill and Read and Eat"
     },
     "Videos": [
       {
@@ -1028,8 +1028,8 @@
       "Brent"
     ],
     "Transportation": {
-      "Type": "Mission",
-      "Icon": "⛪",
+      "Type": "Bus",
+      "Icon": "🚌",
       "Description": "Today we all arrived in Athens. There are 5 from Texas, 5 from Wisconsin, and 2 from Colorado. It is a nice group. We gathered in our AirBNBs and then walked (and trained) to Mars Hill. There we took in the site and then gathered for devotional and communion. It was my pleasure to lead the conversation and communinion tonight."
     },
     "Videos": [
