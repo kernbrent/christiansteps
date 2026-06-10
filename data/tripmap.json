@@ -1125,7 +1125,7 @@
     ],
     "Steps": 21000
   },
-    {
+  {
     "Date": "2026-06-06",
     "Title": "Playing at Park with Albanian Church Kids and Homeless Walk",
     "City": "Athens",
@@ -1206,7 +1206,8 @@
       }
     ],
     "Steps": 30200
-  },  {
+  },
+  {
     "Date": "2026-06-07",
     "Title": "Worship with Albanian Church and Homeless Walk",
     "City": "Athens",
@@ -1278,7 +1279,7 @@
     ],
     "Steps": 14052
   },
-    {
+  {
     "Date": "2026-06-08",
     "Title": "Travel to and Tour Corinth",
     "City": "Corinth",
@@ -1345,7 +1346,7 @@
     ],
     "Steps": 15620
   },
-      {
+  {
     "Date": "2026-06-09",
     "Title": "Glocal Refugee Cafe and New Start Trafficing walk",
     "City": "Athens",
@@ -1402,6 +1403,77 @@
         "Enabled": true,
         "Image": "Images/tripmap/2026-06-9_athens_8.jpg",
         "Caption": "A little fun to end this deep day. We found a statue in Corinth of our fearless leader, Bryan Doyle."
+      }
+    ],
+    "Steps": 16443
+  },
+  {
+    "Date": "2026-06-10",
+    "Title": "Glocal Refugee Cafe and New Start Trafficing walk - Part 2",
+    "City": "Athens",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": "Today had a similar agenda to yesterday. We served at the Glocal Cafe for Refugees and we went to the New Start ministries for a brothel prayer walk. We ended the day at one of our apartments for a team dinner made by Ty, Brent (Jones), and Michael. They made us a authentic(ish) Mexican Taco dinner. YUMMY!!!! At the cafe we had some great conversations with people from many different countries and had the opportunity to share Jesus with some of them (this is a Swedish Government sponsored program and we are not to proselytize unless they ask us first). We took several of them to a park to play games, have a picnic, and just hang out for 3 hours. After that we headed back over to the New Start Ministries building. Dimitrius shared with us several stories about the brothel industry. There are pictures below that show some detailed information. It is a heavy thing to be a part of and to witness the men going in and out of these brothels. Pray for the women stuck in this industry and pray for the men who have never been introduced to a relationship with Jesus that would convict them of this behavior."
+    },
+    "Videos": [],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_2.jpg",
+        "Caption": "The team during our morning devotional."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_1.jpg",
+        "Caption": "Brian, Michael, and Brent (Kern) talking with a refugee from Sudan. He was getting close to getting his EU passport and one night while sleeping on the streets, all of his papers were stolen and he is basically having to start over the process."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_3.jpg",
+        "Caption": "Handing out new(ish) clothes to the refugees on the rooftop of the Glocal Cafe for Refugees."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_4.jpg",
+        "Caption": "Refugees from at least 43 different countries sit around Natalie during some time at the park. They all really loved to draw and color."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_10.jpg",
+        "Caption": "A picture of most of the group that went to the park."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_5.jpg",
+        "Caption": "A street near Omonia (a section of Athens). There are about 50 brothels within 4 blocks of this picture."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_6.jpg",
+        "Caption": "Every red circle represents a location where there is at least 1 brothel and sometimes 4 or 5 in the same multi-story building. The blue #1 is near where our AirBNB apartment is. The blue #2 is near where Glocal Cafe is. There are at least 400 brothels within 4 miles of this location. This is the Victory Square district and it is one of the most populated brothel districts in Europe."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_7.jpg",
+        "Caption": "This is another distric near Omonia where there is a large concentration of brothels."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_8.jpg",
+        "Caption": "An abstract mural in the Onomia district."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-10_athens_9.jpg",
+        "Caption": "This mural was painted in 2006 when Greece was going through a very difficult time which include national bankruptcy. The story behind the mural is, when people pray we put our hands toether and lift them to God. These are God's hands pleading for the people of Greece to repent and change their ways. This mural is right on the border of one of the largest brothel districts in Europe."
       }
     ],
     "Steps": 16443
