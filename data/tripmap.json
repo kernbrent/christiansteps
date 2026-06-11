@@ -1477,5 +1477,61 @@
       }
     ],
     "Steps": 16254
+  },
+    {
+    "Date": "2026-06-10",
+    "Title": "Glocal Refugee Cafe and New Start Trafficing walk - Part 2",
+    "City": "Athens",
+    "Country": "Greece",
+    "Latitude": 37.9838,
+    "Longitude": 23.7275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": "Today we worked again at the refugee center. I started out by shopping throughout the Omonia and Monastiraki Districts looking for a patio umbrella for the Glocal Refugee Center. I looked in 100s of shops, but had no luck. I did some research online and found a store that looked like they carried this. I call Bryan and he came and picked me up on this car. We drove to Jumbo Store and found the umbrella pictured below. We helped the staff at the center paint a room and we spent most of the day hanging out with refugees. Most of the team visited the Olympic Stadium (the one from the early 1900's). We went to dinner at a nice Chinese food restaurant and then most of the team met at a bar to watch the first World Cup Match."
+    },
+    "Videos": [],
+    "Photos": [
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_1.jpg",
+        "Caption": "This is the view from Monistiraki Square. You can see the same chapel on the square, Mars Hills up and to the right, and the Acropolis up and to the left."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_2.jpg",
+        "Caption": "An active Archeological site in Athens near Montistiraki Square."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_3.jpg",
+        "Caption": "Brent K and Ellen after our journey to buy a new Patio Umbrella for the Glocal Refugee Center."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_4.jpg",
+        "Caption": "Athens Metropolitan Cathedral - This Church is so pretty and the square is amazing."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_5.jpg",
+        "Caption": "Inside the Athens Metropolitan Cathedral."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_6.jpg",
+        "Caption": "Inside the Athens Metropolitan Cathedral."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-11_athens_7.jpg",
+        "Caption": "Inside the Athens Metropolitan Cathedral."
+      }
+    ],
+    "Steps": 16254
   }
 ]
