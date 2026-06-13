@@ -1533,5 +1533,77 @@
       }
     ],
     "Steps": 22188
+  },
+    {
+    "Date": "2026-06-12",
+    "Title": "Day trip to Aegina Island and Final Team dinner.",
+    "City": "Aegina Island",
+    "Country": "Greece",
+    "Latitude": 37.7467,
+    "Longitude": 23.4275,
+    "MissionDay": true,
+    "Travelers": [
+      "Brent"
+    ],
+    "Transportation": {
+      "Type": "Mission",
+      "Icon": "⛪",
+      "Description": " "
+    },
+    "Videos": [
+      {
+        "Enabled": true,
+        "Title": "The Birds, by Hitchcock",
+        "File": "Images/tripmap/2026-06-12_Athens_10.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Ty and I on Scooters",
+        "File": "Images/tripmap/2026-06-12_Athens_13.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Scooter ride on Aegina",
+        "File": "Images/tripmap/2026-06-12_Athens_11.mp4"
+      },
+      {
+        "Enabled": true,
+        "Title": "Ships in Athens Harbor",
+        "File": "Images/tripmap/2026-06-12_Athens_12.mp4"
+      }
+    ],
+    "Photos": [
+            {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-12_Athens_1.jpg",
+        "Caption": "Onboard the Ferry to Aegina Island"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-12_Athens_2.jpg",
+        "Caption": "Me and my Scooter"
+      },
+      {
+        "Enabled": true,
+        "Image": "Beautiful storm building over the Gulf of Aegina",
+        "Caption": "Brent K and Ellen after our journey to buy a new Patio Umbrella for the Glocal Refugee Center."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-12_Athens_4.jpg",
+        "Caption": "Black and White photo of Josh and Hannah where he proposed and she said, YES"
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-12_Athens_5.jpg",
+        "Caption": "Our final lunch/dinner. We are toasting with Pineapple Fizz, a concoction I invented. They did not have any non-alcoholic sparkling wine for the engagement."
+      },
+      {
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-12_Athens_6.jpg",
+        "Caption": "Ty and Brent on their HOGS on Aegina Island"
+      }
+    ],
+    "Steps": 16582
   }
 ]
