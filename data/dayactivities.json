@@ -462,7 +462,7 @@
     "Challenges": "Team dynamics are always a challenge. Seeing each persons gifts and growth is a blessing and a challenge. Sometimes we have to be in a role to support others and put our own ambitions aside.",
     "SharedPrayerRequests": "A personal one for me today, I am running on empty from a physical and emotional stand point. Please pray for me that I can not only find the energy and strength, but I can put on the light of Jesus to everyone.",
     "Pictures": [
-       {
+      {
         "Enabled": true,
         "Image": "Images/tripmap/2026-06-10_athens_2.jpg",
         "Caption": "The team during our morning devotional."
@@ -630,35 +630,35 @@
     "Published": true,
     "Location": "Athens",
     "PlannedActivities": "Start Journey Home",
-    "AccomplishedActivities": "",
-    "GodMoments": "",
-    "Challenges": "",
-    "SharedPrayerRequests": "",
+    "AccomplishedActivities": "Today the team started heading home. By the time I went to bed tonight, most of the team had already landed in the USA. I have this one more night, so I decided to make the best of it. I went to the lovely neighborhood square in Spata, Greece. There were families out eating and visiting. Kids were playing soccer in the grass, teenagers were being teenagers, parents were talking and having a glass of wine, people were eating ice cream. If you didn't listen to the language, you would have thought it was a small town in the MidWest United States.",
+    "GodMoments": "A comfortable bed after sleeping on a couch for 11 days. God giving me the ability to adventure and find hotels, restaurants, car rentals, shops all of my own.",
+    "Challenges": "The GPS location for the hotel was not correct in Booking.com. It was an adventure, but it was fun. Also, driving this car in Athens.",
+    "SharedPrayerRequests": "That God will get us all home safely. That Ellen has a great trip in Scotland and Canada, that we are changed for the better to serve His kingdom.",
     "Pictures": [
       {
-        "Enabled": false,
-        "Image": "Images/day13_activity1.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-13_Athens_1.jpg",
+        "Caption": "Brent K, Zoie, and Ty in a tiny car on the way to Athens airport."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day13_activity2.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-13_Athens_2.jpg",
+        "Caption": "My hotel came with a pool. Or maybe it is just a big bathtub. The jury is still out."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day13_activity3.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-13_Athens_3.jpg",
+        "Caption": "I was able to set my AC to 18 degrees celsius. Ty and I had our room in Victoria Square at 17. It is so hot in here."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day13_activity4.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-13_Athens_4.jpg",
+        "Caption": "My last dinner in Greece. Chicken Souvlaki with potatoes, pita, Red Wine (they said it was red, it looks more like rose), bread with Olive Oil and Balsamic."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day13_activity5.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-13_Athens_5.jpg",
+        "Caption": "Bledi and I from the Albanian church. His wife Blerina Mile sent this to me today and I had to share it."
       }
     ]
   },
@@ -667,35 +667,30 @@
     "Published": true,
     "Location": "Athens",
     "PlannedActivities": "Mission outreach and ministry activities.",
-    "AccomplishedActivities": "",
-    "GodMoments": "",
-    "Challenges": "",
-    "SharedPrayerRequests": "",
+    "AccomplishedActivities": "Woke up at 5:30 am. Had a nice breakfast at the hotel. Found the rental car company and returned the car. Made it to the airport and am waiting on my flight.",
+    "GodMoments": "A very polite rental car attendant. There was a new scratch on the car, but he helped me buff it out so that we didn't have to pay for the damage.",
+    "Challenges": "Looking forward to 15 hours of flight time. YAWN!!!",
+    "SharedPrayerRequests": "Safe travels and making connections.",
     "Pictures": [
       {
-        "Enabled": false,
-        "Image": "Images/day14_activity1.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-14_Athens_1.jpg",
+        "Caption": "In Greece, you cannot check into a flight until they say you can check into a flight. We were put into several lines. Not sure the woman in charge knew what she was doing. She kept moving people around. It was quite funny."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day14_activity2.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-14_Athens_2.jpg",
+        "Caption": "Another image of check-in. The people working behind the counter sat down and stared at us for about 15 minutes before they let anyone check in. Maybe there are unions in Greece too?"
       },
       {
-        "Enabled": false,
-        "Image": "Images/day14_activity3.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-14_Athens_3.jpg",
+        "Caption": "View from my apartment this morning. The bed was sooooo comfortable. I got a great night's sleep."
       },
       {
-        "Enabled": false,
-        "Image": "Images/day14_activity4.jpg",
-        "Caption": ""
-      },
-      {
-        "Enabled": false,
-        "Image": "Images/day14_activity5.jpg",
-        "Caption": ""
+        "Enabled": true,
+        "Image": "Images/tripmap/2026-06-14_Athens_4.jpg",
+        "Caption": "I stayed in Spata Greece last night. I was NOT in SpaRta, it was at least close, so Bryan made this lovely image of me. I think that glasses really round out the image."
       }
     ]
   },
