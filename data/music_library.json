@@ -269,6 +269,23 @@
       "group": ""
     },
     {
+      "title": "Almost Home",
+      "duration": "3:36",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "https://media.christiansteps.net/music/GeneralMP3/AlmostHome.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "https://media.christiansteps.net/music/GeneralMP3/AlmostHome.mp3"
+        }
+      ],
+      "search": "almost home brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+    {
       "title": "Amazing Grace",
       "duration": "3:32",
       "artist": "Brent D. Kern",
@@ -510,6 +527,23 @@
       "collection_key": "general",
       "group": ""
     },
+        {
+      "title": "Make It Well",
+      "duration": "4:58",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "https://media.christiansteps.net/music/GeneralMP3/MakeItWell.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "https://media.christiansteps.net/music/GeneralMP3/MakeItWell.mp3"
+        }
+      ],
+      "search": "make it well brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
     {
       "title": "Mary Did You Know",
       "duration": "",
@@ -558,6 +592,23 @@
         }
       ],
       "search": "welcome to our world brent d kern general collection mp3",
+      "collection_key": "general",
+      "group": ""
+    },
+        {
+      "title": "Yet Not I, But Through Christ in Me",
+      "duration": "0:47",
+      "artist": "Brent D. Kern",
+      "collection": "General Collection",
+      "audio": "https://media.christiansteps.net/music/GeneralMP3/YetNotIButChrist.mp3",
+      "primary_format": "mp3",
+      "downloads": [
+        {
+          "label": "MP3",
+          "href": "https://media.christiansteps.net/music/GeneralMP3/YetNotIButChrist.mp3"
+        }
+      ],
+      "search": "yet not i but through christ in me brent d kern general collection mp3",
       "collection_key": "general",
       "group": ""
     },
