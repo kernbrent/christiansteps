@@ -1548,7 +1548,7 @@
     "Transportation": {
       "Type": "Mission",
       "Icon": "⛪",
-      "Description": " "
+      "Description": "Today we traveled to the beautiful island of Aegina for some rest and fun before we start our journeys home. Michael, Josh, Hannah, Emma, and Matt will start their journey to Wisconsin at 1 AM. Brent J, Amelia, and Ellen will start their journeys at 3:30 am. Bryan will start his at 10:30 am. Zoie at 12 PM. Ty will fly out at 6 PM, and Brent K will fly out at 10:30 am on Sunday June 14. A lot of moving parts over the next 36 hours. Aegina was wonderful. Ty and I rented motor scooters and let many of our friends take turns driving them. We had our traditional last night together dinner. While we eat, each person must close their eyes and the leader picks 4 people to say something about them. Then the person opens their eyes and hears what is said about them from their peers on the team. It is a special and beautiful time. We traveled by Ferry today and the weather was very nice. Storms around the area all day and tonight, but no bad weather on us the entire trip."
     },
     "Videos": [
       {
@@ -1586,7 +1586,7 @@
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-06-12_Athens_3.jpg",
-        "Caption": "Brent K and Ellen after our journey to buy a new Patio Umbrella for the Glocal Refugee Center."
+        "Caption": "Beautiful storm building over the Gulf of Aegina."
       },
       {
         "Enabled": true,
@@ -1608,7 +1608,7 @@
   },
   {
     "Date": "2026-06-13",
-    "Title": "Today the team started heading home. By the time I went to bed tonight, most of the team had already landed in the USA. I have this one more night, so I decided to make the best of it. I went to the lovely neighborhood square in Spata, Greece. There were families out eating and visiting. Kids were playing soccer in the grass, teenagers were being teenagers, parents were talking and having a glass of wine, people were eating ice cream. If you didn't listen to the language, you would have thought it was a small town in the MidWest United States.",
+    "Title": "The Team departs, several trips to the airport, my last night in Europe.",
     "City": "Spata",
     "Country": "Greece",
     "Latitude": 37.9646,
@@ -1620,7 +1620,7 @@
     "Transportation": {
       "Type": "Mission",
       "Icon": "⛪",
-      "Description": " "
+      "Description": "Today the team started heading home. By the time I went to bed tonight, most of the team had already landed in the USA. I have this one more night, so I decided to make the best of it. I went to the lovely neighborhood square in Spata, Greece. There were families out eating and visiting. Kids were playing soccer in the grass, teenagers were being teenagers, parents were talking and having a glass of wine, people were eating ice cream. If you didn't listen to the language, you would have thought it was a small town in the MidWest United States"
     },
     "Photos": [
       {
