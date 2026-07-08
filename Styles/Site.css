@@ -2472,3 +2472,35 @@ a.card-link:active{
 .gallery-btn:hover{
     background:#2c7cb3;
 }
+.has-dropdown{
+    position:relative;
+}
+
+.dropdown{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    min-width:220px;
+    background:#fff;
+    border:1px solid #ddd;
+    list-style:none;
+    padding:0;
+    margin:0;
+    z-index:9999;
+}
+
+.dropdown li{
+    margin:0;
+}
+
+.dropdown a{
+    display:block;
+    padding:10px 15px;
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+.has-dropdown:hover .dropdown{
+    display:block;
+}
