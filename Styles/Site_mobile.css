@@ -278,9 +278,18 @@
     border-radius: 12px;
   }
 
-  /* On mobile, keep dropdown submenus hidden to avoid hover-only UX */
-  .header div.menu ul.subnav {
-    display: none !important;
+  /* Show nested navigation as an indented list on touch devices. */
+  .header div.menu ul.dropdown {
+    display: block;
+    position: static;
+    min-width: 0;
+    margin: 4px 0 4px 16px;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .header div.menu ul.dropdown a {
+    white-space: normal;
   }
 }
 
@@ -295,6 +304,28 @@
 /* MISSION MOBILE */
 /* MOBILE */
 @media (max-width: 768px) {
+
+  .trip-landing-intro {
+    padding: 20px;
+  }
+
+  .trip-resource-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trip-resource-button {
+    text-align: center;
+  }
+
+  .mission-day-picker {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .mission-day-picker select {
+    width: 100%;
+  }
 
   .mission-top-row {
     flex-direction: column;
@@ -345,5 +376,11 @@
         min-height:auto;
     }
 
+}
+
+@media (max-width: 420px) {
+  .trip-resource-nav {
+    grid-template-columns: 1fr;
+  }
 }
 }

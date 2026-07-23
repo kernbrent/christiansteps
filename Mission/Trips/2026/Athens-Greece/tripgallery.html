@@ -8,8 +8,8 @@
 
 <title>Trip Photo Gallery | ChristianSteps</title>
 
-<link href="Styles/Site.css" rel="stylesheet">
-<link href="Styles/Site_mobile.css" rel="stylesheet">
+<link href="/Styles/Site.css" rel="stylesheet">
+<link href="/Styles/Site_mobile.css" rel="stylesheet">
 
 <style>
 
@@ -170,9 +170,9 @@ body{
 
 <div class="title">
 <h1>
-<a href="index.html">
+<a href="/index.html">
 <img
-    src="./Images/Logo400.jpg"
+    src="/Images/Logo400.jpg"
     class="site-logo"
     alt="Christian Steps Ministries"
     width="400"
@@ -207,7 +207,7 @@ Dynamic gallery of the entire journey across Europe and Greece.
 
 <div>
 
-<a href="tripmap.html" class="gallery-btn">
+<a href="/Mission/Trips/2026/Athens-Greece/tripmap.html" class="gallery-btn">
 ← Back to Interactive Trip Map
 </a>
 
@@ -277,13 +277,13 @@ Next ▶
 
 <script>
 
-fetch('header.html')
+fetch('/header.html', { cache: 'no-store' })
 .then(r => r.text())
 .then(h => {
     document.getElementById('siteHeader').innerHTML = h;
 });
 
-fetch('footer.html')
+fetch('/footer.html', { cache: 'no-store' })
 .then(r => r.text())
 .then(f => {
     document.getElementById('siteFooter').innerHTML = f;
@@ -292,10 +292,11 @@ fetch('footer.html')
 let allPhotos = [];
 let currentLightboxIndex = 0;
 
-fetch('./data/tripmap.json')
+fetch('/data/tripmap.json')
 .then(r => r.json())
 .then(data => {
 
+    data = JSON.parse(JSON.stringify(data).replace(/"Images\//g, '"/Images/'));
     const container =
         document.getElementById('galleryContainer');
 

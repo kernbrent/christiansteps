@@ -2472,6 +2472,93 @@ a.card-link:active{
 .gallery-btn:hover{
     background:#2c7cb3;
 }
+
+.trip-landing-intro{
+    max-width:980px;
+    margin:0 auto 28px;
+    padding:28px;
+    border:1px solid #d8e0e6;
+    border-radius:16px;
+    background:linear-gradient(135deg, #f7fbfd 0%, #ffffff 100%);
+    box-shadow:0 10px 24px rgba(34,57,76,.09);
+}
+
+.trip-landing-intro h2{
+    margin:4px 0 14px;
+    color:#344f66;
+}
+
+.trip-landing-intro p{
+    line-height:1.7;
+}
+
+.trip-landing-kicker{
+    margin:0;
+    color:#2c7cb3;
+    font-size:.85rem;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+}
+
+.trip-resource-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.trip-resource-button:link,
+.trip-resource-button:visited{
+    display:inline-block;
+    padding:11px 18px;
+    border-radius:9px;
+    background:#2c7cb3;
+    color:#fff;
+    font-weight:700;
+    text-decoration:none;
+}
+
+.trip-resource-button:hover,
+.trip-resource-button:focus{
+    background:#344f66;
+    color:#72c7ff;
+}
+
+.mission-day-picker{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin:18px auto;
+    padding:14px 18px;
+    max-width:520px;
+    border:1px solid #d8e0e6;
+    border-radius:12px;
+    background:#f7fbfd;
+}
+
+.mission-day-picker label{
+    color:#344f66;
+    font-weight:700;
+}
+
+.mission-day-picker select{
+    min-width:150px;
+    padding:9px 34px 9px 12px;
+    border:1px solid #4e667d;
+    border-radius:8px;
+    background:#fff;
+    color:#243746;
+    font:inherit;
+    cursor:pointer;
+}
+
+.mission-day-picker select:focus{
+    outline:3px solid rgba(44,124,179,.25);
+    outline-offset:2px;
+}
+
 .has-dropdown{
     position:relative;
 }
@@ -2501,6 +2588,16 @@ a.card-link:active{
     white-space:nowrap;
 }
 
-.has-dropdown:hover .dropdown{
+.has-dropdown:hover > .dropdown,
+.has-dropdown:focus-within > .dropdown{
     display:block;
+}
+
+.dropdown .has-dropdown{
+    position:relative;
+}
+
+.dropdown .dropdown{
+    top:0;
+    left:100%;
 }
