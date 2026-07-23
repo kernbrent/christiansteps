@@ -8,9 +8,9 @@
 
     <title>Europe + Mission Journey | ChristianSteps</title>
 
-    <link href="Styles/Site.css" rel="stylesheet">
-    <link href="Styles/Site_mobile.css" rel="stylesheet">
-    <link href="Styles/tripmap.css" rel="stylesheet">
+    <link href="/Styles/Site.css" rel="stylesheet">
+    <link href="/Styles/Site_mobile.css" rel="stylesheet">
+    <link href="/Styles/tripmap.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
@@ -201,8 +201,8 @@
 
             <div class="title">
                 <h1>
-                    <a href="index.html">
-                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                    <a href="/index.html">
+                        <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
                             width="400" />
                     </a>
                 </h1>
@@ -232,9 +232,9 @@
                     </section>
                     <div id="quickLinks"
                         style="display:flex;gap:8px;justify-content:center;align-items:center;margin:8px 0 10px 0;flex-wrap:wrap;font-size:14px;">
-                        <a href="missions.html">🏠 Mission Home</a>
+                        <a href="/Mission/Trips/2026/Athens-Greece/index.html">🏠 Trip Home</a>
                         <span>|</span>
-                        <a href="tripgallery.html">📸 Gallery</a>
+                        <a href="/Mission/Trips/2026/Athens-Greece/tripgallery.html">📸 Gallery</a>
                         <span>|</span>
                         <a href="#" id="todayBtn">📍 Today</a>
                     </div>
@@ -283,7 +283,7 @@
 
                             <strong>Gallery:</strong><br>
 
-                            <a href="tripgallery.html" class="gallery-btn">
+                            <a href="/Mission/Trips/2026/Athens-Greece/tripgallery.html" class="gallery-btn">
                                 📸 Photo Gallery
                             </a>
 
@@ -402,13 +402,13 @@
 
     <script>
 
-        fetch('header.html')
+        fetch('/header.html', { cache: 'no-store' })
             .then(r => r.text())
             .then(h => {
                 document.getElementById('siteHeader').innerHTML = h;
             });
 
-        fetch('footer.html')
+        fetch('/footer.html', { cache: 'no-store' })
             .then(r => r.text())
             .then(f => {
                 document.getElementById('siteFooter').innerHTML = f;
@@ -435,10 +435,11 @@
         let currentLightboxIndex = 0;
         let currentLightboxPhotos = [];
 
-        fetch('./data/tripmap.json')
+        fetch('/data/tripmap.json')
             .then(r => r.json())
             .then(data => {
 
+                data = JSON.parse(JSON.stringify(data).replace(/"Images\//g, '"/Images/'));
                 window.tripData = data;
 
                 // DEFAULT TO JOURNEY MODE
@@ -940,13 +941,13 @@ function renderPanel(day) {
         <h3>Mission Resources</h3>
 
         <p>
-        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+        <a href="/Mission/Trips/2026/Athens-Greece/devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Devotional
         </a>
         </p>
 
         <p>
-        <a href="dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+        <a href="/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Updates
         </a>
         </p>
@@ -965,7 +966,7 @@ function renderPanel(day) {
         ${day.MissionDay
                         ? `
         <p>
-        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+        <a href="/Mission/Trips/2026/Athens-Greece/devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Devotional
         </a>
         </p>
@@ -973,7 +974,7 @@ function renderPanel(day) {
                         : ''}
 
         <p>
-        <a href="dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+        <a href="/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
             View Updates
         </a>
         </p>
@@ -1261,13 +1262,13 @@ function renderPanel(day) {
                         </p>
 
                         <p>
-                        <a href="devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+                        <a href="/Mission/Trips/2026/Athens-Greece/devotional.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
                             View Devotional
                         </a>
                         </p>
 
                         <p>
-                        <a href="dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
+                        <a href="/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${parseInt(String(day.Date).split('-')[2], 10)}">
                             View Updates
                         </a>
                         </p>`;

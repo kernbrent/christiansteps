@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Mission Itinerary - Christian Steps Ministries</title>
 
-    <link href="Styles/Site.css" rel="stylesheet" />
-    <link href="Styles/Site_mobile.css" rel="stylesheet" />
-    <link href="Styles/mission_itinerary_calendar_styles.css" rel="stylesheet" />
+    <link href="/Styles/Site.css" rel="stylesheet" />
+    <link href="/Styles/Site_mobile.css" rel="stylesheet" />
+    <link href="/Styles/mission_itinerary_calendar_styles.css" rel="stylesheet" />
 
 </head>
 
@@ -22,8 +22,8 @@
 
             <div class="title">
                 <h1>
-                    <a href="index.html">
-                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                    <a href="/index.html">
+                        <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
                             width="400" />
                     </a>
                 </h1>
@@ -42,9 +42,9 @@
                 <section class="home-hero">
 
                     <div class="mission-ad">
-                        <a href="missionitinerary.html">
+                        <a href="/Mission/Trips/2026/Athens-Greece/missionitinerary.html">
                             <div class="mission-ad-card">
-                                <img src="Images/athens.jpg" alt="Athens Greece Mission Trip">
+                                <img src="/Images/athens.jpg" alt="Athens Greece Mission Trip">
 
                                 <div class="mission-ad-text">
                                     Support CSM's Mission Trip to Athens, Greece
@@ -79,11 +79,11 @@
                 <section class="home-section">
 
                     <div class="mission-nav-buttons">
-                        <a href="tripmap.html" class="tripmap-button">
+                        <a href="/Mission/Trips/2026/Athens-Greece/tripmap.html" class="tripmap-button">
                             Track the Trip
                         </a>
 
-                        <a href="missions.html" class="tripmap-button">
+                        <a href="/Mission/Trips/2026/Athens-Greece/index.html" class="tripmap-button">
                             Mission Home
                         </a>
                     </div>
@@ -114,21 +114,21 @@
 
     <script>
 
-        fetch('header.html')
+        fetch('/header.html', { cache: 'no-store' })
             .then(r => r.text())
             .then(h => {
                 document.getElementById('siteHeader').innerHTML = h;
             });
 
-        fetch('footer.html')
+        fetch('/footer.html', { cache: 'no-store' })
             .then(r => r.text())
             .then(f => {
                 document.getElementById('siteFooter').innerHTML = f;
             });
 
         Promise.all([
-            fetch('./data/missions.json').then(r => r.json()),
-            fetch('./data/dayactivities.json').then(r => r.json())
+            fetch('/data/missions.json').then(r => r.json()),
+            fetch('/data/dayactivities.json').then(r => r.json())
         ])
             .then(([missions, activities]) => {
 
@@ -190,7 +190,7 @@
                     const updateButton =
                         activityDay
                             ? `<a class="calendar-mini-btn"
-                   href="dayactivities.html?day=${day.Date}">
+                   href="/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${day.Date}">
                    Updates
                </a>`
                             : `<span class="calendar-mini-btn disabled">
@@ -203,7 +203,7 @@
                    Devotional
                </span>`
                             : `<a class="calendar-mini-btn"
-                   href="devotional.html?day=${day.Date}">
+                   href="/Mission/Trips/2026/Athens-Greece/devotional.html?day=${day.Date}">
                    Devotional
                </a>`;
 

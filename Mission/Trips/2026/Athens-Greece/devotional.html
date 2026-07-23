@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mission Devotional</title>
 
-    <link href="Styles/Site.css" rel="stylesheet" />
-    <link href="Styles/Site_mobile.css" rel="stylesheet" />
+    <link href="/Styles/Site.css" rel="stylesheet" />
+    <link href="/Styles/Site_mobile.css" rel="stylesheet" />
 
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#3D95CE">
 
     <script>
@@ -19,7 +19,8 @@
 
             window.addEventListener('load', () => {
 
-                navigator.serviceWorker.register('./sw.js');
+                navigator.serviceWorker.register('/sw.js?v=5', { updateViaCache: 'none' })
+                    .then(registration => registration.update());
 
             });
 
@@ -38,8 +39,8 @@
 
             <div class="title">
                 <h1>
-                    <a href="index.html">
-                        <img src="./Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
+                    <a href="/index.html">
+                        <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries"
                             width="400" />
                     </a>
                 </h1>
@@ -64,16 +65,16 @@
 
                         <a class="nav-button" id="topPrevBtn">← Previous Day</a>
 
-                        <a class="nav-button" href="missionitinerary.html">
+                        <a class="nav-button" href="/Mission/Trips/2026/Athens-Greece/missionitinerary.html">
                             Return to Calendar
                         </a>
 
-                        <a class="nav-button" href="missions.html">
+                        <a class="nav-button" href="/Mission/Trips/2026/Athens-Greece/index.html">
                             Mission Home
                         </a>
                         
 
-                        <a class="nav-button" href="devotional.html?day=99">
+                        <a class="nav-button" href="/Mission/Trips/2026/Athens-Greece/devotional.html?day=99">
                             Mars Hill
                         </a>
 
@@ -130,11 +131,11 @@
 
                             <a class="nav-button" id="prevBtn">← Previous Day</a>
 
-                            <a class="nav-button" href="missionitinerary.html">
+                            <a class="nav-button" href="/Mission/Trips/2026/Athens-Greece/missionitinerary.html">
                                 Return to Calendar
                             </a>
 
-                            <a class="nav-button" href="missions.html">
+                            <a class="nav-button" href="/Mission/Trips/2026/Athens-Greece/index.html">
                                 Mission Home
                             </a>
 
@@ -230,10 +231,11 @@
             });
 
 
-        fetch('./data/missions.json')
+        fetch('/data/missions.json')
             .then(r => r.json())
             .then(data => {
 
+                data = JSON.parse(JSON.stringify(data).replace(/"Images\//g, '"/Images/'));
                 data.sort((a, b) => a.Date - b.Date);
 
                 const item = data.find(x => x.Date == day);
@@ -312,10 +314,10 @@
                             missionDays[currentIndex - 1];
 
                         document.getElementById('prevBtn').href =
-                            `devotional.html?day=${prevDay.Date}`;
+                            `/Mission/Trips/2026/Athens-Greece/devotional.html?day=${prevDay.Date}`;
 
                         document.getElementById('topPrevBtn').href =
-                            `devotional.html?day=${prevDay.Date}`;
+                            `/Mission/Trips/2026/Athens-Greece/devotional.html?day=${prevDay.Date}`;
 
                     }
                     else {
@@ -333,10 +335,10 @@
                             missionDays[currentIndex + 1];
 
                         document.getElementById('nextBtn').href =
-                            `devotional.html?day=${nextDay.Date}`;
+                            `/Mission/Trips/2026/Athens-Greece/devotional.html?day=${nextDay.Date}`;
 
                         document.getElementById('topNextBtn').href =
-                            `devotional.html?day=${nextDay.Date}`;
+                            `/Mission/Trips/2026/Athens-Greece/devotional.html?day=${nextDay.Date}`;
 
                     }
                     else {
@@ -350,13 +352,13 @@
 
             });
 
-        fetch('header.html')
+        fetch('/header.html', { cache: 'no-store' })
             .then(r => r.text())
             .then(h => {
                 document.getElementById('siteHeader').innerHTML = h;
             });
 
-        fetch('footer.html')
+        fetch('/footer.html', { cache: 'no-store' })
             .then(r => r.text())
             .then(f => {
                 document.getElementById('siteFooter').innerHTML = f;

@@ -6,16 +6,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mission Day Activities</title>
 
-<link href="Styles/Site.css" rel="stylesheet" />
-<link href="Styles/Site_mobile.css" rel="stylesheet" />
+<link href="/Styles/Site.css" rel="stylesheet" />
+<link href="/Styles/Site_mobile.css" rel="stylesheet" />
 
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#3D95CE">
 
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js');
+        navigator.serviceWorker.register('/sw.js?v=5', { updateViaCache: 'none' })
+            .then(registration => registration.update());
     });
 }
 </script>
@@ -44,8 +45,8 @@ if ('serviceWorker' in navigator) {
 
 <div class="title">
 <h1>
-<a href="index.html">
-<img src="./Images/Logo400.jpg"
+<a href="/index.html">
+<img src="/Images/Logo400.jpg"
      class="site-logo"
      alt="Christian Steps Ministries"
      width="400" />
@@ -67,7 +68,7 @@ if ('serviceWorker' in navigator) {
 
 <img id="generalImage"
      class="hero-image mission-general-image"
-     src="Images/missiongeneral.jpg">
+     src="/Images/missiongeneral.jpg">
 
 <div class="top-button-row">
 
@@ -76,17 +77,17 @@ if ('serviceWorker' in navigator) {
 </a>
 
 <a class="nav-button"
-   href="missionitinerary.html">
+   href="/Mission/Trips/2026/Athens-Greece/missionitinerary.html">
 Return to Calendar
 </a>
 
 <a class="nav-button"
-   href="missions.html">
+   href="/Mission/Trips/2026/Athens-Greece/index.html">
 Mission Home
 </a>
 
 <a class="nav-button"
-   href="tripmap.html">
+   href="/Mission/Trips/2026/Athens-Greece/tripmap.html">
 Trip Details
 </a>
 
@@ -99,6 +100,13 @@ Print to PDF
 Next Day →
 </a>
 
+</div>
+
+<div class="mission-day-picker">
+<label for="dayPicker">Pick Another Day</label>
+<select id="dayPicker" aria-label="Pick Another Day">
+<option value="">Loading available days…</option>
+</select>
 </div>
 
 <div class="content-card">
@@ -147,12 +155,12 @@ Next Day →
 </a>
 
 <a class="nav-button"
-   href="missionitinerary.html">
+   href="/Mission/Trips/2026/Athens-Greece/missionitinerary.html">
 Return to Calendar
 </a>
 
 <a class="nav-button"
-   href="missions.html">
+   href="/Mission/Trips/2026/Athens-Greece/index.html">
 Mission Home
 </a>
 
@@ -208,11 +216,46 @@ const params =
 const day =
     parseInt(params.get('day')) || 3;
 
-fetch('./data/dayactivities.json')
+fetch('/data/dayactivities.json')
 .then(r => r.json())
 .then(data => {
 
+    data = JSON.parse(JSON.stringify(data).replace(/"Images\//g, '"/Images/'));
     data.sort((a,b) => a.Date - b.Date);
+
+    const dayPicker =
+        document.getElementById('dayPicker');
+
+    const pickerPublishedDays =
+        data.filter(x => x.Published === true);
+
+    dayPicker.innerHTML = '';
+
+    pickerPublishedDays.forEach(publishedDay => {
+        const option =
+            document.createElement('option');
+
+        option.value =
+            publishedDay.Date;
+
+        option.textContent =
+            `June ${publishedDay.Date}`;
+
+        option.selected =
+            publishedDay.Date == day;
+
+        dayPicker.appendChild(option);
+    });
+
+    dayPicker.addEventListener('change', () => {
+        const selectedDay =
+            parseInt(dayPicker.value);
+
+        if (selectedDay) {
+            window.location.href =
+                `/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${selectedDay}`;
+        }
+    });
 
     const item =
         data.find(x => x.Date == day);
@@ -341,10 +384,10 @@ window.mediaItems = [];
                 publishedDays[currentIndex - 1];
 
             document.getElementById('prevBtn').href =
-                `dayactivities.html?day=${prevDay.Date}`;
+                `/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${prevDay.Date}`;
 
             document.getElementById('topPrevBtn').href =
-                `dayactivities.html?day=${prevDay.Date}`;
+                `/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${prevDay.Date}`;
 
         }
         else{
@@ -360,10 +403,10 @@ window.mediaItems = [];
                 publishedDays[currentIndex + 1];
 
             document.getElementById('nextBtn').href =
-                `dayactivities.html?day=${nextDay.Date}`;
+                `/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${nextDay.Date}`;
 
             document.getElementById('topNextBtn').href =
-                `dayactivities.html?day=${nextDay.Date}`;
+                `/Mission/Trips/2026/Athens-Greece/dayactivities.html?day=${nextDay.Date}`;
 
         }
         else{
@@ -377,13 +420,13 @@ window.mediaItems = [];
 
 });
 
-fetch('header.html')
+fetch('/header.html', { cache: 'no-store' })
 .then(r => r.text())
 .then(h => {
     document.getElementById('siteHeader').innerHTML = h;
 });
 
-fetch('footer.html')
+fetch('/footer.html', { cache: 'no-store' })
 .then(r => r.text())
 .then(f => {
     document.getElementById('siteFooter').innerHTML = f;
