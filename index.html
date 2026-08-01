@@ -7,8 +7,10 @@
   <link href="Styles/Site.css" rel="stylesheet" />
   <link href="Styles/Site_mobile.css" rel="stylesheet" />
   <link rel="icon" type="image/png" href="./Images/GreenFeetIcon.png" />
+
+  <link href="Styles/Redesign.css" rel="stylesheet" />
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#pageContent">Skip to content</a>
   <div class="page">
     <header class="header" role="banner">
@@ -32,45 +34,43 @@
         <section class="home-hero" aria-labelledby="hero-title">
           <div class="home-hero-inner">
             <div class="home-hero-copy">
-              
+              <p class="hero-eyebrow">Faith for every step</p>
               <h2 id="hero-title">Take one step at a time.</h2>
-              <p>
-                Welcome to Christian Steps Ministries. We exist to help people grow in their walk with
-                God—practically, patiently, and with hope. No matter where you are today, you have a next step.
-              </p>
-              <p>
-                Explore sermons, podcasts, worship music recorded by us, and resources designed to strengthen faith,
-                encourage hearts, and point you to Jesus.
-              </p>
+              <p class="hero-lead">Wherever you are today, you have a next step.</p>
+              <p>Christian Steps Ministries offers practical encouragement, biblical truth, worship, and opportunities to serve as you grow in your walk with God.</p>
               <div class="home-cta" role="group" aria-label="Primary actions">
-                <a class="btn btn-primary" href="#start-here">Start here</a>
-                <a class="btn btn-secondary" href="Music.html">Listen to music</a>
+                <a class="btn btn-primary" href="#start-here">Start Here</a>
+                <a class="btn btn-secondary" href="#ministries">Explore Our Ministries</a>
               </div>
-              <p class="featured-note">
-                <strong>Philippians 2:12–13</strong> reminds us that God is at work in us—guiding each step.
-              </p>
             </div>
           </div>
         </section>
         <!-- START HERE -->
-        <section class="home-section" id="start-here" aria-labelledby="start-here-title">
-          <h3 id="start-here-title">Start here</h3>
-          <div class="card-grid">
-            <article class="card">
-              <h4>New here?</h4>
-              <p>Learn what Christian Steps is about and how to connect with our team.</p>
-              <a href="about.html">About &amp; contact →</a>
-            </article>
-            <article class="card">
-              <h4>Need encouragement today?</h4>
-              <p>Listen to worship music and songs for everyday life—recorded by us.</p>
-              <a href="Music.html">Go to music →</a>
-            </article>
-            <article class="card">
-              <h4>Want to learn and grow?</h4>
-              <p>Explore sermons and podcasts designed to help you take your next step in faith.</p>
-              <a href="Casts.html">Sermons &amp; podcasts →</a>
-            </article>
+        <section class="home-section ministry-section" id="start-here" aria-labelledby="start-here-title">
+          <div class="section-heading-row">
+            <div>
+              <p class="section-kicker">A place to begin</p>
+              <h3 id="start-here-title">Explore Our Ministries</h3>
+            </div>
+            <p>Choose the next step that speaks to where you are today.</p>
+          </div>
+          <div class="ministry-grid" id="ministries">
+            <a class="ministry-tile" href="Music.html">
+              <span class="tile-image tile-image-piano" role="img" aria-label="Hands playing a piano keyboard"></span>
+              <span class="tile-copy"><span class="tile-icon" aria-hidden="true"></span><strong>Music</strong><span>Worship and songs for everyday life</span></span>
+            </a>
+            <a class="ministry-tile" href="Casts.html">
+              <span class="tile-image tile-image-podcast" role="img" aria-label="A microphone beside an open Bible"></span>
+              <span class="tile-copy"><span class="tile-icon" aria-hidden="true"></span><strong>Sermons &amp; Podcasts</strong><span>Teaching to encourage and equip</span></span>
+            </a>
+            <a class="ministry-tile" href="Articles.html">
+              <span class="tile-image tile-image-articles" role="img" aria-label="An open Bible and notebook"></span>
+              <span class="tile-copy"><span class="tile-icon" aria-hidden="true"></span><strong>Articles</strong><span>Biblical insight for your journey</span></span>
+            </a>
+            <a class="ministry-tile" href="Mission/Trips/2026/Athens-Greece/index.html">
+              <span class="tile-image tile-image-mission" role="img" aria-label="People serving together on a mission journey"></span>
+              <span class="tile-copy"><span class="tile-icon" aria-hidden="true"></span><strong>Mission (Hope Sojourns)</strong><span>Serve, journey, and share hope</span></span>
+            </a>
           </div>
         </section>
         <!-- FEATURED -->
