@@ -119,17 +119,6 @@
           <div class="music-cards" id="cards-general" aria-live="polite"></div>
         </section>
 
-        <section class="home-section collection-section collection-mcgmc" id="mcgmc-learning" aria-labelledby="mcgmc-title">
-          <div class="collection-header">
-            <div class="collection-icon" data-icon="mcgmc"></div>
-            <div>
-              <h3 id="mcgmc-title" class="collection-title">McGMC Learning Tracks</h3>
-              <p class="featured-note" id="desc-mcgmc"></p>
-            </div>
-          </div>
-          <div class="music-cards" id="cards-mcgmc" aria-live="polite"></div>
-        </section>
-
         <section class="home-section collection-section collection-ppc" id="ppc-service" aria-labelledby="ppc-title">
           <div class="collection-header">
             <div class="collection-icon" data-icon="ppc"></div>
@@ -221,14 +210,12 @@
       const hosts = {
         nmt: document.getElementById('cards-nmt'),
         general: document.getElementById('cards-general'),
-        mcgmc: document.getElementById('cards-mcgmc'),
         ppc: document.getElementById('cards-ppc')
       };
 
       const desc = {
         nmt: document.getElementById('desc-nmt'),
         general: document.getElementById('desc-general'),
-        mcgmc: document.getElementById('desc-mcgmc'),
         ppc: document.getElementById('desc-ppc')
       };
 
@@ -245,7 +232,6 @@
         const anchor = ({
           nmt:'#no-more-tears',
           general:'#general-collection',
-          mcgmc:'#mcgmc-learning',
           ppc:'#ppc-service'
         })[c.key] || '#listen';
 
@@ -362,7 +348,7 @@
         });
       }
 
-      fetch('./data/music_library.json', { cache: 'no-store' })
+      fetch('./data/music_library.json?v=2', { cache: 'no-store' })
         .then(r => r.json())
         .then(render)
         .catch(() => {
