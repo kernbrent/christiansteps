@@ -928,15 +928,6 @@ div.menu ul.nav > li > a:active{
   background: rgba(245, 245, 245, 0.75);
 }
 
-.collection-mcgmc .collection-icon,
-.collection-tile.collection-mcgmc .collection-tile-icon{
-  background: rgba(240, 255, 240, 0.9);
-}
-.collection-card-mcgmc{
-  border-left: 6px solid rgba(60, 160, 90, 0.55);
-  background: rgba(240, 255, 240, 0.75);
-}
-
 .collection-ppc .collection-icon,
 .collection-tile.collection-ppc .collection-tile-icon{
   background: rgba(255, 248, 235, 0.9);
