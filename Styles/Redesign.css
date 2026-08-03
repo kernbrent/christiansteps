@@ -208,12 +208,19 @@ main > :first-child { margin-top: 0; }
 .featured-actions .btn-secondary { border-color: var(--csm-forest); background: transparent; color: var(--csm-forest) !important; box-shadow: none; }
 .personal-recommendation { margin: .75rem 0 0 !important; color: var(--csm-muted); font-size: .82rem; font-style: italic; }
 .featured-week-status { margin: .9rem 0 0; color: var(--csm-muted); font-size: .82rem; text-align: right; }
+.ministry-leader-card { display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: clamp(24px, 4vw, 44px); align-items: center; }
+.ministry-headshot { margin: 0; text-align: center; }
+.card .ministry-headshot img { display: block; width: 100%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; box-shadow: 0 14px 32px rgba(20,55,47,.2); }
+.ministry-headshot figcaption { display: grid; gap: .15rem; margin-top: .85rem; color: var(--csm-forest); }
+.ministry-headshot figcaption span { color: var(--csm-muted); font-size: .85rem; }
 @media (max-width: 560px) {
   .featured-card { min-height: 0; }
   .featured-card-heading { grid-template-columns: 64px 1fr; gap: 13px; }
   .featured-card-heading img, .featured-type-icon { width: 64px; height: 64px; }
   .featured-actions { align-items: stretch; flex-direction: column; }
   .featured-actions .btn { width: 100%; }
+  .ministry-leader-card { grid-template-columns: 1fr; }
+  .ministry-headshot { width: min(230px, 78vw); margin-inline: auto; }
 }
 
 .home-section, section { scroll-margin-top: 24px; }
