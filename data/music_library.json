@@ -12,7 +12,7 @@
       "name": "General Collection",
       "icon_type": "text",
       "icon_text": "GC",
-      "description": "An assortment of hymns\u2014solo, 4\u2011part, with and without accompaniment."
+      "description": "An assortment of hymns—solo, 4‑part, with and without accompaniment."
     },
     {
       "key": "ppc",
@@ -38,7 +38,8 @@
       ],
       "search": "o holy night brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "Bless This House",
@@ -55,7 +56,8 @@
       ],
       "search": "bless this house brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "The New Jerusalem",
@@ -72,7 +74,8 @@
       ],
       "search": "the new jerusalem brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "I'll Walk With God",
@@ -89,7 +92,8 @@
       ],
       "search": "ill walk with god brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "I Walked Today Where Jesus Walked",
@@ -106,7 +110,8 @@
       ],
       "search": "i walked today where jesus walked brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "The Holy City",
@@ -123,7 +128,8 @@
       ],
       "search": "the holy city brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "Were You There",
@@ -140,7 +146,8 @@
       ],
       "search": "were you there brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "God Shall Wipe Away All Tears",
@@ -157,7 +164,8 @@
       ],
       "search": "god shall wipe away all tears brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "The Lord's Prayer",
@@ -174,7 +182,8 @@
       ],
       "search": "the lords prayer brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "Thank You",
@@ -191,7 +200,8 @@
       ],
       "search": "thank you brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "To Where You Are",
@@ -208,7 +218,8 @@
       ],
       "search": "to where you are brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "Watch The Lamb",
@@ -225,7 +236,8 @@
       ],
       "search": "watch the lamb brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "I Will Be Here",
@@ -242,7 +254,8 @@
       ],
       "search": "i will be here brent d kern no more tears mp3 wav wma",
       "collection_key": "nmt",
-      "group": ""
+      "group": "",
+      "featured": "Y"
     },
     {
       "title": "Abide With Me",
@@ -259,7 +272,8 @@
       ],
       "search": "abide with me brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Almost Home",
@@ -276,7 +290,8 @@
       ],
       "search": "almost home brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Amazing Grace",
@@ -293,7 +308,8 @@
       ],
       "search": "amazing grace brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Day By Day",
@@ -310,7 +326,8 @@
       ],
       "search": "day by day brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Fairest Lord Jesus",
@@ -327,7 +344,8 @@
       ],
       "search": "fairest lord jesus brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Give Me Jesus",
@@ -344,7 +362,8 @@
       ],
       "search": "give me jesus brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Goodness of God",
@@ -361,7 +380,8 @@
       ],
       "search": "goodness of god brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Gloria Patri",
@@ -378,7 +398,8 @@
       ],
       "search": "gloria patri brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "He Looked Beyond My Fault",
@@ -393,13 +414,14 @@
           "href": "https://media.christiansteps.net/music/GeneralMP3/HeLookedBeyondMyFault.mp3"
         },
         {
-          "label": "MP3 (4\u2011Part)",
+          "label": "MP3 (4‑Part)",
           "href": "https://media.christiansteps.net/music/GeneralMP3/HeLookedBeyondMyFault4Part.mp3"
         }
       ],
       "search": "he looked beyond my fault brent d kern general collection mp3 4 part",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "How Great Thou Art",
@@ -416,7 +438,8 @@
       ],
       "search": "how great thou art brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "How Deep The Father's Love For Us",
@@ -433,7 +456,8 @@
       ],
       "search": "how deep the fathers love for us brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Hymn Medley I",
@@ -450,7 +474,8 @@
       ],
       "search": "hymn medley i brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "I Need Thee Every Hour",
@@ -467,7 +492,8 @@
       ],
       "search": "i need thee every hour brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Is He Worthy / Revelation Song Medley",
@@ -484,7 +510,8 @@
       ],
       "search": "is he worthy revelation song medley brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "It Is Well With My Soul",
@@ -501,7 +528,8 @@
       ],
       "search": "it is well with my soul brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Lord I Need You",
@@ -518,9 +546,10 @@
       ],
       "search": "lord i need you brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
-        {
+    {
       "title": "Make It Well",
       "duration": "4:58",
       "artist": "Brent D. Kern",
@@ -535,7 +564,8 @@
       ],
       "search": "make it well brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Mary Did You Know",
@@ -552,7 +582,8 @@
       ],
       "search": "mary did you know brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Higher Ground",
@@ -569,7 +600,8 @@
       ],
       "search": "higher ground brent d kern general collection m4a",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Welcome To Our World",
@@ -586,9 +618,10 @@
       ],
       "search": "welcome to our world brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
-        {
+    {
       "title": "Yet Not I, But Through Christ in Me",
       "duration": "0:47",
       "artist": "Brent D. Kern",
@@ -603,7 +636,8 @@
       ],
       "search": "yet not i but through christ in me brent d kern general collection mp3",
       "collection_key": "general",
-      "group": ""
+      "group": "",
+      "featured": "N"
     },
     {
       "title": "Current Week's Worship Service",
@@ -620,7 +654,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/CurrentChurchService.ppsx"
         }
       ],
-      "search": "Current Week's Worship Service ppc prosper presbyterian service music ppsx"
+      "search": "Current Week's Worship Service ppc prosper presbyterian service music ppsx",
+      "featured": "N"
     },
     {
       "title": "Current Week's Worship Service (Oct 8, 2023)",
@@ -637,7 +672,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/CurrentChurchService-10082023.ppsx"
         }
       ],
-      "search": "Current Week's Worship Service (Oct 8, 2023) ppc prosper presbyterian service music ppsx"
+      "search": "Current Week's Worship Service (Oct 8, 2023) ppc prosper presbyterian service music ppsx",
+      "featured": "N"
     },
     {
       "title": "Angels We Have Heard On High",
@@ -654,7 +690,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/AngelWeHaveHeardOnHigh.mp3"
         }
       ],
-      "search": "Angels We Have Heard On High Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "Angels We Have Heard On High Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Ave Maria",
@@ -671,7 +708,8 @@
           "href": "https://media.christiansteps.net/music/AveMaria.mp3"
         }
       ],
-      "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Away in the Manger",
@@ -688,7 +726,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/AwayInTheManger.mp3"
         }
       ],
-      "search": "Away in the Manger Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music"
+      "search": "Away in the Manger Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Come Thou Long Expected Jesus",
@@ -705,7 +744,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ComeThouLongExpectedJesus.mp3"
         }
       ],
-      "search": "Come Thou Long Expected Jesus Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music"
+      "search": "Come Thou Long Expected Jesus Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "The First Noel",
@@ -722,7 +762,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/TheFirstNoel.mp3"
         }
       ],
-      "search": "The First Noel Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music"
+      "search": "The First Noel Brent D Kern Dec 15, 2025 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Go Tell It On The Mountain",
@@ -739,7 +780,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/GoTellItOnTheMountain.mp3"
         }
       ],
-      "search": "Go Tell It On The Mountain Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "Go Tell It On The Mountain Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Hark The Herald Angels Sing",
@@ -756,7 +798,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/HarkTheHeraldAngelsSing.mp3"
         }
       ],
-      "search": "Hark The Herald Angels Sing Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "Hark The Herald Angels Sing Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Joy To The World",
@@ -773,7 +816,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/JoyToTheWorld.mp3"
         }
       ],
-      "search": "Joy To The World Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "Joy To The World Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Joy To The World - French Horn - Lily Kern",
@@ -790,7 +834,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/JoyToTheWorldHorn.mp3"
         }
       ],
-      "search": "Joy To The World - French Horn - Lily Kern Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "Joy To The World - French Horn - Lily Kern Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "O Come All Ye Faithful",
@@ -807,7 +852,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/OComeAllYeFaithful.mp3"
         }
       ],
-      "search": "O Come All Ye Faithful Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "O Come All Ye Faithful Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "O Holy Night",
@@ -824,7 +870,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/OHolyNight.mp3"
         }
       ],
-      "search": "O Holy Night Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "O Holy Night Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Silent Night",
@@ -841,7 +888,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/SilentNight.mp3"
         }
       ],
-      "search": "Silent Night Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music"
+      "search": "Silent Night Brent D Kern Dec 24, 2021 ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "We Three Kings *",
@@ -858,7 +906,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/WeThreeKings.mp3"
         }
       ],
-      "search": "We Three Kings * Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "We Three Kings * Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "A Christian Home ***",
@@ -875,7 +924,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/AChristianHome.mp3"
         }
       ],
-      "search": "A Christian Home *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "A Christian Home *** Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Amazing Grace",
@@ -892,7 +942,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/AmazingGrace.mp3"
         }
       ],
-      "search": "Amazing Grace Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Amazing Grace Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Because He Lives ***",
@@ -909,7 +960,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/BecauseHeLives.mp3"
         }
       ],
-      "search": "Because He Lives *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Because He Lives *** Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Blessed Assurance",
@@ -926,7 +978,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/BlessedAssurance.mp3"
         }
       ],
-      "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Blessed Assurance Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Brethren We Have Met to Worship",
@@ -943,7 +996,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/BrethrenWeHaveMet.mp3"
         }
       ],
-      "search": "Brethren We Have Met to Worship Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Brethren We Have Met to Worship Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Christ The Lord is Risen Today",
@@ -960,7 +1014,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ChristTheLordIsRisenToday.mp3"
         }
       ],
-      "search": "Christ The Lord is Risen Today Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Christ The Lord is Risen Today Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Come Christians Join to Sing",
@@ -977,7 +1032,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ComeChristianJoinToSing.m4a"
         }
       ],
-      "search": "Come Christians Join to Sing Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Come Christians Join to Sing Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Come Thou Fount of Every Blessing",
@@ -998,7 +1054,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ComeThouFountBlue356.mp3"
         }
       ],
-      "search": "Come Thou Fount of Every Blessing Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Come Thou Fount of Every Blessing Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Come Ye Sinners, Poor and Needy",
@@ -1015,7 +1072,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ComeYeSinners.mp3"
         }
       ],
-      "search": "Come Ye Sinners, Poor and Needy Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Come Ye Sinners, Poor and Needy Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Doxology",
@@ -1036,7 +1094,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/Doxology-4Part.mp3"
         }
       ],
-      "search": "Doxology Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Doxology Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "For the Beauty of the Earth",
@@ -1053,7 +1112,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ForTheBeautyOfTheEarth.mp3"
         }
       ],
-      "search": "For the Beauty of the Earth Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "For the Beauty of the Earth Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Gloria Patri",
@@ -1074,7 +1134,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/GloriaPatri-4Part.mp3"
         }
       ],
-      "search": "Gloria Patri Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Gloria Patri Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "God Bless America",
@@ -1091,7 +1152,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/GodBlessAmerica.mp3"
         }
       ],
-      "search": "God Bless America Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "God Bless America Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Have Thine Own Way",
@@ -1108,7 +1170,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/HaveThineOwnWay.mp3"
         }
       ],
-      "search": "Have Thine Own Way Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Have Thine Own Way Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "He Lives",
@@ -1125,7 +1188,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/HeLives.mp3"
         }
       ],
-      "search": "He Lives Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "He Lives Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Higher Ground ***",
@@ -1142,7 +1206,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/HigherGround.mp3"
         }
       ],
-      "search": "Higher Ground *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Higher Ground *** Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Holy, Holy, Holy",
@@ -1159,7 +1224,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/HolyHolyHoly.mp3"
         }
       ],
-      "search": "Holy, Holy, Holy Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Holy, Holy, Holy Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "I Love To Tell The Story",
@@ -1176,7 +1242,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ILoveToTellTheStory.mp3"
         }
       ],
-      "search": "I Love To Tell The Story Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "I Love To Tell The Story Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "It Is Well",
@@ -1193,7 +1260,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ItIsWellWithMySoul.mp3"
         }
       ],
-      "search": "It Is Well Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "It Is Well Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Jesus Paid It All",
@@ -1210,7 +1278,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/JesusPaidItAll.mp3"
         }
       ],
-      "search": "Jesus Paid It All Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Jesus Paid It All Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Jesus Saves *",
@@ -1227,7 +1296,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/Jesus Saves Piano and Voice.mp3"
         }
       ],
-      "search": "Jesus Saves * Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Jesus Saves * Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Joyful Joyful We Adore Thee",
@@ -1244,7 +1314,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/JoyfulJoyfulWeAdoreThee.mp3"
         }
       ],
-      "search": "Joyful Joyful We Adore Thee Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Joyful Joyful We Adore Thee Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Leaning On The Everlasting Arms",
@@ -1261,7 +1332,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/LeaningOnTheEverlastingArms.mp3"
         }
       ],
-      "search": "Leaning On The Everlasting Arms Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Leaning On The Everlasting Arms Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Lead On O King Eternal",
@@ -1278,7 +1350,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/LeadOnOhKingEternal.mp3"
         }
       ],
-      "search": "Lead On O King Eternal Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Lead On O King Eternal Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Love Lifted Me",
@@ -1295,7 +1368,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/LoveLiftedMe.mp3"
         }
       ],
-      "search": "Love Lifted Me Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Love Lifted Me Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Open My Eyes",
@@ -1312,7 +1386,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/OpenMyEyes.mp3"
         }
       ],
-      "search": "Open My Eyes Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Open My Eyes Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Pass It On",
@@ -1329,7 +1404,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/PassItOn.mp3"
         }
       ],
-      "search": "Pass It On Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Pass It On Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Redeemed",
@@ -1346,7 +1422,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/Redeemed.mp3"
         }
       ],
-      "search": "Redeemed Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Redeemed Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Resurrection Hallelujah *",
@@ -1363,7 +1440,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/ResurrectionHallelujah.mp3"
         }
       ],
-      "search": "Resurrection Hallelujah * Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Resurrection Hallelujah * Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Ride On, Ride On In Majesty",
@@ -1380,7 +1458,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/RideOnRideOnInMajesty.mp3"
         }
       ],
-      "search": "Ride On, Ride On In Majesty Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Ride On, Ride On In Majesty Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Rock of Ages ***",
@@ -1397,7 +1476,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/RockOfAges.mp3"
         }
       ],
-      "search": "Rock of Ages *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Rock of Ages *** Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Send The Light",
@@ -1414,7 +1494,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/SendTheLight.mp3"
         }
       ],
-      "search": "Send The Light Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Send The Light Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Standing On The Promises",
@@ -1431,7 +1512,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/Standing On The Promises Piano and Voice.mp3"
         }
       ],
-      "search": "Standing On The Promises Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Standing On The Promises Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "The Church's One Foundation",
@@ -1448,7 +1530,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/TheChurchsOneFoundation.mp3"
         }
       ],
-      "search": "The Church's One Foundation Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "The Church's One Foundation Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Tis So Sweet to Trust in Jesus ***",
@@ -1465,7 +1548,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/TisSoSweet.mp3"
         }
       ],
-      "search": "Tis So Sweet to Trust in Jesus *** Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Tis So Sweet to Trust in Jesus *** Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Trust and Obey",
@@ -1482,7 +1566,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/TrustAndObey.mp3"
         }
       ],
-      "search": "Trust and Obey Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Trust and Obey Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Victory in Jesus",
@@ -1499,7 +1584,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/VictoryInJesus.mp3"
         }
       ],
-      "search": "Victory in Jesus Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Victory in Jesus Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "What a Friend We Have in Jesus",
@@ -1516,7 +1602,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/WhatAFriendWeHaveInJesus.mp3"
         }
       ],
-      "search": "What a Friend We Have in Jesus Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "What a Friend We Have in Jesus Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     },
     {
       "title": "Wonderful Words of Life",
@@ -1533,7 +1620,8 @@
           "href": "https://media.christiansteps.net/music/PresbyServiceMusic/Wonderful Words of Life Piano and Voice.mp3"
         }
       ],
-      "search": "Wonderful Words of Life Brent D Kern Service Collection ppc prosper presbyterian service music"
+      "search": "Wonderful Words of Life Brent D Kern Service Collection ppc prosper presbyterian service music",
+      "featured": "N"
     }
   ]
 }
