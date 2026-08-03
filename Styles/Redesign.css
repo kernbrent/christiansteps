@@ -136,6 +136,7 @@ main > :first-child { margin-top: 0; }
 
 .home-hero, .hero, .mission-hero, .article-hero, .trip-landing-intro {
   position: relative; isolation: isolate; overflow: hidden;
+  width: 100%; height: min(33vh, 360px); min-height: 0; max-height: 33vh;
   margin: 0 0 clamp(34px, 6vw, 64px); padding: clamp(38px, 7vw, 82px) clamp(25px, 6vw, 70px);
   border: 1px solid rgba(255,255,255,.18); border-radius: 24px;
   color: #f6fbf7;
@@ -154,7 +155,6 @@ main > :first-child { margin-top: 0; }
 .home-hero p, .hero p, .mission-hero p, .trip-landing-intro p { color: rgba(255,255,255,.9); font-size: 1.06rem; }
 .home-hero-copy { max-width: 760px; }
 .home-hero {
-  min-height: 500px;
   display: flex;
   align-items: center;
   background-image:
@@ -162,6 +162,25 @@ main > :first-child { margin-top: 0; }
     url("../Images/SteppingStones2.jpg");
   background-size: cover;
   background-position: center;
+}
+.home-hero:has(.home-cta) {
+  overflow: visible;
+  margin-bottom: 82px;
+}
+.home-hero .home-cta {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  margin: 0;
+  padding: 0 4px;
+}
+.home-hero .home-cta .btn-secondary,
+.home-hero .home-cta .btn-secondary:visited {
+  border-color: var(--csm-forest);
+  color: var(--csm-forest) !important;
+  background: rgba(255,253,248,.96);
 }
 .hero-eyebrow, .section-kicker {
   margin: 0 0 .55rem;
@@ -355,7 +374,8 @@ hr { height: 1px; border: 0; background: linear-gradient(90deg, transparent, var
 
 /* Hope Sojourns mission hub */
 .hope-hero {
-  position: relative; isolation: isolate; display: flex; align-items: end; min-height: 570px;
+  position: relative; isolation: isolate; display: flex; align-items: end;
+  width: 100%; height: min(33vh, 360px); min-height: 0; max-height: 33vh;
   overflow: hidden; padding: clamp(48px,7vw,82px); border-radius: 24px; color: white;
   background: linear-gradient(90deg,rgba(8,45,35,.96),rgba(8,45,35,.70) 52%,rgba(8,45,35,.18)), url("../Images/acropolis.jpg") center/cover;
   box-shadow: var(--csm-shadow);
@@ -371,7 +391,11 @@ hr { height: 1px; border: 0; background: linear-gradient(90deg, transparent, var
 .hope-section { margin: 8px 0; padding: clamp(42px,6vw,76px); border-radius: 22px; background: #fffdf8; }
 .hope-mission, .hope-journeys { background: var(--csm-sage-soft); }
 .hope-section-heading { display: grid; grid-template-columns: 1.2fr .8fr; align-items: end; gap: 36px; margin-bottom: 36px; }
-.hope-section-heading h2 { margin: 0; font-size: clamp(2.1rem,4vw,3.6rem); }
+.hope-section-heading h2 {
+  margin: 0;
+  font-size: clamp(2rem, 2.7vw, 2.45rem);
+  line-height: 1.1;
+}
 .hope-section-heading > p { margin: 0; color: var(--csm-muted); }
 .hope-values, .hope-programs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 18px; }
 .hope-values article, .hope-programs article { padding: 28px; border: 1px solid var(--csm-line); border-radius: 18px; background: rgba(255,255,255,.78); box-shadow: var(--csm-shadow-soft); }
@@ -394,7 +418,11 @@ hr { height: 1px; border: 0; background: linear-gradient(90deg, transparent, var
 .journey-card:first-child { grid-column: 1 / -1; }
 .journey-empty { padding: 24px; border-radius: 14px; background: white; text-align: center; }
 .hope-callout { display: flex; align-items: center; justify-content: space-between; gap: 32px; margin-top: 8px; padding: clamp(36px,5vw,60px); border-radius: 22px; background: var(--csm-forest-deep); color: white; }
-.hope-callout h2 { color: white; }
+.hope-callout h2 {
+  color: white;
+  font-size: clamp(2rem, 2.7vw, 2.45rem);
+  line-height: 1.1;
+}
 .hope-callout p { max-width: 720px; color: rgba(255,255,255,.8); }
 @media (max-width: 850px) {
   .hope-section-heading, .hope-values, .hope-programs, .journey-grid { grid-template-columns: 1fr; }
@@ -419,7 +447,7 @@ hr { height: 1px; border: 0; background: linear-gradient(90deg, transparent, var
   .ministry-grid { grid-template-columns: 1fr; }
   .section-heading-row { display: block; }
   .section-heading-row > p { margin-top: 10px; }
-  .home-hero { min-height: 440px; background-position: 62% center; }
+  .home-hero { min-height: 0; background-position: 62% center; }
   .home-hero, .hero, .mission-hero, .article-hero, .trip-landing-intro { padding: 33px 22px; border-radius: 18px; }
   .home-section:nth-of-type(3n+2), .home-section:nth-of-type(3n) { padding: 22px 17px; }
   table { display: block; overflow-x: auto; }
@@ -502,11 +530,83 @@ div.hideSkiplink div.menu nav.site-nav ul.nav > li > a:focus-visible {
   color: #fff4cf !important;
 }
 .main { padding: 0; }
+.home-page .main { padding-top: 26px; }
 .home-hero {
-  width: min(calc(100% - 72px), 1320px); min-height: 365px; margin: 48px auto 0;
-  padding: 44px max(6vw, 36px) 88px; border: 1px solid rgba(255,255,255,.18); border-radius: 22px;
+  width: min(calc(100% - 72px), 1084px); height: min(33vh, 360px); min-height: 0; max-height: 33vh; margin: 48px auto 0;
+  padding: clamp(22px, 3vh, 32px) max(5vw, 32px); border: 1px solid rgba(255,255,255,.18); border-radius: 22px;
   background-image: linear-gradient(90deg, rgba(5,43,33,.96) 0%, rgba(7,49,37,.77) 42%, rgba(7,49,37,.14) 72%), url("../Images/home-hero-path.png");
   background-position: center; box-shadow: var(--csm-shadow);
+}
+body:not(.home-page) .home-hero {
+  width: 100%;
+  margin: 0 0 12px;
+}
+body:not(.home-page) .home-hero:has(.home-cta) {
+  margin-bottom: 82px;
+}
+.home-hero:has(.featured-note) {
+  margin-bottom: 246px !important;
+}
+.home-hero .featured-note {
+  position: absolute;
+  top: calc(100% + 94px);
+  left: 4px;
+  width: min(calc(100% - 8px), 760px);
+  margin: 0 !important;
+  padding: 17px 54px 17px 20px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 18px;
+  background: linear-gradient(125deg, #0d4a38, #176753);
+  transform: translateY(-5px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.3),
+    0 9px 0 rgba(125,91,25,.28),
+    0 22px 28px rgba(20,55,47,.38),
+    0 38px 78px rgba(20,55,47,.3),
+    0 52px 110px rgba(20,55,47,.16);
+  color: rgba(255,255,255,.92) !important;
+}
+.home-hero .featured-note::before {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 92px;
+  height: 4px;
+  border-radius: 0 0 999px 999px;
+  background: var(--csm-gold);
+  content: "";
+}
+.home-hero .featured-note::after {
+  position: absolute;
+  z-index: -1;
+  right: -26px;
+  bottom: -38px;
+  width: 112px;
+  height: 112px;
+  border: 20px solid rgba(214,168,75,.2);
+  border-radius: 50%;
+  content: "";
+}
+.home-hero .featured-note a,
+.home-hero .featured-note a:visited {
+  color: #f7d77f !important;
+  font-weight: 800;
+}
+.home-page .home-hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.home-page .home-hero-copy > * { margin-block: 0 !important; }
+.home-page .home-hero h2 {
+  font-size: clamp(2.55rem, 4vw, 3.35rem);
+  line-height: 1.04;
+}
+.home-page .home-hero p:not(.hero-eyebrow):not(.hero-lead) {
+  font-size: .98rem;
+  line-height: 1.48;
 }
 .home-hero::after { display: none; }
 .home-hero-inner { width: min(100%, 1320px); margin: auto; }
@@ -517,8 +617,8 @@ div.hideSkiplink div.menu nav.site-nav ul.nav > li > a:focus-visible {
 .home-cta .btn::after { content: "\2192"; margin-left: .5rem; font-size: 1.05em; }
 
 .ministry-section {
-  position: relative; z-index: 2; width: min(calc(100% - 72px), 1320px); margin: -62px auto 0 !important;
-  padding: 0 0 58px !important; border-radius: 0 !important; background: transparent !important;
+  position: relative; z-index: 2; width: min(calc(100% - 72px), 1084px); margin: 0 auto !important;
+  padding: 12px 0 58px !important; border-radius: 0 !important; background: transparent !important;
 }
 .ministry-section .section-heading-row { display: none; }
 .ministry-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
@@ -553,7 +653,7 @@ div.hideSkiplink div.menu nav.site-nav ul.nav > li > a:focus-visible {
 .ministry-tile:nth-child(4) .tile-icon::before { content: "\25CE"; }
 
 body > .page .main main > .home-section:not(.ministry-section) {
-  width: min(calc(100% - 72px), 1320px); margin: 6px auto !important; padding: 48px 54px !important;
+  width: min(calc(100% - 72px), 1084px); margin: 6px auto !important; padding: 48px 54px !important;
   border: 1px solid rgba(23,79,67,.08); border-radius: 20px; overflow: hidden;
 }
 body > .page .main main > .home-section:nth-of-type(even):not(.ministry-section) { background: #e7efe3 !important; }
@@ -569,10 +669,10 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
   .header .title { padding-inline: 18px; }
   div.menu ul.nav { display: none; }
   div.menu ul.nav.open { display: block; }
-  .home-hero { width: min(calc(100% - 36px),1320px); margin-top: 28px; padding-inline: 30px; }
-  .ministry-section { width: min(calc(100% - 36px), 1320px); }
+  .home-hero { width: min(calc(100% - 36px),1084px); margin-top: 28px; padding-inline: 30px; }
+  .ministry-section { width: min(calc(100% - 36px), 1084px); }
   body > .page .main main > .home-section:not(.ministry-section) {
-    width: min(calc(100% - 36px), 1320px); margin: 5px auto !important;
+    width: min(calc(100% - 36px), 1084px); margin: 5px auto !important;
     padding: 36px 26px !important; border-radius: 16px;
   }
 }
@@ -583,7 +683,11 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
 }
 @media (max-width: 620px) {
   .site-logo { width: 235px; }
-  .home-hero { min-height: 500px; padding: 52px 22px 100px; background-position: 66% center; }
+  .home-hero { height: auto; min-height: 420px; max-height: none; padding: 42px 22px; background-position: 66% center; }
+  .hope-hero { height: auto; min-height: 420px; max-height: none; }
+  .home-hero:has(.home-cta) { margin-bottom: 118px !important; }
+  .home-hero:has(.featured-note) { margin-bottom: 280px !important; }
+  .home-hero .featured-note { top: calc(100% + 150px); }
   .ministry-grid { grid-template-columns: 1fr; }
   .ministry-tile, .ministry-tile:visited { grid-template-columns: 54% 46%; }
   body > .page .main main > .home-section:not(.ministry-section) {
