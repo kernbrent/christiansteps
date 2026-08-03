@@ -82,11 +82,14 @@ img { height: auto; }
 }
 
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   width: 100%;
   background: linear-gradient(135deg, rgba(255,253,248,.98), rgba(235,244,234,.97));
   border-radius: 26px 26px 0 0;
   overflow: visible;
+  box-shadow: 0 8px 22px rgba(17, 50, 39, .14);
 }
 .header::before {
   content: ""; display: block; height: 6px;
@@ -474,12 +477,13 @@ body:not(.home-page) article:not(.card) { max-width: 100%; }
 
 /* Homepage fidelity pass — mirrors the approved presentation mockup. */
 body { background: var(--csm-cream); }
-body > .page {
-  width: 100%; max-width: none; margin: 0; border: 0; border-radius: 0;
-  background: var(--csm-cream); box-shadow: none; overflow: visible;
+.home-page > .page {
+  width: min(calc(100% - 32px), 1240px); max-width: 1240px; margin: 22px auto;
+  border: 1px solid rgba(23,79,67,.08); border-radius: 24px;
+  background: #fffdf8; box-shadow: 0 18px 44px rgba(20,55,47,.10); overflow: visible;
 }
-.header { border-radius: 0; background: #fffdf8; }
-.header::before { height: 7px; border-radius: 0; }
+.home-page .header { border-radius: 24px 24px 0 0; background: #fffdf8; }
+.home-page .header::before { height: 7px; border-radius: 24px 24px 0 0; }
 .header .title { max-width: 1360px; margin: auto; padding: 13px 34px 12px; }
 .site-logo { width: 290px; max-height: 70px; border-radius: 0; }
 div.hideSkiplink { background: #0d4a38; }
@@ -560,6 +564,8 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
   .ministry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 900px) {
+  .home-page > .page { width: min(calc(100% - 18px),1240px); margin: 9px auto; border-radius: 18px; }
+  .home-page .header, .home-page .header::before { border-radius: 18px 18px 0 0; }
   .header .title { padding-inline: 18px; }
   div.menu ul.nav { display: none; }
   div.menu ul.nav.open { display: block; }
@@ -569,6 +575,11 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
     width: min(calc(100% - 36px), 1320px); margin: 5px auto !important;
     padding: 36px 26px !important; border-radius: 16px;
   }
+}
+
+@media (max-width: 560px) {
+  .home-page > .page { width: 100%; margin: 0; border: 0; border-radius: 0; }
+  .home-page .header, .home-page .header::before { border-radius: 0; }
 }
 @media (max-width: 620px) {
   .site-logo { width: 235px; }
