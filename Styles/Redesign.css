@@ -192,6 +192,29 @@ main > :first-child { margin-top: 0; }
 }
 .hero-lead { color: #f0c863 !important; font-family: Georgia, serif; font-size: clamp(1.15rem, 2.2vw, 1.55rem) !important; }
 .featured-note { padding-left: 1rem; border-left: 4px solid var(--csm-gold); }
+.featured-recommendations { margin-top: 1.5rem; }
+.featured-card { display: flex; flex-direction: column; min-height: 320px; }
+.featured-card-heading { display: grid; grid-template-columns: 88px 1fr; gap: 18px; align-items: center; }
+.featured-card-heading img { width: 88px; height: 88px; margin: 0; border-radius: 12px; object-fit: cover; box-shadow: 0 8px 18px rgba(20,55,47,.15); }
+.featured-card-heading-icon { grid-template-columns: 70px 1fr; }
+.featured-type-icon { display: grid; place-items: center; width: 70px; height: 70px; border-radius: 50%; background: var(--csm-forest); color: var(--csm-gold); font-size: 2rem; }
+.featured-label { margin: 0 0 .3rem !important; color: var(--csm-leaf); font-size: .75rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.featured-card h4 { margin: 0; font-size: clamp(1.25rem, 2.3vw, 1.65rem); }
+.featured-card-content { display: flex; flex: 1; flex-direction: column; padding-top: 1rem; }
+.featured-card-content > p:not(.personal-recommendation) { flex-grow: 1; }
+.featured-meta { color: var(--csm-muted); font-size: .9rem; font-weight: 700; }
+.featured-audio { display: block; width: 100%; max-width: 100%; margin: .35rem 0 .8rem; accent-color: var(--csm-forest); }
+.featured-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: auto; padding-top: .8rem; }
+.featured-actions .btn-secondary { border-color: var(--csm-forest); background: transparent; color: var(--csm-forest) !important; box-shadow: none; }
+.personal-recommendation { margin: .75rem 0 0 !important; color: var(--csm-muted); font-size: .82rem; font-style: italic; }
+.featured-week-status { margin: .9rem 0 0; color: var(--csm-muted); font-size: .82rem; text-align: right; }
+@media (max-width: 560px) {
+  .featured-card { min-height: 0; }
+  .featured-card-heading { grid-template-columns: 64px 1fr; gap: 13px; }
+  .featured-card-heading img, .featured-type-icon { width: 64px; height: 64px; }
+  .featured-actions { align-items: stretch; flex-direction: column; }
+  .featured-actions .btn { width: 100%; }
+}
 
 .home-section, section { scroll-margin-top: 24px; }
 .home-section { margin: clamp(28px, 5vw, 58px) 0; }
@@ -623,7 +646,7 @@ body:not(.home-page) .home-hero:has(.home-cta) {
 .ministry-section .section-heading-row { display: none; }
 .ministry-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
 .ministry-tile, .ministry-tile:visited {
-  height: 190px; min-height: 190px; display: grid; grid-template-columns: 58% 42%; align-items: stretch;
+  height: 190px; min-height: 190px; display: grid; grid-template-columns: 48% 52%; align-items: stretch;
   overflow: hidden; border: 1px solid rgba(23,79,67,.18); border-radius: 15px;
   background: #fbf7ed !important; color: var(--csm-ink) !important;
   box-shadow: 0 10px 26px rgba(20,55,47,.17);
@@ -641,9 +664,16 @@ body:not(.home-page) .home-hero:has(.home-cta) {
 .tile-image-podcast { background-size: 1748px 1165px; background-position: -490px -464px; }
 .tile-image-articles { background-size: 1748px 1165px; background-position: -900px -464px; }
 .tile-image-mission { background-size: 1748px 1165px; background-position: -1258px -464px; }
-.tile-copy { position: relative; grid-template-columns: 1fr; align-content: center; padding: 16px; background: #fbf7ed; }
+.tile-copy { position: relative; min-width: 0; grid-template-columns: 1fr; align-content: center; overflow: hidden; padding: 16px; background: #fbf7ed; }
 .tile-copy::after { content: ""; position: absolute; left: 16px; bottom: 20px; width: 36px; height: 2px; background: var(--csm-gold); }
-.tile-copy strong { color: var(--csm-forest) !important; font-size: clamp(.98rem, 1.45vw, 1.3rem); line-height: 1.12; }
+.tile-copy strong {
+  max-width: 100%;
+  color: var(--csm-forest) !important;
+  font-size: clamp(.94rem, 1.35vw, 1.2rem);
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
 .tile-copy > span:last-child { display: none; }
 .tile-icon { grid-row: auto; width: 36px; height: 36px; margin-bottom: 9px; font-size: 0; }
 .tile-icon::before { color: var(--csm-gold); font: 800 18px/1 Georgia, serif; }
@@ -658,6 +688,23 @@ body > .page .main main > .home-section:not(.ministry-section) {
 }
 body > .page .main main > .home-section:nth-of-type(even):not(.ministry-section) { background: #e7efe3 !important; }
 body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) { background: #f4dfad !important; }
+
+.witlool-feature {
+  display: grid;
+  grid-template-columns: minmax(280px, .9fr) minmax(0, 1.1fr);
+  gap: clamp(26px, 4vw, 52px);
+  align-items: center;
+}
+.witlool-artwork { margin: 0; }
+.witlool-artwork img {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(214,168,75,.35);
+  border-radius: 18px;
+  box-shadow: 0 20px 48px rgba(20,55,47,.24);
+}
+.witlool-copy h3 { margin-top: 0; }
+.witlool-copy p:last-child { margin-bottom: 0; }
 
 @media (max-width: 1050px) {
   div.menu ul.nav { flex-wrap: wrap; justify-content: flex-start; }
@@ -675,6 +722,8 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
     width: min(calc(100% - 36px), 1084px); margin: 5px auto !important;
     padding: 36px 26px !important; border-radius: 16px;
   }
+  .witlool-feature { grid-template-columns: 1fr; }
+  .witlool-artwork { max-width: 680px; }
 }
 
 @media (max-width: 560px) {
@@ -689,7 +738,7 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
   .home-hero:has(.featured-note) { margin-bottom: 280px !important; }
   .home-hero .featured-note { top: calc(100% + 150px); }
   .ministry-grid { grid-template-columns: 1fr; }
-  .ministry-tile, .ministry-tile:visited { grid-template-columns: 54% 46%; }
+  .ministry-tile, .ministry-tile:visited { grid-template-columns: 46% 54%; }
   body > .page .main main > .home-section:not(.ministry-section) {
     width: calc(100% - 20px); margin: 5px auto !important; padding: 28px 18px !important; border-radius: 14px;
   }

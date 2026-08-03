@@ -26,7 +26,8 @@
               "label": "Devotional",
               "url": "./Articles/GreatFaithfulness_Devotional.html"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "The Least of These",
@@ -43,7 +44,8 @@
               "label": null,
               "url": null
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Love, Love, Love - Eros, Philia, Agape (Prosper Presby)",
@@ -56,7 +58,8 @@
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/LoveLoveLoveErosPhiliaAgape.mp3"
             }
-          ]
+          ],
+          "featured": "N"
         },
         {
           "title": "Joy to the World, The Lord is/will Come (Prosper Presby)",
@@ -69,7 +72,8 @@
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/JoyToTheWorldTheLordIsWillCome.mp3"
             }
-          ]
+          ],
+          "featured": "N"
         },
         {
           "title": "Finding Peace in Him (Prosper Presby)",
@@ -82,7 +86,8 @@
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/FindingPeaceInHim.mp3"
             }
-          ]
+          ],
+          "featured": "N"
         },
         {
           "title": "Hope For The Future As It Was In The Past (Prosper Presby)",
@@ -95,33 +100,36 @@
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/HopeForTheFutureAsItWasInThePast.mp3"
             }
-          ]
+          ],
+          "featured": "N"
         },
         {
           "title": "30 Pieces of Silver",
-          "date_display": "Jan 1, 2023",
-          "date": "2022-12-18",
-          "duration": "40 min",
-          "description": "UPDATE THIS TEXT!!!!",
+          "date_display": "Oct 30, 2022",
+          "date": "2022-10-30",
+          "duration": "26 min",
+          "description": "Jesus says we will all at some point betray Him, but will the cost be too great, or can you repent and return.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/30PiecesOfSilver.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "And Fill The Earth",
-          "date_display": "MMM DD, YYYY",
-          "date": "2022-12-18",
-          "duration": "TT min",
-          "description": "UPDATE THIS TEXT!!!!",
+          "date_display": "May 14, 2023",
+          "date": "2023-05-14",
+          "duration": "33 min",
+          "description": "Through out scripture, we are constantly reminded to fill the Earth.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/AndFillTheEarth.mp3"
             }
-          ]
+          ],
+          "featured": "N"
         },
         {
           "title": "Can You Truly Love Someone The Way Jesus Did",
@@ -134,189 +142,176 @@
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/CanYouTrulyLoveSomeoneTheWayJesusDid.mp3"
             }
-          ]
+          ],
+          "featured": "N"
         },
         {
           "title": "Consuming the Fruit of the Spirit",
-          "date_display": "MMM DD, YYYY",
-          "date": "2022-12-18",
-          "duration": "TT min",
-          "description": "UPDATE THIS TEXT!!!!",
+          "date_display": "July 11, 2021",
+          "date": "2021-07-11",
+          "duration": "37 min",
+          "description": "We are to produce the Fruit of the Spirit, but in order to do so, we must be consuming it as well.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/ConsumingTheFruitOfTheSpirit.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Golden Cup Clay Pot",
           "date_display": "Oct 10, 2019",
           "date": "2019-10-10",
-          "duration": "45 min",
+          "duration": "35 min",
           "description": "Sermon given at the FOT in Destin Florida. We desire precious metals, but does God want gold of clay?",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/GoldenCupClayPot.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "The Gospel Prequel",
           "date_display": "Oct 10, 2019",
           "date": "2019-10-10",
-          "duration": "45 min",
+          "duration": "34 min",
           "description": "The Old Testament, the First Testament, or the Gospel Prequel?",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/GospelPrequel.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Prayer - Yep We All Struggle With It",
-          "date_display": "Oct 10, 2019",
-          "date": "2019-10-10",
-          "duration": "45 min",
+          "date_display": "Sep 13, 2020",
+          "date": "2020-09-13",
+          "duration": "31 min",
           "description": "It seems that others always pray better than we do, the truth, we all struggle with it.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Prayer-YepWeAllStruggle.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Putting God in His Rightful Place",
-          "date_display": "Oct 10, 2020",
-          "date": "2020-10-10",
-          "duration": "45 min",
+          "date_display": "Oct 6, 2023",
+          "date": "2023-10-06",
+          "duration": "37 min",
           "description": "FOT - Destin - Is worship for God? Or, for us? It may surprise you.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-Feast-PuttingGodInHisRightfulPlace.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Hope in the Trumpets",
-          "date_display": "Oct 09, 2019",
-          "date": "2019-09-10",
-          "duration": "45 min",
+          "date_display": "Oct 1, 2023",
+          "date": "2023-10-01",
+          "duration": "23 min",
           "description": "Feast of Trumpets - There is hope found in this day. ",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-HopeInTheTrumpets.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Jeremiah - A Prophet for Today",
           "date_display": "May 10, 2022",
           "date": "2022-05-10",
-          "duration": "45 min",
+          "duration": "29 min",
           "description": "Jeremiah has many lessons that apply to our world today.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-JeremiahAProphetForToday.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Leave or Go",
           "date_display": "June 10, 2022",
           "date": "2022-06-10",
-          "duration": "45 min",
+          "duration": "33 min",
           "description": "Does God call us to leave a place or go to another?",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-LeaveOrGo.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Power In The Blood",
           "date_display": "June 10, 2022",
           "date": "2022-06-10",
-          "duration": "45 min",
+          "duration": "24 min",
           "description": "Update Later",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-PowerInTheBlood.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Power, Money, Respect - Which One?",
           "date_display": "June 10, 2020",
           "date": "2020-06-10",
-          "duration": "45 min",
+          "duration": "31 min",
           "description": "The rich young ruler, what did he really want that made him stumble?",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-PowerMoneyRespect.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Being a Watchman for Christ",
-          "date_display": "June 10, 2018",
-          "date": "2018-06-10",
-          "duration": "45 min",
+          "date_display": "Jan 28, 2023",
+          "date": "2023-01-28",
+          "duration": "52 min",
           "description": "We don't know the hour, day, or year, but we know to always be looking.",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-WatchmanForChrist-01282023.mp3"
             }
-          ]
+          ],
+          "featured": "Y"
         },
         {
           "title": "Words, Words, Words",
           "date_display": "June 10, 2018",
           "date": "2018-06-10",
-          "duration": "45 min",
+          "duration": "41 min",
           "description": "Update This Later!!!",
           "links": [
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/Sermon-WordsWordsWords.mp3"
             }
-          ]
-        },
-        {
-          "title": "There is a God, and I'm not Him",
-          "date_display": "June 10, 2018",
-          "date": "2018-06-10",
-          "duration": "45 min",
-          "description": "FOT - Destin - Why do we keep thinking that our way of thinking is always better than others?",
-          "links": [
-            {
-              "label": "Video (MP4)",
-              "url": "https://media.christiansteps.net/casts/ThereIsAGodIAmNotHim.mp4"
-            }
-          ]
-        },
-        {
-          "title": "The Mark - No Fear",
-          "date_display": "Oct 1, 2023",
-          "date": "2023-10-01",
-          "duration": "50 min",
-          "description": "What is the 'Mark of the Beast'? Maybe it is something different than any of us ever imagined.",
-          "links": [
-            {
-              "label": "Video - Will leave site",
-              "url": "https://youtu.be/9n4Ij2T7phQ?si=kyxZ4DCmHVeN0VYz"
-            }
-          ]
+          ],
+          "featured": "Y"
         }
       ]
     },
@@ -387,6 +382,19 @@
             {
               "label": "MP3",
               "url": "https://media.christiansteps.net/casts/EatingBreadAfterUnleavenedBread.mp3"
+            }
+          ]
+        },
+        {
+          "title": "The Mark - No Fear",
+          "date_display": "Oct 1, 2020",
+          "date": "2023-10-01",
+          "duration": "50 min",
+          "description": "What is the 'Mark of the Beast'? Maybe it is something different than any of us ever imagined.",
+          "links": [
+            {
+              "label": "Video - Will leave site",
+              "url": "https://youtu.be/9n4Ij2T7phQ?si=kyxZ4DCmHVeN0VYz"
             }
           ]
         }

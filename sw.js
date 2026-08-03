@@ -1,4 +1,4 @@
-const CACHE_NAME = 'csm-missions-v6';
+const CACHE_NAME = 'csm-missions-v7';
 
 const OFFLINE_ASSETS = [
   '/',
@@ -41,7 +41,8 @@ self.addEventListener('fetch', event => {
     ['document', 'style', 'script'].includes(event.request.destination) ||
     requestUrl.pathname === '/header.html' ||
     requestUrl.pathname === '/footer.html' ||
-    requestUrl.pathname === '/data/music_library.json';
+    requestUrl.pathname === '/data/music_library.json' ||
+    requestUrl.pathname === '/data/cast_library.json';
 
   if (isUpdateSensitive) {
     event.respondWith(networkFirst(event.request));

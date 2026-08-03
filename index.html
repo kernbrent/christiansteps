@@ -37,7 +37,6 @@
               <p class="hero-eyebrow">Faith for every step</p>
               <h2 id="hero-title">Take one step at a time.</h2>
               <p class="hero-lead">Wherever you are today, you have a next step.</p>
-              <p>Christian Steps Ministries offers practical encouragement, biblical truth, worship, and opportunities to serve as you grow in your walk with God.</p>
               <div class="home-cta" role="group" aria-label="Primary actions">
                 <a class="btn btn-primary" href="#start-here">Start Here</a>
                 <a class="btn btn-secondary" href="#ministries">Explore Our Ministries</a>
@@ -75,23 +74,29 @@
         </section>
         <!-- FEATURED -->
         <section class="home-section" aria-labelledby="featured-title">
-          <h3 id="featured-title">Featured</h3>
+          <p class="section-kicker">Fresh encouragement each week</p>
+          <h3 id="featured-title">Featured this week</h3>
           <p class="featured-note">
-            These can be updated anytime (even on a static site). Consider featuring your best “first listen,”
-            a most helpful teaching, and a short article people can share.
+            Discover a song from our music library and a message from our sermon library.
+            Everyone begins with the same weekly selections.
           </p>
-          <div class="card-grid two">
-            <article class="card">
-              <h4>Featured song</h4>
-              <p>Add a short description here (why it matters, when to listen, what it points to).</p>
-              <a href="Music.html">Listen now →</a>
+          <div class="card-grid two featured-recommendations">
+            <article class="card featured-card" id="featured-song" aria-labelledby="featured-song-heading">
+              <div class="featured-card-heading">
+                <img src="Images/NoMoreTearsFrontWhiteBG.jpg" alt="No More Tears album cover" />
+                <div><p class="featured-label">Song of the week</p><h4 id="featured-song-heading">Loading this week’s song…</h4></div>
+              </div>
+              <div class="featured-card-content" aria-live="polite"></div>
             </article>
-            <article class="card">
-              <h4>Featured teaching</h4>
-              <p>Add a short description here (topic, length, what someone will learn).</p>
-              <a href="Casts.html">Watch / listen →</a>
+            <article class="card featured-card" id="featured-sermon" aria-labelledby="featured-sermon-heading">
+              <div class="featured-card-heading featured-card-heading-icon">
+                <span class="featured-type-icon" aria-hidden="true">✦</span>
+                <div><p class="featured-label">Sermon of the week</p><h4 id="featured-sermon-heading">Loading this week’s sermon…</h4></div>
+              </div>
+              <div class="featured-card-content" aria-live="polite"></div>
             </article>
           </div>
+          <p class="featured-week-status" id="featured-week-status"></p>
         </section>
         <!-- MISSION / TRUST -->
         <section class="home-section" aria-labelledby="mission-title">
@@ -130,8 +135,8 @@
           <div class="card">
             <p><strong>“Preach the Gospel at all times; when necessary, use words.”</strong> — Saint Francis of Assisi</p>
             <p>
-              This is why you may see our emails with the salutation of
-              <a href="Images/witlool.png">WitLooL</a>.
+              This commitment to living faith through action is why you may see our emails signed
+              <a href="About.html#witlool">WitLooL. Learn what it means &rarr;</a>
             </p>
           </div>
         </section>
@@ -140,6 +145,7 @@
   </div>
 <div id="siteFooter"></div>
 
+  <script src="Scripts/home-featured.js" defer></script>
   <script>
     // Shared header fetch + mobile hamburger toggle
     fetch('header.html', { cache: 'no-store' })
