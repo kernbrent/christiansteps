@@ -1,6 +1,7 @@
 <div class="menu">
     <button class="nav-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false">&#x2630; Menu</button>
-    <nav class="site-nav" role="navigation" aria-label="Primary">
+    <nav class="site-nav" role="navigation" aria-label="Primary"
+        onclick="if(window.matchMedia('(max-width: 900px)').matches){const link=event.target.closest('li.has-dropdown > a');if(link&amp;&amp;this.contains(link)){event.preventDefault();link.parentElement.classList.toggle('submenu-open');}}">
         <ul class="nav">
             <li><a href="/index.html">Home</a></li>
             <li><a href="/About.html">About</a></li>

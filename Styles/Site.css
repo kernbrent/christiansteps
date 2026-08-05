@@ -1534,6 +1534,19 @@ body.modal-open{ overflow: hidden; }
   border-left: 6px solid transparent;
 }
 
+/* Keep every tile aligned with the tallest card in its grid row. */
+.coaching-consulting-page .card-grid {
+  align-items: stretch;
+}
+.coaching-consulting-page .card-grid > .card-link,
+.coaching-consulting-page .card-grid > .card {
+  height: 100%;
+}
+.coaching-consulting-page .card-grid > .card-link > .card {
+  box-sizing: border-box;
+  height: 100%;
+}
+
 /* Two main categories */
 .coaching-consulting-page .service-consulting {
   border-left-color: #2f6f4e;      /* deep green */
