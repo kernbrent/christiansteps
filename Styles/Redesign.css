@@ -470,6 +470,108 @@ hr { height: 1px; border: 0; background: linear-gradient(90deg, transparent, var
   .hope-subnav .btn { width: 100%; }
 }
 
+/* Shared mission-trip photo galleries */
+.trip-story-card { max-width: 980px; margin: 0 auto; }
+.trip-photo-gallery-section { max-width: 1100px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+.trip-photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; }
+.trip-photo { margin: 0; overflow: hidden; border: 1px solid rgba(23,79,67,.18); border-radius: 1rem; background: #fff; box-shadow: 0 8px 22px rgba(20,55,47,.12); }
+.trip-photo a { display: block; background: #18352d; }
+.trip-photo img { display: block; width: 100%; height: 230px; object-fit: cover; border: 0; border-radius: 0; box-shadow: none; }
+.trip-photo figcaption { padding: .8rem 1rem; line-height: 1.45; }
+.athens-2025-hero { background-image: linear-gradient(90deg,rgba(7,44,35,.95) 0%,rgba(7,44,35,.76) 48%,rgba(7,44,35,.2) 100%),url('/Images/Athens2025/athens-2025-11-team-at-parthenon.jpg'); background-size: cover; background-position: center 38%; color: #fff; }
+.athens-2025-hero h2, .athens-2025-hero p { color: #fff; }
+@media (max-width: 540px) { .trip-photo img { height: auto; max-height: 70vh; } }
+
+/* Mission-trip archive and annual review pages */
+.trip-archive-hero, .year-review-hero {
+  width: min(calc(100% - 72px), 1084px); margin: 38px auto 8px; padding: clamp(34px,5vw,64px);
+  overflow: hidden; border: 1px solid rgba(23,79,67,.15); border-radius: 20px;
+  background: linear-gradient(135deg,#e7efe3 0%,#f8f3e7 62%,#f4dfad 100%);
+  box-shadow: 0 14px 36px rgba(20,55,47,.12);
+}
+.trip-archive-hero h2, .year-review-hero h2 { max-width: 820px; margin: 8px 0 16px; }
+.trip-archive-hero > p:last-child, .year-review-hero > p:last-child { max-width: 800px; margin-bottom: 0; }
+.year-ahead-hero { background: linear-gradient(135deg,#f4dfad 0%,#f8f3e7 48%,#e7efe3 100%); }
+.trip-archive-section { width: min(calc(100% - 72px),1084px); margin: 8px auto; padding: clamp(32px,5vw,54px); border: 1px solid rgba(23,79,67,.1); border-radius: 20px; background: #fbf8ef; }
+.trip-archive-heading { margin-bottom: 24px; }
+.year-card-grid, .trip-summary-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+.year-card, .trip-summary-card { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding: 28px; border: 1px solid rgba(23,79,67,.17); border-radius: 17px; background: #fff; box-shadow: 0 10px 26px rgba(20,55,47,.1); }
+.year-card h3, .trip-summary-card h3 { margin: 5px 0 10px; }
+.year-card p, .trip-summary-card p { margin-top: 0; }
+.year-card .trip-resource-button, .trip-summary-card .trip-resource-button { margin-top: auto; }
+.year-card-date, .year-card-meta { color: var(--csm-gold); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.year-card-meta { margin-top: 8px !important; color: var(--csm-muted); letter-spacing: .06em; }
+.year-card-future { background: #f7eed6; }
+.year-review-copy { max-width: 900px; margin: 0 auto 30px; }
+.year-review-copy h3 { margin-top: 0; }
+.trip-summary-grid { margin-top: 24px; }
+.archive-back { margin-top: 26px; }
+.trip-resource-button-secondary { background: transparent !important; color: var(--csm-forest) !important; border: 1px solid var(--csm-forest) !important; }
+.trip-primary-navigation {
+  width: min(calc(100% - 72px),1084px); margin: 16px auto 34px; padding: 0;
+  justify-content: flex-start; position: relative; z-index: 2;
+}
+@media (max-width: 760px) { .trip-primary-navigation { width: calc(100% - 28px); margin-bottom: 28px; } }
+
+/* Detailed mission-trip narratives and archived giving letters */
+.trip-detail-page, .giving-letter-page { width: min(calc(100% - 72px),1084px); margin: 0 auto 12px; }
+.trip-wide-figure { margin: 0 0 18px; overflow: hidden; border-radius: 20px; background: var(--csm-paper); box-shadow: var(--csm-shadow); }
+.trip-wide-figure img { display: block; width: 100%; height: clamp(280px,42vw,560px); object-fit: cover; border: 0; border-radius: 0; box-shadow: none; }
+.trip-wide-figure figcaption, .giving-letter-image figcaption { padding: 12px 18px 15px; color: var(--csm-muted); font-size: .88rem; }
+.trip-wide-banner .trip-wide-media { position: relative; height: clamp(250px,30vw,380px); overflow: hidden; }
+.trip-wide-banner .trip-wide-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,rgba(4,34,28,.58) 0%,rgba(4,34,28,.18) 52%,transparent 78%); pointer-events: none; }
+.trip-wide-banner img { height: 100%; object-position: center 28%; }
+.trip-wide-overlay { position: absolute; z-index: 1; left: clamp(24px,5vw,58px); bottom: clamp(22px,4vw,46px); }
+.trip-wide-overlay h2 { margin: 0; color: #fff !important; font-family: Georgia,"Times New Roman",serif; font-size: clamp(2.35rem,5.5vw,4.8rem); line-height: .98; text-shadow: 0 3px 18px rgba(0,0,0,.45); }
+.trip-overview-grid { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(270px,.65fr); gap: 20px; margin: 18px 0; }
+.trip-overview-grid > article, .trip-detail-section { padding: clamp(28px,4vw,46px); border: 1px solid var(--csm-line); border-radius: 18px; background: var(--csm-paper); }
+.trip-moment-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; margin: 18px 0; }
+.trip-detail-section { margin: 18px 0; }
+.trip-detail-section h3 { margin-top: 5px; }
+.trip-detail-section-accent { background: linear-gradient(135deg,var(--csm-sage-soft),var(--csm-gold-soft)); }
+.giving-letter-page { margin-top: 0; }
+.giving-letter-layout { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(280px,.55fr); gap: 20px; margin-bottom: 22px; }
+.giving-letter-image { margin: 0; overflow: hidden; border-radius: 18px; background: var(--csm-paper); box-shadow: var(--csm-shadow-soft); }
+.giving-letter-image img { display: block; width: 100%; height: 320px; object-fit: cover; border: 0; border-radius: 0; box-shadow: none; }
+.giving-goal-card { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 30px; border: 1px solid var(--csm-line); border-left: 6px solid var(--csm-sky); border-radius: 18px; background: #f7f8f8; box-shadow: var(--csm-shadow-soft); }
+.giving-goal-status { color: var(--csm-forest); font-weight: 800; }
+.giving-letter-card { max-width: 920px; margin: 0 auto; padding: clamp(30px,5vw,58px); border: 1px solid var(--csm-line); border-left: 6px solid var(--csm-leaf); border-radius: 18px; background: var(--csm-paper); box-shadow: var(--csm-shadow-soft); }
+.giving-letter-card blockquote { margin: 24px 0; padding: 18px 22px; border-left: 4px solid var(--csm-gold); background: var(--csm-gold-soft); }
+.giving-disclaimer { margin-top: 34px; padding-top: 22px; border-top: 1px solid var(--csm-line); color: var(--csm-muted); font-size: .9rem; }
+@media (max-width: 760px) {
+  .trip-detail-page, .giving-letter-page { width: calc(100% - 28px); }
+  .trip-overview-grid, .giving-letter-layout { grid-template-columns: 1fr; }
+  .trip-moment-grid { grid-template-columns: 1fr; }
+  .trip-wide-figure:not(.trip-wide-banner) img, .giving-letter-image img { height: auto; max-height: 68vh; }
+  .trip-wide-banner .trip-wide-media { height: 250px; }
+  .trip-wide-banner img { height: 100%; }
+}
+.year-review-hero + .trip-archive-section { display: flex; flex-direction: column; }
+.year-review-hero + .trip-archive-section .trip-summary-grid { order: 1; margin: 0 0 34px; }
+.year-review-hero + .trip-archive-section .year-review-copy { order: 2; }
+.year-review-hero + .trip-archive-section .archive-back { order: 3; }
+:is(.trip-summary-grid-compact,.trip-summary-grid:has(> .trip-summary-card:nth-child(3))) {
+  grid-template-columns: repeat(3,minmax(210px,1fr)); overflow-x: auto; padding: 2px 2px 18px;
+  scroll-snap-type: x proximity; scrollbar-color: var(--csm-gold) var(--csm-gold-soft);
+}
+:is(.trip-summary-grid-compact,.trip-summary-grid:has(> .trip-summary-card:nth-child(3))) .trip-summary-card { min-width: 210px; padding: 22px; scroll-snap-align: start; }
+:is(.trip-summary-grid-compact,.trip-summary-grid:has(> .trip-summary-card:nth-child(3))) .trip-summary-card h3 { font-size: clamp(1.25rem,2vw,1.65rem); }
+:is(.trip-summary-grid-compact,.trip-summary-grid:has(> .trip-summary-card:nth-child(3))) .trip-summary-card p:not(.trip-landing-kicker) { font-size: .92rem; line-height: 1.55; }
+:is(.trip-summary-grid-compact,.trip-summary-grid:has(> .trip-summary-card:nth-child(3))) .trip-resource-button { padding: .72rem .9rem; font-size: .84rem; }
+@media (min-width: 761px) {
+  .trip-summary-grid.trip-summary-grid-four {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(210px,1fr);
+    overflow-x: auto;
+  }
+}
+@media (max-width: 760px) {
+  .trip-archive-hero, .year-review-hero, .trip-archive-section { width: calc(100% - 28px); border-radius: 16px; }
+  .year-card-grid, .trip-summary-grid { grid-template-columns: 1fr; }
+  :is(.trip-summary-grid-compact,.trip-summary-grid:has(> .trip-summary-card:nth-child(3))) { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(230px,82vw); }
+}
+
 @media (max-width: 620px) {
   body { font-size: 15px; }
   .header .title { padding: 14px 16px 10px; }
