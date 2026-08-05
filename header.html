@@ -1,40 +1,39 @@
 <div class="menu">
     <button class="nav-toggle" type="button" aria-label="Toggle Menu" aria-expanded="false">&#x2630; Menu</button>
-    <nav class="site-nav" role="navigation" aria-label="Primary"
-        onclick="if(window.matchMedia('(max-width: 900px)').matches){const link=event.target.closest('li.has-dropdown > a');if(link&amp;&amp;this.contains(link)){event.preventDefault();link.parentElement.classList.toggle('submenu-open');}}">
+    <nav class="site-nav" role="navigation" aria-label="Primary">
         <ul class="nav">
             <li><a href="/index.html">Home</a></li>
             <li><a href="/About.html">About</a></li>
             <li><a href="/HolyDays.html">Holy Days</a></li>
             <li class="has-dropdown">
-                <a href="/Mission/index.html">Mission (Hope Sojourns) &#x25BE;</a>
+                <a href="/Mission/index.html" aria-haspopup="true" aria-expanded="false" onclick="if(window.matchMedia('(max-width: 900px)').matches){event.preventDefault();event.stopPropagation();const expanded=this.parentElement.classList.toggle('submenu-open');this.setAttribute('aria-expanded',String(expanded));}">Mission (Hope Sojourns) &#x25BE;</a>
                 <ul class="dropdown">
                     <li><a href="/Mission/index.html">Home</a></li>
                     <li><a href="/Mission/offerings.html">Offerings</a></li>
                     <li class="has-dropdown">
-                        <a href="/Mission/Trips/index.html">Trips by Year &#x25B8;</a>
+                        <a href="/Mission/Trips/index.html" aria-haspopup="true" aria-expanded="false" onclick="if(window.matchMedia('(max-width: 900px)').matches){event.preventDefault();event.stopPropagation();const expanded=this.parentElement.classList.toggle('submenu-open');this.setAttribute('aria-expanded',String(expanded));}">Trips by Year &#x25B8;</a>
                         <ul class="dropdown">
                             <li class="has-dropdown">
-                                <a href="/Mission/Trips/2018/index.html">2018 &#x25B8;</a>
+                                <a href="/Mission/Trips/2018/index.html" aria-haspopup="true" aria-expanded="false" onclick="if(window.matchMedia('(max-width: 900px)').matches){event.preventDefault();event.stopPropagation();const expanded=this.parentElement.classList.toggle('submenu-open');this.setAttribute('aria-expanded',String(expanded));}">2018 &#x25B8;</a>
                                 <ul class="dropdown">
                                     <li><a href="/Mission/Trips/2018/Kenya/index.html">Kenya</a></li>
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="/Mission/Trips/2025/index.html">2025 &#x25B8;</a>
+                                <a href="/Mission/Trips/2025/index.html" aria-haspopup="true" aria-expanded="false" onclick="if(window.matchMedia('(max-width: 900px)').matches){event.preventDefault();event.stopPropagation();const expanded=this.parentElement.classList.toggle('submenu-open');this.setAttribute('aria-expanded',String(expanded));}">2025 &#x25B8;</a>
                                 <ul class="dropdown">
                                     <li><a href="/Mission/Trips/2025/athens-greece.html">Athens, Greece</a></li>
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="/Mission/Trips/2026/index.html">2026 &#x25B8;</a>
+                                <a href="/Mission/Trips/2026/index.html" aria-haspopup="true" aria-expanded="false" onclick="if(window.matchMedia('(max-width: 900px)').matches){event.preventDefault();event.stopPropagation();const expanded=this.parentElement.classList.toggle('submenu-open');this.setAttribute('aria-expanded',String(expanded));}">2026 &#x25B8;</a>
                                 <ul class="dropdown">
                                     <li><a href="/Mission/Trips/2026/Athens-Greece/index.html">Athens, Greece</a></li>
                                     <li><a href="/Mission/Trips/2026/SOTO-Arkansas/index.html">SOTO, Arkansas</a></li>
                                 </ul>
                             </li>
                             <li class="has-dropdown">
-                                <a href="/Mission/Trips/2027/index.html">2027 &#x25B8;</a>
+                                <a href="/Mission/Trips/2027/index.html" aria-haspopup="true" aria-expanded="false" onclick="if(window.matchMedia('(max-width: 900px)').matches){event.preventDefault();event.stopPropagation();const expanded=this.parentElement.classList.toggle('submenu-open');this.setAttribute('aria-expanded',String(expanded));}">2027 &#x25B8;</a>
                                 <ul class="dropdown">
                                     <li><a href="/Mission/Trips/2027/soto-arkansas.html">SOTO, Arkansas</a></li>
                                     <li><a href="/Mission/Trips/2027/athens-greece.html">Athens, Greece</a></li>
