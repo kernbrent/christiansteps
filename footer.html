@@ -12,7 +12,38 @@
       © <span id="copyrightRange"></span> Christian Steps Ministries
       <br>May God guide your next step.
     </p>
+    <a class="developer-credit" href="https://careersteps.net/" aria-label="Visit Career Steps Consulting LLC">
+      <img src="/Images/CareerStepsLogo.png" alt="" width="28" height="28">
+      <span>Website developed and maintained by <strong>Career Steps Consulting LLC.</strong></span>
+    </a>
   </div>
+
+  <style>
+    .developer-credit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .55rem;
+      margin-top: .8rem;
+      color: inherit;
+      font-size: .78rem;
+      line-height: 1.35;
+      opacity: .72;
+      text-decoration: none;
+      transition: opacity .2s ease;
+    }
+    .developer-credit:hover,
+    .developer-credit:focus-visible { opacity: 1; }
+    .developer-credit img {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex: 0 0 auto;
+      border-radius: 50%;
+    }
+    @media (max-width: 560px) {
+      .developer-credit { max-width: 19rem; text-align: left; }
+    }
+  </style>
 
   <script>
     (function () {
