@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": 1,
-    "generated": "2026-01-09",
+    "generated": "2026-08-09",
     "notes": "Edit datePublished (YYYY-MM-DD), descriptions, and categories as you add articles."
   },
   "articles": [
@@ -112,6 +112,15 @@
       "author": "Brent D Kern",
       "datePublished": "2025-12-20",
       "description": "God's faithfulness is enternal. God never changes and with this He always loves us, not matter what!"
+    },
+    {
+      "title": "Do You See Me? Learning to See People the Way Jesus Does",
+      "url": "./Articles/DoYouSeeMe.html",
+      "type": "Article",
+      "category": "Discipleship",
+      "author": "Brent D Kern",
+      "datePublished": "2026-08-09",
+      "description": "A reflection on seeing beyond labels, recognizing the dignity and stories of overlooked people, and learning to see with the compassion of Jesus."
     }
   ],
   "comingSoon": [
