@@ -902,3 +902,150 @@ body > .page .main main > .home-section:nth-of-type(odd):not(.ministry-section) 
     width: calc(100% - 20px); margin: 5px auto !important; padding: 28px 18px !important; border-radius: 14px;
   }
 }
+
+/* Global path to the on-site conversation scheduler */
+div.menu ul.nav .nav-schedule-link { margin-left: auto; }
+div.hideSkiplink div.menu nav.site-nav ul.nav > li.nav-schedule-link > a,
+div.hideSkiplink div.menu nav.site-nav ul.nav > li.nav-schedule-link > a:visited {
+  border-bottom-color: #b47d22 !important;
+  background: var(--csm-gold) !important;
+  color: var(--csm-forest-deep) !important;
+}
+div.hideSkiplink div.menu nav.site-nav ul.nav > li.nav-schedule-link > a:hover,
+div.hideSkiplink div.menu nav.site-nav ul.nav > li.nav-schedule-link > a:focus-visible {
+  border-bottom-color: var(--csm-gold) !important;
+  background: #edca77 !important;
+  color: #102e27 !important;
+}
+
+/* On-site conversation scheduling */
+.conversation-page > .page {
+  width: min(calc(100% - 32px), 1240px);
+  max-width: 1240px;
+}
+body.conversation-page > .page .main { max-width: none; padding: 0; }
+.conversation-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  width: min(calc(100% - 72px), 1168px);
+  min-height: 340px;
+  margin: 36px auto 0;
+  overflow: hidden;
+  border-radius: 22px 22px 0 0;
+  align-items: end;
+  background:
+    linear-gradient(105deg, rgba(7,44,35,.96), rgba(13,76,60,.87) 58%, rgba(23,79,67,.5)),
+    url("../Images/SteppingStones2.jpg") center 62% / cover;
+  color: white;
+  box-shadow: var(--csm-shadow);
+}
+.conversation-hero::after {
+  position: absolute;
+  z-index: -1;
+  top: -170px;
+  right: -80px;
+  width: 430px;
+  height: 430px;
+  border: 58px solid rgba(214,168,75,.2);
+  border-radius: 50%;
+  content: "";
+}
+.conversation-hero-inner {
+  width: min(100% - 72px, 870px);
+  padding: clamp(46px, 8vw, 80px) 0;
+}
+.conversation-hero .section-kicker { color: var(--csm-gold) !important; }
+.conversation-hero h1 {
+  max-width: 770px;
+  margin: 0 0 16px;
+  color: white;
+  font-size: clamp(2.7rem, 6vw, 5rem);
+  line-height: .98;
+}
+.conversation-hero p:last-child {
+  max-width: 720px;
+  margin: 0;
+  color: rgba(255,255,255,.88);
+  font-size: clamp(1.05rem, 2vw, 1.24rem);
+}
+.conversation-calendar-section {
+  width: min(calc(100% - 72px), 1168px);
+  margin: 0 auto 36px;
+  padding: clamp(36px, 6vw, 68px) clamp(16px, 4vw, 42px) 48px;
+  border-radius: 0 0 22px 22px;
+  background:
+    radial-gradient(circle at 94% 8%, rgba(214,168,75,.17), transparent 22rem),
+    var(--csm-sage-soft);
+}
+.conversation-intro {
+  display: grid;
+  max-width: 1084px;
+  margin: 0 auto 26px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 30px;
+}
+.conversation-intro h2 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+}
+.conversation-intro p { max-width: 700px; margin: 0; color: var(--csm-muted); }
+.conversation-duration {
+  display: inline-flex;
+  padding: 9px 14px;
+  border: 1px solid rgba(23,79,67,.2);
+  border-radius: 999px;
+  background: rgba(255,255,255,.76);
+  color: var(--csm-forest);
+  font-size: .86rem;
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.conversation-scheduler-card {
+  max-width: 1084px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(23,79,67,.14);
+  border-radius: 20px;
+  background: white;
+  box-shadow: var(--csm-shadow);
+}
+.conversation-scheduler-card .calendly-inline-widget { min-width: 280px; height: 720px; }
+.conversation-fallback {
+  margin: 24px 0 0;
+  color: var(--csm-muted);
+  font-size: .92rem;
+  text-align: center;
+}
+.conversation-fallback a { color: var(--csm-forest); font-weight: 800; }
+
+@media (max-width: 1050px) {
+  div.menu ul.nav .nav-schedule-link { margin-left: 0; }
+}
+@media (max-width: 900px) {
+  .conversation-page > .page { width: min(calc(100% - 18px), 1240px); }
+  .conversation-hero,
+  .conversation-calendar-section { width: min(calc(100% - 36px), 1084px); }
+  .conversation-hero { min-height: 360px; margin-top: 24px; border-radius: 18px 18px 0 0; }
+  .conversation-hero-inner { width: calc(100% - 44px); }
+  .conversation-intro { grid-template-columns: 1fr; align-items: start; gap: 15px; }
+  .conversation-scheduler-card .calendly-inline-widget { height: 760px; }
+}
+@media (max-width: 560px) {
+  .conversation-page > .page { width: 100%; margin: 0; border: 0; border-radius: 0; }
+  .conversation-page .header,
+  .conversation-page .header::before { border-radius: 0; }
+  .conversation-hero,
+  .conversation-calendar-section { width: 100%; }
+  .conversation-hero { min-height: 350px; margin-top: 0; border-radius: 0; }
+  .conversation-hero-inner { width: calc(100% - 36px); padding-block: 54px; }
+  .conversation-hero h1 { font-size: clamp(2.5rem, 13vw, 3.8rem); }
+  .conversation-calendar-section { margin-bottom: 0; padding: 34px 8px 42px; border-radius: 0; }
+  .conversation-intro { padding-inline: 10px; }
+  .conversation-scheduler-card { border-radius: 14px; }
+  .conversation-scheduler-card .calendly-inline-widget { height: 800px; }
+  .conversation-fallback { padding-inline: 14px; }
+}

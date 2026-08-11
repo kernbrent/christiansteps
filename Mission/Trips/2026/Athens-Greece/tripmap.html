@@ -11,6 +11,7 @@
     <link href="/Styles/Site.css" rel="stylesheet">
     <link href="/Styles/Site_mobile.css" rel="stylesheet">
     <link href="/Styles/tripmap.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
@@ -297,6 +298,9 @@
 
 
                     <div id="sidePanel" class="side-panel"></div>
+                    <div id="sidePanelScrollCue" class="side-panel-scroll-cue" aria-hidden="true">
+                        &darr; Scroll for more photos
+                    </div>
 
                     <div id="timeline" class="timeline"></div>
 
@@ -343,21 +347,24 @@
 
     <!-- LIGHTBOX -->
 
-    <div id="lightboxOverlay" class="lightbox-overlay">
+    <div id="lightboxOverlay" class="lightbox-overlay" role="dialog" aria-modal="true"
+        aria-label="Trip photo viewer" aria-hidden="true">
 
-        <div class="lightbox-close" onclick="closeLightbox()">
+        <button type="button" id="lightboxClose" class="lightbox-close" onclick="closeLightbox()"
+            aria-label="Close photo viewer">
             ×
-        </div>
+        </button>
 
         <img id="lightboxImage" class="lightbox-image" src="" alt="">
+        <p id="lightboxCaption" class="lightbox-caption"></p>
 
         <div class="lightbox-controls">
 
-            <button class="lightbox-btn" onclick="prevImage()">
+            <button type="button" class="lightbox-btn" onclick="prevImage()">
                 ◀ Previous
             </button>
 
-            <button class="lightbox-btn" onclick="nextImage()">
+            <button type="button" class="lightbox-btn" onclick="nextImage()">
                 Next ▶
             </button>
 
@@ -420,7 +427,11 @@
 
         window.addEventListener('resize', () => {
             map.invalidateSize();
+            sizeDesktopSidePanelToMap();
         });
+
+        window.addEventListener('scroll', updateSidePanelScrollCue, { passive: true });
+        document.getElementById('sidePanel').addEventListener('scroll', updateSidePanelScrollCue, { passive: true });
 
         L.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -436,6 +447,7 @@
 
         let currentLightboxIndex = 0;
         let currentLightboxPhotos = [];
+        let lightboxReturnFocus = null;
 
         fetch('/data/tripmap.json')
             .then(r => r.json())
@@ -868,6 +880,81 @@
             return getVideos(day).length;
         }
 
+        function escapeHtmlAttribute(value) {
+            return String(value ?? '').replace(/[&<>"']/g, character => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            })[character]);
+        }
+
+        function buildPhotoButton(photo, index, total) {
+            const caption = photo.Caption || `Trip photo ${index + 1}`;
+            const safeCaption = escapeHtmlAttribute(caption);
+            const safeImage = escapeHtmlAttribute(photo.Image);
+
+            return `
+                <button type="button" class="trip-photo-button"
+                    onclick="openLightbox(${index})"
+                    aria-label="Open photo ${index + 1} of ${total}: ${safeCaption}"
+                    aria-haspopup="dialog" aria-controls="lightboxOverlay">
+                    <img src="${safeImage}" alt="${safeCaption}"
+                        loading="lazy" decoding="async">
+                </button>
+            `;
+        }
+
+        function updateSidePanelScrollCue() {
+            const panel = document.getElementById('sidePanel');
+            const cue = document.getElementById('sidePanelScrollCue');
+
+            if (!panel || !cue) return;
+
+            const panelRect = panel.getBoundingClientRect();
+            const hasMorePhotos = window.innerWidth >= 901 &&
+                panel.classList.contains('active') &&
+                panel.querySelector('.photo-grid') &&
+                panel.scrollHeight > panel.clientHeight + 12 &&
+                panel.scrollTop + panel.clientHeight < panel.scrollHeight - 24 &&
+                panelRect.bottom > 0 && panelRect.top < window.innerHeight;
+
+            cue.classList.toggle('active', Boolean(hasMorePhotos));
+
+            if (!hasMorePhotos) return;
+
+            const cueLeft = Math.max(8, Math.min(
+                window.innerWidth - cue.offsetWidth - 8,
+                panelRect.left + (panelRect.width - cue.offsetWidth) / 2
+            ));
+            const cueTop = Math.max(12,
+                Math.min(window.innerHeight, panelRect.bottom) - cue.offsetHeight - 18);
+
+            cue.style.left = `${Math.round(cueLeft)}px`;
+            cue.style.top = `${Math.round(cueTop)}px`;
+        }
+
+        function sizeDesktopSidePanelToMap() {
+            const panel = document.getElementById('sidePanel');
+            const mapElement = document.getElementById('map');
+
+            if (!panel || !mapElement) return;
+
+            if (window.innerWidth < 901) {
+                panel.style.removeProperty('--tripmap-side-panel-height');
+                updateSidePanelScrollCue();
+                return;
+            }
+
+            const panelTop = panel.getBoundingClientRect().top;
+            const mapBottom = mapElement.getBoundingClientRect().bottom;
+            const panelHeight = Math.max(0, Math.round(mapBottom - panelTop));
+
+            panel.style.setProperty('--tripmap-side-panel-height', `${panelHeight}px`);
+            updateSidePanelScrollCue();
+        }
+
         function getVideoPoster(videoPath) {
             return videoPath.replace(/\.mp4$/i, '_poster.jpg');
         }
@@ -915,18 +1002,14 @@ function renderPanel(day) {
         Close
     </button>
 
-    <h2>${day.Title}</h2>
+    <div class="side-panel-summary">
+        <h2>${day.Title}</h2>
 
-    <p>
-    <strong>${day.City}, ${day.Country}</strong>
-    </p>
+        <p>
+        <strong>${day.City}, ${day.Country}</strong>
+        </p>
 
-    <p>
-    ${day.Transportation.Icon}
-    ${day.Transportation.Description}
-    </p>
-
-    <div class="stats">
+        <div class="stats">
 
         <div class="stat-card">
         Mission Day:
@@ -947,7 +1030,13 @@ function renderPanel(day) {
         <div class="stat-card">Photos: ${(day.Photos || []).length}</div>
         <div class="stat-card">Videos: ${getVideoCount(day)}</div>
 
+        </div>
     </div>
+
+    <p>
+    ${day.Transportation.Icon}
+    ${day.Transportation.Description}
+    </p>
 
     `;
 
@@ -1021,17 +1110,11 @@ function renderPanel(day) {
 
             if (day.Photos && day.Photos.length > 0) {
 
-                html += '<div class="photo-grid">';
+                html += '<div class="photo-grid" aria-label="Trip photos">';
 
                 day.Photos.forEach((photo, index) => {
 
-                    html += `
-            <img
-                src="${photo.Image}"
-                alt="Trip Photo"
-                onclick="openLightbox(${index})"
-            >
-            `;
+                    html += buildPhotoButton(photo, index, day.Photos.length);
 
                 });
 
@@ -1057,6 +1140,9 @@ function renderPanel(day) {
             }
 
             panel.innerHTML = html;
+            panel.scrollTop = 0;
+            sizeDesktopSidePanelToMap();
+            updateSidePanelScrollCue();
 
             if (window.innerWidth <= 640) {
                 const card = document.getElementById('mobileDayCard');
@@ -1084,14 +1170,16 @@ function renderPanel(day) {
         function openLightbox(index) {
 
             currentLightboxIndex = index;
+            lightboxReturnFocus = document.activeElement;
 
             document.body.classList.add('lightbox-open');
 
-            document
-                .getElementById('lightboxOverlay')
-                .classList.add('active');
+            const overlay = document.getElementById('lightboxOverlay');
+            overlay.classList.add('active');
+            overlay.setAttribute('aria-hidden', 'false');
 
             updateLightboxImage();
+            document.getElementById('lightboxClose').focus();
         }
         function closePanel() {
 
@@ -1104,9 +1192,13 @@ function renderPanel(day) {
 
             document.body.classList.remove('lightbox-open');
 
-            document
-                .getElementById('lightboxOverlay')
-                .classList.remove('active');
+            const overlay = document.getElementById('lightboxOverlay');
+            overlay.classList.remove('active');
+            overlay.setAttribute('aria-hidden', 'true');
+
+            if (lightboxReturnFocus && typeof lightboxReturnFocus.focus === 'function') {
+                lightboxReturnFocus.focus();
+            }
         }
 
         function openVideoPopup(videoPath) {
@@ -1151,10 +1243,12 @@ function renderPanel(day) {
             const image =
                 document.getElementById('lightboxImage');
 
-            image.src =
-                currentLightboxPhotos[
-                    currentLightboxIndex
-                ].Image;
+            const photo = currentLightboxPhotos[currentLightboxIndex];
+            const caption = photo.Caption || `Trip photo ${currentLightboxIndex + 1}`;
+
+            image.src = photo.Image;
+            image.alt = caption;
+            document.getElementById('lightboxCaption').textContent = caption;
 
         }
 
@@ -1202,6 +1296,20 @@ function renderPanel(day) {
 
             if (e.key === 'ArrowRight') {
                 nextImage();
+            }
+
+            if (e.key === 'Tab') {
+                const focusable = Array.from(overlay.querySelectorAll('button:not([disabled])'));
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
             }
 
         });
@@ -1258,9 +1366,8 @@ function renderPanel(day) {
 
                     sheet.innerHTML =
                         '<div class="photo-grid">' +
-                        currentLightboxPhotos.map((p, i) =>
-                            '<img src="' + p.Image +
-                            '" onclick="openLightbox(' + i + ')">'
+                        currentLightboxPhotos.map((photo, index) =>
+                            buildPhotoButton(photo, index, currentLightboxPhotos.length)
                         ).join('') +
                         '</div>';
                 }

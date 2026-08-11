@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Schedule a free 30-minute conversation with Christian Steps Ministries about coaching, consulting, ministry, prayer, or your next step.">
+  <title>Schedule a Conversation | Christian Steps Ministries</title>
+  <link href="/Styles/Site.css" rel="stylesheet">
+  <link href="/Styles/Site_mobile.css" rel="stylesheet">
+  <link href="/Styles/Redesign.css?v=20260811-2" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/Images/GreenFeetIcon.png">
+</head>
+<body class="conversation-page">
+  <a class="skip-link" href="#pageContent">Skip to content</a>
+
+  <div class="page">
+    <header class="header" role="banner">
+      <div class="title">
+        <div class="site-title">
+          <a href="/index.html">
+            <img src="/Images/Logo400.jpg" class="site-logo" alt="Christian Steps Ministries" width="400">
+          </a>
+        </div>
+      </div>
+      <div class="clear hideSkiplink">
+        <div id="siteHeader"></div>
+      </div>
+    </header>
+
+    <div class="main">
+      <main id="pageContent" role="main">
+        <section class="conversation-hero" aria-labelledby="conversation-title">
+          <div class="conversation-hero-inner">
+            <p class="section-kicker">Take the next step</p>
+            <h1 id="conversation-title">Choose a time that works for you.</h1>
+            <p>Whatever brings you here&mdash;a question, a challenge, a ministry opportunity, or a need for prayer&mdash;we can begin by listening together.</p>
+          </div>
+        </section>
+
+        <section class="conversation-calendar-section" aria-labelledby="calendar-title">
+          <div class="conversation-intro">
+            <div>
+              <p class="section-kicker">Schedule</p>
+              <h2 id="calendar-title">Let&rsquo;s start a conversation.</h2>
+              <p>Select an available time below for a free conversation with Brent. We will listen, ask thoughtful questions, and consider what support or next step may be most helpful.</p>
+            </div>
+            <span class="conversation-duration">30 minutes &middot; Online</span>
+          </div>
+
+          <div class="conversation-scheduler-card">
+            <div
+              class="calendly-inline-widget"
+              data-url="https://calendly.com/kern-brent/30min"
+              aria-label="Schedule a 30-minute conversation with Christian Steps Ministries"></div>
+          </div>
+          <p class="conversation-fallback">Having trouble with the scheduler? <a href="https://calendly.com/kern-brent/30min" target="_blank" rel="noopener noreferrer">Open Calendly in a new tab</a>.</p>
+          <noscript><p class="conversation-fallback">JavaScript is required for the embedded scheduler. <a href="https://calendly.com/kern-brent/30min">Open the booking calendar</a>.</p></noscript>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="siteFooter"></div>
+
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    fetch('/header.html', { cache: 'no-store' })
+      .then(response => response.text())
+      .then(markup => {
+        const host = document.getElementById('siteHeader');
+        if (!host) return;
+        host.innerHTML = markup;
+
+        const menu = host.querySelector('div.menu');
+        const nav = host.querySelector('div.menu ul.nav');
+        const button = menu?.querySelector('.nav-toggle');
+        if (!menu || !nav || !button) return;
+
+        button.addEventListener('click', event => {
+          event.preventDefault();
+          event.stopPropagation();
+          const isOpen = nav.classList.toggle('open');
+          button.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        nav.addEventListener('click', event => {
+          if (!event.target.closest('a')) return;
+          nav.classList.remove('open');
+          button.setAttribute('aria-expanded', 'false');
+        });
+
+        document.addEventListener('click', () => {
+          nav.classList.remove('open');
+          button.setAttribute('aria-expanded', 'false');
+        });
+      })
+      .catch(() => {});
+
+    fetch('/footer.html', { cache: 'no-store' })
+      .then(response => response.text())
+      .then(markup => {
+        const host = document.getElementById('siteFooter');
+        if (host) host.innerHTML = markup;
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

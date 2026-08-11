@@ -216,7 +216,7 @@
   },
   {
     "Date": "2026-05-21",
-    "Title": "Ortisei Hiking and Chair Lifts - Alpe di Suisi",
+    "Title": "Ortisei Hiking and Chair Lifts - Alpe di Siusi",
     "City": "Ortisei",
     "Country": "Italy",
     "Latitude": 46.5753,
@@ -232,33 +232,33 @@
     "Transportation": {
       "Type": "Local",
       "Icon": "🏔️",
-      "Description": "Today we took the Alpe di Suisi Gondola to the amazing plateau meadow. I can truly say, I have never seen anything like it in my life. Breath-taking doesn't even come close to describing it. The picture try to capture it, but it is so much awe inspiring."
+      "Description": "Today we took the Alpe di Siusi gondola to the amazing plateau meadow. I can truly say I have never seen anything like it in my life. Breathtaking doesn't even come close to describing it. The pictures try to capture it, but the landscape is far more awe-inspiring in person."
     },
     "Photos": [
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_1.jpg",
-        "Caption": "Ortisei, Italy - Aple di Suisi"
+        "Caption": "Ortisei, Italy - Alpe di Siusi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_2.jpg",
-        "Caption": "Ortisei, Italy - Aple di Suisi"
+        "Caption": "Ortisei, Italy - Alpe di Siusi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_3.jpg",
-        "Caption": "Ortisei, Italy - Aple di Suisi"
+        "Caption": "Ortisei, Italy - Alpe di Siusi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_4.jpg",
-        "Caption": "Ortisei, Italy - Aple di Suisi"
+        "Caption": "Ortisei, Italy - Alpe di Siusi"
       },
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_5.jpg",
-        "Caption": "Ortisei, Italy - Aple di Suisi"
+        "Caption": "Ortisei, Italy - Alpe di Siusi"
       },
       {
         "Enabled": true,
@@ -268,7 +268,7 @@
       {
         "Enabled": true,
         "Image": "Images/tripmap/2026-05-21_ortisei_7.jpg",
-        "Caption": "Ortisei, Italy - Aple di Suisi"
+        "Caption": "Ortisei, Italy - Alpe di Siusi"
       }
     ],
     "Steps": 20570
@@ -438,7 +438,7 @@
   },
   {
     "Date": "2026-05-25",
-    "Title": "The Leaning Tour",
+    "Title": "The Leaning Tower",
     "City": "Pisa",
     "Country": "Italy",
     "Latitude": 43.7228,
@@ -556,7 +556,7 @@
   },
   {
     "Date": "2026-05-27",
-    "Title": "Rome - Spanish Steps, Trivi Fountain, and others",
+    "Title": "Rome - Spanish Steps, Trevi Fountain, and Others",
     "City": "Rome",
     "Country": "Italy",
     "Latitude": 41.9028,
@@ -926,7 +926,7 @@
   },
   {
     "Date": "2026-06-03",
-    "Title": "Nafplio One more Day",
+    "Title": "Nafplio: One More Day",
     "City": "Nafplio",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1018,7 +1018,7 @@
   },
   {
     "Date": "2026-06-04",
-    "Title": "The Team Meetings and Shares Communion on Mars Hill",
+    "Title": "The Team Meets and Shares Communion on Mars Hill",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1348,7 +1348,7 @@
   },
   {
     "Date": "2026-06-09",
-    "Title": "Glocal Refugee Cafe and New Start Trafficing walk",
+    "Title": "Glocal Refugee Cafe and New Start Trafficking Walk",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1409,7 +1409,7 @@
   },
   {
     "Date": "2026-06-10",
-    "Title": "Glocal Refugee Cafe and New Start Trafficing walk - Part 2",
+    "Title": "Glocal Refugee Cafe and New Start Trafficking Walk - Part 2",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1480,7 +1480,7 @@
   },
   {
     "Date": "2026-06-11",
-    "Title": "Glocal Refugee Cafe and New Start Trafficing walk - Part 2",
+    "Title": "Glocal Refugee Cafe and New Start Trafficking Walk - Part 3",
     "City": "Athens",
     "Country": "Greece",
     "Latitude": 37.9838,
@@ -1536,7 +1536,7 @@
   },
   {
     "Date": "2026-06-12",
-    "Title": "Day trip to Aegina Island and Final Team dinner.",
+    "Title": "Day Trip to Aegina Island and Final Team Dinner",
     "City": "Aegina Island",
     "Country": "Greece",
     "Latitude": 37.7467,
@@ -1608,7 +1608,7 @@
   },
   {
     "Date": "2026-06-13",
-    "Title": "The Team departs, several trips to the airport, my last night in Europe.",
+    "Title": "Team Departures and My Last Night in Europe",
     "City": "Spata",
     "Country": "Greece",
     "Latitude": 37.9646,
@@ -1653,8 +1653,8 @@
   },
   {
     "Date": "2026-06-14",
-    "Title": "Day trip to Aegina Island and Final Team dinner.",
-    "City": "Spata - Ariport",
+    "Title": "Fly Home from Athens",
+    "City": "Spata - Athens Airport",
     "Country": "Greece",
     "Latitude": 37.9646,
     "Longitude": 23.9071,

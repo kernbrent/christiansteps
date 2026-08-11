@@ -138,9 +138,25 @@ body {
 
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
     margin-top: 12px;
+}
+
+.trip-photo-button {
+    display: block;
+    min-width: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.trip-photo-button:focus-visible {
+    outline: 4px solid #3D95CE;
+    outline-offset: 3px;
 }
 
 .photo-grid img {
@@ -218,6 +234,17 @@ body {
     font-size: 34px;
     cursor: pointer;
     font-weight: bold;
+    border: 0;
+    background: transparent;
+    line-height: 1;
+}
+
+.lightbox-caption {
+    max-width: min(760px, 90vw);
+    margin: 14px 0 0;
+    color: white;
+    font-weight: 700;
+    text-align: center;
 }
 
 body.lightbox-open #mobileSheet,
@@ -725,7 +752,7 @@ body.lightbox-open #timeline {
 /* V8.9 PHOTO GRID NORMALIZATION */
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
 }
 
@@ -820,4 +847,62 @@ body.lightbox-open #timeline {
     margin-top:8px;
     padding-top:6px;
   }
+}
+
+/* Give the laptop detail panel more vertical room without changing its width. */
+@media (min-width: 901px) {
+    #sidePanel.side-panel {
+        height: var(--tripmap-side-panel-height, max(65vh, calc(100vh - 265px)));
+        max-height: none;
+        box-shadow:
+            0 42px 110px rgba(10, 35, 29, .58),
+            0 18px 46px rgba(0, 0, 0, .42);
+    }
+
+    #sidePanel.side-panel .side-panel-summary {
+        position: sticky;
+        top: -15px;
+        z-index: 20;
+        margin: -15px -15px 16px;
+        padding: 15px 15px 13px;
+        border-bottom: 1px solid rgba(23, 79, 67, .16);
+        background: rgba(255, 255, 255, .98);
+        box-shadow: 0 10px 18px rgba(10, 35, 29, .12);
+    }
+
+    #sidePanel.side-panel .side-panel-summary h2 {
+        margin: 0 0 8px;
+    }
+
+    #sidePanel.side-panel .side-panel-summary .stats {
+        gap: 7px;
+    }
+
+    #sidePanel.side-panel .side-panel-summary .stat-card {
+        padding: 7px 8px;
+        font-size: 13px;
+    }
+
+    #sidePanel.side-panel .photo-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .side-panel-scroll-cue.active {
+        position: fixed;
+        z-index: 1001;
+        display: block;
+        padding: 8px 13px;
+        border: 1px solid rgba(255, 255, 255, .72);
+        border-radius: 999px;
+        background: rgba(10, 56, 47, .92);
+        color: white;
+        box-shadow: 0 9px 24px rgba(0, 0, 0, .32);
+        font-size: 12px;
+        font-weight: 800;
+        pointer-events: none;
+    }
+}
+
+.side-panel-scroll-cue {
+    display: none;
 }
