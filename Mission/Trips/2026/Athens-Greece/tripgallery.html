@@ -62,7 +62,7 @@ body{
     color:#666;
 }
 
-.gallery-grid{
+.day-section .gallery-grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
     gap:16px;
@@ -86,6 +86,50 @@ body{
     height:220px;
     object-fit:cover;
     display:block;
+}
+
+.video-preview{
+    position:relative;
+    width:100%;
+    height:220px;
+    overflow:hidden;
+    background:#14372f;
+    color:white;
+}
+
+.day-section .video-preview img{
+    width:100%;
+    height:100%;
+    border-radius:0;
+    object-fit:cover;
+    box-shadow:none;
+}
+
+.video-preview-icon{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:grid;
+    place-items:center;
+    width:64px;
+    height:64px;
+    padding-left:5px;
+    border:3px solid rgba(255,255,255,.9);
+    border-radius:50%;
+    background:rgba(14,56,47,.72);
+    box-shadow:0 5px 18px rgba(0,0,0,.35);
+    font-size:28px;
+}
+
+.video-preview-label{
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    padding:6px 10px;
+    border-radius:999px;
+    background:rgba(14,56,47,.82);
+    font-weight:bold;
 }
 
 .gallery-caption{
@@ -246,6 +290,7 @@ Dynamic gallery of the entire journey across Europe and Greece.
     id="lightboxVideo"
     class="lightbox-image"
     controls
+    playsinline
     style="display:none;">
 
     <source
@@ -292,6 +337,10 @@ fetch('/footer.html', { cache: 'no-store' })
 
 let allPhotos = [];
 let currentLightboxIndex = 0;
+
+function getVideoPoster(videoPath){
+    return videoPath.replace(/\.mp4$/i, '_poster.jpg');
+}
 
 fetch('/data/tripmap.json')
 .then(r => r.json())
@@ -383,6 +432,7 @@ fetch('/data/tripmap.json')
                 allPhotos.push({
                     type: 'video',
                     image: videoItem.File,
+                    poster: getVideoPoster(videoItem.File),
                     caption: videoItem.Title,
                     day: day.Date,
                     title: day.Title
@@ -390,10 +440,11 @@ fetch('/data/tripmap.json')
 
                 html += `
                 <div class="gallery-card" onclick="openLightbox(${globalIndex})">
-                    <video muted playsinline preload="metadata"
-                        style="width:100%;height:220px;object-fit:cover;display:block;">
-                        <source src="${videoItem.File}" type="video/mp4">
-                    </video>
+                    <div class="video-preview">
+                        <img src="${getVideoPoster(videoItem.File)}" alt="${videoItem.Title} video preview">
+                        <span class="video-preview-icon" aria-hidden="true">&#9654;</span>
+                        <span class="video-preview-label">Play video</span>
+                    </div>
                     <div class="gallery-caption">
                         <strong>${videoItem.Title}</strong><br>
                         <small>${day.Date}</small>
@@ -477,9 +528,13 @@ function updateLightbox(){
 
         video.style.display = 'block';
 
+        video.poster = photo.poster;
+
         videoSource.src = photo.image;
 
         video.load();
+
+        video.play().catch(() => {});
 
     } else {
 

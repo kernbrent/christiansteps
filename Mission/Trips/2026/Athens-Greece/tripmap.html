@@ -868,6 +868,22 @@
             return getVideos(day).length;
         }
 
+        function getVideoPoster(videoPath) {
+            return videoPath.replace(/\.mp4$/i, '_poster.jpg');
+        }
+
+        function buildVideoButton(video) {
+            return `
+                <button class="trip-video-card" onclick="openVideoPopup('${video.File}')">
+                    <span class="trip-video-poster">
+                        <img src="${getVideoPoster(video.File)}" alt="${video.Title} video preview">
+                        <span class="trip-video-play" aria-hidden="true">&#9654;</span>
+                    </span>
+                    <span class="trip-video-title">${video.Title}</span>
+                </button>
+            `;
+        }
+
 function renderPanel(day) {
             if (window.innerWidth <= 640) {
                 const card = document.getElementById('mobileDayCard');
@@ -998,7 +1014,7 @@ function renderPanel(day) {
         `;
 
                 videos.forEach(v => {
-                    html += `<button class="lightbox-btn" onclick="openVideoPopup('${v.File}')" style="display:block;margin-bottom:8px;">▶ ${v.Title}</button>`;
+                    html += buildVideoButton(v);
                 });
 
             }
@@ -1104,9 +1120,13 @@ function renderPanel(day) {
             const source =
                 document.getElementById('popupVideoSource');
 
+            video.poster = getVideoPoster(videoPath);
+
             source.src = videoPath;
 
             video.load();
+
+            video.play().catch(() => {});
 
             overlay.classList.add('active');
 
@@ -1248,7 +1268,7 @@ function renderPanel(day) {
                 if (tab.dataset.tab === 'video') {
                     const videos = getVideos(day);
                     sheet.innerHTML = videos.length
-                        ? videos.map(v => '<button class="lightbox-btn" style="display:block;margin-bottom:8px;" onclick="openVideoPopup(\'' + v.File + '\')">▶ ' + v.Title + '</button>').join('')
+                        ? videos.map(buildVideoButton).join('')
                         : '<p>No video available.</p>';
                 }
 

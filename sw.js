@@ -1,4 +1,4 @@
-const CACHE_NAME = 'csm-missions-v7';
+const CACHE_NAME = 'csm-missions-v8';
 
 const OFFLINE_ASSETS = [
   '/',
@@ -36,11 +36,22 @@ self.addEventListener('fetch', event => {
   const requestUrl = new URL(event.request.url);
   if (requestUrl.origin !== self.location.origin) return;
 
+  const isMediaRequest =
+    event.request.destination === 'video' ||
+    event.request.headers.has('range') ||
+    requestUrl.pathname.toLowerCase().endsWith('.mp4');
+
+  // Let the browser stream media directly. Partial (206) responses cannot be
+  // stored by Cache Storage and rejecting that cache write breaks playback.
+  if (isMediaRequest) return;
+
   const isUpdateSensitive =
     event.request.mode === 'navigate' ||
     ['document', 'style', 'script'].includes(event.request.destination) ||
     requestUrl.pathname === '/header.html' ||
     requestUrl.pathname === '/footer.html' ||
+    requestUrl.pathname === '/data/tripmap.json' ||
+    requestUrl.pathname === '/data/dayactivities.json' ||
     requestUrl.pathname === '/data/music_library.json' ||
     requestUrl.pathname === '/data/cast_library.json';
 

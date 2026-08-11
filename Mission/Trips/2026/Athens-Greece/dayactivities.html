@@ -15,7 +15,7 @@
 <script>
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js?v=5', { updateViaCache: 'none' })
+        navigator.serviceWorker.register('/sw.js?v=8', { updateViaCache: 'none' })
             .then(registration => registration.update());
     });
 }
@@ -26,7 +26,11 @@ if ('serviceWorker' in navigator) {
 .image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .media-card{cursor:pointer;transition:transform .2s ease}
 .media-card:hover{transform:translateY(-4px) scale(1.02)}
-.media-card img,.media-card video{width:100%;border-radius:12px;display:block}
+.media-card img{width:100%;border-radius:12px;display:block}
+.video-preview{position:relative;width:100%;height:220px;overflow:hidden;border-radius:12px;background:#14372f;color:#fff}
+.media-card .video-preview img{width:100%;height:100%;border-radius:0;object-fit:cover;box-shadow:none}
+.video-preview-icon{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:64px;height:64px;padding-left:5px;border:3px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(14,56,47,.72);box-shadow:0 5px 18px rgba(0,0,0,.35);font-size:28px}
+.video-preview-label{position:absolute;right:12px;bottom:12px;padding:6px 10px;border-radius:999px;background:rgba(14,56,47,.82);font-weight:bold}
 .lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:5000;padding:20px}
 .lightbox-overlay.active{display:flex}
 .lightbox-image{max-width:92vw;max-height:78vh}
@@ -205,7 +209,7 @@ Tap Share → Add to Home Screen
 <div id="lightboxOverlay" class="lightbox-overlay">
 <div class="lightbox-close" onclick="closeLightbox()">×</div>
 <img id="lightboxImage" class="lightbox-image" style="display:none">
-<video id="lightboxVideo" class="lightbox-image" controls style="display:none"><source id="lightboxVideoSource"></video>
+<video id="lightboxVideo" class="lightbox-image" controls playsinline style="display:none"><source id="lightboxVideoSource" type="video/mp4"></video>
 <div id="lightboxCaption" class="lightbox-caption"></div>
 </div>
 
@@ -217,6 +221,10 @@ const params =
 
 const day =
     parseInt(params.get('day')) || 3;
+
+function getVideoPoster(videoPath){
+    return videoPath.replace(/\.mp4$/i, '_poster.jpg');
+}
 
 fetch('/data/dayactivities.json')
 .then(r => r.json())
@@ -350,10 +358,10 @@ window.mediaItems = [];
 (item.Videos || []).forEach(v => {
  if(v.Enabled!==false){
    const idx = window.mediaItems.length;
-   window.mediaItems.push({type:'video',src:v.File,caption:v.Title||''});
+   window.mediaItems.push({type:'video',src:v.File,poster:getVideoPoster(v.File),caption:v.Title||''});
    const div=document.createElement('div');
    div.className='media-card';
-   div.innerHTML=`<figure onclick="openMedia(${idx})"><video muted playsinline preload="metadata"><source src="${v.File}" type="video/mp4"></video><figcaption>${v.Title||''}</figcaption></figure>`;
+   div.innerHTML=`<figure onclick="openMedia(${idx})"><div class="video-preview"><img src="${getVideoPoster(v.File)}" alt="${v.Title||'Trip video'} video preview"><span class="video-preview-icon" aria-hidden="true">&#9654;</span><span class="video-preview-label">Play video</span></div><figcaption>${v.Title||''}</figcaption></figure>`;
    grid.appendChild(div);
  }
 });
@@ -495,7 +503,9 @@ function openMedia(index){
  if(item.type==='video'){
    img.style.display='none';
    vid.style.display='block';
+   vid.poster=item.poster;
    src.src=item.src; vid.load();
+   vid.play().catch(() => {});
  } else {
    vid.pause(); vid.style.display='none';
    img.style.display='block'; img.src=item.src;

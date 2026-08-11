@@ -1,5 +1,5 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js?v=5', { updateViaCache: 'none' })
+  navigator.serviceWorker.register('/sw.js?v=8', { updateViaCache: 'none' })
     .then(registration => registration.update());
 }
 
