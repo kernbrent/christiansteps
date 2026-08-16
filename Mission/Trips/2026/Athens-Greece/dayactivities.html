@@ -224,7 +224,8 @@ const day =
     parseInt(params.get('day')) || 3;
 
 function getVideoPoster(videoPath){
-    return videoPath.replace(/\.mp4$/i, '_poster.jpg');
+    const fileName = videoPath.split('/').pop();
+    return `/Images/tripmap/${fileName.replace(/\.mp4$/i, '_poster.jpg')}`;
 }
 
 fetch('/data/dayactivities.json')

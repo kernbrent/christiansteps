@@ -956,7 +956,8 @@
         }
 
         function getVideoPoster(videoPath) {
-            return videoPath.replace(/\.mp4$/i, '_poster.jpg');
+            const fileName = videoPath.split('/').pop();
+            return `/Images/tripmap/${fileName.replace(/\.mp4$/i, '_poster.jpg')}`;
         }
 
         function buildVideoButton(video) {

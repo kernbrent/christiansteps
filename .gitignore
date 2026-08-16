@@ -1,0 +1,15 @@
+# Audio and video files are stored in ../ChristianStepsAV and published through Cloudflare R2.
+*.aac
+*.avi
+*.flac
+*.m4a
+*.m4v
+*.mkv
+*.mov
+*.mp3
+*.mp4
+*.oga
+*.ogg
+*.wav
+*.webm
+*.wma
