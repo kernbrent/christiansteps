@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="theme-color" content="#123f33">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'">
+  <title>Christian Steps Admin Portal</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <section id="login-view" class="login-shell" aria-labelledby="login-title">
+    <div class="login-card">
+      <img class="login-logo" src="../LogoFeetGreen.png" alt="Christian Steps Ministries">
+      <p class="eyebrow">Private administration</p>
+      <h1 id="login-title">Admin Portal</h1>
+      <p class="muted">Sign in to review PayPal activity and prepare donor records.</p>
+      <form id="login-form" class="stack-form">
+        <label for="login-password">Password</label>
+        <div class="password-field">
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required maxlength="256">
+          <button class="text-button password-toggle" type="button" data-password-target="login-password">Show</button>
+        </div>
+        <label class="checkbox-row">
+          <input id="remember-me" name="rememberMe" type="checkbox">
+          <span>Keep me signed in on this computer</span>
+        </label>
+        <button class="primary-button full-button" type="submit">Sign in</button>
+        <p id="login-message" class="form-message" role="alert" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <div id="portal-view" class="portal" hidden>
+    <header class="portal-header">
+      <a class="brand" href="../" aria-label="Christian Steps home">
+        <img src="../LogoFeetGreen.png" alt="">
+        <span><strong>Christian Steps</strong><small>Admin Portal</small></span>
+      </a>
+      <nav class="header-actions" aria-label="Admin actions">
+        <button id="change-password-button" class="quiet-button" type="button">Change password</button>
+        <button id="sign-out-button" class="quiet-button" type="button">Sign out</button>
+      </nav>
+    </header>
+
+    <main id="main-content" class="main-content">
+      <section class="page-heading">
+        <div>
+          <p class="eyebrow">PayPal giving records</p>
+          <h1>Transactions</h1>
+          <p id="sync-status" class="muted">PayPal has not been synchronized yet.</p>
+        </div>
+        <div class="action-group">
+          <button id="sync-button" class="primary-button" type="button">Pull recent PayPal activity</button>
+          <button id="more-actions-button" class="secondary-button" type="button" aria-expanded="false" aria-controls="more-actions-menu">More actions</button>
+          <div id="more-actions-menu" class="action-menu" hidden>
+            <button id="full-sync-button" type="button">Refresh full available history</button>
+            <button id="download-workbook-button" type="button">Download Excel workbook</button>
+            <button id="open-letters-button" type="button">Generate giving letters</button>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="giving-summary-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <h2 id="giving-summary-title"><span id="summary-year">Current year</span> giving</h2>
+            <p class="muted">Large figures show received payments; smaller figures show sent payments.</p>
+          </div>
+        </div>
+        <div class="summary-grid">
+          <article class="summary-card hope-card"><span>Hope Sojourns</span><strong id="summary-hope">$0.00</strong><small class="summary-sent">Sent: <b id="summary-hope-sent">$0.00</b></small></article>
+          <article class="summary-card jbb-card"><span>Josh Beyond Borders</span><strong id="summary-jbb">$0.00</strong><small class="summary-sent">Sent: <b id="summary-jbb-sent">$0.00</b></small></article>
+          <article class="summary-card cs-card"><span>Christian Steps</span><strong id="summary-cs">$0.00</strong><small class="summary-sent">Sent: <b id="summary-cs-sent">$0.00</b></small></article>
+          <article class="summary-card total-card"><span>All three products</span><strong id="summary-total">$0.00</strong><small class="summary-sent">Sent: <b id="summary-total-sent">$0.00</b></small></article>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="transaction-list-title">
+        <div class="section-heading">
+          <div><h2 id="transaction-list-title">PayPal activity</h2><p id="record-count" class="muted">0 records</p></div>
+        </div>
+        <form id="filter-form" class="filter-bar">
+          <label class="search-field"><span class="sr-only">Search transactions</span><input id="filter-search" name="search" type="search" placeholder="Search donor, email, item, or ID"></label>
+          <label><span>Product</span><select id="filter-product" name="product"><option value="">All products</option><option value="HopeSojourns">Hope Sojourns</option><option value="JoshBeyondBorders">Josh Beyond Borders</option><option value="ChristianSteps">Christian Steps</option><option value="Unassigned">Needs review</option></select></label>
+          <label><span>Direction</span><select id="filter-direction" name="direction"><option value="">Received and sent</option><option value="received">Received</option><option value="sent">Sent</option></select></label>
+          <label><span>Year</span><select id="filter-year" name="year"><option value="">All years</option></select></label>
+          <button class="secondary-button filter-button" type="submit">Apply filters</button>
+          <button id="clear-filters-button" class="text-button filter-button" type="button">Clear</button>
+        </form>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Date</th><th scope="col">Received / sent</th><th scope="col">Name</th><th scope="col">Product</th><th scope="col">Item from PayPal</th><th scope="col">Status</th><th scope="col" class="number-cell">Gross</th><th scope="col" class="number-cell">Fee</th><th scope="col" class="number-cell">Net</th></tr></thead>
+            <tbody id="transaction-body"></tbody>
+          </table>
+          <div id="empty-transactions" class="empty-state" hidden><h3>No transactions found</h3><p>Try clearing a filter, or pull the latest activity from PayPal.</p></div>
+        </div>
+        <div class="pagination"><button id="previous-page-button" class="secondary-button" type="button">Previous</button><span id="page-status">Page 1 of 1</span><button id="next-page-button" class="secondary-button" type="button">Next</button></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="letters-dialog" class="wide-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="Close giving letters">×</button></form>
+    <div class="dialog-content">
+      <p class="eyebrow">Annual donor records</p>
+      <h2>Giving letters</h2>
+      <p class="muted">Review donor names and mailing addresses before creating letters. The supplied Christian Steps template is used without changing its design.</p>
+      <div class="letter-toolbar">
+        <label>Giving year <select id="letter-year"></select></label>
+        <label class="search-field"><span class="sr-only">Search donors</span><input id="letter-search" type="search" placeholder="Search donors"></label>
+        <button id="load-donors-button" class="secondary-button" type="button">Load donors</button>
+      </div>
+      <div id="donor-message" class="notice" aria-live="polite"></div>
+      <div class="table-wrap donor-table-wrap">
+        <table class="data-table">
+          <thead><tr><th scope="col"><input id="select-all-donors" type="checkbox" aria-label="Select all donors"></th><th scope="col">Donor</th><th scope="col">Mailing address</th><th scope="col">Gifts</th><th scope="col" class="number-cell">Annual total</th><th scope="col">Email</th></tr></thead>
+          <tbody id="donor-body"></tbody>
+        </table>
+      </div>
+      <div class="dialog-actions"><span id="donor-selection-count" class="muted">0 donors selected</span><button id="generate-letters-button" class="primary-button" type="button">Generate selected letters</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="email-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="Close email assistant">×</button></form>
+    <div class="dialog-content">
+      <p class="eyebrow">Email assistant</p><h2>Email giving letter</h2><p>First download the donor's giving letter, then attach it in your email program.</p>
+      <dl class="email-preview"><div><dt>To</dt><dd id="email-to"></dd></div><div><dt>Subject</dt><dd id="email-subject"></dd></div></dl>
+      <p id="email-message" class="form-message" role="status"></p>
+      <div class="dialog-actions"><button id="copy-email-button" class="secondary-button" type="button">Copy formatted email</button><button id="open-email-button" class="primary-button" type="button">Open email program</button></div>
+    </div>
+  </dialog>
+
+  <dialog id="password-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="Close password form">×</button></form>
+    <div class="dialog-content">
+      <p class="eyebrow">Account security</p><h2>Change password</h2>
+      <form id="password-form" class="stack-form">
+        <label for="current-password">Current password</label><input id="current-password" name="currentPassword" type="password" autocomplete="current-password" required maxlength="256">
+        <label for="new-password">New password</label><input id="new-password" name="newPassword" type="password" autocomplete="new-password" required minlength="12" maxlength="256">
+        <p class="field-help">Use at least 12 characters with three of: lowercase, uppercase, number, or symbol.</p>
+        <label for="confirm-password">Confirm new password</label><input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" required maxlength="256">
+        <p id="password-message" class="form-message" role="alert"></p><button class="primary-button" type="submit">Save new password</button>
+      </form>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="loading-overlay" class="loading-overlay" hidden><div class="loading-card"><span class="spinner" aria-hidden="true"></span><strong id="loading-label">Working…</strong></div></div>
+  <script src="vendor/exceljs-4.4.0.min.js" defer></script>
+  <script src="office-package.js" defer></script>
+  <script src="email-tools.js" defer></script>
+  <script src="giving-letters.js" defer></script>
+  <script src="admin.js" defer></script>
+</body>
+</html>

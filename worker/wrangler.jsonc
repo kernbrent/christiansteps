@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "christian-steps-admin-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-23",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "christiansteps.net/admin",
+      "zone_name": "christiansteps.net"
+    },
+    {
+      "pattern": "www.christiansteps.net/admin",
+      "zone_name": "christiansteps.net"
+    },
+    {
+      "pattern": "christiansteps.net/admin/*",
+      "zone_name": "christiansteps.net"
+    },
+    {
+      "pattern": "www.christiansteps.net/admin/*",
+      "zone_name": "christiansteps.net"
+    },
+    {
+      "pattern": "christiansteps.net/api/admin/*",
+      "zone_name": "christiansteps.net"
+    },
+    {
+      "pattern": "www.christiansteps.net/api/admin/*",
+      "zone_name": "christiansteps.net"
+    }
+  ],
+  "vars": {
+    "PAYPAL_API_ORIGIN": "https://api-m.paypal.com",
+    "PAYPAL_HISTORY_DAYS": "1095",
+    "PAYPAL_RECENT_DAYS": "93",
+    "ALLOWED_ORIGINS": "https://christiansteps.net,https://www.christiansteps.net,http://localhost:*,http://127.0.0.1:*",
+    "DISPLAY_TIME_ZONE": "America/Chicago"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "christian-steps-admin",
+      "database_id": "01a4b445-9af7-4eb9-bdb8-2807cccd2be8",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "secrets": {
+    "required": [
+      "ADMIN_PASSWORD",
+      "ADMIN_SESSION_SECRET"
+    ]
+  },
+  "observability": {
+    "enabled": true,
+    "logs": {
+      "head_sampling_rate": 1
+    },
+    "traces": {
+      "enabled": true,
+      "head_sampling_rate": 0.05
+    }
+  },
+  "assets": {
+    "directory": "./public",
+    "run_worker_first": [
+      "/api/admin/*"
+    ],
+    "html_handling": "auto-trailing-slash"
+  },
+  "services": [
+    {
+      "binding": "JBB_PAYPAL",
+      "service": "josh-beyond-borders-admin-api"
+    }
+  ]
+}

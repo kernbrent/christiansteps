@@ -1,0 +1,22 @@
+{
+  "name": "christian-steps-admin-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit && wrangler deploy --dry-run",
+    "test": "vitest run",
+    "types": "wrangler types --include-runtime false",
+    "db:migrate:local": "wrangler d1 migrations apply christian-steps-admin --local",
+    "db:migrate:remote": "wrangler d1 migrations apply christian-steps-admin --remote",
+    "deploy:dry": "wrangler deploy --dry-run",
+    "dev": "wrangler dev --local"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260815.1",
+    "@types/node": "26.2.0",
+    "typescript": "7.0.2",
+    "vitest": "4.1.10",
+    "wrangler": "4.123.0"
+  }
+}
