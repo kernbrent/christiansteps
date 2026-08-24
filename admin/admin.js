@@ -71,12 +71,22 @@
     });
   };
 
+  function summaryCountText(donations, givers) {
+    const donationCount = Number(donations || 0);
+    const giverCount = Number(givers || 0);
+    return `${donationCount.toLocaleString()} donation${donationCount === 1 ? "" : "s"} · ${giverCount.toLocaleString()} giver${giverCount === 1 ? "" : "s"}`;
+  }
+
   function renderSummary(summary = {}) {
     byId("summary-year").textContent = summary.year || new Date().getFullYear();
     byId("summary-hope").textContent = currency(summary.products?.HopeSojourns);
     byId("summary-jbb").textContent = currency(summary.products?.JoshBeyondBorders);
     byId("summary-cs").textContent = currency(summary.products?.ChristianSteps);
     byId("summary-total").textContent = currency(summary.total);
+    byId("summary-hope-counts").textContent = summaryCountText(summary.donationCounts?.HopeSojourns, summary.giverCounts?.HopeSojourns);
+    byId("summary-jbb-counts").textContent = summaryCountText(summary.donationCounts?.JoshBeyondBorders, summary.giverCounts?.JoshBeyondBorders);
+    byId("summary-cs-counts").textContent = summaryCountText(summary.donationCounts?.ChristianSteps, summary.giverCounts?.ChristianSteps);
+    byId("summary-total-counts").textContent = summaryCountText(summary.donationCount, summary.giverCount);
     byId("summary-hope-sent").textContent = currency(summary.sentProducts?.HopeSojourns);
     byId("summary-jbb-sent").textContent = currency(summary.sentProducts?.JoshBeyondBorders);
     byId("summary-cs-sent").textContent = currency(summary.sentProducts?.ChristianSteps);
@@ -256,19 +266,19 @@
       workbook.creator = "Christian Steps Admin Portal";
       workbook.created = new Date();
       const summary = workbook.addWorksheet("Summary");
-      summary.columns = [{ key: "label", width: 32 }, { key: "received", width: 18 }, { key: "sent", width: 18 }];
+      summary.columns = [{ key: "label", width: 32 }, { key: "received", width: 26 }, { key: "donations", width: 12 }, { key: "givers", width: 12 }, { key: "sent", width: 24 }];
       summary.addRows([
-        { label: `${result.summary.year} activity by product`, received: "Received", sent: "Sent" },
-        { label: "Hope Sojourns", received: Number(result.summary.products.HopeSojourns || 0), sent: Number(result.summary.sentProducts?.HopeSojourns || 0) },
-        { label: "Josh Beyond Borders", received: Number(result.summary.products.JoshBeyondBorders || 0), sent: Number(result.summary.sentProducts?.JoshBeyondBorders || 0) },
-        { label: "Christian Steps", received: Number(result.summary.products.ChristianSteps || 0), sent: Number(result.summary.sentProducts?.ChristianSteps || 0) },
-        { label: "All three products", received: Number(result.summary.total || 0), sent: Number(result.summary.sentTotal || 0) },
-        { label: "Workbook generated", received: new Date(result.generatedAt), sent: "" },
+        { label: `${result.summary.year} activity by product`, received: "Gross donations received", donations: "Donations", givers: "Givers", sent: "Sent to another account" },
+        { label: "Hope Sojourns", received: Number(result.summary.products.HopeSojourns || 0), donations: Number(result.summary.donationCounts?.HopeSojourns || 0), givers: Number(result.summary.giverCounts?.HopeSojourns || 0), sent: Number(result.summary.sentProducts?.HopeSojourns || 0) },
+        { label: "Josh Beyond Borders", received: Number(result.summary.products.JoshBeyondBorders || 0), donations: Number(result.summary.donationCounts?.JoshBeyondBorders || 0), givers: Number(result.summary.giverCounts?.JoshBeyondBorders || 0), sent: Number(result.summary.sentProducts?.JoshBeyondBorders || 0) },
+        { label: "Christian Steps", received: Number(result.summary.products.ChristianSteps || 0), donations: Number(result.summary.donationCounts?.ChristianSteps || 0), givers: Number(result.summary.giverCounts?.ChristianSteps || 0), sent: Number(result.summary.sentProducts?.ChristianSteps || 0) },
+        { label: "All ministry activity", received: Number(result.summary.total || 0), donations: Number(result.summary.donationCount || 0), givers: Number(result.summary.giverCount || 0), sent: Number(result.summary.sentTotal || 0) },
+        { label: "Workbook generated", received: new Date(result.generatedAt), donations: "", givers: "", sent: "" },
       ]);
       summary.getColumn(2).numFmt = "$#,##0.00;[Red]-$#,##0.00";
-      summary.getColumn(3).numFmt = "$#,##0.00;[Red]-$#,##0.00";
+      summary.getColumn(5).numFmt = "$#,##0.00;[Red]-$#,##0.00";
       summary.getCell("B6").numFmt = "m/d/yyyy h:mm AM/PM";
-      styleWorksheet(summary, 3);
+      styleWorksheet(summary, 5);
 
       const transactions = workbook.addWorksheet("PayPal Transactions");
       const columns = [

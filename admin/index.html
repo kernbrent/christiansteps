@@ -7,6 +7,8 @@
   <meta name="theme-color" content="#123f33">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'">
   <title>Christian Steps Admin Portal</title>
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
@@ -68,14 +70,14 @@
         <div class="section-heading compact-heading">
           <div>
             <h2 id="giving-summary-title"><span id="summary-year">Current year</span> giving</h2>
-            <p class="muted">Large figures show received payments; smaller figures show sent payments.</p>
+            <p class="muted">Large figures show gross donations received. Smaller figures show payments sent to another account.</p>
           </div>
         </div>
         <div class="summary-grid">
-          <article class="summary-card hope-card"><span>Hope Sojourns</span><strong id="summary-hope">$0.00</strong><small class="summary-sent">Sent: <b id="summary-hope-sent">$0.00</b></small></article>
-          <article class="summary-card jbb-card"><span>Josh Beyond Borders</span><strong id="summary-jbb">$0.00</strong><small class="summary-sent">Sent: <b id="summary-jbb-sent">$0.00</b></small></article>
-          <article class="summary-card cs-card"><span>Christian Steps</span><strong id="summary-cs">$0.00</strong><small class="summary-sent">Sent: <b id="summary-cs-sent">$0.00</b></small></article>
-          <article class="summary-card total-card"><span>All three products</span><strong id="summary-total">$0.00</strong><small class="summary-sent">Sent: <b id="summary-total-sent">$0.00</b></small></article>
+          <article class="summary-card hope-card"><span>Hope Sojourns</span><small class="summary-gross-label">Gross donations received</small><strong id="summary-hope">$0.00</strong><small class="summary-counts" id="summary-hope-counts">0 donations · 0 givers</small><small class="summary-sent">Sent to another account: <b id="summary-hope-sent">$0.00</b></small></article>
+          <article class="summary-card jbb-card"><span>Josh Beyond Borders</span><small class="summary-gross-label">Gross donations received</small><strong id="summary-jbb">$0.00</strong><small class="summary-counts" id="summary-jbb-counts">0 donations · 0 givers</small><small class="summary-sent">Sent to another account: <b id="summary-jbb-sent">$0.00</b></small></article>
+          <article class="summary-card cs-card"><span>Christian Steps</span><small class="summary-gross-label">Gross donations received</small><strong id="summary-cs">$0.00</strong><small class="summary-counts" id="summary-cs-counts">0 donations · 0 givers</small><small class="summary-sent">Sent to another account: <b id="summary-cs-sent">$0.00</b></small></article>
+          <article class="summary-card total-card"><span>All ministry activity</span><small class="summary-gross-label">Gross donations received</small><strong id="summary-total">$0.00</strong><small class="summary-counts" id="summary-total-counts">0 donations · 0 givers</small><small class="summary-sent">Sent to another account: <b id="summary-total-sent">$0.00</b></small></article>
         </div>
       </section>
 

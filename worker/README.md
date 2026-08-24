@@ -25,10 +25,11 @@ The first portal sync automatically requests the full history available through 
 ## Data rules
 
 - D1 is the canonical stored record. The portal's **Download Excel workbook** action creates a current `.xlsx` snapshot with a summary sheet and all normalized and raw PayPal fields.
-- Current-year summary cards show all completed positive USD receipts as the large amount and completed negative USD payments as a separate positive “Sent” amount for each ministry product.
+- Current-year summary cards count completed PayPal payment events (`T00xx`) only: the large amount is gross donations received, and the smaller amount is money sent to another account. Holds and hold releases such as `T2101` and `T2102` are excluded.
+- Each summary card also reports the number of donation transactions and distinct givers. Givers are matched by email, with name and transaction ID used as fallbacks when needed.
 - PayPal item title, item ID, subject, invoice, and custom fields are used for automatic product classification.
 - Unclear records are marked **Needs review**. A manual product choice is retained through later PayPal syncs.
-- Giving letters include only completed positive USD receipts assigned to one of the three ministry products.
+- Giving letters include only completed positive USD PayPal payment events assigned to one of the three ministry products.
 - Newest transactions are returned first; giving-letter detail rows are chronological.
 
 ## Security

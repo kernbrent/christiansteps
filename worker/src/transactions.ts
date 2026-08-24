@@ -7,7 +7,7 @@ const EXPORT_LIMIT = 20_000;
 const EFFECTIVE_PRODUCT = "COALESCE(product_override, product_detected)";
 const SUMMARY_PRODUCTS = ["HopeSojourns", "JoshBeyondBorders", "ChristianSteps"] as const;
 type SummaryProduct = typeof SUMMARY_PRODUCTS[number];
-type SummaryRow = { direction: string; product: string | null; gross: number | null };
+type SummaryRow = { direction: string; product: string | null; eventCode: string | null; giverKey: string | null; gross: number | null };
 
 const TRANSACTION_COLUMNS = [
   "id",
@@ -249,37 +249,72 @@ const roundMoney = (value: number): number => Math.round(value * 100) / 100;
 export function buildSummary(year: number, rows: SummaryRow[]): Record<string, unknown> {
   const products: Record<SummaryProduct, number> = { HopeSojourns: 0, JoshBeyondBorders: 0, ChristianSteps: 0 };
   const sentProducts: Record<SummaryProduct, number> = { HopeSojourns: 0, JoshBeyondBorders: 0, ChristianSteps: 0 };
+  const donationCounts: Record<SummaryProduct, number> = { HopeSojourns: 0, JoshBeyondBorders: 0, ChristianSteps: 0 };
+  const giverSets: Record<SummaryProduct, Set<string>> = {
+    HopeSojourns: new Set(),
+    JoshBeyondBorders: new Set(),
+    ChristianSteps: new Set(),
+  };
+  const totalGivers = new Set<string>();
+  let total = 0;
+  let sentTotal = 0;
+  let donationCount = 0;
   for (const row of rows) {
-    if (!SUMMARY_PRODUCTS.includes(row.product as SummaryProduct)) continue;
-    const product = row.product as SummaryProduct;
     const gross = Number(row.gross ?? 0);
-    if (!Number.isFinite(gross)) continue;
-    if (row.direction === "received" && gross > 0) products[product] += gross;
-    if (row.direction === "sent" && gross < 0) sentProducts[product] += Math.abs(gross);
+    if (!Number.isFinite(gross) || !/^T00\d{2}$/.test(row.eventCode ?? "")) continue;
+    const isSummaryProduct = SUMMARY_PRODUCTS.includes(row.product as SummaryProduct);
+    const product = row.product as SummaryProduct;
+    if (row.direction === "received" && gross > 0 && isSummaryProduct) {
+      total += gross;
+      products[product] += gross;
+      donationCounts[product] += 1;
+      donationCount += 1;
+      const giverKey = (row.giverKey ?? "").trim().toLowerCase();
+      if (giverKey) {
+        giverSets[product].add(giverKey);
+        totalGivers.add(giverKey);
+      }
+    }
+    if (row.direction === "sent" && gross < 0) {
+      sentTotal += Math.abs(gross);
+      if (isSummaryProduct) sentProducts[product] += Math.abs(gross);
+    }
   }
   for (const product of SUMMARY_PRODUCTS) {
     products[product] = roundMoney(products[product]);
     sentProducts[product] = roundMoney(sentProducts[product]);
   }
+  const giverCounts: Record<SummaryProduct, number> = {
+    HopeSojourns: giverSets.HopeSojourns.size,
+    JoshBeyondBorders: giverSets.JoshBeyondBorders.size,
+    ChristianSteps: giverSets.ChristianSteps.size,
+  };
   return {
     year,
     products,
-    total: roundMoney(SUMMARY_PRODUCTS.reduce((sum, product) => sum + products[product], 0)),
+    total: roundMoney(total),
+    donationCounts,
+    giverCounts,
+    donationCount,
+    giverCount: totalGivers.size,
     sentProducts,
-    sentTotal: roundMoney(SUMMARY_PRODUCTS.reduce((sum, product) => sum + sentProducts[product], 0)),
+    sentTotal: roundMoney(sentTotal),
   };
 }
 
 async function summary(env: Env): Promise<Record<string, unknown>> {
   const year = currentYear(env);
   const totals = await env.DB.prepare(
-    `SELECT direction, ${EFFECTIVE_PRODUCT} AS product, COALESCE(SUM(gross), 0) AS gross
+    `SELECT direction,
+       ${EFFECTIVE_PRODUCT} AS product,
+       event_code AS eventCode,
+       gross,
+       LOWER(TRIM(COALESCE(NULLIF(counterparty_email, ''), NULLIF(counterparty_name, ''), transaction_id))) AS giverKey
      FROM paypal_transactions
      WHERE status = 'Completed'
        AND currency = 'USD'
        AND ((direction = 'received' AND gross > 0) OR (direction = 'sent' AND gross < 0))
-       AND substr(transaction_date, 1, 4) = ?1
-     GROUP BY direction, ${EFFECTIVE_PRODUCT}`,
+       AND substr(transaction_date, 1, 4) = ?1`,
   ).bind(String(year)).all<SummaryRow>();
   return buildSummary(year, totals.results);
 }
@@ -365,6 +400,7 @@ export async function donorTransactions(env: Env, url: URL): Promise<Response> {
        AND status = 'Completed'
        AND currency = 'USD'
        AND gross > 0
+       AND event_code LIKE 'T00%'
        AND ${EFFECTIVE_PRODUCT} IN ('HopeSojourns', 'JoshBeyondBorders', 'ChristianSteps')
        AND substr(transaction_date, 1, 4) = ?1
      ORDER BY transaction_date ASC, id ASC
