@@ -156,20 +156,26 @@
     const body = byId("transaction-body");
     body.replaceChildren();
     for (const transaction of transactions) {
+      const isHold = transaction.eventCode === "T2101";
+      const isHoldRelease = transaction.eventCode === "T2102";
+      const relatedParty = transaction.relatedCounterpartyName || transaction.relatedCounterpartyEmail;
+      const relatedDescription = relatedParty ? `Related to ${relatedParty} · ` : "";
       const row = document.createElement("tr");
       row.insertCell().textContent = dateTime(transaction.transactionDate);
       const directionCell = row.insertCell();
       const direction = document.createElement("span");
-      direction.className = `direction-pill direction-${transaction.direction}`;
-      direction.textContent = transaction.direction === "received" ? "Received" : "Sent";
+      direction.className = `direction-pill ${isHold ? "direction-held" : isHoldRelease ? "direction-released" : `direction-${transaction.direction}`}`;
+      direction.textContent = isHold ? "Held" : isHoldRelease ? "Released" : transaction.direction === "received" ? "Received" : "Sent";
       directionCell.append(direction);
       const nameCell = row.insertCell();
       const person = document.createElement("span");
       person.className = "person-cell";
       const name = document.createElement("strong");
-      name.textContent = transaction.counterpartyName || "Name unavailable";
+      name.textContent = isHold ? "PayPal payment hold" : isHoldRelease ? "PayPal hold released" : transaction.counterpartyName || "Name unavailable";
       const email = document.createElement("small");
-      email.textContent = transaction.counterpartyEmail || transaction.transactionId;
+      email.textContent = isHold || isHoldRelease
+        ? `${relatedDescription}Payment ${transaction.referenceTransactionId || transaction.transactionId}`
+        : transaction.counterpartyEmail || transaction.transactionId;
       person.append(name, email);
       nameCell.append(person);
       row.insertCell().append(productSelect(transaction));
@@ -200,7 +206,7 @@
   function filterQuery() {
     const form = new FormData(byId("filter-form"));
     const parameters = new URLSearchParams();
-    for (const key of ["search", "product", "direction", "year"]) {
+    for (const key of ["search", "activity", "product", "direction", "year"]) {
       const value = String(form.get(key) || "").trim();
       if (value) parameters.set(key, value);
     }
@@ -284,7 +290,7 @@
       const columns = [
         ["Date", "transactionDate", 22], ["Direction", "direction", 12], ["Status", "status", 15], ["Product", "product", 22],
         ["Auto-detected product", "productDetected", 22], ["Product override", "productOverride", 20], ["Name", "counterpartyName", 25],
-        ["Email", "counterpartyEmail", 30], ["Phone", "counterpartyPhone", 18], ["Gross", "gross", 14], ["Fee", "fee", 14], ["Net", "net", 14],
+        ["Email", "counterpartyEmail", 30], ["Related payment name", "relatedCounterpartyName", 25], ["Related payment email", "relatedCounterpartyEmail", 30], ["Phone", "counterpartyPhone", 18], ["Gross", "gross", 14], ["Fee", "fee", 14], ["Net", "net", 14],
         ["Currency", "currency", 10], ["PayPal item title", "itemTitle", 34], ["PayPal item ID", "itemId", 22], ["Type", "type", 22],
         ["Transaction ID", "transactionId", 24], ["Event code", "eventCode", 14], ["Reference transaction ID", "referenceTransactionId", 26],
         ["Invoice", "invoiceNumber", 18], ["Custom field", "customNumber", 22], ["Subject", "subject", 30], ["Note", "note", 40],

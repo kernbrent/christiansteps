@@ -53,6 +53,16 @@ const TRANSACTION_SELECT = `
   id,
   transaction_id AS transactionId,
   reference_transaction_id AS referenceTransactionId,
+  (SELECT related.counterparty_name
+     FROM paypal_transactions AS related
+    WHERE related.transaction_id = paypal_transactions.reference_transaction_id
+      AND related.event_code LIKE 'T00%'
+    LIMIT 1) AS relatedCounterpartyName,
+  (SELECT related.counterparty_email
+     FROM paypal_transactions AS related
+    WHERE related.transaction_id = paypal_transactions.reference_transaction_id
+      AND related.event_code LIKE 'T00%'
+    LIMIT 1) AS relatedCounterpartyEmail,
   event_code AS eventCode,
   transaction_date AS transactionDate,
   updated_date AS updatedDate,
@@ -90,6 +100,7 @@ const TRANSACTION_SELECT = `
   last_seen_at AS lastSeenAt`;
 
 type TransactionFilters = {
+  activity: string;
   product: string;
   direction: string;
   year: string;
@@ -110,7 +121,8 @@ function boundedInteger(value: string | null, fallback: number, maximum: number)
   return Number.isFinite(parsed) && parsed > 0 ? Math.min(parsed, maximum) : fallback;
 }
 
-function filtersFromUrl(url: URL): TransactionFilters {
+export function filtersFromUrl(url: URL): TransactionFilters {
+  const activity = url.searchParams.get("activity") ?? "payments";
   const product = url.searchParams.get("product") ?? "";
   const direction = url.searchParams.get("direction") ?? "";
   const year = url.searchParams.get("year") ?? "";
@@ -118,8 +130,12 @@ function filtersFromUrl(url: URL): TransactionFilters {
   if (direction && direction !== "received" && direction !== "sent") {
     throw new AdminError(400, "INVALID_FILTER", "Choose a valid received or sent filter.");
   }
+  if (activity !== "payments" && activity !== "holds" && activity !== "all") {
+    throw new AdminError(400, "INVALID_FILTER", "Choose payments, PayPal holds, or all activity.");
+  }
   if (year && !/^20\d{2}$/.test(year)) throw new AdminError(400, "INVALID_FILTER", "Choose a valid year filter.");
   return {
+    activity,
     product,
     direction,
     year,
@@ -132,9 +148,11 @@ function escapeLike(value: string): string {
   return value.replace(/[\\%_]/g, match => `\\${match}`);
 }
 
-function filterSql(filters: TransactionFilters): { sql: string; bindings: unknown[] } {
+export function filterSql(filters: TransactionFilters): { sql: string; bindings: unknown[] } {
   const where: string[] = [];
   const bindings: unknown[] = [];
+  if (filters.activity === "payments") where.push("event_code LIKE 'T00%'");
+  if (filters.activity === "holds") where.push("event_code IN ('T2101', 'T2102')");
   if (filters.product) {
     where.push(`${EFFECTIVE_PRODUCT} = ?`);
     bindings.push(filters.product);

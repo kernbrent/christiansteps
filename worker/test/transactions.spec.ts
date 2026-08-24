@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildSummary } from "../src/transactions";
+import { buildSummary, filterSql, filtersFromUrl } from "../src/transactions";
 
 describe("transaction summary", () => {
   it("uses gross payment receipts as donations, counts distinct givers, and excludes PayPal holds", () => {
@@ -23,5 +23,21 @@ describe("transaction summary", () => {
     expect(result.giverCount).toBe(2);
     expect(result.sentProducts).toEqual({ HopeSojourns: 635.10, JoshBeyondBorders: 974.68, ChristianSteps: 0 });
     expect(result.sentTotal).toBe(1_634.78);
+  });
+});
+
+describe("transaction filters", () => {
+  it("shows payments by default while keeping holds available for audit", () => {
+    const defaultFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions")));
+    expect(defaultFilter.sql).toContain("event_code LIKE 'T00%'");
+
+    const holdsFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=holds")));
+    expect(holdsFilter.sql).toContain("event_code IN ('T2101', 'T2102')");
+
+    const allFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=all")));
+    expect(allFilter.sql).not.toContain("event_code");
+    expect(() => filtersFromUrl(
+      new URL("https://example.com/api/admin/transactions?activity=unknown"),
+    )).toThrow(/payments, PayPal holds, or all activity/i);
   });
 });
