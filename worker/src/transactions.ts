@@ -74,6 +74,7 @@ const TRANSACTION_SELECT = `
   fee,
   net,
   counterparty_name AS counterpartyName,
+  COALESCE(NULLIF(TRIM(counterparty_name), ''), NULLIF(TRIM(shipping_name), ''), NULLIF(TRIM(counterparty_email), ''), transaction_id) AS displayName,
   counterparty_email AS counterpartyEmail,
   counterparty_phone AS counterpartyPhone,
   address_status AS addressStatus,
@@ -97,7 +98,23 @@ const TRANSACTION_SELECT = `
   ending_balance AS endingBalance,
   raw_json AS rawJson,
   first_seen_at AS firstSeenAt,
-  last_seen_at AS lastSeenAt`;
+  last_seen_at AS lastSeenAt,
+  (SELECT delivery.status
+     FROM csm_distribution_outbox AS delivery
+    WHERE delivery.source_record_id = paypal_transactions.id
+    ORDER BY delivery.source_revision DESC LIMIT 1) AS distributionStatus,
+  (SELECT delivery.destination
+     FROM csm_distribution_outbox AS delivery
+    WHERE delivery.source_record_id = paypal_transactions.id
+    ORDER BY delivery.source_revision DESC LIMIT 1) AS distributionDestination,
+  (SELECT delivery.last_error
+     FROM csm_distribution_outbox AS delivery
+    WHERE delivery.source_record_id = paypal_transactions.id
+    ORDER BY delivery.source_revision DESC LIMIT 1) AS distributionError,
+  (SELECT delivery.updated_at
+     FROM csm_distribution_outbox AS delivery
+    WHERE delivery.source_record_id = paypal_transactions.id
+    ORDER BY delivery.source_revision DESC LIMIT 1) AS distributionUpdatedAt`;
 
 type TransactionFilters = {
   activity: string;

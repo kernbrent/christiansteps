@@ -52,7 +52,8 @@
   "secrets": {
     "required": [
       "ADMIN_PASSWORD",
-      "ADMIN_SESSION_SECRET"
+      "ADMIN_SESSION_SECRET",
+      "CSM_DISTRIBUTION_SECRET"
     ]
   },
   "observability": {
@@ -76,6 +77,10 @@
     {
       "binding": "JBB_PAYPAL",
       "service": "josh-beyond-borders-admin-api"
+    },
+    {
+      "binding": "HOPE_ADMIN",
+      "service": "hope-sojourns-interest-production"
     }
   ]
 }

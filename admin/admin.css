@@ -94,6 +94,8 @@ input:focus, select:focus, button:focus-visible { outline: 3px solid rgba(67,161
 
 .panel { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: 0 6px 22px rgba(31,61,52,.05); }
 .panel > .section-heading { padding: 22px 24px 15px; }
+.distribution-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; }
+.row-checkbox { width: 18px; min-height: 18px; height: 18px; }
 .filter-bar { display: grid; grid-template-columns: minmax(240px,2fr) repeat(4,minmax(140px,.7fr)) auto auto; align-items: end; gap: 10px; padding: 0 24px 20px; }
 .filter-bar label { display: grid; gap: 5px; }
 .filter-button { white-space: nowrap; }
@@ -109,6 +111,11 @@ input:focus, select:focus, button:focus-visible { outline: 3px solid rgba(67,161
 .status-pill, .direction-pill { display: inline-flex; padding: 5px 8px; border-radius: 999px; font-size: .72rem; font-weight: 800; }
 .status-completed { color: #126545; background: #e2f4ec; }
 .status-other { color: #70571d; background: #fff4d6; }
+.delivery-not_sent { color: #52615c; background: #eef2f0; }
+.delivery-queued, .delivery-received, .delivery-pending { color: #375b78; background: #e8f1f8; }
+.delivery-needs_match { color: #775413; background: #fff0c7; }
+.delivery-approved { color: #126545; background: #e2f4ec; }
+.delivery-denied, .delivery-failed { color: #842f2f; background: #fae8e8; }
 .direction-received { color: #115d44; background: #e4f4ee; }
 .direction-sent { color: #733838; background: #fae8e8; }
 .direction-held { color: #775413; background: #fff0c7; }
@@ -153,6 +160,8 @@ dialog::backdrop { background: rgba(7,29,23,.58); backdrop-filter: blur(3px); }
   .brand span, #change-password-button { display: none; }
   .main-content { width: min(100% - 22px,1500px); padding-top: 25px; }
   .page-heading { align-items: flex-start; flex-direction: column; }
+  .section-heading { align-items: flex-start; flex-direction: column; }
+  .distribution-actions { width: 100%; justify-content: space-between; }
   .action-group { justify-content: flex-start; width: 100%; }
   .action-group > button { flex: 1; }
   .action-menu { left: 0; right: auto; width: min(310px,100%); }

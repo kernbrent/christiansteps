@@ -8,7 +8,7 @@
     ChristianSteps: "Christian Steps",
     Unassigned: "Needs review",
   };
-  const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0 };
+  const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0, selectedTransactions: new Set(), currentEligibleIds: [] };
   const byId = id => document.getElementById(id);
 
   function setBusy(isBusy, label = "Working…") {
@@ -152,15 +152,54 @@
     return select;
   }
 
+  function isDistributionEligible(transaction) {
+    return ["HopeSojourns", "JoshBeyondBorders"].includes(transaction.product)
+      && /^T00\d{2}$/.test(transaction.eventCode || "")
+      && transaction.status === "Completed"
+      && transaction.currency === "USD"
+      && ((transaction.direction === "received" && Number(transaction.gross) > 0)
+        || (transaction.direction === "sent" && Number(transaction.gross) < 0));
+  }
+
+  function updateDistributionSelection() {
+    const count = state.selectedTransactions.size;
+    byId("distribution-selection-count").textContent = `${count.toLocaleString()} selected`;
+    byId("send-selected-button").disabled = count === 0;
+    const eligible = state.currentEligibleIds;
+    const selectedOnPage = eligible.filter(id => state.selectedTransactions.has(id)).length;
+    const selectAll = byId("select-all-distributions");
+    selectAll.disabled = eligible.length === 0;
+    selectAll.checked = eligible.length > 0 && selectedOnPage === eligible.length;
+    selectAll.indeterminate = selectedOnPage > 0 && selectedOnPage < eligible.length;
+  }
+
   function renderTransactions(transactions = []) {
     const body = byId("transaction-body");
     body.replaceChildren();
+    for (const transaction of transactions) {
+      if (!isDistributionEligible(transaction)) state.selectedTransactions.delete(transaction.id);
+    }
+    state.currentEligibleIds = transactions.filter(isDistributionEligible).map(transaction => transaction.id);
     for (const transaction of transactions) {
       const isHold = transaction.eventCode === "T2101";
       const isHoldRelease = transaction.eventCode === "T2102";
       const relatedParty = transaction.relatedCounterpartyName || transaction.relatedCounterpartyEmail;
       const relatedDescription = relatedParty ? `Related to ${relatedParty} · ` : "";
       const row = document.createElement("tr");
+      const selectCell = row.insertCell();
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "row-checkbox";
+      checkbox.disabled = !isDistributionEligible(transaction);
+      checkbox.checked = state.selectedTransactions.has(transaction.id);
+      checkbox.setAttribute("aria-label", `Select ${transaction.displayName || transaction.transactionId} for distribution`);
+      checkbox.title = checkbox.disabled ? "Only completed received or sent payments assigned to Hope Sojourns or Josh Beyond Borders can be sent. Holds and releases are excluded." : "Send this transaction to the recipient approval queue.";
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) state.selectedTransactions.add(transaction.id);
+        else state.selectedTransactions.delete(transaction.id);
+        updateDistributionSelection();
+      });
+      selectCell.append(checkbox);
       row.insertCell().textContent = dateTime(transaction.transactionDate);
       const directionCell = row.insertCell();
       const direction = document.createElement("span");
@@ -171,7 +210,7 @@
       const person = document.createElement("span");
       person.className = "person-cell";
       const name = document.createElement("strong");
-      name.textContent = isHold ? "PayPal payment hold" : isHoldRelease ? "PayPal hold released" : transaction.counterpartyName || "Name unavailable";
+      name.textContent = isHold ? "PayPal payment hold" : isHoldRelease ? "PayPal hold released" : transaction.displayName || "Name unavailable";
       const email = document.createElement("small");
       email.textContent = isHold || isHoldRelease
         ? `${relatedDescription}Payment ${transaction.referenceTransactionId || transaction.transactionId}`
@@ -193,6 +232,13 @@
       status.className = `status-pill ${transaction.status === "Completed" ? "status-completed" : "status-other"}`;
       status.textContent = transaction.status;
       statusCell.append(status);
+      const deliveryCell = row.insertCell();
+      const delivery = document.createElement("span");
+      const deliveryStatus = transaction.distributionStatus || "not_sent";
+      delivery.className = `status-pill delivery-${deliveryStatus}`;
+      delivery.textContent = deliveryStatus === "not_sent" ? "Not sent" : deliveryStatus.replaceAll("_", " ");
+      if (transaction.distributionDestination) delivery.title = `${PRODUCT_LABELS[transaction.distributionDestination] || transaction.distributionDestination}${transaction.distributionError ? `: ${transaction.distributionError}` : ""}`;
+      deliveryCell.append(delivery);
       for (const field of ["gross", "fee", "net"]) {
         const cell = row.insertCell();
         cell.className = "number-cell";
@@ -201,6 +247,25 @@
       body.append(row);
     }
     byId("empty-transactions").hidden = transactions.length > 0;
+    updateDistributionSelection();
+  }
+
+  async function sendSelectedTransactions() {
+    const transactionIds = [...state.selectedTransactions];
+    if (!transactionIds.length) return;
+    if (!global.confirm(`Send ${transactionIds.length} selected transaction${transactionIds.length === 1 ? "" : "s"} to the recipient approval queue?`)) return;
+    setBusy(true, "Sending transactions for review…");
+    try {
+      const result = await api("/distribution/send", { method: "POST", body: { transactionIds } });
+      state.selectedTransactions.clear();
+      await loadTransactions();
+      toast(`${Number(result.sent || 0).toLocaleString()} sent; ${Number(result.failed || 0).toLocaleString()} need attention.`);
+    } catch (error) {
+      toast(error.message);
+      await loadTransactions();
+    } finally {
+      setBusy(false);
+    }
   }
 
   function filterQuery() {
@@ -386,6 +451,15 @@
     byId("clear-filters-button").addEventListener("click", () => { byId("filter-form").reset(); state.page = 1; loadTransactions(); });
     byId("previous-page-button").addEventListener("click", () => { if (state.page > 1) { state.page -= 1; loadTransactions(); } });
     byId("next-page-button").addEventListener("click", () => { if (state.page < state.pages) { state.page += 1; loadTransactions(); } });
+    byId("send-selected-button").addEventListener("click", sendSelectedTransactions);
+    byId("select-all-distributions").addEventListener("change", event => {
+      for (const id of state.currentEligibleIds) {
+        if (event.currentTarget.checked) state.selectedTransactions.add(id);
+        else state.selectedTransactions.delete(id);
+      }
+      document.querySelectorAll("#transaction-body .row-checkbox:not(:disabled)").forEach(checkbox => { checkbox.checked = event.currentTarget.checked; });
+      updateDistributionSelection();
+    });
   }
 
   async function boot() {

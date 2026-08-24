@@ -15,6 +15,7 @@ import {
   syncPayPal,
   updateTransactionProduct,
 } from "./transactions";
+import { listDistributionOutbox, receiveDistributionStatus, sendDistributions } from "./distribution";
 
 function routePath(pathname: string): string {
   const stripped = pathname.replace(/^\/api\/admin(?=\/|$)/, "");
@@ -36,6 +37,14 @@ async function route(request: Request, env: Env, path: string, url: URL): Promis
   if (request.method === "GET" && path === "/donors") {
     await authenticate(request, env);
     return donorTransactions(env, url);
+  }
+  if (request.method === "GET" && path === "/distribution/outbox") {
+    await authenticate(request, env);
+    return listDistributionOutbox(env, url);
+  }
+  if (request.method === "POST" && path === "/distribution/send") {
+    await authenticate(request, env, true);
+    return sendDistributions(request, env);
   }
   if (request.method === "POST" && path === "/logout") return logout(request, env);
   if (request.method === "POST" && path === "/password") return changePassword(request, env);
@@ -65,6 +74,9 @@ async function route(request: Request, env: Env, path: string, url: URL): Promis
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
+    if (request.method === "POST" && url.pathname === "/internal/csm-distribution/status") {
+      return receiveDistributionStatus(request, env);
+    }
     const path = routePath(url.pathname);
     if (request.method === "OPTIONS") {
       const origin = request.headers.get("origin");
