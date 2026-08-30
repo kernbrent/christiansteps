@@ -1,12 +1,34 @@
 {
   "version": 1,
-  "generated": "2026-01-08",
+  "generated": "2026-08-29",
   "categories": [
     {
       "key": "sermons",
       "title": "Sermons",
       "description": "Audio and video sermons.",
       "items": [
+        {
+          "title": "Do You See Me?",
+          "date_display": "August 15, 2026",
+          "date": "2026-08-15",
+          "duration": "44:37",
+          "description": "Brent Kern expands on the companion article through Scripture and mission experiences, asking what changes when followers of Jesus stop, listen, draw near, and recognize the God-given dignity of people who are often overlooked.",
+          "links": [
+            {
+              "label": "MP3",
+              "url": "https://hopesojourns.com/resources/do-you-see-me/DoYouSeeMe_Sermon_08152026.mp3"
+            },
+            {
+              "label": "Article",
+              "url": "./Articles/DoYouSeeMe.html"
+            },
+            {
+              "label": "YouTube",
+              "url": "https://www.youtube.com/watch?v=i2I7wFjWrDE"
+            }
+          ],
+          "featured": "Y"
+        },
         {
           "title": "Great is Thy Faitfulness",
           "date_display": "December 20, 2025",
