@@ -475,12 +475,19 @@
                 // default to last trip day
                 selectedDate = tripDates[tripDates.length - 1];
 
+                // A tile on the trip home page can request a specific map entry.
+                const requestedDate =
+                    new URLSearchParams(window.location.search).get('date');
+
                 // if system date exists in trip range,
                 // use that instead
                 const matchingDate =
                     tripDates.find(d => d === systemDate);
 
-                if (matchingDate) {
+                if (requestedDate && tripDates.includes(requestedDate)) {
+                    selectedDate = requestedDate;
+                }
+                else if (matchingDate) {
                     selectedDate = matchingDate;
                 }
                 else {
