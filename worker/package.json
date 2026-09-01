@@ -4,13 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "tsc --noEmit && wrangler deploy --dry-run",
+    "assets:sync": "node tools/sync-admin-assets.mjs",
+    "check": "npm run assets:sync && tsc --noEmit && wrangler deploy --dry-run",
     "test": "vitest run",
     "types": "wrangler types --include-runtime false",
     "db:migrate:local": "wrangler d1 migrations apply christian-steps-admin --local",
     "db:migrate:remote": "wrangler d1 migrations apply christian-steps-admin --remote",
-    "deploy:dry": "wrangler deploy --dry-run",
-    "dev": "wrangler dev --local"
+    "deploy": "npm run assets:sync && wrangler deploy",
+    "deploy:dry": "npm run assets:sync && wrangler deploy --dry-run",
+    "dev": "npm run assets:sync && wrangler dev --local"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20260815.1",

@@ -47,9 +47,11 @@ export class AdminError extends Error {
 
 export function securityHeaders(): Headers {
   return new Headers({
-    "Cache-Control": "no-store, private",
+    "Cache-Control": "no-store, private, max-age=0",
     "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
     "Cross-Origin-Resource-Policy": "same-origin",
+    "Expires": "0",
+    "Pragma": "no-cache",
     "Referrer-Policy": "no-referrer",
     "X-Content-Type-Options": "nosniff",
     "X-Frame-Options": "DENY",

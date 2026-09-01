@@ -1,5 +1,38 @@
 import { describe, expect, it } from "vitest";
-import { buildSummary, filterSql, filtersFromUrl } from "../src/transactions";
+import { buildSummary, buildSyncResponse, filterSql, filtersFromUrl } from "../src/transactions";
+
+describe("PayPal synchronization response", () => {
+  it("returns the counts and fresh view data expected by the Admin Portal", () => {
+    const summary = { year: 2026, total: 1_723.02 };
+    const response = buildSyncResponse({
+      scope: "recent",
+      searchedFrom: "2026-05-30T12:00:00.000Z",
+      searchedThrough: "2026-08-31T22:30:00.000Z",
+      recordsFound: 19,
+      recordsInserted: 1,
+      recordsUpdated: 18,
+      completedAt: "2026-08-31T22:30:01.000Z",
+      summary,
+    });
+
+    expect(response).toMatchObject({
+      success: true,
+      found: 19,
+      inserted: 1,
+      updated: 18,
+      recordsFound: 19,
+      recordsInserted: 1,
+      recordsUpdated: 18,
+      sync: {
+        lastSuccessAt: "2026-08-31T22:30:01.000Z",
+        newestSyncedAt: "2026-08-31T22:30:00.000Z",
+        lastScope: "recent",
+        lastResultCount: 19,
+      },
+      summary,
+    });
+  });
+});
 
 describe("transaction summary", () => {
   it("uses gross payment receipts as donations, counts distinct givers, and excludes PayPal holds", () => {

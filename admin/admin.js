@@ -8,7 +8,7 @@
     ChristianSteps: "Christian Steps",
     Unassigned: "Needs review",
   };
-  const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0, selectedTransactions: new Set(), currentEligibleIds: [] };
+  const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0, transactionRequest: 0, selectedTransactions: new Set(), currentEligibleIds: [] };
   const byId = id => document.getElementById(id);
 
   function setBusy(isBusy, label = "Working…") {
@@ -16,25 +16,39 @@
     byId("loading-overlay").hidden = !isBusy;
   }
 
-  function toast(message) {
+  function toast(message, duration = 4_500) {
     clearTimeout(state.toastTimer);
     const element = byId("toast");
     element.textContent = message;
     element.hidden = false;
-    state.toastTimer = setTimeout(() => { element.hidden = true; }, 4_500);
+    state.toastTimer = setTimeout(() => { element.hidden = true; }, duration);
   }
 
   async function api(path, options = {}) {
-    const method = options.method || "GET";
+    const method = String(options.method || "GET").toUpperCase();
+    const isRead = method === "GET" || method === "HEAD";
     const headers = new Headers(options.headers || {});
     headers.set("Accept", "application/json");
+    if (isRead) {
+      headers.set("Cache-Control", "no-cache");
+      headers.set("Pragma", "no-cache");
+    }
     if (state.csrfToken && method !== "GET" && method !== "HEAD") headers.set("X-CSRF-Token", state.csrfToken);
     let body = options.body;
     if (body && typeof body !== "string") {
       headers.set("Content-Type", "application/json");
       body = JSON.stringify(body);
     }
-    const response = await fetch(`/api/admin${path}`, { ...options, method, headers, body, credentials: "same-origin" });
+    const url = new URL(`/api/admin${path}`, global.location.origin);
+    if (isRead) url.searchParams.set("_fresh", String(Date.now()));
+    const response = await fetch(url, {
+      ...options,
+      method,
+      headers,
+      body,
+      credentials: "same-origin",
+      cache: isRead ? "no-store" : options.cache,
+    });
     const text = await response.text();
     let result = {};
     try { result = text ? JSON.parse(text) : {}; } catch { result = {}; }
@@ -279,9 +293,11 @@
     return parameters.toString();
   }
 
-  async function loadTransactions() {
+  async function loadTransactions({ throwOnError = false, showError = true } = {}) {
+    const requestId = ++state.transactionRequest;
     try {
       const result = await api(`/transactions?${filterQuery()}`);
+      if (requestId !== state.transactionRequest) return null;
       renderTransactions(result.transactions || []);
       renderSummary(result.summary);
       renderSync(result.sync);
@@ -293,21 +309,39 @@
       byId("page-status").textContent = `Page ${state.page} of ${state.pages}`;
       byId("previous-page-button").disabled = state.page <= 1;
       byId("next-page-button").disabled = state.page >= state.pages;
+      return result;
     } catch (error) {
-      toast(error.message);
+      if (showError) toast(error.message);
+      if (throwOnError) throw error;
+      return null;
     }
   }
 
   async function synchronize(fullHistory) {
     if (fullHistory && !global.confirm("Refresh the full history available through PayPal's API? This can take several minutes.")) return;
+    let pullCompleted = false;
     setBusy(true, fullHistory ? "Refreshing PayPal history…" : "Pulling recent PayPal activity…");
     try {
       const result = await api("/paypal/sync", { method: "POST", body: { fullHistory } });
+      pullCompleted = true;
+      if (result.summary) renderSummary(result.summary);
+      if (result.sync) renderSync(result.sync);
       state.page = 1;
-      await loadTransactions();
-      toast(`${Number(result.recordsFound || 0).toLocaleString()} PayPal records checked; ${Number(result.recordsInserted || 0).toLocaleString()} new.`);
+      await loadTransactions({ throwOnError: true, showError: false });
+      const recordsFound = Number(result.recordsFound ?? result.found ?? 0);
+      const recordsInserted = Number(result.recordsInserted ?? result.inserted ?? 0);
+      const recordsUpdated = Number(result.recordsUpdated ?? result.updated ?? 0);
+      const reportingNote = recordsInserted === 0
+        ? " If you just completed a PayPal transaction, PayPal may take up to three hours to include it in Transaction Search."
+        : "";
+      toast(
+        `${recordsFound.toLocaleString()} PayPal records checked; ${recordsInserted.toLocaleString()} new; ${recordsUpdated.toLocaleString()} refreshed.${reportingNote}`,
+        recordsInserted === 0 ? 9_000 : 6_000,
+      );
     } catch (error) {
-      toast(error.message);
+      toast(pullCompleted
+        ? `The PayPal pull completed, but the table could not refresh automatically: ${error.message}`
+        : error.message);
     } finally {
       setBusy(false);
     }
@@ -335,7 +369,7 @@
       if (!global.ExcelJS) throw new Error("The spreadsheet component did not load.");
       const workbook = new ExcelJS.Workbook();
       workbook.creator = "Christian Steps Admin Portal";
-      workbook.created = new Date();
+      workbook.created = new Date(result.generatedAt || Date.now());
       const summary = workbook.addWorksheet("Summary");
       summary.columns = [{ key: "label", width: 32 }, { key: "received", width: 26 }, { key: "donations", width: 12 }, { key: "givers", width: 12 }, { key: "sent", width: 24 }];
       summary.addRows([
@@ -372,12 +406,13 @@
       const buffer = await workbook.xlsx.writeBuffer();
       const link = document.createElement("a");
       link.href = URL.createObjectURL(new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
-      link.download = `Christian-Steps-PayPal-Transactions-${new Date().toISOString().slice(0, 10)}.xlsx`;
+      const generatedStamp = new Date(result.generatedAt || Date.now()).toISOString().replace(/[:.]/g, "-");
+      link.download = `Christian-Steps-PayPal-Transactions-${generatedStamp}.xlsx`;
       document.body.append(link);
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(link.href), 1_000);
-      toast("The current PayPal workbook was downloaded.");
+      toast("A fresh PayPal workbook was downloaded.");
     } catch (error) {
       toast(error.message);
     } finally {

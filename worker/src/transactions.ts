@@ -133,6 +133,41 @@ type SyncStateRow = {
   last_result_count: number;
 };
 
+type SyncResponseInput = {
+  scope: "recent" | "full";
+  searchedFrom: string;
+  searchedThrough: string;
+  recordsFound: number;
+  recordsInserted: number;
+  recordsUpdated: number;
+  completedAt: string;
+  summary: Record<string, unknown>;
+};
+
+export function buildSyncResponse(input: SyncResponseInput): Record<string, unknown> {
+  return {
+    success: true,
+    scope: input.scope,
+    searchedFrom: input.searchedFrom,
+    searchedThrough: input.searchedThrough,
+    // Keep the original names for compatibility with any existing consumers.
+    found: input.recordsFound,
+    inserted: input.recordsInserted,
+    updated: input.recordsUpdated,
+    // These explicit names are the public Admin Portal response contract.
+    recordsFound: input.recordsFound,
+    recordsInserted: input.recordsInserted,
+    recordsUpdated: input.recordsUpdated,
+    sync: {
+      lastSuccessAt: input.completedAt,
+      newestSyncedAt: input.searchedThrough,
+      lastScope: input.scope,
+      lastResultCount: input.recordsFound,
+    },
+    summary: input.summary,
+  };
+}
+
 function boundedInteger(value: string | null, fallback: number, maximum: number): number {
   const parsed = Number.parseInt(value ?? "", 10);
   return Number.isFinite(parsed) && parsed > 0 ? Math.min(parsed, maximum) : fallback;
@@ -517,15 +552,16 @@ export async function syncPayPal(request: Request, env: Env): Promise<Response> 
         completedAt,
       ),
     ]);
-    return adminJson({
-      success: true,
+    return adminJson(buildSyncResponse({
       scope,
       searchedFrom: search.searchedFrom,
       searchedThrough: search.searchedThrough,
-      found: search.transactions.length,
-      ...saved,
+      recordsFound: search.transactions.length,
+      recordsInserted: saved.inserted,
+      recordsUpdated: saved.updated,
+      completedAt,
       summary: await summary(env),
-    });
+    }));
   } catch (error) {
     await env.DB.prepare(
       `UPDATE paypal_sync_runs SET completed_at = ?1, status = 'failed', error_code = ?2 WHERE id = ?3`,

@@ -16,9 +16,11 @@ The one-time production infrastructure is already configured:
 To validate and deploy from this `worker` directory:
 
 1. Install the exact development dependencies.
-2. Copy the source files from `../admin/` into `public/admin/`.
-3. Run the tests, TypeScript check, and `wrangler deploy --dry-run`.
-4. Run `wrangler deploy` after deployment is approved.
+2. Run `npm test`.
+3. Run `npm run check`. This automatically replaces `public/admin/` with the current files from `../admin/`, writes the private no-cache asset rules, runs TypeScript, and performs a dry deployment.
+4. Run `npm run deploy` after deployment is approved. The deployment command repeats the asset refresh automatically.
+
+The Admin Portal HTML, CSS, JavaScript, and favicon use versioned asset URLs and are served with `Cache-Control: no-store`. Read-only Admin API requests also bypass browser and intermediary caches. This makes a PayPal pull refresh the visible table and summary immediately. Excel downloads are generated from a fresh API response and receive a unique timestamped filename.
 
 The first portal sync automatically requests the full history available through PayPal's Transaction Search API. Later routine syncs refresh the most recent 93 days so refunds, reversals, and updated records are caught. The full-history action refreshes up to three years, which is the API's maximum historical window. Older PayPal records can still be retained by importing a separate historical archive in a future enhancement.
 
