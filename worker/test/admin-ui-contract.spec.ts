@@ -26,4 +26,14 @@ describe("Admin Portal refresh contract", () => {
     expect(adminPage).toMatch(/admin\.js\?v=\d{8}\.\d+/);
     expect(adminPage).toMatch(/favicon\.png\?v=\d{8}\.\d+/);
   });
+
+  it("requires a manual submission while preserving saved-password autofill", () => {
+    const startup = adminScript.match(/function boot\(\) \{([\s\S]*?)\n  \}/)?.[1] || "";
+    expect(startup).not.toContain('api("/session")');
+    expect(startup).not.toContain("showPortal(");
+    expect(adminScript).toContain('byId("login-form").addEventListener("submit", signIn)');
+    expect(adminPage).toContain('autocomplete="username"');
+    expect(adminPage).toContain('autocomplete="current-password"');
+    expect(adminScript).not.toContain('localStorage.setItem(REMEMBER_ME_PREFERENCE_KEY, byId("login-password").value)');
+  });
 });

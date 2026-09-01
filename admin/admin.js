@@ -9,6 +9,7 @@
     Unassigned: "Needs review",
   };
   const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0, transactionRequest: 0, selectedTransactions: new Set(), currentEligibleIds: [] };
+  const REMEMBER_ME_PREFERENCE_KEY = "christian-steps-admin-remember-me";
   const byId = id => document.getElementById(id);
 
   function setBusy(isBusy, label = "Working…") {
@@ -59,11 +60,29 @@
     return result;
   }
 
+  function restoreRememberMePreference() {
+    try {
+      byId("remember-me").checked = localStorage.getItem(REMEMBER_ME_PREFERENCE_KEY) === "true";
+    } catch {
+      /* Browser storage is optional; the checkbox still works for the current sign-in. */
+    }
+  }
+
+  function saveRememberMePreference(rememberMe) {
+    try {
+      if (rememberMe) localStorage.setItem(REMEMBER_ME_PREFERENCE_KEY, "true");
+      else localStorage.removeItem(REMEMBER_ME_PREFERENCE_KEY);
+    } catch {
+      /* Browser storage is optional; the server session remains authoritative. */
+    }
+  }
+
   function showLogin() {
     state.csrfToken = "";
     byId("portal-view").hidden = true;
     byId("login-view").hidden = false;
     byId("login-password").value = "";
+    restoreRememberMePreference();
     byId("login-password").focus();
   }
 
@@ -423,10 +442,12 @@
   async function signIn(event) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    const rememberMe = form.get("rememberMe") === "on";
     byId("login-message").textContent = "";
     setBusy(true, "Signing in…");
     try {
-      const session = await api("/login", { method: "POST", body: { password: form.get("password"), rememberMe: form.get("rememberMe") === "on" } });
+      const session = await api("/login", { method: "POST", body: { password: form.get("password"), rememberMe } });
+      saveRememberMePreference(rememberMe);
       showPortal(session);
       await loadTransactions();
     } catch (error) {
@@ -497,14 +518,11 @@
     });
   }
 
-  async function boot() {
+  function boot() {
     bindEvents();
     global.CSGivingLetters.init({ api, setBusy, toast, years: [] });
-    try {
-      const session = await api("/session");
-      showPortal(session);
-      await loadTransactions();
-    } catch { showLogin(); }
+    restoreRememberMePreference();
+    byId("login-password").focus();
   }
 
   global.CSAdmin = Object.freeze({ api, setBusy, toast, loadTransactions });

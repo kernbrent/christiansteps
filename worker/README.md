@@ -1,6 +1,6 @@
 # Christian Steps Admin API
 
-This Cloudflare Worker provides the private `/admin/` portal with Hope Sojourns-style authentication, PayPal Transaction Search synchronization, centralized D1 storage, manual product review, annual summaries, Excel export data, and donor/giving-letter data.
+This Cloudflare Worker provides the private `/admin/` portal with Hope Sojourns-style authentication, PayPal Transaction Search synchronization, centralized D1 storage, manual product review, annual summaries, Excel export data, and donor/giving-letter data. The login page always requires an explicit form submission before showing the dashboard, while browser-managed saved-password autofill and the remembered checkbox preference remain available.
 
 The production Worker is deployed as `christian-steps-admin-api`; its D1 database and routes are configured in `wrangler.jsonc`.
 
