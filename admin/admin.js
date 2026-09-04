@@ -480,7 +480,17 @@
     byId("more-actions-button").setAttribute("aria-expanded", "false");
   }
 
+  function preventDialogBackdropDismissal() {
+    document.querySelectorAll("dialog").forEach(dialog => dialog.setAttribute("closedby", "closerequest"));
+    document.addEventListener("click", event => {
+      if (!(event.target instanceof HTMLDialogElement) || !event.target.open) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    }, true);
+  }
+
   function bindEvents() {
+    preventDialogBackdropDismissal();
     byId("login-form").addEventListener("submit", signIn);
     byId("sign-out-button").addEventListener("click", signOut);
     byId("change-password-button").addEventListener("click", () => byId("password-dialog").showModal());
