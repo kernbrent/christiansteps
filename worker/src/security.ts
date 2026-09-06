@@ -5,6 +5,7 @@ const LOGIN_WINDOW_MINUTES = 15;
 const LOGIN_FAILURE_LIMIT = 5;
 const PASSWORD_HASH_ITERATIONS = 100_000;
 const PASSWORD_SALT_BYTES = 16;
+const PORTAL_USER_ID = "admin";
 
 type AdminEnv = Env & {
   ADMIN_PASSWORD?: string;
@@ -205,6 +206,10 @@ export function adminPasswordPolicyError(password: unknown): string | null {
     : null;
 }
 
+export function isValidUserId(value: unknown): boolean {
+  return typeof value === "string" && value === PORTAL_USER_ID;
+}
+
 async function storedAdminCredential(env: AdminEnv): Promise<AdminCredentialRow | null> {
   return env.DB.prepare(
     "SELECT algorithm, password_salt, password_hash, iterations FROM admin_credentials WHERE id = 'primary' LIMIT 1",
@@ -349,14 +354,18 @@ export async function login(request: Request, env: AdminEnv): Promise<Response> 
   requireAllowedOrigin(request, env);
   const sessionSecret = requireSessionSecret(env);
   const body = await readAdminJson(request);
+  const userIdIsValid = isValidUserId(body.userId);
   const password = typeof body.password === "string" ? body.password : "";
   const rememberMe = body.rememberMe === true;
   const keyHash = await loginKey(request, sessionSecret);
   const attempt = await checkLoginBlock(env, keyHash);
-  if (!password || password.length > 256 || !(await verifyAdminPassword(env, password))) {
+  const passwordIsValid = password.length > 0
+    && password.length <= 256
+    && await verifyAdminPassword(env, password);
+  if (!userIdIsValid || !passwordIsValid) {
     await recordLoginFailure(env, keyHash, attempt);
     console.warn(JSON.stringify({ event: "admin_login_failed" }));
-    throw new AdminError(401, "INVALID_CREDENTIALS", "The password is incorrect.");
+    throw new AdminError(401, "INVALID_CREDENTIALS", "The user ID or password is incorrect.");
   }
 
   const now = new Date();

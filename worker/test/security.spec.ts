@@ -3,10 +3,18 @@ import {
   adminPasswordPolicyError,
   deriveAdminPasswordHash,
   isAllowedOrigin,
+  isValidUserId,
   secureEqual,
 } from "../src/index";
 
 describe("admin security helpers", () => {
+  it("accepts only the current portal user ID", () => {
+    expect(isValidUserId("admin")).toBe(true);
+    expect(isValidUserId("Admin")).toBe(false);
+    expect(isValidUserId("")).toBe(false);
+    expect(isValidUserId(undefined)).toBe(false);
+  });
+
   it("accepts the approved initial password and rejects weak replacements", () => {
     expect(adminPasswordPolicyError("ExamplePortal2016!")).toBeNull();
     expect(adminPasswordPolicyError("short")).toMatch(/12 characters/i);

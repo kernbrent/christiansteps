@@ -32,8 +32,10 @@ describe("Admin Portal refresh contract", () => {
     expect(startup).not.toContain('api("/session")');
     expect(startup).not.toContain("showPortal(");
     expect(adminScript).toContain('byId("login-form").addEventListener("submit", signIn)');
-    expect(adminPage).toContain('autocomplete="username"');
+    expect(adminPage).toMatch(/<input id="login-user-id" name="userId" type="text" autocomplete="username" required/);
+    expect(adminPage).toContain('<label for="login-user-id">User ID</label>');
     expect(adminPage).toContain('autocomplete="current-password"');
+    expect(adminScript).toContain('userId: form.get("userId")');
     expect(adminScript).not.toContain('localStorage.setItem(REMEMBER_ME_PREFERENCE_KEY, byId("login-password").value)');
   });
 });

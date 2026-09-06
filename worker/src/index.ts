@@ -114,4 +114,4 @@ export default {
 
 export { routePath };
 export { detectProduct, normalizeTransaction } from "./paypal";
-export { adminPasswordPolicyError, deriveAdminPasswordHash, isAllowedOrigin, secureEqual } from "./security";
+export { adminPasswordPolicyError, deriveAdminPasswordHash, isAllowedOrigin, isValidUserId, secureEqual } from "./security";

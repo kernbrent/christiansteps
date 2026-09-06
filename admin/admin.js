@@ -83,7 +83,7 @@
     byId("login-view").hidden = false;
     byId("login-password").value = "";
     restoreRememberMePreference();
-    byId("login-password").focus();
+    byId("login-user-id").focus();
   }
 
   function showPortal(session) {
@@ -446,7 +446,10 @@
     byId("login-message").textContent = "";
     setBusy(true, "Signing in…");
     try {
-      const session = await api("/login", { method: "POST", body: { password: form.get("password"), rememberMe } });
+      const session = await api("/login", {
+        method: "POST",
+        body: { userId: form.get("userId"), password: form.get("password"), rememberMe },
+      });
       saveRememberMePreference(rememberMe);
       showPortal(session);
       await loadTransactions();
@@ -532,7 +535,7 @@
     bindEvents();
     global.CSGivingLetters.init({ api, setBusy, toast, years: [] });
     restoreRememberMePreference();
-    byId("login-password").focus();
+    byId("login-user-id").focus();
   }
 
   global.CSAdmin = Object.freeze({ api, setBusy, toast, loadTransactions });
