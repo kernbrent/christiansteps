@@ -10,15 +10,17 @@
     "types": "wrangler types --include-runtime false",
     "db:migrate:local": "wrangler d1 migrations apply christian-steps-admin --local",
     "db:migrate:remote": "wrangler d1 migrations apply christian-steps-admin --remote",
+    "ledger:migrate:local": "wrangler d1 migrations apply christian-steps-ledger --local",
+    "ledger:migrate:remote": "wrangler d1 migrations apply christian-steps-ledger --remote",
     "deploy": "npm run assets:sync && wrangler deploy",
     "deploy:dry": "npm run assets:sync && wrangler deploy --dry-run",
     "dev": "npm run assets:sync && wrangler dev --local"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "5.20260815.1",
+    "@cloudflare/workers-types": "5.20260918.1",
     "@types/node": "26.2.0",
     "typescript": "7.0.2",
     "vitest": "4.1.10",
-    "wrangler": "4.123.0"
+    "wrangler": "4.134.0"
   }
 }

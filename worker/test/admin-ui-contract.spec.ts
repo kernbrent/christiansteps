@@ -6,6 +6,8 @@ import { describe, expect, it } from "vitest";
 const testDirectory = dirname(fileURLToPath(import.meta.url));
 const adminScript = readFileSync(resolve(testDirectory, "../../admin/admin.js"), "utf8");
 const adminPage = readFileSync(resolve(testDirectory, "../../admin/index.html"), "utf8");
+const ledgerPage = readFileSync(resolve(testDirectory, "../../admin/ledger/index.html"), "utf8");
+const ledgerScript = readFileSync(resolve(testDirectory, "../../admin/ledger/assets/app.js"), "utf8");
 
 describe("Admin Portal refresh contract", () => {
   it("reloads the transaction view after synchronization and accepts both count contracts", () => {
@@ -37,5 +39,13 @@ describe("Admin Portal refresh contract", () => {
     expect(adminPage).toContain('autocomplete="current-password"');
     expect(adminScript).toContain('userId: form.get("userId")');
     expect(adminScript).not.toContain('localStorage.setItem(REMEMBER_ME_PREFERENCE_KEY, byId("login-password").value)');
+  });
+
+  it("links the giving portal to the isolated ministry ledger", () => {
+    expect(adminPage).toContain('href="ledger/"');
+    expect(ledgerPage).toContain('data-route="paypal"');
+    expect(ledgerPage).toContain('href="../"');
+    expect(ledgerScript).toContain("PayPal remains the source of truth");
+    expect(ledgerScript).toContain("Due to JBB");
   });
 });

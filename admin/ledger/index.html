@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' https://cdn.jsdelivr.net; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <title>Admin | Christian Steps Ministries</title>
+  <meta name="description" content="Private bookkeeping and reporting for Christian Steps Ministries.">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="assets/admin.css">
+  <link rel="stylesheet" href="assets/invoice-ui.css?v=20260904.2">
+  <link rel="stylesheet" href="assets/invoice-preview.css?v=20260904.3">
+</head>
+<body>
+  <a class="skip-link" href="#admin-main">Skip to main content</a>
+
+  <section class="loading-view" id="loading-view" aria-live="polite">
+    <img src="../logo.png" alt="">
+    <strong>Opening Christian Steps Admin...</strong>
+  </section>
+
+  <section class="auth-view" id="auth-view" hidden>
+    <div class="auth-brand">
+      <img src="../logo.png" alt="Christian Steps Ministries">
+      <div><span>Christian Steps Ministries</span><strong>Admin Portal</strong></div>
+    </div>
+    <div class="auth-card">
+      <p class="eyebrow">Private access</p>
+      <h1>Welcome back.</h1>
+      <p>Sign in to manage invoices, income, expenses, mileage, client files, and CPA-ready reports.</p>
+      <form class="auth-form" id="login-form">
+        <label for="login-user-id">User ID
+          <input id="login-user-id" type="text" name="userId" autocomplete="username" required maxlength="64" autofocus>
+        </label>
+        <div class="auth-password-field">
+          <label for="login-password">Password</label>
+          <div class="password-input-wrap">
+            <input id="login-password" type="password" name="password" autocomplete="current-password" required>
+            <button class="password-visibility-button" type="button" data-password-toggle aria-label="Show password" aria-pressed="false" title="Show password">
+              <svg class="icon-eye" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                <circle cx="12" cy="12" r="2.75"></circle>
+              </svg>
+              <svg class="icon-eye-off" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M4.1 7.7C2.9 9 2.5 10 2.5 10s3.5 6 9.5 6c1.3 0 2.5-.3 3.5-.7M8.2 6.6C9.3 6.2 10.6 6 12 6c6 0 9.5 6 9.5 6s-.9 1.6-2.6 3.1M9.9 9.9A2.8 2.8 0 0 0 14.1 14.1M3 3l18 18"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <label class="remember-option"><input type="checkbox" name="remember_me"> Keep me signed in on this private device</label>
+        <p class="form-message" id="auth-message" aria-live="polite"></p>
+        <button class="button button-wide" type="submit">Sign in securely</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="setup-view" id="setup-view" hidden>
+    <div class="setup-card">
+      <img src="../logo.png" alt="Christian Steps Ministries">
+      <p class="eyebrow">Temporarily unavailable</p>
+      <h1>The private bookkeeping service could not be reached.</h1>
+      <p>No bookkeeping information is exposed. Please try again shortly or return to the public Christian Steps site.</p>
+      <a class="button" href="../../">Return to the public site</a>
+    </div>
+  </section>
+
+  <div class="admin-shell" id="admin-shell" hidden>
+    <aside class="sidebar" id="sidebar">
+      <a class="admin-brand" href="#/dashboard" aria-label="Christian Steps admin dashboard">
+        <img src="../logo.png" alt="">
+        <span><strong>Christian Steps</strong><small>Admin Portal</small></span>
+      </a>
+      <nav class="admin-nav" aria-label="Admin navigation">
+        <a class="is-active" href="#/dashboard" data-route="dashboard"><span class="nav-mark">D</span>Dashboard</a>
+        <a href="#/paypal" data-route="paypal"><span class="nav-mark">P</span>PayPal &amp; Funds</a>
+        <a href="#/expenses" data-route="expenses"><span class="nav-mark">E</span>Expenses</a>
+        <a href="#/income" data-route="income"><span class="nav-mark">I</span>Income</a>
+        <a href="#/invoices" data-route="invoices"><span class="nav-mark">V</span>Invoices</a>
+        <a href="#/artifacts" data-route="artifacts"><span class="nav-mark">F</span>Client Files</a>
+        <a href="#/mileage" data-route="mileage"><span class="nav-mark">M</span>Mileage</a>
+        <a href="#/clients" data-route="clients"><span class="nav-mark">C</span>Clients &amp; Projects</a>
+        <a href="#/reports" data-route="reports"><span class="nav-mark">R</span>Reports</a>
+        <a href="#/settings" data-route="settings"><span class="nav-mark">S</span>Settings</a>
+        <a href="../"><span class="nav-mark">G</span>Giving Portal</a>
+      </nav>
+      <div class="sidebar-footer">
+        <p>Tax year <strong data-active-tax-year>2026</strong></p>
+        <button class="sign-out-button" type="button" id="sign-out">Sign out</button>
+      </div>
+    </aside>
+
+    <div class="admin-workspace">
+      <header class="admin-header">
+        <button class="menu-button" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">Menu</button>
+        <div>
+          <p class="eyebrow" id="page-eyebrow">Overview</p>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="header-actions">
+          <button class="search-button" type="button" id="global-search-button">Search records</button>
+          <button class="button" type="button" data-action="add-expense">+ Add expense</button>
+        </div>
+      </header>
+
+      <main class="admin-main" id="admin-main" tabindex="-1">
+        <section class="view" id="dashboard-view" data-view="dashboard">
+          <div class="dashboard-intro">
+            <div><p class="section-kicker">This tax year</p><h2>Ministry finances at a glance.</h2></div>
+            <div class="quick-actions" aria-label="Quick actions">
+              <button type="button" data-action="add-expense">Add expense</button>
+              <button type="button" data-action="add-income">Add income</button>
+              <button type="button" data-action="add-invoice">Create invoice</button>
+              <button type="button" data-action="add-mileage">Log mileage</button>
+              <a href="#/reports">Build report</a>
+            </div>
+          </div>
+
+          <div class="metric-grid" id="dashboard-metrics">
+            <article class="metric-card metric-income"><span>Income received</span><strong>$0.00</strong><small>Year to date</small></article>
+            <article class="metric-card metric-expense"><span>Included expenses</span><strong>$0.00</strong><small>Year to date</small></article>
+            <article class="metric-card metric-net"><span>Net ministry operations</span><strong>$0.00</strong><small>Before mileage deduction</small></article>
+            <article class="metric-card metric-mileage"><span>Mileage &amp; tolls</span><strong>0.0 mi</strong><small>$0.00 in tolls</small></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel panel-wide">
+              <div class="panel-heading"><div><p class="section-kicker">Activity</p><h2>Recent transactions</h2></div><a href="#/reports">View all</a></div>
+              <div class="empty-state compact" id="recent-transactions">
+                <span class="empty-mark">CS</span>
+                <div><strong>No transactions yet</strong><p>Add your first expense or client payment to begin the ledger.</p></div>
+              </div>
+            </section>
+            <section class="panel attention-panel">
+              <div class="panel-heading"><div><p class="section-kicker">Needs attention</p><h2>Before tax time</h2></div></div>
+              <ul class="attention-list" id="attention-list">
+                <li><span>Missing receipts</span><strong>0</strong></li>
+                <li><span>Needs review</span><strong>0</strong></li>
+                <li><span>CPA review</span><strong>0</strong></li>
+                <li><span>Outstanding invoices</span><strong>$0.00</strong></li>
+              </ul>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="record-dialog" id="record-dialog" aria-labelledby="dialog-title" closedby="closerequest"></dialog>
+  <dialog class="search-dialog" id="search-dialog" aria-labelledby="search-dialog-title" closedby="closerequest"></dialog>
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.4/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/invoice-docx.js?v=20260904.3"></script>
+  <script src="assets/invoice-preview.js?v=20260904.2"></script>
+  <script src="assets/invoice-ui.js?v=20260904.2"></script>
+  <script src="assets/app.js?v=20260906.1"></script>
+</body>
+</html>

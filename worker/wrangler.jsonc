@@ -47,6 +47,18 @@
       "database_name": "christian-steps-admin",
       "database_id": "01a4b445-9af7-4eb9-bdb8-2807cccd2be8",
       "migrations_dir": "migrations"
+    },
+    {
+      "binding": "LEDGER_DB",
+      "database_name": "christian-steps-ledger",
+      "database_id": "c5d7db96-9c23-4cc7-861a-bbc609fa3380",
+      "migrations_dir": "ledger-migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "LEDGER_ATTACHMENTS",
+      "bucket_name": "christian-steps-ledger-attachments-production"
     }
   ],
   "secrets": {

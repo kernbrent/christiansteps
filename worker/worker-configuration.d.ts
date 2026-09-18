@@ -1,5 +1,7 @@
 interface Env {
   DB: D1Database;
+  LEDGER_DB: D1Database;
+  LEDGER_ATTACHMENTS: R2Bucket;
   ADMIN_PASSWORD?: string;
   ADMIN_SESSION_SECRET?: string;
   JBB_PAYPAL: Fetcher;
