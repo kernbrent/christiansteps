@@ -41,3 +41,7 @@ The first portal sync automatically requests the full history available through 
 - Sessions use random, hashed tokens in HttpOnly, Secure, SameSite=Strict cookies.
 - State-changing requests require a CSRF token and an approved site origin.
 - Sign-in attempts are rate limited, password changes revoke other sessions, and security events are audited without recording passwords or PayPal credentials.
+
+## Shared ministry accounts
+
+See [shared account architecture and coordinated release](docs/shared-accounts.md). This implementation remains local pending release authorization; SHARED_SIGNIN is disabled until both portals are ready.

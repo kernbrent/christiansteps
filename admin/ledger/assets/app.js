@@ -374,6 +374,7 @@
   }
 
   async function establishSession(session) {
+    if(session.user){window.dispatchEvent(new CustomEvent("shared-session",{detail:session}));if(session.user.must_change_password||(!session.user.is_admin&&!["read","edit"].includes(session.user.permissions.finances))){location.replace("/admin/account/");return;}}
     state.session = session;
     state.csrfToken = session.csrfToken;
     state.user = { id: "primary", email: "Christian Steps Administrator" };
@@ -522,6 +523,11 @@
     internal_transfer: "Internal transfer",
     unassigned: "Needs assignment",
   }[value] || statusLabel(value));
+  const paypalAccountingLabel = (item) => item.event_code === "T0400"
+    ? "PayPal to bank transfer"
+    : item.event_code === "T0300"
+      ? "Bank to PayPal transfer"
+      : accountingLabel(item.accounting_class);
 
   function renderPaypalLedger() {
     const year = taxYear();
@@ -533,12 +539,14 @@
       .reduce((sum, item) => sum + Math.max(0, num(item.gross)), 0);
     const jbbSent = jbbRows.filter((item) => item.accounting_class === "agency_disbursement")
       .reduce((sum, item) => sum + Math.abs(num(item.net)), 0);
+    const bankTransfers = yearRows.filter((item) => item.event_code === "T0400")
+      .reduce((sum, item) => sum + Math.abs(num(item.net) || num(item.gross)), 0);
     const rows = state.paypal_activity.map((item) => `
-      <tr data-search-row="${escapeHtml([item.transaction_date, item.display_name, item.counterparty_email, item.item_title, item.transaction_id, programName(item.program), accountingLabel(item.accounting_class)].join(" ").toLowerCase())}">
+      <tr data-search-row="${escapeHtml([item.transaction_date, item.display_name, item.counterparty_email, item.item_title, item.transaction_id, programName(item.program), paypalAccountingLabel(item)].join(" ").toLowerCase())}">
         <td>${shortDate(paypalDate(item))}</td>
         <td><strong>${escapeHtml(item.display_name)}</strong><small>${escapeHtml(item.counterparty_email || item.transaction_id)}</small>${completedPayPal(item)&&item.direction==='received'&&['ChristianSteps','HopeSojourns'].includes(item.program)?`<button type="button" data-action="donor-splits" data-id="${escapeHtml(item.source_record_id)}">Split donation</button>`:''}</td>
         <td>${escapeHtml(programName(item.program))}</td>
-        <td><strong>${escapeHtml(accountingLabel(item.accounting_class))}</strong><small>${escapeHtml(item.item_title || item.event_code)}</small></td>
+        <td><strong>${escapeHtml(paypalAccountingLabel(item))}</strong><small>${escapeHtml(item.item_title || item.event_code)}</small></td>
         <td>${statusBadge(completedPayPal(item) ? "included" : "needs_review").replace(completedPayPal(item) ? "Included" : "Needs Review", escapeHtml(item.status))}<small>${escapeHtml(item.distribution_status || "Not sent for review")}</small></td>
         <td class="number"><strong>${money(item.gross)}</strong><small>Fee ${money(item.fee)} · Net ${money(item.net)}</small></td>
       </tr>`).join("");
@@ -556,9 +564,10 @@
           <article class="metric-card metric-income"><span>Hope Sojourns contributions</span><strong>${money(contributionAmount(hopeRows))}</strong><small>${year} gross · ${money(contributionFees(hopeRows))} fees</small></article>
           <article class="metric-card metric-expense"><span>JBB funds handled</span><strong>${money(jbbReceived)}</strong><small>${money(jbbSent)} sent · agency activity, not CSM income</small></article>
           <article class="metric-card metric-net"><span>Due to JBB</span><strong>${money(agencyBalance())}</strong><small>All-time net receipts less disbursements</small></article>
+          <article class="metric-card"><span>PayPal moved to bank</span><strong>${money(bankTransfers)}</strong><small>${year} internal transfers · not income or expense</small></article>
         </div>
         <div class="panel table-panel">
-          <div class="panel-heading"><div><p class="section-kicker">Reconciliation</p><h2>All PayPal payment activity</h2><p>${escapeHtml(synced)}</p></div><span>${state.paypal_activity.length} records</span></div>
+          <div class="panel-heading"><div><p class="section-kicker">Reconciliation</p><h2>PayPal payments and bank transfers</h2><p>${escapeHtml(synced)}</p></div><span>${state.paypal_activity.length} records</span></div>
           ${state.paypal_activity.length ? `<div class="page-toolbar"><label class="table-search"><span class="sr-only">Search PayPal records</span><input type="search" data-table-search placeholder="Search donor, ministry, item, or transaction" autocomplete="off"></label></div>
             <div class="table-wrap"><table class="data-table"><thead><tr><th>Date</th><th>Party</th><th>Ministry</th><th>Accounting treatment</th><th>Status</th><th class="number">Gross / net</th></tr></thead><tbody>${rows}</tbody></table></div><p class="no-search-results" hidden>No PayPal records match this search.</p>`
             : emptyState("No PayPal records copied yet", "Pull PayPal activity in the Giving Portal, then return here.")}
@@ -597,7 +606,7 @@
         date: paypalDate(item),
         type: item.accounting_class === "contribution" ? "Contribution" : item.program === "JoshBeyondBorders" ? "Agency" : "Transfer",
         name: item.display_name,
-        detail: `${programName(item.program)} · ${accountingLabel(item.accounting_class)}`,
+        detail: `${programName(item.program)} · ${paypalAccountingLabel(item)}`,
         amount: item.accounting_class === "agency_disbursement" || item.accounting_class === "internal_transfer"
           ? -Math.abs(num(item.net))
           : Math.max(0, num(item.gross)),
@@ -1077,7 +1086,7 @@
           date: paypalDate(item),
           type: item.accounting_class === "contribution" ? "Contribution" : "PayPal fund activity",
           party: item.display_name,
-          detail: `${programName(item.program)} · ${accountingLabel(item.accounting_class)}${num(item.fee) ? ` · fee ${money(item.fee)}` : ""}`,
+          detail: `${programName(item.program)} · ${paypalAccountingLabel(item)}${num(item.fee) ? ` · fee ${money(item.fee)}` : ""}`,
           client: "-",
           status: item.distribution_status ? statusLabel(item.distribution_status) : statusLabel(item.status),
           amount: item.accounting_class === "agency_disbursement" || item.accounting_class === "internal_transfer"
@@ -1249,7 +1258,7 @@
     const paypalRows = data.paypal.map((item) => ({
       Date: paypalDate(item),
       Ministry: programName(item.program),
-      "Accounting Treatment": accountingLabel(item.accounting_class),
+      "Accounting Treatment": paypalAccountingLabel(item),
       Direction: statusLabel(item.direction),
       Party: item.display_name,
       Email: item.counterparty_email || "",

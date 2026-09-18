@@ -87,6 +87,7 @@
   }
 
   function showPortal(session) {
+    if(session.user){window.dispatchEvent(new CustomEvent("shared-session",{detail:session}));if(session.user.must_change_password||(!session.user.is_admin&&!["read","edit"].includes(session.user.permissions.giving))){location.replace("/admin/account/");return;}}
     state.csrfToken = session.csrfToken;
     byId("login-view").hidden = true;
     byId("portal-view").hidden = false;
@@ -186,8 +187,10 @@
   }
 
   function isDistributionEligible(transaction) {
+    const paymentEvent = /^T00\d{2}$/.test(transaction.eventCode || "");
+    const hopeBankWithdrawal = transaction.product === "HopeSojourns" && transaction.eventCode === "T0400";
     return ["HopeSojourns", "JoshBeyondBorders"].includes(transaction.product)
-      && /^T00\d{2}$/.test(transaction.eventCode || "")
+      && (paymentEvent || hopeBankWithdrawal)
       && transaction.status === "Completed"
       && transaction.currency === "USD"
       && ((transaction.direction === "received" && Number(transaction.gross) > 0)
@@ -216,6 +219,8 @@
     for (const transaction of transactions) {
       const isHold = transaction.eventCode === "T2101";
       const isHoldRelease = transaction.eventCode === "T2102";
+      const isBankWithdrawal = transaction.eventCode === "T0400";
+      const isBankDeposit = transaction.eventCode === "T0300";
       const relatedParty = transaction.relatedCounterpartyName || transaction.relatedCounterpartyEmail;
       const relatedDescription = relatedParty ? `Related to ${relatedParty} · ` : "";
       const row = document.createElement("tr");
@@ -226,7 +231,7 @@
       checkbox.disabled = !isDistributionEligible(transaction);
       checkbox.checked = state.selectedTransactions.has(transaction.id);
       checkbox.setAttribute("aria-label", `Select ${transaction.displayName || transaction.transactionId} for distribution`);
-      checkbox.title = checkbox.disabled ? "Only completed received or sent payments assigned to Hope Sojourns or Josh Beyond Borders can be sent. Holds and releases are excluded." : "Send this transaction to the recipient approval queue.";
+      checkbox.title = checkbox.disabled ? "Only completed payments assigned to Hope Sojourns or Josh Beyond Borders, plus Hope Sojourns bank withdrawals, can be sent. Holds and releases are excluded." : "Send this transaction to the recipient approval queue.";
       checkbox.addEventListener("change", () => {
         if (checkbox.checked) state.selectedTransactions.add(transaction.id);
         else state.selectedTransactions.delete(transaction.id);
@@ -236,14 +241,14 @@
       row.insertCell().textContent = dateTime(transaction.transactionDate);
       const directionCell = row.insertCell();
       const direction = document.createElement("span");
-      direction.className = `direction-pill ${isHold ? "direction-held" : isHoldRelease ? "direction-released" : `direction-${transaction.direction}`}`;
-      direction.textContent = isHold ? "Held" : isHoldRelease ? "Released" : transaction.direction === "received" ? "Received" : "Sent";
+      direction.className = `direction-pill ${isHold ? "direction-held" : isHoldRelease ? "direction-released" : isBankWithdrawal || isBankDeposit ? "direction-bank" : `direction-${transaction.direction}`}`;
+      direction.textContent = isHold ? "Held" : isHoldRelease ? "Released" : isBankWithdrawal ? "To bank" : isBankDeposit ? "From bank" : transaction.direction === "received" ? "Received" : "Sent";
       directionCell.append(direction);
       const nameCell = row.insertCell();
       const person = document.createElement("span");
       person.className = "person-cell";
       const name = document.createElement("strong");
-      name.textContent = isHold ? "PayPal payment hold" : isHoldRelease ? "PayPal hold released" : transaction.displayName || "Name unavailable";
+      name.textContent = isHold ? "PayPal payment hold" : isHoldRelease ? "PayPal hold released" : isBankWithdrawal ? "PayPal to bank transfer" : isBankDeposit ? "Bank to PayPal transfer" : transaction.displayName || "Name unavailable";
       const email = document.createElement("small");
       email.textContent = isHold || isHoldRelease
         ? `${relatedDescription}Payment ${transaction.referenceTransactionId || transaction.transactionId}`
@@ -478,6 +483,55 @@
     } catch (error) { message.textContent = error.message; }
   }
 
+  function localDateTimeValue(date = new Date()) {
+    const offset = date.getTimezoneOffset() * 60_000;
+    return new Date(date.getTime() - offset).toISOString().slice(0, 16);
+  }
+
+  function openBankTransferDialog() {
+    closeActionMenu();
+    const form = byId("bank-transfer-form");
+    form.reset();
+    form.elements.transactionDate.value = localDateTimeValue();
+    byId("bank-transfer-message").textContent = "";
+    byId("bank-transfer-dialog").showModal();
+    form.elements.amount.focus();
+  }
+
+  async function recordBankTransfer(event) {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const message = byId("bank-transfer-message");
+    message.textContent = "";
+    const localDate = new Date(String(data.get("transactionDate") || ""));
+    if (Number.isNaN(localDate.getTime())) {
+      message.textContent = "Choose a valid transfer date and time.";
+      return;
+    }
+    setBusy(true, "Recording bank transfer…");
+    try {
+      const result = await api("/bank-transfers", {
+        method: "POST",
+        body: {
+          product: data.get("product"), transactionDate: localDate.toISOString(),
+          amount: Number(data.get("amount")), paypalTransactionId: data.get("paypalTransactionId"), note: data.get("note"),
+        },
+      });
+      byId("bank-transfer-dialog").close();
+      byId("filter-activity").value = "bank_transfers";
+      byId("filter-product").value = String(result.product || "");
+      byId("filter-direction").value = "sent";
+      state.page = 1;
+      await loadTransactions({ throwOnError: true, showError: false });
+      toast(`${currency(result.amount)} bank transfer recorded. ${result.product === "HopeSojourns" ? "Select it and send it to Hope Sojourns for review." : "It is ready for CSM reconciliation."}`, 8_000);
+    } catch (error) {
+      message.textContent = error.message;
+    } finally {
+      setBusy(false);
+    }
+  }
+
   function closeActionMenu() {
     byId("more-actions-menu").hidden = true;
     byId("more-actions-button").setAttribute("aria-expanded", "false");
@@ -506,6 +560,8 @@
     }));
     byId("sync-button").addEventListener("click", () => synchronize(false));
     byId("full-sync-button").addEventListener("click", () => { closeActionMenu(); synchronize(true); });
+    byId("record-bank-transfer-button").addEventListener("click", openBankTransferDialog);
+    byId("bank-transfer-form").addEventListener("submit", recordBankTransfer);
     byId("download-workbook-button").addEventListener("click", () => { closeActionMenu(); downloadWorkbook(); });
     byId("open-letters-button").addEventListener("click", () => { closeActionMenu(); global.CSGivingLetters.open(state.years); });
     byId("more-actions-button").addEventListener("click", () => {

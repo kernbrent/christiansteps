@@ -1,3 +1,4 @@
+import {sharedEnabled,sharedAuthorize} from './shared-identity';
 const ADMIN_BODY_LIMIT = 64 * 1024;
 const SESSION_HOURS = 8;
 const REMEMBER_SESSION_DAYS = 30;
@@ -16,6 +17,8 @@ type AdminSessionRow = {
   id: string;
   csrf_token: string;
   expires_at: string;
+  user_id?:string;
+  user?:{is_admin:boolean;permissions:Record<string,string>};
 };
 
 type LoginAttemptRow = {
@@ -256,6 +259,7 @@ function sessionCookie(token: string, maxAgeSeconds: number | null): string {
 }
 
 export async function authenticate(request: Request, env: AdminEnv, requireCsrf = false): Promise<AdminSessionRow> {
+  if(sharedEnabled(env))return sharedAuthorize(request,env);
   const token = cookieValue(request, "cs_admin_session");
   if (!token || !/^[A-Za-z0-9_-]{40,100}$/.test(token)) {
     throw new AdminError(401, "AUTH_REQUIRED", "Sign in to continue.");

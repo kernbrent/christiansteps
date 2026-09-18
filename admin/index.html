@@ -9,8 +9,8 @@
   <title>Christian Steps Admin Portal</title>
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=20260831.1">
   <link rel="apple-touch-icon" href="favicon.png?v=20260831.1">
-  <link rel="stylesheet" href="admin.css?v=20260831.1">
-</head>
+  <link rel="stylesheet" href="admin.css?v=20260917.1">
+<script src="/admin/shared-navigation.js" defer></script></head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
@@ -34,7 +34,7 @@
         </label>
         <button class="primary-button full-button" type="submit">Sign in</button>
         <p id="login-message" class="form-message" role="alert" aria-live="polite"></p>
-      </form>
+      </form><p><a href="/admin/access/#request">Request access</a> � <a href="/admin/access/#forgot">Forgot password</a></p>
     </div>
   </section>
 
@@ -63,6 +63,7 @@
           <button id="more-actions-button" class="secondary-button" type="button" aria-expanded="false" aria-controls="more-actions-menu">More actions</button>
           <div id="more-actions-menu" class="action-menu" hidden>
             <button id="full-sync-button" type="button">Refresh full available history</button>
+            <button id="record-bank-transfer-button" type="button">Record PayPal-to-bank transfer</button>
             <button id="download-workbook-button" type="button">Download Excel workbook</button>
             <button id="open-letters-button" type="button">Generate giving letters</button>
           </div>
@@ -91,7 +92,7 @@
         </div>
         <form id="filter-form" class="filter-bar">
           <label class="search-field"><span class="sr-only">Search transactions</span><input id="filter-search" name="search" type="search" placeholder="Search donor, email, item, or ID"></label>
-          <label><span>Activity</span><select id="filter-activity" name="activity"><option value="payments">Payments</option><option value="holds">PayPal holds</option><option value="all">All PayPal records</option></select></label>
+          <label><span>Activity</span><select id="filter-activity" name="activity"><option value="payments">Payments</option><option value="bank_transfers">Bank transfers</option><option value="holds">PayPal holds</option><option value="all">All PayPal records</option></select></label>
           <label><span>Product</span><select id="filter-product" name="product"><option value="">All products</option><option value="HopeSojourns">Hope Sojourns</option><option value="JoshBeyondBorders">Josh Beyond Borders</option><option value="ChristianSteps">Christian Steps</option><option value="Unassigned">Needs review</option></select></label>
           <label><span>Direction</span><select id="filter-direction" name="direction"><option value="">Received and sent</option><option value="received">Received</option><option value="sent">Sent</option></select></label>
           <label><span>Year</span><select id="filter-year" name="year"><option value="">All years</option></select></label>
@@ -156,12 +157,36 @@
     </div>
   </dialog>
 
+  <dialog closedby="closerequest" id="bank-transfer-dialog">
+    <form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="Close bank transfer form">×</button></form>
+    <div class="dialog-content">
+      <p class="eyebrow">Reconciliation fallback</p>
+      <h2>Record a PayPal-to-bank transfer</h2>
+      <p class="muted">Use this when PayPal has not supplied the withdrawal through Transaction Search. It is recorded as a transfer—not a donation or expense. If the transfer later imports with the same PayPal transaction ID, it updates this record instead of creating a duplicate.</p>
+      <form id="bank-transfer-form" class="stack-form">
+        <label for="bank-transfer-ministry">Ministry</label>
+        <select id="bank-transfer-ministry" name="product" required><option value="HopeSojourns">Hope Sojourns</option><option value="ChristianSteps">Christian Steps</option></select>
+        <label for="bank-transfer-date">Transfer date and time</label>
+        <input id="bank-transfer-date" name="transactionDate" type="datetime-local" required>
+        <label for="bank-transfer-amount">Amount transferred</label>
+        <input id="bank-transfer-amount" name="amount" type="number" min="0.01" max="100000000" step="0.01" inputmode="decimal" required>
+        <label for="bank-transfer-paypal-id">PayPal transaction ID <small>(recommended when available)</small></label>
+        <input id="bank-transfer-paypal-id" name="paypalTransactionId" type="text" maxlength="128" autocomplete="off">
+        <p class="field-help">Using PayPal’s transaction ID prevents a later import from creating a duplicate.</p>
+        <label for="bank-transfer-note">Note <small>(optional)</small></label>
+        <textarea id="bank-transfer-note" name="note" maxlength="1000" rows="3" placeholder="For example: Hope Sojourns funds moved from PayPal to the shared bank account"></textarea>
+        <p id="bank-transfer-message" class="form-message" role="alert"></p>
+        <button class="primary-button" type="submit">Save transfer</button>
+      </form>
+    </div>
+  </dialog>
+
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
   <div id="loading-overlay" class="loading-overlay" hidden><div class="loading-card"><span class="spinner" aria-hidden="true"></span><strong id="loading-label">Working…</strong></div></div>
   <script src="vendor/exceljs-4.4.0.min.js?v=20260831.1" defer></script>
   <script src="office-package.js?v=20260831.1" defer></script>
   <script src="email-tools.js?v=20260831.1" defer></script>
   <script src="giving-letters.js?v=20260831.1" defer></script>
-  <script src="admin.js?v=20260906.1" defer></script>
+  <script src="admin.js?v=20260917.1" defer></script>
 </body>
 </html>

@@ -35,6 +35,7 @@
     }
   ],
   "vars": {
+    "SHARED_SIGNIN": "enabled",
     "PAYPAL_API_ORIGIN": "https://api-m.paypal.com",
     "PAYPAL_HISTORY_DAYS": "1095",
     "PAYPAL_RECENT_DAYS": "93",
@@ -86,6 +87,7 @@
     "html_handling": "auto-trailing-slash"
   },
   "services": [
+    {"binding":"IDENTITY","service":"hope-sojourns-interest-production","entrypoint":"CsmIdentity"},
     {
       "binding": "JBB_PAYPAL",
       "service": "josh-beyond-borders-admin-api"

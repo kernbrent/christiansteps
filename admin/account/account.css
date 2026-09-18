@@ -1,0 +1,12 @@
+.finance form label { display: block; margin-block: 1rem; }
+.finance form input:not([type=checkbox]), .finance form select, .finance form textarea { width: 100%; }
+.finance .account-secret { overflow-wrap: anywhere; padding: 1rem; border: 1px solid var(--gold); }
+.finance .access-matrix { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+
+.finance [hidden] { display: none !important; }
+.finance .finance-sidebar nav a { color: var(--paper); }
+.finance .finance-sidebar nav a:hover, .finance .finance-sidebar nav a:focus { color: var(--gold); }
+.finance form label:has(> input[type=checkbox]) { display: flex; align-items: center; gap: .65rem; }
+.finance form input[type=checkbox] { display: inline-block; width: 1.2rem; height: 1.2rem; min-height: 0; margin: 0; flex: 0 0 auto; }
+.finance fieldset { min-width: 0; border: 1px solid var(--line); border-radius: 8px; padding: 1rem; }
+.finance legend { font-weight: 700; }

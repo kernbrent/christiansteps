@@ -83,6 +83,9 @@ export const destinationForProduct = (product: string | null | undefined): CsmDe
 export const isPayPalPaymentEvent = (eventCode: string | null | undefined): boolean =>
   typeof eventCode === "string" && /^T00\d{2}$/.test(eventCode);
 
+export const isPayPalBankWithdrawalEvent = (eventCode: string | null | undefined): boolean =>
+  eventCode === "T0400";
+
 export const isEligibleDistributionSource = (source: {
   product?: string | null;
   eventCode?: string | null;
@@ -91,10 +94,14 @@ export const isEligibleDistributionSource = (source: {
   direction?: string | null;
   gross?: number | null;
 }): boolean => {
-  if (!destinationForProduct(source.product)) return false;
-  if (!isPayPalPaymentEvent(source.eventCode)) return false;
+  const destination = destinationForProduct(source.product);
+  if (!destination) return false;
+  const paymentEvent = isPayPalPaymentEvent(source.eventCode);
+  const hopeBankWithdrawal = destination === "HopeSojourns" && isPayPalBankWithdrawalEvent(source.eventCode);
+  if (!paymentEvent && !hopeBankWithdrawal) return false;
   if ((source.status || "").toUpperCase() !== "COMPLETED") return false;
   if ((source.currency || "").toUpperCase() !== "USD") return false;
+  if (hopeBankWithdrawal) return source.direction === "sent" && Number(source.gross) < 0;
   if (source.direction === "received") return Number(source.gross) > 0;
   if (source.direction === "sent") return Number(source.gross) < 0;
   return false;

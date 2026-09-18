@@ -1,0 +1,72 @@
+:root {
+  /* Core neutrals */
+  --ink: #19322b;             /* rgb(25, 50, 43) */
+  --ink-rgb: 25, 50, 43;
+  --muted: #60726b;           /* rgb(96, 114, 107) */
+  --cream: #f6f1e7;           /* rgb(246, 241, 231) */
+  --cream-rgb: 246, 241, 231;
+  --paper: #fffdf8;           /* rgb(255, 253, 248) */
+  --paper-rgb: 255, 253, 248;
+  --white: #ffffff;           /* rgb(255, 255, 255) */
+  --white-rgb: 255, 255, 255;
+  --black-rgb: 0, 0, 0;       /* shadows only */
+
+  /* Brand colors */
+  --forest: #275d4d;          /* rgb(39, 93, 77) */
+  --forest-rgb: 39, 93, 77;
+  --forest-dark: #173f35;     /* rgb(23, 63, 53) */
+  --forest-dark-rgb: 23, 63, 53;
+  --forest-deep: #0b2720;     /* rgb(11, 39, 32) */
+  --forest-deep-rgb: 11, 39, 32;
+  --gold: #d99b42;            /* rgb(217, 155, 66) */
+  --gold-rgb: 217, 155, 66;
+  --gold-light: #f3c780;      /* rgb(243, 199, 128) */
+  --gold-light-rgb: 243, 199, 128;
+  --coral: #c9674e;           /* rgb(201, 103, 78) */
+  --coral-rgb: 201, 103, 78;
+  --coral-dark: #a34c38;      /* rgb(163, 76, 56) */
+
+  /* Reusable tints and illustrated accents */
+  --forest-wash: #edf5f1;     /* rgb(237, 245, 241) */
+  --forest-wash-rgb: 237, 245, 241;
+  --forest-soft: #d8ebe4;     /* rgb(216, 235, 228) */
+  --forest-soft-rgb: 216, 235, 228;
+  --sage: #73a997;            /* rgb(115, 169, 151) */
+  --gold-wash: #fff8e9;       /* rgb(255, 248, 233) */
+  --gold-soft: #f4e5c8;       /* rgb(244, 229, 200) */
+  --gold-soft-rgb: 244, 229, 200;
+  --gold-ink: #6b4b1e;        /* rgb(107, 75, 30) */
+  --coral-wash: #fff0ea;      /* rgb(255, 240, 234) */
+  --coral-soft: #f4d1c3;      /* rgb(244, 209, 195) */
+  --coral-soft-rgb: 244, 209, 195;
+
+  /* Functional colors: reserved for system feedback */
+  --success: #1f6849;         /* rgb(31, 104, 73) */
+  --success-wash: #e2f1e8;    /* rgb(226, 241, 232) */
+  --info: #285b8f;            /* rgb(40, 91, 143) */
+  --info-wash: #e5eef9;       /* rgb(229, 238, 249) */
+  --warning: #7b4f09;         /* rgb(123, 79, 9) */
+  --error: #8f3030;           /* rgb(143, 48, 48) */
+  --error-rgb: 143, 48, 48;
+
+  /* Semantic aliases for all current and future pages */
+  --color-page: var(--cream);
+  --color-surface: var(--paper);
+  --color-card: var(--white);
+  --color-text: var(--ink);
+  --color-text-muted: var(--muted);
+  --color-heading: var(--forest-dark);
+  --color-link: var(--forest);
+  --color-action: var(--gold);
+  --color-action-text: var(--forest-dark);
+  --color-focus: var(--gold);
+  --line: rgba(var(--ink-rgb), .14);
+  --shadow: 0 22px 60px rgba(var(--forest-dark-rgb), .13);
+  --radius: 24px;
+  font-family: "Segoe UI", Aptos, system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  scroll-behavior: smooth;
+}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;color:var(--ink);background:var(--cream)}a{color:var(--deep-green)}button,input,select,textarea{font:inherit}button{cursor:pointer}button,input,select,textarea{padding:.6rem;border:1px solid var(--gold);border-radius:.4rem}dialog{max-width:720px;width:calc(100% - 2rem);max-height:90vh;background:var(--cream);color:var(--ink)}fieldset{margin-block:1rem}small{display:block}
+.skip-link{position:absolute;left:-10000px}.skip-link:focus{position:fixed;left:1rem;top:1rem;background:var(--paper);padding:1rem;z-index:10}

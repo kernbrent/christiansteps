@@ -9,6 +9,6 @@ describe("Admin dialog behavior", () => {
   it("keeps every dialog open when its backdrop is clicked", () => {
     expect(adminScript).toContain("preventDialogBackdropDismissal");
     expect(adminScript).toContain("event.stopImmediatePropagation()");
-    expect(adminPage.match(/closedby="closerequest"/g)).toHaveLength(3);
+    expect(adminPage.match(/closedby="closerequest"/g)).toHaveLength(4);
   });
 });

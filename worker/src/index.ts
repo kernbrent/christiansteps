@@ -1,3 +1,4 @@
+import {sharedRoutes,sharedEnabled,recordSharedActivity} from './shared-identity';
 import {
   AdminError,
   adminJson,
@@ -10,6 +11,7 @@ import {
   sessionInfo,
 } from "./security";
 import {
+  createManualBankTransfer,
   donorTransactions,
   exportTransactions,
   listTransactions,
@@ -63,6 +65,7 @@ async function requireMutation(request: Request, env: Env): Promise<void> {
 }
 
 async function route(request: Request, env: Env, path: string, url: URL): Promise<Response> {
+  const shared=await sharedRoutes(request,env,path);if(shared)return shared;
   if (request.method === "POST" && path === "/login") return login(request, env);
   if (request.method === "GET" && path === "/session") return sessionInfo(request, env);
 
@@ -92,10 +95,14 @@ async function route(request: Request, env: Env, path: string, url: URL): Promis
     await authenticate(request, env, true);
     return syncPayPal(request, env);
   }
+  if (request.method === "POST" && path === "/bank-transfers") {
+    await requireMutation(request, env);
+    return createManualBankTransfer(request, env);
+  }
 
   if (request.method === "GET" && path === "/data") {
     await authenticate(request, env);
-    await syncPayPalLedger(env);
+    if(!sharedEnabled(env)|| (await authenticate(request,env)).user?.is_admin || (await authenticate(request,env)).user?.permissions.finances==='edit')await syncPayPalLedger(env);
     return bookkeepingData(env);
   }
   if (request.method === "PATCH" && path === "/settings") {
@@ -198,7 +205,7 @@ async function route(request: Request, env: Env, path: string, url: URL): Promis
   }
 
   const splitMatch=path.match(/^\/donation-splits\/(.+)$/);
-  if(splitMatch && ['GET','PUT'].includes(request.method)){if(request.method==='PUT')requireAllowedOrigin(request,env);const session=await authenticate(request,env,request.method==='PUT');return csmDonationSplit(request,env,decodeURIComponent(splitMatch[1]!),`CSM admin session ${session.id}`);}
+  if(splitMatch && ['GET','PUT'].includes(request.method)){if(request.method==='PUT')requireAllowedOrigin(request,env);const session=await authenticate(request,env,request.method==='PUT');return csmDonationSplit(request,env,decodeURIComponent(splitMatch[1]!),session.user_id||`CSM admin session ${session.id}`);}
   const productMatch = path.match(/^\/transactions\/(.+)\/product$/);
   if (request.method === "POST" && productMatch?.[1]) {
     await authenticate(request, env, true);
@@ -240,7 +247,7 @@ export default {
       });
     }
     try {
-      return await route(request, env, path, url);
+      const response=await route(request, env, path, url); if(sharedEnabled(env))await recordSharedActivity(request,env,response); return response;
     } catch (error) {
       if (error instanceof AdminError) {
         if (error.status >= 500) {

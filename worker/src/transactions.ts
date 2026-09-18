@@ -183,8 +183,8 @@ export function filtersFromUrl(url: URL): TransactionFilters {
   if (direction && direction !== "received" && direction !== "sent") {
     throw new AdminError(400, "INVALID_FILTER", "Choose a valid received or sent filter.");
   }
-  if (activity !== "payments" && activity !== "holds" && activity !== "all") {
-    throw new AdminError(400, "INVALID_FILTER", "Choose payments, PayPal holds, or all activity.");
+  if (activity !== "payments" && activity !== "bank_transfers" && activity !== "holds" && activity !== "all") {
+    throw new AdminError(400, "INVALID_FILTER", "Choose payments, bank transfers, PayPal holds, or all activity.");
   }
   if (year && !/^20\d{2}$/.test(year)) throw new AdminError(400, "INVALID_FILTER", "Choose a valid year filter.");
   return {
@@ -205,6 +205,7 @@ export function filterSql(filters: TransactionFilters): { sql: string; bindings:
   const where: string[] = [];
   const bindings: unknown[] = [];
   if (filters.activity === "payments") where.push("event_code LIKE 'T00%'");
+  if (filters.activity === "bank_transfers") where.push("event_code IN ('T0300', 'T0400')");
   if (filters.activity === "holds") where.push("event_code IN ('T2101', 'T2102')");
   if (filters.product) {
     where.push(`${EFFECTIVE_PRODUCT} = ?`);
@@ -493,6 +494,59 @@ export async function updateTransactionProduct(request: Request, env: Env, trans
     throw new AdminError(404, "TRANSACTION_NOT_FOUND", "This PayPal transaction was not found.");
   }
   return adminJson({ success: true, transactionId, productOverride: product });
+}
+
+const manualTransferText = (value: unknown, maximum: number): string =>
+  typeof value === "string" ? value.normalize("NFKC").trim().slice(0, maximum) : "";
+
+export async function createManualBankTransfer(request: Request, env: Env): Promise<Response> {
+  const body = await readAdminJson(request);
+  const product = manualTransferText(body.product, 40) as Product;
+  if (product !== "HopeSojourns" && product !== "ChristianSteps") {
+    throw new AdminError(422, "INVALID_TRANSFER_MINISTRY", "Choose Hope Sojourns or Christian Steps for this bank transfer.");
+  }
+  const parsedDate = new Date(manualTransferText(body.transactionDate, 80));
+  if (Number.isNaN(parsedDate.getTime()) || parsedDate.getUTCFullYear() < 2000 || parsedDate.getUTCFullYear() > 2200) {
+    throw new AdminError(422, "INVALID_TRANSFER_DATE", "Choose a valid transfer date and time.");
+  }
+  const amount = Number(body.amount);
+  if (!Number.isFinite(amount) || amount <= 0 || amount > 100_000_000) {
+    throw new AdminError(422, "INVALID_TRANSFER_AMOUNT", "Enter a transfer amount greater than zero.");
+  }
+  const suppliedTransactionId = manualTransferText(body.paypalTransactionId, 128);
+  if (suppliedTransactionId && !/^[A-Za-z0-9_-]{4,128}$/.test(suppliedTransactionId)) {
+    throw new AdminError(422, "INVALID_PAYPAL_TRANSACTION", "Use the PayPal transaction ID shown on the withdrawal, or leave it blank.");
+  }
+  const transactionId = suppliedTransactionId || `MANUAL_${crypto.randomUUID().replaceAll("-", "")}`;
+  const id = `${transactionId}:T0400`;
+  const existing = await env.DB.prepare("SELECT id FROM paypal_transactions WHERE id = ?1").bind(id).first<{ id: string }>();
+  if (existing) {
+    throw new AdminError(409, "TRANSFER_ALREADY_RECORDED", "That PayPal withdrawal is already recorded. Use the bank transfers view to review it.");
+  }
+  const roundedAmount = Math.round(amount * 100) / 100;
+  const note = manualTransferText(body.note, 1_000);
+  const now = new Date().toISOString();
+  const displayName = product === "HopeSojourns" ? "CSM / Hope Sojourns shared bank" : "Christian Steps Ministries bank account";
+  const transaction: NormalizedTransaction = {
+    id, transactionId, referenceTransactionId: "", eventCode: "T0400",
+    transactionDate: parsedDate.toISOString(), updatedDate: now, type: "Manual PayPal withdrawal",
+    status: "Completed", direction: "sent", currency: "USD", gross: -roundedAmount, fee: 0, net: -roundedAmount,
+    counterpartyName: displayName, counterpartyEmail: "", counterpartyPhone: "", addressStatus: "", shippingName: "",
+    address: { line1: "", line2: "", city: "", region: "", postalCode: "", countryCode: "" },
+    itemTitle: product === "HopeSojourns" ? "Hope Sojourns PayPal-to-bank transfer" : "Christian Steps PayPal-to-bank transfer",
+    itemId: "", itemDetails: [], productDetected: product, invoiceNumber: "", customNumber: "",
+    subject: "PayPal to bank transfer", note, endingBalance: null,
+    rawJson: JSON.stringify({ source: "manual_bank_transfer", enteredAt: now, note }),
+  };
+  await saveTransactions(env, [transaction]);
+  await env.DB.batch([
+    env.DB.prepare("UPDATE paypal_transactions SET product_override = ?1, last_seen_at = ?2 WHERE id = ?3").bind(product, now, id),
+    env.DB.prepare(
+      `INSERT INTO audit_events (id, entity_type, entity_id, event_type, metadata_json, created_at)
+       VALUES (?1, 'paypal_bank_transfer', ?2, 'manual_transfer_recorded', ?3, ?4)`,
+    ).bind(crypto.randomUUID(), id, JSON.stringify({ product, amount: roundedAmount, suppliedTransactionId: Boolean(suppliedTransactionId) }), now),
+  ]);
+  return adminJson({ success: true, transactionId: id, product, amount: roundedAmount }, 201);
 }
 
 export async function syncPayPal(request: Request, env: Env): Promise<Response> {

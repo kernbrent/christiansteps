@@ -46,6 +46,7 @@ describe("transaction summary", () => {
       { direction: "sent", product: "Unassigned", eventCode: "T0000", giverKey: null, gross: -25 },
       { direction: "sent", product: "ChristianSteps", eventCode: "T2101", giverKey: null, gross: -95.53 },
       { direction: "received", product: "ChristianSteps", eventCode: "T2102", giverKey: "held@example.com", gross: 95.53 },
+      { direction: "sent", product: "HopeSojourns", eventCode: "T0400", giverKey: null, gross: -73.02 },
     ]);
 
     expect(result.products).toEqual({ HopeSojourns: 0, JoshBeyondBorders: 1_000, ChristianSteps: 650 });
@@ -67,10 +68,13 @@ describe("transaction filters", () => {
     const holdsFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=holds")));
     expect(holdsFilter.sql).toContain("event_code IN ('T2101', 'T2102')");
 
+    const bankFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=bank_transfers")));
+    expect(bankFilter.sql).toContain("event_code IN ('T0300', 'T0400')");
+
     const allFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=all")));
     expect(allFilter.sql).not.toContain("event_code");
     expect(() => filtersFromUrl(
       new URL("https://example.com/api/admin/transactions?activity=unknown"),
-    )).toThrow(/payments, PayPal holds, or all activity/i);
+    )).toThrow(/payments, bank transfers, PayPal holds, or all activity/i);
   });
 });

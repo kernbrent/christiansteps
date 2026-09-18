@@ -1,4 +1,6 @@
 interface Env {
+  SHARED_SIGNIN?: string;
+  IDENTITY?: Fetcher;
   DB: D1Database;
   LEDGER_DB: D1Database;
   LEDGER_ATTACHMENTS: R2Bucket;
