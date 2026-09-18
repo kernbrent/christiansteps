@@ -2,6 +2,7 @@ import {
   CSM_DISTRIBUTION_SCHEMA_VERSION,
   destinationForProduct,
   isEligibleDistributionSource,
+  isPayPalBankWithdrawalEvent,
   parseDistributionMessage,
   type CsmDestination,
   type CsmDistributionMessage,
@@ -145,7 +146,7 @@ async function buildMessage(env: DistributionEnv, row: SourceRow): Promise<CsmDi
       "Only completed PayPal payments assigned to Hope Sojourns or Josh Beyond Borders, plus Hope Sojourns bank withdrawals, can be sent. Holds and releases are excluded.",
     );
   }
-  const displayName = row.eventCode === "T0400" ? "CSM / Hope Sojourns shared bank" : displayNameFor(row);
+  const displayName = isPayPalBankWithdrawalEvent(row.eventCode) ? "CSM / Hope Sojourns shared bank" : displayNameFor(row);
   const masterDonorId = row.direction === "received" ? await ensureMasterDonor(env, row, displayName) : null;
   const split=await env.DB.prepare("SELECT revision,allocations_json FROM donation_splits WHERE entry_id=?").bind(row.id).first<{revision:number;allocations_json:string}>();
   const donorAllocations=JSON.parse(split?.allocations_json||'[]');

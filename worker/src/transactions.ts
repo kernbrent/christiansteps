@@ -205,7 +205,7 @@ export function filterSql(filters: TransactionFilters): { sql: string; bindings:
   const where: string[] = [];
   const bindings: unknown[] = [];
   if (filters.activity === "payments") where.push("event_code LIKE 'T00%'");
-  if (filters.activity === "bank_transfers") where.push("event_code IN ('T0300', 'T0400')");
+  if (filters.activity === "bank_transfers") where.push("event_code IN ('T0300', 'T0400', 'T0401', 'T0403')");
   if (filters.activity === "holds") where.push("event_code IN ('T2101', 'T2102')");
   if (filters.product) {
     where.push(`${EFFECTIVE_PRODUCT} = ?`);
@@ -518,7 +518,7 @@ export async function createManualBankTransfer(request: Request, env: Env): Prom
     throw new AdminError(422, "INVALID_PAYPAL_TRANSACTION", "Use the PayPal transaction ID shown on the withdrawal, or leave it blank.");
   }
   const transactionId = suppliedTransactionId || `MANUAL_${crypto.randomUUID().replaceAll("-", "")}`;
-  const id = `${transactionId}:T0400`;
+  const id = `${transactionId}:T0403`;
   const existing = await env.DB.prepare("SELECT id FROM paypal_transactions WHERE id = ?1").bind(id).first<{ id: string }>();
   if (existing) {
     throw new AdminError(409, "TRANSFER_ALREADY_RECORDED", "That PayPal withdrawal is already recorded. Use the bank transfers view to review it.");
@@ -528,7 +528,7 @@ export async function createManualBankTransfer(request: Request, env: Env): Prom
   const now = new Date().toISOString();
   const displayName = product === "HopeSojourns" ? "CSM / Hope Sojourns shared bank" : "Christian Steps Ministries bank account";
   const transaction: NormalizedTransaction = {
-    id, transactionId, referenceTransactionId: "", eventCode: "T0400",
+    id, transactionId, referenceTransactionId: "", eventCode: "T0403",
     transactionDate: parsedDate.toISOString(), updatedDate: now, type: "Manual PayPal withdrawal",
     status: "Completed", direction: "sent", currency: "USD", gross: -roundedAmount, fee: 0, net: -roundedAmount,
     counterpartyName: displayName, counterpartyEmail: "", counterpartyPhone: "", addressStatus: "", shippingName: "",

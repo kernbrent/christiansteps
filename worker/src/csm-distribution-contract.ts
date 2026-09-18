@@ -83,8 +83,13 @@ export const destinationForProduct = (product: string | null | undefined): CsmDe
 export const isPayPalPaymentEvent = (eventCode: string | null | undefined): boolean =>
   typeof eventCode === "string" && /^T00\d{2}$/.test(eventCode);
 
+const PAYPAL_BANK_WITHDRAWAL_EVENT_CODES = new Set(["T0400", "T0401", "T0403"]);
+
 export const isPayPalBankWithdrawalEvent = (eventCode: string | null | undefined): boolean =>
-  eventCode === "T0400";
+  typeof eventCode === "string" && PAYPAL_BANK_WITHDRAWAL_EVENT_CODES.has(eventCode);
+
+export const isPayPalBankTransferEvent = (eventCode: string | null | undefined): boolean =>
+  eventCode === "T0300" || isPayPalBankWithdrawalEvent(eventCode);
 
 export const isEligibleDistributionSource = (source: {
   product?: string | null;

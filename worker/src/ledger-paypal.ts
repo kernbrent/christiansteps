@@ -1,3 +1,5 @@
+import { isPayPalBankTransferEvent } from "./csm-distribution-contract";
+
 type PayPalLedgerProgram = "ChristianSteps" | "HopeSojourns" | "JoshBeyondBorders" | "Unassigned";
 export type PayPalAccountingClass =
   | "contribution"
@@ -41,7 +43,7 @@ export function accountingClassFor(
   direction: string,
   eventCode = "",
 ): PayPalAccountingClass {
-  if (eventCode === "T0300" || eventCode === "T0400") {
+  if (isPayPalBankTransferEvent(eventCode)) {
     return program === "Unassigned" ? "unassigned" : "internal_transfer";
   }
   if (program === "JoshBeyondBorders") {
@@ -90,7 +92,7 @@ async function sourceRows(env: Env): Promise<SourceRow[]> {
        source.last_seen_at AS sourceLastSeenAt
      FROM paypal_transactions AS source
      WHERE source.event_code LIKE 'T00%'
-        OR source.event_code IN ('T0300', 'T0400')
+        OR source.event_code IN ('T0300', 'T0400', 'T0401', 'T0403')
      ORDER BY source.transaction_date DESC
      LIMIT 20000`,
   ).all<SourceRow>();

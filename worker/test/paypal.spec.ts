@@ -61,13 +61,13 @@ describe("PayPal normalization", () => {
     const transaction = normalizeTransaction({
       transaction_info: {
         transaction_id: "SEND123",
-        transaction_event_code: "T0400",
+        transaction_event_code: "T0403",
         transaction_initiation_date: "2026-08-20T16:00:00Z",
         transaction_status: "S",
         transaction_amount: { currency_code: "USD", value: "-40.00" },
       },
     });
-    expect(transaction?.direction).toBe("sent");
+    expect(transaction).toMatchObject({ direction: "sent", type: "Manual Bank Withdrawal" });
   });
 });
 

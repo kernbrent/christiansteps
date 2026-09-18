@@ -144,7 +144,9 @@ const eventType = (eventCode: string): string => ({
   T0013: "Donation Payment",
   T1106: "Payment Reversal",
   T1107: "Payment Refund",
-  T0400: "Withdrawal",
+  T0400: "Bank Withdrawal",
+  T0401: "Automatic Bank Sweep",
+  T0403: "Manual Bank Withdrawal",
   T0300: "Bank Deposit",
 }[eventCode] || `PayPal ${eventCode || "Transaction"}`);
 

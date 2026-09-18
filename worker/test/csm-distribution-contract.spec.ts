@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  isPayPalBankTransferEvent,
   isEligibleDistributionSource,
   parseDistributionMessage,
   type CsmDistributionMessage,
@@ -58,9 +59,20 @@ describe("CSM distribution contract", () => {
   });
 
   it("accepts Hope Sojourns withdrawals to the shared bank but not unrelated bank activity", () => {
-    expect(isEligibleDistributionSource({ product: "HopeSojourns", eventCode: "T0400", status: "Completed", currency: "USD", direction: "sent", gross: -73.02 })).toBe(true);
+    for (const eventCode of ["T0400", "T0401", "T0403"]) {
+      expect(isEligibleDistributionSource({ product: "HopeSojourns", eventCode, status: "Completed", currency: "USD", direction: "sent", gross: -73.02 })).toBe(true);
+    }
     expect(isEligibleDistributionSource({ product: "JoshBeyondBorders", eventCode: "T0400", status: "Completed", currency: "USD", direction: "sent", gross: -73.02 })).toBe(false);
+    expect(isEligibleDistributionSource({ product: "JoshBeyondBorders", eventCode: "T0403", status: "Completed", currency: "USD", direction: "sent", gross: -73.02 })).toBe(false);
     expect(isEligibleDistributionSource({ product: "HopeSojourns", eventCode: "T0300", status: "Completed", currency: "USD", direction: "received", gross: 73.02 })).toBe(false);
+  });
+
+  it("classifies bank transfers without treating Hyperwallet withdrawals as bank activity", () => {
+    for (const eventCode of ["T0300", "T0400", "T0401", "T0403"]) {
+      expect(isPayPalBankTransferEvent(eventCode)).toBe(true);
+    }
+    expect(isPayPalBankTransferEvent("T0402")).toBe(false);
+    expect(isPayPalBankTransferEvent("T2101")).toBe(false);
   });
 
   it("normalizes and validates Display Name", () => {

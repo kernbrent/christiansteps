@@ -13,6 +13,8 @@ describe("ministry fund accounting", () => {
     expect(accountingClassFor("JoshBeyondBorders", "sent")).toBe("agency_disbursement");
     expect(accountingClassFor("HopeSojourns", "sent")).toBe("internal_transfer");
     expect(accountingClassFor("HopeSojourns", "sent", "T0400")).toBe("internal_transfer");
+    expect(accountingClassFor("HopeSojourns", "sent", "T0401")).toBe("internal_transfer");
+    expect(accountingClassFor("HopeSojourns", "sent", "T0403")).toBe("internal_transfer");
     expect(accountingClassFor("ChristianSteps", "received", "T0300")).toBe("internal_transfer");
   });
 
@@ -41,7 +43,7 @@ describe("ministry fund accounting", () => {
   it("copies payments and bank transfers while excluding PayPal holds and releases", () => {
     const source = readFileSync(resolve(process.cwd(), "src/ledger-paypal.ts"), "utf8");
     expect(source).toContain("WHERE source.event_code LIKE 'T00%'");
-    expect(source).toContain("source.event_code IN ('T0300', 'T0400')");
+    expect(source).toContain("source.event_code IN ('T0300', 'T0400', 'T0401', 'T0403')");
     expect(source).not.toContain("UPDATE paypal_transactions");
     expect(source).not.toContain("DELETE FROM paypal_transactions");
     expect(source).not.toContain("INSERT INTO csm_distribution_outbox");

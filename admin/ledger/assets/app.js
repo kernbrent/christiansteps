@@ -3,6 +3,7 @@
 (() => {
   const CONFIG = window.CSM_LEDGER_CONFIG || {};
   const API_BASE = String(CONFIG.apiBase || "/api/admin").replace(/\/$/, "");
+  const BANK_WITHDRAWAL_EVENT_CODES = new Set(["T0400", "T0401", "T0403"]);
   const LOCAL_DEMO =
     (location.hostname === "127.0.0.1" || location.hostname === "localhost") &&
     new URLSearchParams(location.search).get("live") !== "1";
@@ -523,7 +524,7 @@
     internal_transfer: "Internal transfer",
     unassigned: "Needs assignment",
   }[value] || statusLabel(value));
-  const paypalAccountingLabel = (item) => item.event_code === "T0400"
+  const paypalAccountingLabel = (item) => BANK_WITHDRAWAL_EVENT_CODES.has(item.event_code)
     ? "PayPal to bank transfer"
     : item.event_code === "T0300"
       ? "Bank to PayPal transfer"
@@ -539,7 +540,7 @@
       .reduce((sum, item) => sum + Math.max(0, num(item.gross)), 0);
     const jbbSent = jbbRows.filter((item) => item.accounting_class === "agency_disbursement")
       .reduce((sum, item) => sum + Math.abs(num(item.net)), 0);
-    const bankTransfers = yearRows.filter((item) => item.event_code === "T0400")
+    const bankTransfers = yearRows.filter((item) => BANK_WITHDRAWAL_EVENT_CODES.has(item.event_code))
       .reduce((sum, item) => sum + Math.abs(num(item.net) || num(item.gross)), 0);
     const rows = state.paypal_activity.map((item) => `
       <tr data-search-row="${escapeHtml([item.transaction_date, item.display_name, item.counterparty_email, item.item_title, item.transaction_id, programName(item.program), paypalAccountingLabel(item)].join(" ").toLowerCase())}">

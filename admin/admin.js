@@ -2,6 +2,7 @@
   "use strict";
 
   const PRODUCTS = ["HopeSojourns", "JoshBeyondBorders", "ChristianSteps", "Unassigned"];
+  const BANK_WITHDRAWAL_EVENT_CODES = new Set(["T0400", "T0401", "T0403"]);
   const PRODUCT_LABELS = {
     HopeSojourns: "Hope Sojourns",
     JoshBeyondBorders: "Josh Beyond Borders",
@@ -188,7 +189,7 @@
 
   function isDistributionEligible(transaction) {
     const paymentEvent = /^T00\d{2}$/.test(transaction.eventCode || "");
-    const hopeBankWithdrawal = transaction.product === "HopeSojourns" && transaction.eventCode === "T0400";
+    const hopeBankWithdrawal = transaction.product === "HopeSojourns" && BANK_WITHDRAWAL_EVENT_CODES.has(transaction.eventCode);
     return ["HopeSojourns", "JoshBeyondBorders"].includes(transaction.product)
       && (paymentEvent || hopeBankWithdrawal)
       && transaction.status === "Completed"
@@ -219,7 +220,7 @@
     for (const transaction of transactions) {
       const isHold = transaction.eventCode === "T2101";
       const isHoldRelease = transaction.eventCode === "T2102";
-      const isBankWithdrawal = transaction.eventCode === "T0400";
+      const isBankWithdrawal = BANK_WITHDRAWAL_EVENT_CODES.has(transaction.eventCode);
       const isBankDeposit = transaction.eventCode === "T0300";
       const relatedParty = transaction.relatedCounterpartyName || transaction.relatedCounterpartyEmail;
       const relatedDescription = relatedParty ? `Related to ${relatedParty} · ` : "";
