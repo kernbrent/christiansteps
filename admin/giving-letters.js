@@ -13,6 +13,7 @@
   function donorKey(transaction) {
     const email = String(transaction.counterpartyEmail || "").trim().toLowerCase();
     if (email) return `email:${email}`;
+    if(transaction.donorKey)return transaction.donorKey;
     return [transaction.counterpartyName, transaction.addressLine1, transaction.postalCode]
       .map(value => String(value || "").trim().toLowerCase()).join("|");
   }
@@ -262,7 +263,9 @@
   }
 
   function setYears(years) {
-    state.years = years.length ? years : [new Date().getFullYear()];
+    // Original gifts can precede their combined PayPal deposit. Keep earlier giving years selectable.
+    const currentYear = new Date().getFullYear();
+    state.years = [...new Set([...years, ...Array.from({length: currentYear - 1999}, (_, i) => currentYear - i)])].sort((a,b) => b-a);
     const select = byId("letter-year");
     const prior = select.value;
     select.replaceChildren(...state.years.map(year => {

@@ -1,3 +1,4 @@
+import {validateAllocations,type DonationAllocation} from './donation-allocation';
 export const CSM_DISTRIBUTION_SCHEMA_VERSION = 1 as const;
 
 export const CSM_DESTINATIONS = ["HopeSojourns", "JoshBeyondBorders"] as const;
@@ -39,6 +40,8 @@ export interface CsmTransactionSnapshot {
 }
 
 export interface CsmDistributionMessage {
+  donorAllocations?: DonationAllocation[];
+  donorSplitRevision?:number;
   schemaVersion: typeof CSM_DISTRIBUTION_SCHEMA_VERSION;
   messageId: string;
   idempotencyKey: string;
@@ -183,5 +186,7 @@ export const parseDistributionMessage = (value: unknown): CsmDistributionMessage
   })) {
     throw new Error("Transaction is not eligible for distribution");
   }
+  if(value.donorSplitRevision!==undefined){if(!Number.isInteger(value.donorSplitRevision)||Number(value.donorSplitRevision)<0)throw new Error('Invalid donor split revision');parsed.donorSplitRevision=Number(value.donorSplitRevision);}
+  if(value.donorAllocations!==undefined){if(direction!=='received')throw new Error('Only donations can have donor allocations');parsed.donorAllocations=validateAllocations(value.donorAllocations,Math.round(parsed.transaction.gross*100));}
   return parsed;
 };

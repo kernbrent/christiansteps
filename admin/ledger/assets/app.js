@@ -536,7 +536,7 @@
     const rows = state.paypal_activity.map((item) => `
       <tr data-search-row="${escapeHtml([item.transaction_date, item.display_name, item.counterparty_email, item.item_title, item.transaction_id, programName(item.program), accountingLabel(item.accounting_class)].join(" ").toLowerCase())}">
         <td>${shortDate(paypalDate(item))}</td>
-        <td><strong>${escapeHtml(item.display_name)}</strong><small>${escapeHtml(item.counterparty_email || item.transaction_id)}</small></td>
+        <td><strong>${escapeHtml(item.display_name)}</strong><small>${escapeHtml(item.counterparty_email || item.transaction_id)}</small>${completedPayPal(item)&&item.direction==='received'&&['ChristianSteps','HopeSojourns'].includes(item.program)?`<button type="button" data-action="donor-splits" data-id="${escapeHtml(item.source_record_id)}">Split donation</button>`:''}</td>
         <td>${escapeHtml(programName(item.program))}</td>
         <td><strong>${escapeHtml(accountingLabel(item.accounting_class))}</strong><small>${escapeHtml(item.item_title || item.event_code)}</small></td>
         <td>${statusBadge(completedPayPal(item) ? "included" : "needs_review").replace(completedPayPal(item) ? "Included" : "Needs Review", escapeHtml(item.status))}<small>${escapeHtml(item.distribution_status || "Not sent for review")}</small></td>
@@ -548,7 +548,7 @@
     return `
       <section class="view">
         <div class="section-heading-row split-heading">
-          <div><p class="section-kicker">Read-only PayPal accounting</p><h2>Ministry funds and pass-through activity</h2><p>PayPal remains the source of truth. This ledger copy cannot alter giving records or the HS/JBB delivery queue.</p></div>
+          <div><p class="section-kicker">Read-only PayPal accounting</p><h2>Ministry funds and pass-through activity</h2><p>PayPal remains the source of truth. Original payments remain unchanged. Use Split donation to attribute a combined deposit to its donors.</p></div>
           <a class="secondary-button" href="../">Open Giving Portal</a>
         </div>
         <div class="metric-grid fund-metric-grid">
@@ -2759,6 +2759,7 @@
       if ($("#search-dialog").open) $("#search-dialog").close();
     };
     switch (action) {
+      case "donor-splits": await window.DonationSplits.open({load:()=>apiRequest('/donation-splits/'+encodeURIComponent(id)),save:body=>apiRequest('/donation-splits/'+encodeURIComponent(id),{method:'PUT',body}),onSaved:()=>toast('Donor allocations saved. The original payment is unchanged.','success')});break;
       case "add-expense": expenseForm(); break;
       case "edit-expense": closeSearchForRecord(); expenseForm(byId(state.expenses, id)); break;
       case "delete-expense": await deleteRecord("expense", id); break;

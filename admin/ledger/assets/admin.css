@@ -1338,3 +1338,14 @@ a { color: var(--blue); }
   .table-wrap { overflow: visible; }
   .data-table { font-size: 7pt; }
 }
+.donation-split-dialog { width: min(760px, 95vw); max-height: 90vh; overflow: auto; }
+.donation-split-dialog label { display: block; margin-block: .6rem; }
+.donation-split-dialog input, .donation-split-dialog select { width: 100%; }
+.donation-split-dialog fieldset { margin-block: 1rem; }
+
+.donation-split-dialog { padding: 24px; }
+.donation-split-dialog fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem 1rem; min-width: 0; border: 1px solid var(--line); border-radius: 8px; padding: 1rem; }
+.donation-split-dialog label:has(select), .donation-split-dialog label:has([name=note]) { grid-column: 1 / -1; }
+.donation-split-dialog footer { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .7rem; margin-top: 1rem; }
+.donation-split-dialog details { margin-top: 1rem; overflow-wrap: anywhere; }
+@media(max-width:540px) { .donation-split-dialog fieldset { grid-template-columns: 1fr; } }

@@ -27,6 +27,7 @@ import {
   markInvoicePaid,
   updateInvoice,
 } from "./invoices";
+import {csmDonationSplit} from './donation-splits';
 import { syncPayPalLedger } from "./ledger-paypal";
 import {
   bookkeepingData,
@@ -196,6 +197,8 @@ async function route(request: Request, env: Env, path: string, url: URL): Promis
     }
   }
 
+  const splitMatch=path.match(/^\/donation-splits\/(.+)$/);
+  if(splitMatch && ['GET','PUT'].includes(request.method)){if(request.method==='PUT')requireAllowedOrigin(request,env);const session=await authenticate(request,env,request.method==='PUT');return csmDonationSplit(request,env,decodeURIComponent(splitMatch[1]!),`CSM admin session ${session.id}`);}
   const productMatch = path.match(/^\/transactions\/(.+)\/product$/);
   if (request.method === "POST" && productMatch?.[1]) {
     await authenticate(request, env, true);
@@ -230,7 +233,7 @@ export default {
           "Access-Control-Allow-Origin": origin!,
           "Access-Control-Allow-Credentials": "true",
           "Access-Control-Allow-Headers": "Content-Type, X-CSRF-Token, X-File-Name",
-          "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE, OPTIONS",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
           "Access-Control-Max-Age": "600",
           "Vary": "Origin",
         },

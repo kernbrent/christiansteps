@@ -1,6 +1,7 @@
 import { fetchPayPalTransactions, PRODUCTS, type NormalizedTransaction, type Product } from "./paypal";
 import { AdminError, adminJson, readAdminJson } from "./security";
 
+import {allocatedDonorTransactions} from './donation-splits';
 const PRODUCT_SET = new Set<string>(PRODUCTS);
 const PAGE_SIZE = 100;
 const EXPORT_LIMIT = 20_000;
@@ -472,11 +473,11 @@ export async function donorTransactions(env: Env, url: URL): Promise<Response> {
        AND gross > 0
        AND event_code LIKE 'T00%'
        AND ${EFFECTIVE_PRODUCT} IN ('HopeSojourns', 'JoshBeyondBorders', 'ChristianSteps')
-       AND substr(transaction_date, 1, 4) = ?1
      ORDER BY transaction_date ASC, id ASC
-     LIMIT 5000`,
-  ).bind(year).all<Record<string, unknown>>();
-  return adminJson({ year: Number(year), transactions: result.results });
+     LIMIT 20001`,
+  ).all<Record<string, unknown>>();
+  if(result.results.length>20000)throw new AdminError(422,"TOO_MANY_DONATIONS","Too many donations to generate a complete statement batch.");
+  return adminJson({ year: Number(year), transactions: await allocatedDonorTransactions(env,result.results,year) });
 }
 
 export async function updateTransactionProduct(request: Request, env: Env, transactionId: string): Promise<Response> {

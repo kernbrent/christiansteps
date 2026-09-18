@@ -147,8 +147,12 @@ async function buildMessage(env: DistributionEnv, row: SourceRow): Promise<CsmDi
   }
   const displayName = displayNameFor(row);
   const masterDonorId = row.direction === "received" ? await ensureMasterDonor(env, row, displayName) : null;
+  const split=await env.DB.prepare("SELECT revision,allocations_json FROM donation_splits WHERE entry_id=?").bind(row.id).first<{revision:number;allocations_json:string}>();
+  const donorAllocations=JSON.parse(split?.allocations_json||'[]');
   const sourceRevision = 1;
   return parseDistributionMessage({
+    donorSplitRevision:split?.revision||0,
+    ...(donorAllocations.length?{donorAllocations}:{}),
     schemaVersion: CSM_DISTRIBUTION_SCHEMA_VERSION,
     messageId: crypto.randomUUID(),
     idempotencyKey: `${destination}:${row.transactionId}:${row.eventCode}:${sourceRevision}`,
