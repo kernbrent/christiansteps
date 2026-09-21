@@ -175,7 +175,7 @@ function boundedInteger(value: string | null, fallback: number, maximum: number)
 }
 
 export function filtersFromUrl(url: URL): TransactionFilters {
-  const activity = url.searchParams.get("activity") ?? "payments";
+  const activity = url.searchParams.get("activity") ?? "all";
   const product = url.searchParams.get("product") ?? "";
   const direction = url.searchParams.get("direction") ?? "";
   const year = url.searchParams.get("year") ?? "";

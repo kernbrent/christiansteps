@@ -62,9 +62,14 @@ describe("transaction summary", () => {
 });
 
 describe("transaction filters", () => {
-  it("shows payments by default while keeping holds available for audit", () => {
-    const defaultFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions")));
-    expect(defaultFilter.sql).toContain("event_code LIKE 'T00%'");
+  it("shows all PayPal activity by default while keeping focused filters available", () => {
+    const defaultFilters = filtersFromUrl(new URL("https://example.com/api/admin/transactions"));
+    const defaultFilter = filterSql(defaultFilters);
+    expect(defaultFilters.activity).toBe("all");
+    expect(defaultFilter.sql).not.toContain("event_code");
+
+    const paymentsFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=payments")));
+    expect(paymentsFilter.sql).toContain("event_code LIKE 'T00%'");
 
     const holdsFilter = filterSql(filtersFromUrl(new URL("https://example.com/api/admin/transactions?activity=holds")));
     expect(holdsFilter.sql).toContain("event_code IN ('T2101', 'T2102')");
