@@ -1,6 +1,6 @@
 # Personally received ministry gifts
 
-Local implementation, not released. Apply CSM DB migration 0005 before application use. No CSM LEDGER_DB migration. Deploy compatible HS receiver and identity authority before CSM, only after explicit authorization. Existing PayPal and JBB flows remain unchanged. Testing must use mocked bindings or a separately configured CSM test environment pointing only at HS test resources; never connect CSM production to a test donor directory or vice versa.
+Released September 23, 2026, with CSM DB migration 0005 applied. No CSM LEDGER_DB migration. Deploy compatible HS receiver and identity authority before CSM, only after explicit authorization. Existing PayPal and JBB flows remain unchanged. Testing must use mocked bindings or a separately configured CSM test environment pointing only at HS test resources; never connect CSM production to a test donor directory or vice versa.
 
 The authenticated /personal-gifts routes use CSM giving permission, CSRF, and allowed-origin validation. /contacts proxies the named CsmIdentity entrypoint and authenticates the real CSM session; the authority additionally requires HS membership and contacts read permission. Only ID, name, email, and phone are returned, with a 30-result search limit. Caller-supplied user IDs cannot grant access.
 

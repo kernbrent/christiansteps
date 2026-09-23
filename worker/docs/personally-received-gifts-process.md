@@ -1,6 +1,6 @@
 # Personally received gifts for Hope Sojourns
 
-This process follows each original donor's gift through Brent's personal payment account and bank account into the Christian Steps Ministries bank account, then into Hope Sojourns donor and financial records. The personal-gift workflow is implemented locally and awaits review and deployment. Existing PayPal-only transfer controls must not be used to represent personal Venmo or Zelle payments.
+This process follows each original donor's gift through Brent's personal payment account and bank account into the Christian Steps Ministries bank account, then into Hope Sojourns donor and financial records. The personal-gift workflow was released on September 23, 2026. Existing PayPal-only transfer controls must not be used to represent personal Venmo or Zelle payments.
 
 ## 1. Gather the original gift information
 

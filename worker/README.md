@@ -49,4 +49,4 @@ See [shared account architecture and coordinated release](docs/shared-accounts.m
 
 ## Personally received gifts
 
-See [implementation and release notes](docs/personal-gifts.md) and the [step-by-step process](docs/personally-received-gifts-process.md). This addition is local and not deployed.
+See [implementation and release notes](docs/personal-gifts.md) and the [step-by-step process](docs/personally-received-gifts-process.md). Released September 23, 2026. The HS receiver was released separately from test-only planning changes.
