@@ -371,6 +371,14 @@ export async function receiveDistributionStatus(request: Request, env: Distribut
   const idempotencyKey = typeof body?.idempotencyKey === "string" ? body.idempotencyKey : "";
   const status = typeof body?.status === "string" ? body.status : "";
   if (!idempotencyKey || !RECIPIENT_STATUSES.has(status)) return adminJson({ error: "Invalid status update" }, 422);
+  if(idempotencyKey.startsWith('HopeSojourns:personal:')){
+    const id=idempotencyKey.slice('HopeSojourns:personal:'.length);
+    const gift=await env.DB.prepare('SELECT id,delivery_status FROM personal_gifts WHERE id=? AND payload_json IS NOT NULL').bind(id).first<{id:string;delivery_status:string}>();
+    if(!gift)return adminJson({error:'Unknown personal gift'},404);
+    if(['approved','denied'].includes(gift.delivery_status)&&gift.delivery_status!==status)return adminJson({error:'A final decision cannot be replaced'},409);
+    await env.DB.batch([env.DB.prepare("UPDATE personal_gifts SET delivery_status=? WHERE id=? AND delivery_status NOT IN ('approved','denied')").bind(status,id),env.DB.prepare('INSERT INTO personal_gift_history(id,gift_id,action,details_json,actor,created_at) VALUES(?,?,?,?,?,?)').bind(crypto.randomUUID(),id,'hs_callback',JSON.stringify(body),'Hope Sojourns',new Date().toISOString())]);
+    return adminJson({success:true});
+  }
   const outbox = await env.DB.prepare(
     "SELECT id FROM csm_distribution_outbox WHERE idempotency_key = ?1",
   ).bind(idempotencyKey).first<{ id: string }>();

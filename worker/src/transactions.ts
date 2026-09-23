@@ -1,3 +1,4 @@
+import {personalGiftStatements} from './personal-gifts';
 import { fetchPayPalTransactions, PRODUCTS, type NormalizedTransaction, type Product } from "./paypal";
 import { AdminError, adminJson, readAdminJson } from "./security";
 
@@ -478,7 +479,7 @@ export async function donorTransactions(env: Env, url: URL): Promise<Response> {
      LIMIT 20001`,
   ).all<Record<string, unknown>>();
   if(result.results.length>20000)throw new AdminError(422,"TOO_MANY_DONATIONS","Too many donations to generate a complete statement batch.");
-  return adminJson({ year: Number(year), transactions: await allocatedDonorTransactions(env,result.results,year) });
+  return adminJson({ year: Number(year), transactions: [...await allocatedDonorTransactions(env,result.results,year),...await personalGiftStatements(env,year)] });
 }
 
 export async function updateTransactionProduct(request: Request, env: Env, transactionId: string): Promise<Response> {

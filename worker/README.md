@@ -45,3 +45,8 @@ The first portal sync automatically requests the full history available through 
 ## Shared ministry accounts
 
 See [shared account architecture and coordinated release](docs/shared-accounts.md). This implementation remains local pending release authorization; SHARED_SIGNIN is disabled until both portals are ready.
+
+
+## Personally received gifts
+
+See [implementation and release notes](docs/personal-gifts.md) and the [step-by-step process](docs/personally-received-gifts-process.md). This addition is local and not deployed.

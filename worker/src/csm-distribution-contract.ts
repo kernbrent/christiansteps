@@ -1,3 +1,4 @@
+import {validatePersonalGift,type PersonalGiftDetails} from './personal-gift-contract';
 import {validateAllocations,type DonationAllocation} from './donation-allocation';
 export const CSM_DISTRIBUTION_SCHEMA_VERSION = 1 as const;
 
@@ -40,6 +41,7 @@ export interface CsmTransactionSnapshot {
 }
 
 export interface CsmDistributionMessage {
+  personalGift?:PersonalGiftDetails;
   donorAllocations?: DonationAllocation[];
   donorSplitRevision?:number;
   schemaVersion: typeof CSM_DISTRIBUTION_SCHEMA_VERSION;
@@ -188,7 +190,12 @@ export const parseDistributionMessage = (value: unknown): CsmDistributionMessage
     },
   };
 
-  if (!isEligibleDistributionSource({
+  const personal = parsed.transaction.eventCode === "PERSONAL_GIFT";
+  if (personal) {
+    if(parsed.destination!=="HopeSojourns"||direction!=="received"||parsed.transaction.currency!=="USD"||parsed.transaction.status!=="Completed"||parsed.transaction.gross<=0||parsed.transaction.sourceRecordId!=="personal:"+parsed.transaction.paypalTransactionId||value.donorAllocations!==undefined)throw new Error("Invalid personal gift source");
+    parsed.personalGift=validatePersonalGift(value.personalGift,parsed.transaction.gross,parsed.transaction.fee,parsed.transaction.net);
+  } else if(value.personalGift!==undefined)throw new Error("Unexpected personal gift metadata");
+  if (!personal && !isEligibleDistributionSource({
     product: parsed.product,
     eventCode: parsed.transaction.eventCode,
     status: parsed.transaction.status,

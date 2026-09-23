@@ -1,0 +1,90 @@
+import {AdminError,adminJson,readAdminJson} from './security';
+import {identityRequest,sharedEnabled} from './shared-identity';
+import {parseDistributionMessage} from './csm-distribution-contract';
+
+type Gift={id:string;donor_id:string;donor_json:string;received_by:string;method:string;gift_date:string;amount_cents:number;reference:string;designation:string;note:string;revision:number;voided:number;payload_json:string|null;delivery_status:string;request_json:string};
+type Movement={id:string;gift_id:string;kind:'transfer'|'expense'|'fee';movement_date:string;amount_cents:number;reference:string;description:string;cleared_date:string|null;reversed:number;request_json:string};
+type Contact={id:string;first_name:string;last_name:string;email:string;phone:string};
+const methods=['Personal Venmo','Personal Zelle','Personal PayPal'];
+function line(v:unknown,max=160,required=true){if(typeof v!=='string'||v.trim().length>max||/[\u0000-\u001f]/.test(v)||required&&!v.trim())throw new AdminError(422,'INVALID_FIELD','Complete the required fields using valid text.');return v.trim();}
+function id(v:unknown){const s=line(v,64);if(!/^[a-f0-9-]{36}$/i.test(s))throw new AdminError(422,'INVALID_ID','Reload the form and try again.');return s;}
+function date(v:unknown){const s=line(v,10);if(!/^20\d{2}-\d{2}-\d{2}$/.test(s)||!Number.isFinite(Date.parse(s+'T12:00:00Z'))||new Date(s+'T12:00:00Z').toISOString().slice(0,10)!==s)throw new AdminError(422,'INVALID_DATE','Choose a valid date.');return s;}
+function cents(v:unknown){if(typeof v!=='number'||!Number.isSafeInteger(v)||v<=0||v>1000000000)throw new AdminError(422,'INVALID_AMOUNT','Enter a positive amount with no more than two decimal places.');return v;}
+const history=(env:Env,giftId:string,action:string,actor:string,details:unknown)=>env.DB.prepare('INSERT INTO personal_gift_history(id,gift_id,action,details_json,actor,created_at) VALUES(?,?,?,?,?,?)').bind(crypto.randomUUID(),giftId,action,JSON.stringify(details),actor,new Date().toISOString());
+async function gift(env:Env,key:string){const g=await env.DB.prepare('SELECT * FROM personal_gifts WHERE id=?').bind(key).first<Gift>();if(!g)throw new AdminError(404,'NOT_FOUND','Gift not found.');return g;}
+async function movements(env:Env,key:string){return (await env.DB.prepare('SELECT * FROM personal_gift_movements WHERE gift_id=? ORDER BY created_at,id').bind(key).all<Movement>()).results;}
+function guard(env:Env,g:Gift,revision:unknown){if(revision!==g.revision)throw new AdminError(409,'STALE_GIFT','The gift changed. Refresh and review it again.');return env.DB.prepare('INSERT INTO personal_gift_guards(value) SELECT 0 WHERE NOT EXISTS(SELECT 1 FROM personal_gifts WHERE id=? AND revision=? AND voided=0 AND payload_json IS NULL)').bind(g.id,g.revision);}
+async function change(env:Env,statements:D1PreparedStatement[]){try{await env.DB.batch(statements);}catch{throw new AdminError(409,'GIFT_CHANGED','The gift changed, was already sent, or the amount exceeds the remaining funds. Refresh and review.');}}
+async function contacts(request:Request,env:Env,query:string){if(!sharedEnabled(env))throw new AdminError(503,'SHARED_ACCOUNT_REQUIRED','Sign in with a shared account that can access Hope Sojourns contacts.');const r=await identityRequest(new Request(request.url,{headers:request.headers}),env,'/personal-gift-contacts?'+query);const b=await r.json() as {contacts:Contact[];error?:string};if(!r.ok)throw new AdminError(r.status,'CONTACT_ACCESS',b.error||'Hope Sojourns contacts are unavailable.');return b.contacts;}
+export async function createPersonalGift(request:Request,env:Env,actor:string){
+ const b=await readAdminJson(request),key=id(b.id),donorId=id(b.donorId);const method=line(b.method);if(!methods.includes(method))throw new AdminError(422,'INVALID_METHOD','Choose Personal Venmo, Zelle, or PayPal.');
+ if(b.ministryGiftConfirmed!==true)throw new AdminError(422,'INTENT_REQUIRED','Confirm this payment was intended as a ministry gift.');
+ const data={id:key,donorId,receivedBy:line(b.receivedBy),method,giftDate:date(b.giftDate),amountCents:cents(b.amountCents),reference:line(b.reference||'',160,false),designation:line(b.designation||'Hope Sojourns',200),note:line(String(b.note||'').replace(/\r?\n/g,' '),2000,false)};
+ const original=await env.DB.prepare('SELECT request_json FROM personal_gifts WHERE id=?').bind(key).first<{request_json:string}>();
+ if(original){if(original.request_json!==JSON.stringify(data))throw new AdminError(409,'RETRY_CHANGED','This save reference was already used for different information.');return adminJson({id:key,duplicate:true});}
+ const donor=(await contacts(request,env,'id='+encodeURIComponent(donorId)))[0];if(!donor)throw new AdminError(422,'DONOR_REQUIRED','Select an existing Hope Sojourns contact.');
+ try{await env.DB.batch([env.DB.prepare('INSERT INTO personal_gifts(id,donor_id,donor_json,received_by,method,gift_date,amount_cents,reference,designation,note,request_json,created_at,actor) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)').bind(key,donorId,JSON.stringify(donor),data.receivedBy,method,data.giftDate,data.amountCents,data.reference||'Evidence:'+key,data.designation,data.note,JSON.stringify(data),new Date().toISOString(),actor),history(env,key,'created',actor,{...data,donor})]);}catch{const same=await env.DB.prepare('SELECT request_json FROM personal_gifts WHERE id=?').bind(key).first<{request_json:string}>();if(same?.request_json===JSON.stringify(data))return adminJson({id:key,duplicate:true});throw new AdminError(409,'DUPLICATE_REFERENCE','That payment reference is already recorded for this method and holder. Check the existing gift.');}
+ return adminJson({id:key},201);
+}
+export async function addPersonalMovement(request:Request,env:Env,key:string,actor:string){
+ const g=await gift(env,key),b=await readAdminJson(request),movementId=id(b.id);if(!['transfer','expense','fee'].includes(String(b.kind)))throw new AdminError(422,'INVALID_KIND','Choose bank transfer, expense, or fee.');
+ const data={id:movementId,kind:String(b.kind),date:date(b.date),amountCents:cents(b.amountCents),reference:line(b.reference),description:line(b.description,500),clearedDate:b.kind==='transfer'?date(b.clearedDate):null};
+ if(data.date<g.gift_date||data.clearedDate&&data.clearedDate<data.date)throw new AdminError(422,'INVALID_DATE','Settlement dates cannot precede the original gift or transfer.');
+ const prior=await env.DB.prepare('SELECT gift_id,request_json FROM personal_gift_movements WHERE id=?').bind(movementId).first<Movement>();if(prior){if(prior.gift_id!==key||prior.request_json!==JSON.stringify(data))throw new AdminError(409,'RETRY_CHANGED','This movement reference was already used.');return adminJson({success:true,duplicate:true});}
+ if((await movements(env,key)).filter(m=>!m.reversed).length>=100)throw new AdminError(422,'MOVEMENT_LIMIT','A gift supports up to 100 active settlements.');
+ await change(env,[guard(env,g,b.revision),env.DB.prepare('INSERT INTO personal_gift_movements(id,gift_id,kind,movement_date,amount_cents,reference,description,cleared_date,request_json,created_at,actor) VALUES(?,?,?,?,?,?,?,?,?,?,?)').bind(movementId,key,data.kind,data.date,data.amountCents,data.reference,data.description,data.clearedDate,JSON.stringify(data),new Date().toISOString(),actor),env.DB.prepare('UPDATE personal_gifts SET revision=revision+1 WHERE id=?').bind(key),history(env,key,'settlement_recorded',actor,data)]);return adminJson({success:true});
+}
+export async function sendPersonalGift(request:Request,env:Env,key:string,actor:string){
+ let g=await gift(env,key);const b=await readAdminJson(request);
+ // Recheck access to the chosen contact on every send or status refresh.
+ const donor=(await contacts(request,env,'id='+encodeURIComponent(g.donor_id)))[0];if(!donor)throw new AdminError(409,'DONOR_MISSING','The original donor contact is unavailable.');
+ if(!g.payload_json){
+  const list=(await movements(env,key)).filter(m=>!m.reversed);
+  if(list.reduce((n,m)=>n+m.amount_cents,0)!==g.amount_cents)throw new AdminError(422,'UNSETTLED_GIFT','Reconcile all funds with cleared bank transfers, fees, and approved expenses before sending.');
+  const proof=await env.DB.prepare('SELECT COUNT(*) AS n FROM personal_gift_files WHERE gift_id=?').bind(key).first<{n:number}>();
+  if(g.reference.startsWith('Evidence:')&&!proof?.n)throw new AdminError(422,'EVIDENCE_REQUIRED','Upload the original payment screenshot or void and re-enter with its transaction ID.');
+  if(list.some(m=>m.kind==='expense'||m.kind==='fee')&&!proof?.n)throw new AdminError(422,'EVIDENCE_REQUIRED','Attach the supporting fee or expense evidence before sending.');
+  const fees=list.filter(m=>m.kind==='fee').reduce((n,m)=>n+m.amount_cents,0);if(fees>=g.amount_cents)throw new AdminError(422,'INVALID_FEES','Fees must be less than the gift.');
+  const name=donor.first_name+' '+donor.last_name;
+  const message=parseDistributionMessage({schemaVersion:1,messageId:key,idempotencyKey:'HopeSojourns:personal:'+key,sourceRevision:1,sentAt:new Date().toISOString(),destination:'HopeSojourns',product:'HopeSojourns',displayName:name,masterDonorId:'hs-contact:'+donor.id,party:{role:'donor',displayName:name,email:donor.email,phone:donor.phone,address:null},transaction:{sourceRecordId:'personal:'+key,paypalTransactionId:key,paypalReferenceId:g.reference,eventCode:'PERSONAL_GIFT',eventDate:g.gift_date+'T12:00:00.000Z',status:'Completed',direction:'received',currency:'USD',gross:g.amount_cents/100,fee:-fees/100,net:(g.amount_cents-fees)/100,itemName:'Christian Steps Ministries — Hope Sojourns; '+g.designation+'; held by '+g.received_by+'; CSM gift '+key,itemId:null},personalGift:{contactId:donor.id,receivedBy:g.received_by,method:g.method,reference:g.reference,designation:g.designation,movements:list.map(m=>({id:m.id,kind:m.kind,date:m.movement_date,amountCents:m.amount_cents,reference:m.reference,description:m.description,clearedDate:m.cleared_date}))}});
+  await change(env,[guard(env,g,b.revision),env.DB.prepare("UPDATE personal_gifts SET payload_json=?,delivery_status='queued',revision=revision+1 WHERE id=?").bind(JSON.stringify(message),key),history(env,key,'ready_for_hs',actor,{revision:g.revision})]);g=await gift(env,key);
+ }
+ if(!env.CSM_DISTRIBUTION_SECRET||!env.HOPE_ADMIN)throw new AdminError(503,'HS_UNAVAILABLE','The Hope Sojourns connection is not configured.');
+ try{
+  const r=await env.HOPE_ADMIN.fetch('https://csm.internal/internal/csm-distribution',{method:'POST',signal:AbortSignal.timeout(15000),headers:{'Content-Type':'application/json','X-CSM-Distribution-Secret':env.CSM_DISTRIBUTION_SECRET},body:g.payload_json});
+  const result=await r.json() as {status?:string;error?:string};if(!r.ok||!['pending','needs_match','approved','denied','failed'].includes(result.status||''))throw new Error('Delivery unavailable');
+  await env.DB.batch([env.DB.prepare("UPDATE personal_gifts SET delivery_status=? WHERE id=? AND delivery_status NOT IN ('approved','denied')").bind(result.status!,key),history(env,key,'hs_status',actor,result)]);return adminJson(result);
+ }catch{await env.DB.batch([env.DB.prepare("UPDATE personal_gifts SET delivery_status='failed' WHERE id=? AND delivery_status NOT IN ('approved','denied')").bind(key),history(env,key,'delivery_retry_needed',actor,{})]);throw new AdminError(503,'RETRY_DELIVERY','The HS status could not be confirmed. Retry safely using the same gift.');}
+}
+async function evidence(request:Request,env:Env,g:Gift,actor:string,fileId?:string){
+ if(request.method==='GET'&&fileId){const f=await env.DB.prepare('SELECT * FROM personal_gift_files WHERE id=? AND gift_id=?').bind(fileId,g.id).first<{object_key:string;media_type:string;file_name:string}>();if(!f)throw new AdminError(404,'NOT_FOUND','Evidence not found.');const object=await env.LEDGER_ATTACHMENTS.get(f.object_key);if(!object)throw new AdminError(404,'NOT_FOUND','Evidence not found.');return new Response(object.body,{headers:{'Content-Type':f.media_type,'Content-Disposition':"attachment; filename*=UTF-8''"+encodeURIComponent(f.file_name),'Cache-Control':'no-store, private','X-Content-Type-Options':'nosniff'}});}
+ if(g.voided||g.payload_json)throw new AdminError(409,'GIFT_LOCKED','Evidence is locked after sending or voiding.');
+ const reader=request.body?.getReader();if(!reader)throw new AdminError(422,'EMPTY_FILE','Choose a file.');const chunks:Uint8Array[]=[];let size=0;for(;;){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>5*1024*1024){await reader.cancel();throw new AdminError(413,'FILE_TOO_LARGE','Use a file smaller than 5 MB.');}chunks.push(value);}const bytes=new Uint8Array(size);let offset=0;for(const c of chunks){bytes.set(c,offset);offset+=c.length;}
+ const type=bytes[0]===255&&bytes[1]===216?'image/jpeg':bytes[0]===137&&bytes[1]===80&&bytes[2]===78&&bytes[3]===71?'image/png':new TextDecoder().decode(bytes.slice(0,5))==='%PDF-'?'application/pdf':null;
+ if(!type)throw new AdminError(422,'FILE_TYPE','Use a PNG or JPEG screenshot or PDF.');
+ const count=await env.DB.prepare('SELECT count(*) AS n FROM personal_gift_files WHERE gift_id=?').bind(g.id).first<{n:number}>();if((count?.n||0)>=20)throw new AdminError(422,'FILE_LIMIT','A gift supports up to 20 evidence files.');
+ const key=crypto.randomUUID(),objectKey='personal-gifts/'+g.id+'/'+key,name=line(decodeURIComponent(request.headers.get('x-file-name')||'evidence'),160);
+ await env.LEDGER_ATTACHMENTS.put(objectKey,bytes,{httpMetadata:{contentType:type}});
+ try{await change(env,[guard(env,g,g.revision),env.DB.prepare('INSERT INTO personal_gift_files(id,gift_id,object_key,file_name,media_type,size_bytes,created_at,actor) VALUES(?,?,?,?,?,?,?,?)').bind(key,g.id,objectKey,name,type,size,new Date().toISOString(),actor),env.DB.prepare('UPDATE personal_gifts SET revision=revision+1 WHERE id=?').bind(g.id),history(env,g.id,'evidence_added',actor,{id:key,name,size})]);}catch(e){await env.LEDGER_ATTACHMENTS.delete(objectKey);throw e;}return adminJson({id:key},201);
+}
+export async function personalGiftStatements(env:Env,year:string){
+ const rows=await env.DB.prepare("SELECT * FROM personal_gifts WHERE delivery_status='approved' AND voided=0 AND gift_date LIKE ? ORDER BY gift_date,id LIMIT 10001").bind(year+'%').all<Gift>();if(rows.results.length>10000)throw new AdminError(422,'REPORT_TOO_LARGE','Narrow the giving report.');
+ return rows.results.map(g=>{const d=JSON.parse(g.donor_json) as Contact;return {id:'personal:'+g.id,donorKey:'hs:'+g.donor_id,transactionDate:g.gift_date+'T12:00:00Z',counterpartyName:d.first_name+' '+d.last_name,displayName:d.first_name+' '+d.last_name,counterpartyEmail:d.email,product:'HopeSojourns',gross:g.amount_cents/100,fee:0,net:g.amount_cents/100,paymentMethod:g.method,note:'Christian Steps Ministries — Hope Sojourns; '+g.designation};});
+}
+export async function personalGiftRoute(request:Request,env:Env,path:string,actor:string):Promise<Response>{
+ const url=new URL(request.url);
+ if(path==='/personal-gifts/contacts'&&request.method==='GET')return adminJson({contacts:await contacts(request,env,url.searchParams.toString())});
+ if(path==='/personal-gifts'&&request.method==='POST')return createPersonalGift(request,env,actor);
+ if(path==='/personal-gifts'&&request.method==='GET'){const gifts=await env.DB.prepare('SELECT * FROM personal_gifts ORDER BY created_at DESC LIMIT 1001').all<Gift>();if(gifts.results.length>1000)throw new AdminError(422,'REPORT_TOO_LARGE','The personal-gift report requires pagination before further use.');const result=[];for(const g of gifts.results){const m=await movements(env,g.id),active=m.filter(x=>!x.reversed),sum=(kind:string)=>active.filter(x=>x.kind===kind).reduce((n,x)=>n+x.amount_cents,0);result.push({...g,payload_json:undefined,request_json:undefined,donor:JSON.parse(g.donor_json),movements:m,transferredCents:sum('transfer'),expenseCents:sum('expense'),feeCents:sum('fee'),remainingCents:g.amount_cents-active.reduce((n,x)=>n+x.amount_cents,0),files:(await env.DB.prepare('SELECT id,file_name FROM personal_gift_files WHERE gift_id=? ORDER BY created_at').bind(g.id).all()).results,history:(await env.DB.prepare('SELECT action,actor,created_at,details_json FROM personal_gift_history WHERE gift_id=? ORDER BY created_at DESC').bind(g.id).all()).results,locked:!!g.payload_json});}return adminJson({gifts:result});}
+ const match=path.match(/^\/personal-gifts\/([a-f0-9-]{36})\/(movements|send|void|reverse|files)(?:\/([a-f0-9-]{36}))?$/i);if(!match)throw new AdminError(404,'NOT_FOUND','Not found.');const key=match[1]!;
+ if(match[2]==='movements'&&request.method==='POST')return addPersonalMovement(request,env,key,actor);
+ if(match[2]==='send'&&request.method==='POST')return sendPersonalGift(request,env,key,actor);
+ const g=await gift(env,key);
+ if(match[2]==='files'&&['GET','POST'].includes(request.method))return evidence(request,env,g,actor,match[3]);
+ if(request.method==='POST'&&['void','reverse'].includes(match[2]!)){
+  const b=await readAdminJson(request),reason=line(b.reason,500);
+  if(match[2]==='void'){if(g.voided)return adminJson({success:true,duplicate:true});if((await movements(env,key)).some(m=>!m.reversed))throw new AdminError(409,'HAS_SETTLEMENTS','Reverse incorrect settlements before voiding.');await change(env,[guard(env,g,b.revision),env.DB.prepare('UPDATE personal_gifts SET voided=1,revision=revision+1 WHERE id=?').bind(key),history(env,key,'voided',actor,{reason})]);}
+  else{const move=(await movements(env,key)).find(m=>m.id===b.movementId);if(!move)throw new AdminError(404,'NOT_FOUND','Movement not found.');if(move.reversed)return adminJson({success:true,duplicate:true});await change(env,[guard(env,g,b.revision),env.DB.prepare('UPDATE personal_gift_movements SET reversed=1 WHERE id=?').bind(move.id),env.DB.prepare('UPDATE personal_gifts SET revision=revision+1 WHERE id=?').bind(key),history(env,key,'settlement_reversed',actor,{movementId:move.id,reason})]);}return adminJson({success:true});
+ }
+ throw new AdminError(405,'METHOD_NOT_ALLOWED','Unsupported action.');
+}

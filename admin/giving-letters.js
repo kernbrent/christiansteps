@@ -165,7 +165,7 @@
     }
     properties.append(tabs);
     Array.from(row.childNodes).filter(node => node !== properties).forEach(node => node.remove());
-    const values = [date, `$${amountText(gift.gross)}`, PRODUCTS[gift.product] || gift.product || "Ministry", "PayPal"];
+    const values = [date, `$${amountText(gift.gross)}`, gift.paymentMethod ? "Christian Steps Ministries — Hope Sojourns" : PRODUCTS[gift.product] || gift.product || "Ministry", gift.paymentMethod || "PayPal"];
     values.forEach((value, index) => {
       const run = documentXml.createElementNS(WORD_NAMESPACE, "w:r");
       const text = documentXml.createElementNS(WORD_NAMESPACE, "w:t");

@@ -1,0 +1,18 @@
+.panel { padding: 24px; margin-bottom: 20px; min-width: 0; overflow-wrap: anywhere; }
+.panel .panel { padding: 18px; margin-top: 16px; box-shadow: none; }
+.stack-form { gap: 18px; }
+.stack-form label { display: grid; gap: 6px; min-width: 0; }
+.checkbox-row input { flex-shrink: 0; }
+button { min-height: 44px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--green-950); }
+button:hover { border-color: var(--green-700); }
+summary { cursor: pointer; line-height: 1.6; }
+.header-actions { flex-wrap: wrap; gap: 12px; }
+input,select,textarea { min-width: 0; max-width: 100%; }
+[data-action] { margin: 12px 8px 8px 0; }
+@media (max-width: 600px) {
+ .portal-header { position: static; align-items: flex-start; gap: 16px; }
+ .header-actions { font-size: .85rem; }
+ .panel { padding: 16px; }
+ .panel .panel { padding: 12px; }
+ .filter-bar { padding: 0; }
+}

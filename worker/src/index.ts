@@ -1,3 +1,4 @@
+import {personalGiftRoute} from './personal-gifts';
 import {sharedRoutes,sharedEnabled,recordSharedActivity} from './shared-identity';
 import {
   AdminError,
@@ -66,6 +67,11 @@ async function requireMutation(request: Request, env: Env): Promise<void> {
 
 async function route(request: Request, env: Env, path: string, url: URL): Promise<Response> {
   const shared=await sharedRoutes(request,env,path);if(shared)return shared;
+  if(path==='/personal-gifts'||path.startsWith('/personal-gifts/')){
+    if(request.method!=='GET')requireAllowedOrigin(request,env);
+    const session=await authenticate(request,env,request.method!=='GET');
+    return personalGiftRoute(request,env,path,session.user_id||session.id);
+  }
   if (request.method === "POST" && path === "/login") return login(request, env);
   if (request.method === "GET" && path === "/session") return sessionInfo(request, env);
 
