@@ -1,3 +1,4 @@
+import {listTransactions,exportTransactions} from '../src/transactions';
 import {DatabaseSync} from 'node:sqlite';
 import {readFileSync,readdirSync} from 'node:fs';
 import {afterEach,expect,it,vi} from 'vitest';
@@ -21,3 +22,34 @@ it('voids unused errors and reverses settlement errors with durable audit histor
 it('requires original screenshot when there is no transaction reference and rejects unsupported files',async()=>{const f=setup();await createPersonalGift(req({...f.body,reference:''}),f.env,'x');await addPersonalMovement(req(transfer()),f.env,f.key,'x');await expect(sendPersonalGift(req({revision:2}),f.env,f.key,'x')).rejects.toMatchObject({code:'EVIDENCE_REQUIRED'});await expect(personalGiftRoute(new Request('https://example.test/files',{method:'POST',body:'not an image'}),f.env,'/personal-gifts/'+f.key+'/files','x')).rejects.toMatchObject({status:422});});
 
 it('stores private evidence and reconciles fees and expenses before delivery',async()=>{const f=setup();await createPersonalGift(req({...f.body,reference:''}),f.env,'x');const path='/personal-gifts/'+f.key;const response=await personalGiftRoute(new Request('https://example.test/files',{method:'POST',headers:{'x-file-name':'proof.pdf'},body:'%PDF-1.7 sample test evidence'}),f.env,path+'/files','x');expect(response.status).toBe(201);const file=await response.json() as any;const download=await personalGiftRoute(new Request('https://example.test/files'),f.env,path+'/files/'+file.id,'x');expect(download.headers.get('Cache-Control')).toContain('private');expect(await download.text()).toContain('%PDF-');await addPersonalMovement(req({...transfer(2,500),kind:'fee'}),f.env,f.key,'x');await addPersonalMovement(req({...transfer(3,2000),kind:'expense'}),f.env,f.key,'x');await addPersonalMovement(req(transfer(4,22500)),f.env,f.key,'x');await sendPersonalGift(req({revision:5}),f.env,f.key,'x');const sent=JSON.parse(String(vi.mocked(f.env.HOPE_ADMIN.fetch).mock.calls[0]![1]!.body));expect(sent.transaction).toMatchObject({gross:250,fee:-5,net:245});expect(sent.personalGift.movements).toHaveLength(3);});
+
+it('lists personal gifts with PayPal payments, filters and paginates them, without duplicating income',async()=>{
+ const f=setup();f.body.giftDate=String(new Date().getUTCFullYear())+'-09-23';await createPersonalGift(req(f.body),f.env,'reviewer');
+ const insert=f.db.prepare("INSERT INTO paypal_transactions(id,transaction_id,event_code,transaction_date,type,status,direction,currency,gross,fee,net,product_detected,raw_json,first_seen_at,last_seen_at) VALUES(?,?,'T0006',?,'Payment','Completed','received','USD',5,0,5,'HopeSojourns','{}','2026','2026')");
+ for(let i=0;i<101;i++)insert.run('paypal-'+i,'reference-'+i,f.body.giftDate+'T10:00:00.000Z');
+ const list=async(query='')=>await (await listTransactions(f.env,new URL('https://example.test/transactions'+query))).json() as any;
+ const first=await list();expect(first.pagination).toMatchObject({total:102,pages:2});expect(first.transactions).toHaveLength(100);
+ expect(first.transactions[0]).toMatchObject({id:'personal:'+f.key,personalGiftId:f.key,source:'personal',gross:250,remainingCents:25000,personalDeliveryStatus:'not_sent',displayName:'Original Donor'});
+ expect(first.summary.total).toBe(755);expect(first.summary.donationCount).toBe(102);
+ expect((await list('?page=2')).transactions).toHaveLength(2);
+ expect((await list('?activity=personal')).pagination.total).toBe(1);
+ expect((await list('?activity=bank_transfers')).pagination.total).toBe(0);
+ expect((await list('?product=JoshBeyondBorders')).pagination.total).toBe(0);
+ expect((await list('?direction=sent')).pagination.total).toBe(0);
+ expect((await list('?search=donor%40example.test')).pagination.total).toBe(1);
+ expect((await list('?year=2020')).pagination.total).toBe(0);
+ const exported=await (await exportTransactions(f.env)).json() as any;expect(exported.transactions).toHaveLength(102);
+ expect(f.db.prepare('SELECT count(*) n FROM paypal_transactions').get()?.n).toBe(101);
+ await expect(sendPersonalGift(req({revision:1}),f.env,f.key,'reviewer')).rejects.toMatchObject({code:'UNSETTLED_GIFT'});
+ await addPersonalMovement(req({...transfer(),date:f.body.giftDate,clearedDate:f.body.giftDate}),f.env,f.key,'reviewer');
+ expect((await list('?activity=personal')).transactions[0].remainingCents).toBe(0);
+ await sendPersonalGift(req({revision:2}),f.env,f.key,'reviewer');await sendPersonalGift(req({revision:2}),f.env,f.key,'reviewer');
+ expect((await list('?activity=personal')).transactions[0]).toMatchObject({personalDeliveryStatus:'pending',personalLocked:1});
+ expect((await list()).summary.total).toBe(755);expect(f.db.prepare('SELECT count(*) n FROM personal_gifts').get()?.n).toBe(1);
+});
+it('keeps voided personal gifts visible for audit while excluding them from giving totals',async()=>{
+ const f=setup();f.body.giftDate=String(new Date().getUTCFullYear())+'-09-23';await createPersonalGift(req(f.body),f.env,'reviewer');
+ await personalGiftRoute(req({revision:1,reason:'Incorrect test entry'}),f.env,'/personal-gifts/'+f.key+'/void','reviewer');
+ const result=await (await listTransactions(f.env,new URL('https://example.test/transactions'))).json() as any;
+ expect(result.transactions[0].status).toBe('Voided');expect(result.summary.total).toBe(0);
+});

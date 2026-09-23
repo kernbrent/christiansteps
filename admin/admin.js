@@ -89,6 +89,7 @@
 
   function showPortal(session) {
     if(session.user){window.dispatchEvent(new CustomEvent("shared-session",{detail:session}));if(session.user.must_change_password||(!session.user.is_admin&&!["read","edit"].includes(session.user.permissions.giving))){location.replace("/admin/account/");return;}}
+    state.givingReadOnly = !!session.user && !session.user.is_admin && session.user.permissions?.giving !== "edit";
     state.csrfToken = session.csrfToken;
     byId("login-view").hidden = true;
     byId("portal-view").hidden = false;
@@ -188,6 +189,7 @@
   }
 
   function isDistributionEligible(transaction) {
+    if(transaction.source === "personal") return false;
     const paymentEvent = /^T00\d{2}$/.test(transaction.eventCode || "");
     const hopeBankWithdrawal = transaction.product === "HopeSojourns" && BANK_WITHDRAWAL_EVENT_CODES.has(transaction.eventCode);
     return ["HopeSojourns", "JoshBeyondBorders"].includes(transaction.product)
@@ -232,7 +234,7 @@
       checkbox.disabled = !isDistributionEligible(transaction);
       checkbox.checked = state.selectedTransactions.has(transaction.id);
       checkbox.setAttribute("aria-label", `Select ${transaction.displayName || transaction.transactionId} for distribution`);
-      checkbox.title = checkbox.disabled ? "Only completed payments assigned to Hope Sojourns or Josh Beyond Borders, plus Hope Sojourns bank withdrawals, can be sent. Holds and releases are excluded." : "Send this transaction to the recipient approval queue.";
+      checkbox.title = transaction.source === "personal" ? "Use this gift’s Send to Hope Sojourns button after recording its settlement." : checkbox.disabled ? "Only completed payments assigned to Hope Sojourns or Josh Beyond Borders, plus Hope Sojourns bank withdrawals, can be sent. Holds and releases are excluded." : "Send this transaction to the recipient approval queue.";
       checkbox.addEventListener("change", () => {
         if (checkbox.checked) state.selectedTransactions.add(transaction.id);
         else state.selectedTransactions.delete(transaction.id);
@@ -245,6 +247,7 @@
       direction.className = `direction-pill ${isHold ? "direction-held" : isHoldRelease ? "direction-released" : isBankWithdrawal || isBankDeposit ? "direction-bank" : `direction-${transaction.direction}`}`;
       direction.textContent = isHold ? "Held" : isHoldRelease ? "Released" : isBankWithdrawal ? "To bank" : isBankDeposit ? "From bank" : transaction.direction === "received" ? "Received" : "Sent";
       directionCell.append(direction);
+      if(transaction.source === 'personal') {const method=document.createElement('small');method.textContent=transaction.type;directionCell.append(document.createElement('br'),method);}
       const nameCell = row.insertCell();
       const person = document.createElement("span");
       person.className = "person-cell";
@@ -256,7 +259,10 @@
         : transaction.counterpartyEmail || transaction.transactionId;
       person.append(name, email);
       nameCell.append(person);
-      row.insertCell().append(productSelect(transaction));
+      if(transaction.source === 'personal') {const link=document.createElement('a');link.className='quiet-button';link.href='/admin/personal-gifts/?gift='+encodeURIComponent(transaction.personalGiftId);link.textContent='Gift details / record transfer';nameCell.append(link);}
+      const productCell = row.insertCell();
+      if(transaction.source === 'personal') productCell.textContent = 'Hope Sojourns';
+      else productCell.append(productSelect(transaction));
       const itemCell = row.insertCell();
       const item = document.createElement("span");
       item.className = "item-cell";
@@ -269,15 +275,29 @@
       const statusCell = row.insertCell();
       const status = document.createElement("span");
       status.className = `status-pill ${transaction.status === "Completed" ? "status-completed" : "status-other"}`;
-      status.textContent = transaction.status;
+      status.textContent = transaction.source === 'personal' && transaction.status !== 'Voided'
+        ? transaction.personalLocked ? 'Sent for review' : Number(transaction.remainingCents)===0 ? 'Ready for review' : 'Awaiting settlement'
+        : transaction.status;
       statusCell.append(status);
       const deliveryCell = row.insertCell();
       const delivery = document.createElement("span");
-      const deliveryStatus = transaction.distributionStatus || "not_sent";
+      const deliveryStatus = transaction.personalDeliveryStatus || transaction.distributionStatus || "not_sent";
       delivery.className = `status-pill delivery-${deliveryStatus}`;
       delivery.textContent = deliveryStatus === "not_sent" ? "Not sent" : deliveryStatus.replaceAll("_", " ");
       if (transaction.distributionDestination) delivery.title = `${PRODUCT_LABELS[transaction.distributionDestination] || transaction.distributionDestination}${transaction.distributionError ? `: ${transaction.distributionError}` : ""}`;
       deliveryCell.append(delivery);
+      if(transaction.source === 'personal' && transaction.status !== 'Voided' && !['approved','denied'].includes(deliveryStatus)) {
+        const send=document.createElement('button');send.type='button';send.className='secondary-button';
+        send.textContent=transaction.personalLocked?'Refresh HS status / retry':'Send to Hope Sojourns';
+        send.disabled=state.givingReadOnly||(!transaction.personalLocked && Number(transaction.remainingCents)!==0);
+        send.title=send.disabled?'Record the cleared bank transfer, fees, or approved expenses in Gift details first.':'Send the gift record for HS review; this does not move money.';
+        send.addEventListener('click',async()=>{
+          if(!global.confirm('Send this original donor’s gift record to Hope Sojourns for review? This does not move money.'))return;
+          setBusy(true,'Sending gift for review…');
+          try {await api('/personal-gifts/'+transaction.personalGiftId+'/send',{method:'POST',body:{revision:transaction.personalRevision}});await loadTransactions();toast('Hope Sojourns status updated.');}
+          catch(error){toast(error.message,10000);}finally{setBusy(false);}
+        });deliveryCell.append(document.createElement('br'),send);
+      }
       for (const field of ["gross", "fee", "net"]) {
         const cell = row.insertCell();
         cell.className = "number-cell";
@@ -410,12 +430,12 @@
       summary.getCell("B6").numFmt = "m/d/yyyy h:mm AM/PM";
       styleWorksheet(summary, 5);
 
-      const transactions = workbook.addWorksheet("PayPal Transactions");
+      const transactions = workbook.addWorksheet("Giving activity");
       const columns = [
         ["Date", "transactionDate", 22], ["Direction", "direction", 12], ["Status", "status", 15], ["Product", "product", 22],
         ["Auto-detected product", "productDetected", 22], ["Product override", "productOverride", 20], ["Name", "counterpartyName", 25],
         ["Email", "counterpartyEmail", 30], ["Related payment name", "relatedCounterpartyName", 25], ["Related payment email", "relatedCounterpartyEmail", 30], ["Phone", "counterpartyPhone", 18], ["Gross", "gross", 14], ["Fee", "fee", 14], ["Net", "net", 14],
-        ["Currency", "currency", 10], ["PayPal item title", "itemTitle", 34], ["PayPal item ID", "itemId", 22], ["Type", "type", 22],
+        ["Source", "source", 14], ["Currency", "currency", 10], ["Designation / item", "itemTitle", 34], ["Item ID", "itemId", 22], ["Type", "type", 22],
         ["Transaction ID", "transactionId", 24], ["Event code", "eventCode", 14], ["Reference transaction ID", "referenceTransactionId", 26],
         ["Invoice", "invoiceNumber", 18], ["Custom field", "customNumber", 22], ["Subject", "subject", 30], ["Note", "note", 40],
         ["Shipping name", "shippingName", 25], ["Address 1", "addressLine1", 28], ["Address 2", "addressLine2", 22], ["City", "city", 20],
@@ -432,12 +452,12 @@
       const link = document.createElement("a");
       link.href = URL.createObjectURL(new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
       const generatedStamp = new Date(result.generatedAt || Date.now()).toISOString().replace(/[:.]/g, "-");
-      link.download = `Christian-Steps-PayPal-Transactions-${generatedStamp}.xlsx`;
+      link.download = `Christian-Steps-Giving-Activity-${generatedStamp}.xlsx`;
       document.body.append(link);
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(link.href), 1_000);
-      toast("A fresh PayPal workbook was downloaded.");
+      toast("A fresh giving activity workbook was downloaded.");
     } catch (error) {
       toast(error.message);
     } finally {
@@ -574,6 +594,7 @@
       if (!event.target.closest(".action-group")) closeActionMenu();
     });
     byId("filter-form").addEventListener("submit", event => { event.preventDefault(); state.page = 1; loadTransactions(); });
+    byId("refresh-activity-button").addEventListener("click",()=>loadTransactions());
     byId("clear-filters-button").addEventListener("click", () => { byId("filter-form").reset(); state.page = 1; loadTransactions(); });
     byId("previous-page-button").addEventListener("click", () => { if (state.page > 1) { state.page -= 1; loadTransactions(); } });
     byId("next-page-button").addEventListener("click", () => { if (state.page < state.pages) { state.page += 1; loadTransactions(); } });

@@ -17,3 +17,11 @@ Operational guide: personally-received-gifts-process.md and /admin/personal-gift
 Validation covers selected donor vs holder, HS access restrictions, duplicate saves, movement retries, partial transfers, allocation limits, shared deposit references, delivery retries, final callbacks, source locking, evidence requirements, void/reverse history, original-donor statements, JBB rejection, atomic HS income/expense approval, and duplicate approval.
 
 The Transactions screen places Personally received gifts beside Pull recent PayPal activity. Shared navigation avoids duplicate links and uses matching button styles with responsive wrapping.
+
+## Giving activity integration prepared September 23, 2026
+
+Local update pending release: the main Giving activity screen combines PayPal activity and personally received gifts, newest first, with shared pagination, search, filters, totals, and workbook export. Personal gifts remain in their own CSM records; no PayPal transaction or duplicate general-ledger income is created. Totals include non-voided recorded gifts, including those awaiting bank settlement; donor statements continue to require HS approval.
+
+After Save original gift, find the gift in Giving activity or in the detailed Gift reconciliation list. Choose Gift details / record transfer to document the cleared CSM bank transfer, fees, or approved expenses and attach evidence. When fully reconciled, use the row's Send to Hope Sojourns button from Giving activity. Existing authorization, evidence, revision, and retry checks apply. PayPal bulk sending remains separate. This button sends information for HS inbox review, not money. Read-only users cannot send. Voided records remain visible for audit but are excluded from giving totals.
+
+Use Refresh activity to reload the list without pulling PayPal. Personal-gift GET requests now carry a unique refresh parameter and no-cache headers, matching the main portal's protection against stale intermediary responses. Saving reports that the gift is saved in CSM and scrolls to the gift list; it does not imply delivery to HS.

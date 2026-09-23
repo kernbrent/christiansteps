@@ -118,6 +118,25 @@ const TRANSACTION_SELECT = `
     WHERE delivery.source_record_id = paypal_transactions.id
     ORDER BY delivery.source_revision DESC LIMIT 1) AS distributionUpdatedAt`;
 
+// Read-only projection: personal gifts keep their own records and delivery workflow.
+const PERSONAL_FEE = "COALESCE((SELECT SUM(amount_cents) FROM personal_gift_movements WHERE gift_id=g.id AND reversed=0 AND kind='fee'),0)";
+const PERSONAL_REMAINING = "g.amount_cents-COALESCE((SELECT SUM(amount_cents) FROM personal_gift_movements WHERE gift_id=g.id AND reversed=0),0)";
+const PERSONAL_COLUMNS: Record<string,string> = {
+ id:"'personal:'||g.id", transaction_id:'g.reference', event_code:"'PERSONAL_GIFT'",
+ transaction_date:"g.gift_date||'T12:00:00.000Z'", updated_date:'g.created_at', type:'g.method',
+ status:"CASE WHEN g.voided=1 THEN 'Voided' ELSE 'Completed' END",direction:"'received'",currency:"'USD'",
+ gross:'g.amount_cents/100.0',fee:`-${PERSONAL_FEE}/100.0`,net:`(g.amount_cents-${PERSONAL_FEE})/100.0`,
+ counterparty_name:"json_extract(g.donor_json,'$.first_name')||' '||json_extract(g.donor_json,'$.last_name')",
+ counterparty_email:"json_extract(g.donor_json,'$.email')",counterparty_phone:"json_extract(g.donor_json,'$.phone')",
+ item_title:'g.designation',product_detected:"'HopeSojourns'",note:'g.note',first_seen_at:'g.created_at',last_seen_at:'g.created_at'
+};
+const GIVING_SOURCE = `WITH giving_source AS (
+ SELECT ${TRANSACTION_COLUMNS.join(',')}, 'paypal' AS source, NULL AS personalGiftId, NULL AS personalRevision, NULL AS remainingCents, NULL AS personalDeliveryStatus, NULL AS personalLocked FROM paypal_transactions
+ UNION ALL
+ SELECT ${TRANSACTION_COLUMNS.map(c=>PERSONAL_COLUMNS[c]||'NULL').join(',')}, 'personal',g.id,g.revision,${PERSONAL_REMAINING},g.delivery_status,g.payload_json IS NOT NULL FROM personal_gifts g
+)`;
+const GIVING_SELECT = `${TRANSACTION_SELECT}, source, personalGiftId, personalRevision, remainingCents, personalDeliveryStatus, personalLocked`;
+
 type TransactionFilters = {
   activity: string;
   product: string;
@@ -184,7 +203,7 @@ export function filtersFromUrl(url: URL): TransactionFilters {
   if (direction && direction !== "received" && direction !== "sent") {
     throw new AdminError(400, "INVALID_FILTER", "Choose a valid received or sent filter.");
   }
-  if (activity !== "payments" && activity !== "bank_transfers" && activity !== "holds" && activity !== "all") {
+  if (activity !== "payments" && activity !== "bank_transfers" && activity !== "holds" && activity !== "personal" && activity !== "all") {
     throw new AdminError(400, "INVALID_FILTER", "Choose payments, bank transfers, PayPal holds, or all activity.");
   }
   if (year && !/^20\d{2}$/.test(year)) throw new AdminError(400, "INVALID_FILTER", "Choose a valid year filter.");
@@ -205,8 +224,9 @@ function escapeLike(value: string): string {
 export function filterSql(filters: TransactionFilters): { sql: string; bindings: unknown[] } {
   const where: string[] = [];
   const bindings: unknown[] = [];
-  if (filters.activity === "payments") where.push("event_code LIKE 'T00%'");
+  if (filters.activity === "payments") where.push("(event_code LIKE 'T00%' OR event_code = 'PERSONAL_GIFT')");
   if (filters.activity === "bank_transfers") where.push("event_code IN ('T0300', 'T0400', 'T0401', 'T0403')");
+  if (filters.activity === "personal") where.push("event_code = 'PERSONAL_GIFT'");
   if (filters.activity === "holds") where.push("event_code IN ('T2101', 'T2102')");
   if (filters.product) {
     where.push(`${EFFECTIVE_PRODUCT} = ?`);
@@ -334,7 +354,7 @@ export function buildSummary(year: number, rows: SummaryRow[]): Record<string, u
   let donationCount = 0;
   for (const row of rows) {
     const gross = Number(row.gross ?? 0);
-    if (!Number.isFinite(gross) || !/^T00\d{2}$/.test(row.eventCode ?? "")) continue;
+    if (!Number.isFinite(gross) || !(/^T00\d{2}$/.test(row.eventCode ?? "") || row.eventCode === "PERSONAL_GIFT")) continue;
     const isSummaryProduct = SUMMARY_PRODUCTS.includes(row.product as SummaryProduct);
     const product = row.product as SummaryProduct;
     if (row.direction === "received" && gross > 0 && isSummaryProduct) {
@@ -378,12 +398,12 @@ export function buildSummary(year: number, rows: SummaryRow[]): Record<string, u
 async function summary(env: Env): Promise<Record<string, unknown>> {
   const year = currentYear(env);
   const totals = await env.DB.prepare(
-    `SELECT direction,
+    `${GIVING_SOURCE} SELECT direction,
        ${EFFECTIVE_PRODUCT} AS product,
        event_code AS eventCode,
        gross,
        LOWER(TRIM(COALESCE(NULLIF(counterparty_email, ''), NULLIF(counterparty_name, ''), transaction_id))) AS giverKey
-     FROM paypal_transactions
+     FROM giving_source
      WHERE status = 'Completed'
        AND currency = 'USD'
        AND ((direction = 'received' AND gross > 0) OR (direction = 'sent' AND gross < 0))
@@ -394,7 +414,7 @@ async function summary(env: Env): Promise<Record<string, unknown>> {
 
 async function years(env: Env): Promise<number[]> {
   const result = await env.DB.prepare(
-    "SELECT DISTINCT substr(transaction_date, 1, 4) AS year FROM paypal_transactions ORDER BY year DESC",
+    `${GIVING_SOURCE} SELECT DISTINCT substr(transaction_date, 1, 4) AS year FROM giving_source ORDER BY year DESC`,
   ).all<{ year: string }>();
   return result.results.map(row => Number(row.year)).filter(Number.isInteger);
 }
@@ -418,14 +438,14 @@ export async function listTransactions(env: Env, url: URL): Promise<Response> {
   const filtered = filterSql(filters);
   const offset = (filters.page - 1) * PAGE_SIZE;
   const listStatement = env.DB.prepare(
-    `SELECT ${TRANSACTION_SELECT}
-     FROM paypal_transactions
+    `${GIVING_SOURCE} SELECT ${GIVING_SELECT}
+     FROM giving_source AS paypal_transactions
      ${filtered.sql}
      ORDER BY transaction_date DESC, id DESC
      LIMIT ? OFFSET ?`,
   ).bind(...filtered.bindings, PAGE_SIZE, offset);
   const countStatement = env.DB.prepare(
-    `SELECT COUNT(*) AS count FROM paypal_transactions ${filtered.sql}`,
+    `${GIVING_SOURCE} SELECT COUNT(*) AS count FROM giving_source AS paypal_transactions ${filtered.sql}`,
   ).bind(...filtered.bindings);
   const [listResult, countResult, totals, availableYears, state] = await Promise.all([
     listStatement.all<Record<string, unknown>>(),
@@ -451,12 +471,12 @@ export async function listTransactions(env: Env, url: URL): Promise<Response> {
 
 export async function exportTransactions(env: Env): Promise<Response> {
   const result = await env.DB.prepare(
-    `SELECT ${TRANSACTION_SELECT}
-     FROM paypal_transactions
+    `${GIVING_SOURCE} SELECT ${GIVING_SELECT}
+     FROM giving_source AS paypal_transactions
      ORDER BY transaction_date DESC, id DESC
      LIMIT ?1`,
   ).bind(EXPORT_LIMIT).all<Record<string, unknown>>();
-  const count = await env.DB.prepare("SELECT COUNT(*) AS count FROM paypal_transactions").first<{ count: number }>();
+  const count = await env.DB.prepare(`${GIVING_SOURCE} SELECT COUNT(*) AS count FROM giving_source`).first<{ count: number }>();
   if (Number(count?.count ?? 0) > EXPORT_LIMIT) {
     throw new AdminError(413, "EXPORT_TOO_LARGE", "The transaction workbook is too large to create in one download.");
   }
