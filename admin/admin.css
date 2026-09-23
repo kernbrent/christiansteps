@@ -66,7 +66,7 @@ input:focus, select:focus, textarea:focus, button:focus-visible { outline: 3px s
 .brand span { display: grid; line-height: 1.05; }
 .brand strong { color: var(--green-950); }
 .brand small { margin-top: 5px; color: var(--muted); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
-.header-actions { display: flex; gap: 5px; }
+.header-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 5px; }
 .main-content { width: min(1500px,calc(100% - 36px)); margin: 0 auto; padding: 40px 0 64px; }
 .page-heading, .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .page-heading { margin-bottom: 34px; }
@@ -166,7 +166,7 @@ dialog::backdrop { background: rgba(7,29,23,.58); backdrop-filter: blur(3px); }
   .section-heading { align-items: flex-start; flex-direction: column; }
   .distribution-actions { width: 100%; justify-content: space-between; }
   .action-group { justify-content: flex-start; width: 100%; }
-  .action-group > button { flex: 1; }
+  .action-group > button, .action-group > a { flex: 1 1 160px; }
   .action-menu { left: 0; right: auto; width: min(310px,100%); }
   .summary-grid { grid-template-columns: 1fr; }
   .summary-card { min-height: 108px; }
@@ -182,3 +182,7 @@ dialog::backdrop { background: rgba(7,29,23,.58); backdrop-filter: blur(3px); }
   .dialog-actions > span { margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+
+.action-group > a.secondary-button { display: inline-flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; }
+.portal-header > .brand { flex-shrink: 0; }
+.portal-header { gap: 16px; }

@@ -9,7 +9,7 @@
   <title>Christian Steps Admin Portal</title>
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=20260831.1">
   <link rel="apple-touch-icon" href="favicon.png?v=20260831.1">
-  <link rel="stylesheet" href="admin.css?v=20260917.1">
+  <link rel="stylesheet" href="admin.css?v=20260923.2">
 <script src="/admin/shared-navigation.js" defer></script></head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -34,7 +34,7 @@
         </label>
         <button class="primary-button full-button" type="submit">Sign in</button>
         <p id="login-message" class="form-message" role="alert" aria-live="polite"></p>
-      </form><p><a href="/admin/access/#request">Request access</a> � <a href="/admin/access/#forgot">Forgot password</a></p>
+      </form><p><a href="/admin/access/#request">Request access</a> &middot; <a href="/admin/access/#forgot">Forgot password</a></p>
     </div>
   </section>
 
@@ -45,7 +45,7 @@
         <span><strong>Christian Steps</strong><small>Admin Portal</small></span>
       </a>
       <nav class="header-actions" aria-label="Admin actions">
-        <a class="quiet-button" href="ledger/">Ledger</a><a class="quiet-button" href="personal-gifts/">Personally received gifts</a>
+        <a class="quiet-button" href="ledger/">Ledger</a>
         <button id="change-password-button" class="quiet-button" type="button">Change password</button>
         <button id="sign-out-button" class="quiet-button" type="button">Sign out</button>
       </nav>
@@ -60,6 +60,7 @@
         </div>
         <div class="action-group">
           <button id="sync-button" class="primary-button" type="button">Pull recent PayPal activity</button>
+          <a id="personal-gifts-button" class="secondary-button" href="/admin/personal-gifts/">Personally received gifts</a>
           <button id="more-actions-button" class="secondary-button" type="button" aria-expanded="false" aria-controls="more-actions-menu">More actions</button>
           <div id="more-actions-menu" class="action-menu" hidden>
             <button id="full-sync-button" type="button">Refresh full available history</button>

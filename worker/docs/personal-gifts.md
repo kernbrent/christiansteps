@@ -15,3 +15,5 @@ The dedicated reconciliation and CSV report include original donor, holder, orig
 Operational guide: personally-received-gifts-process.md and /admin/personal-gifts/process.html. Before send, corrections use audited reversals and voids. Sent records remain locked for coordinated review; this version does not automatically reverse an already approved HS gift.
 
 Validation covers selected donor vs holder, HS access restrictions, duplicate saves, movement retries, partial transfers, allocation limits, shared deposit references, delivery retries, final callbacks, source locking, evidence requirements, void/reverse history, original-donor statements, JBB rejection, atomic HS income/expense approval, and duplicate approval.
+
+The Transactions screen places Personally received gifts beside Pull recent PayPal activity. Shared navigation avoids duplicate links and uses matching button styles with responsive wrapping.
