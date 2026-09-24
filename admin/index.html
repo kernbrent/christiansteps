@@ -9,7 +9,7 @@
   <title>Christian Steps Admin Portal</title>
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=20260831.1">
   <link rel="apple-touch-icon" href="favicon.png?v=20260831.1">
-  <link rel="stylesheet" href="admin.css?v=20260923.2">
+  <link rel="stylesheet" href="admin.css?v=20260923.6">
 <script src="/admin/shared-navigation.js" defer></script></head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -100,7 +100,7 @@
           <button class="secondary-button filter-button" type="submit">Apply filters</button>
           <button id="clear-filters-button" class="text-button filter-button" type="button">Clear</button>
         </form>
-        <div class="table-wrap">
+        <div id="giving-table-scroll" class="table-wrap">
           <table class="data-table">
             <thead><tr><th scope="col"><input id="select-all-distributions" class="row-checkbox" type="checkbox" aria-label="Select all eligible transactions on this page"></th><th scope="col">Date</th><th scope="col">Activity</th><th scope="col">Display Name</th><th scope="col">Product</th><th scope="col">Designation / item</th><th scope="col">Payment / settlement status</th><th scope="col">Recipient status</th><th scope="col" class="number-cell">Gross</th><th scope="col" class="number-cell">Fee</th><th scope="col" class="number-cell">Net</th></tr></thead>
             <tbody id="transaction-body"></tbody>
@@ -111,6 +111,8 @@
       </section>
     </main>
   </div>
+
+  <div id="giving-floating-scroll" class="giving-floating-scroll" role="region" aria-label="Scroll giving activity horizontally" aria-controls="giving-table-scroll" tabindex="0" hidden><div aria-hidden="true"></div></div>
 
   <dialog closedby="closerequest" id="letters-dialog" class="wide-dialog">
     <form method="dialog" class="dialog-close-form"><button class="icon-button" aria-label="Close giving letters">×</button></form>
@@ -189,5 +191,6 @@
   <script src="email-tools.js?v=20260831.1" defer></script>
   <script src="giving-letters.js?v=20260831.1" defer></script>
   <script src="admin.js?v=20260923.5" defer></script>
+  <script src="giving-scroll.js?v=20260923.6" defer></script>
 </body>
 </html>
