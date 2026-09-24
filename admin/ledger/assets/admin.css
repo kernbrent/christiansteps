@@ -772,6 +772,17 @@ a { color: var(--blue); }
   border-top: 1px solid var(--line);
 }
 
+.dialog-form-error {
+  margin: 1rem 1.35rem 0;
+  padding: .85rem;
+  color: var(--red);
+  background: var(--red-soft);
+  border: 1px solid #dfb5ae;
+  border-radius: .65rem;
+  font-size: .82rem;
+  font-weight: 600;
+}
+
 .duplicate-warning {
   display: grid;
   gap: .2rem;

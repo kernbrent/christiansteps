@@ -8,6 +8,7 @@ const adminScript = readFileSync(resolve(testDirectory, "../../admin/admin.js"),
 const adminPage = readFileSync(resolve(testDirectory, "../../admin/index.html"), "utf8");
 const ledgerPage = readFileSync(resolve(testDirectory, "../../admin/ledger/index.html"), "utf8");
 const ledgerScript = readFileSync(resolve(testDirectory, "../../admin/ledger/assets/app.js"), "utf8");
+const ledgerStyles = readFileSync(resolve(testDirectory, "../../admin/ledger/assets/admin.css"), "utf8");
 
 describe("Admin Portal refresh contract", () => {
   it("reloads the transaction view after synchronization and accepts both count contracts", () => {
@@ -47,5 +48,17 @@ describe("Admin Portal refresh contract", () => {
     expect(ledgerPage).toContain('href="../"');
     expect(ledgerScript).toContain("PayPal remains the source of truth");
     expect(ledgerScript).toContain("Due to JBB");
+  });
+
+  it("recovers a stale security token and keeps dialog errors readable", () => {
+    expect(ledgerScript).toContain('error.code === "CSRF_REJECTED"');
+    expect(ledgerScript).toContain('apiRequest("/session", { retryCsrf: false })');
+    expect(ledgerScript).toContain('target.className = "form-message dialog-form-error"');
+    expect(ledgerStyles).toContain(".dialog-form-error");
+  });
+
+  it("versions both ledger assets after interface changes", () => {
+    expect(ledgerPage).toMatch(/admin\.css\?v=\d{8}\.\d+/);
+    expect(ledgerPage).toMatch(/app\.js\?v=\d{8}\.\d+/);
   });
 });

@@ -66,4 +66,12 @@ describe("isolated ledger schema", () => {
     expect(invoiceSource).toContain("payload.program, payload.total_amount");
     expect(invoiceSource).toContain("amount, program, payment_status");
   });
+
+  it("adds Scholarship as an active expense category without duplicating an existing category", () => {
+    const migration = readFileSync(resolve(process.cwd(), "ledger-migrations/0008_scholarship_category.sql"), "utf8");
+    expect(migration).toContain("INSERT OR IGNORE INTO categories");
+    expect(migration).toContain("'Scholarship'");
+    expect(migration).toContain("'Scholarships and grants'");
+    expect(migration).toContain("SET is_active = 1");
+  });
 });

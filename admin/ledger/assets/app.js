@@ -42,6 +42,7 @@
     ["Professional Services", "Legal and professional services", "#0d4b73"],
     ["Marketing & Advertising", "Advertising", "#a04444"],
     ["Other Business Expense", "Other business expenses", "#667783"],
+    ["Scholarship", "Scholarships and grants", "#26735b"],
   ];
   const PAYMENT_METHODS = [
     "ACH / bank transfer",
@@ -222,7 +223,18 @@
   }
 
   function showFormError(form, message = "") {
-    const target = form ? $("[data-form-error]", form) : null;
+    if (!form) return false;
+    let target = $("[data-form-error]", form);
+    if (!target && form.closest("dialog")) {
+      target = document.createElement("p");
+      target.className = "form-message dialog-form-error";
+      target.dataset.formError = "";
+      target.setAttribute("role", "alert");
+      target.hidden = true;
+      const footer = $(".form-footer", form);
+      if (footer) footer.before(target);
+      else form.append(target);
+    }
     if (!target) return false;
     target.textContent = message;
     target.hidden = !message;
@@ -297,7 +309,7 @@
     ];
   }
 
-  async function apiRequest(path, { method = "GET", body, headers = {} } = {}) {
+  async function apiRequest(path, { method = "GET", body, headers = {}, retryCsrf = true } = {}) {
     const requestHeaders = new Headers(headers);
     requestHeaders.set("Accept", "application/json");
     const options = { method, credentials: "include", headers: requestHeaders };
@@ -327,6 +339,12 @@
         state.session = null;
         state.csrfToken = null;
         showOnly("auth-view");
+      }
+      if (error.code === "CSRF_REJECTED" && retryCsrf && path !== "/session" && !["GET", "HEAD", "OPTIONS"].includes(method)) {
+        const session = await apiRequest("/session", { retryCsrf: false });
+        state.session = session;
+        state.csrfToken = session.csrfToken;
+        return apiRequest(path, { method, body, headers, retryCsrf: false });
       }
       throw error;
     }
@@ -2839,8 +2857,7 @@
     } catch (error) {
       console.error(error);
       const message = friendlyError(error, "The record could not be saved.");
-      showFormError(form, message);
-      toast(message, "error");
+      if (!showFormError(form, message)) toast(message, "error");
       setBusy(form, false);
     }
   }
@@ -2926,8 +2943,7 @@
         } catch (error) {
           console.error(error);
           const message = friendlyError(error);
-          showFormError(actionButton.closest("form"), message);
-          toast(message, "error");
+          if (!showFormError(actionButton.closest("form"), message)) toast(message, "error");
         }
       }
     });
