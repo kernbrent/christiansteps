@@ -4,14 +4,14 @@ export function sharedEnabled(env:Env){return (env as IdentityEnv).SHARED_SIGNIN
 export async function identityRequest(request:Request,env:Env,path:string,body?:unknown):Promise<Response>{
  const binding=(env as IdentityEnv).IDENTITY;if(!binding)throw new AdminError(503,'IDENTITY_UNAVAILABLE','Shared account service is unavailable.');
  const headers=new Headers(request.headers);
- headers.delete('host');headers.delete('authorization');
+ headers.delete('host');headers.delete('authorization');headers.delete('content-length');headers.delete('transfer-encoding');headers.delete('x-file-name');
  const cookies=(headers.get('cookie')||'').split(';').map(x=>x.trim());
  headers.set('cookie',cookies.filter(x=>x.startsWith('cs_admin_session=')||x.startsWith('mmt_switch=')).map(x=>x.replace(/^cs_admin_session=/,'hs_admin_session=')).join('; '));
  // Forward only the platform-provided client address for authority rate limits.
  headers.set('cf-connecting-ip',request.headers.get('cf-connecting-ip')||'unknown');
  const init:RequestInit={method:body===undefined?request.method:'POST',headers};
  if(body!==undefined){headers.set('content-type','application/json');init.body=JSON.stringify(body);}
- else if(!['GET','HEAD'].includes(request.method))init.body=JSON.stringify(await readAdminJson(request));
+ else if(!['GET','HEAD'].includes(request.method)){headers.set('content-type','application/json');init.body=JSON.stringify(await readAdminJson(request));}
  let response:Response;
  try{response=await binding.fetch(new Request('https://identity.internal'+path,init));}
  catch{throw new AdminError(503,'IDENTITY_UNAVAILABLE','Shared account service is unavailable. Try again shortly.');}
