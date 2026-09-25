@@ -63,6 +63,18 @@ describe("Admin Portal refresh contract", () => {
     expect(ledgerStyles).toContain(".dialog-form-error");
   });
 
+  it("accepts non-invoice income using the amount received", () => {
+    const incomeFormSource = ledgerScript.match(/function incomeForm[\s\S]*?function tripWeekDates/)?.[0] || "";
+    const saveIncomeSource = ledgerScript.match(/async function saveIncome[\s\S]*?function showMileageDuplicateWarning/)?.[0] || "";
+    expect(incomeFormSource).toContain('invoice_date: ""');
+    expect(incomeFormSource).toContain("Invoice amount (only if invoiced)");
+    expect(incomeFormSource).not.toMatch(/name="amount"[^>]*required/);
+    expect(saveIncomeSource).toContain("const recordAmount = invoiceAmount > 0 ? invoiceAmount : initialPayment");
+    expect(saveIncomeSource).toContain("Enter an invoice amount when invoice details are provided.");
+    expect(saveIncomeSource).toContain("Enter either an invoice amount or an amount received.");
+    expect(saveIncomeSource).toContain("amount: recordAmount");
+  });
+
   it("versions both ledger assets after interface changes", () => {
     expect(ledgerPage).toMatch(/admin\.css\?v=\d{8}\.\d+/);
     expect(ledgerPage).toMatch(/app\.js\?v=\d{8}\.\d+/);

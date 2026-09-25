@@ -1546,7 +1546,7 @@
       );
       section(
         "Detailed income ledger",
-        ["Income date", "Payer", "Client", "Invoice", "Invoice amount", "Received in period", "Outstanding", "Status"],
+        ["Income date", "Payer", "Client", "Invoice", "Income / invoice amount", "Received in period", "Outstanding", "Status"],
         incomeRows.map((row) => [row["Income Date"], row.Payer, row.Client, row["Invoice Number"], money(row["Invoice Amount"]), money(row["Amount Received in Period"]), money(row.Outstanding), row["Payment Status"]])
       );
       section(
@@ -1779,7 +1779,7 @@
       project_id: "",
       payer_name: "",
       invoice_number: "",
-      invoice_date: today(),
+      invoice_date: "",
       due_date: "",
       amount: "",
       program: "HopeSojourns",
@@ -1794,10 +1794,10 @@
     };
     dialogFrame(
       item ? "Edit income record" : "Add income or invoice",
-      "Record the invoice and any payment received now. Additional partial payments can be added later.",
+      "Record income received, or add invoice details when the income is tied to an invoice.",
       `<form class="record-form" data-form="income" data-id="${item?.id || ""}">
         <div class="form-section">
-          <h3>Client & invoice</h3>
+          <h3>Income source & optional invoice</h3>
           <div class="form-grid">
             <label class="field">Income date<input name="income_date" type="date" required value="${escapeHtml(record.income_date)}"></label>
             <label class="field">Client<select name="client_id">${optionList(state.clients.filter((clientItem) => clientItem.is_active), record.client_id, "No client")}</select></label>
@@ -1806,7 +1806,7 @@
             <label class="field">Invoice number<input name="invoice_number" value="${escapeHtml(record.invoice_number || "")}"></label>
             <label class="field">Invoice date<input name="invoice_date" type="date" value="${escapeHtml(record.invoice_date || "")}"></label>
             <label class="field">Due date<input name="due_date" type="date" value="${escapeHtml(record.due_date || "")}"></label>
-            <label class="field">Invoice amount<input name="amount" type="number" min="0.01" step="0.01" required value="${escapeHtml(record.amount)}"></label>
+            <label class="field">Invoice amount (only if invoiced)<input name="amount" type="number" min="0.01" step="0.01" aria-describedby="income-amount-help" value="${escapeHtml(record.amount)}"><small id="income-amount-help">For a refund or other non-invoice income, leave this blank; the amount received below will be used.</small></label>
             <label class="field field-wide">Description<input name="description" value="${escapeHtml(record.description || "")}" placeholder="Services or engagement covered"></label>
           </div>
         </div>
@@ -1846,6 +1846,18 @@
       </form>`,
       "dialog-wide"
     );
+    syncIncomeAmountRequirement($("form[data-form='income']", $("#record-dialog")));
+  }
+
+  function incomeHasInvoiceDetails(form) {
+    return ["invoice_number", "invoice_date", "due_date"].some((name) => clean(form.elements[name]?.value));
+  }
+
+  function syncIncomeAmountRequirement(form) {
+    if (!form) return;
+    const amount = form.elements.amount;
+    amount.required = Boolean(form.dataset.id) || incomeHasInvoiceDetails(form);
+    amount.setAttribute("aria-required", String(amount.required));
   }
 
   function tripWeekDates(value) {
@@ -2338,21 +2350,32 @@
     const initialPayment = id ? 0 : num(data.get("initial_payment_amount"));
     const receivedToDate = id ? amountPaid(id) : initialPayment;
     const invoiceAmount = num(data.get("amount"));
+    const invoiceNumber = clean(data.get("invoice_number"));
+    const invoiceDate = clean(data.get("invoice_date"));
+    const dueDate = clean(data.get("due_date"));
+    const hasInvoiceDetails = Boolean(invoiceNumber || invoiceDate || dueDate);
+    if (hasInvoiceDetails && invoiceAmount <= 0) {
+      throw new Error("Enter an invoice amount when invoice details are provided.");
+    }
+    const recordAmount = invoiceAmount > 0 ? invoiceAmount : initialPayment;
+    if (recordAmount <= 0) {
+      throw new Error("Enter either an invoice amount or an amount received.");
+    }
     const payload = {
       income_date: data.get("income_date"),
       client_id: selectedProject?.client_id || clean(data.get("client_id")),
       project_id: selectedProjectId,
       payer_name: String(data.get("payer_name")).trim(),
-      invoice_number: clean(data.get("invoice_number")),
-      invoice_date: clean(data.get("invoice_date")),
-      due_date: clean(data.get("due_date")),
-      amount: invoiceAmount,
+      invoice_number: invoiceNumber,
+      invoice_date: invoiceDate,
+      due_date: dueDate,
+      amount: recordAmount,
       program: String(data.get("program") || "HopeSojourns"),
       payment_status: existing?.payment_status === "void"
         ? "void"
         : receivedToDate <= 0
           ? "unpaid"
-          : receivedToDate < invoiceAmount
+          : receivedToDate < recordAmount
             ? "partial"
             : "paid",
       description: clean(data.get("description")),
@@ -2962,6 +2985,9 @@
       }
       invoicePortal?.handleInput(event);
       const form = event.target.closest("[data-form]");
+      if (form?.dataset.form === "income" && event.target.matches("[name='invoice_number'], [name='invoice_date'], [name='due_date']")) {
+        syncIncomeAmountRequirement(form);
+      }
       if (form && form.dataset.saveDuplicate) {
         delete form.dataset.saveDuplicate;
         const warning = $("[data-duplicate-warning]", form);
