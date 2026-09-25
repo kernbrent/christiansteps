@@ -9,6 +9,12 @@ const adminPage = readFileSync(resolve(testDirectory, "../../admin/index.html"),
 const ledgerPage = readFileSync(resolve(testDirectory, "../../admin/ledger/index.html"), "utf8");
 const ledgerScript = readFileSync(resolve(testDirectory, "../../admin/ledger/assets/app.js"), "utf8");
 const ledgerStyles = readFileSync(resolve(testDirectory, "../../admin/ledger/assets/admin.css"), "utf8");
+const personalGiftsPage = readFileSync(resolve(testDirectory, "../../admin/personal-gifts/index.html"), "utf8");
+const personalGiftProcessPage = readFileSync(resolve(testDirectory, "../../admin/personal-gifts/process.html"), "utf8");
+const accountPage = readFileSync(resolve(testDirectory, "../../admin/account/index.html"), "utf8");
+const accessPage = readFileSync(resolve(testDirectory, "../../admin/access/index.html"), "utf8");
+const portalNavigationStyles = readFileSync(resolve(testDirectory, "../../admin/portal-navigation.css"), "utf8");
+const sharedNavigationScript = readFileSync(resolve(testDirectory, "../../admin/shared-navigation.js"), "utf8");
 
 describe("Admin Portal refresh contract", () => {
   it("reloads the transaction view after synchronization and accepts both count contracts", () => {
@@ -43,7 +49,7 @@ describe("Admin Portal refresh contract", () => {
   });
 
   it("links the giving portal to the isolated ministry ledger", () => {
-    expect(adminPage).toContain('href="ledger/"');
+    expect(adminPage).toContain('href="/admin/ledger/"');
     expect(ledgerPage).toContain('data-route="paypal"');
     expect(ledgerPage).toContain('href="../"');
     expect(ledgerScript).toContain("PayPal remains the source of truth");
@@ -60,5 +66,17 @@ describe("Admin Portal refresh contract", () => {
   it("versions both ledger assets after interface changes", () => {
     expect(ledgerPage).toMatch(/admin\.css\?v=\d{8}\.\d+/);
     expect(ledgerPage).toMatch(/app\.js\?v=\d{8}\.\d+/);
+  });
+
+  it("provides left-side navigation throughout the CSM portal", () => {
+    expect(adminPage).toContain('class="portal csm-portal-shell"');
+    expect(adminPage).toContain('class="csm-portal-sidebar"');
+    expect(personalGiftsPage).toContain('class="csm-portal-sidebar"');
+    expect(personalGiftProcessPage).toContain('class="csm-portal-sidebar"');
+    expect(ledgerPage).toContain('class="sidebar" id="sidebar"');
+    expect(accountPage).toContain('class="finance-sidebar"');
+    expect(accessPage).toContain('class="finance-sidebar"');
+    expect(portalNavigationStyles).toContain("grid-template-columns: 16.5rem minmax(0, 1fr)");
+    expect(sharedNavigationScript).toContain('icon.className = "csm-nav-mark"');
   });
 });

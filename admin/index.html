@@ -10,7 +10,9 @@
   <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=20260831.1">
   <link rel="apple-touch-icon" href="favicon.png?v=20260831.1">
   <link rel="stylesheet" href="admin.css?v=20260923.6">
-<script src="/admin/shared-navigation.js" defer></script></head>
+  <link rel="stylesheet" href="portal-navigation.css?v=20260924.1">
+  <script src="/admin/shared-navigation.js?v=20260924.1" defer></script>
+</head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
@@ -38,20 +40,27 @@
     </div>
   </section>
 
-  <div id="portal-view" class="portal" hidden>
-    <header class="portal-header">
-      <a class="brand" href="../" aria-label="Christian Steps home">
+  <div id="portal-view" class="portal csm-portal-shell" hidden>
+    <aside class="csm-portal-sidebar" aria-label="Christian Steps administration">
+      <a class="csm-portal-brand" href="/admin/" aria-label="Christian Steps admin portal">
         <img src="logo.png" alt="">
         <span><strong>Christian Steps</strong><small>Admin Portal</small></span>
       </a>
-      <nav class="header-actions" aria-label="Admin actions">
-        <a class="quiet-button" href="ledger/">Ledger</a>
-        <button id="change-password-button" class="quiet-button" type="button">Change password</button>
-        <button id="sign-out-button" class="quiet-button" type="button">Sign out</button>
+      <p class="csm-nav-label">Ministry management</p>
+      <nav class="header-actions csm-portal-nav" aria-label="Admin navigation">
+        <a href="/admin/" aria-current="page"><span class="csm-nav-mark">G</span>Giving activity</a>
+        <a href="/admin/personal-gifts/"><span class="csm-nav-mark">P</span>Personally received gifts</a>
+        <a href="/admin/ledger/"><span class="csm-nav-mark">L</span>Ledger</a>
+        <a href="/admin/personal-gifts/process.html"><span class="csm-nav-mark">H</span>Gift instructions</a>
       </nav>
-    </header>
+      <div class="csm-portal-sidebar-footer">
+        <button id="change-password-button" type="button">Change password</button>
+        <button id="sign-out-button" type="button">Sign out</button>
+      </div>
+    </aside>
 
-    <main id="main-content" class="main-content">
+    <div class="csm-portal-workspace">
+      <main id="main-content" class="main-content">
       <section class="page-heading">
         <div>
           <p class="eyebrow">Ministry giving records</p>
@@ -109,7 +118,8 @@
         </div>
         <div class="pagination"><button id="previous-page-button" class="secondary-button" type="button">Previous</button><span id="page-status">Page 1 of 1</span><button id="next-page-button" class="secondary-button" type="button">Next</button></div>
       </section>
-    </main>
+      </main>
+    </div>
   </div>
 
   <div id="giving-floating-scroll" class="giving-floating-scroll" role="region" aria-label="Scroll giving activity horizontally" aria-controls="giving-table-scroll" tabindex="0" hidden><div aria-hidden="true"></div></div>

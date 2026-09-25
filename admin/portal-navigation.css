@@ -1,0 +1,228 @@
+.csm-portal-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 16.5rem minmax(0, 1fr);
+}
+
+.csm-portal-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.25rem 1rem;
+  color: rgba(255, 255, 255, .82);
+  background: #0b2720;
+}
+
+.csm-portal-brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 0 .5rem .7rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.csm-portal-brand img {
+  width: 3.1rem;
+  height: 3.1rem;
+  object-fit: contain;
+  padding: .25rem;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.csm-portal-brand span {
+  display: grid;
+  line-height: 1.2;
+}
+
+.csm-portal-brand strong {
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: .98rem;
+}
+
+.csm-portal-brand small {
+  margin-top: .25rem;
+  color: rgba(255, 255, 255, .62);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.csm-portal-sidebar .csm-nav-label {
+  margin: 0 .65rem;
+  color: #f3c780;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.csm-portal-nav,
+.csm-portal-nav.header-actions {
+  display: grid;
+  align-items: stretch;
+  justify-content: stretch;
+  gap: .22rem;
+}
+
+.csm-portal-nav a,
+.csm-portal-nav .quiet-button {
+  min-height: 2.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .8rem;
+  padding: .55rem .65rem;
+  color: rgba(255, 255, 255, .76);
+  border: 0;
+  border-radius: .7rem;
+  background: transparent;
+  font-size: .9rem;
+  font-weight: 650;
+  text-align: left;
+  text-decoration: none;
+}
+
+.csm-portal-nav a:hover,
+.csm-portal-nav a:focus-visible,
+.csm-portal-nav a[aria-current="page"] {
+  color: #fff;
+  background: rgba(255, 255, 255, .11);
+}
+
+.csm-nav-mark {
+  width: 1.55rem;
+  height: 1.55rem;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  color: #c5dfd5;
+  border: 1px solid rgba(255, 255, 255, .2);
+  border-radius: .42rem;
+  font-size: .67rem;
+  font-weight: 800;
+}
+
+.csm-portal-nav a[aria-current="page"] .csm-nav-mark {
+  color: #0b2720;
+  background: #d8ebe4;
+  border-color: #d8ebe4;
+}
+
+.csm-portal-sidebar-footer {
+  display: grid;
+  gap: .35rem;
+  margin-top: auto;
+  padding: 1rem .65rem 0;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+}
+
+.csm-portal-sidebar-footer button,
+.csm-portal-sidebar-footer a {
+  min-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: .45rem 0;
+  color: rgba(255, 255, 255, .72);
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 650;
+  text-decoration: underline;
+}
+
+.csm-portal-workspace {
+  min-width: 0;
+}
+
+.csm-process-content {
+  max-width: 74rem;
+}
+
+.csm-process-content h1 {
+  margin-bottom: 1.5rem;
+}
+
+.csm-process-content h2 {
+  margin: 2.25rem 0 .75rem;
+  color: #123f33;
+}
+
+.csm-process-content li,
+.csm-process-content p {
+  line-height: 1.7;
+}
+
+@media (max-width: 760px) {
+  .csm-portal-shell {
+    display: block;
+  }
+
+  .csm-portal-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    gap: .65rem;
+    padding: .8rem;
+  }
+
+  .csm-portal-brand {
+    margin: 0;
+  }
+
+  .csm-portal-brand img {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .csm-portal-sidebar .csm-nav-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .csm-portal-nav,
+  .csm-portal-nav.header-actions {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: .2rem;
+  }
+
+  .csm-portal-nav a,
+  .csm-portal-nav .quiet-button {
+    min-height: 2.5rem;
+    flex: 0 0 auto;
+    padding: .45rem .6rem;
+    white-space: nowrap;
+  }
+
+  .csm-nav-mark {
+    display: none;
+  }
+
+  .csm-portal-sidebar-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding: .25rem 0 0;
+  }
+
+  .csm-portal-sidebar-footer button,
+  .csm-portal-sidebar-footer a {
+    min-height: auto;
+    padding: .2rem;
+  }
+}
