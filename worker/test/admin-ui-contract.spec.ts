@@ -75,6 +75,17 @@ describe("Admin Portal refresh contract", () => {
     expect(saveIncomeSource).toContain("amount: recordAmount");
   });
 
+  it("finishes a confirmed save before refreshing ledger totals", () => {
+    const saveRowSource = ledgerScript.match(/async function saveRow[\s\S]*?async function deleteRow/)?.[0] || "";
+    const refreshSource = ledgerScript.match(/function refreshAfterSave[\s\S]*?async function saveExpense/)?.[0] || "";
+    expect(saveRowSource).toContain("const collection = state[table]");
+    expect(saveRowSource).toContain("else collection.push(record)");
+    expect(refreshSource.indexOf('$("#record-dialog").close()')).toBeLessThan(refreshSource.indexOf("void loadData()"));
+    expect(refreshSource).toContain("Saved successfully. Reload the page if the latest totals are not visible.");
+    expect(ledgerScript).toContain("const controller = new AbortController()");
+    expect(ledgerScript).toContain("Reload the ledger before trying again so you do not create a duplicate.");
+  });
+
   it("versions both ledger assets after interface changes", () => {
     expect(ledgerPage).toMatch(/admin\.css\?v=\d{8}\.\d+/);
     expect(ledgerPage).toMatch(/app\.js\?v=\d{8}\.\d+/);

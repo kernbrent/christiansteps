@@ -309,7 +309,7 @@
     ];
   }
 
-  async function apiRequest(path, { method = "GET", body, headers = {}, retryCsrf = true } = {}) {
+  async function apiRequest(path, { method = "GET", body, headers = {}, retryCsrf = true, timeoutMs = 30000 } = {}) {
     const requestHeaders = new Headers(headers);
     requestHeaders.set("Accept", "application/json");
     const options = { method, credentials: "include", headers: requestHeaders };
@@ -324,7 +324,22 @@
     if (!["GET", "HEAD", "OPTIONS"].includes(method) && state.csrfToken) {
       requestHeaders.set("X-CSRF-Token", state.csrfToken);
     }
-    const response = await fetch(`${API_BASE}${path}`, options);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    options.signal = controller.signal;
+    let response;
+    try {
+      response = await fetch(`${API_BASE}${path}`, options);
+    } catch (error) {
+      if (error?.name === "AbortError") {
+        const timeoutError = new Error("The server response took too long. Reload the ledger before trying again so you do not create a duplicate.");
+        timeoutError.code = "REQUEST_TIMEOUT";
+        throw timeoutError;
+      }
+      throw error;
+    } finally {
+      clearTimeout(timeout);
+    }
     const contentType = response.headers.get("content-type") || "";
     const payload = contentType.includes("application/json")
       ? await response.json()
@@ -344,7 +359,7 @@
         const session = await apiRequest("/session", { retryCsrf: false });
         state.session = session;
         state.csrfToken = session.csrfToken;
-        return apiRequest(path, { method, body, headers, retryCsrf: false });
+        return apiRequest(path, { method, body, headers, retryCsrf: false, timeoutMs });
       }
       throw error;
     }
@@ -381,7 +396,14 @@
       id ? `/records/${table}/${encodeURIComponent(id)}` : `/records/${table}`,
       { method: id ? "PATCH" : "POST", body: payload }
     );
-    return result.record;
+    const record = result.record;
+    const collection = state[table];
+    if (record && Array.isArray(collection)) {
+      const index = collection.findIndex((item) => item.id === record.id);
+      if (index >= 0) collection[index] = record;
+      else collection.push(record);
+    }
+    return record;
   }
 
   async function deleteRow(table, id) {
@@ -2295,14 +2317,28 @@
       );
     }
   }
-  async function refreshAfterSave(message) {
-    if (!state.demo) await loadData();
+  function sortLedgerState() {
     state.expenses.sort((a, b) => b.expense_date.localeCompare(a.expense_date));
     state.income.sort((a, b) => b.income_date.localeCompare(a.income_date));
     state.mileage_entries.sort((a, b) => b.mileage_date.localeCompare(a.mileage_date));
-    $("#record-dialog").close();
+  }
+
+  function refreshAfterSave(message) {
+    sortLedgerState();
+    if ($("#record-dialog").open) $("#record-dialog").close();
     toast(message);
     renderRoute();
+    if (!state.demo) {
+      void loadData()
+        .then(() => {
+          sortLedgerState();
+          renderRoute();
+        })
+        .catch((error) => {
+          console.error("The record was saved, but the ledger refresh failed.", error);
+          toast("Saved successfully. Reload the page if the latest totals are not visible.", "info");
+        });
+    }
   }
 
   async function saveExpense(form) {
