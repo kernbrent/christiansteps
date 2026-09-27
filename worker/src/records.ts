@@ -6,6 +6,7 @@ const MAX_NOTES_LENGTH = 10_000;
 const RECORD_STATUS = ["included", "excluded", "needs_review"] as const;
 const PAYMENT_STATUS = ["unpaid", "partial", "paid", "overdue", "void"] as const;
 const PROGRAMS = ["ChristianSteps", "HopeSojourns", "Shared"] as const;
+const INCOME_KINDS = ["other", "donation", "earned"] as const;
 
 const RECORD_FIELDS = {
   categories: ["name", "tax_line", "color", "is_active", "sort_order"],
@@ -23,7 +24,7 @@ const RECORD_FIELDS = {
   ],
   income: [
     "income_date", "client_id", "project_id", "payer_name", "invoice_number", "invoice_date",
-    "due_date", "amount", "program", "payment_status", "description", "payment_method", "tax_year",
+    "due_date", "amount", "program", "income_kind", "donor_email", "payment_status", "description", "payment_method", "tax_year",
     "record_status", "cpa_review", "cpa_notes", "notes",
   ],
   income_payments: ["income_id", "payment_date", "amount", "payment_method", "reference_number", "notes"],
@@ -218,6 +219,8 @@ export function normalizeRecordPayload(table: RecordTable, body: JsonRecord): No
       put(result, "due_date", dateValue(body, "due_date", true));
       put(result, "amount", numberValue(body, "amount", 0.01, 999_999_999.99));
       put(result, "program", enumValue(body, "program", PROGRAMS));
+      put(result, "income_kind", enumValue(body, "income_kind", INCOME_KINDS));
+      put(result, "donor_email", optionalText(body, "donor_email", 254));
       put(result, "payment_status", enumValue(body, "payment_status", PAYMENT_STATUS));
       put(result, "description", optionalText(body, "description"));
       put(result, "payment_method", optionalText(body, "payment_method", 100));
@@ -268,6 +271,15 @@ const REQUIRED_FIELDS: Record<RecordTable, readonly string[]> = {
   income_payments: ["income_id", "payment_date", "amount"],
   mileage_entries: ["mileage_date", "origin", "destination", "business_purpose", "miles", "program", "tax_year", "record_status", "cpa_review"],
 };
+
+async function assertIncomeNotSent(env: Env, incomeId: string): Promise<void> {
+  if (!incomeId) return;
+  const row = await env.LEDGER_DB.prepare("SELECT hs_payload_json FROM income WHERE id = ?1")
+    .bind(incomeId).first<{ hs_payload_json: string | null }>();
+  if (row?.hs_payload_json) {
+    throw new AdminError(409, "HS_GIFT_LOCKED", "This donation has been sent to Hope Sojourns. Review it there before changing the CSM source record.");
+  }
+}
 
 function requireCreateFields(table: RecordTable, payload: NormalizedRecord): void {
   const missing = REQUIRED_FIELDS[table].filter(field => payload[field] === undefined || payload[field] === null);
@@ -420,6 +432,7 @@ export async function bookkeepingData(env: Env): Promise<Response> {
 export async function createRecord(request: Request, env: Env, table: RecordTable): Promise<Response> {
   const body = await readAdminJson(request);
   const payload = normalizeRecordPayload(table, body);
+  if (table === "income_payments") await assertIncomeNotSent(env, String(payload.income_id || ""));
   requireCreateFields(table, payload);
   await validateProjectRelationship(env, table, null, payload);
   await validateMileageRate(env, table, null, payload);
@@ -445,6 +458,12 @@ export async function createRecord(request: Request, env: Env, table: RecordTabl
 export async function updateRecord(request: Request, env: Env, table: RecordTable, id: string): Promise<Response> {
   const body = await readAdminJson(request);
   const payload = normalizeRecordPayload(table, body);
+  if (table === "income") await assertIncomeNotSent(env, id);
+  if (table === "income_payments") {
+    const previous = await env.LEDGER_DB.prepare("SELECT income_id FROM income_payments WHERE id = ?1").bind(id).first<{ income_id: string }>();
+    if (previous) await assertIncomeNotSent(env, previous.income_id);
+    if (payload.income_id) await assertIncomeNotSent(env, String(payload.income_id));
+  }
   if (!Object.keys(payload).length) throw new AdminError(422, "INVALID_RECORD", "No changes were provided.");
   await validateProjectRelationship(env, table, id, payload);
   await validateMileageRate(env, table, id, payload);
@@ -469,6 +488,11 @@ export async function updateRecord(request: Request, env: Env, table: RecordTabl
 export async function deleteRecord(env: Env, table: RecordTable, id: string): Promise<Response> {
   const existing = await env.LEDGER_DB.prepare(`SELECT id FROM ${table} WHERE id = ?1`).bind(id).first();
   if (!existing) throw new AdminError(404, "NOT_FOUND", "That record no longer exists.");
+  if (table === "income") await assertIncomeNotSent(env, id);
+  if (table === "income_payments") {
+    const payment = await env.LEDGER_DB.prepare("SELECT income_id FROM income_payments WHERE id = ?1").bind(id).first<{ income_id: string }>();
+    if (payment) await assertIncomeNotSent(env, payment.income_id);
+  }
   if (table === "expenses" || table === "income") {
     await deleteAttachmentsForRecord(env, table === "expenses" ? "expense" : "income", id);
   }

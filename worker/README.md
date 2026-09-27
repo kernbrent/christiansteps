@@ -26,6 +26,10 @@ The first portal sync automatically requests the full history available through 
 
 ## Data rules
 
+### Direct-bank Hope Sojourns donations
+
+Use CSM Ledger > Income for a gift received directly into the shared CSM bank account. An existing paid income record can be marked `donation` and assigned to `HopeSojourns`; it is not recreated in Giving activity. The sender must confirm that the gift is not already in PayPal or Personally received gifts. `POST /api/admin/records/income/:id/send-to-hope` freezes the source and delivers a stable `LEDGER_DONATION` message to the HS Payment inbox. HS approval adds its budget/donor view of the same receipt. `ledger-migrations/0009_income_donation_delivery.sql` must be applied before deploying this Worker and its Ledger assets. Do not automatically send existing income records or copy CSM business data into HS test.
+
 - D1 is the canonical stored record. The portal's **Download Excel workbook** action creates a current `.xlsx` snapshot with a summary sheet and all normalized and raw PayPal fields.
 - Current-year summary cards count completed PayPal payment events (`T00xx`) only: the large amount is gross donations received, and the smaller amount is money sent to another account. Holds and hold releases such as `T2101` and `T2102` are excluded.
 - Each summary card also reports the number of donation transactions and distinct givers. Givers are matched by email, with name and transaction ID used as fallbacks when needed.

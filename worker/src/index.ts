@@ -1,4 +1,5 @@
 import {personalGiftRoute} from './personal-gifts';
+import {sendLedgerDonation} from './ledger-donations';
 import {sharedRoutes,sharedEnabled,recordSharedActivity} from './shared-identity';
 import {
   AdminError,
@@ -190,6 +191,11 @@ async function route(request: Request, env: Env, path: string, url: URL): Promis
   }
 
   const recordsMatch = path.match(/^\/records\/([a-z_]+)(?:\/([^/]+))?$/);
+  const ledgerDonationMatch = path.match(/^\/records\/income\/([^/]+)\/send-to-hope$/);
+  if (request.method === "POST" && ledgerDonationMatch?.[1]) {
+    await requireMutation(request, env);
+    return sendLedgerDonation(request, env, decodedId(ledgerDonationMatch[1]));
+  }
   if (recordsMatch?.[1]) {
     const table = recordTable(recordsMatch[1]);
     if (!table) throw new AdminError(404, "NOT_FOUND", "Not found.");

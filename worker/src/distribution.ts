@@ -8,6 +8,7 @@ import {
   type CsmDistributionMessage,
 } from "./csm-distribution-contract";
 import { AdminError, adminJson, readAdminJson, secureEqual } from "./security";
+import { receiveLedgerDonationStatus } from "./ledger-donations";
 
 type DistributionEnv = Env & {
   HOPE_ADMIN?: Fetcher;
@@ -371,6 +372,7 @@ export async function receiveDistributionStatus(request: Request, env: Distribut
   const idempotencyKey = typeof body?.idempotencyKey === "string" ? body.idempotencyKey : "";
   const status = typeof body?.status === "string" ? body.status : "";
   if (!idempotencyKey || !RECIPIENT_STATUSES.has(status)) return adminJson({ error: "Invalid status update" }, 422);
+  if (idempotencyKey.startsWith("HopeSojourns:ledger-income:")) return receiveLedgerDonationStatus(env, body || {});
   if(idempotencyKey.startsWith('HopeSojourns:personal:')){
     const id=idempotencyKey.slice('HopeSojourns:personal:'.length);
     const gift=await env.DB.prepare('SELECT id,delivery_status FROM personal_gifts WHERE id=? AND payload_json IS NOT NULL').bind(id).first<{id:string;delivery_status:string}>();

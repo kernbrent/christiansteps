@@ -42,6 +42,7 @@ export interface CsmTransactionSnapshot {
 
 export interface CsmDistributionMessage {
   personalGift?:PersonalGiftDetails;
+  ledgerIncome?: { incomeId: string; paymentMethod: string | null; paymentReference: string | null };
   donorAllocations?: DonationAllocation[];
   donorSplitRevision?:number;
   schemaVersion: typeof CSM_DISTRIBUTION_SCHEMA_VERSION;
@@ -191,11 +192,24 @@ export const parseDistributionMessage = (value: unknown): CsmDistributionMessage
   };
 
   const personal = parsed.transaction.eventCode === "PERSONAL_GIFT";
+  const ledgerIncome = parsed.transaction.eventCode === "LEDGER_DONATION";
   if (personal) {
     if(parsed.destination!=="HopeSojourns"||direction!=="received"||parsed.transaction.currency!=="USD"||parsed.transaction.status!=="Completed"||parsed.transaction.gross<=0||parsed.transaction.sourceRecordId!=="personal:"+parsed.transaction.paypalTransactionId||value.donorAllocations!==undefined)throw new Error("Invalid personal gift source");
     parsed.personalGift=validatePersonalGift(value.personalGift,parsed.transaction.gross,parsed.transaction.fee,parsed.transaction.net);
   } else if(value.personalGift!==undefined)throw new Error("Unexpected personal gift metadata");
-  if (!personal && !isEligibleDistributionSource({
+  if (ledgerIncome) {
+    if (!isRecord(value.ledgerIncome)) throw new Error("Ledger income details are required");
+    const incomeId = requiredString(value.ledgerIncome.incomeId, "ledgerIncome.incomeId");
+    if (!/^[a-f0-9-]{36}$/i.test(incomeId) || parsed.idempotencyKey !== `HopeSojourns:ledger-income:${incomeId}` || parsed.sourceRevision !== 1
+      || parsed.destination !== "HopeSojourns" || direction !== "received" || parsed.transaction.currency !== "USD"
+      || parsed.transaction.status !== "Completed" || parsed.transaction.gross <= 0 || parsed.transaction.fee !== 0
+      || parsed.transaction.net !== parsed.transaction.gross || parsed.transaction.sourceRecordId !== `ledger-income:${incomeId}`
+      || parsed.transaction.paypalTransactionId !== incomeId || value.donorAllocations !== undefined) {
+      throw new Error("Invalid ledger donation source");
+    }
+    parsed.ledgerIncome = { incomeId, paymentMethod: optionalString(value.ledgerIncome.paymentMethod), paymentReference: optionalString(value.ledgerIncome.paymentReference) };
+  } else if (value.ledgerIncome !== undefined) throw new Error("Unexpected ledger income details");
+  if (!personal && !ledgerIncome && !isEligibleDistributionSource({
     product: parsed.product,
     eventCode: parsed.transaction.eventCode,
     status: parsed.transaction.status,

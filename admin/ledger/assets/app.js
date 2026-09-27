@@ -783,22 +783,26 @@
       const status = linkedInvoice && item.payment_status === "unpaid" && (!item.due_date || item.due_date >= today())
         ? "pending"
         : incomeComputedStatus(item);
-      const haystack = [item.income_date, item.payer_name, item.invoice_number, item.description, programName(item.program), clientName(item.client_id), item.payment_method, status].join(" ").toLowerCase();
+      const haystack = [item.income_date, item.payer_name, item.invoice_number, item.description, programName(item.program), clientName(item.client_id), item.payment_method, item.income_kind, item.hs_delivery_status, status].join(" ").toLowerCase();
+      const sentToHope = Boolean(item.hs_payload_json);
+      const canSendToHope = item.program === "HopeSojourns" && item.income_kind === "donation" && item.record_status === "included" && status === "paid" && paymentsFor(item.id).length === 1;
+      const hopeAction = canSendToHope && (!sentToHope || item.hs_delivery_status === "failed" || item.hs_delivery_status === "queued")
+        ? `<button type="button" data-action="send-income-to-hope" data-id="${item.id}">${sentToHope ? "Retry HS send" : "Send to HS review"}</button>` : "";
       return `<tr data-search-row="${escapeHtml(haystack)}">
         <td>${shortDate(item.income_date)}</td>
-        <td><strong>${escapeHtml(item.payer_name)}</strong><small>${escapeHtml(item.description || "")}</small></td>
+        <td><strong>${escapeHtml(item.payer_name)}</strong><small>${escapeHtml(item.description || "")}</small><small>${item.income_kind === "donation" ? "Donation" : item.income_kind === "earned" ? "Earned income" : "Other income"}</small></td>
         <td>${escapeHtml(programName(item.program))}</td>
         <td>${escapeHtml(item.invoice_number || "-")}<small>${item.invoice_date ? `Issued ${shortDate(item.invoice_date)}` : ""}</small></td>
         <td>${escapeHtml(clientName(item.client_id))}</td>
         <td>${receiptBadge("income", item.id)}</td>
-        <td>${statusBadge(status)}${item.cpa_review ? '<span class="mini-flag">CPA</span>' : ""}</td>
+        <td>${statusBadge(status)}${item.cpa_review ? '<span class="mini-flag">CPA</span>' : ""}${sentToHope ? `<small>HS review: ${escapeHtml(statusLabel(item.hs_delivery_status))}</small>` : ""}</td>
         <td class="number"><strong>${money(item.amount)}</strong><small>${money(paid)} received</small></td>
-        <td class="row-actions"><button type="button" data-action="record-payment" data-id="${item.id}">Payment</button>${linkedInvoice ? `<button type="button" data-action="edit-invoice" data-id="${linkedInvoice.id}">Invoice</button>` : `<button type="button" data-action="edit-income" data-id="${item.id}">Edit</button><button type="button" data-action="delete-income" data-id="${item.id}">Delete</button>`}</td>
+        <td class="row-actions">${hopeAction}${sentToHope ? '<a href="https://hopesojourns.com/admin/#csm-inbox">HS inbox</a>' : `<button type="button" data-action="record-payment" data-id="${item.id}">Payment</button>${linkedInvoice ? `<button type="button" data-action="edit-invoice" data-id="${linkedInvoice.id}">Invoice</button>` : `<button type="button" data-action="edit-income" data-id="${item.id}">Edit</button><button type="button" data-action="delete-income" data-id="${item.id}">Delete</button>`}`}</td>
       </tr>`;
     }).join("");
     return `
       <section class="view">
-        <div class="section-heading-row"><div><p class="section-kicker">Client revenue</p><h2>Income & invoices</h2><p>Record invoices, payments received, partial payments, and supporting documents.</p></div></div>
+        <div class="section-heading-row"><div><p class="section-kicker">Revenue and gifts</p><h2>Income & invoices</h2><p>Record invoices and direct donations here. A paid Hope Sojourns donation can be sent to its review inbox without recording the bank deposit again.</p></div></div>
         ${pageToolbar("income", "Search client, invoice, description, or status", "add-income", "Add income", '<button class="secondary-button" type="button" data-action="add-invoice">+ Create invoice</button>')}
         <div class="panel table-panel">${state.income.length ? `
           <div class="table-wrap"><table class="data-table">
@@ -1730,6 +1734,8 @@
       vendor: "",
       amount: "",
       program: "HopeSojourns",
+      income_kind: "other",
+      donor_email: "",
       category_id: "",
       description: "",
       business_purpose: "",
@@ -1825,6 +1831,8 @@
             <label class="field">Client<select name="client_id">${optionList(state.clients.filter((clientItem) => clientItem.is_active), record.client_id, "No client")}</select></label>
             <label class="field">Project<select name="project_id">${optionList(state.projects.filter((project) => project.is_active), record.project_id, "No project", (project) => `${clientName(project.client_id)} - ${project.name}`)}</select></label>
             <label class="field field-grow">Payer / client name<input name="payer_name" required maxlength="180" value="${escapeHtml(record.payer_name)}"></label>
+            <label class="field">Income type<select name="income_kind"><option value="other" ${record.income_kind === "other" || !record.income_kind ? "selected" : ""}>Other income</option><option value="donation" ${record.income_kind === "donation" ? "selected" : ""}>Donation</option><option value="earned" ${record.income_kind === "earned" ? "selected" : ""}>Earned income</option></select></label>
+            <label class="field">Donor email (if donation)<input name="donor_email" type="email" maxlength="254" value="${escapeHtml(record.donor_email || "")}"></label>
             <label class="field">Invoice number<input name="invoice_number" value="${escapeHtml(record.invoice_number || "")}"></label>
             <label class="field">Invoice date<input name="invoice_date" type="date" value="${escapeHtml(record.invoice_date || "")}"></label>
             <label class="field">Due date<input name="due_date" type="date" value="${escapeHtml(record.due_date || "")}"></label>
@@ -2352,6 +2360,8 @@
       vendor: String(data.get("vendor")).trim(),
       amount: num(data.get("amount")),
       program: String(data.get("program") || "HopeSojourns"),
+      income_kind: String(data.get("income_kind") || "other"),
+      donor_email: clean(data.get("donor_email")),
       category_id: clean(data.get("category_id")),
       description: clean(data.get("description")),
       business_purpose: clean(data.get("business_purpose")),
@@ -2853,6 +2863,16 @@
       case "add-income": incomeForm(); break;
       case "edit-income": closeSearchForRecord(); incomeForm(byId(state.income, id)); break;
       case "delete-income": await deleteRecord("income", id); break;
+      case "send-income-to-hope": {
+        const income = byId(state.income, id);
+        if (!income) throw new Error("Income record not found.");
+        if (!income.hs_payload_json && !window.confirm(`Send ${money(income.amount)} from ${income.payer_name} to Hope Sojourns for donor review? Confirm this same gift is not already recorded in CSM PayPal or Personally received gifts. This does not move money. Once sent, this CSM record and its payment are locked for audit.`)) break;
+        const result = await apiRequest(`/records/income/${encodeURIComponent(id)}/send-to-hope`, { method: "POST", body: { confirmUniqueSource: true } });
+        await loadData();
+        renderRoute();
+        toast(`Hope Sojourns review: ${statusLabel(result.status)}.`);
+        break;
+      }
       case "record-payment": paymentForm(byId(state.income, id)); break;
       case "delete-payment": await deletePayment(id); break;
       case "add-mileage": mileageForm(); break;
