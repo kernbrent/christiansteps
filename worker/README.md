@@ -1,6 +1,6 @@
 # Christian Steps Admin API
 
-This Cloudflare Worker provides the private `/admin/` portal with Hope Sojourns-style authentication, PayPal Transaction Search synchronization, centralized D1 storage, manual product review, annual summaries, Excel export data, and donor/giving-letter data. A new sign-in requires explicit form submission; an existing valid session opens Giving activity without another login. Browser-managed saved-password autofill and the remembered checkbox preference remain available.
+This Cloudflare Worker provides the private `/admin/` portal with Hope Sojourns-style authentication, PayPal Transaction Search synchronization, centralized D1 storage, manual product review, annual summaries, Excel export data, and donor/giving-letter data. A new sign-in requires explicit form submission; an existing valid session opens the CSM dashboard without another login. Browser-managed saved-password autofill and the remembered checkbox preference remain available.
 
 The production Worker is deployed as `christian-steps-admin-api`; its D1 database and routes are configured in `wrangler.jsonc`.
 
@@ -21,6 +21,12 @@ To validate and deploy from this `worker` directory:
 4. Run `npm run deploy` after deployment is approved. The deployment command repeats the asset refresh automatically.
 
 The Admin Portal HTML, CSS, JavaScript, and favicon use versioned asset URLs and are served with `Cache-Control: no-store`. Read-only Admin API requests also bypass browser and intermediary caches. Income refreshes when the Ledger income route is entered or restored from browser history. This makes a PayPal pull refresh the visible table and summary immediately. Excel downloads are generated from a fresh API response and receive a unique timestamped filename.
+
+## Portal navigation and dashboard scope
+
+`/admin/` is the CSM home dashboard. Giving activity is `/admin/#/giving`, with PayPal pull, assignment to CSM/HS/JBB, and existing HS/JBB send-for-review actions. `/admin/ledger/` retains the financial workflows; its former Dashboard is labeled Finance overview. Personally received gifts and gift instructions retain their dedicated pages. These pages use the same shared session and linked navigation, and dashboard data is read through existing authenticated endpoints.
+
+The dashboard calculation lives in `../admin/dashboard-data.js` and is covered by `test/dashboard-data.spec.ts`. CSM and HS recorded receipts combine completed PayPal contributions with included manual ledger payments; they never add an HS inbox copy of a CSM gift. Recorded operating outflow uses actual included CSM/HS/shared expense amounts plus PayPal contribution fees, rather than tax-deductible percentages. JBB PayPal funds are displayed as a separate pass-through responsibility, never CSM income. The JBB due figure is all-time net receipts less disbursements; the JBB received/sent program figures are current-year. The dashboard is not a bank balance or a consolidation of HS/JBB databases. Personally received gifts remain visible in Giving activity but are not silently counted again in the dashboard's ledger figures. When finance access is unavailable, the home view shows explicitly labeled PayPal-only giving figures instead of implying a full financial total.
 
 The first portal sync automatically requests the full history available through PayPal's Transaction Search API. Later routine syncs refresh the most recent 93 days so refunds, reversals, and updated records are caught. The full-history action refreshes up to three years, which is the API's maximum historical window. Older PayPal records can still be retained by importing a separate historical archive in a future enhancement.
 

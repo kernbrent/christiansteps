@@ -56,7 +56,7 @@
     "Other",
   ];
   const ROUTES = {
-    dashboard: ["Overview", "Dashboard"],
+    dashboard: ["Finances", "Finance overview"],
     paypal: ["Fund accounting", "PayPal & Funds"],
     expenses: ["Bookkeeping", "Expenses"],
     income: ["Bookkeeping", "Income"],
@@ -605,7 +605,7 @@
       <section class="view">
         <div class="section-heading-row split-heading">
           <div><p class="section-kicker">Read-only PayPal accounting</p><h2>Ministry funds and pass-through activity</h2><p>PayPal remains the source of truth. Original payments remain unchanged. Use Split donation to attribute a combined deposit to its donors.</p></div>
-          <a class="secondary-button" href="../">Open Giving Portal</a>
+          <a class="secondary-button" href="/admin/#/giving">Open Giving activity</a>
         </div>
         <div class="metric-grid fund-metric-grid">
           <article class="metric-card metric-income"><span>Christian Steps contributions</span><strong>${money(contributionAmount(csmRows))}</strong><small>${year} gross · ${money(contributionFees(csmRows))} fees</small></article>
@@ -618,7 +618,7 @@
           <div class="panel-heading"><div><p class="section-kicker">Reconciliation</p><h2>PayPal payments and bank transfers</h2><p>${escapeHtml(synced)}</p></div><span>${state.paypal_activity.length} records</span></div>
           ${state.paypal_activity.length ? `<div class="page-toolbar"><label class="table-search"><span class="sr-only">Search PayPal records</span><input type="search" data-table-search placeholder="Search donor, ministry, item, or transaction" autocomplete="off"></label></div>
             <div class="table-wrap"><table class="data-table"><thead><tr><th>Date</th><th>Party</th><th>Ministry</th><th>Accounting treatment</th><th>Status</th><th class="number">Gross / net</th></tr></thead><tbody>${rows}</tbody></table></div><p class="no-search-results" hidden>No PayPal records match this search.</p>`
-            : emptyState("No PayPal records copied yet", "Pull PayPal activity in the Giving Portal, then return here.")}
+            : emptyState("No PayPal records copied yet", "Pull PayPal activity in Giving activity, then return here.")}
         </div>
       </section>`;
   }

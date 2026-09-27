@@ -9,7 +9,7 @@
     ChristianSteps: "Christian Steps",
     Unassigned: "Needs review",
   };
-  const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0, transactionRequest: 0, selectedTransactions: new Set(), currentEligibleIds: [] };
+  const state = { csrfToken: "", page: 1, pages: 1, years: [], toastTimer: 0, transactionRequest: 0, selectedTransactions: new Set(), currentEligibleIds: [], canGiving: false, canFinance: false, dashboardData: null, dashboardUnassigned: null, dashboardDeliveries: null };
   const REMEMBER_ME_PREFERENCE_KEY = "christian-steps-admin-remember-me";
   const byId = id => document.getElementById(id);
 
@@ -82,6 +82,13 @@
 
   function showLogin() {
     state.csrfToken = "";
+    state.canGiving = false;
+    state.canFinance = false;
+    state.dashboardData = null;
+    state.dashboardUnassigned = null;
+    state.dashboardDeliveries = null;
+    state.givingSummary = null;
+    state.selectedTransactions.clear();
     byId("portal-view").hidden = true;
     byId("login-view").hidden = false;
     byId("login-password").value = "";
@@ -90,12 +97,52 @@
   }
 
   function showPortal(session) {
-    if(session.user){window.dispatchEvent(new CustomEvent("shared-session",{detail:session}));if(session.user.must_change_password||(!session.user.is_admin&&!["read","edit"].includes(session.user.permissions.giving))){location.replace("/admin/account/");return false;}}
+    if (session.user) {
+      window.dispatchEvent(new CustomEvent("shared-session", { detail: session }));
+      state.canGiving = session.user.is_admin || ["read", "edit"].includes(session.user.permissions?.giving);
+      state.canFinance = session.user.is_admin || ["read", "edit"].includes(session.user.permissions?.finances);
+      if (session.user.must_change_password || (!state.canGiving && !state.canFinance)) {
+        location.replace("/admin/account/");
+        return false;
+      }
+    } else {
+      state.canGiving = true;
+      state.canFinance = true;
+    }
     state.givingReadOnly = !!session.user && !session.user.is_admin && session.user.permissions?.giving !== "edit";
     state.csrfToken = session.csrfToken;
     byId("login-view").hidden = true;
     byId("portal-view").hidden = false;
+    byId("giving-nav-link").hidden = !state.canGiving;
+    byId("personal-gifts-nav-link").hidden = !state.canGiving;
+    byId("gift-instructions-nav-link").hidden = !state.canGiving;
+    document.querySelectorAll("[data-giving-access]").forEach(element => { element.hidden = !state.canGiving; });
+    document.querySelectorAll("[data-finance-access]").forEach(element => { element.hidden = !state.canFinance; });
+    byId("dashboard-sync-button").disabled = state.givingReadOnly;
+    for (const id of ["sync-button", "full-sync-button", "record-bank-transfer-button", "select-all-distributions"]) {
+      byId(id).disabled = state.givingReadOnly;
+    }
+    showView();
     return true;
+  }
+
+  function viewFromHash() {
+    return location.hash.replace(/^#\/?/, "").split("?")[0] === "giving" && state.canGiving ? "giving" : "dashboard";
+  }
+
+  function showView() {
+    const giving = viewFromHash() === "giving";
+    byId("dashboard-view").hidden = giving;
+    byId("giving-view").hidden = !giving;
+    if (giving) {
+      byId("dashboard-nav-link").removeAttribute("aria-current");
+      byId("giving-nav-link").setAttribute("aria-current", "page");
+    } else {
+      byId("dashboard-nav-link").setAttribute("aria-current", "page");
+      byId("giving-nav-link").removeAttribute("aria-current");
+    }
+    if (!giving) byId("giving-floating-scroll").hidden = true;
+    else window.dispatchEvent(new Event("resize"));
   }
 
   const currency = (value, code = "USD") => {
@@ -117,6 +164,7 @@
   }
 
   function renderSummary(summary = {}) {
+    state.givingSummary = summary;
     byId("summary-year").textContent = summary.year || new Date().getFullYear();
     byId("summary-hope").textContent = currency(summary.products?.HopeSojourns);
     byId("summary-jbb").textContent = currency(summary.products?.JoshBeyondBorders);
@@ -130,6 +178,7 @@
     byId("summary-jbb-sent").textContent = currency(summary.sentProducts?.JoshBeyondBorders);
     byId("summary-cs-sent").textContent = currency(summary.sentProducts?.ChristianSteps);
     byId("summary-total-sent").textContent = currency(summary.sentTotal);
+    if (!state.canFinance) renderDashboard();
   }
 
   function renderYears(years = []) {
@@ -174,7 +223,9 @@
       select.append(option);
     }
     select.value = transaction.productOverride || "";
+    select.disabled = state.givingReadOnly;
     select.addEventListener("change", async () => {
+      if (state.givingReadOnly) return;
       const chosen = select.value;
       select.disabled = true;
       try {
@@ -185,7 +236,7 @@
         select.value = transaction.productOverride || "";
         toast(error.message);
       } finally {
-        select.disabled = false;
+        select.disabled = state.givingReadOnly;
       }
     });
     return select;
@@ -206,11 +257,11 @@
   function updateDistributionSelection() {
     const count = state.selectedTransactions.size;
     byId("distribution-selection-count").textContent = `${count.toLocaleString()} selected`;
-    byId("send-selected-button").disabled = count === 0;
+    byId("send-selected-button").disabled = state.givingReadOnly || count === 0;
     const eligible = state.currentEligibleIds;
     const selectedOnPage = eligible.filter(id => state.selectedTransactions.has(id)).length;
     const selectAll = byId("select-all-distributions");
-    selectAll.disabled = eligible.length === 0;
+    selectAll.disabled = state.givingReadOnly || eligible.length === 0;
     selectAll.checked = eligible.length > 0 && selectedOnPage === eligible.length;
     selectAll.indeterminate = selectedOnPage > 0 && selectedOnPage < eligible.length;
   }
@@ -234,7 +285,7 @@
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
       checkbox.className = "row-checkbox";
-      checkbox.disabled = !isDistributionEligible(transaction);
+      checkbox.disabled = state.givingReadOnly || !isDistributionEligible(transaction);
       checkbox.checked = state.selectedTransactions.has(transaction.id);
       checkbox.setAttribute("aria-label", `Select ${transaction.displayName || transaction.transactionId} for distribution`);
       checkbox.title = transaction.source === "personal" ? "Use this gift’s Send to Hope Sojourns button after recording its settlement." : checkbox.disabled ? "Only completed payments assigned to Hope Sojourns or Josh Beyond Borders, plus Hope Sojourns bank withdrawals, can be sent. Holds and releases are excluded." : "Send this transaction to the recipient approval queue.";
@@ -376,6 +427,7 @@
       if (result.sync) renderSync(result.sync);
       state.page = 1;
       await loadTransactions({ throwOnError: true, showError: false });
+      await loadDashboard();
       const recordsFound = Number(result.recordsFound ?? result.found ?? 0);
       const recordsInserted = Number(result.recordsInserted ?? result.inserted ?? 0);
       const recordsUpdated = Number(result.recordsUpdated ?? result.updated ?? 0);
@@ -480,7 +532,7 @@
         body: { userId: form.get("userId"), password: form.get("password"), rememberMe },
       });
       saveRememberMePreference(rememberMe);
-      if (showPortal(session)) await loadTransactions();
+      if (showPortal(session)) await loadPortalData();
     } catch (error) {
       byId("login-message").textContent = error.message;
     } finally {
@@ -547,6 +599,8 @@
       byId("filter-direction").value = "sent";
       state.page = 1;
       await loadTransactions({ throwOnError: true, showError: false });
+      location.hash = "#/giving";
+      showView();
       toast(`${currency(result.amount)} bank transfer recorded. ${result.product === "HopeSojourns" ? "Select it and send it to Hope Sojourns for review." : "It is ready for CSM reconciliation."}`, 8_000);
     } catch (error) {
       message.textContent = error.message;
@@ -574,6 +628,9 @@
     byId("login-form").addEventListener("submit", signIn);
     byId("sign-out-button").addEventListener("click", signOut);
     byId("change-password-button").addEventListener("click", () => byId("password-dialog").showModal());
+    byId("dashboard-refresh-button").addEventListener("click", () => { void loadDashboard(); });
+    byId("dashboard-sync-button").addEventListener("click", () => synchronize(false));
+    window.addEventListener("hashchange", handleViewChange);
     byId("password-form").addEventListener("submit", changePassword);
     document.querySelectorAll("[data-password-target]").forEach(button => button.addEventListener("click", () => {
       const input = byId(button.dataset.passwordTarget);
@@ -617,10 +674,106 @@
     restoreRememberMePreference();
     try {
       const session = await api("/session");
-      if (showPortal(session)) await loadTransactions();
+      if (showPortal(session)) await loadPortalData();
     } catch (error) {
       if (error.status !== 401) byId("login-message").textContent = error.message;
       if (!byId("login-view").hidden) byId("login-user-id").focus();
+    }
+  }
+
+  function dashboardYear() {
+    return Number(new Intl.DateTimeFormat("en-US", { year: "numeric", timeZone: "America/Chicago" }).format(new Date()));
+  }
+
+  function renderDashboard() {
+    const year = dashboardYear();
+    const totals = state.dashboardData && global.CSMDashboardData.summarize(state.dashboardData, year);
+    const giving = state.givingSummary;
+    const fallback = !totals && Number(giving?.year) === year ? {
+      recordedReceipts: Number(giving.products?.ChristianSteps || 0) + Number(giving.products?.HopeSojourns || 0),
+      csmReceived: Number(giving.products?.ChristianSteps || 0),
+      hopeReceived: Number(giving.products?.HopeSojourns || 0),
+      jbbReceived: Number(giving.products?.JoshBeyondBorders || 0),
+    } : null;
+    const values = totals || fallback;
+    const display = (id, value) => { byId(id).textContent = value == null ? "—" : currency(value); };
+    byId("dashboard-year").textContent = state.canFinance ? `${year} activity · JBB balance all-time` : `${year} PayPal giving`;
+    display("dashboard-receipts", values?.recordedReceipts);
+    display("dashboard-outflow", values?.recordedOutflow);
+    display("dashboard-jbb-due", values?.jbbDue);
+    display("dashboard-csm-received", values?.csmReceived);
+    display("dashboard-hs-received", values?.hopeReceived);
+    display("dashboard-jbb-received", values?.jbbReceived);
+    display("dashboard-csm-expenses", values?.csmExpenses);
+    display("dashboard-hs-expenses", values?.hopeExpenses);
+    display("dashboard-jbb-sent", values?.jbbSent);
+    if (!totals && fallback) {
+      byId("dashboard-receipts-description").textContent = state.canFinance ? "Completed PayPal contributions only; finance records are temporarily unavailable." : "Completed PayPal contributions only; finance records require access.";
+      byId("dashboard-csm-description").textContent = "Completed PayPal donations assigned to Christian Steps.";
+      byId("dashboard-hs-description").textContent = "Completed PayPal donations assigned to Hope Sojourns.";
+      byId("dashboard-jbb-description").textContent = "Completed PayPal donations assigned to JBB (gross); held as partner funds, not CSM revenue.";
+    } else {
+      byId("dashboard-receipts-description").textContent = "PayPal contributions plus manual CSM ledger payments; before PayPal fees.";
+      byId("dashboard-csm-description").textContent = "PayPal contributions and direct payments recorded to CSM.";
+      byId("dashboard-hs-description").textContent = "PayPal contributions and direct payments recorded to HS in CSM’s ledger.";
+      byId("dashboard-jbb-description").textContent = "PayPal funds handled for JBB. These are pass-through funds, not CSM revenue.";
+    }
+    const unassigned = state.dashboardUnassigned;
+    byId("dashboard-unassigned").textContent = unassigned == null ? "—" : unassigned.toLocaleString();
+    byId("dashboard-unassigned-detail").textContent = unassigned == null ? "an unknown number of" : unassigned.toLocaleString();
+    const deliveries = state.dashboardDeliveries;
+    byId("dashboard-delivery-failures").textContent = deliveries == null ? "An unknown number of" : deliveries.toLocaleString();
+  }
+
+  async function loadDashboard() {
+    const requestId = (state.dashboardRequest || 0) + 1;
+    state.dashboardRequest = requestId;
+    byId("dashboard-status").textContent = "Refreshing CSM records…";
+    const jobs = [
+      state.canFinance ? api("/data") : Promise.resolve(null),
+      state.canGiving ? api("/transactions?activity=payments&product=Unassigned&direction=received&page=1") : Promise.resolve(null),
+      state.canGiving ? api("/distribution/outbox?limit=500") : Promise.resolve(null),
+    ];
+    const results = await Promise.allSettled(jobs);
+    if (requestId !== state.dashboardRequest) return;
+    state.dashboardData = results[0].status === "fulfilled" ? results[0].value : null;
+    state.dashboardUnassigned = state.canGiving && results[1].status === "fulfilled" ? Number(results[1].value?.pagination?.total ?? 0) : null;
+    state.dashboardDeliveries = state.canGiving && results[2].status === "fulfilled"
+      ? (results[2].value?.deliveries || []).filter(row => row.status === "failed").length : null;
+    renderDashboard();
+    if (results.some(result => result.status === "rejected")) {
+      byId("dashboard-status").textContent = "Some dashboard records could not be loaded. Try Refresh dashboard.";
+    } else if (!state.canFinance) {
+      byId("dashboard-status").textContent = "Giving activity is available. Financial details require finance access.";
+    } else {
+      byId("dashboard-status").textContent = `Updated ${new Intl.DateTimeFormat("en-US", { timeStyle: "short", timeZone: "America/Chicago" }).format(new Date())} Central · Figures reflect CSM-controlled records.`;
+    }
+  }
+
+  async function loadPortalData() {
+    const jobs = [loadDashboard()];
+    if (state.canGiving) jobs.push(loadTransactions());
+    await Promise.all(jobs);
+  }
+
+  function handleViewChange() {
+    if (byId("portal-view").hidden) return;
+    showView();
+    window.scrollTo(0, 0);
+    if (viewFromHash() === "dashboard") {
+      void loadDashboard();
+      return;
+    }
+    const query = location.hash.split("?")[1];
+    if (query) {
+      const product = new URLSearchParams(query).get("product");
+      if (PRODUCTS.includes(product)) {
+        byId("filter-activity").value = "payments";
+        byId("filter-product").value = product;
+        byId("filter-direction").value = "received";
+        state.page = 1;
+        void loadTransactions();
+      }
     }
   }
 

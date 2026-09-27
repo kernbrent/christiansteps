@@ -2,7 +2,7 @@
 const portal=document.body.dataset.portal||'hs',base=portal==='hs'?'/api/interest/admin':'/api/admin';
 const labels={hs:'Hope Sojourns',csm:'Christian Steps Ministries'};
 const sections={hs:{contacts:'People, ministries & requests',trips:'Trip operations & budgets',destinations:'Public destinations',finances:'Organization finances',documents:'Documents',inbox:'Inbox'},csm:{giving:'PayPal, giving & distribution',finances:'Bookkeeping, invoices, mileage & files'}};
-const links=portal==='hs'?{contacts:'/admin/#people',trips:'/admin/trips/',destinations:'/admin/destinations/',finances:'/admin/finance/',documents:'/admin/ministry/#documents',inbox:'/admin/ministry/#inbox'}:{giving:'/admin/',finances:'/admin/ledger/'};
+const links=portal==='hs'?{contacts:'/admin/#people',trips:'/admin/trips/',destinations:'/admin/destinations/',finances:'/admin/finance/',documents:'/admin/ministry/#documents',inbox:'/admin/ministry/#inbox'}:{giving:'/admin/#/giving',finances:'/admin/ledger/'};
 const content=document.querySelector('#content'),status=document.querySelector('#status'),dialog=document.querySelector('#editor'),form=document.querySelector('#editor-form');
 let session,users=[],requests=[],saveEditor;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -22,7 +22,7 @@ function profileValues(v){return Object.fromEntries(['first_name','last_name','e
 function showResult(r){if(r.setupLink||r.temporaryPassword)editor('Access instructions',`<p>${esc(r.message)}</p><p class="account-secret">${esc(r.setupLink||r.temporaryPassword)}</p><p>Shown only now. Share privately with the verified user.</p>`,null);else status.textContent=r.message||'Saved.';}
 async function render(){
  session=await api('/session');const u=session.user,forced=u.must_change_password;
- document.querySelector('#account-nav').innerHTML=forced?'<a href="#password">Change temporary password</a>':`<a href="#profile">My profile</a><a href="#password">Change password</a>${u.is_admin?'<a href="#users">Users & access requests</a>':''}${Object.entries(sections[portal]).filter(([k])=>u.is_admin||['read','edit'].includes(u.permissions[k])).map(([k,label])=>`<a href="${links[k]}">${label}</a>`).join('')}${u.can_switch&&u.switch_url?`<a href="${esc(u.switch_url+'?sourceOrigin='+encodeURIComponent(location.origin))}">Switch to ${labels[portal==='hs'?'csm':'hs']}</a>`:''}<button id="signout" type="button">Sign out</button>`;
+ document.querySelector('#account-nav').innerHTML=forced?'<a href="#password">Change temporary password</a>':`<a href="#profile">My profile</a><a href="#password">Change password</a>${u.is_admin?'<a href="#users">Users & access requests</a>':''}${portal==='csm'?'<a href="/admin/">Dashboard</a>':''}${Object.entries(sections[portal]).filter(([k])=>u.is_admin||['read','edit'].includes(u.permissions[k])).map(([k,label])=>`<a href="${links[k]}">${label}</a>`).join('')}${u.can_switch&&u.switch_url?`<a href="${esc(u.switch_url+'?sourceOrigin='+encodeURIComponent(location.origin))}">Switch to ${labels[portal==='hs'?'csm':'hs']}</a>`:''}<button id="signout" type="button">Sign out</button>`;
  document.querySelector('#signout')?.addEventListener('click',async()=>{await api('/logout',{});location.href='/admin/';});
  const route=forced?'password':location.hash.slice(1)||'profile';document.querySelector('#title').textContent=route==='users'?'Users & access requests':route==='password'?'Change shared password':'My shared profile';
  if(route==='password'){

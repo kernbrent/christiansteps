@@ -9,10 +9,10 @@
   <title>Admin | Christian Steps Ministries</title>
   <meta name="description" content="Private bookkeeping and reporting for Christian Steps Ministries.">
   <link rel="icon" type="image/png" href="../favicon.png">
-  <link rel="stylesheet" href="assets/admin.css?v=20260924.1">
+  <link rel="stylesheet" href="assets/admin.css?v=20260926.1">
   <link rel="stylesheet" href="assets/invoice-ui.css?v=20260904.2">
   <link rel="stylesheet" href="assets/invoice-preview.css?v=20260904.3">
-<script src="/admin/shared-navigation.js?v=20260924.1" defer></script></head>
+<script src="/admin/shared-navigation.js?v=20260926.1" defer></script></head>
 <body>
   <a class="skip-link" href="#admin-main">Skip to main content</a>
 
@@ -68,12 +68,13 @@
 
   <div class="admin-shell" id="admin-shell" hidden>
     <aside class="sidebar" id="sidebar">
-      <a class="admin-brand" href="#/dashboard" aria-label="Christian Steps admin dashboard">
+      <a class="admin-brand" href="/admin/" aria-label="Christian Steps admin dashboard">
         <img src="../logo.png" alt="">
         <span><strong>Christian Steps</strong><small>Admin Portal</small></span>
       </a>
       <nav class="admin-nav" aria-label="Admin navigation">
-        <a class="is-active" href="#/dashboard" data-route="dashboard"><span class="nav-mark">D</span>Dashboard</a>
+        <a href="/admin/"><span class="nav-mark">D</span>Dashboard</a>
+        <a class="is-active" href="#/dashboard" data-route="dashboard"><span class="nav-mark">F</span>Finance overview</a>
         <a href="#/paypal" data-route="paypal"><span class="nav-mark">P</span>PayPal &amp; Funds</a>
         <a href="#/expenses" data-route="expenses"><span class="nav-mark">E</span>Expenses</a>
         <a href="#/income" data-route="income"><span class="nav-mark">I</span>Income</a>
@@ -83,7 +84,7 @@
         <a href="#/clients" data-route="clients"><span class="nav-mark">C</span>Clients &amp; Projects</a>
         <a href="#/reports" data-route="reports"><span class="nav-mark">R</span>Reports</a>
         <a href="#/settings" data-route="settings"><span class="nav-mark">S</span>Settings</a>
-        <a href="../"><span class="nav-mark">G</span>Giving activity</a>
+        <a href="/admin/#/giving"><span class="nav-mark">G</span>Giving activity</a>
       </nav>
       <div class="sidebar-footer">
         <p>Tax year <strong data-active-tax-year>2026</strong></p>
@@ -96,7 +97,7 @@
         <button class="menu-button" type="button" id="menu-button" aria-expanded="false" aria-controls="sidebar">Menu</button>
         <div>
           <p class="eyebrow" id="page-eyebrow">Overview</p>
-          <h1 id="page-title">Dashboard</h1>
+          <h1 id="page-title">Finance overview</h1>
         </div>
         <div class="header-actions">
           <button class="search-button" type="button" id="global-search-button">Search records</button>
@@ -160,6 +161,6 @@
   <script src="assets/invoice-preview.js?v=20260904.2"></script>
   <script src="assets/invoice-ui.js?v=20260904.2"></script>
   <script src="../donation-splits.js?v=1"></script>
-  <script src="assets/app.js?v=20260926.1"></script>
+  <script src="assets/app.js?v=20260926.2"></script>
 </body>
 </html>

@@ -40,7 +40,8 @@ describe("Admin Portal refresh contract", () => {
     const startup = adminScript.match(/async function boot\(\) \{([\s\S]*?)\n  \}/)?.[1] || "";
     expect(startup).toContain('api("/session")');
     expect(startup).toContain("showPortal(session)");
-    expect(startup).toContain("await loadTransactions()");
+    expect(startup).toContain("await loadPortalData()");
+    expect(adminScript).toContain("if (state.canGiving) jobs.push(loadTransactions())");
     expect(adminScript).toContain('byId("login-form").addEventListener("submit", signIn)');
     expect(adminPage).toMatch(/<input id="login-user-id" name="userId" type="text" autocomplete="username" required/);
     expect(adminPage).toContain('<label for="login-user-id">User ID</label>');
@@ -49,10 +50,14 @@ describe("Admin Portal refresh contract", () => {
     expect(adminScript).not.toContain('localStorage.setItem(REMEMBER_ME_PREFERENCE_KEY, byId("login-password").value)');
   });
 
-  it("links the giving portal to the isolated ministry ledger", () => {
+  it("keeps giving and finance workflows under the CSM dashboard", () => {
     expect(adminPage).toContain('href="/admin/ledger/"');
+    expect(adminPage).toContain('id="dashboard-view"');
+    expect(adminPage).toContain('id="giving-view"');
+    expect(adminPage).toContain('dashboard-data.js?v=');
     expect(ledgerPage).toContain('data-route="paypal"');
-    expect(ledgerPage).toContain('href="../"');
+    expect(ledgerPage).toContain('href="/admin/#/giving"');
+    expect(ledgerPage).toContain('Finance overview');
     expect(ledgerScript).toContain("PayPal remains the source of truth");
     expect(ledgerScript).toContain("Due to JBB");
   });

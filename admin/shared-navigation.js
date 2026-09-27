@@ -31,16 +31,18 @@
       return;
     }
 
+    const home = location.pathname === "/admin/" || location.pathname === "/admin";
     const finance = location.pathname.startsWith("/admin/ledger/");
     const section = finance ? "finances" : "giving";
-    if (!user.is_admin && !["read", "edit"].includes(user.permissions[section])) {
+    const canUseGiving = user.is_admin || ["read", "edit"].includes(user.permissions.giving);
+    const canUseFinances = user.is_admin || ["read", "edit"].includes(user.permissions.finances);
+    if (!user.is_admin && !(home ? canUseGiving || canUseFinances : ["read", "edit"].includes(user.permissions[section]))) {
       location.replace("/admin/account/");
       return;
     }
 
     const nav = document.querySelector(".admin-nav,.header-actions");
     if (nav && !nav.querySelector("[data-shared-account]")) {
-      const canUseGiving = user.is_admin || ["read", "edit"].includes(user.permissions.giving);
       if (!document.querySelector('a[href="/admin/personal-gifts/"],a[href="personal-gifts/"]') && canUseGiving) {
         addNavigationLink(nav, {
           href: "/admin/personal-gifts/",
@@ -65,12 +67,13 @@
       }
     }
 
-    const readOnly = !user.is_admin && user.permissions[section] === "read";
+    const readOnly = !home && !user.is_admin && user.permissions[section] === "read";
     function updatePermissions() {
       document.querySelectorAll("a").forEach((link) => {
         if (!user.is_admin && link.getAttribute("href") === "#/paypal" && !["read", "edit"].includes(user.permissions.giving)) {
           link.hidden = true;
         }
+        if (!canUseGiving && link.getAttribute("href") === "/admin/#/giving") link.hidden = true;
         if (!user.is_admin && link.getAttribute("href") === "/admin/ledger/" && !["read", "edit"].includes(user.permissions.finances)) {
           link.hidden = true;
         }

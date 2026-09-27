@@ -11,7 +11,8 @@
   <link rel="apple-touch-icon" href="favicon.png?v=20260831.1">
   <link rel="stylesheet" href="admin.css?v=20260923.6">
   <link rel="stylesheet" href="portal-navigation.css?v=20260924.1">
-  <script src="/admin/shared-navigation.js?v=20260924.1" defer></script>
+  <link rel="stylesheet" href="dashboard.css?v=20260926.1">
+  <script src="/admin/shared-navigation.js?v=20260926.1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -48,10 +49,11 @@
       </a>
       <p class="csm-nav-label">Ministry management</p>
       <nav class="header-actions csm-portal-nav" aria-label="Admin navigation">
-        <a href="/admin/" aria-current="page"><span class="csm-nav-mark">G</span>Giving activity</a>
-        <a href="/admin/personal-gifts/"><span class="csm-nav-mark">P</span>Personally received gifts</a>
-        <a href="/admin/ledger/"><span class="csm-nav-mark">L</span>Ledger</a>
-        <a href="/admin/personal-gifts/process.html"><span class="csm-nav-mark">H</span>Gift instructions</a>
+        <a id="dashboard-nav-link" href="/admin/" aria-current="page"><span class="csm-nav-mark">D</span>Dashboard</a>
+        <a id="giving-nav-link" href="#/giving"><span class="csm-nav-mark">G</span>Giving activity</a>
+        <a id="personal-gifts-nav-link" href="/admin/personal-gifts/"><span class="csm-nav-mark">P</span>Personally received gifts</a>
+        <a href="/admin/ledger/"><span class="csm-nav-mark">F</span>Finances &amp; ledger</a>
+        <a id="gift-instructions-nav-link" href="/admin/personal-gifts/process.html"><span class="csm-nav-mark">H</span>Gift instructions</a>
       </nav>
       <div class="csm-portal-sidebar-footer">
         <button id="change-password-button" type="button">Change password</button>
@@ -61,6 +63,39 @@
 
     <div class="csm-portal-workspace">
       <main id="main-content" class="main-content">
+      <section id="dashboard-view" class="csm-dashboard" aria-labelledby="dashboard-title">
+        <div class="dashboard-hero">
+          <div>
+            <p class="eyebrow">Christian Steps Ministries · Command center</p>
+            <h1 id="dashboard-title">One mission. Three ministry views.</h1>
+            <p>See what CSM has received, what needs routing, and where each ministry’s work continues.</p>
+          </div>
+          <div class="dashboard-hero-actions">
+            <button id="dashboard-refresh-button" class="secondary-button" type="button">Refresh dashboard</button>
+            <button id="dashboard-sync-button" class="primary-button" type="button" data-giving-access>Pull PayPal activity</button>
+          </div>
+        </div>
+        <p id="dashboard-status" class="dashboard-status" role="status" aria-live="polite">Loading CSM records…</p>
+        <div class="dashboard-section-heading"><div><p class="eyebrow">At a glance</p><h2>CSM stewardship</h2></div><span id="dashboard-year">Current year</span></div>
+        <div class="dashboard-kpis">
+          <article class="dashboard-kpi"><span>CSM + HS recorded receipts</span><strong id="dashboard-receipts">—</strong><small id="dashboard-receipts-description">PayPal contributions plus manual CSM ledger payments; before PayPal fees.</small></article>
+          <article class="dashboard-kpi" data-finance-access><span>Recorded operating outflow</span><strong id="dashboard-outflow">—</strong><small>CSM, HS, and shared ledger expenses plus PayPal contribution fees.</small></article>
+          <article class="dashboard-kpi" data-finance-access><span>Due to Josh Beyond Borders</span><strong id="dashboard-jbb-due">—</strong><small>All-time PayPal pass-through receipts less disbursements; not CSM income.</small></article>
+          <article class="dashboard-kpi dashboard-kpi-attention" data-giving-access><span>Giving assignments to review</span><strong id="dashboard-unassigned">—</strong><small>Unassigned payment records across all years; review their status before routing.</small></article>
+        </div>
+        <div class="dashboard-section-heading"><div><p class="eyebrow">Program view</p><h2>Three distinct responsibilities</h2></div><a href="#/giving" data-giving-access>Open giving activity →</a></div>
+        <div class="dashboard-programs">
+          <article class="dashboard-program"><div class="program-top"><span class="program-mark">CSM</span><span>Parent ministry</span></div><h3>Christian Steps</h3><strong id="dashboard-csm-received">—</strong><p id="dashboard-csm-description">PayPal contributions and direct payments recorded to CSM.</p><div class="program-foot"><span data-finance-access>Ledger expenses <b id="dashboard-csm-expenses">—</b></span><a href="/admin/ledger/#/income" data-finance-access>Open records →</a></div></article>
+          <article class="dashboard-program dashboard-program-hope"><div class="program-top"><span class="program-mark">HS</span><span>Ministry program</span></div><h3>Hope Sojourns</h3><strong id="dashboard-hs-received">—</strong><p id="dashboard-hs-description">PayPal contributions and direct payments recorded to HS in CSM’s ledger.</p><div class="program-foot"><span data-finance-access>Ledger expenses <b id="dashboard-hs-expenses">—</b></span><a href="https://hopesojourns.com/admin/">Open HS portal →</a></div></article>
+          <article class="dashboard-program dashboard-program-jbb"><div class="program-top"><span class="program-mark">JBB</span><span>Partner funds</span></div><h3>Josh Beyond Borders</h3><strong id="dashboard-jbb-received">—</strong><p id="dashboard-jbb-description">PayPal funds handled for JBB. These are pass-through funds, not CSM revenue.</p><div class="program-foot"><span data-finance-access>Sent onward <b id="dashboard-jbb-sent">—</b></span><a href="https://joshbeyondborders.org/admin/">Open JBB portal →</a></div></article>
+        </div>
+        <div class="dashboard-lower">
+          <section class="dashboard-panel" aria-labelledby="dashboard-work-title"><div class="dashboard-panel-heading"><div><p class="eyebrow">Next actions</p><h2 id="dashboard-work-title">Keep gifts moving</h2></div><a href="#/giving" data-giving-access>Review giving →</a></div><div class="dashboard-task" data-giving-access><span class="task-icon">1</span><div><strong>Assign payments</strong><p>Review <b id="dashboard-unassigned-detail">—</b> unassigned payment records before routing.</p></div><a href="#/giving?product=Unassigned">Review →</a></div><div class="dashboard-task" data-giving-access><span class="task-icon">2</span><div><strong>Check delivery status</strong><p><b id="dashboard-delivery-failures">—</b> recent sends need attention.</p></div><a href="#/giving">Open →</a></div><div class="dashboard-task" data-finance-access><span class="task-icon">3</span><div><strong>Record direct gifts</strong><p>Enter check and bank gifts once in the CSM ledger, then send HS gifts for review.</p></div><a href="/admin/ledger/#/income">Income →</a></div></section>
+          <section class="dashboard-panel" aria-labelledby="dashboard-tools-title"><div class="dashboard-panel-heading"><div><p class="eyebrow">Workspaces</p><h2 id="dashboard-tools-title">Go straight to the work</h2></div></div><div class="dashboard-tools"><a href="#/giving" data-giving-access><strong>Giving activity</strong><span>Assign PayPal gifts and send HS or JBB records for review.</span></a><a href="/admin/personal-gifts/" data-giving-access><strong>Personally received gifts</strong><span>Record and settle gifts received outside PayPal.</span></a><a href="/admin/ledger/" data-finance-access><strong>Finances &amp; ledger</strong><span>Income, expenses, invoices, reports, and supporting files.</span></a><a href="/admin/personal-gifts/process.html" data-giving-access><strong>Gift instructions</strong><span>Follow the transfer and reconciliation workflow.</span></a></div></section>
+        </div>
+        <p class="dashboard-scope">This is a CSM-controlled records view, not a bank balance or a combined total of separate HS/JBB databases. Personally received gifts and HS/JBB portal records are not added again to the CSM ledger figures.</p>
+      </section>
+      <div id="giving-view" hidden>
       <section class="page-heading">
         <div>
           <p class="eyebrow">Ministry giving records</p>
@@ -80,11 +115,17 @@
         </div>
       </section>
 
+      <div class="giving-workflow" aria-label="Giving routing steps">
+        <div><span>1</span><strong>Pull PayPal</strong><small>Bring current transactions into CSM.</small></div>
+        <div><span>2</span><strong>Assign the ministry</strong><small>CSM, Hope Sojourns, or Josh Beyond Borders.</small></div>
+        <div><span>3</span><strong>Send for review</strong><small>HS and JBB receive a record; CSM gifts remain in CSM. No money moves.</small></div>
+      </div>
+
       <section aria-labelledby="giving-summary-title">
         <div class="section-heading compact-heading">
           <div>
             <h2 id="giving-summary-title"><span id="summary-year">Current year</span> giving</h2>
-            <p class="muted">Large figures include PayPal donations and recorded personal gifts, including gifts awaiting bank settlement. Smaller figures show payments sent to another account.</p>
+            <p class="muted">These figures summarize completed PayPal donations. Personally received gifts and direct ledger donations have their own records and are not included here. Smaller figures show payments sent to another account.</p>
           </div>
         </div>
         <div class="summary-grid">
@@ -118,6 +159,7 @@
         </div>
         <div class="pagination"><button id="previous-page-button" class="secondary-button" type="button">Previous</button><span id="page-status">Page 1 of 1</span><button id="next-page-button" class="secondary-button" type="button">Next</button></div>
       </section>
+      </div>
       </main>
     </div>
   </div>
@@ -200,7 +242,8 @@
   <script src="office-package.js?v=20260831.1" defer></script>
   <script src="email-tools.js?v=20260831.1" defer></script>
   <script src="giving-letters.js?v=20260831.1" defer></script>
-  <script src="admin.js?v=20260926.1" defer></script>
+  <script src="dashboard-data.js?v=20260926.1" defer></script>
+  <script src="admin.js?v=20260926.2" defer></script>
   <script src="giving-scroll.js?v=20260923.6" defer></script>
 </body>
 </html>
