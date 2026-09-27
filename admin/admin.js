@@ -56,7 +56,9 @@
     try { result = text ? JSON.parse(text) : {}; } catch { result = {}; }
     if (!response.ok) {
       if (response.status === 401 && path !== "/login") showLogin();
-      throw new Error(result.error || "The Admin Portal could not complete this request.");
+      const error = new Error(result.error || "The Admin Portal could not complete this request.");
+      error.status = response.status;
+      throw error;
     }
     return result;
   }
@@ -88,11 +90,12 @@
   }
 
   function showPortal(session) {
-    if(session.user){window.dispatchEvent(new CustomEvent("shared-session",{detail:session}));if(session.user.must_change_password||(!session.user.is_admin&&!["read","edit"].includes(session.user.permissions.giving))){location.replace("/admin/account/");return;}}
+    if(session.user){window.dispatchEvent(new CustomEvent("shared-session",{detail:session}));if(session.user.must_change_password||(!session.user.is_admin&&!["read","edit"].includes(session.user.permissions.giving))){location.replace("/admin/account/");return false;}}
     state.givingReadOnly = !!session.user && !session.user.is_admin && session.user.permissions?.giving !== "edit";
     state.csrfToken = session.csrfToken;
     byId("login-view").hidden = true;
     byId("portal-view").hidden = false;
+    return true;
   }
 
   const currency = (value, code = "USD") => {
@@ -477,8 +480,7 @@
         body: { userId: form.get("userId"), password: form.get("password"), rememberMe },
       });
       saveRememberMePreference(rememberMe);
-      showPortal(session);
-      await loadTransactions();
+      if (showPortal(session)) await loadTransactions();
     } catch (error) {
       byId("login-message").textContent = error.message;
     } finally {
@@ -609,11 +611,17 @@
     });
   }
 
-  function boot() {
+  async function boot() {
     bindEvents();
     global.CSGivingLetters.init({ api, setBusy, toast, years: [] });
     restoreRememberMePreference();
-    byId("login-user-id").focus();
+    try {
+      const session = await api("/session");
+      if (showPortal(session)) await loadTransactions();
+    } catch (error) {
+      if (error.status !== 401) byId("login-message").textContent = error.message;
+      if (!byId("login-view").hidden) byId("login-user-id").focus();
+    }
   }
 
   global.CSAdmin = Object.freeze({ api, setBusy, toast, loadTransactions });

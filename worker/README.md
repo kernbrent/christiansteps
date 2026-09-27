@@ -1,6 +1,6 @@
 # Christian Steps Admin API
 
-This Cloudflare Worker provides the private `/admin/` portal with Hope Sojourns-style authentication, PayPal Transaction Search synchronization, centralized D1 storage, manual product review, annual summaries, Excel export data, and donor/giving-letter data. The login page always requires an explicit form submission before showing the dashboard, while browser-managed saved-password autofill and the remembered checkbox preference remain available.
+This Cloudflare Worker provides the private `/admin/` portal with Hope Sojourns-style authentication, PayPal Transaction Search synchronization, centralized D1 storage, manual product review, annual summaries, Excel export data, and donor/giving-letter data. A new sign-in requires explicit form submission; an existing valid session opens Giving activity without another login. Browser-managed saved-password autofill and the remembered checkbox preference remain available.
 
 The production Worker is deployed as `christian-steps-admin-api`; its D1 database and routes are configured in `wrangler.jsonc`.
 
@@ -20,7 +20,7 @@ To validate and deploy from this `worker` directory:
 3. Run `npm run check`. This automatically replaces `public/admin/` with the current files from `../admin/`, writes the private no-cache asset rules, runs TypeScript, and performs a dry deployment.
 4. Run `npm run deploy` after deployment is approved. The deployment command repeats the asset refresh automatically.
 
-The Admin Portal HTML, CSS, JavaScript, and favicon use versioned asset URLs and are served with `Cache-Control: no-store`. Read-only Admin API requests also bypass browser and intermediary caches. This makes a PayPal pull refresh the visible table and summary immediately. Excel downloads are generated from a fresh API response and receive a unique timestamped filename.
+The Admin Portal HTML, CSS, JavaScript, and favicon use versioned asset URLs and are served with `Cache-Control: no-store`. Read-only Admin API requests also bypass browser and intermediary caches. Income refreshes when the Ledger income route is entered or restored from browser history. This makes a PayPal pull refresh the visible table and summary immediately. Excel downloads are generated from a fresh API response and receive a unique timestamped filename.
 
 The first portal sync automatically requests the full history available through PayPal's Transaction Search API. Later routine syncs refresh the most recent 93 days so refunds, reversals, and updated records are caught. The full-history action refreshes up to three years, which is the API's maximum historical window. Older PayPal records can still be retained by importing a separate historical archive in a future enhancement.
 

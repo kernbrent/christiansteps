@@ -313,6 +313,11 @@
     const requestHeaders = new Headers(headers);
     requestHeaders.set("Accept", "application/json");
     const options = { method, credentials: "include", headers: requestHeaders };
+    const isRead = method === "GET" || method === "HEAD";
+    if (isRead) {
+      requestHeaders.set("Cache-Control", "no-cache");
+      options.cache = "no-store";
+    }
     if (body !== undefined) {
       if (body instanceof Blob) {
         options.body = body;
@@ -329,7 +334,9 @@
     options.signal = controller.signal;
     let response;
     try {
-      response = await fetch(`${API_BASE}${path}`, options);
+      const url = new URL(`${API_BASE}${path}`, location.origin);
+      if (isRead) url.searchParams.set("_fresh", String(Date.now()));
+      response = await fetch(url, options);
     } catch (error) {
       if (error?.name === "AbortError") {
         const timeoutError = new Error("The server response took too long. Reload the ledger before trying again so you do not create a duplicate.");
@@ -2360,8 +2367,6 @@
       vendor: String(data.get("vendor")).trim(),
       amount: num(data.get("amount")),
       program: String(data.get("program") || "HopeSojourns"),
-      income_kind: String(data.get("income_kind") || "other"),
-      donor_email: clean(data.get("donor_email")),
       category_id: clean(data.get("category_id")),
       description: clean(data.get("description")),
       business_purpose: clean(data.get("business_purpose")),
@@ -2417,6 +2422,8 @@
       due_date: dueDate,
       amount: recordAmount,
       program: String(data.get("program") || "HopeSojourns"),
+      income_kind: String(data.get("income_kind") || "other"),
+      donor_email: clean(data.get("donor_email")),
       payment_status: existing?.payment_status === "void"
         ? "void"
         : receivedToDate <= 0
@@ -3003,9 +3010,27 @@
     }, true);
   }
 
+  async function refreshIncomeOnEntry() {
+    if (state.demo) return;
+    try {
+      await loadData();
+      if (state.user && activeRoute() === "income") renderRoute();
+    } catch (error) {
+      if (error.status !== 401) {
+        console.error("Could not refresh income records.", error);
+        toast("Could not refresh income records. Please reload and try again.", "error");
+      }
+    }
+  }
+
   function bindGlobalEvents() {
     window.addEventListener("hashchange", () => {
-      if (state.user) renderRoute();
+      if (!state.user) return;
+      renderRoute();
+      if (activeRoute() === "income") void refreshIncomeOnEntry();
+    });
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted && state.user && activeRoute() === "income") void refreshIncomeOnEntry();
     });
     document.addEventListener("click", async (event) => {
       const passwordToggle = event.target.closest("[data-password-toggle]");

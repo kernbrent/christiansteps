@@ -36,10 +36,11 @@ describe("Admin Portal refresh contract", () => {
     expect(adminPage).toMatch(/favicon\.png\?v=\d{8}\.\d+/);
   });
 
-  it("requires a manual submission while preserving saved-password autofill", () => {
-    const startup = adminScript.match(/function boot\(\) \{([\s\S]*?)\n  \}/)?.[1] || "";
-    expect(startup).not.toContain('api("/session")');
-    expect(startup).not.toContain("showPortal(");
+  it("resumes an existing session without auto-submitting a saved password", () => {
+    const startup = adminScript.match(/async function boot\(\) \{([\s\S]*?)\n  \}/)?.[1] || "";
+    expect(startup).toContain('api("/session")');
+    expect(startup).toContain("showPortal(session)");
+    expect(startup).toContain("await loadTransactions()");
     expect(adminScript).toContain('byId("login-form").addEventListener("submit", signIn)');
     expect(adminPage).toMatch(/<input id="login-user-id" name="userId" type="text" autocomplete="username" required/);
     expect(adminPage).toContain('<label for="login-user-id">User ID</label>');
@@ -73,6 +74,19 @@ describe("Admin Portal refresh contract", () => {
     expect(saveIncomeSource).toContain("Enter an invoice amount when invoice details are provided.");
     expect(saveIncomeSource).toContain("Enter either an invoice amount or an amount received.");
     expect(saveIncomeSource).toContain("amount: recordAmount");
+    expect(saveIncomeSource).toContain('income_kind: String(data.get("income_kind") || "other")');
+    expect(saveIncomeSource).toContain('donor_email: clean(data.get("donor_email"))');
+    const saveExpenseSource = ledgerScript.match(/async function saveExpense[\s\S]*?async function saveIncome/)?.[0] || "";
+    expect(saveExpenseSource).not.toContain("income_kind:");
+    expect(saveExpenseSource).not.toContain("donor_email:");
+  });
+
+  it("fetches fresh income records on navigation and browser restoration", () => {
+    expect(ledgerScript).toContain('options.cache = "no-store"');
+    expect(ledgerScript).toContain('url.searchParams.set("_fresh", String(Date.now()))');
+    expect(ledgerScript).toContain('async function refreshIncomeOnEntry() {\n    if (state.demo) return;');
+    expect(ledgerScript).toContain('if (activeRoute() === "income") void refreshIncomeOnEntry()');
+    expect(ledgerScript).toContain('if (event.persisted && state.user && activeRoute() === "income") void refreshIncomeOnEntry()');
   });
 
   it("finishes a confirmed save before refreshing ledger totals", () => {
