@@ -1887,13 +1887,20 @@
   }
 
   function incomeHasInvoiceDetails(form) {
-    return ["invoice_number", "invoice_date", "due_date"].some((name) => clean(form.elements[name]?.value));
+    return ["invoice_number", "invoice_date", "due_date"].some((name) => !form.elements[name]?.disabled && clean(form.elements[name]?.value));
   }
 
   function syncIncomeAmountRequirement(form) {
     if (!form) return;
+    const donation = form.elements.income_kind.value === "donation";
+    for (const name of ["client_id", "project_id", "invoice_number", "invoice_date", "due_date", "amount", "donor_email"]) {
+      const field = form.elements[name];
+      const inactive = name === "donor_email" ? !donation : donation;
+      field.disabled = inactive;
+      field.closest("label").hidden = inactive;
+    }
     const amount = form.elements.amount;
-    amount.required = Boolean(form.dataset.id) || incomeHasInvoiceDetails(form);
+    amount.required = !donation && (Boolean(form.dataset.id) || incomeHasInvoiceDetails(form));
     amount.setAttribute("aria-required", String(amount.required));
   }
 
@@ -2400,7 +2407,8 @@
     const selectedProject = byId(state.projects, selectedProjectId);
     const initialPayment = id ? 0 : num(data.get("initial_payment_amount"));
     const receivedToDate = id ? amountPaid(id) : initialPayment;
-    const invoiceAmount = num(data.get("amount"));
+    // Editing a donation must preserve its amount while invoice controls are inactive.
+    const invoiceAmount = form.elements.income_kind.value === "donation" && existing ? num(existing.amount) : num(data.get("amount"));
     const invoiceNumber = clean(data.get("invoice_number"));
     const invoiceDate = clean(data.get("invoice_date"));
     const dueDate = clean(data.get("due_date"));
@@ -3088,6 +3096,9 @@
     });
     document.addEventListener("change", (event) => {
       invoicePortal?.handleChange(event);
+      if (event.target.name === "income_kind" && event.target.form?.dataset.form === "income") {
+        syncIncomeAmountRequirement(event.target.form);
+      }
       const mileageBatchForm = event.target.closest("form[data-form='mileage']");
       if (mileageBatchForm && !mileageBatchForm.dataset.id) {
         if (event.target.name === "trip_template_id") {
