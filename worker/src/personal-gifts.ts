@@ -31,8 +31,14 @@ export async function addPersonalMovement(request:Request,env:Env,key:string,act
  const data={id:movementId,kind:String(b.kind),date:date(b.date),amountCents:cents(b.amountCents),reference:line(b.reference),description:line(b.description,500),clearedDate:b.kind==='transfer'?date(b.clearedDate):null};
  if(data.date<g.gift_date||data.clearedDate&&data.clearedDate<data.date)throw new AdminError(422,'INVALID_DATE','Settlement dates cannot precede the original gift or transfer.');
  const prior=await env.DB.prepare('SELECT gift_id,request_json FROM personal_gift_movements WHERE id=?').bind(movementId).first<Movement>();if(prior){if(prior.gift_id!==key||prior.request_json!==JSON.stringify(data))throw new AdminError(409,'RETRY_CHANGED','This movement reference was already used.');return adminJson({success:true,duplicate:true});}
- if((await movements(env,key)).filter(m=>!m.reversed).length>=100)throw new AdminError(422,'MOVEMENT_LIMIT','A gift supports up to 100 active settlements.');
- await change(env,[guard(env,g,b.revision),env.DB.prepare('INSERT INTO personal_gift_movements(id,gift_id,kind,movement_date,amount_cents,reference,description,cleared_date,request_json,created_at,actor) VALUES(?,?,?,?,?,?,?,?,?,?,?)').bind(movementId,key,data.kind,data.date,data.amountCents,data.reference,data.description,data.clearedDate,JSON.stringify(data),new Date().toISOString(),actor),env.DB.prepare('UPDATE personal_gifts SET revision=revision+1 WHERE id=?').bind(key),history(env,key,'settlement_recorded',actor,data)]);return adminJson({success:true});
+ const saveGuard=guard(env,g,b.revision),active=(await movements(env,key)).filter(m=>!m.reversed);
+ if(active.length>=100)throw new AdminError(422,'MOVEMENT_LIMIT','A gift supports up to 100 active settlements.');
+ const remaining=g.amount_cents-active.reduce((n,m)=>n+m.amount_cents,0);
+ if(!g.voided&&!g.payload_json&&data.amountCents>remaining){
+  const money=(n:number)=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(n/100),fees=active.filter(m=>m.kind==='fee').reduce((n,m)=>n+m.amount_cents,0);
+  throw new AdminError(409,'AMOUNT_EXCEEDS_REMAINING',`The amount ${money(data.amountCents)} exceeds the ${money(remaining)} remaining for this gift. Fees already recorded: ${money(fees)}. Refresh the gift to review the latest balance before trying again. Nothing was saved.`);
+ }
+ await change(env,[saveGuard,env.DB.prepare('INSERT INTO personal_gift_movements(id,gift_id,kind,movement_date,amount_cents,reference,description,cleared_date,request_json,created_at,actor) VALUES(?,?,?,?,?,?,?,?,?,?,?)').bind(movementId,key,data.kind,data.date,data.amountCents,data.reference,data.description,data.clearedDate,JSON.stringify(data),new Date().toISOString(),actor),env.DB.prepare('UPDATE personal_gifts SET revision=revision+1 WHERE id=?').bind(key),history(env,key,'settlement_recorded',actor,data)]);return adminJson({success:true});
 }
 export async function sendPersonalGift(request:Request,env:Env,key:string,actor:string){
  let g=await gift(env,key);const b=await readAdminJson(request);

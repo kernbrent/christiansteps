@@ -67,6 +67,8 @@ Your mother gives $100 through personal Venmo and your neighbor gives $150 throu
 
 ## Finding the screen and correcting mistakes
 
+If Record settlement cannot save your entry, a popup explains the issue. A $100 gift with a $2 fee already recorded has $98 remaining; enter $98 or less for its bank transfer. Choose Review entry to return to the field, correct it, and try again. Your entries stay in place after an error. Transfers also require a bank cleared date. If the gift changed elsewhere, refresh and review its latest balance before retrying.
+
 In CSM MMT, choose Personally received gifts from Giving or the Ledger navigation. Search the original donor by name, email, or phone, then select the matching HS contact. The search requires shared sign-in, CSM giving access, and HS contact access. It never makes the holder the donor automatically.
 
 Open a saved gift to attach evidence, record settlements, review audit history, and send it to HS. The default designation is Hope Sojourns; a purpose or trip is descriptive in this version and does not apply money to a traveler's account automatically. Use Download reconciliation CSV for the original donor, holder, bank references, settlement details, and amount still held.

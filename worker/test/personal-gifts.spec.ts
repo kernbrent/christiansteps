@@ -53,3 +53,16 @@ it('keeps voided personal gifts visible for audit while excluding them from givi
  const result=await (await listTransactions(f.env,new URL('https://example.test/transactions'))).json() as any;
  expect(result.transactions[0].status).toBe('Voided');expect(result.summary.total).toBe(0);
 });
+
+it('explains a fee-adjusted over-allocation without changing the gift and safely accepts the correction',async()=>{
+ const f=setup();f.body.amountCents=10000;await createPersonalGift(req(f.body),f.env,'reviewer');
+ await addPersonalMovement(req({...transfer(1,200),kind:'fee',clearedDate:null,reference:'fee-2',description:'Venmo fee'}),f.env,f.key,'reviewer');
+ await expect(addPersonalMovement(req(transfer(2,10000)),f.env,f.key,'reviewer')).rejects.toMatchObject({status:409,code:'AMOUNT_EXCEEDS_REMAINING',message:expect.stringContaining('The amount $100.00 exceeds the $98.00 remaining')});
+ expect(f.db.prepare('SELECT count(*) n FROM personal_gift_movements WHERE gift_id=?').get(f.key)?.n).toBe(1);
+ expect(f.db.prepare('SELECT revision FROM personal_gifts WHERE id=?').get(f.key)?.revision).toBe(2);
+ const correction=transfer(2,9800);await addPersonalMovement(req(correction),f.env,f.key,'reviewer');
+ await addPersonalMovement(req(correction),f.env,f.key,'reviewer');
+ expect(f.db.prepare('SELECT count(*) n FROM personal_gift_movements WHERE gift_id=?').get(f.key)?.n).toBe(2);
+ const list=await (await personalGiftRoute(new Request('https://example.test/personal-gifts'),f.env,'/personal-gifts','reviewer')).json() as any;
+ expect(list.gifts[0]).toMatchObject({remainingCents:0,feeCents:200,transferredCents:9800});
+});

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../portal-navigation.css?v=20260924.1">
   <link rel="stylesheet" href="personal-gifts.css?v=20260923.4">
   <script src="../shared-navigation.js?v=20260926.1" defer></script>
-  <script src="personal-gifts.js?v=20260923.5" defer></script>
+  <script src="personal-gifts.js?v=20261106.1" defer></script>
 </head>
 <body>
   <div class="csm-portal-shell">
@@ -78,5 +78,12 @@
       </main>
     </div>
   </div>
+  <dialog id="gift-error-dialog" aria-labelledby="gift-error-title" aria-describedby="gift-error-message" closedby="closerequest">
+    <form method="dialog" class="dialog-content">
+      <h2 id="gift-error-title">Please review this entry</h2>
+      <p id="gift-error-message"></p>
+      <div class="dialog-actions"><button type="submit" autofocus>Review entry</button></div>
+    </form>
+  </dialog>
 </body>
 </html>

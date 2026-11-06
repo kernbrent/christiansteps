@@ -1,5 +1,11 @@
 # Personally received ministry gifts
 
+## Settlement error feedback — November 6, 2026
+
+Local change pending release. Failed actions now open an accessible modal with the returned error instead of relying only on the page-top status. Settlement prechecks explain the available balance (including recorded fees, transfers, and expenses) and missing bank clearance date. Dismissing Review entry returns focus to the relevant field; unsuccessful submissions retain their inputs. A $100 gift with a recorded $2 fee accepts at most $98 more in settlements.
+
+The API returns HTTP 409 AMOUNT_EXCEEDS_REMAINING with the attempted amount, remaining balance, and recorded fees. Duplicate-request replay is checked first; revision checks and atomic database allocation guards remain authoritative for concurrent changes. No migration is required. Regression coverage verifies rejection without a write, correction to $98, and safe replay. Browser QA uses synthetic data and mocked APIs only.
+
 Released September 23, 2026, with CSM DB migration 0005 applied. No CSM LEDGER_DB migration. Deploy compatible HS receiver and identity authority before CSM, only after explicit authorization. Existing PayPal and JBB flows remain unchanged. Testing must use mocked bindings or a separately configured CSM test environment pointing only at HS test resources; never connect CSM production to a test donor directory or vice versa.
 
 The authenticated /personal-gifts routes use CSM giving permission, CSRF, and allowed-origin validation. /contacts proxies the named CsmIdentity entrypoint and authenticates the real CSM session; the authority additionally requires HS membership and contacts read permission. Only ID, name, email, and phone are returned, with a 30-result search limit. Caller-supplied user IDs cannot grant access.
